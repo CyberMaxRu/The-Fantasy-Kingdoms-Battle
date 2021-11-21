@@ -69,6 +69,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <DaysProcessing>1</DaysProcessing>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductWarriorImpAttack</ID>
@@ -77,6 +83,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildWarrior</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductWarriorMaimAttack</ID>
@@ -85,6 +104,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildWarrior</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductWarriorResistanceBuff</ID>
@@ -93,6 +125,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildWarrior</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
@@ -102,79 +147,31 @@
       </CellMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Warrior</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductCloseCombatCourse</Entity>
-        <DaysProcessing>1</DaysProcessing>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>1,2</Pos>
-        <Action>LevelUp</Action>
         <Entity>LevelGuildWarrior2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductWarriorImpAttack</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildWarrior</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>1,3</Pos>
-        <Action>LevelUp</Action>
         <Entity>LevelGuildWarrior3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductWarriorMaimAttack</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildWarrior</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductWarriorResistanceBuff</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildWarrior</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -193,22 +190,28 @@
     <SoundSelect>guild_hunter_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGuildHunter1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
+        <Creating>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+        </Creating>
         <Income>0</Income>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
         <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
+        <ID>LevelGuildHunter2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
@@ -220,12 +223,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildHunter3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>3</Builders>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
@@ -238,6 +244,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductHunterImpAttack</ID>
@@ -246,6 +258,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildHunter</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductHunterStingShotAttack</ID>
@@ -254,6 +279,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildHunter</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductHunterManaburnAttack</ID>
@@ -262,74 +300,53 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildHunter</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGuildHunter1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Hunter</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>150</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductFittingClothes</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuildHunter2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductHunterImpAttack</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildHunter</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuildHunter3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductHunterStingShotAttack</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildHunter</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductHunterManaburnAttack</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildHunter</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -348,22 +365,28 @@
     <SoundSelect>guild_cleric_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGuildCleric1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>700</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+          <Cost>
+            <Gold>700</Gold>
+          </Cost>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
+        <ID>LevelGuildCleric2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>700</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>700</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
@@ -375,12 +398,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildCleric3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>700</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>700</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
@@ -393,6 +419,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductHolyAttack</ID>
@@ -401,6 +433,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildCleric</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductClericManaRegenBuff</ID>
@@ -409,6 +454,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildCleric</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductClericKnockbackAttack</ID>
@@ -417,74 +475,53 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildCleric</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGuildCleric1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Cleric</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>350</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductHolyWater</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuildCleric2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductHolyAttack</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildCleric</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuildCleric3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductClericManaRegenBuff</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildCleric</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductClericKnockbackAttack</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildCleric</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -503,12 +540,15 @@
     <SoundSelect>guild_magic_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGuildMage1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>0</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>0</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Requirements>
@@ -520,11 +560,14 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildMage2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+        </Creating>
         <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -542,12 +585,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildMage3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>0</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>          
+          <Builders>0</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Requirements>
@@ -563,9 +609,22 @@
       <Extension>
         <ID>Library</ID>
         <Name>Библиотека</Name>
-        <Description>Пристроить библиотеку. Повышает ум и знания героев.</Description>
+        <Description>Построить библиотеку. Повышает ум и знания героев.</Description>
         <ImageIndex>254</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Extension>
     </Extensions>
     <Products>
@@ -576,6 +635,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>300</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductMageFireballAttack</ID>
@@ -584,6 +649,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductMageFreezeAttack</ID>
@@ -592,6 +663,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductMageGuardianWind</ID>
@@ -600,6 +684,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>750</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductMageFirestormAttack</ID>
@@ -608,99 +705,61 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGuildMage1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Mage</Entity>
-        <DaysProcessing>1</DaysProcessing>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductEnchantWeaponAttack</Entity>
-        <Cost>
-          <Gold>300</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductMageFireballAttack</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuildMage2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductMageFreezeAttack</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductMageGuardianWind</Entity>
-        <Cost>
-          <Gold>750</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Create</Action>
         <Entity>Library</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuildMage3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductMageFirestormAttack</Entity>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -719,12 +778,15 @@
     <SoundSelect>guild_elves_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGuildElf1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Requirements>
@@ -736,12 +798,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildElf2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
@@ -758,12 +823,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildElf3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Requirements>
@@ -787,6 +855,12 @@
         <Description>Эльфы эффективно заточат оружие по своим секретным технологиям (+25% к минимальному урону, +10% к максимальному урону).</Description>
         <ImageIndex>227</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Service>
     </Services>
     <Products>
@@ -805,6 +879,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElfImpAttack</ID>
@@ -813,6 +893,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildElf</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElfWine</ID>
@@ -821,6 +914,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildElf</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElfBuff</ID>
@@ -829,6 +935,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildElf</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElfMagicArrow</ID>
@@ -837,99 +956,61 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>300</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildElf</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGuildElf1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Elf</Entity>
-        <DaysProcessing>1</DaysProcessing>
-        <Cost>
-          <Gold>700</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductElvenSharpener</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirSpeed</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuildElf2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductElfImpAttack</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildElf</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductElfWine</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildElf</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuildElf3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductElfBuff</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildElf</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductElfMagicArrow</Entity>
-        <Cost>
-          <Gold>300</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildElf</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -948,12 +1029,15 @@
     <SoundSelect>guild_dwarf_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGuildDwarf1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>10</MaxInhabitant>
@@ -966,12 +1050,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildDwarf2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>20</MaxInhabitant>
@@ -989,12 +1076,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildDwarf3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>4</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>30</MaxInhabitant>
@@ -1019,6 +1109,19 @@
         <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
         <ImageIndex>226</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <DaysProcessing>2</DaysProcessing>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildDwarf</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Extension>
     </Extensions>
     <Products>
@@ -1029,6 +1132,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductDwarfImpAttack</ID>
@@ -1037,6 +1146,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>300</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildDwarf</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductDwarfBerserkBuff</ID>
@@ -1045,6 +1167,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>750</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildDwarf</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductDwarfBeer</ID>
@@ -1053,6 +1188,24 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildDwarf</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Goods>ProductWheat</Goods>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductDwarfAntiBuildingAttack</ID>
@@ -1061,111 +1214,61 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildDwarf</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGuildDwarf1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Dwarf</Entity>
-        <DaysProcessing>1</DaysProcessing>
-        <Cost>
-          <Gold>700</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductSimpleRunes</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuildDwarf2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductDwarfImpAttack</Entity>
-        <Cost>
-          <Gold>300</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildDwarf</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductDwarfBerserkBuff</Entity>
-        <Cost>
-          <Gold>750</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildDwarf</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductDwarfBeer</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildDwarf</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>GoodsInConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Goods>ProductWheat</Goods>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuildDwarf3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductDwarfAntiBuildingAttack</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildDwarf</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Create</Action>
         <Entity>DwarfForge</Entity>
-        <DaysProcessing>2</DaysProcessing>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildDwarf</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1186,21 +1289,26 @@
       <Level>
         <ID>LevelGuardBarrack1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
+        <ID>LevelGuardBarrack2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
@@ -1212,12 +1320,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuardBarrack3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
@@ -1225,12 +1336,15 @@
     <CellsMenu>
       <CellMenu>
         <Pos>1,1</Pos>
-        <Action>LevelUp</Action>
         <Entity>LevelGuardBarrack1</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>100</Gold>
-        </Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuardBarrack2</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuardBarrack3</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1249,12 +1363,15 @@
     <SoundSelect>guild_rogue_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGuildRogue1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Requirements>
@@ -1266,12 +1383,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildRogue2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
@@ -1283,12 +1403,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelGuildRogue3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>450</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>450</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
@@ -1301,6 +1424,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>300</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductRoguePoisonAttack</ID>
@@ -1309,6 +1438,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductRogueImpAttack</ID>
@@ -1317,6 +1452,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildRogue</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductRogueKickAttack</ID>
@@ -1325,6 +1473,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildRogue</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductStunAttack</ID>
@@ -1333,84 +1494,57 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildRogue</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGuildRogue1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Rogue</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>100</Gold>
-        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductEnchantWeaponPoison</Entity>
-        <Cost>
-          <Gold>300</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Pos>4,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductRoguePoisonAttack</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuildRogue2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductRogueImpAttack</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildRogue</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuildRogue3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductRogueKickAttack</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildRogue</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductStunAttack</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildRogue</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1429,12 +1563,15 @@
     <SoundSelect>castle_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelCastle1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>0</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>0</Builders>
+        <Creating>
+          <Cost>
+            <Gold>0</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>0</Builders>
+        </Creating>
         <Income>1000</Income>
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -1445,15 +1582,18 @@
         </Perks>
       </Level>
       <Level>
+        <ID>LevelCastle2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>2000</Gold>
-          <Wood>200</Wood>
-          <Iron>100</Iron>
-          <Stone>500</Stone>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>2</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+            <Wood>200</Wood>
+            <Iron>100</Iron>
+            <Stone>500</Stone>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>2</Builders>
+        </Creating>
         <Income>1500</Income>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -1486,13 +1626,16 @@
         </Perks>
       </Level>
       <Level>
+        <ID>LevelCastle3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>4000</Gold>
-          <Stone>1000</Stone>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>4000</Gold>
+            <Stone>1000</Stone>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>2000</Income>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
@@ -1532,9 +1675,26 @@
         <Description>Трон покажет величие Короля</Description>
         <ImageIndex>260</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>5000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Extension>
     </Extensions>
     <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelCastle1</Entity>
+      </CellMenu>
       <CellMenu>
         <Pos>2,1</Pos>
         <Action>Extra</Action>
@@ -1563,20 +1723,16 @@
         </Cost>
       </CellMenu>
       <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelCastle2</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelCastle3</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Create</Action>
         <Entity>Throne</Entity>
-        <Cost>
-          <Gold>5000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>      
     </CellsMenu>
   </Construction>
@@ -1594,12 +1750,15 @@
     <PlayerCanBuild>false</PlayerCanBuild>
     <Levels>
       <Level>
+        <ID>levelPeasantHouse1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>0</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>0</Builders>
+        <Creating>
+          <Cost>
+            <Gold>0</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>0</Builders>
+        </Creating>
         <Income>50</Income>
         <Requirements>
           <Requirement>
@@ -1639,12 +1798,15 @@
     <PlayerCanBuild>false</PlayerCanBuild>
     <Levels>
       <Level>
+        <ID>levelMill1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>0</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>0</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>250</Income>
         <Requirements>
           <Requirement>
@@ -1670,12 +1832,15 @@
     <PlayerCanBuild>true</PlayerCanBuild>
     <Levels>
       <Level>
+        <ID>LevelTradePost1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>100</Income>
         <Requirements>
           <Requirement>
@@ -1701,21 +1866,27 @@
     <SoundSelect>marketplace_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelMarket1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>175</Income>
       </Level>
       <Level>
+        <ID>LevelMarket2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>300</Income>
         <Requirements>
           <Requirement>
@@ -1726,12 +1897,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelMarket3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>525</Income>
         <Requirements>
           <Requirement>
@@ -1753,6 +1927,22 @@
         <Cooldown>10</Cooldown>
         <Interest>30</Interest>
         <NameGoods>Посетить ярмарку</NameGoods>
+        <Cost>100</Cost>
+        <Quantity>5</Quantity>
+        <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Heroes>
           <Hero>Warrior</Hero>
           <Hero>Hunter</Hero>
@@ -1773,6 +1963,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductWheat</ID>
@@ -1781,6 +1977,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductMeat</ID>
@@ -1789,6 +1991,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>750</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGingerRoot</ID>
@@ -1797,6 +2005,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductAmanita</ID>
@@ -1805,6 +2026,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductCornedBeef</ID>
@@ -1813,107 +2047,61 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
-      </Product>
-      <Product>
-        <ID>ProductEventFair</ID>
-        <Entity>EventFair</Entity>
-        <Cost>100</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelMarket1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductApple</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductWheat</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductMeat</Entity>
-        <Cost>
-          <Gold>750</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelMarket2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductGingerRoot</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductAmanita</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Create</Action>
-        <Entity>ProductEventFair</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+        <Entity>EventFair</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelMarket3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductCornedBeef</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1931,21 +2119,27 @@
     <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelSmithy1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>50</Income>
       </Level>
       <Level>
+        <ID>LevelSmithy2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>50</Income>
         <Requirements>
           <Requirement>
@@ -1956,12 +2150,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelSmithy3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <Income>50</Income>
-        <DaysProcessing>1</DaysProcessing>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <Income>50</Income>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
         <Builders>1</Builders>
         <Requirements>
           <Requirement>
@@ -1978,24 +2175,69 @@
         <Name>Улучшить проковку металла</Name>
         <Description>Оружие и доспехи получают дополнительную прочность.</Description>
         <ImageIndex>234</ImageIndex>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Improvement>
       <Improvement>
         <ID>ImproveFounding</ID>
         <Name>Улучшить технологию литья</Name>
         <Description>Кузница может выпускать больше оружия и доспехов.</Description>
         <ImageIndex>235</ImageIndex>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Improvement>
       <Improvement>
         <ID>ImproveAnvil</ID>
         <Name>Улучшить наковальни</Name>
         <Description>- Кузница может выпускать больше оружия и доспехов.</Description>
         <ImageIndex>236</ImageIndex>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+        </Creating>
       </Improvement>
       <Improvement>
         <ID>ImproveSickle</ID>
         <Name>Улучшить крестьянские орудия труда</Name>
         <Description>- Увеличивает доход от крестьянских хозяйств.</Description>
         <ImageIndex>237</ImageIndex>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Improvement>
     </Improvements>
     <Products>
@@ -2006,6 +2248,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourMetal2</ID>
@@ -2014,6 +2262,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourMetal3</ID>
@@ -2022,6 +2283,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourMetal4</ID>
@@ -2030,6 +2304,24 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildDwarf</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee1</ID>
@@ -2038,6 +2330,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee2</ID>
@@ -2046,6 +2344,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements> 
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee3</ID>
@@ -2054,6 +2365,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee4</ID>
@@ -2062,6 +2386,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather1</ID>
@@ -2070,6 +2407,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather2</ID>
@@ -2078,6 +2421,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather3</ID>
@@ -2086,6 +2442,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather4</ID>
@@ -2094,238 +2463,94 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
-      </Product>
-    </Products>
-    <CellsMenu>
-      <CellMenu>
-        <Pos>2,1</Pos>
-        <Action>Create</Action>
-        <Entity>ImproveAnvil</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-      </CellMenu>
-      <CellMenu>
-        <Pos>2,2</Pos>
-        <Action>Create</Action>
-        <Entity>ImproveForging</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>4</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <Pos>3,2</Pos>
-        <Action>Create</Action>
-        <Entity>ImproveSickle</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <Pos>2,3</Pos>
-        <Action>Create</Action>
-        <Entity>ImproveFounding</Entity>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <Pos>4,1</Pos>
-        <Action>Research</Action>
-        <Entity>ProductGroupArmourMetal1</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <CellMenu>
-          <Pos>4,1</Pos>
-          <Action>Research</Action>
-          <Entity>ProductGroupArmourMetal2</Entity>
+        <Creating>
           <Cost>
-            <Gold>1000</Gold>
+            <Gold>3500</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
+          <DaysProcessing>4</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
               <Construction>Smithy</Construction>
-              <Level>2</Level>
+              <Level>3</Level>
             </Requirement>
           </Requirements>
+        </Creating>
+      </Product>
+    </Products>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelSmithy1</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Entity>ImproveAnvil</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelSmithy2</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,2</Pos>
+        <Entity>ImproveForging</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,2</Pos>
+        <Entity>ImproveSickle</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelSmithy3</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Entity>ImproveFounding</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>4,1</Pos>
+        <Entity>ProductGroupArmourMetal1</Entity>
+        <CellMenu>
+          <Pos>4,1</Pos>
+          <Entity>ProductGroupArmourMetal2</Entity>
           <CellMenu>
             <Pos>4,1</Pos>
-            <Action>Research</Action>
             <Entity>ProductGroupArmourMetal3</Entity>
-            <Cost>
-              <Gold>3000</Gold>
-            </Cost>
-            <DaysProcessing>3</DaysProcessing>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
             <CellMenu>
               <Pos>4,1</Pos>
-              <Action>Research</Action>
               <Entity>ProductGroupArmourMetal4</Entity>
-              <Cost>
-                <Gold>3500</Gold>
-              </Cost>
-              <DaysProcessing>4</DaysProcessing>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>3</Level>
-                </Requirement>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>GuildDwarf</Construction>
-                  <Level>2</Level>
-                </Requirement>
-              </Requirements>
             </CellMenu>
           </CellMenu>
         </CellMenu>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductGroupWeaponMelee1</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,2</Pos>
-          <Action>Research</Action>
           <Entity>ProductGroupWeaponMelee2</Entity>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
           <CellMenu>
             <Pos>4,2</Pos>
-            <Action>Research</Action>
             <Entity>ProductGroupWeaponMelee3</Entity>
-            <Cost>
-              <Gold>3000</Gold>
-            </Cost>
-            <DaysProcessing>3</DaysProcessing>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
             <CellMenu>
               <Pos>4,2</Pos>
-              <Action>Research</Action>
               <Entity>ProductGroupWeaponMelee4</Entity>
-              <Cost>
-                <Gold>3500</Gold>
-              </Cost>
-              <DaysProcessing>4</DaysProcessing>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>3</Level>
-                </Requirement>
-              </Requirements>
             </CellMenu>
           </CellMenu>
         </CellMenu>
       </CellMenu>
       <CellMenu>
         <Pos>4,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductGroupArmourLeather1</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,3</Pos>
-          <Action>Research</Action>
           <Entity>ProductGroupArmourLeather2</Entity>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
           <CellMenu>
             <Pos>4,3</Pos>
-            <Action>Research</Action>
             <Entity>ProductGroupArmourLeather3</Entity>
-            <Cost>
-              <Gold>3000</Gold>
-            </Cost>
-            <DaysProcessing>3</DaysProcessing>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
             <CellMenu>
               <Pos>4,3</Pos>
-              <Action>Research</Action>
               <Entity>ProductGroupArmourLeather4</Entity>
-              <Cost>
-                <Gold>3500</Gold>
-              </Cost>
-              <DaysProcessing>4</DaysProcessing>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>3</Level>
-                </Requirement>
-              </Requirements>
             </CellMenu>
           </CellMenu>
         </CellMenu>
@@ -2346,12 +2571,15 @@
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelTavern1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Visit>
           <ID>TavernVisit1</ID>
@@ -2367,11 +2595,14 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <ID>LevelTavern2</ID>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Requirements>
           <Requirement>
@@ -2393,12 +2624,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelTavern3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Requirements>
           <Requirement>
@@ -2431,6 +2665,28 @@
         <Cooldown>7</Cooldown>
         <Interest>40</Interest>
         <NameGoods>Участвовать в пире</NameGoods>
+        <Cost>100</Cost>
+        <Quantity>5</Quantity>
+        <Duration>0</Duration>
+        <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Tavern</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Tavern</Construction>
+              <Goods>ProductTavernBeer</Goods>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Heroes>
           <Hero>Warrior</Hero>
           <Hero>Hunter</Hero>
@@ -2450,6 +2706,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductTavernMeat</ID>
@@ -2458,6 +2720,24 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Goods>ProductMeat</Goods>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Tavern</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductTavernBeer</ID>
@@ -2466,88 +2746,54 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
-      </Product>
-      <Product>
-        <ID>ProductEventFeast</ID>
-        <Entity>EventFeast</Entity>
-        <Cost>100</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Goods>ProductWheat</Goods>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Tavern</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelTavern1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductTavernSoup</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelTavern2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductTavernMeat</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>GoodsInConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Goods>ProductMeat</Goods>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Tavern</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductTavernBeer</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>GoodsInConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Goods>ProductWheat</Goods>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Tavern</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelTavern3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Create</Action>
-        <Entity>ProductEventFeast</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Tavern</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>GoodsInConstruction</TypeRequirement>
-            <Construction>Tavern</Construction>
-            <Goods>ProductTavernBeer</Goods>
-          </Requirement>
-        </Requirements>
+        <Entity>EventFeast</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -2565,12 +2811,15 @@
     <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelWorkshop1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>0</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>0</Builders>
+        </Creating>
         <Income>150</Income>
         <Requirements>
           <Requirement>
@@ -2581,12 +2830,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelWorkshop2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>0</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>250</Income>
         <Requirements>
           <Requirement>
@@ -2597,12 +2849,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelWorkshop3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>0</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>350</Income>
         <Requirements>
           <Requirement>
@@ -2621,6 +2876,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductRingOfProtection</ID>
@@ -2629,6 +2890,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Workshop</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductImpAmuletOfProtection</ID>
@@ -2637,6 +2911,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Workshop</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductQuiver</ID>
@@ -2645,6 +2932,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductSmallBag</ID>
@@ -2653,6 +2946,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Workshop</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange1</ID>
@@ -2661,6 +2967,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange2</ID>
@@ -2669,6 +2981,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange3</ID>
@@ -2677,6 +3002,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange4</ID>
@@ -2685,6 +3023,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>4</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage1</ID>
@@ -2693,6 +3044,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage2</ID>
@@ -2701,6 +3058,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage3</ID>
@@ -2709,6 +3079,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage4</ID>
@@ -2717,6 +3100,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>4</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage1</ID>
@@ -2725,6 +3121,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage2</ID>
@@ -2733,6 +3135,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage3</ID>
@@ -2741,6 +3156,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage4</ID>
@@ -2749,242 +3177,96 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Cost>
+          <Gold>3500</Gold>
+        </Cost>
+        <DaysProcessing>4</DaysProcessing>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Smithy</Construction>
+            <Level>4</Level>
+          </Requirement>
+        </Requirements>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelWorkshop1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductAmuletOfRegeneration</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelWorkshop2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductRingOfProtection</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Workshop</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductImpAmuletOfProtection</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Workshop</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductQuiver</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductSmallBag</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Workshop</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelWorkshop3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductGroupWeaponRange1</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,1</Pos>
-          <Action>Research</Action>
           <Entity>ProductGroupWeaponRange2</Entity>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
           <CellMenu>
             <Pos>4,1</Pos>
-            <Action>Research</Action>
             <Entity>ProductGroupWeaponRange3</Entity>
-            <Cost>
-              <Gold>3000</Gold>
-            </Cost>
-            <DaysProcessing>3</DaysProcessing>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
             <CellMenu>
               <Pos>4,1</Pos>
-              <Action>Research</Action>
               <Entity>ProductGroupWeaponRange4</Entity>
-              <Cost>
-                <Gold>3500</Gold>
-              </Cost>
-              <DaysProcessing>4</DaysProcessing>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>2</Level>
-                </Requirement>
-              </Requirements>
             </CellMenu>
           </CellMenu>
         </CellMenu>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductGroupArmourMage1</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,2</Pos>
-          <Action>Research</Action>
           <Entity>ProductGroupArmourMage2</Entity>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
           <CellMenu>
             <Pos>4,2</Pos>
-            <Action>Research</Action>
             <Entity>ProductGroupArmourMage3</Entity>
-            <Cost>
-              <Gold>3000</Gold>
-            </Cost>
-            <DaysProcessing>3</DaysProcessing>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
             <CellMenu>
               <Pos>4,2</Pos>
-              <Action>Research</Action>
               <Entity>ProductGroupArmourMage4</Entity>
-              <Cost>
-                <Gold>3500</Gold>
-              </Cost>
-              <DaysProcessing>4</DaysProcessing>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>3</Level>
-                </Requirement>
-              </Requirements>
             </CellMenu>
           </CellMenu>
         </CellMenu>
       </CellMenu>
       <CellMenu>
         <Pos>4,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductGroupWeaponMage1</Entity>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,3</Pos>
-          <Action>Research</Action>
           <Entity>ProductGroupWeaponMage2</Entity>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
           <CellMenu>
             <Pos>4,3</Pos>
-            <Action>Research</Action>
             <Entity>ProductGroupWeaponMage3</Entity>
-            <Cost>
-              <Gold>3000</Gold>
-            </Cost>
-            <DaysProcessing>3</DaysProcessing>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
             <CellMenu>
               <Pos>4,3</Pos>
-              <Action>Research</Action>
               <Entity>ProductGroupWeaponMage4</Entity>
-              <Cost>
-                <Gold>3500</Gold>
-              </Cost>
-              <DaysProcessing>4</DaysProcessing>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>3</Level>
-                </Requirement>
-              </Requirements>
             </CellMenu>
           </CellMenu>
         </CellMenu>
@@ -3005,30 +3287,39 @@
     <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelAlchemistHut1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>200</Income>
       </Level>
       <Level>
+        <ID>LevelAlchemistHut2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>300</Income>
       </Level>
       <Level>
+        <ID>LevelAlchemistHut3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>500</Income>
       </Level>
     </Levels>
@@ -3040,6 +3331,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>150</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductPotionOfMana</ID>
@@ -3048,6 +3345,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>300</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductPotionOfCheerfulness</ID>
@@ -3056,6 +3359,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>200</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirMeleeProt</ID>
@@ -3064,6 +3373,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>AlchemistHut</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirRangeProt</ID>
@@ -3072,6 +3394,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>AlchemistHut</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirMagicProt</ID>
@@ -3080,6 +3415,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>AlchemistHut</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirStrength</ID>
@@ -3088,6 +3436,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>AlchemistHut</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirAccuracy</ID>
@@ -3096,6 +3457,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>AlchemistHut</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirWisdom</ID>
@@ -3104,131 +3478,69 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>AlchemistHut</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelAlchemistHut1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductPotionOfHealth</Entity>
-        <Cost>
-          <Gold>150</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductPotionOfMana</Entity>
-        <Cost>
-          <Gold>300</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductPotionOfCheerfulness</Entity>
-        <Cost>
-          <Gold>200</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelAlchemistHut2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirMeleeProt</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>AlchemistHut</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirRangeProt</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>AlchemistHut</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirMagicProt</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>AlchemistHut</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelAlchemistHut3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirStrength</Entity>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>AlchemistHut</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirAccuracy</Entity>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>AlchemistHut</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirWisdom</Entity>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>AlchemistHut</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3246,12 +3558,15 @@
     <SoundSelect>library_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelPark1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Visit>
           <ID>ParkVisit1</ID>
@@ -3266,12 +3581,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelPark2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>4</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Visit>
           <ID>ParkVisit2</ID>
@@ -3286,12 +3604,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelPark3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>6</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>6</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Visit>
           <ID>ParkVisit3</ID>
@@ -3312,9 +3633,12 @@
         <Name>Беседки</Name>
         <Description>Беседки увеличат популярность {Парка}</Description>
         <ImageIndex>215</ImageIndex>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -3328,6 +3652,19 @@
         <ImageIndex>246</ImageIndex>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Park</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>10</Rest>
           <Entertainment>5</Entertainment>
@@ -3340,6 +3677,19 @@
         <ImageIndex>214</ImageIndex>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Park</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>5</Rest>
           <Entertainment>2</Entertainment>
@@ -3352,6 +3702,19 @@
         <ImageIndex>255</ImageIndex>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Park</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>5</Rest>
           <Entertainment>2</Entertainment>
@@ -3364,6 +3727,24 @@
         <ImageIndex>256</ImageIndex>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Park</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>ExtensionInConstruction</TypeRequirement>
+              <Construction>Park</Construction>
+              <Extension>Waterfall</Extension>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>5</Rest>
           <Entertainment>2</Entertainment>
@@ -3372,82 +3753,36 @@
     </Extensions>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelPark1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Create</Action>
         <Entity>Gazebo</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelPark2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Create</Action>
         <Entity>Alley</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Park</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Create</Action>
         <Entity>Maze</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Park</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelPark3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Create</Action>
         <Entity>Waterfall</Entity>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Park</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Create</Action>
         <Entity>Pond</Entity>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Park</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>ExtensionInConstruction</TypeRequirement>
-            <Construction>Park</Construction>
-            <Extension>Waterfall</Extension>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3465,12 +3800,15 @@
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelTownSquare1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -3487,12 +3825,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelTownSquare2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -3516,12 +3857,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelTownSquare3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -3552,6 +3896,12 @@
         <Description>Мощение плиткой увеличит популярность {Площади}</Description>
         <ImageIndex>247</ImageIndex>
         <Interest>5</Interest>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
         <Needs>
           <Rest>10</Rest>
         </Needs>
@@ -3563,6 +3913,19 @@
         <Description>Фонтан увеличит популярность {Площади}</Description>
         <ImageIndex>213</ImageIndex>
         <Interest>10</Interest>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>TownSquare</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>10</Rest>
         </Needs>
@@ -3574,6 +3937,19 @@
         <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
         <ImageIndex>231</ImageIndex>
         <Interest>15</Interest>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>TownSquare</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>15</Rest>
         </Needs>
@@ -3588,6 +3964,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>ExtensionInConstruction</TypeRequirement>
+              <Construction>TownSquare</Construction>
+              <Extension>Fountain</Extension>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductHerald</ID>
@@ -3596,81 +3985,53 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
+        <DaysProcessing>1</DaysProcessing>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>TownSquare</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>          
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelTownSquare1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Create</Action>
         <Entity>Paving</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelTownSquare2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Create</Action>
         <Entity>Fountain</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>TownSquare</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductLuckyCoins</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>ExtensionInConstruction</TypeRequirement>
-            <Construction>TownSquare</Construction>
-            <Extension>Fountain</Extension>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelTownSquare3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Create</Action>
         <Entity>Statue</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>TownSquare</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductHerald</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>TownSquare</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3688,23 +4049,29 @@
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelTreasureDepartment1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
       <Level>
+        <ID>LevelTreasureDepartment2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -3725,23 +4092,29 @@
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelMunicipality1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
       <Level>
+        <ID>LevelMunicipality2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -3762,12 +4135,15 @@
     <SoundSelect>training_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelArena1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Visit>
           <ID>ArenaVisit1</ID>
@@ -3781,12 +4157,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelArena2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Visit>
           <ID>ArenaVisit2</ID>
@@ -3800,12 +4179,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelArena3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Visit>
           <ID>ArenaVisit3</ID>
@@ -3856,6 +4238,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductTournamentArcher</ID>
@@ -3864,6 +4252,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Arena</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductTournamentMage</ID>
@@ -3872,49 +4273,33 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Arena</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>          
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Create</Action>
         <Entity>ProductTournamentHandFight</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Create</Action>
         <Entity>ProductTournamentArcher</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Arena</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Create</Action>
         <Entity>ProductTournamentMage</Entity>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Arena</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3932,30 +4317,39 @@
     <SoundSelect>hospital_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelHospital1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
       </Level>
       <Level>
+        <ID>LevelHospital2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
       </Level>
       <Level>
+        <ID>LevelHospital3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>5000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>5000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
       </Level>
     </Levels>
@@ -3967,6 +4361,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductHospitalHealthPotion</ID>
@@ -3975,6 +4375,12 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirAntipoison</ID>
@@ -3983,6 +4389,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Hospital</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductElixirRegeneration</ID>
@@ -3991,6 +4410,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Hospital</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductHospitalPowerTherapy</ID>
@@ -3999,74 +4431,53 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Hospital</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelHospital1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductHospitalHerbs</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductHospitalHealthPotion</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelHospital2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirAntipoison</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Hospital</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductElixirRegeneration</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Hospital</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelHospital3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductHospitalPowerTherapy</Entity>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Hospital</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4084,41 +4495,40 @@
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelDungeon1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
       <Level>
+        <ID>LevelDungeon2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelDungeon1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,2</Pos>
-        <Action>HireCreature</Action>
         <Entity>Executioner</Entity>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Dungeon</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4136,12 +4546,15 @@
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGarden1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>50</Income>
         <Visit>
           <ID>GardenVisit1</ID>
@@ -4156,12 +4569,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelGarden2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>100</Income>
         <Visit>
           <ID>GardenVisit2</ID>
@@ -4176,12 +4592,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelGarden3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>          
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>150</Income>
         <Visit>
           <ID>GardenVisit3</ID>
@@ -4204,6 +4623,19 @@
         <ImageIndex>257</ImageIndex>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Garden</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>5</Rest>
           <Entertainment>2</Entertainment>
@@ -4216,6 +4648,12 @@
         <ImageIndex>258</ImageIndex>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
         <Needs>
           <Rest>5</Rest>
           <Entertainment>2</Entertainment>
@@ -4228,6 +4666,19 @@
         <ImageIndex>259</ImageIndex>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Garden</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>5</Rest>
           <Entertainment>2</Entertainment>
@@ -4249,7 +4700,20 @@
           <Hero>Warrior</Hero>
           <Hero>Hunter</Hero>
           <Hero>Cleric</Hero>
-        </Heroes>
+        </Heroes>        
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Garden</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Needs>
           <Rest>20</Rest>
           <Entertainment>40</Entertainment>
@@ -4265,6 +4729,24 @@
         <Cooldown>7</Cooldown>
         <Interest>50</Interest>
         <NameGoods>Посетить концерт эльфийской музыки</NameGoods>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Garden</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildElf</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
         <Heroes>
           <Hero>Warrior</Hero>
           <Hero>Hunter</Hero>
@@ -4298,82 +4780,36 @@
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGarden1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Create</Action>
         <Entity>FruitTrees</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGarden2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Create</Action>
         <Entity>FlowerGarden</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Garden</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Create</Action>
-        <Entity>ProductEventElvenMusic</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Garden</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildElf</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
+        <Entity>EventElvenMusic</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGarden3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Create</Action>
         <Entity>Greenhouse</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Garden</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Create</Action>
-        <Entity>ProductEventFireworks</Entity>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>4</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Garden</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
+        <Entity>EventFireworks</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4393,12 +4829,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildDarkPriest1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4420,12 +4859,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>DarkPriest</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4445,12 +4879,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildPriest1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4472,12 +4909,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Priest</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4497,12 +4929,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildPaladin1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4524,12 +4959,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Paladin</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4549,12 +4979,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildBlademaster1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4576,12 +5009,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>BladeMaster</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4601,12 +5029,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildBeastmaster1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4628,12 +5059,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>BeastMaster</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4653,12 +5079,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildMarksman1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4680,12 +5109,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>Marksman</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4705,12 +5129,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildIceMage1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4732,12 +5159,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>IceMage</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4757,12 +5179,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildDeathKnight1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4784,12 +5209,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>DeathKnight</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -4809,12 +5229,15 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGuildFireMage1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
@@ -4836,12 +5259,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>HireCreature</Action>
         <Entity>FireMage</Entity>
-        <DaysProcessing>0</DaysProcessing>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -5468,21 +5886,27 @@
     <SoundSelect>menagerie_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelMenagerie1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>250</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
       </Level>
       <Level>
+        <ID>LevelMenagerie2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Requirements>
           <Requirement>
@@ -5493,12 +5917,15 @@
         </Requirements>
       </Level>
       <Level>
+        <ID>LevelMenagerie3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <Requirements>
           <Requirement>
@@ -5522,6 +5949,19 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>DestroyedLairs</TypeRequirement>
+              <Construction>WolfsDen</Construction>
+              <Destroyed>2</Destroyed>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductBearInMenagerie</ID>
@@ -5530,6 +5970,24 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Menagerie</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>DestroyedLairs</TypeRequirement>
+              <Construction>BearsDen</Construction>
+              <Destroyed>2</Destroyed>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductSerpentInMenagerie</ID>
@@ -5538,6 +5996,24 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>750</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Menagerie</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>DestroyedLairs</TypeRequirement>
+              <Construction>SerpentsNest</Construction>
+              <Destroyed>2</Destroyed>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductDragonInMenagerie</ID>
@@ -5546,88 +6022,54 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>5000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Menagerie</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>DestroyedLairs</TypeRequirement>
+              <Construction>DragonCave</Construction>
+              <Destroyed>1</Destroyed>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelMenagerie1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Research</Action>
-        <Action>Research</Action>
         <Entity>ProductWolfInMenagerie</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>DestroyedLairs</TypeRequirement>
-            <Construction>WolfsDen</Construction>
-            <Destroyed>2</Destroyed>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductBearInMenagerie</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Menagerie</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>DestroyedLairs</TypeRequirement>
-            <Construction>BearsDen</Construction>
-            <Destroyed>2</Destroyed>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelMenagerie2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductSerpentInMenagerie</Entity>
-        <Cost>
-          <Gold>750</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Menagerie</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>DestroyedLairs</TypeRequirement>
-            <Construction>SerpentsNest</Construction>
-            <Destroyed>2</Destroyed>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelMenagerie3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductDragonInMenagerie</Entity>
-        <Cost>
-          <Gold>5000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Menagerie</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>DestroyedLairs</TypeRequirement>
-            <Construction>DragonCave</Construction>
-            <Destroyed>1</Destroyed>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -5645,12 +6087,15 @@
     <SoundSelect>gambling_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
+        <ID>LevelGamblingHall1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>250</Income>
         <Visit>
           <ID>GamblingHallVisit1</ID>
@@ -5665,12 +6110,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelGamblingHall2</ID>
         <Number>2</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>500</Income>
         <Requirements>
           <Requirement>
@@ -5692,12 +6140,15 @@
         </Visit>
       </Level>
       <Level>
+        <ID>LevelGamblingHall3</ID>
         <Number>3</Number>
-        <Cost>
-          <Gold>3000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>750</Income>
         <Requirements>
           <Requirement>
@@ -5727,6 +6178,13 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Income>50</Income>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductDice</ID>
@@ -5735,6 +6193,20 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Income>100</Income>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GamblingHall</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductCider</ID>
@@ -5743,6 +6215,25 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Income>100</Income>
+        <Creating>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GamblingHall</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Goods>ProductApple</Goods>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
       <Product>
         <ID>ProductPlayingCards</ID>
@@ -5751,74 +6242,50 @@
         <Quantity>5</Quantity>
         <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
+        <Creating>
+          <Cost>
+            <Gold>1500</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Income>200</Income>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GamblingHall</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
       </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGamblingHall1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Research</Action>
         <Entity>ProductPlayingLotto</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <Income>50</Income>
-        <DaysProcessing>1</DaysProcessing>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGamblingHall2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductDice</Entity>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Income>100</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GamblingHall</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Research</Action>
         <Entity>ProductCider</Entity>
-        <Cost>
-          <Gold>500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Income>100</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GamblingHall</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>GoodsInConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Goods>ProductApple</Goods>
-          </Requirement>
-        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGamblingHall3</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Research</Action>
         <Entity>ProductPlayingCards</Entity>
-        <Cost>
-          <Gold>1500</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Income>200</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GamblingHall</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -5835,6 +6302,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelCityGraveyard1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5854,12 +6322,15 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelLumberjack1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>2</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>2</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -5878,12 +6349,15 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelStoneQuarry1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -5902,12 +6376,15 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelOreMine1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>4</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -5926,12 +6403,15 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelFrontierPost1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>3</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>3</Builders>
+        </Creating>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -5950,6 +6430,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelHill1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5969,6 +6450,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelMeadow1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5988,6 +6470,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelPlain1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6007,6 +6490,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelMountain1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6037,6 +6521,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelMountainSpring1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6056,6 +6541,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelMountainLake1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6089,6 +6575,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelFoothills1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6108,6 +6595,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelSwamp1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6127,6 +6615,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelMarsh1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6146,6 +6635,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelSwampyForest1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6165,6 +6655,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelForest1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6184,6 +6675,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGlade1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6203,6 +6695,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelRiver1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6222,6 +6715,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelDesert1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6241,6 +6735,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelOasis1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6260,6 +6755,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelWasteland1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6279,6 +6775,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelCanyon1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6298,6 +6795,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelLake1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6317,6 +6815,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelMountainWay1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6336,12 +6835,15 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelNorthFort1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>2500</Gold>
-        </Cost>
-        <DaysProcessing>5</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2500</Gold>
+          </Cost>
+          <DaysProcessing>5</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -6360,12 +6862,15 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelHotel1</ID>
         <Number>1</Number>
-        <Cost>
-          <Gold>2000</Gold>
-        </Cost>
-        <DaysProcessing>3</DaysProcessing>
-        <Builders>1</Builders>
+        <Creating>
+          <Cost>
+            <Gold>2000</Gold>
+          </Cost>
+          <DaysProcessing>3</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -6382,6 +6887,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelHellPortal1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>

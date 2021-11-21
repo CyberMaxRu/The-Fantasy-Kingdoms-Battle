@@ -70,6 +70,18 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <PersistentState>Treasurer</PersistentState>
+    <Creating>
+      <Cost>
+        <Gold>2500</Gold>
+      </Cost>
+      <Requirements>
+        <Requirement>
+          <TypeRequirement>BuildedConstruction</TypeRequirement>
+          <Construction>Dungeon</Construction>
+          <Level>2</Level>
+        </Requirement>
+      </Requirements>
+    </Creating>
     <Inventory>
       <Item>
         <ID>SertificateExecutioner</ID>
@@ -146,6 +158,12 @@
     <DefaultPositionPriority>70</DefaultPositionPriority>
     <PrefixName>Сэр</PrefixName>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>200</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -375,6 +393,12 @@
     <DefaultPositionPriority>100</DefaultPositionPriority>
     <Strength>20</Strength>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>150</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
@@ -587,6 +611,12 @@
     <Armour>ArmourCleric0</Armour>
     <DefaultPositionPriority>200</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>350</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -771,6 +801,12 @@
     <Armour>ArmourMage0</Armour>
     <DefaultPositionPriority>210</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>1</DaysProcessing>
+      <Cost>
+        <Gold>500</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -957,6 +993,12 @@
     <Armour>ArmourElf0</Armour>
     <DefaultPositionPriority>110</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>1</DaysProcessing>
+      <Cost>
+        <Gold>700</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1123,6 +1165,12 @@
     <Armour>ArmourDwarf0</Armour>
     <DefaultPositionPriority>50</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>1</DaysProcessing>
+      <Cost>
+        <Gold>700</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1286,6 +1334,12 @@
     <Armour>ArmourRogue0</Armour>
     <DefaultPositionPriority>20</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>100</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
@@ -1452,6 +1506,12 @@
     <DefaultPositionPriority>220</DefaultPositionPriority>
     <NameFromTypeHero>Cleric</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1585,6 +1645,12 @@
     <DefaultPositionPriority>230</DefaultPositionPriority>
     <NameFromTypeHero>Cleric</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1716,6 +1782,12 @@
     <PrefixName>Брат</PrefixName>
     <NameFromTypeHero>Warrior</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1846,6 +1918,12 @@
     <PrefixName>Ярл</PrefixName>
     <NameFromTypeHero>Warrior</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1974,6 +2052,12 @@
     <DefaultPositionPriority>140</DefaultPositionPriority>
     <NameFromTypeHero>Hunter</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2107,6 +2191,12 @@
     <DefaultPositionPriority>130</DefaultPositionPriority>
     <NameFromTypeHero>Hunter</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2240,6 +2330,12 @@
     <SurnameFromTypeHero>Mage</SurnameFromTypeHero>
     <PrefixName>Мастер</PrefixName>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2327,6 +2423,12 @@
     <DefaultPositionPriority>260</DefaultPositionPriority>
     <NameFromTypeHero>Mage</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2437,6 +2539,12 @@
     <DefaultPositionPriority>80</DefaultPositionPriority>
     <NameFromTypeHero>Rogue</NameFromTypeHero>
     <MovePoints>15</MovePoints>
+    <Creating>
+      <DaysProcessing>0</DaysProcessing>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
