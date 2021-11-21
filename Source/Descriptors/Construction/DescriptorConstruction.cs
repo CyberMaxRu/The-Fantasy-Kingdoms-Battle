@@ -93,14 +93,13 @@ namespace Fantasy_Kingdoms_Battle
                 if (nl != null)
                 {
                     DescriptorConstructionLevel level;
-                    int number;
 
                     foreach (XmlNode l in nl.SelectNodes("Level"))
                     {
-                        number = GetIntegerNotNull(l, "Number");
-                        Debug.Assert(number > 0);
-                        Debug.Assert(Levels[number] == null);
-                        level = new DescriptorConstructionLevel(this, number, l);
+                        level = new DescriptorConstructionLevel(this, l);
+                        Debug.Assert(Levels[level.Number] is null);
+                        Levels[level.Number] = level;
+
                         //if (number > 1)
                         //    level.Requirements.Insert(0, new RequirementConstruction(level, ID, number - 1));
 

@@ -12,11 +12,11 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorConstructionLevel : DescriptorEntityForConstruction
     {
-        public DescriptorConstructionLevel(DescriptorConstruction forConstruction, int number, XmlNode n) : base(forConstruction, n)
+        public DescriptorConstructionLevel(DescriptorConstruction forConstruction, XmlNode n) : base(forConstruction, n)
         {
             //Debug.Assert(Creating != null);// Для логов не надо
 
-            Number = number;
+            Number = GetIntegerNotNull(n, "Number");
             Builders = GetInteger(n, "Builders");
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
             Capacity = GetInteger(n, "Capacity");
@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(Builders >= 0);
             }
 
-            Debug.Assert(Number >= 0);
+            Debug.Assert(Number >= 1);
             Debug.Assert(Number <= 5);
             Debug.Assert(MaxInhabitant >= 0);
             Debug.Assert(MaxInhabitant <= 100);
