@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <TypeLandscape>
-    <ID>Plain</ID>
+    <ID>TypeLandscapePlain</ID>
     <Name>Равнина</Name>
     <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
     <ImageIndex>167</ImageIndex>
@@ -14,7 +14,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Forest</ID>
+    <ID>TypeLandscapeForest</ID>
     <Name>Лес</Name>
     <Description>Лес - полон волков и медведей.</Description>
     <ImageIndex>165</ImageIndex>
@@ -27,7 +27,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Swamp</ID>
+    <ID>TypeLandscapeSwamp</ID>
     <Name>Болото</Name>
     <Description>В болотах Ардании сгинуло немало смелых героев.</Description>
     <ImageIndex>164</ImageIndex>
@@ -39,7 +39,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Mountain</ID>
+    <ID>TypeLandscapeMountain</ID>
     <Name>Горы</Name>
     <Description>В горах можно добыть много металла. Например, золота. А там где золото - там драконы.</Description>
     <ImageIndex>166</ImageIndex>
@@ -52,7 +52,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Wasteland</ID>
+    <ID>TypeLandscapeWasteland</ID>
     <Name>Пустошь</Name>
     <Description>Пустошь - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
     <ImageIndex>168</ImageIndex>
@@ -63,7 +63,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Desert</ID>
+    <ID>TypeLandscapeDesert</ID>
     <Name>Пустыня</Name>
     <Description>В пустыне легко затеряться.</Description>
     <ImageIndex>163</ImageIndex>
@@ -74,7 +74,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Village</ID>
+    <ID>TypeLandscapeVillage</ID>
     <Name>Деревня</Name>
     <Description>В деревне живут подданные короля - крестьяне.</Description>
     <ImageIndex>162</ImageIndex>
@@ -84,7 +84,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Capital</ID>
+    <ID>TypeLandscapeCapital</ID>
     <Name>Столица</Name>
     <Description>Столица - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
     <ImageIndex>161</ImageIndex>
