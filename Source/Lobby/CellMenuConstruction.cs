@@ -48,30 +48,30 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static CellMenuConstruction Create(Construction c, DescriptorCellMenu d)
         {
-            switch (d.Action)
+            if (d.ForEntity != null)
             {
-                case "Research":
+                if (d.CreatedEntity is DescriptorProduct)
                     return new CellMenuConstructionResearch(c, d);
-                case "Build":
-                    return new CellMenuConstructionBuild(c, d);
-                case "HireCreature":
-                    return new CellMenuConstructionHireCreature(c, d);
-                case "Event":
-                    return new CellMenuConstructionEvent(c, d);
-                case "LevelUp":
+                if (d.CreatedEntity is DescriptorConstructionLevel)
                     return new CellMenuConstructionLevelUp(c, d);
-                case "Extension":
+                if (d.CreatedEntity is DescriptorConstructionEvent)
+                    return new CellMenuConstructionEvent(c, d);
+                if (d.CreatedEntity is DescriptorConstructionExtension)
                     return new CellMenuConstructionExtension(c, d);
-                case "Improvement":
+                if (d.CreatedEntity is DescriptorConstructionImprovement)
                     return new CellMenuConstructionImprovement(c, d);
-                case "Tournament":
+                if (d.CreatedEntity is DescriptorConstructionTournament)
                     return new CellMenuConstructionTournament(c, d);
-                case "Extra":
-                    return new CellMenuConstructionExtra(c, d);
-                //case TypeCellMenuForConstruction.Action:
-                //    break;
-                default:
-                    throw new Exception($"Неизвестный тип ячейки: {d.Action}");
+                if (d.CreatedEntity is DescriptorConstruction)
+                    return new CellMenuConstructionBuild(c, d);
+                if (d.CreatedEntity is DescriptorCreature)
+                    return new CellMenuConstructionHireCreature(c, d);
+
+                throw new Exception($"Неизвестный тип сущности: {d.CreatedEntity.ID}.");
+            }
+            else
+            {
+                return new CellMenuConstructionAction(c, d);
             }
         }
 
@@ -686,5 +686,38 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
+    }
+
+    internal sealed class CellMenuConstructionAction : CellMenuConstruction
+    {
+        public CellMenuConstructionAction(Construction c, DescriptorCellMenu d) : base(c, d)
+        {
+        }
+
+        internal override string GetLevel() => "";
+
+        internal override int GetImageIndex()
+        {
+            return 1;
+        }
+
+        internal override void PrepareHint()
+        {
+        }
+
+        internal override ListBaseResources GetCost()
+        {
+            return new ListBaseResources();
+        }
+
+        internal override void Execute()
+        {
+            
+        }
+
+        internal override bool InstantExecute()
+        {
+            return false;
+        }
     }
 }
