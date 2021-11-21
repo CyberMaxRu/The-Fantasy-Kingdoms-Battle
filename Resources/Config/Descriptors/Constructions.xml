@@ -5691,6 +5691,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGraveyardZombie1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5722,6 +5723,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelGraveyardSkeletons1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5761,6 +5763,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelCrypt1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5800,6 +5803,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelAncientCrypt1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5831,6 +5835,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelWolfsDen1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5870,6 +5875,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelSerpentsNest1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5901,6 +5907,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelBearsDen1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5940,6 +5947,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelBearmansDen1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -5971,6 +5979,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelPyramideMinotaurs1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6010,6 +6019,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelOgreCave1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6041,6 +6051,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelHermitHouse1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6072,6 +6083,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelDragonCave1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6103,6 +6115,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelKingsSewer1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6134,6 +6147,7 @@
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelTreasure1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6154,6 +6168,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelThroneLightning1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6185,6 +6200,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelThroneFire1</ID>
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -6218,6 +6234,7 @@
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelHolyPlace1</ID>
         <Number>1</Number>
         <Income>0</Income>
       </Level>
@@ -6281,6 +6298,7 @@
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Levels>
       <Level>
+        <ID>LevelEmptyPlace1</ID>
         <Number>1</Number>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
