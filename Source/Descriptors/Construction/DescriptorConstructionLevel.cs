@@ -69,6 +69,12 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionVisit DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
 
+
+        protected override string GetName(XmlNode n)
+        {
+            return "Уровень " + GetIntegerNotNull(n, "Number");
+        }
+
         internal override string GetTypeEntity()
         {
             return "Повышение уровня";

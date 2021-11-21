@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             ForEntity = forEntity;
 
             Coord = GetPoint(n, "Pos");
-            Action = GetStringNotNull(n, "Action");
+            Action = GetString(n, "Action");
             IDCreatedEntity = GetStringNotNull(n, "Entity");
             DaysCooldown = GetInteger(n, "DaysCooldown");
 
