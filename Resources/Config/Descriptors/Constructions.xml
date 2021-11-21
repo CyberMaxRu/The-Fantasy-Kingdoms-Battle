@@ -6229,47 +6229,38 @@
     <CellsMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Action>Build</Action>
         <Entity>GuildDarkPriest</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Action>Build</Action>
         <Entity>GuildPriest</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Action>Build</Action>
         <Entity>GuildPaladin</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Action>Build</Action>
         <Entity>GuildBlademaster</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Action>Build</Action>
         <Entity>GuildBeastmaster</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Action>Build</Action>
         <Entity>GuildMarksman</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Action>Build</Action>
         <Entity>GuildIceMage</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Action>Build</Action>
         <Entity>GuildDeathKnight</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>4,3</Pos>
-        <Action>Build</Action>
         <Entity>GuildFireMage</Entity>
       </CellMenu>
     </CellsMenu>
