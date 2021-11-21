@@ -66,8 +66,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            CreatedEntity = Descriptors.FindEntity(IDCreatedEntity);
-            IDCreatedEntity = "";
+            if (IDCreatedEntity.Length > 0)
+            {
+                CreatedEntity = Descriptors.FindEntity(IDCreatedEntity);
+                IDCreatedEntity = "";
+            }
         }
     }
 }
