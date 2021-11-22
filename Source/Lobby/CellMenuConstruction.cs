@@ -535,7 +535,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionImprovement(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Entity = (d.ForEntity as DescriptorConstruction).FindConstructionImprovement(d.IDCreatedEntity, true);
+            Entity = d.CreatedEntity as DescriptorConstructionImprovement;
         }
 
         internal DescriptorConstructionImprovement Entity { get; }
