@@ -211,9 +211,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionBuild(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Debug.Assert(d.CreatedEntity.Creating.CostResources.ValueGold() == 0, $"У {d.CreatedEntity.ID} цена должна быть 0 (указана {d.CreatedEntity.Creating.CostResources.ValueGold()}).");
+            DescriptorConstruction TypeConstruction = d.CreatedEntity as DescriptorConstruction;
 
-            TypeConstruction = d.CreatedEntity as DescriptorConstruction;
             if (TypeConstruction.Category == CategoryConstruction.Temple)
                 ConstructionForBuild = c.Player.GetPlayerConstruction(TypeConstruction);
             else if (TypeConstruction.Category == CategoryConstruction.External)
