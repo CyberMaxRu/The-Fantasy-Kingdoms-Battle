@@ -4289,8 +4289,16 @@
     </Products>
     <CellsMenu>
       <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelArena1</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,1</Pos>
         <Entity>ProductTournamentHandFight</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelArena2</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
