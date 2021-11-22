@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
             windowCaption.Caption = "Настройки игрока";
 
-            editName = new VCEdit(ClientControl, 0, 0, "", FormMain.Config.MaxLengthObjectName);
+            editName = new VCEdit(ClientControl, 0, 0, "", FormMain.Config.MaxLengthNameEntity);
             editName.Width = 240;
             editName.Text = Program.formMain.CurrentHumanPlayer.Name;
             editName.CursorToEnd();

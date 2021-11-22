@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
-            Debug.Assert(Name.Length <= Config.MaxLengthObjectName);
+            Debug.Assert(Name.Length <= Config.MaxLengthNameEntity);
         }
     }
 }

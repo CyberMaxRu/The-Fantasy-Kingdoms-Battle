@@ -39,9 +39,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(GridSize % 2 == 0);
             GridSizeHalf = GridSize / 2;
 
-            MaxLengthObjectName = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxLengthObjectName");
-            Debug.Assert(MaxLengthObjectName > 20);
-            Debug.Assert(MaxLengthObjectName <= 63);
+            MaxLengthNameEntity = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxLengthObjectName");
+            Debug.Assert(MaxLengthNameEntity > 20);
+            Debug.Assert(MaxLengthNameEntity <= 63);
 
             ShiftForBorder = new Point(Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderX").InnerText),
                 Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderY").InnerText));
@@ -276,7 +276,7 @@ namespace Fantasy_Kingdoms_Battle
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
-        internal int MaxLengthObjectName { get; set; }// Максимальная длина имени объекта
+        internal int MaxLengthNameEntity { get; set; }// Максимальная длина имени объекта
         internal Point ShiftForBorder { get; private set; }// Смещение иконки внутри рамки сущности
         internal int ImageIndexFirstAvatar { get; private set; }// ImageIndex первого аватара игроков
         internal int QuantityInternalAvatars { get; private set; }// Количество внутренних аватаров игроков
