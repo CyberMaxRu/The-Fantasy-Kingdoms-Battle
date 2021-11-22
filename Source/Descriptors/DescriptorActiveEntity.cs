@@ -8,38 +8,33 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс активной сущности - сооружение, существо
+    // Класс активной сущности, которая имеет своё меню - сооружение, существо, локация, игрок
     internal abstract class DescriptorActiveEntity : DescriptorEntity
     {
         public DescriptorActiveEntity(XmlNode n) : base(n)
         {
             // Загружаем меню
-            XmlNode nr = n.SelectSingleNode("CellsMenu");
-            if (nr != null)
+            XmlNode ncm = n.SelectSingleNode("CellsMenu");
+            if (ncm != null)
             {
-                DescriptorCellMenu research;
-
-                foreach (XmlNode l in nr.SelectNodes("CellMenu"))
+                foreach (XmlNode l in ncm.SelectNodes("CellMenu"))
                 {
-                    research = new DescriptorCellMenu(this, l);
+                    DescriptorCellMenu dcm = new DescriptorCellMenu(this, l);
 
-                    foreach (DescriptorCellMenu cm in CellsMenu)
+                    foreach (DescriptorCellMenu dcm2 in CellsMenu)
                     {
-                        Debug.Assert(!cm.Coord.Equals(research.Coord), $"У {ID} в ячейке ({research.Coord.X + 1}, {research.Coord.Y + 1}) уже есть сущность.");
+                        Debug.Assert(!dcm2.Coord.Equals(dcm.Coord), $"У {ID} ячейка ({dcm.Coord.X + 1}, {dcm.Coord.Y + 1}) уже занята.");
+                        if ((dcm2.IDCreatedEntity.Length > 0) && (dcm.IDCreatedEntity.Length > 0))
+                            Debug.Assert(dcm2.IDCreatedEntity != dcm.IDCreatedEntity, $"У {ID} в меню повторяется объект {dcm.IDCreatedEntity}.");
                     }
 
-                    foreach (DescriptorCellMenu tcm in CellsMenu)
-                    {
-                        //Debug.Assert(research.Construction. NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
-                    }
-
-                    CellsMenu.Add(research);
+                    CellsMenu.Add(dcm);
                 }
             }
         }
 
         internal List<DescriptorEntityForActiveEntity> Entities { get; } = new List<DescriptorEntityForActiveEntity>();// Список всех малых сущностей
-        internal List<DescriptorCellMenu> CellsMenu { get; } = new List<DescriptorCellMenu>();// Меню активной сущности
+        internal List<DescriptorCellMenu> CellsMenu { get; } = new List<DescriptorCellMenu>();// Меню
 
         internal void AddEntity(DescriptorEntityForActiveEntity entity)
         {
