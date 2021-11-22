@@ -4056,6 +4056,16 @@
         <GreatnessPerDay>10</GreatnessPerDay>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelTreasureDepartment1</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelTreasureDepartment2</Entity>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>Municipality</ID>
@@ -4099,6 +4109,16 @@
         <GreatnessPerDay>10</GreatnessPerDay>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelMunicipality1</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelMunicipality2</Entity>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>Arena</ID>
