@@ -850,7 +850,7 @@
     </Levels>
     <Services>
       <Service>
-        <ID>ElvenSharpener</ID>
+        <ID>ServiceElvenSharpener</ID>
         <Name>Эльфийская заточка</Name>
         <Description>Эльфы эффективно заточат оружие по своим секретным технологиям (+25% к минимальному урону, +10% к максимальному урону).</Description>
         <ImageIndex>227</ImageIndex>
@@ -864,14 +864,6 @@
       </Service>
     </Services>
     <Products>
-      <Product>
-        <ID>ProductElvenSharpener</ID>
-        <Entity>ElvenSharpener</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
-      </Product>
       <Product>
         <ID>ProductElixirSpeed</ID>
         <Entity>ElixirSpeed</Entity>
@@ -982,7 +974,7 @@
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Entity>ProductElvenSharpener</Entity>
+        <Entity>ServiceElvenSharpener</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
