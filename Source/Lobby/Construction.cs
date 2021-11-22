@@ -484,7 +484,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
                     Program.formMain.formHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
-                    Program.formMain.formHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "");
+                    Program.formMain.formHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
                     Program.formMain.formHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     Program.formMain.formHint.AddStep6Income(Income());
@@ -1116,8 +1116,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
 
             Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
-            Program.formMain.formHint.AddStep4Level(requiredLevel == 1 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name :
-                    $"Улучшить строение ({requiredLevel} ур.)" + Environment.NewLine + TypeConstruction.TypeConstruction.Name);
+            Program.formMain.formHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
+            Program.formMain.formHint.AddStep4Level(requiredLevel == 1 ? "Уровень 1" : $"Улучшить строение ({requiredLevel} ур.)");
             Program.formMain.formHint.AddStep5Description(requiredLevel == 1 ? TypeConstruction.Description : "");
             Program.formMain.formHint.AddStep6Income(IncomeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep8Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
