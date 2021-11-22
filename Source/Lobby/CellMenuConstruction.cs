@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static CellMenuConstruction Create(Construction c, DescriptorCellMenu d)
         {
-            if (d.ForEntity != null)
+            if (d.CreatedEntity != null)
             {
                 if (d.CreatedEntity is DescriptorProduct)
                     return new CellMenuConstructionResearch(c, d);
