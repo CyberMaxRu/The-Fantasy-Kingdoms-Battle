@@ -483,7 +483,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (TypeConstruction.IsOurConstruction)
                 {
                     Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
-                    Program.formMain.formHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name);
+                    Program.formMain.formHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
+                    Program.formMain.formHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "");
                     Program.formMain.formHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     Program.formMain.formHint.AddStep6Income(Income());
@@ -503,7 +504,7 @@ namespace Fantasy_Kingdoms_Battle
                     else
                     {
                         Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
-                        Program.formMain.formHint.AddStep4Level(TypeConstruction.TypeConstruction.Name);
+                        Program.formMain.formHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
                         Program.formMain.formHint.AddStep5Description(TypeConstruction.Description);
 
                         if (TypeConstruction.Reward != null)
