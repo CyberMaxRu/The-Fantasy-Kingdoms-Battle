@@ -46,5 +46,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length > 0);
             Debug.Assert(Name.Length <= Config.MaxLengthNameEntity);
         }
+
+        internal override void TuneLinks()
+        {
+            base.TuneLinks();
+
+            if (Creating != null)
+                Creating.TuneLinks();
+        }
     }
 }
