@@ -330,7 +330,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetLevel()
         {
-            return Descriptor.Number.ToString();
+            return Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
         }
 
         internal override Color GetColorText()
