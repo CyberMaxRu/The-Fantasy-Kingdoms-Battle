@@ -32,5 +32,11 @@ namespace Fantasy_Kingdoms_Battle
         internal ListBaseResources CostResources { get; }// Стоимость
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
 
+        internal override void TuneLinks()
+        {
+            base.TuneLinks();
+
+            Requirements.TuneLinks();
+        }
     }
 }
