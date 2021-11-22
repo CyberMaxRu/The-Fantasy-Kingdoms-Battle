@@ -14,12 +14,5 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction Construction { get; }
 
         internal abstract string GetTypeEntity();
-
-        internal override void TuneLinks()
-        {
-            base.TuneLinks();
-
-        }
-
     }
 }
