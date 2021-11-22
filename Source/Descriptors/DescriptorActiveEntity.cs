@@ -33,23 +33,20 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<DescriptorEntityForActiveEntity> Entities { get; } = new List<DescriptorEntityForActiveEntity>();// Список всех малых сущностей
+        internal SortedList<string, DescriptorEntityForActiveEntity> Entities { get; } = new SortedList<string, DescriptorEntityForActiveEntity>();// Список всех малых сущностей
         internal List<DescriptorCellMenu> CellsMenu { get; } = new List<DescriptorCellMenu>();// Меню
 
         internal void AddEntity(DescriptorEntityForActiveEntity entity)
         {
-            Debug.Assert(Entities.IndexOf(entity) == -1);
+            Debug.Assert(!Entities.ContainsKey(entity.ID));
 
-            Entities.Add(entity);
+            Entities.Add(entity.ID, entity);
         }
 
         internal DescriptorEntityForActiveEntity FindEntity(string idEntity)
         {
-            foreach (DescriptorEntityForActiveEntity e in Entities)
-            {
-                if (e.ID == idEntity)
-                    return e;
-            }
+            if (Entities.TryGetValue(idEntity, out DescriptorEntityForActiveEntity entity))
+                return entity;
 
             throw new Exception($"В {ID} сущность {idEntity} не найдена.");
         }
