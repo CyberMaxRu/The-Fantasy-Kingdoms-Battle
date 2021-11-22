@@ -30,7 +30,10 @@ namespace Fantasy_Kingdoms_Battle
             if (!Construction.Player.CheckRequiredResources(GetCost()))
                 return false;
 
-            return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.Creating.Requirements);
+            if (Descriptor.CreatedEntity != null)
+                return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.Creating.Requirements);
+
+            return true;
         }
 
         protected void RemoveSelf()
