@@ -6,7 +6,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     // Описатель с ImageIndex и Description
 
-    internal class DescriptorVisual : DescriptorWithID
+    internal abstract class DescriptorVisual : DescriptorWithID
     {
         private int imageIndex;
 
