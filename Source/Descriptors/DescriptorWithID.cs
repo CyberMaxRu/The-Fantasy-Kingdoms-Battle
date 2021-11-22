@@ -37,10 +37,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование сущности
         internal DescriptorCreating Creating { get; }
 
-        protected virtual string GetName(XmlNode n)
-        {
-            return GetStringNotNull(n, "Name");
-        }
+        protected virtual string GetName(XmlNode n) => GetStringNotNull(n, "Name");
 
         private void CheckData()
         {

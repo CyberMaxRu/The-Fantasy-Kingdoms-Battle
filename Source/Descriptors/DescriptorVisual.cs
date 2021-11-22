@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string Description { get; set; }// Описание типа объекта
-        internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки типа объекта
+        internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки сущности
 
         internal virtual int GetImageIndex(XmlNode n)
         {
