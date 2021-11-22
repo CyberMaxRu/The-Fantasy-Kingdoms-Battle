@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс мероприятий в сооружении
-    internal sealed class DescriptorConstructionEvent : DescriptorEntityForConstruction
+    internal sealed class DescriptorConstructionEvent : DescriptorConstructionVisit
     {
         public DescriptorConstructionEvent(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
         {

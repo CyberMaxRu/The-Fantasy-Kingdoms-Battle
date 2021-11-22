@@ -401,7 +401,7 @@ namespace Fantasy_Kingdoms_Battle
             List<ConstructionProduct> listProducts = c.GetProducts(TypeCreature);
 
             // Покупаем все, что можем
-            foreach (ConstructionProduct cp in listProducts)
+            /*foreach (ConstructionProduct cp in listProducts)
             {
                 if (cp.DescriptorAbility != null)
                 {
@@ -411,7 +411,7 @@ namespace Fantasy_Kingdoms_Battle
                         abilityBought = true;
                     }
                 }
-            }
+            }*/
 
             if (abilityBought)
                 SortAbilities();

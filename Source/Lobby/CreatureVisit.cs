@@ -8,12 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class CreatureVisit : EntityForCreature
     {
-        public CreatureVisit(Creature creature, DescriptorConstructionVisit descVisit) : base(creature)
+        public CreatureVisit(Creature creature, DescriptorConstructionVisitSimple descVisit) : base(creature)
         {
             Visit = descVisit;
         }
 
-        internal DescriptorConstructionVisit Visit { get; } 
+        internal DescriptorConstructionVisitSimple Visit { get; } 
 
         internal override int GetImageIndex()
         {

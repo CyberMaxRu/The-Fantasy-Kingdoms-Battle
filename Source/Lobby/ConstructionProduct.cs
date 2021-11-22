@@ -15,11 +15,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorProduct Product { get; }
-        internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
-        internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
-        internal DescriptorConstructionVisit DescriptorConstructionVisit { get; }
         internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Cost { get; }// Стоимость товара
@@ -56,32 +53,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            if (DescriptorConstructionEvent != null)
-            {
-                Program.formMain.formHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, GetImageIndex());
-                Program.formMain.formHint.AddStep3Type("Мероприятие");
-                Program.formMain.formHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
-                Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-                Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);
-            }
-            else
-            {
-                Program.formMain.formHint.AddStep2Header(Descriptor.Name, GetImageIndex());
-                if (DescriptorAbility != null)
-                    Program.formMain.formHint.AddStep3Type(DescriptorAbility.TypeAbility.Name);
-                if (DescriptorConstructionVisit != null)
-                    Program.formMain.formHint.AddStep3Type("Посещение");
-                Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-                Program.formMain.formHint.AddStep10CostGold(GetCostGold());
-                if (DescriptorConstructionVisit != null)
-                    Program.formMain.formHint.AddStep9Interest(Interest, false);
-                if (DescriptorItem != null)
-                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
-                if (DescriptorConstructionEvent != null)
-                    Program.formMain.formHint.AddStep9Interest(Interest, false);
-                if (DescriptorConstructionVisit != null)
-                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds, false);
-            }
+            Program.formMain.formHint.AddStep2Header(Descriptor.Name, GetImageIndex());
+            Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+            Program.formMain.formHint.AddStep10CostGold(GetCostGold());
+            if (DescriptorItem != null)
+                Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
         }
 
         internal bool IsAvailableForCreature(DescriptorCreature dc)

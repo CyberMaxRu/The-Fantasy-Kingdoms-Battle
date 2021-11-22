@@ -9,12 +9,15 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionService : DescriptorEntityForConstruction
+    internal sealed class DescriptorConstructionVisitSimple : DescriptorConstructionVisit
     {
-        public DescriptorConstructionService(DescriptorConstruction construction, XmlNode n) : base(construction, n)
+        public DescriptorConstructionVisitSimple(DescriptorConstructionLevel level, XmlNode n) : base(level.Construction, n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
+
+            ImageIndex = level.Construction.ImageIndex;
+            ConstructionLevel = level;
 
             Interest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
@@ -28,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal DescriptorConstructionLevel ConstructionLevel { get; }
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }
 
@@ -38,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity()
         {
-            return "Услуга";
+            return "Посещение";
         }
 
         internal override void TuneLinks()

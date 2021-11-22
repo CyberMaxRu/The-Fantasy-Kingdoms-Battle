@@ -342,7 +342,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionEvent : CellMenuConstruction
     {
-        private ConstructionProduct cp;
+        private ConstructionEvent cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             ConstructionEvent = d.CreatedEntity as DescriptorConstructionEvent;
@@ -356,8 +356,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
             Debug.Assert(cp is null);
 
-            cp = new ConstructionProduct(Construction, Entity);
-            Construction.AddProduct(cp);
+            cp = new ConstructionEvent(Construction, ConstructionEvent);
+            Construction.AddMassEvent(cp);
 
             Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.MassEventBegin);
             //Cooldown = ConstructionEvent.Cooldown;

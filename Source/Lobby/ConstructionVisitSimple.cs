@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class ConstructionEvent : ConstructionVisit
+    internal class ConstructionVisitSimple : EntityForConstruction
     {
-        public ConstructionEvent(Construction construction, DescriptorConstructionEvent ce) : base(construction, ce)
+        public ConstructionVisitSimple(Construction construction, DescriptorConstructionVisitSimple cv) : base(construction, cv)
         {
-            DescriptorConstructionEvent = ce;
+            DescriptorConstructionVisit = cv;
         }
 
-        internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
+        internal DescriptorConstructionVisitSimple DescriptorConstructionVisit { get; }
         internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Cost { get; }// Стоимость товара
@@ -50,14 +50,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, GetImageIndex());
-            Program.formMain.formHint.AddStep3Type("Мероприятие");
-            Program.formMain.formHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
+            Program.formMain.formHint.AddStep2Header(Descriptor.Name, GetImageIndex());
+            Program.formMain.formHint.AddStep3Type("Посещение");
             Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-            Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);
+            Program.formMain.formHint.AddStep10CostGold(GetCostGold());
+            Program.formMain.formHint.AddStep9Interest(Interest, false);
+            Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds, false);
         }
 
-        internal bool IsAvailableForCreature(DescriptorCreature dc)
+    internal bool IsAvailableForCreature(DescriptorCreature dc)
         {
             return Descriptor.AvailableForAllHeroes || (Descriptor.AvailableForHeroes.IndexOf(dc) != -1);
         }

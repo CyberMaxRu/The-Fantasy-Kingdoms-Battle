@@ -273,7 +273,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
                 tc.TuneLinks();
 
-            foreach (DescriptorConstructionVisit cv in ConstructionsVisits)
+            foreach (DescriptorConstructionVisitSimple cv in ConstructionsVisits)
                 cv.TuneLinks();
 
             foreach (DescriptorConstruction c in Constructions)
@@ -315,7 +315,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Сооружения
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
-        internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
+        internal List<DescriptorConstructionVisitSimple> ConstructionsVisits { get; } = new List<DescriptorConstructionVisitSimple>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
 
         // Существа
@@ -344,9 +344,9 @@ namespace Fantasy_Kingdoms_Battle
         private List<(string, Bitmap)> Textures = new List<(string, Bitmap)>();
 
         //
-        internal DescriptorConstructionVisit FindConstructionVisit(string ID)
+        internal DescriptorConstructionVisitSimple FindConstructionVisit(string ID)
         {
-            foreach (DescriptorConstructionVisit dcv in ConstructionsVisits)
+            foreach (DescriptorConstructionVisitSimple dcv in ConstructionsVisits)
             {
                 if (dcv.ID == ID)
                     return dcv;
@@ -587,7 +587,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Тип ландшафта " + ID + " не найден.");
         }
 
-        internal void AddVisit(DescriptorConstructionVisit visit)
+        internal void AddVisit(DescriptorConstructionVisitSimple visit)
         {
             ConstructionsVisits.Add(visit);
         }

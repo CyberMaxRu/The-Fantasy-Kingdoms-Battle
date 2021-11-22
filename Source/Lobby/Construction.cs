@@ -106,15 +106,16 @@ namespace Fantasy_Kingdoms_Battle
 
         // Small-сущности в сооружении
         internal List<EntityForConstruction> ListEntities { get; } = new List<EntityForConstruction>();// Все сущности в сооружении
+        internal ConstructionVisitSimple CurrentVisit { get; private set; }// Текущее активное посещение сооружения
+        internal ConstructionEvent CurrentMassEvent { get; set; }// Текущее мероприятие
+        internal ConstructionTournament CurrentTournament { get; set; }// Текущий турнир
+        internal List<ConstructionVisit> Visits { get; } = new List<ConstructionVisit>();//
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
         internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
         internal List<ConstructionResource> Resources { get; } = new List<ConstructionResource>();// Ресурсы
+        internal List<ConstructionService> Services { get; } = new List<ConstructionService>();// Услуги, доступные в строении
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
-        internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
-        internal List<ConstructionProduct> Abilities { get; } = new List<ConstructionProduct>();// Умения, доступные в строении
-        internal List<ConstructionProduct> Services { get; } = new List<ConstructionProduct>();// Услуги, доступные в строении
-        internal ConstructionProduct MainVisit { get; private set; }// Основное посещение сооружения
-        internal ConstructionProduct CurrentVisit { get; private set; }// Текущее активное посещение сооружения
+        internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
         internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
@@ -322,11 +323,10 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем, что нет события или турнира
-            foreach (ConstructionProduct cp in Visits)
-            {
-                if (cp.DescriptorConstructionEvent != null)
-                    return false;
-            }
+            if (CurrentMassEvent != null)
+                return false;
+            if (CurrentTournament != null)
+                return false;
 
             // Проверяем требования к зданиям
             return Player.CheckRequirements(TypeConstruction.Levels[Level + 1].Creating.Requirements);
@@ -338,14 +338,11 @@ namespace Fantasy_Kingdoms_Battle
 
             Player.TextRequirements(TypeConstruction.Levels[level].Creating.Requirements, list);
 
-            foreach (ConstructionProduct cp in Visits)
-            {
-                if (cp.DescriptorConstructionEvent != null)
-                {
-                    list.Add(new TextRequirement(false, "В сооружении идет событие"));
-                    break;
-                }
-            }
+            if (CurrentMassEvent != null)
+                list.Add(new TextRequirement(false, "В сооружении идет мероприятие"));
+
+            if (CurrentTournament != null)
+                list.Add(new TextRequirement(false, "В сооружении идет турнир"));
 
             return list;
         }
@@ -555,21 +552,20 @@ namespace Fantasy_Kingdoms_Battle
                         Player.AddGreatness(GreatnessPerDay());
                 }
 
-                ConstructionProduct cp;
-                for (int i = 0; i < Visits.Count;)
+                if (CurrentMassEvent != null)
                 {
-                    cp = Visits[i];
-                    if (cp.Duration > 0)
-                    {
-                        cp.Counter--;
-                        if (cp.Counter == 0)
-                            RemoveProduct(cp.Descriptor);
-                        else
-                            i++;
-                    }
-                    else
-                        i++;
+                    CurrentMassEvent.Counter--;
+                    if (CurrentMassEvent.Counter == 0)
+                        RemoveProduct(CurrentMassEvent.Descriptor);
                 }
+
+                if (CurrentTournament != null)
+                {
+                    CurrentTournament.Counter--;
+                    if (CurrentTournament.Counter == 0)
+                        RemoveProduct(CurrentTournament.Descriptor);
+                }
+
 
                 foreach (CellMenuConstruction cm in Researches)
                 {
@@ -1216,12 +1212,11 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal Ability PurchaseAbility(Creature creature, ConstructionProduct product)
+        internal Ability PurchaseAbility(Creature creature, ConstructionAbility ca)
         {
-            Debug.Assert(Abilities.IndexOf(product) >= 0);
-            Debug.Assert(product.DescriptorAbility != null);
+            Debug.Assert(Abilities.IndexOf(ca) >= 0);
 
-            Ability a = new Ability(creature, product.DescriptorAbility);
+            Ability a = new Ability(creature, ca.DescriptorAbility);
             return a;
         }
 
@@ -1247,8 +1242,8 @@ namespace Fantasy_Kingdoms_Battle
                 ChangeNeed(need.Item1.NameNeed, need.Item2);
             }
 
-            if (MainVisit != null)
-                UpdateInterestMainVisit();
+            //if (MainVisit != null)
+            //    UpdateInterestMainVisit();
         }
 
         internal void AddImprovement(ConstructionImprovement improvement)
@@ -1265,72 +1260,55 @@ namespace Fantasy_Kingdoms_Battle
             Resources.Add(resource);
         }
 
+        internal void AddAbility(ConstructionAbility ca)
+        {
+            AddEntity(ca);
+            Abilities.Add(ca);
+        }
+
+        internal void AddMassEvent(ConstructionEvent ce)
+        {
+            AddEntity(ce);
+
+            Debug.Assert(CurrentMassEvent is null);
+            Debug.Assert(CurrentTournament is null);
+
+            Visits.Add(ce);
+        }
+
+        internal void AddService(ConstructionService cs)
+        {
+            AddEntity(cs);
+            Services.Add(cs);
+        }
+
         internal void AddProduct(ConstructionProduct cp)
         {
             AddEntity(cp);
-
-            if (cp .DescriptorAbility != null)
-            {
-                Abilities.Add(cp);
-            }
 
             if ((cp.DescriptorItem != null) || (cp.DescriptorGroupItem != null))
             {
                 Goods.Add(cp);
             }
-
-            if (cp.Product.DescriptorEntity is DescriptorService)
-            {
-                Services.Add(cp);
-            }
-
-            if ((cp.DescriptorConstructionVisit != null) || (cp.DescriptorConstructionEvent != null))
-            {
-                Debug.Assert(Visits.Count <= 1);
-
-                if (cp.DescriptorConstructionVisit != null)
-                {
-                    Debug.Assert(MainVisit == null);
-                    Debug.Assert(CurrentVisit == null);
-                }
-
-                Visits.Add(cp);
-
-                if (cp.DescriptorConstructionVisit != null)
-                {
-                    MainVisit = cp;
-                    UpdateInterestMainVisit();
-                }
-
-                Debug.Assert(MainVisit != null);
-
-                CurrentVisit = cp;
-                MainVisit.Enabled = MainVisit == CurrentVisit;
-            }
         }
 
-        internal void RemoveProduct(DescriptorSmallEntity e)
+        internal void RemoveProduct(DescriptorSmallEntity de)
         {
-            ConstructionProduct productFromRemove = null;
+            EntityForConstruction productFromRemove = null;
 
-            foreach (ConstructionProduct cp in ListEntities)
+            foreach (EntityForConstruction cp in ListEntities)
             {
-                if (cp.Descriptor.ID == e.ID)
+                if (cp.Descriptor.ID == de.ID)
                 {
                     productFromRemove = cp;
                     break;
                 }
             }
 
-            if (MainVisit == productFromRemove)
-                MainVisit = null;
-
-            if (CurrentVisit == productFromRemove)
-            {
-                CurrentVisit = MainVisit;
-            }
-            if (MainVisit != null)
-                MainVisit.Enabled = MainVisit == CurrentVisit;
+            if (CurrentMassEvent == productFromRemove)
+                CurrentMassEvent = null;
+            if (CurrentTournament == productFromRemove)
+                CurrentTournament = null;
 
             RemoveEntity(productFromRemove);
         }
@@ -1352,12 +1330,31 @@ namespace Fantasy_Kingdoms_Battle
                 if (!Resources.Remove(cr))
                     Debug.Fail($"Не смог удалить ресурс {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
             }
+            else if (entity is ConstructionEvent cev)
+            {
+                Debug.Assert(CurrentMassEvent != null);
+                Debug.Assert(CurrentMassEvent == cev);
+                CurrentMassEvent = null;
+            }
+            else if (entity is ConstructionTournament ct)
+            {
+                Debug.Assert(CurrentTournament != null);
+                Debug.Assert(CurrentTournament == ct);
+                CurrentTournament = null;
+            }
+            else if (entity is ConstructionAbility ca)
+            {
+                if (!Abilities.Remove(ca))
+                    Debug.Fail($"Не смог удалить умение {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+            }
+            else if (entity is ConstructionService cs)
+            {
+                if (!Services.Remove(cs))
+                    Debug.Fail($"Не смог удалить услугу {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+            }
             else if (entity is ConstructionProduct cp)
             {
-                Visits.Remove(cp);
                 Goods.Remove(cp);
-                Abilities.Remove(cp);
-                Services.Remove(cp);
             }
             else
                 throw new Exception($"Неизвестная сущность {entity.Descriptor.ID}.");
@@ -1365,10 +1362,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateInterestMainVisit()
         {
-            MainVisit.Interest = MainVisit.DescriptorConstructionVisit.Interest;
+            //MainVisit.Interest = MainVisit.DescriptorConstructionVisit.Interest;
 
-            foreach (ConstructionExtension cp in Extensions)
-                MainVisit.Interest += cp.Descriptor.ModifyInterest;
+            //foreach (ConstructionExtension cp in Extensions)
+            //    MainVisit.Interest += cp.Descriptor.ModifyInterest;
         }
 
         private void ChangeNeed(NameNeedCreature nameNeed, int value)
