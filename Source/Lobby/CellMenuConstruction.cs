@@ -60,6 +60,8 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionExtension(c, d);
                 if (d.CreatedEntity is DescriptorConstructionImprovement)
                     return new CellMenuConstructionImprovement(c, d);
+                if (d.CreatedEntity is DescriptorConstructionService)
+                    return new CellMenuConstructionService(c, d);
                 if (d.CreatedEntity is DescriptorConstructionTournament)
                     return new CellMenuConstructionTournament(c, d);
                 if (d.CreatedEntity is DescriptorConstruction)
@@ -144,6 +146,55 @@ namespace Fantasy_Kingdoms_Battle
             ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
             Construction.AddProduct(cp);
             Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.Research);
+
+            Program.formMain.SetNeedRedrawFrame();
+        }
+
+        internal override int GetImageIndex()
+        {
+            return Entity.ImageIndex;
+        }
+
+        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
+    }
+
+    internal sealed class CellMenuConstructionService : CellMenuConstruction
+    {
+        public CellMenuConstructionService(Construction c, DescriptorCellMenu d) : base(c, d)
+        {
+            Debug.Assert(d.CreatedEntity.Creating.CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
+
+            Entity = d.CreatedEntity as DescriptorService;
+        }
+
+        internal DescriptorService Entity { get; }
+        internal override void PrepareHint()
+        {
+            //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
+            Program.formMain.formHint.AddStep2Header(Entity.Name, GetImageIndex());
+            Program.formMain.formHint.AddStep3Type(Entity.GetTypeEntity());
+            //Program.formMain.formHint.AddStep4Level(level);
+            Program.formMain.formHint.AddStep5Description(Entity.Description);
+            //Program.formMain.formHint.AddStep6Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
+        }
+
+        internal override ListBaseResources GetCost()
+        {
+            return Descriptor.CreatedEntity.Creating.CostResources;
+        }
+
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
+
+        internal override void Execute()
+        {
+            RemoveSelf();
+
+            ConstructionService cs = new ConstructionService(Construction, Entity);
+            Construction.AddService(cs);
+            Construction.Player.AddNoticeForPlayer(cs, TypeNoticeForPlayer.Research);
 
             Program.formMain.SetNeedRedrawFrame();
         }
