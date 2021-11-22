@@ -2094,7 +2094,7 @@
     <Page>Economic</Page>
     <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>3</MaxLevel>
+    <MaxLevel>4</MaxLevel>
     <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2134,6 +2134,25 @@
         <Creating>
           <Cost>
             <Gold>2000</Gold>
+          </Cost>
+          <Income>50</Income>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
+        <Builders>1</Builders>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Castle</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+      <Level>
+        <ID>LevelSmithy4</ID>
+        <Number>4</Number>
+        <Creating>
+          <Cost>
+            <Gold>3000</Gold>
           </Cost>
           <Income>50</Income>
           <DaysProcessing>1</DaysProcessing>
@@ -2481,6 +2500,10 @@
       <CellMenu>
         <Pos>1,3</Pos>
         <Entity>LevelSmithy3</Entity>
+        <CellMenu>
+          <Pos>1,3</Pos>
+          <Entity>LevelSmithy4</Entity>
+        </CellMenu>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
