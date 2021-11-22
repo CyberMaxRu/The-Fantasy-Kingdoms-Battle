@@ -62,7 +62,10 @@ namespace Fantasy_Kingdoms_Battle
             if (level == 1)
             {
                 Build(false);
-                DaysBuilded = TypeConstruction.Levels[1].Creating.DaysProcessing;
+                if (TypeConstruction.Levels[1].Creating != null)
+                    DaysBuilded = TypeConstruction.Levels[1].Creating.DaysProcessing;
+                else
+                    DaysBuilded = 0;
             }
 
             // Настраиваем исследования 
