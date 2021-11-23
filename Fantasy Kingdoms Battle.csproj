@@ -86,6 +86,7 @@
     <Compile Include="Source\Descriptors\Descriptor.cs" />
     <Compile Include="Source\Descriptors\DescriptorCreating.cs" />
     <Compile Include="Source\Descriptors\Descriptors.cs" />
+    <Compile Include="Source\Descriptors\DescriptorSelling.cs" />
     <Compile Include="Source\Descriptors\DescriptorVisual.cs" />
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Descriptors\Item\DescriptorResource.cs" />
