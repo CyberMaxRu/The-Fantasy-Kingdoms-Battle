@@ -31,11 +31,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }
 
-        internal override int GetImageIndex(XmlNode n)
-        {
-            return 0;
-        }
-
         internal override string GetTypeEntity()
         {
             return "Услуга";
