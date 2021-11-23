@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.Research:
                     nameNotice = "Исследование завершено:";
-                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    nameText = (Entity as EntityForConstruction).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Extension:
