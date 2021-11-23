@@ -46,7 +46,8 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneLinks();
 
             ListNeeds.TuneDeferredLinks();
-            Debug.Assert(ListNeeds.Count > 0);
+
+            //Debug.Assert(ListNeeds.Count > 0);
         }
     }
 }

@@ -345,6 +345,12 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstructionEvent ce in Events)
                 ce.TuneLinks();
 
+            foreach (DescriptorConstructionImprovement ci in Improvements)
+                ci.TuneLinks();
+
+            foreach (DescriptorConstructionService cs in Services)
+                cs.TuneLinks();
+
             foreach (DescriptorCellMenu cm in CellsMenu)
                 cm.TuneLinks();
 
