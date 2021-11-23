@@ -327,14 +327,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            /*if (Levels != null)
+            if (Levels != null)
             {
-                foreach (DescriptorCellMenuForConstructionLevel l in Levels)
+                foreach (DescriptorConstructionLevel l in Levels)
                 {
                     if (l != null)
-                        l.TuneDeferredLinks();
+                        l.TuneLinks();
                 }
-            }*/
+            }
 
             foreach (DescriptorProduct dp in Products)
                 dp.TuneLinks();
