@@ -68,7 +68,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <DaysProcessing>1</DaysProcessing>
           <Cost>
@@ -82,7 +82,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -103,7 +103,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -124,7 +124,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -243,7 +243,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -257,7 +257,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -278,7 +278,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -299,7 +299,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -418,7 +418,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -432,7 +432,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -453,7 +453,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -474,7 +474,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -634,7 +634,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
@@ -648,7 +648,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -662,7 +662,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -683,7 +683,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
@@ -704,7 +704,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -870,7 +870,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -884,7 +884,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -905,7 +905,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -926,7 +926,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -947,7 +947,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
@@ -1123,7 +1123,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -1137,7 +1137,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
@@ -1158,7 +1158,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
@@ -1179,7 +1179,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -1205,7 +1205,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1415,7 +1415,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
@@ -1429,7 +1429,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -1443,7 +1443,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1464,7 +1464,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1485,7 +1485,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -1908,7 +1908,7 @@
         <NameGoods>Посетить ярмарку</NameGoods>
         <Cost>100</Cost>
         <Quantity>5</Quantity>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -1941,7 +1941,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -1955,7 +1955,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1969,7 +1969,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
@@ -1983,7 +1983,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2004,7 +2004,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2025,7 +2025,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2245,7 +2245,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2259,7 +2259,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2280,7 +2280,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2301,7 +2301,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -2327,7 +2327,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2341,7 +2341,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2362,7 +2362,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2383,7 +2383,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -2404,7 +2404,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2418,7 +2418,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2439,7 +2439,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2460,7 +2460,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -2670,7 +2670,7 @@
         <Cost>100</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2707,7 +2707,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2721,7 +2721,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2747,7 +2747,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2877,7 +2877,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2891,7 +2891,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2912,7 +2912,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2933,7 +2933,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2947,7 +2947,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2968,7 +2968,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2982,7 +2982,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3003,7 +3003,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -3024,7 +3024,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -3045,7 +3045,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -3059,7 +3059,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3080,7 +3080,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -3101,7 +3101,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -3122,7 +3122,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -3136,7 +3136,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3157,7 +3157,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -3178,7 +3178,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Cost>
           <Gold>3500</Gold>
         </Cost>
@@ -3332,7 +3332,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>150</Gold>
@@ -3346,7 +3346,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
@@ -3360,7 +3360,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -3374,7 +3374,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3395,7 +3395,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3416,7 +3416,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3437,7 +3437,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3458,7 +3458,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3479,7 +3479,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3965,7 +3965,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -3986,7 +3986,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
         <Cost>
           <Gold>1000</Gold>
@@ -4259,7 +4259,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4273,7 +4273,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4294,7 +4294,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -4390,7 +4390,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4404,7 +4404,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4418,7 +4418,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4439,7 +4439,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4460,7 +4460,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -4797,7 +4797,7 @@
         <Cost>150</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
       </Product>
       <Product>
         <ID>ProductEventElvenMusic</ID>
@@ -4805,7 +4805,7 @@
         <Cost>150</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
       </Product>
     </Products>
     <CellsMenu>
@@ -4919,7 +4919,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4940,7 +4940,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4966,7 +4966,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
@@ -4992,7 +4992,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>5000</Gold>
@@ -5148,7 +5148,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Income>50</Income>
         <Creating>
           <Cost>
@@ -5163,7 +5163,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Income>100</Income>
         <Creating>
           <Cost>
@@ -5185,7 +5185,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Income>100</Income>
         <Creating>
           <Cost>
@@ -5212,7 +5212,7 @@
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
+        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
