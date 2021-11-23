@@ -238,7 +238,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 if (ConstructionForBuild != null)
-                    return ConstructionForBuild.CheckRequirements();
+                    return ConstructionForBuild.CheckLevelRequirements(1);
                 else
                     return Construction.Player.CanBuildTypeConstruction(TypeConstruction);
             }
@@ -315,7 +315,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return (Construction.Level + 1 == Descriptor.Number) && Construction.CheckRequirements();
+            return Construction.CheckLevelRequirements(Descriptor.Number);
         }
 
         internal override ListBaseResources GetCost()

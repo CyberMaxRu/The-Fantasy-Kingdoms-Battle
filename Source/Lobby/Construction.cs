@@ -311,18 +311,18 @@ namespace Fantasy_Kingdoms_Battle
             return CanLevelUp() == true ? TypeConstruction.Levels[Level + 1].Creating.CostResources : null;
         }
 
-        internal bool CheckRequirements()
+        internal bool CheckLevelRequirements(int level)
         {
             // При постройке храма из меню Святой земли, сюда прилетает 2 уровень
-            if (TypeConstruction.MaxLevel < Level + 1)
+            if (TypeConstruction.MaxLevel < level + 1)
                 return false;
 
             // Сначала проверяем наличие золота
-            if (!Player.CheckRequiredResources(TypeConstruction.Levels[Level + 1].Creating.CostResources))
+            if (!Player.CheckRequiredResources(TypeConstruction.Levels[level].Creating.CostResources))
                 return false;
 
             // Проверяем наличие очков строительства
-            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[Level + 1].Builders))
+            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].Builders))
                 return false;
 
             // Проверяем, что нет события или турнира
@@ -332,7 +332,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем требования к зданиям
-            return Player.CheckRequirements(TypeConstruction.Levels[Level + 1].Creating.Requirements);
+            return Player.CheckRequirements(TypeConstruction.Levels[level].Creating.Requirements);
         }
 
         internal List<TextRequirement> GetTextRequirements(int level)
