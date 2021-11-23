@@ -320,7 +320,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Construction.CostBuyOrUpgrade();
+            return Descriptor.Creating.CostResources;
         }
 
         internal override int GetImageIndex()
