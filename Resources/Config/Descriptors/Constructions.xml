@@ -1585,34 +1585,34 @@
           </Cost>
           <DaysProcessing>3</DaysProcessing>
           <Builders>2</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Guild</TypeConstruction>
+              <Quantity>1</Quantity>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Manufacture</TypeConstruction>
+              <Quantity>1</Quantity>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Military</TypeConstruction>
+              <Quantity>1</Quantity>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Recreation</TypeConstruction>
+              <Quantity>1</Quantity>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>1500</Income>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
         <MaxInhabitant>25</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Guild</TypeConstruction>
-            <Quantity>1</Quantity>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Manufacture</TypeConstruction>
-            <Quantity>1</Quantity>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Military</TypeConstruction>
-            <Quantity>1</Quantity>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Recreation</TypeConstruction>
-            <Quantity>1</Quantity>
-          </Requirement>
-        </Requirements>
         <Perks>
           <Perk>PerkSubject2</Perk>
         </Perks>
@@ -1627,34 +1627,34 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Guild</TypeConstruction>
+              <Quantity>2</Quantity>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Manufacture</TypeConstruction>
+              <Quantity>2</Quantity>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Military</TypeConstruction>
+              <Quantity>2</Quantity>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+              <TypeConstruction>Recreation</TypeConstruction>
+              <Quantity>2</Quantity>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>2000</Income>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
         <MaxInhabitant>30</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Guild</TypeConstruction>
-            <Quantity>2</Quantity>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Manufacture</TypeConstruction>
-            <Quantity>2</Quantity>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Military</TypeConstruction>
-            <Quantity>2</Quantity>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-            <TypeConstruction>Recreation</TypeConstruction>
-            <Quantity>2</Quantity>
-          </Requirement>
-        </Requirements>
         <Perks>
           <Perk>PerkSubject3</Perk>
         </Perks>
