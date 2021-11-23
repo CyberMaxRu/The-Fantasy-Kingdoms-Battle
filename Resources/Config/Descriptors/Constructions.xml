@@ -65,24 +65,23 @@
       <Product>
         <ID>ProductCloseCombatCourse</ID>
         <Entity>CloseCombatCourse</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <DaysProcessing>1</DaysProcessing>
           <Cost>
             <Gold>250</Gold>
           </Cost>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>2</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>20</DaysProcessing>
+          <IntervalRefresh>Week</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductWarriorImpAttack</ID>
         <Entity>WarriorImpAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -96,14 +95,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>2</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>10</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductWarriorMaimAttack</ID>
         <Entity>WarriorMaimAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -117,14 +119,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>2</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>10</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductWarriorResistanceBuff</ID>
         <Entity>WarriorResistanceBuff</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -138,6 +143,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>2</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>10</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -240,24 +252,23 @@
       <Product>
         <ID>ProductFittingClothes</ID>
         <Entity>FittingClothes</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>3</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductHunterImpAttack</ID>
         <Entity>HunterImpAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -271,14 +282,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductHunterStingShotAttack</ID>
         <Entity>HunterStingShotAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -292,14 +306,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>2</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductHunterManaburnAttack</ID>
         <Entity>HunterManaburnAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -313,6 +330,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -415,24 +439,23 @@
       <Product>
         <ID>ProductHolyWater</ID>
         <Entity>HolyWater</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductHolyAttack</ID>
         <Entity>HolyAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -446,14 +469,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductClericManaRegenBuff</ID>
         <Entity>ClericManaRegenBuff</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -467,14 +493,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductClericKnockbackAttack</ID>
         <Entity>ClericKnockbackAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -488,6 +517,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -631,38 +667,40 @@
       <Product>
         <ID>ProductEnchantWeaponAttack</ID>
         <Entity>EnchantWeaponAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductMageFireballAttack</ID>
         <Entity>MageFireballAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductMageFreezeAttack</ID>
         <Entity>MageFreezeAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -675,15 +713,18 @@
               <Level>2</Level>
             </Requirement>
           </Requirements>
+          <Selling>
+            <Gold>50</Gold>
+            <Quantity>5</Quantity>
+            <Duration>0</Duration>
+            <DaysProcessing>5</DaysProcessing>
+            <IntervalRefresh>Day</IntervalRefresh>
+          </Selling>
         </Creating>
       </Product>
       <Product>
         <ID>ProductMageGuardianWind</ID>
         <Entity>MageGuardianWind</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
@@ -696,15 +737,18 @@
               <Level>2</Level>
             </Requirement>
           </Requirements>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
         </Creating>
       </Product>
       <Product>
         <ID>ProductMageFirestormAttack</ID>
         <Entity>MageFirestormAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -718,6 +762,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -867,24 +918,23 @@
       <Product>
         <ID>ProductElixirSpeed</ID>
         <Entity>ElixirSpeed</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElfImpAttack</ID>
         <Entity>ElfImpAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -898,14 +948,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElfWine</ID>
         <Entity>ElfWine</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -919,14 +972,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElfBuff</ID>
         <Entity>ElfBuff</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
@@ -940,14 +996,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElfMagicArrow</ID>
         <Entity>ElfMagicArrow</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
@@ -961,6 +1020,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -1120,24 +1186,23 @@
       <Product>
         <ID>ProductSimpleRunes</ID>
         <Entity>SimpleRunes</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductDwarfImpAttack</ID>
         <Entity>DwarfImpAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
@@ -1151,14 +1216,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductDwarfBerserkBuff</ID>
         <Entity>DwarfBerserkBuff</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
@@ -1172,14 +1240,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductDwarfBeer</ID>
         <Entity>DwarfBeer</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -1198,14 +1269,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductDwarfAntiBuildingAttack</ID>
         <Entity>DwarfAntiBuildingAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1219,6 +1293,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -1412,38 +1493,40 @@
       <Product>
         <ID>ProductEnchantWeaponPoison</ID>
         <Entity>EnchantWeaponPoison</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductRoguePoisonAttack</ID>
         <Entity>RoguePoisonAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductRogueImpAttack</ID>
         <Entity>RogueImpAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1457,14 +1540,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductRogueKickAttack</ID>
         <Entity>RogueKickAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1478,14 +1564,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductStunAttack</ID>
         <Entity>StunAttack</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -1499,6 +1588,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -1906,9 +2002,6 @@
         <Cooldown>10</Cooldown>
         <Interest>30</Interest>
         <NameGoods>Посетить ярмарку</NameGoods>
-        <Cost>100</Cost>
-        <Quantity>5</Quantity>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -1922,6 +2015,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>10</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
         <Heroes>
           <Hero>Warrior</Hero>
           <Hero>Hunter</Hero>
@@ -1938,52 +2038,57 @@
       <Product>
         <ID>ProductApple</ID>
         <Entity>Apple</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductWheat</ID>
         <Entity>Wheat</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductMeat</ID>
         <Entity>Meat</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGingerRoot</ID>
         <Entity>GingerRoot</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -1997,14 +2102,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductAmanita</ID>
         <Entity>Amanita</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2018,14 +2126,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductCornedBeef</ID>
         <Entity>CornedBeef</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2039,6 +2150,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -2242,24 +2360,23 @@
       <Product>
         <ID>ProductGroupArmourMetal1</ID>
         <Entity>GroupArmourMetal1</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>2</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourMetal2</ID>
         <Entity>GroupArmourMetal2</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2273,14 +2390,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourMetal3</ID>
         <Entity>GroupArmourMetal3</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2294,14 +2414,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourMetal4</ID>
         <Entity>GroupArmourMetal4</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -2320,28 +2443,34 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee1</ID>
         <Entity>GroupWeaponMelee1</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee2</ID>
         <Entity>GroupWeaponMelee2</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2355,14 +2484,17 @@
             </Requirement>
           </Requirements> 
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee3</ID>
         <Entity>GroupWeaponMelee3</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2376,14 +2508,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMelee4</ID>
         <Entity>GroupWeaponMelee4</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -2397,28 +2532,34 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather1</ID>
         <Entity>GroupArmourLeather1</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather2</ID>
         <Entity>GroupArmourLeather2</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2432,14 +2573,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather3</ID>
         <Entity>GroupArmourLeather3</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2453,14 +2597,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourLeather4</ID>
         <Entity>GroupArmourLeather4</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -2474,6 +2621,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -2667,10 +2821,6 @@
         <Cooldown>7</Cooldown>
         <Interest>40</Interest>
         <NameGoods>Участвовать в пире</NameGoods>
-        <Cost>100</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2689,6 +2839,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>150</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
         <Heroes>
           <Hero>Warrior</Hero>
           <Hero>Hunter</Hero>
@@ -2704,24 +2861,23 @@
       <Product>
         <ID>ProductTavernSoup</ID>
         <Entity>TavernSoup</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductTavernMeat</ID>
         <Entity>TavernMeat</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2740,14 +2896,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductTavernBeer</ID>
         <Entity>TavernBeer</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2766,6 +2925,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -2874,24 +3040,23 @@
       <Product>
         <ID>ProductAmuletOfRegeneration</ID>
         <Entity>AmuletOfRegeneration</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductRingOfProtection</ID>
         <Entity>RingOfProtection</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2905,14 +3070,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductImpAmuletOfProtection</ID>
         <Entity>ImpAmuletOfProtection</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2926,28 +3094,34 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductQuiver</ID>
         <Entity>Quiver</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductSmallBag</ID>
         <Entity>SmallBag</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2961,28 +3135,34 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange1</ID>
         <Entity>GroupWeaponRange1</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange2</ID>
         <Entity>GroupWeaponRange2</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2996,14 +3176,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange3</ID>
         <Entity>GroupWeaponRange3</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -3017,14 +3200,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponRange4</ID>
         <Entity>GroupWeaponRange4</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -3038,28 +3224,34 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage1</ID>
         <Entity>GroupArmourMage1</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage2</ID>
         <Entity>GroupArmourMage2</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3073,14 +3265,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage3</ID>
         <Entity>GroupArmourMage3</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -3094,14 +3289,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupArmourMage4</ID>
         <Entity>GroupArmourMage4</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3500</Gold>
@@ -3115,28 +3313,34 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage1</ID>
         <Entity>GroupWeaponMage1</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>250</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage2</ID>
         <Entity>GroupWeaponMage2</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3150,14 +3354,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage3</ID>
         <Entity>GroupWeaponMage3</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -3171,25 +3378,37 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductGroupWeaponMage4</ID>
         <Entity>GroupWeaponMage4</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
-        <Cost>
-          <Gold>3500</Gold>
-        </Cost>
-        <DaysProcessing>4</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>4</Level>
-          </Requirement>
-        </Requirements>
+        <Creating>
+          <Cost>
+            <Gold>3500</Gold>
+          </Cost>
+          <DaysProcessing>4</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>4</Level>
+            </Requirement>
+          </Requirements>
+        </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -3329,52 +3548,57 @@
       <Product>
         <ID>ProductPotionOfHealth</ID>
         <Entity>PotionOfHealth</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>150</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductPotionOfMana</ID>
         <Entity>PotionOfMana</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>300</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductPotionOfCheerfulness</ID>
         <Entity>PotionOfCheerfulness</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>200</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirMeleeProt</ID>
         <Entity>ElixirMeleeProt</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3388,14 +3612,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirRangeProt</ID>
         <Entity>ElixirRangeProt</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3409,14 +3636,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirMagicProt</ID>
         <Entity>ElixirMagicProt</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3430,14 +3660,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirStrength</ID>
         <Entity>ElixirStrength</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3451,14 +3684,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirAccuracy</ID>
         <Entity>ElixirAccuracy</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3472,14 +3708,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirWisdom</ID>
         <Entity>ElixirWisdom</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3493,6 +3732,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -3962,10 +4208,6 @@
       <Product>
         <ID>ProductLuckyCoins</ID>
         <Entity>LuckyCoins</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -3979,27 +4221,37 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductHerald</ID>
         <Entity>Herald</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
-        <Cost>
-          <Gold>1000</Gold>
-        </Cost>
-        <DaysProcessing>1</DaysProcessing>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>TownSquare</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>          
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>TownSquare</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>          
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -4256,24 +4508,23 @@
       <Product>
         <ID>ProductTournamentHandFight</ID>
         <Entity>TournamentHandFight</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductTournamentArcher</ID>
         <Entity>TournamentArcher</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4287,14 +4538,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductTournamentMage</ID>
         <Entity>TournamentMage</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -4307,7 +4561,14 @@
               <Level>3</Level>
             </Requirement>
           </Requirements>
-        </Creating>          
+        </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -4387,38 +4648,40 @@
       <Product>
         <ID>ProductHospitalHerbs</ID>
         <Entity>HospitalHerbs</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductHospitalHealthPotion</ID>
         <Entity>HospitalHealthPotion</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirAntipoison</ID>
         <Entity>ElixirAntipoison</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4432,14 +4695,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductElixirRegeneration</ID>
         <Entity>ElixirRegeneration</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4453,14 +4719,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductHospitalPowerTherapy</ID>
         <Entity>HospitalPowerTherapy</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -4474,6 +4743,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -4790,24 +5066,6 @@
         </Needs>
       </Event>
     </Events>
-    <Products>
-      <Product>
-        <ID>ProductEventFireworks</ID>
-        <Entity>EventFireworks</Entity>
-        <Cost>150</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
-      </Product>
-      <Product>
-        <ID>ProductEventElvenMusic</ID>
-        <Entity>EventElvenMusic</Entity>
-        <Cost>150</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
-      </Product>
-    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>1,1</Pos>
@@ -4916,10 +5174,6 @@
       <Product>
         <ID>ProductWolfInMenagerie</ID>
         <Entity>WolfInMenagerie</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4933,14 +5187,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductBearInMenagerie</ID>
         <Entity>BearInMenagerie</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4959,14 +5216,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductSerpentInMenagerie</ID>
         <Entity>SerpentInMenagerie</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>750</Gold>
@@ -4985,14 +5245,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductDragonInMenagerie</ID>
         <Entity>DragonInMenagerie</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>5000</Gold>
@@ -5011,6 +5274,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>
@@ -5145,10 +5415,6 @@
       <Product>
         <ID>ProductPlayingLotto</ID>
         <Entity>PlayingLotto</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Income>50</Income>
         <Creating>
           <Cost>
@@ -5156,14 +5422,17 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductDice</ID>
         <Entity>Dice</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Income>100</Income>
         <Creating>
           <Cost>
@@ -5178,14 +5447,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductCider</ID>
         <Entity>Cider</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Income>100</Income>
         <Creating>
           <Cost>
@@ -5205,14 +5477,17 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
       <Product>
         <ID>ProductPlayingCards</ID>
         <Entity>PlayingCards</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <IntervalRefresh>1</IntervalRefresh>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -5227,6 +5502,13 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <Selling>
+          <Gold>50</Gold>
+          <Quantity>5</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>5</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
       </Product>
     </Products>
     <CellsMenu>

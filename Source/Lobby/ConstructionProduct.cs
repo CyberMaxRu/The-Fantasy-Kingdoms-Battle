@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int GetCostGold()
         {
-            return Product.Cost;
+            return Product.Selling.Gold;
         }
 
         internal override void PrepareHint()

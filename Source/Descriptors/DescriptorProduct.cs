@@ -18,10 +18,6 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorProduct(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
         {
             nameEntity = GetStringNotNull(n, "Entity");
-            Cost = GetIntegerNotNull(n, "Cost", ID);
-            Quantity = GetIntegerNotNull(n, "Quantity", ID);
-            Duration = GetIntegerNotNull(n, "Duration", ID);
-            InternalRefresh = GetIntegerNotNull(n, "InternalRefresh", ID);
 
             foreach (DescriptorProduct pd in Descriptors.ConstructionProducts)
             {
@@ -33,10 +29,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorEntityForCreature DescriptorEntity { get; private set; }
         internal DescriptorEntityForConstruction EntityForConstruction { get; private set; }
-        internal int Cost { get; }
-        internal int Quantity { get; }
-        internal int Duration { get; }
-        internal int InternalRefresh { get; }
 
         protected override string GetName(XmlNode n)
         {

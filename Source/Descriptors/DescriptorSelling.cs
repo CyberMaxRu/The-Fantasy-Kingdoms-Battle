@@ -26,10 +26,10 @@ namespace Fantasy_Kingdoms_Battle
             IntervalRefresh = (IntervalRefresh)Enum.Parse(typeof(IntervalRefresh), GetStringNotNull(n, "IntervalRefresh"));
 
             Debug.Assert(Gold >= 0, $"У {entity} отрицательное число стоимости ({Gold}).");
-            Debug.Assert(Gold <= 100_000, $"У {entity} слишком больше число стоимости ({Gold}).");
+            Debug.Assert(Gold <= 100_000, $"У {entity} слишком большое число стоимости ({Gold}).");
             Debug.Assert(Quantity > 0, $"У {entity} ошибк в количестве ({Quantity}).");
             Debug.Assert(Quantity <= 1_000, $"У {entity} ошибк в количестве ({Quantity}).");
-            Debug.Assert(Duration > 0, $"У {entity} ошибк в длительности ({Duration}).");
+            Debug.Assert(Duration >= 0, $"У {entity} ошибк в длительности ({Duration}).");
             Debug.Assert(Duration <= 1_000, $"У {entity} ошибк в длительности ({Duration}).");
             Debug.Assert(DaysProcessing >= 0, $"У {entity} ошибк в количестве дней ({DaysProcessing}).");
             Debug.Assert(DaysProcessing <= 100, $"У {entity} ошибк в количестве дней ({DaysProcessing}).");
