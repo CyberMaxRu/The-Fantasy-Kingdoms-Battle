@@ -1309,6 +1309,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            Debug.Assert(productFromRemove != null);
+
             if (CurrentMassEvent == productFromRemove)
                 CurrentMassEvent = null;
             if (CurrentTournament == productFromRemove)
