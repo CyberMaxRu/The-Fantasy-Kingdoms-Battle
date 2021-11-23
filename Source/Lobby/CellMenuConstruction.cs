@@ -325,7 +325,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Descriptor.Number == 1 ? Config.Gui48_Build : Config.Gui48_LevelUp;
+            return Descriptor.ImageIndex;
         }
 
         internal override string GetLevel()
