@@ -30,7 +30,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 DescriptorVisit = new DescriptorConstructionVisitSimple(this, nv);
             }
-
+            else 
+            {
+                DescriptorVisit = new DescriptorConstructionVisitSimple(this);
+            }
             Extensions = new ListSmallEntity(forConstruction, n.SelectSingleNode("Entities"));
 
             // Загружаем перки, которые дает сооружение

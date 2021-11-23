@@ -11,6 +11,11 @@ namespace Fantasy_Kingdoms_Battle
             Construction = construction;
         }
 
+        public DescriptorEntityForConstruction(DescriptorConstruction construction, string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
+        {
+            Construction = construction;
+        }
+
         internal DescriptorConstruction Construction { get; }
 
         internal abstract string GetTypeEntity();

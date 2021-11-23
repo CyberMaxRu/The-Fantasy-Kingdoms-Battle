@@ -14,5 +14,9 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorEntityForActiveEntity(XmlNode n) : base(n)
         {
         }
+
+        public DescriptorEntityForActiveEntity(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
+        {
+        }
     }
 }

@@ -31,6 +31,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        public DescriptorConstructionVisitSimple(DescriptorConstructionLevel level) : 
+            base(level.Construction, $"Visit{level.Construction.ID}{level.Number}", "Посещение", "Посещение", level.Construction.ImageIndex)
+        {
+            ConstructionLevel = level;
+            ListNeeds = new ListNeeds();
+        }
+
         internal DescriptorConstructionLevel ConstructionLevel { get; }
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }

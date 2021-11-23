@@ -200,11 +200,11 @@ namespace Fantasy_Kingdoms_Battle
             AddPerksToPlayer();
 
             // Добавляем товар посещения
-            /*if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+            if (TypeConstruction.Levels[Level].DescriptorVisit != null)
             {
-                ConstructionProduct cpVisit = new ConstructionProduct(this, TypeConstruction.Levels[Level].DescriptorVisit);
-                AddProduct(cpVisit);
-            }*/
+                ConstructionVisitSimple cpVisit = new ConstructionVisitSimple(this, TypeConstruction.Levels[Level].DescriptorVisit);
+                AddVisit(cpVisit);
+            }
 
             // Инициализируем удовлетворяемые потребности
             SatisfactionNeeds = new int[FormMain.Descriptors.NeedsCreature.Count];
@@ -1234,6 +1234,12 @@ namespace Fantasy_Kingdoms_Battle
             ListEntities.Add(entity);
         }
 
+        internal void AddVisit(ConstructionVisit cv)
+        {
+            AddEntity(cv);
+            Visits.Add(cv);
+        }
+
         internal void AddExtension(ConstructionExtension extension)
         {
             AddEntity(extension);
@@ -1246,8 +1252,8 @@ namespace Fantasy_Kingdoms_Battle
                 ChangeNeed(need.Item1.NameNeed, need.Item2);
             }
 
-            //if (MainVisit != null)
-            //    UpdateInterestMainVisit();
+            if (CurrentVisit != null)
+                UpdateInterestMainVisit();
         }
 
         internal void AddImprovement(ConstructionImprovement improvement)
@@ -1311,6 +1317,8 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(productFromRemove != null);
 
+            if (CurrentVisit == productFromRemove)
+                CurrentVisit = null;
             if (CurrentMassEvent == productFromRemove)
                 CurrentMassEvent = null;
             if (CurrentTournament == productFromRemove)
@@ -1368,10 +1376,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateInterestMainVisit()
         {
-            //MainVisit.Interest = MainVisit.DescriptorConstructionVisit.Interest;
+            CurrentVisit.Interest = CurrentVisit.DescriptorConstructionVisit.Interest;
 
-            //foreach (ConstructionExtension cp in Extensions)
-            //    MainVisit.Interest += cp.Descriptor.ModifyInterest;
+            foreach (ConstructionExtension cp in Extensions)
+                CurrentVisit.Interest += cp.Descriptor.ModifyInterest;
         }
 
         private void ChangeNeed(NameNeedCreature nameNeed, int value)

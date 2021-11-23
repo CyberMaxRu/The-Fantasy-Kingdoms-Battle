@@ -38,6 +38,10 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        public ListNeeds() : base()
+        {
+        }
+
         internal void TuneDeferredLinks()
         {
             if (listLinks != null)

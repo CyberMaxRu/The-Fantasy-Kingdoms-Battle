@@ -11,7 +11,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorConstructionVisit(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {
+        }
 
+        public DescriptorConstructionVisit(DescriptorConstruction construction, string id, string name, string description, int imageIndex) : base(construction, id, name, description, imageIndex)
+        {            
         }
     }
 }
