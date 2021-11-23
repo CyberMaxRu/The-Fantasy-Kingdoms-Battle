@@ -651,14 +651,17 @@ namespace Fantasy_Kingdoms_Battle
                 VCText lr;
                 foreach (TextRequirement tr in requirement)
                 {
-                    lr = new VCText(this, FormMain.Config.GridSize * 4, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
-                    lr.StringFormat.Alignment = StringAlignment.Near;
-                    lr.Text = tr.Text;
-                    lr.Height = lr.MinHeigth();
-                    //lr.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, 0);
+                    if (!(Program.formMain.Settings.HideFulfilledRequirements && tr.Performed))
+                    {
+                        lr = new VCText(this, FormMain.Config.GridSize * 4, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
+                        lr.StringFormat.Alignment = StringAlignment.Near;
+                        lr.Text = tr.Text;
+                        lr.Height = lr.MinHeigth();
+                        //lr.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, 0);
 
-                    listRequirements.Add(lr);
-                    nextTop = lr.NextTop();
+                        listRequirements.Add(lr);
+                        nextTop = lr.NextTop();
+                    }
                 }
             }
         }

@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblCaptionPanelInterface;
         private VCCheckBox chkbShowShortNames;
         private VCCheckBox chkbShowTypeCellMenu;
+        private VCCheckBox chkbHideFulfilledRequirements;
 
         private Settings settings;
 
@@ -93,6 +94,8 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowShortNames.Width = 400;
             chkbShowTypeCellMenu = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowShortNames.NextTop(), "Показывать тип объекта в меню");
             chkbShowTypeCellMenu.Width = 400;
+            chkbHideFulfilledRequirements = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowTypeCellMenu.NextTop(), "Скрывать выполненные требования");
+            chkbHideFulfilledRequirements.Width = 400;
             vcPanelInterface.ApplyMaxSize();
             vcPanelInterface.Height += 8;
             lblCaptionPanelInterface.Width = vcPanelInterface.Width - (FormMain.Config.GridSize * 2);
@@ -141,6 +144,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbPlayMusic.Checked = settings.PlayMusic;
             chkbShowShortNames.Checked = settings.ShowShortNames;
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
+            chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
 
             playSound = settings.PlaySound;
             playMusic = settings.PlayMusic;
@@ -176,6 +180,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.PlayMusic = chkbPlayMusic.Checked;
             settings.ShowShortNames = chkbShowShortNames.Checked;
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
+            settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
             settings.SaveSettings();
 
             CloseForm(DialogAction.OK);

@@ -39,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
                     ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
+                    HideFulfilledRequirements = XmlUtils.GetBoolean(doc, "Settings/Interface/HideFulfilledRequirements", HideFulfilledRequirements);
 
                     DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
                 }
@@ -72,6 +73,7 @@ namespace Fantasy_Kingdoms_Battle
         }
         internal bool ShowShortNames { get; set; }
         internal bool ShowTypeCellMenu { get; set; }
+        internal bool HideFulfilledRequirements { get; set; }
 
         internal event EventHandler PlayMusicChanged;
 
@@ -86,6 +88,7 @@ namespace Fantasy_Kingdoms_Battle
             PlayMusic = true;
             ShowShortNames = false;
             ShowTypeCellMenu = true;
+            HideFulfilledRequirements = true;
         }
 
         internal void SaveSettings()
@@ -116,6 +119,7 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteStartElement("Interface");
             textWriter.WriteElementString("ShowShortNames", ShowShortNames.ToString());
             textWriter.WriteElementString("ShowTypeCellMenu", ShowTypeCellMenu.ToString());
+            textWriter.WriteElementString("HideFulfilledRequirements", HideFulfilledRequirements.ToString());
 
             textWriter.WriteEndElement();
             textWriter.Close();
