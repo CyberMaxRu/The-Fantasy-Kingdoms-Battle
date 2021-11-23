@@ -8,12 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class ConstructionService : EntityForConstruction
     {
-        public ConstructionService(Construction construction, DescriptorService ds) : base(construction, ds)
+        public ConstructionService(Construction construction, DescriptorConstructionService ds) : base(construction, ds)
         {
             DescriptorService = ds;
         }
 
-        internal DescriptorService DescriptorService { get; }
+        internal DescriptorConstructionService DescriptorService { get; }
         internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Cost { get; }// Стоимость товара

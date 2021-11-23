@@ -167,10 +167,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(d.CreatedEntity.Creating.CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
 
-            Entity = d.CreatedEntity as DescriptorService;
+            Entity = d.CreatedEntity as DescriptorConstructionService;
+            Debug.Assert(Entity != null);
         }
 
-        internal DescriptorService Entity { get; }
+        internal DescriptorConstructionService Entity { get; }
         internal override void PrepareHint()
         {
             //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
