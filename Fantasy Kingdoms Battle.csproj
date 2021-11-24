@@ -101,6 +101,7 @@
     <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\CellOfMenu.cs" />
+    <Compile Include="Source\Lobby\ComponentSelling.cs" />
     <Compile Include="Source\Lobby\ConstructionAbility.cs" />
     <Compile Include="Source\Lobby\ConstructionEvent.cs" />
     <Compile Include="Source\Lobby\ConstructionExtension.cs" />
