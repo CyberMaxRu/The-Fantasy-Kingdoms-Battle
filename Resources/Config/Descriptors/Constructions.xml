@@ -223,16 +223,16 @@
           <Cost>
             <Gold>450</Gold>
           </Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Menagerie</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Menagerie</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildHunter3</ID>
@@ -410,16 +410,16 @@
           </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Hospital</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Hospital</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildCleric3</ID>
@@ -584,16 +584,16 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>0</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildMage2</ID>
@@ -603,22 +603,22 @@
             <Gold>1000</Gold>
           </Cost>
           <DaysProcessing>2</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Park</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Park</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildMage3</ID>
@@ -629,16 +629,16 @@
           </Cost>
           <DaysProcessing>3</DaysProcessing>          
           <Builders>0</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <Extensions>
@@ -837,16 +837,16 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildElf2</ID>
@@ -857,21 +857,21 @@
           </Cost>
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Garden</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Garden</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildElf3</ID>
@@ -882,21 +882,21 @@
           </Cost>
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Garden</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Garden</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <Services>
@@ -1095,17 +1095,17 @@
           </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>10</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildDwarf2</ID>
@@ -1116,22 +1116,22 @@
           </Cost>
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Tavern</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>20</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Tavern</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildDwarf3</ID>
@@ -1142,22 +1142,22 @@
           </Cost>
           <DaysProcessing>4</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Tavern</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>30</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Tavern</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <Extensions>
@@ -1381,16 +1381,16 @@
           </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Dungeon</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Dungeon</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuardBarrack3</ID>
@@ -1444,16 +1444,16 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildRogue2</ID>
@@ -1464,16 +1464,16 @@
           </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GamblingHall</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GamblingHall</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelGuildRogue3</ID>
@@ -1833,15 +1833,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>0</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>50</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
         <Entities>
           <Entity>ResourceWheat</Entity>
           <Entity>FieldOfWheat</Entity>
@@ -1881,15 +1881,15 @@
           </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>250</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Construction>
@@ -1915,15 +1915,15 @@
           </Cost>
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>100</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Construction>
@@ -1961,15 +1961,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>300</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelMarket3</ID>
@@ -1980,15 +1980,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>525</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <Events>
@@ -2236,15 +2236,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>50</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelSmithy3</ID>
@@ -2255,15 +2255,15 @@
           </Cost>
           <Income>50</Income>
           <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Builders>1</Builders>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelSmithy4</ID>
@@ -2274,15 +2274,15 @@
           </Cost>
           <Income>50</Income>
           <DaysProcessing>1</DaysProcessing>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Builders>1</Builders>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <Improvements>
@@ -2758,15 +2758,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
         <Visit>
           <ID>TavernVisit2</ID>
           <Name>Посиделка в таверне (2)</Name>
@@ -2788,15 +2788,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
         <Visit>
           <ID>TavernVisit3</ID>
           <Name>Посиделка в таверне (3)</Name>
@@ -2987,15 +2987,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>0</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>150</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelWorkshop2</ID>
@@ -3006,15 +3006,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Workshop</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>250</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Workshop</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelWorkshop3</ID>
@@ -3025,15 +3025,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Workshop</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>350</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Workshop</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <Products>
@@ -4081,17 +4081,17 @@
           </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
         <Visit>
           <ID>TownSquareVisit2</ID>
           <Name>Прогулка по городской площади (2)</Name>
@@ -4113,17 +4113,17 @@
           </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
         <Visit>
           <ID>TownSquareVisit3</ID>
           <Name>Прогулка по городской площади (3)</Name>
@@ -5135,15 +5135,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <ID>LevelMenagerie3</ID>
@@ -5154,20 +5154,20 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <Products>
@@ -5359,15 +5359,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>500</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
         <Visit>
           <ID>GamblingHallVisit2</ID>
           <Name>Поиграть в азартные игры (2)</Name>
@@ -5389,15 +5389,15 @@
           </Cost>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Tavern</Construction>
+              <Goods>ProductTavernBeer</Goods>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>750</Income>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>GoodsInConstruction</TypeRequirement>
-            <Construction>Tavern</Construction>
-            <Goods>ProductTavernBeer</Goods>
-          </Requirement>
-        </Requirements>
         <Visit>
           <ID>GamblingHallVisit3</ID>
           <Name>Поиграть в азартные игры (3)</Name>
@@ -5566,23 +5566,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildCleric</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildCleric</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5616,23 +5616,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildCleric</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildCleric</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5666,23 +5666,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildWarrior</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildWarrior</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5716,23 +5716,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildWarrior</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildWarrior</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5766,23 +5766,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildHunter</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildHunter</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5816,23 +5816,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildHunter</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildHunter</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5866,23 +5866,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5916,23 +5916,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildRogue</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildRogue</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5966,23 +5966,23 @@
           </Cost>
           <DaysProcessing>5</DaysProcessing>
           <Builders>3</Builders>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Castle</Construction>
+              <Level>3</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>GuildMage</Construction>
+              <Level>1</Level>
+            </Requirement>
+          </Requirements>
         </Creating>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Castle</Construction>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>GuildMage</Construction>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
     <CellsMenu>
