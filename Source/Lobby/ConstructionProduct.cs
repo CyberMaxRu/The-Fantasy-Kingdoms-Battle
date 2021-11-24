@@ -12,6 +12,13 @@ namespace Fantasy_Kingdoms_Battle
         public ConstructionProduct(Construction construction, DescriptorProduct product) : base(construction, product)
         {
             Product = product;
+
+            if (product.DescriptorEntity is DescriptorItem di)
+                DescriptorItem = di;
+            else if (product.DescriptorEntity is DescriptorGroupItems dgi)
+                DescriptorGroupItem = dgi;
+            else
+                throw new Exception($"Неизвестная сущность: {product.DescriptorEntity.ID}.");
         }
 
         internal DescriptorProduct Product { get; }
