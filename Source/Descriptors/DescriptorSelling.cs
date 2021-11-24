@@ -13,7 +13,8 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum IntervalRefresh { Day, Week, Fortnight, Month };
 
-    internal class DescriptorSelling : Descriptor
+    // Класс описателя для продажи сущностей героям
+    internal sealed class DescriptorSelling : Descriptor
     {
         public DescriptorSelling(DescriptorWithID entity, XmlNode n) : base()
         {
