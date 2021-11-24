@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Xml;
-using System.Diagnostics;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
@@ -12,25 +11,13 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorSelling(DescriptorWithID entity, XmlNode n) : base()
         {
-            Entity = entity;
-
-            Gold = GetIntegerNotNull(n, "Gold");
-            Quantity = GetIntegerNotNull(n, "Quantity");
-            Duration = GetIntegerNotNull(n, "Duration");
-            DaysProcessing = GetIntegerNotNull(n, "DaysProcessing");
+            Gold = entity.GetIntegerFromXmlNode(n, "Gold", 0, 100_000);
+            Quantity = entity.GetIntegerFromXmlNode(n, "Quantity", 1, 1_000);
+            Duration = entity.GetIntegerFromXmlNode(n, "Duration", 0, 1_000);
+            DaysProcessing = entity.GetIntegerFromXmlNode(n, "DaysProcessing", 0, 100);
             IntervalRefresh = (IntervalRefresh)Enum.Parse(typeof(IntervalRefresh), GetStringNotNull(n, "IntervalRefresh"));
-
-            Debug.Assert(Gold >= 0, $"У {entity} отрицательное число стоимости ({Gold}).");
-            Debug.Assert(Gold <= 100_000, $"У {entity} слишком большое число стоимости ({Gold}).");
-            Debug.Assert(Quantity > 0, $"У {entity} ошибк в количестве ({Quantity}).");
-            Debug.Assert(Quantity <= 1_000, $"У {entity} ошибк в количестве ({Quantity}).");
-            Debug.Assert(Duration >= 0, $"У {entity} ошибк в длительности ({Duration}).");
-            Debug.Assert(Duration <= 1_000, $"У {entity} ошибк в длительности ({Duration}).");
-            Debug.Assert(DaysProcessing >= 0, $"У {entity} ошибк в количестве дней ({DaysProcessing}).");
-            Debug.Assert(DaysProcessing <= 100, $"У {entity} ошибк в количестве дней ({DaysProcessing}).");
         }
 
-        internal DescriptorWithID Entity { get; }// Для какой сущности
         internal int Gold { get; }// Количество золота для покупки товара/услуги
         internal int Quantity { get; }// Количество товара/услуги после обновления
         internal int Duration { get; }// Длительность существования товара/услуги. 0 - бесконечно
