@@ -15,14 +15,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             XmlNode ns = n.SelectSingleNode("Selling");
             if (ns != null)
-                Selling = new DescriptorSelling(this, ns);
+                Selling = new DescriptorComponentSelling(this, ns);
         }
 
         public DescriptorEntityForActiveEntity(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
         {
         }
 
-        internal DescriptorSelling Selling { get; }
+        internal DescriptorComponentSelling Selling { get; }
 
         internal override void TuneLinks()
         {

@@ -7,9 +7,9 @@ namespace Fantasy_Kingdoms_Battle
     internal enum IntervalRefresh { Day, Week, Fortnight, Month };
 
     // Класс описателя для продажи товаров и услуг героям
-    internal sealed class DescriptorSelling : Descriptor
+    internal sealed class DescriptorComponentSelling : Descriptor
     {
-        public DescriptorSelling(DescriptorWithID entity, XmlNode n) : base()
+        public DescriptorComponentSelling(DescriptorWithID entity, XmlNode n) : base()
         {
             Gold = entity.GetIntegerFromXmlNode(n, "Gold", 0, 100_000);
             Quantity = entity.GetIntegerFromXmlNode(n, "Quantity", 1, 1_000);
