@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using System.Xml;
+using System.Diagnostics;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -46,6 +43,24 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length > 0);
             Debug.Assert(Name.Length <= Config.MaxLengthNameEntity);
         }
+
+        internal int GetIntegerFromXmlNode(XmlNode n, string name, int minValue, int maxValue)
+        {
+            XmlNode nn = n.SelectSingleNode(name);
+
+            if (minValue > 0)
+            {
+                Assert(nn != null, $"{ID}: поле {name} отсутствует.");
+                Assert(nn.InnerText != null, $"{ID}: поле {name} не имеет значения.");
+            }
+            string text = nn?.InnerText != null ? nn.InnerText : "0";
+
+            int value = Convert.ToInt32(text);
+            Assert(value >= minValue, $"{ID}: значение ({value}) поля {name} меньше допустимого ({minValue}).");
+            Assert(value <= maxValue, $"{ID}: значение ({value}) поля {name} больше допустимого ({maxValue}).");
+
+            return value;
+        }        
 
         internal override void TuneLinks()
         {
