@@ -822,7 +822,8 @@ namespace Fantasy_Kingdoms_Battle
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
+                MessageBox.Show("Произошло исключение при запуске программы: " 
+                    + Environment.NewLine + Environment.NewLine + exc.Message + Environment.NewLine + exc.StackTrace, NAME_PROJECT + " " + VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
                 //Environment.Exit(-1);
             }
