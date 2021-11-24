@@ -16,5 +16,6 @@
   <Interface>
     <ShowShortNames>False</ShowShortNames>
     <ShowTypeCellMenu>True</ShowTypeCellMenu>
+    <HideFulfilledRequirements>True</HideFulfilledRequirements>
   </Interface>
 </Settings>
