@@ -313,7 +313,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheckLevelRequirements(int level)
         {
             // При постройке храма из меню Святой земли, сюда прилетает 2 уровень
-            if (TypeConstruction.MaxLevel < level + 1)
+            if (TypeConstruction.MaxLevel < level)
                 return false;
 
             // Сначала проверяем наличие золота
