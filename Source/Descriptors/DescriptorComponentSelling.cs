@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Xml;
-using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -15,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
             Quantity = entity.GetIntegerFromXmlNode(n, "Quantity", 1, 1_000);
             Duration = entity.GetIntegerFromXmlNode(n, "Duration", 0, 1_000);
             DaysProcessing = entity.GetIntegerFromXmlNode(n, "DaysProcessing", 0, 100);
-            IntervalRefresh = (IntervalRefresh)Enum.Parse(typeof(IntervalRefresh), GetStringNotNull(n, "IntervalRefresh"));
+            IntervalRefresh = (IntervalRefresh)Enum.Parse(typeof(IntervalRefresh), entity.GetStringFromXmlNode(n, "IntervalRefresh"));
         }
 
         internal int Gold { get; }// Количество золота для покупки товара/услуги
