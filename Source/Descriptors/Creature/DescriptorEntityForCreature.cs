@@ -14,7 +14,5 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
-
-        internal abstract string GetTypeEntity();
     }
 }

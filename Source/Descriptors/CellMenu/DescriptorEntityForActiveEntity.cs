@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class DescriptorEntityForActiveEntity : DescriptorSmallEntity
+    internal abstract class DescriptorEntityForActiveEntity : DescriptorSmallEntity
     {
         public DescriptorEntityForActiveEntity(XmlNode n) : base(n)
         {
@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorComponentSelling Selling { get; }
+        internal abstract string GetTypeEntity();
 
         internal override void TuneLinks()
         {
