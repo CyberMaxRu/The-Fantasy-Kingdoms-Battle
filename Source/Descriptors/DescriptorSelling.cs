@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Forms;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
@@ -36,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(DaysProcessing <= 100, $"У {entity} ошибк в количестве дней ({DaysProcessing}).");
         }
 
-        internal DescriptorWithID Entity { get; }// Для какой активной сущности
+        internal DescriptorWithID Entity { get; }// Для какой сущности
         internal int Gold { get; }// Количество золота для покупки товара/услуги
         internal int Quantity { get; }// Количество товара/услуги после обновления
         internal int Duration { get; }// Длительность существования товара/услуги. 0 - бесконечно
