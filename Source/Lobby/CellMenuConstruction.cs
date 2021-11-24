@@ -148,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Entity.DescriptorEntity is DescriptorAbility da)
             {
-                ConstructionAbility ca = new ConstructionAbility(Construction, da);
+                ConstructionAbility ca = new ConstructionAbility(Construction, Entity, da);
                 Construction.AddAbility(ca);
                 Construction.Player.AddNoticeForPlayer(ca, TypeNoticeForPlayer.Research);
             }

@@ -8,19 +8,21 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class ConstructionAbility : EntityForConstruction
     {
-        public ConstructionAbility(Construction construction, DescriptorAbility ca) : base(construction, ca)
+        public ConstructionAbility(Construction construction, DescriptorProduct cp, DescriptorAbility ca) : base(construction, ca)
         {
             DescriptorAbility = ca;
+            Product = cp;
         }
 
         internal DescriptorAbility DescriptorAbility { get; }
+        internal DescriptorProduct Product { get; }
         internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Cost { get; }// Стоимость товара
         internal int Interest { get; set; }// Интерес героев к сущности// !!! Удалить!!! брать из интереса товара
 
 
-        internal int Quantity { get; set; }
+        internal int RestQuantity { get; set; }// Количество оставшегося товара
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
         internal bool Enabled { get; set; } = true;// Товар доступен для продажи// !!! Делать через 0 В количестве?!!!
 
@@ -43,9 +45,14 @@ namespace Fantasy_Kingdoms_Battle
             return base.GetText();
         }
 
+        internal override int GetQuantity()
+        {
+            return 0;
+        }
+
         internal int GetCostGold()
         {
-            return 0;// DescriptorConstructionEvent.co.;
+            return Product.Selling.Gold;
         }
 
         internal override void PrepareHint()
