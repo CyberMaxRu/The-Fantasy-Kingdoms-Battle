@@ -322,7 +322,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].Builders))
+            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].Creating.Builders))
                 return false;
 
             // Проверяем, что нет события или турнира
@@ -1130,7 +1130,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep10DaysBuilding(-1, DayBuildingForLevel(requiredLevel));
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             Program.formMain.formHint.AddStep12Gold(Player.BaseResources, TypeConstruction.Levels[requiredLevel].Creating.CostResources);
-            Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);
+            Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Creating.Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Creating.Builders);
         }
 
         internal void PrepareHintForInhabitantCreatures()

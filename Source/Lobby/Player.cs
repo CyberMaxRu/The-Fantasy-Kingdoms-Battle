@@ -601,8 +601,9 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(pb.CheckRequirements());
 
             //SpendResource(pb.CostBuyOrUpgrade());
-            if (!CheatingIgnoreBuilders)
-                FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
+            if (pb.TypeConstruction.Levels[pb.Level + 1].Creating != null)
+                if (!CheatingIgnoreBuilders)
+                    FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Creating.Builders;
             AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
 
             Debug.Assert(FreeBuilders >= 0);
@@ -1221,7 +1222,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if (type.Levels[1].Builders > FreeBuilders)
+            if (type.Levels[1].Creating.Builders > FreeBuilders)
                 return false;
 
             // Проверяем требования к зданиям
@@ -1248,7 +1249,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].Creating.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
             Program.formMain.formHint.AddStep12Gold(BaseResources, type.Levels[1].Creating.CostResources);
-            Program.formMain.formHint.AddStep13Builders(type.Levels[1].Builders, FreeBuilders >= type.Levels[1].Builders);
+            Program.formMain.formHint.AddStep13Builders(type.Levels[1].Creating.Builders, FreeBuilders >= type.Levels[1].Creating.Builders);
         }
 
         //

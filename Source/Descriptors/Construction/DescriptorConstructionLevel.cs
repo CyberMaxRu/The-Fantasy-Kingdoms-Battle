@@ -17,7 +17,6 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(Creating != null);// Для логов не надо
 
             Number = GetIntegerNotNull(n, "Number");
-            Builders = GetInteger(n, "Builders");
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
             Capacity = GetInteger(n, "Capacity");
             GreatnessByConstruction = GetInteger(n, "GreatnessByConstruction");
@@ -65,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Number { get; }
-        internal int Builders { get; }// Количество требуемых строителей
         internal int MaxInhabitant { get; }
         internal int Capacity { get; }
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
