@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             Descriptors.ConstructionProducts.Add(this);
         }
 
-        internal DescriptorEntityForCreature DescriptorEntity { get; private set; }
+        internal DescriptorEntityForActiveEntity DescriptorEntity { get; private set; }
         internal DescriptorEntityForConstruction EntityForConstruction { get; private set; }
 
         protected override string GetName(XmlNode n)

@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
-    internal sealed class DescriptorAbility : DescriptorEntityForCreature
+    internal sealed class DescriptorAbility : DescriptorEntityForActiveEntity
     {
         public DescriptorAbility(XmlNode n) : base(n)
         {

@@ -67,7 +67,6 @@
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionTournament.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionVisit.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorEntityForConstruction.cs" />
-    <Compile Include="Source\Descriptors\Creature\DescriptorEntityForCreature.cs" />
     <Compile Include="Source\Descriptors\DescriptorActiveEntity.cs" />
     <Compile Include="Source\Descriptors\DescriptorBaseResource.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionExtension.cs" />

@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Food, Thing, Weapon, Armour, Quiver, Monster, Game }
 
     // Класс предмета
-    internal sealed class DescriptorItem : DescriptorEntityForCreature
+    internal sealed class DescriptorItem : DescriptorEntityForActiveEntity
     {
         private string nameGroupItem;
 
