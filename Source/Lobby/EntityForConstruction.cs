@@ -12,10 +12,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction = construction;
             Descriptor = descriptor;
+
+            if (descriptor is DescriptorEntityForConstruction ce)
+                Selling = new ComponentSelling(ce.Selling);
         }
 
         internal Construction Construction { get; }
         internal DescriptorSmallEntity Descriptor { get; }
+        internal ComponentSelling Selling { get; }
 
     }
 }
