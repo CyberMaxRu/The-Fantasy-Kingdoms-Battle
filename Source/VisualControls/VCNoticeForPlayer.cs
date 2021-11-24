@@ -68,22 +68,22 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.MassEventBegin:
                     nameNotice = "Мероприятие начато:";
-                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    nameText = (Entity as ConstructionEvent).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.MassEventEnd:
                     nameNotice = "Мероприятие завершено:";
-                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    nameText = (Entity as ConstructionEvent).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.TournamentBegin:
                     nameNotice = "Турнир начат:";
-                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    nameText = (Entity as ConstructionTournament).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.TournamentEnd:
                     nameNotice = "Турнир завершен:";
-                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    nameText = (Entity as ConstructionTournament).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.ReceivedBaseResource:
