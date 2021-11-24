@@ -95,8 +95,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            Extensions.TuneDeferredLinks();
-            ListPerks.TuneDeferredLinks();
+            Extensions.TuneLinks();
+            ListPerks.TuneLinks();
         }
     }
 }

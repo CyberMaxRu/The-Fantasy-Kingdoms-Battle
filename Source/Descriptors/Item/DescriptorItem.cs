@@ -156,7 +156,7 @@ namespace Fantasy_Kingdoms_Battle
                 nameGroupItem = "";
             }
 
-            Perks.TuneDeferredLinks();
+            Perks.TuneLinks();
             ListNeeds.TuneDeferredLinks();
         }
 

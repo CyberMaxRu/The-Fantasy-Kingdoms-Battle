@@ -357,7 +357,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);
             */
 
-            Perks.TuneDeferredLinks();
+            Perks.TuneLinks();
         }
     }
 

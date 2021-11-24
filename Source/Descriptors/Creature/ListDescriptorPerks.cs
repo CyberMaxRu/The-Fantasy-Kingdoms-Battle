@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void TuneDeferredLinks()
+        internal void TuneLinks()
         {
             if (namePerks != null)
             {

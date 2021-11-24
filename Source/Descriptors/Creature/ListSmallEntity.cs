@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorConstruction Construction { get; }
 
-        internal void TuneDeferredLinks()
+        internal void TuneLinks()
         {
             if (nameEntity != null)
             {
