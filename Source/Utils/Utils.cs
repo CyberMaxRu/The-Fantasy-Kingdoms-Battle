@@ -70,47 +70,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             return (value > 0 ? "+" : "") + value.ToString();
         }
-    }
 
-    internal class DebugWriter : TextWriterTraceListener
-    {
-        public DebugWriter(string filename) : base(filename)
+        internal static void Assert(bool condition, string text = "")
         {
-
-        }
-
-        public override void Fail(string message)
-        {
-            Debug.WriteLine(DateTime.Now.ToString() + ": " + Application.ProductVersion);
-            Debug.WriteLine(message);
-            WriteStack();
-            Debug.WriteLine(Environment.NewLine);
-            Debug.Flush();
-
-            base.Fail(message);
-        }
-
-        public override void Fail(string message, string detailMessage)
-        {
-            Debug.WriteLine(DateTime.Now.ToString() + ": " + Application.ProductVersion);
-            Debug.WriteLine(message);
-            Debug.WriteLine(detailMessage);
-            WriteStack();
-            Debug.WriteLine(Environment.NewLine);
-            Debug.Flush();
-
-            base.Fail(message, detailMessage);
-        }
-
-        internal void WriteStack()
-        {
-            StackTrace st = new StackTrace(5, true);
-            for (int i = 0; i < st.FrameCount; i++)
-            {
-                StackFrame sf = st.GetFrame(i);
-                string line = sf.GetFileLineNumber() > 0 ? $" (Line {sf.GetFileLineNumber()})" : "";
-                Debug.WriteLine($"{sf.GetMethod()}: {sf.GetFileName()}{line}");
-            }
+            if (!condition)
+                throw new Exception(text);
         }
     }
 }
