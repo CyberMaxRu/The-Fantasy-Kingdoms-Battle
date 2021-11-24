@@ -11,7 +11,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum IntervalRefresh { Day, Week, TwoWeek, Month };
+    internal enum IntervalRefresh { Day, Week, Fortnight, Month };
 
     internal class DescriptorSelling : Descriptor
     {
