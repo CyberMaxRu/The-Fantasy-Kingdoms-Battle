@@ -3,7 +3,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum IntervalRefresh { Day, Week, Fortnight, Month };
+    internal enum IntervalRefresh { Day, Week };
 
     // Класс описателя для продажи товаров и услуг героям
     internal sealed class DescriptorComponentSelling : Descriptor
