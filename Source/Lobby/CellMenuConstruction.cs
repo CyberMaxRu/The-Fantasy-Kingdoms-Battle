@@ -146,9 +146,18 @@ namespace Fantasy_Kingdoms_Battle
         {
             RemoveSelf();
 
-            ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
-            Construction.AddProduct(cp);
-            Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.Research);
+            if (Entity.DescriptorEntity is DescriptorAbility da)
+            {
+                ConstructionAbility ca = new ConstructionAbility(Construction, da);
+                Construction.AddAbility(ca);
+                Construction.Player.AddNoticeForPlayer(ca, TypeNoticeForPlayer.Research);
+            }
+            else
+            {
+                ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
+                Construction.AddProduct(cp);
+                Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.Research);
+            }
 
             Program.formMain.SetNeedRedrawFrame();
         }
