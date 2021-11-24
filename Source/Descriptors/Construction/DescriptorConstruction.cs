@@ -330,10 +330,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Levels != null)
             {
                 foreach (DescriptorConstructionLevel l in Levels)
-                {
-                    if (l != null)
-                        l.TuneLinks();
-                }
+                    l?.TuneLinks();
             }
 
             foreach (DescriptorProduct dp in Products)
