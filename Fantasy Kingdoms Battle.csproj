@@ -84,7 +84,7 @@
     <Compile Include="Source\Descriptors\Creature\ListNeeds.cs" />
     <Compile Include="Source\Descriptors\Creature\ListSmallEntity.cs" />
     <Compile Include="Source\Descriptors\Descriptor.cs" />
-    <Compile Include="Source\Descriptors\DescriptorCreating.cs" />
+    <Compile Include="Source\Descriptors\DescriptorComponentCreating.cs" />
     <Compile Include="Source\Descriptors\Descriptors.cs" />
     <Compile Include="Source\Descriptors\DescriptorComponentSelling.cs" />
     <Compile Include="Source\Descriptors\DescriptorVisual.cs" />

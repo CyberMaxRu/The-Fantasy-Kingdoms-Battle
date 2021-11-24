@@ -11,9 +11,9 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class DescriptorCreating : Descriptor
+    internal class DescriptorComponentCreating : Descriptor
     {
-        public DescriptorCreating(DescriptorWithID entity, XmlNode n) : base()
+        public DescriptorComponentCreating(DescriptorWithID entity, XmlNode n) : base()
         {
             Entity = entity;
 
