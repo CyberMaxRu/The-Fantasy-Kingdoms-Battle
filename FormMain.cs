@@ -758,8 +758,8 @@ namespace Fantasy_Kingdoms_Battle
             pageResultTurn.PageImage = MainControlbackground("Paper");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
-            pageGuilds.PageImage = MainControlbackground("Castle");
-            pageEconomicConstructions.PageImage = MainControlbackground("Relax");
+            pageGuilds.PageImage = MainControlbackground("Capital");
+            pageEconomicConstructions.PageImage = MainControlbackground("Capital");
             //pageTemples.PageImage = MainControlbackground("Temple");
 
             layerMainMenu.ArrangeControls();
