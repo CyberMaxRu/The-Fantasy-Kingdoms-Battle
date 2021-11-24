@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum IntervalRefresh { Day, Week, Fortnight, Month };
 
-    // Класс описателя для продажи сущностей героям
+    // Класс описателя для продажи товаров и услуг героям
     internal sealed class DescriptorSelling : Descriptor
     {
         public DescriptorSelling(DescriptorWithID entity, XmlNode n) : base()
@@ -37,10 +37,10 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorWithID Entity { get; }// Для какой активной сущности
-        internal int Gold { get; }// Количество золота для покупки
-        internal int Quantity { get; }// Количество товара
-        internal int Duration { get; }// Длительность существования товара
-        internal int DaysProcessing { get; }// Количество дней для покупки товара
-        internal IntervalRefresh IntervalRefresh { get; }// Интервал обновления товара в сооружении
+        internal int Gold { get; }// Количество золота для покупки товара/услуги
+        internal int Quantity { get; }// Количество товара/услуги после обновления
+        internal int Duration { get; }// Длительность существования товара/услуги. 0 - бесконечно
+        internal int DaysProcessing { get; }// Количество дней для покупки товара/услуги (делится на 10)
+        internal IntervalRefresh IntervalRefresh { get; }// Интервал обновления количества товара/услуги
     }
 }
