@@ -74,7 +74,10 @@ namespace Fantasy_Kingdoms_Battle
         internal static void Assert(bool condition, string text = "")
         {
             if (!condition)
+            {
+                Debugger.Break();
                 throw new Exception(text);
+            }
         }
     }
 }
