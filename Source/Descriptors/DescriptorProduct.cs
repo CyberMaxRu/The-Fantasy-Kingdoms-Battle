@@ -53,8 +53,6 @@ namespace Fantasy_Kingdoms_Battle
                 SmallEntity = Descriptors.FindItem(nameEntity, false);
             if (SmallEntity is null)
                 SmallEntity = Descriptors.FindGroupItem(nameEntity, false);
-            if ( SmallEntity is null)
-                SmallEntity = Descriptors.FindGroupItem(nameEntity, false);
             if (SmallEntity is null)
                 SmallEntity = ActiveEntity.FindEntity(nameEntity);
 
