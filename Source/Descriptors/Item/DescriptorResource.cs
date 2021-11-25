@@ -20,5 +20,7 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(cv.ImageIndex != ImageIndex);
             }
         }
+
+        internal override string GetTypeEntity() => "Ресурс";
     }
 }

@@ -60,5 +60,7 @@ namespace Fantasy_Kingdoms_Battle
 
             return 0;
         }
+
+        internal override string GetTypeEntity() => "Особенность";
     }
 }

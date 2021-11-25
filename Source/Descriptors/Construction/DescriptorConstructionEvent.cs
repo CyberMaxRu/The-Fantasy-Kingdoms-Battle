@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс мероприятий в сооружении
-    internal sealed class DescriptorConstructionEvent : DescriptorConstructionVisit
+    internal sealed class DescriptorConstructionEvent : DescriptorEntityForActiveEntity
     {
         public DescriptorConstructionEvent(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
         {
@@ -26,13 +26,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Cooldown <= 100);
             Debug.Assert(Interest >= 1);
             Debug.Assert(Interest <= 100);
-
-            foreach (DescriptorConstructionEvent ce in Construction.Events)
-            {
-                Debug.Assert(ce.ID != ID);
-                Debug.Assert(ce.Name != Name);
-                Debug.Assert(ce.ImageIndex != ImageIndex);
-            }
         }
 
         internal int Duration { get; }// Длительность (в днях)

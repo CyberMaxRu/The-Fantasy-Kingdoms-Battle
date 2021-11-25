@@ -126,9 +126,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
             Program.formMain.formHint.AddStep2Header(Entity.Name, GetImageIndex());
-            Program.formMain.formHint.AddStep3Type(Entity.DescriptorEntity != null ? Entity.DescriptorEntity.GetTypeEntity() : Entity.EntityForConstruction.GetTypeEntity());
+            Program.formMain.formHint.AddStep3Type(Entity.SmallEntity != null ? Entity.SmallEntity.GetTypeEntity() : Entity.SmallEntity.GetTypeEntity());
             //Program.formMain.formHint.AddStep4Level(level);
-            Program.formMain.formHint.AddStep5Description(Entity.Construction.Description);
+            Program.formMain.formHint.AddStep5Description(Entity.ActiveEntity.Description);
             //Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
@@ -146,7 +146,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             RemoveSelf();
 
-            if (Entity.DescriptorEntity is DescriptorAbility da)
+            if (Entity.SmallEntity is DescriptorAbility da)
             {
                 ConstructionAbility ca = new ConstructionAbility(Construction, Entity, da);
                 Construction.AddAbility(ca);

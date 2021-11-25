@@ -9,14 +9,14 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionVisitSimple : DescriptorConstructionVisit
+    internal sealed class DescriptorConstructionVisitSimple : DescriptorEntityForActiveEntity
     {
-        public DescriptorConstructionVisitSimple(DescriptorConstructionLevel level, XmlNode n) : base(level.Construction, n)
+        public DescriptorConstructionVisitSimple(DescriptorConstructionLevel level, XmlNode n) : base(level.ActiveEntity, n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
 
-            ImageIndex = level.Construction.ImageIndex;
+            ImageIndex = level.ActiveEntity.ImageIndex;
             ConstructionLevel = level;
 
             Interest = GetInteger(n, "Interest");
@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         public DescriptorConstructionVisitSimple(DescriptorConstructionLevel level) :
-            base(level.Construction, $"Visit{level.Construction.ID}{level.Number}", $"Посещение ({level.Number})", "Посещение", level.Construction.ImageIndex)
+            base(level.ActiveEntity, $"Visit{level.ActiveEntity.ID}{level.Number}", $"Посещение ({level.Number})", "Посещение", level.ActiveEntity.ImageIndex)
         {
             ConstructionLevel = level;
             ListNeeds = new ListNeeds();
@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneLinks();
 
             ListNeeds.TuneDeferredLinks();
-            Debug.Assert(ListNeeds.Count > 0);
+            //Debug.Assert(ListNeeds.Count > 0);
         }
     }
 }

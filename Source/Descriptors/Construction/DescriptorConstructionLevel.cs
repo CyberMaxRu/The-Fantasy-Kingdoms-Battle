@@ -10,7 +10,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionLevel : DescriptorEntityForConstruction
+    internal sealed class DescriptorConstructionLevel : DescriptorEntityForActiveEntity
     {
         public DescriptorConstructionLevel(DescriptorConstruction forConstruction, XmlNode n) : base(forConstruction, n)
         {

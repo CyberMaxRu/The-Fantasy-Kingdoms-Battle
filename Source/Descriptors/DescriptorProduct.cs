@@ -11,7 +11,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorProduct : DescriptorEntityForConstruction
+    internal sealed class DescriptorProduct : DescriptorEntityForActiveEntity
     {
         private string nameEntity;
 
@@ -27,12 +27,11 @@ namespace Fantasy_Kingdoms_Battle
             Descriptors.ConstructionProducts.Add(this);
         }
 
-        internal DescriptorEntityForActiveEntity DescriptorEntity { get; private set; }
-        internal DescriptorEntityForConstruction EntityForConstruction { get; private set; }
+        internal DescriptorSmallEntity SmallEntity { get; private set; }
 
         protected override string GetName(XmlNode n)
         {
-            return "noname";
+            return GetStringNotNull(n, "Entity"); 
         }
 
         internal override int GetImageIndex(XmlNode n)
@@ -42,43 +41,25 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity()
         {
-            return DescriptorEntity.GetTypeEntity();
+            return SmallEntity.GetTypeEntity();
         }
 
         internal override void TuneLinks()
         {
             base.TuneLinks();
 
-            DescriptorEntity = Descriptors.FindAbility(nameEntity, false);
-            if (DescriptorEntity is null)
-                DescriptorEntity = Descriptors.FindItem(nameEntity, false);
-            if (DescriptorEntity is null)
-                DescriptorEntity = Descriptors.FindGroupItem(nameEntity, false);
-            if ( DescriptorEntity is null)
-                DescriptorEntity = Descriptors.FindGroupItem(nameEntity, false);
-            if (DescriptorEntity is null)
-            {
-                EntityForConstruction = Construction.FindConstructionEvent(nameEntity, false);
-                if (EntityForConstruction is null)
-                    EntityForConstruction = Construction.FindConstructionImprovement(nameEntity, false);
-                if (EntityForConstruction is null)
-                    EntityForConstruction = Construction.FindConstructionTournament(nameEntity, false);
-                if (EntityForConstruction is null)
-                    EntityForConstruction = Construction.FindConstructionService(nameEntity, false);
-            }
+            SmallEntity = Descriptors.FindAbility(nameEntity, false);
+            if (SmallEntity is null)
+                SmallEntity = Descriptors.FindItem(nameEntity, false);
+            if (SmallEntity is null)
+                SmallEntity = Descriptors.FindGroupItem(nameEntity, false);
+            if ( SmallEntity is null)
+                SmallEntity = Descriptors.FindGroupItem(nameEntity, false);
+            if (SmallEntity is null)
+                SmallEntity = ActiveEntity.FindEntity(nameEntity);
 
-            Debug.Assert((DescriptorEntity != null) || (EntityForConstruction != null), $"Сущность {nameEntity} не найдена.");
-
-            if (DescriptorEntity != null)
-            {
-                ImageIndex = DescriptorEntity.ImageIndex;
-                Name = DescriptorEntity.Name;
-            }
-            else
-            {
-                ImageIndex = EntityForConstruction.ImageIndex;
-                Name = EntityForConstruction.Name;
-            }
+            ImageIndex = SmallEntity.ImageIndex;
+            Name = SmallEntity.Name;
 
             nameEntity = "";
         }

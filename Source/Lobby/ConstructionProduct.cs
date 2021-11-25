@@ -13,12 +13,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             Product = product;
 
-            if (product.DescriptorEntity is DescriptorItem di)
+            if (product.SmallEntity is DescriptorItem di)
                 DescriptorItem = di;
-            else if (product.DescriptorEntity is DescriptorGroupItems dgi)
+            else if (product.SmallEntity is DescriptorGroupItems dgi)
                 DescriptorGroupItem = dgi;
             else
-                throw new Exception($"Неизвестная сущность: {product.DescriptorEntity.ID}.");
+                throw new Exception($"Неизвестная сущность: {product.SmallEntity.ID}.");
         }
 
         internal DescriptorProduct Product { get; }

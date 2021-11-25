@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
+        internal override string GetTypeEntity() => "Специализация";
+
         internal override void TuneLinks()
         {
             base.TuneLinks();

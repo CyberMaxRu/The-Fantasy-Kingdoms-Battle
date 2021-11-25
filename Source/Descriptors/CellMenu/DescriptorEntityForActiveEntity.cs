@@ -11,19 +11,26 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class DescriptorEntityForActiveEntity : DescriptorSmallEntity
     {
-        public DescriptorEntityForActiveEntity(XmlNode n) : base(n)
+        public DescriptorEntityForActiveEntity(DescriptorActiveEntity activeEntity, XmlNode n) : base(n)
         {
+            ActiveEntity = activeEntity;
+
             XmlNode ns = n.SelectSingleNode("Selling");
             if (ns != null)
                 Selling = new DescriptorComponentSelling(this, ns);
+
+            ActiveEntity.AddEntity(this);
         }
 
-        public DescriptorEntityForActiveEntity(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
+        public DescriptorEntityForActiveEntity(DescriptorActiveEntity activeEntity, string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
         {
+            ActiveEntity = activeEntity;
+
+            ActiveEntity.AddEntity(this);
         }
 
+        internal DescriptorActiveEntity ActiveEntity { get; }
         internal DescriptorComponentSelling Selling { get; }
-        internal abstract string GetTypeEntity();
 
         internal override void TuneLinks()
         {

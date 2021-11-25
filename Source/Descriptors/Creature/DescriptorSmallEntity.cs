@@ -40,6 +40,8 @@ namespace Fantasy_Kingdoms_Battle
             if ((availableForHeroesString is null) && ForHeroes())
                 AvailableForAllHeroes = true;
 
+            if (availableForHeroesString is null)
+                AvailableForAllHeroes = true;
         }
 
         public DescriptorSmallEntity(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
@@ -53,6 +55,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
         protected virtual bool ForHeroes() => true;
+        internal abstract string GetTypeEntity();
 
         internal override void TuneLinks()
         {
@@ -60,8 +63,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (ForHeroes())
             {
-                Debug.Assert((AvailableForAllHeroes && (availableForHeroesString is null)) || (!AvailableForAllHeroes && (availableForHeroesString != null) && (availableForHeroesString.Count > 0)),
-                    $"Не настроена доступность героям у {ID}.");
+                //Utils.Assert((AvailableForAllHeroes && (availableForHeroesString is null)) || (!AvailableForAllHeroes && (availableForHeroesString != null) && (availableForHeroesString.Count > 0)),
+                //    $"Не настроена доступность героям у {ID}.");
             }
             else
             {
@@ -81,14 +84,14 @@ namespace Fantasy_Kingdoms_Battle
             if (ForHeroes())
             {
                 Description += Description.Length > 0 ? Environment.NewLine : "";
-                if (AvailableForAllHeroes)
+                if (AvailableForAllHeroes || (AvailableForHeroes.Count == 0))
                 {
                     Description += "- Доступно всем героям";
                 }
                 else
                 {
                     Debug.Assert(AvailableForHeroes.Count > 0);
-
+                    
                     Description += "- Доступно героям:";
 
                     foreach (DescriptorCreature tc in AvailableForHeroes)

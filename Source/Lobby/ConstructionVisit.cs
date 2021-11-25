@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class ConstructionVisit : EntityForConstruction
     {
-        public ConstructionVisit(Construction construction, DescriptorConstructionVisit descriptor) : base(construction, descriptor)
+        public ConstructionVisit(Construction construction, DescriptorEntityForActiveEntity descriptor) : base(construction, descriptor)
         {
 
         }

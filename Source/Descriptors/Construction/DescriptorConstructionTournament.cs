@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс турниров в сооружении
-    internal sealed class DescriptorConstructionTournament : DescriptorConstructionVisit
+    internal sealed class DescriptorConstructionTournament : DescriptorEntityForActiveEntity
     {
         public DescriptorConstructionTournament(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
         {
@@ -22,13 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Cooldown <= 100);
             Debug.Assert(Interest >= 1);
             Debug.Assert(Interest <= 100);
-
-            foreach (DescriptorConstructionTournament ct in Construction.Tournaments)
-            {
-                Debug.Assert(ct.ID != ID);
-                Debug.Assert(ct.Name != Name);
-                Debug.Assert(ct.ImageIndex != ImageIndex);
-            }
         }
 
         internal int Cooldown { get; }// Пауза до возможности снова использовать (в днях)
@@ -45,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneLinks();
 
             ListNeeds.TuneDeferredLinks();
-            Debug.Assert(ListNeeds.Count > 0);
+            //Debug.Assert(ListNeeds.Count > 0);
         }
     }
 }

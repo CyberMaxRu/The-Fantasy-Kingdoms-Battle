@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction = construction;
             Descriptor = descriptor;
 
-            if (descriptor is DescriptorEntityForConstruction ce)
+            if (descriptor is DescriptorEntityForActiveEntity ce)
                 Selling = new ComponentSelling(ce.Selling);
         }
 

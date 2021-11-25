@@ -32,6 +32,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneLinks()
         {
+            if (construction != null)
+                Utils.DoException($"Уже настроен линк на {construction.ID}.");
+
             base.TuneLinks();
 
             construction = Descriptors.FindConstruction(nameConstruction);

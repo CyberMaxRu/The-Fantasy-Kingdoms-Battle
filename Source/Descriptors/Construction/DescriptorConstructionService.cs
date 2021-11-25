@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionService : DescriptorEntityForConstruction
+    internal sealed class DescriptorConstructionService : DescriptorEntityForActiveEntity
     {
         public DescriptorConstructionService(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {

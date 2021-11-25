@@ -141,15 +141,7 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorConstructionExtension ce;
                 foreach (XmlNode l in ne.SelectNodes("Extension"))
                 {
-                    ce = new DescriptorConstructionExtension(this, l);
-
-                    foreach(DescriptorConstructionExtension ce2 in Extensions)
-                    {
-                        Debug.Assert(ce2.ID != ce.ID);
-                    }
-
-                    Extensions.Add(ce);
-                    AddEntity(ce);
+                    new DescriptorConstructionExtension(this, l);
                 }
             }
 
@@ -157,36 +149,16 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodeEvents = n.SelectSingleNode("Events");
             if (nodeEvents != null)
             {
-                DescriptorConstructionEvent dcEvent;
                 foreach (XmlNode l in nodeEvents.SelectNodes("Event"))
-                {
-                    dcEvent = new DescriptorConstructionEvent(this, l);
-
-                    foreach (DescriptorConstructionEvent dcEvent2 in Events)
-                    {
-                        Debug.Assert(dcEvent2.ID != dcEvent.ID);
-                    }
-
-                    Events.Add(dcEvent);
-                }
+                    new DescriptorConstructionEvent(this, l);
             }
 
             // Загружаем информацию о турнирах
             XmlNode nodeTournaments = n.SelectSingleNode("Tournaments");
             if (nodeTournaments != null)
             {
-                DescriptorConstructionTournament dcTournament;
                 foreach (XmlNode l in nodeTournaments.SelectNodes("Tournament"))
-                {
-                    dcTournament = new DescriptorConstructionTournament(this, l);
-
-                    foreach (DescriptorConstructionTournament dcTournament2 in Tournaments)
-                    {
-                        Debug.Assert(dcTournament2.ID != dcTournament.ID);
-                    }
-
-                    Tournaments.Add(dcTournament);
-                }
+                    new DescriptorConstructionTournament(this, l);
             }
 
             // Загружаем информацию об улучшениях
@@ -194,7 +166,7 @@ namespace Fantasy_Kingdoms_Battle
             if (nodeImprovements != null)
             {
                 foreach (XmlNode l in nodeImprovements.SelectNodes("Improvement"))
-                    Improvements.Add(new DescriptorConstructionImprovement(this, l));
+                    new DescriptorConstructionImprovement(this, l);
             }
 
             // Загружаем информацию об услугах
@@ -202,25 +174,15 @@ namespace Fantasy_Kingdoms_Battle
             if (nodeServices != null)
             {
                 foreach (XmlNode l in nodeServices.SelectNodes("Service"))
-                    Services.Add(new DescriptorConstructionService(this, l));
+                    new DescriptorConstructionService(this, l);
             }
 
             // Загружаем информацию о товарах
             XmlNode np = n.SelectSingleNode("Products");
             if (np != null)
             {
-                DescriptorProduct dp;
                 foreach (XmlNode l in np.SelectNodes("Product"))
-                {
-                    dp = new DescriptorProduct(this, l);
-
-                    foreach (DescriptorProduct dp2 in Products)
-                    {
-                        Debug.Assert(dp2.ID != dp.ID);
-                    }
-
-                    Products.Add(dp);
-                }
+                    new DescriptorProduct(this, l);
             }
 
             // Информация о монстрах
@@ -301,12 +263,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool PlayerCanBuild { get; }// Игрок может строить сооружение
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
-        internal List<DescriptorProduct> Products { get; } = new List<DescriptorProduct>();
-        internal List<DescriptorConstructionExtension> Extensions { get; } = new List<DescriptorConstructionExtension>();
-        internal List<DescriptorConstructionEvent> Events { get; } = new List<DescriptorConstructionEvent>();
-        internal List<DescriptorConstructionTournament> Tournaments { get; } = new List<DescriptorConstructionTournament>();
-        internal List<DescriptorConstructionImprovement> Improvements { get; } = new List<DescriptorConstructionImprovement>();
-        internal List<DescriptorConstructionService> Services { get; } = new List<DescriptorConstructionService>();
         internal DescriptorConstructionLevel[] Levels { get; }
 
         //
@@ -326,27 +282,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void TuneLinks()
         {
             base.TuneLinks();
-
-            if (Levels != null)
-            {
-                foreach (DescriptorConstructionLevel l in Levels)
-                    l?.TuneLinks();
-            }
-
-            foreach (DescriptorProduct dp in Products)
-                dp.TuneLinks();
-
-            foreach (DescriptorConstructionExtension ce in Extensions)
-                ce.TuneLinks();
-
-            foreach (DescriptorConstructionEvent ce in Events)
-                ce.TuneLinks();
-
-            foreach (DescriptorConstructionImprovement ci in Improvements)
-                ci.TuneLinks();
-
-            foreach (DescriptorConstructionService cs in Services)
-                cs.TuneLinks();
 
             foreach (DescriptorCellMenu cm in CellsMenu)
                 cm.TuneLinks();
@@ -369,14 +304,6 @@ namespace Fantasy_Kingdoms_Battle
 
             //if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
             //    CellsMenu.Remove(Levels[1]);
-        }
-
-        internal override void AfterTuneLinks()
-        {
-            base.AfterTuneLinks();
-
-            foreach (DescriptorConstructionExtension ce in Extensions)
-                ce.AfterTuneLinks();
         }
 
         internal string GetTextConstructionNotBuilded()
@@ -407,89 +334,6 @@ namespace Fantasy_Kingdoms_Battle
                 default:
                     throw new Exception("Нельзя строить категорию сооружения: " + Category.ToString());
             }
-        }
-
-        internal DescriptorConstructionExtension FindExtension(string IDExtension, bool mustBeFound)
-        {
-            foreach (DescriptorConstructionExtension ce in Extensions)
-            {
-                if (ce.ID == IDExtension)
-                    return ce;
-            }
-
-            if (mustBeFound)
-                throw new Exception($"Доп. сооружение {IDExtension} не найдено в {ID}.");
-
-            return null;
-        }
-
-        internal DescriptorProduct FindProduct(string idProduct, bool mustBeFound)
-        {
-            foreach (DescriptorProduct ce in Products)
-            {
-                if (ce.ID == idProduct)
-                    return ce;
-            }
-
-            if (mustBeFound)
-                throw new Exception($"Товар {idProduct} не найден в {ID}.");
-
-            return null;
-        }
-        internal DescriptorConstructionEvent FindConstructionEvent(string IDEvent, bool mustBeExists = true)
-        {
-            foreach (DescriptorConstructionEvent dce in Events)
-            {
-                if (dce.ID == IDEvent)
-                    return dce;
-            }
-
-            if (mustBeExists)
-                throw new Exception($"Мероприятие {IDEvent} не найдено в {ID}.");
-
-            return null;
-        }
-
-        internal DescriptorConstructionImprovement FindConstructionImprovement(string idEntity, bool mustBeExists = true)
-        {
-            foreach (DescriptorConstructionImprovement dce in Improvements)
-            {
-                if (dce.ID == idEntity)
-                    return dce;
-            }
-
-            if (mustBeExists)
-                throw new Exception($"Улучшение {idEntity} не найдено в {ID}.");
-
-            return null;
-        }
-
-        internal DescriptorConstructionService FindConstructionService(string idEntity, bool mustBeExists = true)
-        {
-            foreach (DescriptorConstructionService dce in Services)
-            {
-                if (dce.ID == idEntity)
-                    return dce;
-            }
-
-            if (mustBeExists)
-                throw new Exception($"Услуга {idEntity} не найдена в {ID}.");
-
-            return null;
-        }
-
-        internal DescriptorConstructionTournament FindConstructionTournament(string idEntity, bool mustBeExists = true)
-        {
-            foreach (DescriptorConstructionTournament dce in Tournaments)
-            {
-                if (dce.ID == idEntity)
-                    return dce;
-            }
-
-            if (mustBeExists)
-                throw new Exception($"Турнир {idEntity} не найден в {ID}.");
-
-            return null;
         }
     }
 }

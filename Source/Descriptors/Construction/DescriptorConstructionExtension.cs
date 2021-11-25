@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionExtension : DescriptorEntityForConstruction
+    internal sealed class DescriptorConstructionExtension : DescriptorEntityForActiveEntity
     {
         public DescriptorConstructionExtension(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {
@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (DescriptorSmallEntity cm in UseForResearch)
                 {
                     if (cm is DescriptorConstructionLevel cmcl)
-                        Description += Environment.NewLine + "    - { " + cmcl.Construction.Name + " (" + cmcl.Number.ToString() + " ур.)}";
+                        Description += Environment.NewLine + "    - { " + cmcl.ActiveEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
                     //else if (cm is DescriptorCellMenuForConstruction cmc)
                     //    Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Construction.ID ? " ({" + cm.ForEntity.Name + "})" : "");
                 }

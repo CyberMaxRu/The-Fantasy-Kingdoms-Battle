@@ -79,5 +79,11 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception(text);
             }
         }
+        
+        internal static void DoException(string text)
+        {
+            Debugger.Break();
+            throw new Exception(text);
+        }
     }
 }

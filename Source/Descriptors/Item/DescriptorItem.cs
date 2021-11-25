@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Food, Thing, Weapon, Armour, Quiver, Monster, Game }
 
     // Класс предмета
-    internal sealed class DescriptorItem : DescriptorEntityForActiveEntity
+    internal sealed class DescriptorItem : DescriptorSmallEntity
     {
         private string nameGroupItem;
 
@@ -171,7 +171,7 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (DescriptorSmallEntity cm in UseForResearch)
                 {
                     if (cm is DescriptorConstructionLevel cmcl)
-                        Description += Environment.NewLine + "    - {" + cmcl.Construction.Name + " (" + cmcl.Number.ToString() + " ур.)}";
+                        Description += Environment.NewLine + "    - {" + cmcl.ActiveEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
                     //else if (cm is DescriptorCellMenu cmc)
                     //    Description += Environment.NewLine + "    - {" + cmc.Construction.Name + "} ({" + cm.Construction.Name + "})";
                 }
@@ -179,6 +179,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
+
         internal override string GetTypeEntity() => "Предмет";
     }
 }

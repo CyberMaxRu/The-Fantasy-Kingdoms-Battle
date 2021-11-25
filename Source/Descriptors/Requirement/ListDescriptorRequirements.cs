@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class ListDescriptorRequirements : List<DescriptorRequirement>
     {
+        private bool linksTuned;
         public ListDescriptorRequirements(DescriptorWithID forEntity, XmlNode n)
         {
             if (n != null)
@@ -42,8 +43,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneLinks()
         {
+            Utils.Assert(!linksTuned);
+
             foreach (DescriptorRequirement r in this)
                 r.TuneLinks();
+
+            linksTuned = true;
         }
     }
 }

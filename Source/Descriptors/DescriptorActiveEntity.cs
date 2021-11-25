@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-using System.Diagnostics;    
+using System.Diagnostics;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -36,9 +37,35 @@ namespace Fantasy_Kingdoms_Battle
         internal SortedList<string, DescriptorEntityForActiveEntity> Entities { get; } = new SortedList<string, DescriptorEntityForActiveEntity>();// Список всех малых сущностей
         internal List<DescriptorCellMenu> CellsMenu { get; } = new List<DescriptorCellMenu>();// Меню
 
+        internal override void TuneLinks()
+        {
+            base.TuneLinks();
+
+            foreach (KeyValuePair<string, DescriptorEntityForActiveEntity> e2 in Entities)
+            {
+                e2.Value.TuneLinks();
+            }
+        }
+
+        internal override void AfterTuneLinks()
+        {
+            base.AfterTuneLinks();
+
+            foreach (KeyValuePair<string, DescriptorEntityForActiveEntity> e2 in Entities)
+            {
+                e2.Value.AfterTuneLinks();
+            }
+        }
+
         internal void AddEntity(DescriptorEntityForActiveEntity entity)
         {
             Debug.Assert(!Entities.ContainsKey(entity.ID));
+
+            foreach (KeyValuePair<string, DescriptorEntityForActiveEntity> e2 in Entities)
+            {
+                Assert(e2.Value.Name != entity.Name, $"Одинаковое имя {entity.Name} у {entity.ID} и {e2.Value.ID}.");
+                //Assert(e2.Value.ImageIndex != entity.ImageIndex);
+            }
 
             Entities.Add(entity.ID, entity);
         }
@@ -48,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Entities.TryGetValue(idEntity, out DescriptorEntityForActiveEntity entity))
                 return entity;
 
-            throw new Exception($"В {ID} сущность {idEntity} не найдена.");
+            throw new Exception($"{ID}: сущность {idEntity} не найдена.");
         }
     }
 }

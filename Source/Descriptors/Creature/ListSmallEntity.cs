@@ -47,13 +47,11 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorSmallEntity e;
                 foreach (string entity in nameEntity)
                 {
-                    e = Construction.FindExtension(entity, false);
-                    if (e is null)
-                        e = FormMain.Descriptors.FindItem(entity, false);
+                    e = FormMain.Descriptors.FindItem(entity, false);
                     if (e is null)
                         e = FormMain.Descriptors.FindResource(entity, false);
-
-                    Debug.Assert(e != null);
+                    if (e is null)
+                        e = Construction.FindEntity(entity);
 
                     Add(e);
                 }

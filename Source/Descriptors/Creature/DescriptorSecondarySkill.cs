@@ -52,6 +52,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal ParamSecondSkill[] Levels { get; } = new ParamSecondSkill[(int)LevelSecondSkill.Expert + 1];
 
+        internal override string GetTypeEntity() => "Вторичный навык";
+
         internal override void TuneLinks()
         {
             base.TuneLinks();
