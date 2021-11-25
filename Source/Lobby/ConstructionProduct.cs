@@ -61,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep2Header(Descriptor.Name, GetImageIndex());
-            Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+            Program.formMain.formHint.AddStep5Description(Product.Description);
             Program.formMain.formHint.AddStep10CostGold(GetCostGold());
             if (DescriptorItem != null)
                 Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
