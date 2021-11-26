@@ -226,17 +226,16 @@ namespace Fantasy_Kingdoms_Battle
         {
             DescriptorConstruction TypeConstruction = d.CreatedEntity as DescriptorConstruction;
 
-            if (TypeConstruction.Category == CategoryConstruction.Temple)
+            /*if (TypeConstruction.Category == CategoryConstruction.Temple)
                 ConstructionForBuild = c.Player.GetPlayerConstruction(TypeConstruction);
             else if (TypeConstruction.Category == CategoryConstruction.External)
             {
             }
             else
-                throw new Exception("Неизвестная категория сооружения: " + TypeConstruction.ID);
+                throw new Exception("Неизвестная категория сооружения: " + TypeConstruction.ID);*/
         }
 
         private DescriptorConstruction TypeConstruction { get; set; }// Описатель строимого сооружения
-        private Construction ConstructionForBuild { get; }// Строимое у игрока сооружение
 
         internal override bool CheckRequirements()
         {
@@ -247,16 +246,13 @@ namespace Fantasy_Kingdoms_Battle
                 return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.Creating.Requirements);
             else
             {
-                if (ConstructionForBuild != null)
-                    return ConstructionForBuild.CheckLevelRequirements(1);
-                else
-                    return Construction.Player.CanBuildTypeConstruction(TypeConstruction);
+                return Construction.Player.CanBuildTypeConstruction(TypeConstruction);
             }
         }
 
         internal override void Execute()
         {
-            if (ConstructionForBuild != null)
+            /*if (ConstructionForBuild != null)
             {
                 Debug.Assert(ConstructionForBuild.Level == 0);
                 ConstructionForBuild.Build(true);
@@ -266,11 +262,11 @@ namespace Fantasy_Kingdoms_Battle
                 ConstructionForBuild.Location.Lairs[ConstructionForBuild.Y, ConstructionForBuild.X] = ConstructionForBuild;
             }
             else
-            {
+            {*/
                 Construction pc = new Construction(Construction.Player, Construction.TypeConstruction, 1, Construction.X, Construction.Y, Construction.Location, TypeNoticeForPlayer.Build);
                 Construction.Location.Lairs[pc.Y, pc.X] = pc;
                 Program.formMain.SelectPlayerObject(pc);
-            }
+            //}
 
             if (Construction.Player.GetTypePlayer() == TypePlayer.Human)
                 Program.formMain.UpdateNeighborhoods();
@@ -281,27 +277,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            if (ConstructionForBuild != null)
-                return ConstructionForBuild.CostBuyOrUpgrade();
-            else
-                return TypeConstruction.Levels[1].Creating.CostResources;
+            return TypeConstruction.Levels[1].Creating.CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "1" : "";
 
         internal override int GetImageIndex()
         {
-            if (ConstructionForBuild != null)
-                return ConstructionForBuild.TypeConstruction.ImageIndex;
-            else
-                return TypeConstruction.ImageIndex;
+            return TypeConstruction.ImageIndex;
         }
 
         internal override void PrepareHint()
         {
-            ConstructionForBuild.PrepareHintForBuildOrUpgrade(Construction.Level + 1);
-            //else
-            //    Player.PrepareHintForBuildTypeConstruction(Research.Construction);
+            Construction.Player.PrepareHintForBuildTypeConstruction(TypeConstruction);
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;

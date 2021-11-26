@@ -5549,8 +5549,6 @@
     <ImageIndex>39</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>3,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5599,8 +5597,6 @@
     <ImageIndex>46</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5649,8 +5645,6 @@
     <ImageIndex>45</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>1,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5699,8 +5693,6 @@
     <ImageIndex>37</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5749,8 +5741,6 @@
     <ImageIndex>36</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>2,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5799,8 +5789,6 @@
     <ImageIndex>44</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5849,8 +5837,6 @@
     <ImageIndex>130</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>2,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5899,8 +5885,6 @@
     <ImageIndex>132</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>1,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -5949,8 +5933,6 @@
     <ImageIndex>134</ImageIndex>
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
-    <Page>Temple</Page>
-    <Pos>3,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>

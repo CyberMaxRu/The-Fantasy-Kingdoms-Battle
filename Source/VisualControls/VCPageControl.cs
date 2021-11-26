@@ -23,11 +23,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCPageButton AddPage(int imageIndex, string caption, string advice, EventHandler onShowHint)
         {
-            Debug.Assert(onShowHint != null);
-
             VCPageButton page = new VCPageButton(this, nextLeft, 0, imageIndex, caption, advice, null);
             page.Click += Page_Click;
-            page.ShowHint += onShowHint;
+            if (onShowHint != null)
+                page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();
             Pages.Add(page);
 

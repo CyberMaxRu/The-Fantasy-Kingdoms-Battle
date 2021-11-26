@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <CapitalPage>
+    <ID>Guild</ID>
+    <Name>Гильдии и военные сооружения</Name>
+    <ImageIndex>164</ImageIndex>
+    <Description>В гильдиях нанимаются герои</Description>
+    <NameTexture>Capital</NameTexture>
+  </CapitalPage>
+  <CapitalPage>
+    <ID>Economic</ID>
+    <Name>Экономические строения</Name>
+    <ImageIndex>165</ImageIndex>
+    <Description>Надежная экономика - залог победы</Description>
+    <NameTexture>Capital</NameTexture>
+  </CapitalPage>
+</Descriptors>

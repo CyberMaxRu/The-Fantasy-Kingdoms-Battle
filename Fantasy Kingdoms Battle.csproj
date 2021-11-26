@@ -60,6 +60,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Descriptors\CapitalPage.cs" />
     <Compile Include="Source\Descriptors\CellMenu\DescriptorEntityForActiveEntity.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionLevel.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionImprovement.cs" />
@@ -279,6 +280,7 @@
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\ComputerPlayers.xml" />
     <Content Include="Resources\Config\Descriptors\BaseResources.xml" />
+    <Content Include="Resources\Config\Descriptors\CapitalPages.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
     <Content Include="Resources\Config\Descriptors\Poisons.xml" />
     <Content Include="Resources\Config\Descriptors\Resources.xml" />

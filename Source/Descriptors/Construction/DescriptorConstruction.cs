@@ -11,7 +11,6 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum CategoryConstruction { Guild, Economic, Military, Temple, External, Lair, Place, BasePlace, ElementLandscape };// Категория сооружения
-    internal enum ConstructionPage { Guild, Economic, Temple, None };// Страница для размещения сооружения
     internal enum PriorityExecution { None = -1, Normal = 0, Warning = 1, High = 2, Exclusive = 3 };// Приоритет выполнения флага
     internal enum TypeFlag { None, Scout, Attack, Defense, Battle };// Тип флага
 
@@ -26,8 +25,8 @@ namespace Fantasy_Kingdoms_Battle
             if (GetString(n, "TypeConstruction").Length > 0)
                 TypeConstruction = Descriptors.FindTypeConstruction(GetString(n, "TypeConstruction"));
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
-            IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
-            IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
+            IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Military);
+            IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.External);
             HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (ID == Config.IDConstructionCastle);
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
             nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
@@ -35,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (IsInternalConstruction)
             {
-                Page = (ConstructionPage)Enum.Parse(typeof(ConstructionPage), GetStringNotNull(n, "Page"));
+                Page = Descriptors.FindCapitalPage(GetStringNotNull(n, "Page"));
                 CoordInPage = GetPoint(n, "Pos");
             }
             else
@@ -43,7 +42,6 @@ namespace Fantasy_Kingdoms_Battle
                 XmlFieldNotExist(n, "Page");
                 XmlFieldNotExist(n, "Line");
                 XmlFieldNotExist(n, "Pos");
-                Page = ConstructionPage.None;
             }
 
             if (IsOurConstruction)
@@ -256,7 +254,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
 
         // Свойства, относящиеся только к зданиям Королевства
-        internal ConstructionPage Page { get; }// Страница игрового интерфейса
+        internal CapitalPage Page { get; }// Страница игрового интерфейса
         internal Point CoordInPage { get; }// Позиция на странице игрового интерфейса
         internal int DefaultLevel { get; }// Уровень сооружения по умолчанию
         internal int MaxLevel { get; }// Максимальный уровень сооружения

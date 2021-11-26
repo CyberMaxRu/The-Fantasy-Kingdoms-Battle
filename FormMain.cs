@@ -112,8 +112,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageResultTurn;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
-        private readonly VCPageButton pageGuilds;
-        private readonly VCPageButton pageEconomicConstructions;
+        private readonly List<VCPageButton> pagesCapital;
         private readonly VCPageButton pageMap;
         private readonly VCPageButton pageLocation;
         //private readonly VCPageButton pageTemples;
@@ -673,8 +672,16 @@ namespace Fantasy_Kingdoms_Battle
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageControl.Separate();
-            pageGuilds = pageControl.AddPage(Config.Gui48_Guilds, "Гильдии и военные сооружения", "В гильдиях нанимаются герои", PageGuilds_ShowHint);
-            pageEconomicConstructions = pageControl.AddPage(Config.Gui48_Economy, "Экономические строения", "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
+
+            pagesCapital = new List<VCPageButton>();
+
+            foreach (CapitalPage cp in Descriptors.CapitalPages)
+            {
+                VCPageButton pageCapital = pageControl.AddPage(cp.ImageIndex, cp.Name, "", null);
+                pageCapital.Hint = cp.Description;
+                pagesCapital.Add(pageCapital);                
+            }
+
             //pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
             pageControl.Separate();
             pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта графства", "Просмотр своих владений", PageMap_ShowHint);
@@ -758,9 +765,11 @@ namespace Fantasy_Kingdoms_Battle
             pageResultTurn.PageImage = MainControlbackground("Paper");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
-            pageGuilds.PageImage = MainControlbackground("Capital");
-            pageEconomicConstructions.PageImage = MainControlbackground("Capital");
-            //pageTemples.PageImage = MainControlbackground("Temple");
+
+            for (int i = 0; i < Descriptors.CapitalPages.Count; i++)
+            { 
+                pagesCapital[i].PageImage = MainControlbackground(Descriptors.CapitalPages[i].NameTexture);
+            }
 
             layerMainMenu.ArrangeControls();
             layerGame.ArrangeControls();
@@ -960,19 +969,9 @@ namespace Fantasy_Kingdoms_Battle
             formHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
-        private void PageEconomicConstructions_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddSimpleHint("Экономические строения");
-        }
-        
         private void PageResultTurn_ShowHint(object sender, EventArgs e)
         {
             formHint.AddSimpleHint("Итоги хода");
-        }
-
-        private void PageGuilds_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddSimpleHint("Гильдии и военные сооружения");
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
@@ -1440,7 +1439,7 @@ namespace Fantasy_Kingdoms_Battle
         private void DrawPageConstructions()
         {
             // Создаем массив из страниц, линий и позиций
-            PanelConstruction[,,] panels = new PanelConstruction[3, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
+            PanelConstruction[,,] panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
 
             // Проходим по каждому зданию, создавая ему панель
             VisualControl parent;
@@ -1448,30 +1447,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (tck.IsInternalConstruction)
                 {
-                    switch (tck.Page)
-                    {
-                        case ConstructionPage.Guild:
-                            parent = pageGuilds.Page;
-                            break;
-                        case ConstructionPage.Economic:
-                            parent = pageEconomicConstructions.Page;
-                            break;
-                        case ConstructionPage.Temple:
-                            parent = null;
-                            //parent = pageTemples.Page;
-                            break;
-                        default:
-                            throw new Exception("Неизвестная страница " + tck.Page.ToString());
-                    }
+                    parent = pagesCapital[tck.Page.Index].Page;
 
-                    Debug.Assert(panels[(int)tck.Page, tck.CoordInPage.Y, tck.CoordInPage.X] == null);
+                    Debug.Assert(panels[tck.Page.Index, tck.CoordInPage.Y, tck.CoordInPage.X] == null);
 
                     if (parent != null)
                     {
                         tck.Panel = new PanelConstruction(parent, 0, 0);
                         tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.CoordInPage.X);
                         tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.CoordInPage.Y);
-                        panels[(int)tck.Page, tck.CoordInPage.Y, tck.CoordInPage.X] = tck.Panel;
+                        panels[tck.Page.Index, tck.CoordInPage.Y, tck.CoordInPage.X] = tck.Panel;
                     }
                 }
             }
@@ -2611,20 +2596,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SelectConstruction(Construction construction, int selectPage = -1)
         {
-            switch (construction.TypeConstruction.Page)
+            if (construction.TypeConstruction.Page != null)
             {
-                case ConstructionPage.Guild:
-                    pageControl.ActivatePage(pageGuilds);
-                    break;
-                case ConstructionPage.Economic:
-                    pageControl.ActivatePage(pageEconomicConstructions);
-                    break;
-                case ConstructionPage.None:
-                    SetPageLocation(construction.Location, false);
-                    pageControl.ActivatePage(pageLocation);
-                    break;
-                default:
-                    throw new Exception($"Необрабатывая страница: {construction.TypeConstruction.Page}.");                         
+                pageControl.ActivatePage(pagesCapital[construction.TypeConstruction.Page.Index]);
+            }
+            else
+            {
+                SetPageLocation(construction.Location, false);
+                pageControl.ActivatePage(pageLocation);
             }
 
             SelectPlayerObject(construction, selectPage);
