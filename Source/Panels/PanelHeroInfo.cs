@@ -242,17 +242,16 @@ namespace Fantasy_Kingdoms_Battle
                     idv.ShiftY = nextTop;
                     panelStatistics.ArrangeControl(idv);
 
-                    if (numberProperty % 2 == 1)
+                    numberProperty++;
+                    if (numberProperty % 4 == 0)
                     {
                         nextLeft = 0;
                         nextTop = idv.NextTop() - 4;
                     }
                     else
                     {
-                        nextLeft = idv.NextLeft();
+                        nextLeft = idv.NextLeft() - 4;
                     }
-
-                    numberProperty++;
                 }
 
             for (; numberProperty < Hero.Properties.Length; numberProperty++)
@@ -274,7 +273,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    VCCreatureProperty idv = new VCCreatureProperty(panelStatistics, 0, 0, 104);
+                    VCCreatureProperty idv = new VCCreatureProperty(panelStatistics, 0, 0, 52);
                     listProperties.Add(idv);
 
                     return idv;
