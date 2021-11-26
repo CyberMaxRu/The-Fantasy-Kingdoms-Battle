@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             if (Descriptor.CreatedEntity != null)
-                return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.Creating.Requirements);
+                return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.GetCreating().Requirements);
 
             return true;
         }
@@ -87,16 +87,16 @@ namespace Fantasy_Kingdoms_Battle
                 if (CheckRequirements())
                 {
                     if (!(this is CellMenuConstructionHireCreature))
-                        Debug.Assert(Descriptor.CreatedEntity.Creating.DaysProcessing > 0);
+                        Debug.Assert(Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0);
 
                     Program.formMain.PlayPushButton();
 
-                    if (InstantExecute() || (Descriptor.CreatedEntity.Creating.DaysProcessing == 0))
+                    if (InstantExecute() || (Descriptor.CreatedEntity.GetCreating().DaysProcessing == 0))
                         Execute();
                     else
                     {
                         Construction.AddEntityToQueueProcessing(this);
-                        DaysLeft = Descriptor.CreatedEntity.Creating.DaysProcessing;
+                        DaysLeft = Descriptor.CreatedEntity.GetCreating().DaysProcessing;
                     }
                 }
             }
@@ -116,7 +116,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionResearch(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Debug.Assert(d.CreatedEntity.Creating.CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
+            Debug.Assert(d.CreatedEntity.GetCreating().CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
 
             Entity = d.CreatedEntity as DescriptorProduct;
         }
@@ -130,14 +130,14 @@ namespace Fantasy_Kingdoms_Battle
             //Program.formMain.formHint.AddStep4Level(level);
             Program.formMain.formHint.AddStep5Description(Entity.SmallEntity.Description);
             //Program.formMain.formHint.AddStep6Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
@@ -174,7 +174,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionService(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Debug.Assert(d.CreatedEntity.Creating.CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
+            Debug.Assert(d.CreatedEntity.GetCreating().CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
 
             Entity = d.CreatedEntity as DescriptorConstructionService;
             Debug.Assert(Entity != null);
@@ -189,14 +189,14 @@ namespace Fantasy_Kingdoms_Battle
             //Program.formMain.formHint.AddStep4Level(level);
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             //Program.formMain.formHint.AddStep6Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
@@ -224,7 +224,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionBuild(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            DescriptorConstruction TypeConstruction = d.CreatedEntity as DescriptorConstruction;
+            TypeConstruction = d.CreatedEntity as DescriptorConstruction;
 
             /*if (TypeConstruction.Category == CategoryConstruction.Temple)
                 ConstructionForBuild = c.Player.GetPlayerConstruction(TypeConstruction);
@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             if (TypeConstruction is null)
-                return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.Creating.Requirements);
+                return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.GetCreating().Requirements);
             else
             {
                 return Construction.Player.CanBuildTypeConstruction(TypeConstruction);
@@ -277,7 +277,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return TypeConstruction.Levels[1].Creating.CostResources;
+            return TypeConstruction.Levels[1].GetCreating().CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "1" : "";
@@ -318,7 +318,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Creating.CostResources;
+            return Descriptor.GetCreating().CostResources;
         }
 
         internal override int GetImageIndex()
@@ -357,13 +357,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             Hero h = Construction.HireHero(Creature, GetCost());
 
-            if (Descriptor.CreatedEntity.Creating.DaysProcessing > 0)
+            if (Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0)
                 Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
         }
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "н" : "";
 
@@ -383,7 +383,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep2Header(Creature.Name, Creature.ImageIndex);
             Program.formMain.formHint.AddStep3Type("Найм");
             Program.formMain.formHint.AddStep5Description(Creature.Description);
-            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -438,7 +438,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "м" : "";
@@ -457,7 +457,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep5Description(ConstructionEvent.Description);
             Program.formMain.formHint.AddStep9Interest(ConstructionEvent.Interest, false);
             Program.formMain.formHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds, false);
-            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -505,7 +505,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "д" : "";
@@ -523,7 +523,7 @@ namespace Fantasy_Kingdoms_Battle
             //Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep9Interest(Entity.ModifyInterest, true);
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds, true);
-            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -554,7 +554,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "у" : "";
@@ -570,7 +570,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep3Type("Улучшение");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             //CreatedEntity.Creating.Program.formMain.formHint.AddStep6Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -600,7 +600,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "т" : "";
@@ -616,7 +616,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep3Type("Турнир");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             //Program.formMain.formHint.AddStep6Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -676,7 +676,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.CreatedEntity.Creating.CostResources;
+            return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override string GetText()

@@ -601,9 +601,9 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(pb.CheckRequirements());
 
             //SpendResource(pb.CostBuyOrUpgrade());
-            if (pb.TypeConstruction.Levels[pb.Level + 1].Creating != null)
+            if (pb.TypeConstruction.Levels[pb.Level + 1].GetCreating() != null)
                 if (!CheatingIgnoreBuilders)
-                    FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Creating.Builders;
+                    FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].GetCreating().Builders;
             AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
 
             Debug.Assert(FreeBuilders >= 0);
@@ -1218,22 +1218,22 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CanBuildTypeConstruction(DescriptorConstruction type)
         {
             // Сначала проверяем наличие ресурсов
-            if (!BaseResources.ResourcesEnough(type.Levels[1].Creating.CostResources))
+            if (!BaseResources.ResourcesEnough(type.Levels[1].GetCreating().CostResources))
                 return false;
 
             // Проверяем наличие очков строительства
-            if (type.Levels[1].Creating.Builders > FreeBuilders)
+            if (type.Levels[1].GetCreating().Builders > FreeBuilders)
                 return false;
 
             // Проверяем требования к зданиям
-            return CheckRequirements(type.Levels[1].Creating.Requirements);
+            return CheckRequirements(type.Levels[1].GetCreating().Requirements);
         }
 
         internal List<TextRequirement> GetTextRequirementsBuildTypeConstruction(DescriptorConstruction type)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            TextRequirements(type.Levels[1].Creating.Requirements, list);
+            TextRequirements(type.Levels[1].GetCreating().Requirements, list);
 
             return list;
         }
@@ -1246,10 +1246,10 @@ namespace Fantasy_Kingdoms_Battle
             //Program.formMain.formHint.AddStep6Income(type.Levels[1].Income);
             Program.formMain.formHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
             Program.formMain.formHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
-            Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].Creating.DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
-            Program.formMain.formHint.AddStep12Gold(BaseResources, type.Levels[1].Creating.CostResources);
-            Program.formMain.formHint.AddStep13Builders(type.Levels[1].Creating.Builders, FreeBuilders >= type.Levels[1].Creating.Builders);
+            Program.formMain.formHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);
+            Program.formMain.formHint.AddStep13Builders(type.Levels[1].GetCreating().Builders, FreeBuilders >= type.Levels[1].GetCreating().Builders);
         }
 
         //

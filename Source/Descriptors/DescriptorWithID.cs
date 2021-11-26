@@ -9,6 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class DescriptorWithID : Descriptor
     {
         private string name;
+        private DescriptorComponentCreating Creating;
 
         public DescriptorWithID(XmlNode n) : base()
         {
@@ -32,9 +33,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ID { get; }// Уникальный код сущности
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование сущности
-        internal DescriptorComponentCreating Creating { get; }
-
+        
         protected virtual string GetName(XmlNode n) => GetStringNotNull(n, "Name");
+        internal virtual DescriptorComponentCreating GetCreating() => Creating;
+
 
         private void CheckData()
         {

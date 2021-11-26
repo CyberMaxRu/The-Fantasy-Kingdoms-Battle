@@ -232,14 +232,17 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для постройки.");
+                        if (Construction.CellMenuBuildOrLevelUp != null)
+                        {
+                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для постройки.");
 
-                        btnBuildOrUpgrade.Visible = true;
-                        btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
-                        btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
-                        btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
-                        btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
-                        btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
+                            btnBuildOrUpgrade.Visible = true;
+                            btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
+                            btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
+                            btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
+                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
+                            btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
+                        }
                     }
                 }
                 else

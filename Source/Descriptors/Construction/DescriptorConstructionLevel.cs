@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (Number > 1)
-                Creating.Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1));
+                GetCreating().Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1));
 
             Debug.Assert(Number >= 1);
             Debug.Assert(Number <= 5);

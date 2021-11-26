@@ -304,6 +304,11 @@ namespace Fantasy_Kingdoms_Battle
             //    CellsMenu.Remove(Levels[1]);
         }
 
+        internal override DescriptorComponentCreating GetCreating()
+        {
+            return Levels != null ? Levels[1].GetCreating() : null;
+        }
+
         internal string GetTextConstructionNotBuilded()
         {
             switch (Category)
