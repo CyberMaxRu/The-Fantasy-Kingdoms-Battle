@@ -132,7 +132,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем дефолтные перки
-            Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
+            Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));            
 
             // Загружаем потребности
             XmlNode nn = n.SelectSingleNode("Needs");
@@ -379,6 +379,14 @@ namespace Fantasy_Kingdoms_Battle
             */
 
             Perks.TuneLinks();
+
+            foreach (DescriptorPerk dp in Perks)
+            {
+                foreach ((DescriptorPropertyCreature, int) pc in dp.ListProperty)
+                {
+                    Assert(Properties.IndexOf(pc.Item1) != -1, $"{ID}: у перка {dp.ID} есть характеристика {pc.Item1.ID}, которая недоступна существу.");
+                }
+            }
         }
     }
 
