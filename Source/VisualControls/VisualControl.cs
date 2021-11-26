@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -72,6 +73,8 @@ namespace Fantasy_Kingdoms_Battle
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
+        internal VisualControl NextControl { get; set; }
+        internal Point ShiftNextControl { get; set; }
 
         internal event EventHandler Click;
         internal event EventHandler RightClick;
@@ -272,6 +275,21 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void ArrangeControls()
         {
+            if (NextControl != null)
+            {
+                Assert(NextControl != this);
+                Assert(NextControl.Parent == Parent);
+                Assert((ShiftNextControl.X > 0) || (ShiftNextControl.Y > 0));
+                Assert(!((ShiftNextControl.X > 0) && (ShiftNextControl.Y > 0)));
+
+                if (ShiftNextControl.X > 0)
+                    NextControl.ShiftX = ShiftX + Width + ShiftNextControl.X;
+                else
+                    NextControl.ShiftY = ShiftY + Height + ShiftNextControl.Y;
+
+                Parent.ArrangeControl(NextControl);
+            }
+
             foreach (VisualControl vc in Controls)
             {
                 /*if (vc.Visible && ((vc.Width == 0) || (vc.Height == 0)))
