@@ -55,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
             Hidden = !location.Ownership;
             DaysBuilded = 0;
 
-            Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
+            Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External) || (TypeConstruction.Category == CategoryConstruction.Temple)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
 
             Debug.Assert(level <= 1);
