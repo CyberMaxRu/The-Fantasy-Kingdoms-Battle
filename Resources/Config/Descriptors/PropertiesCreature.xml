@@ -5,7 +5,6 @@
     <Name>Честь</Name>
     <Description>От чести зависят действия героя. Бесчестный герой ворует, грабит. Герой с высокой честью не замарает себя такими поступками. Так же герой с высокой честью не сбежит с поля боя при отрицательной морали.</Description>
     <ImageIndex>19</ImageIndex>
-    <NameType>Основная характеристика</NameType>
     <MinValue>-1000</MinValue>
     <MaxValue>1000</MaxValue>
   </PropertyCreature>
@@ -14,7 +13,6 @@
     <Name>Энтузиазм</Name>
     <Description>Чем выше энтузиазм, тем более самостоятельно герои действуют.</Description>
     <ImageIndex>18</ImageIndex>
-    <NameType>Основная характеристика</NameType>
     <MinValue>0</MinValue>
     <MaxValue>1000</MaxValue>
   </PropertyCreature>
@@ -23,7 +21,6 @@
     <Name>Мораль</Name>
     <Description>При положительной морали герои действуют более эффективно. При отрицательной морали герой сбежит и только честь поможет избежать этого позора.</Description>
     <ImageIndex>14</ImageIndex>
-    <NameType>Основная характеристика</NameType>
     <MinValue>-1000</MinValue>
     <MaxValue>1000</MaxValue>
   </PropertyCreature>
@@ -32,7 +29,6 @@
     <Name>Удача</Name>
     <Description>Удача в жизни героя позволит нанести удар с двойным уроном, избежать фатального удара или выиграть турнир по покеру. При неудаче же герой наносит половину урона.</Description>
     <ImageIndex>15</ImageIndex>
-    <NameType>Основная характеристика</NameType>
     <MinValue>-1000</MinValue>
     <MaxValue>1000</MaxValue>
   </PropertyCreature>
