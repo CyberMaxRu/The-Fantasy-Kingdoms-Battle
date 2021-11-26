@@ -44,6 +44,14 @@ namespace Fantasy_Kingdoms_Battle
                 AddPerk(dp, this);
             }
 
+            // Создаем свойства
+            Properties = new CreatureProperty[FormMain.Descriptors.PropertiesCreature.Count];
+
+            foreach (DescriptorPropertyCreature pc in TypeCreature.Properties)
+            {
+                Properties[pc.Index] = new CreatureProperty(pc);
+            }
+
             // Создаем потребности
             foreach (DescriptorCreatureNeed dcn in TypeCreature.Needs)
             {
@@ -116,10 +124,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorStateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         // Характеристики
-        internal CreatureProperty Honor { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Honor));// Честь
-        internal CreatureProperty Enthusiasm { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Enthusiasm));// Энтузиазм
-        internal CreatureProperty Morale { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Morale));// Мораль
-        internal CreatureProperty Luck { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Luck));// Удача
+        internal CreatureProperty[] Properties { get; }
 
         // Потребности
         internal List<CreatureNeed> Needs { get; } = new List<CreatureNeed>();
@@ -393,12 +398,16 @@ namespace Fantasy_Kingdoms_Battle
                 Perks.Remove(removedPerk);
         }
 
+        private void CalcProperties()
+        {
+            for (int i = 0; i < Properties.Length; i++)
+                if (Properties[i] != null)
+                    CalcProperty(Properties[i]);
+        }
+
         internal virtual void PerksChanged()
         {
-            CalcProperty(Honor);
-            CalcProperty(Enthusiasm);
-            CalcProperty(Morale);
-            CalcProperty(Luck);
+            CalcProperties();
         }
 
         internal override void MakeMenu(VCMenuCell[,] menu)

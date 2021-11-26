@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -108,6 +109,25 @@ namespace Fantasy_Kingdoms_Battle
                     }
 
                     Inventory.Add((di, GetIntegerNotNull(l, "Quantity")));
+                }
+            }
+
+            // Загружаем свойства
+            XmlNode np = n.SelectSingleNode("Properties");
+            if (np != null)
+            {
+                string nameProperty;
+
+                foreach (XmlNode nnl in np.SelectNodes("Property"))
+                {
+                    nameProperty = nnl.InnerText;
+
+                    foreach (DescriptorPropertyCreature dpc in Properties)
+                    {
+                        Assert(dpc.ID != nameProperty);
+                    }
+
+                    Properties.Add(Descriptors.FindPropertyCreature(nameProperty));
                 }
             }
 
@@ -290,6 +310,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<string> Surnames { get; } = new List<string>();
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
+        internal List<DescriptorPropertyCreature> Properties { get; } = new List<DescriptorPropertyCreature>();// Свойства у существа
         internal ListDescriptorPerks Perks { get; }// Дефолтные перки        
         internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
         internal int MovePoints { get; }// Очков движения по умолчанию

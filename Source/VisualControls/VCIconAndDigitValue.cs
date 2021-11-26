@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class VCIconAndDigitValue : VCLabel
+    internal class VCIconAndDigitValue : VCLabel
     {
         public VCIconAndDigitValue(VisualControl parent, int shiftX, int shiftY, int width, int imageIndex)
             : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 24, "")

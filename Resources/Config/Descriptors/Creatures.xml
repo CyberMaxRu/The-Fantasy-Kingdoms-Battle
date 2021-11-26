@@ -214,6 +214,12 @@
     <Perks>
       <Perk>PerkWarrior</Perk>
     </Perks>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -452,6 +458,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkHunter</Perk>
     </Perks>
@@ -663,6 +675,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkCleric</Perk>
     </Perks>
@@ -854,6 +872,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkMage</Perk>
     </Perks>
@@ -1044,6 +1068,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkElf</Perk>
     </Perks>
@@ -1216,6 +1246,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkDwarf</Perk>
     </Perks>
@@ -1386,6 +1422,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkRogue</Perk>
     </Perks>
@@ -1561,6 +1603,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkDarkPriest</Perk>
     </Perks>
@@ -1700,6 +1748,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkPriest</Perk>
     </Perks>
@@ -1837,6 +1891,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkPaladin</Perk>
     </Perks>
@@ -1973,6 +2033,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkBladeMaster</Perk>
     </Perks>
@@ -2110,6 +2176,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkBeastMaster</Perk>
     </Perks>
@@ -2247,6 +2319,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkMarksman</Perk>
     </Perks>
@@ -2385,6 +2463,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkFireMage</Perk>
     </Perks>
@@ -2478,6 +2562,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkIceMage</Perk>
     </Perks>
@@ -2595,6 +2685,12 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Properties>
+      <Property>Honor</Property>
+      <Property>Enthusiasm</Property>
+      <Property>Morale</Property>
+      <Property>Luck</Property>
+    </Properties>
     <Perks>
       <Perk>PerkDeathKnight</Perk>
     </Perks>

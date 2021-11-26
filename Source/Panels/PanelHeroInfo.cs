@@ -42,10 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconAndDigitValue idvEntertainment;
         private readonly VCIconAndDigitValue idvNeedMoney;
 
-        private readonly VCIconAndDigitValue idvHonor;
-        private readonly VCIconAndDigitValue idvEnthusiasm;
-        private readonly VCIconAndDigitValue idvMorale;
-        private readonly VCIconAndDigitValue idvLuck;
+        private readonly List<VCCreatureProperty> listProperties;
 
         private readonly VCIconAndDigitValue idvInterestAttack;
         private readonly VCIconAndDigitValue idvInterestDefense;
@@ -77,20 +74,10 @@ namespace Fantasy_Kingdoms_Battle
             lblCharacters = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Основные характеристики:");
             lblCharacters.StringFormat.Alignment = StringAlignment.Near;
 
-            idvHonor = new VCIconAndDigitValue(panelStatistics, 0, lblCharacters.NextTop() - 4, 104, FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Honor).ImageIndex);
-            idvHonor.ShowHint += IdvHonor_ShowHint;
-
-            idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Enthusiasm).ImageIndex);
-            idvEnthusiasm.ShowHint += IdvEnthusiasm_ShowHint;
-
-            idvMorale = new VCIconAndDigitValue(panelStatistics, 0, idvHonor.NextTop() - 4, 104, FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Morale).ImageIndex);
-            idvMorale.ShowHint += IdvMorale_ShowHint;
-
-            idvLuck = new VCIconAndDigitValue(panelStatistics, idvMorale.NextLeft(), idvMorale.ShiftY, 104, FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Luck).ImageIndex);
-            idvLuck.ShowHint += IdvLuck_ShowHint;
+            listProperties = new List<VCCreatureProperty>();
 
             // Потребности
-            separator1 = new VCSeparator(panelStatistics, 0, idvMorale.NextTop() - 4);
+            separator1 = new VCSeparator(panelStatistics, 0, lblCharacters.NextTop() + 52);
             lblNeeds = new VCLabel(panelStatistics, 0, separator1.NextTop() - 8, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
             lblNeeds.StringFormat.Alignment = StringAlignment.Near;
 
@@ -194,48 +181,6 @@ namespace Fantasy_Kingdoms_Battle
             ShowHintForNeed(Hero.Entertainment);
         }
 
-        private void ShowHintForProperty(CreatureProperty cp)
-        {
-            Program.formMain.formHint.AddStep2Header(cp.Property.Name);
-            Program.formMain.formHint.AddStep3Type(cp.Property.NameType);
-            Program.formMain.formHint.AddStep4Level($"{cp.Property.Name}: {DecIntegerBy10(cp.Value)}");
-            Program.formMain.formHint.AddStep5Description(cp.Property.Description);
-            if (cp.ListSource.Count > 0)
-            {
-                List<(DescriptorEntity, string)> list = new List<(DescriptorEntity, string)>();
-
-                foreach (Perk p in cp.ListSource)
-                {
-                    Debug.Assert(p.Descriptor.GetValueProperty(cp.Property.NameProperty) != 0);
-
-                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.GetValueProperty(cp.Property.NameProperty), true)));
-                }
-
-                Debug.Assert(list.Count > 0);
-                Program.formMain.formHint.AddStep19Descriptors(list);
-            }
-        }
-
-        private void IdvLuck_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForProperty(Hero.Luck);
-        }
-
-        private void IdvMorale_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForProperty(Hero.Morale);
-        }
-
-        private void IdvHonor_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForProperty(Hero.Honor);
-        }
-
-        private void IdvEnthusiasm_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForProperty(Hero.Enthusiasm);
-        }
-
         private void ShowHintForNeed(CreatureNeed cn)
         {
             Program.formMain.formHint.AddStep2Header(cn.Need.Descriptor.Name);
@@ -284,17 +229,57 @@ namespace Fantasy_Kingdoms_Battle
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
 
-            idvHonor.Text = DecIntegerBy10(Hero.Honor.Value).ToString();
-            idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm.Value).ToString();
-            idvMorale.Text = DecIntegerBy10(Hero.Morale.Value).ToString();
-            idvLuck.Text = DecIntegerBy10(Hero.Luck.Value).ToString();
+            // Свойства
+            int numberProperty = 0;
+            int nextLeft = 0;
+            int nextTop = lblCharacters.NextTop() - 4;
+            for (int i = 0; i < Hero.Properties.Length; i++)
+                if (Hero.Properties[i] != null)
+                {
+                    VCCreatureProperty idv = GetIDV(numberProperty);
+                    idv.SetProperty(Hero.Properties[i]);
+                    idv.ShiftX = nextLeft;
+                    idv.ShiftY = nextTop;
+                    panelStatistics.ArrangeControl(idv);
 
+                    if (numberProperty % 2 == 1)
+                    {
+                        nextLeft = 0;
+                        nextTop = idv.NextTop() - 4;
+                    }
+                    else
+                    {
+                        nextLeft = idv.NextLeft();
+                    }
+
+                    numberProperty++;
+                }
+
+            for (; numberProperty < Hero.Properties.Length; numberProperty++)
+                listProperties[numberProperty].SetProperty(null);
+
+            // Потребности
             idvFood.Text = DecIntegerBy10(Hero.Food.Value).ToString();
             idvRest.Text = DecIntegerBy10(Hero.Rest.Value).ToString();
             idvEntertainment.Text = DecIntegerBy10(Hero.Entertainment.Value).ToString();
             idvNeedMoney.Text = DecIntegerBy10(Hero.Money.Value).ToString();
 
             base.Draw(g);
+
+            VCCreatureProperty GetIDV(int number)
+            {
+                if (listProperties.Count > number)
+                {
+                    return listProperties[number];
+                }
+                else
+                {
+                    VCCreatureProperty idv = new VCCreatureProperty(panelStatistics, 0, 0, 104);
+                    listProperties.Add(idv);
+
+                    return idv;
+                }
+            }
         }
 
         internal void ShowData()
