@@ -66,6 +66,25 @@ namespace Fantasy_Kingdoms_Battle
             return (value > 0 ? (showPlus ? "+" : "") : "-") + val10.ToString() + (modval > 0 ? "." + modval.ToString() : "");
         }
 
+        internal static string FormatDecimal100AsInt(int value, bool showPlus = false)
+        {
+            if (value == 0)
+                return "0";
+
+            return (value > 0 ? (showPlus ? "+" : "") : "-") + (Math.Abs(value) / 100).ToString();
+        }
+
+        internal static string FormatDecimal100(int value, bool showPlus = false)
+        {
+            if (value == 0)
+                return "0";
+
+            int val100 = Math.Abs(value) / 100;
+            int modval = Math.Abs(value) % 100;
+
+            return (value > 0 ? (showPlus ? "+" : "") : "-") + val100.ToString() + (modval > 0 ? "." + modval.ToString() : "");
+        }
+
         internal static string FormatInteger(int value)
         {
             return (value > 0 ? "+" : "") + value.ToString();

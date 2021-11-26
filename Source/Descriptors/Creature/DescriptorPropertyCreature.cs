@@ -22,10 +22,10 @@ namespace Fantasy_Kingdoms_Battle
 
             NameProperty = (NamePropertyCreature)Enum.Parse(typeof(NamePropertyCreature), ID);
 
-            Debug.Assert(MinValue >= -100);
+            Debug.Assert(MinValue >= -1000);
             Debug.Assert(MinValue <= 0);
             Debug.Assert(MaxValue > 0);
-            Debug.Assert(MaxValue <= 100);
+            Debug.Assert(MaxValue <= 1000);
             Debug.Assert(MinValue < MaxValue);
         }
 

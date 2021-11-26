@@ -57,10 +57,10 @@
     <Description></Description>
     <ImageIndex Size="128">63</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -69,10 +69,10 @@
     <Description></Description>
     <ImageIndex Size="128">62</ImageIndex>
     <Properties>
-      <Honor>-20</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>-200</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -81,10 +81,10 @@
     <Description></Description>
     <ImageIndex Size="128">57</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -93,10 +93,10 @@
     <Description></Description>
     <ImageIndex Size="128">53</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -105,10 +105,10 @@
     <Description></Description>
     <ImageIndex Size="128">58</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -117,10 +117,10 @@
     <Description></Description>
     <ImageIndex Size="128">56</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -129,10 +129,10 @@
     <Description></Description>
     <ImageIndex Size="128">55</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -141,10 +141,10 @@
     <Description></Description>
     <ImageIndex Size="128">54</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -153,10 +153,10 @@
     <Description></Description>
     <ImageIndex Size="128">61</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -165,10 +165,10 @@
     <Description></Description>
     <ImageIndex Size="128">60</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -177,10 +177,10 @@
     <Description></Description>
     <ImageIndex Size="128">52</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -189,10 +189,10 @@
     <Description></Description>
     <ImageIndex Size="128">51</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -201,10 +201,10 @@
     <Description></Description>
     <ImageIndex Size="128">59</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -213,10 +213,10 @@
     <Description></Description>
     <ImageIndex Size="128">135</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -225,10 +225,10 @@
     <Description></Description>
     <ImageIndex Size="128">131</ImageIndex>
     <Properties>
-      <Honor>10</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>100</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
   <Perk>
@@ -237,10 +237,10 @@
     <Description></Description>
     <ImageIndex Size="128">133</ImageIndex>
     <Properties>
-      <Honor>-40</Honor>
-      <Enthusiasm>20</Enthusiasm>
-      <Morale>10</Morale>
-      <Luck>3</Luck>
+      <Honor>-400</Honor>
+      <Enthusiasm>200</Enthusiasm>
+      <Morale>100</Morale>
+      <Luck>30</Luck>
     </Properties>
   </Perk>
 </Descriptors>
