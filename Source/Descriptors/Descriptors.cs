@@ -23,8 +23,6 @@ namespace Fantasy_Kingdoms_Battle
             // 
             MaxLevelSkill = 3;
 
-            string nameResourceGold;
-
             //
             XmlDocument xmlDoc;
 
