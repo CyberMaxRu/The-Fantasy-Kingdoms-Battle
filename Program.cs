@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 string stackTrace = exc.StackTrace.Replace(@"F:\Projects\C-Sharp\Fantasy King's Battle\", "");
 
-                StreamWriter sw = File.AppendText(Environment.CurrentDirectory + @"\debug.log");
+                StreamWriter sw = File.AppendText(Environment.CurrentDirectory + @"\Exceptions.log");
                 sw.WriteLine(DateTime.Now.ToString() + ": v" + Application.ProductVersion);
                 sw.WriteLine(exc.Message);
                 sw.WriteLine(stackTrace);
