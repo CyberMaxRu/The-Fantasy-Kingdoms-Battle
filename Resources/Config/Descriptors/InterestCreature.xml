@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <InterestCreature>
+    <ID>InterestAttack</ID>
+    <Name>Атака</Name>
+    <Description></Description>
+    <ImageIndex>15</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestDefense</ID>
+    <Name>Защита</Name>
+    <Description></Description>
+    <ImageIndex>16</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestScout</ID>
+    <Name>Разведка</Name>
+    <Description></Description>
+    <ImageIndex>15</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestVisit</ID>
+    <Name>Посещение</Name>
+    <Description></Description>
+    <ImageIndex>15</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestTheft</ID>
+    <Name>Воровство</Name>
+    <Description></Description>
+    <ImageIndex>15</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestExecuteQuestAttack</ID>
+    <Name>Выполнение задания атаки</Name>
+    <Description></Description>
+    <ImageIndex>16</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestExecuteQuestDefense</ID>
+    <Name>Выполнение задания защиты</Name>
+    <Description></Description>
+    <ImageIndex>16</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestExecuteQuestScout</ID>
+    <Name>Выполнение задания разведки</Name>
+    <Description></Description>
+    <ImageIndex>16</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestKilling</ID>
+    <Name>Сеять смерть</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+  </InterestCreature>
+  <InterestCreature>
+    <ID>InterestDemolition</ID>
+    <Name>Разрушение</Name>
+    <Description></Description>
+    <ImageIndex>35</ImageIndex>
+  </InterestCreature>
+</Descriptors>
