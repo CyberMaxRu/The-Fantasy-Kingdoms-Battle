@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum NamePropertyCreature { Honor = 0, Enthusiasm = 1, Morale = 2, Luck = 3 };
+    internal enum NamePropertyCreature { Honor = 0, Enthusiasm = 1, Morale = 2, Luck = 3, Stealth = 4, Vigilance = 5 };
 
     internal sealed class DescriptorPropertyCreature : DescriptorEntity
     {

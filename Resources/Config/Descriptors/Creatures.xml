@@ -219,6 +219,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Needs>
       <Need>
@@ -463,6 +465,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkHunter</Perk>
@@ -680,6 +684,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkCleric</Perk>
@@ -877,6 +883,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkMage</Perk>
@@ -1073,6 +1081,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkElf</Perk>
@@ -1251,6 +1261,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkDwarf</Perk>
@@ -1427,6 +1439,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkRogue</Perk>
@@ -1608,6 +1622,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkDarkPriest</Perk>
@@ -1753,6 +1769,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkPriest</Perk>
@@ -1896,6 +1914,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkPaladin</Perk>
@@ -2038,6 +2058,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkBladeMaster</Perk>
@@ -2181,6 +2203,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkBeastMaster</Perk>
@@ -2324,6 +2348,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkMarksman</Perk>
@@ -2468,6 +2494,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkFireMage</Perk>
@@ -2567,6 +2595,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkIceMage</Perk>
@@ -2690,6 +2720,8 @@
       <Property>Enthusiasm</Property>
       <Property>Morale</Property>
       <Property>Luck</Property>
+      <Property>Stealth</Property>
+      <Property>Vigilance</Property>
     </Properties>
     <Perks>
       <Perk>PerkDeathKnight</Perk>

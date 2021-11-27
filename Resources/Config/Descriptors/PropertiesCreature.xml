@@ -32,4 +32,20 @@
     <MinValue>-1000</MinValue>
     <MaxValue>1000</MaxValue>
   </PropertyCreature>
+  <PropertyCreature>
+    <ID>Stealth</ID>
+    <Name>Скрытность</Name>
+    <Description>Чем больше скрытность, тем больше вероятность, что существо не заметят.</Description>
+    <ImageIndex>30</ImageIndex>
+    <MinValue>0</MinValue>
+    <MaxValue>1000</MaxValue>
+  </PropertyCreature>
+  <PropertyCreature>
+    <ID>Vigilance</ID>
+    <Name>Зоркость</Name>
+    <Description>Чем больше зоркость, тем больше вероятность, что существо заметит что-то важное.</Description>
+    <ImageIndex>31</ImageIndex>
+    <MinValue>0</MinValue>
+    <MaxValue>1000</MaxValue>
+  </PropertyCreature>
 </Descriptors>
