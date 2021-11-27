@@ -9,8 +9,6 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum NameNeedCreature { Food, Rest, Entertainment, Money };
-
     // Класс потребности 
     internal sealed class DescriptorNeed : DescriptorEntity
     {
@@ -18,12 +16,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             Index = Descriptors.NeedsCreature.Count;
 
-            NameNeed = (NameNeedCreature)Enum.Parse(typeof(NameNeedCreature), ID);
             ReasonOfDeath = (ReasonOfDeath)Enum.Parse(typeof(ReasonOfDeath), GetStringNotNull(n, "ReasonOfDeath"));
         }
 
         internal int Index { get; }
-        internal NameNeedCreature NameNeed { get; }
         internal ReasonOfDeath ReasonOfDeath { get; }// Причина смерти при неудовлетворении потребности
     }
 }

@@ -1248,7 +1248,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach ((DescriptorNeed, int) need in extension.Descriptor.ListNeeds)
             {
-                ChangeNeed(need.Item1.NameNeed, need.Item2);
+                ChangeNeed(need.Item1, need.Item2);
             }
 
             if (CurrentVisit != null)
@@ -1385,9 +1385,9 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentVisit.Interest += cp.Descriptor.ModifyInterest;
         }
 
-        private void ChangeNeed(NameNeedCreature nameNeed, int value)
+        private void ChangeNeed(DescriptorNeed need, int value)
         {
-            SatisfactionNeeds[(int)nameNeed] += value;
+            SatisfactionNeeds[need.Index] += value;
         }
 
         internal bool GoodsExists(DescriptorItem item)

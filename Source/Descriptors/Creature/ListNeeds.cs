@@ -50,8 +50,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach ((string, int) need in listLinks)
                 {
-                    NameNeedCreature nameNeed = (NameNeedCreature)Enum.Parse(typeof(NameNeedCreature), need.Item1);
-                    Add((FormMain.Descriptors.FindNeedCreature(nameNeed), need.Item2));
+                    Add((FormMain.Descriptors.FindNeedCreature(need.Item1), need.Item2));
                 }
 
                 listLinks = null;

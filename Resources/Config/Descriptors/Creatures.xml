@@ -230,6 +230,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -243,6 +249,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -479,6 +491,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -492,6 +510,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -698,6 +722,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -711,6 +741,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -897,6 +933,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -910,6 +952,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -1095,6 +1143,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -1108,6 +1162,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -1275,6 +1335,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -1288,6 +1354,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -1453,6 +1525,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -1466,6 +1544,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -1636,6 +1720,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -1649,6 +1739,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -1783,6 +1879,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -1796,6 +1898,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -1928,6 +2036,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -1941,6 +2055,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -2072,6 +2192,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -2085,6 +2211,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -2217,6 +2349,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -2230,6 +2368,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -2362,6 +2506,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -2375,6 +2525,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -2508,6 +2664,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -2521,6 +2683,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -2609,6 +2777,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -2622,6 +2796,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>
@@ -2734,6 +2914,12 @@
         <IncreasePerDay>10</IncreasePerDay>
       </Need>
       <Need>
+        <ID>Water</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
         <ID>Rest</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
@@ -2747,6 +2933,12 @@
       </Need>
       <Need>
         <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>ReturnToHome</ID>
         <MinValueOnHire>10</MinValueOnHire>
         <MaxValueOnHire>50</MaxValueOnHire>
         <IncreasePerDay>10</IncreasePerDay>

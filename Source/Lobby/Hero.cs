@@ -20,11 +20,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (creature.CategoryCreature == CategoryCreature.Hero)
             {
-                Debug.Assert(Food != null);
-                Debug.Assert(Rest != null);
-                Debug.Assert(Entertainment != null);
-                Debug.Assert(Money != null);
-
                 FullName = (creature.PrefixName.Length > 0 ? creature.PrefixName + " " : "")
                     + GetRandomName(creature.NameFromTypeHero == null ? creature.Names : creature.NameFromTypeHero.Names)
                     + " " + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.Surnames);
@@ -438,14 +433,18 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case ReasonOfDeath.InBattle:
                     return "Смерть в бою";
-                case ReasonOfDeath.Hunger:
+                case ReasonOfDeath.HungerFood:
                     return "Смерть от голода";
+                case ReasonOfDeath.HungerWater:
+                    return "Смерть от жажды";
                 case ReasonOfDeath.Emaciation:
                     return "Смерть от истощения";
                 case ReasonOfDeath.Boredom:
                     return "Суицид от скуки";
                 case ReasonOfDeath.Poverty:
                     return "Суицид от нищеты";
+                case ReasonOfDeath.Homesickness:
+                    return "Суицид от тоски по дому";
                 default:
                     throw new Exception($"Неизвестная причина смерти: {ReasonOfDeath}.");
             }

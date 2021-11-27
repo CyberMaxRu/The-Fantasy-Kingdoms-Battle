@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ReasonOfDeath { None, InBattle, Hunger, Emaciation, Boredom, Poverty };
+    internal enum ReasonOfDeath { None, InBattle, HungerFood, HungerWater, Emaciation, Boredom, Poverty, Homesickness };
 
     // Базовый класс существа
     internal abstract class Creature : BigEntity
@@ -53,28 +53,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Создаем потребности
+            Needs = new CreatureNeed[FormMain.Descriptors.NeedsCreature.Count];
+
             foreach (DescriptorCreatureNeed dcn in TypeCreature.Needs)
             {
-                CreatureNeed cn = new CreatureNeed(this, dcn);
-                Needs.Add(cn);
-
-                switch (dcn.Descriptor.NameNeed)
-                {
-                    case NameNeedCreature.Food:
-                        Food = cn;
-                        break;
-                    case NameNeedCreature.Rest:
-                        Rest = cn;
-                        break;
-                    case NameNeedCreature.Entertainment:
-                        Entertainment = cn;
-                        break;
-                    case NameNeedCreature.Money:
-                        Money = cn;
-                        break;
-                    default:
-                        throw new Exception($"Неизвестная потребность {dcn.Descriptor.NameNeed}.");
-                }
+                Needs[dcn.Descriptor.Index] = new CreatureNeed(this, dcn);
             }
 
             // Берем оружие и доспехи
@@ -123,16 +106,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Item Quiver { get; private set; }// Колчан
         internal DescriptorStateCreature StateCreature { get; private set; }// Состояние (на карте)
 
-        // Характеристики
-        internal CreatureProperty[] Properties { get; }
-
-        // Потребности
-        internal List<CreatureNeed> Needs { get; } = new List<CreatureNeed>();
-        internal CreatureNeed Food { get; }// Еда
-        internal CreatureNeed Rest { get; }// Отдых
-        internal CreatureNeed Entertainment { get; }// Развлечение
-        internal CreatureNeed Money { get; }// Деньги
-
+        // Индивидуальные свойства существа
+        internal CreatureProperty[] Properties { get; }// Характеристики        
+        internal CreatureNeed[] Needs { get; }// Потребности
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти
@@ -444,16 +420,19 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (CreatureNeed cn in Needs)
                 {
-                    cn.Value += cn.IncreasePerDay - cn.Satisfacted;
-                    if (cn.Value < 0)
-                        cn.Value = 0;
-                    else if (cn.Value >= 10)
+                    if (cn != null)
                     {
-                        cn.DaysMax++;
-                        if (cn.DaysMax > 3)
+                        cn.Value += cn.IncreasePerDay - cn.Satisfacted;
+                        if (cn.Value < 0)
+                            cn.Value = 0;
+                        else if (cn.Value >= 10)
                         {
-                            SetIsDead(cn.Need.Descriptor.ReasonOfDeath);
-                            break;
+                            cn.DaysMax++;
+                            if (cn.DaysMax > 3)
+                            {
+                                SetIsDead(cn.Need.Descriptor.ReasonOfDeath);
+                                break;
+                            }
                         }
                     }
                 }

@@ -5,7 +5,14 @@
     <Name>Еда</Name>
     <Description>Еда - основа жизни героя.</Description>
     <ImageIndex>17</ImageIndex>
-    <ReasonOfDeath>Hunger</ReasonOfDeath>
+    <ReasonOfDeath>HungerFood</ReasonOfDeath>
+  </NeedCreature>
+  <NeedCreature>
+    <ID>Water</ID>
+    <Name>Вода</Name>
+    <Description>Вода - основа жизни героя.</Description>
+    <ImageIndex>32</ImageIndex>
+    <ReasonOfDeath>HungerWater</ReasonOfDeath>
   </NeedCreature>
   <NeedCreature>
     <ID>Rest</ID>
@@ -27,5 +34,12 @@
     <Description>На все нужны деньги. Чем их больше, тем меньше о них думаешь.</Description>
     <ImageIndex>20</ImageIndex>
     <ReasonOfDeath>Poverty</ReasonOfDeath>
+  </NeedCreature>
+  <NeedCreature>
+    <ID>ReturnToHome</ID>
+    <Name>Вернуться домой</Name>
+    <Description>Даже самые отъявленные искатели приключений хотят вернуться домой.</Description>
+    <ImageIndex>33</ImageIndex>
+    <ReasonOfDeath>Homesickness</ReasonOfDeath>
   </NeedCreature>
 </Descriptors>

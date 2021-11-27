@@ -140,7 +140,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (XmlNode nnl in nn.SelectNodes("Need"))
                 {
-                    NameNeedCreature idNeed = (NameNeedCreature)Enum.Parse(typeof(NameNeedCreature), GetStringNotNull(nnl, "ID"));
+
+                    string idNeed = GetStringNotNull(nnl, "ID");
                     DescriptorCreatureNeed cn = new DescriptorCreatureNeed(Descriptors.FindNeedCreature(idNeed), nnl);
 
                     foreach (DescriptorCreatureNeed cn2 in Needs)

@@ -32,17 +32,12 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonTargetLair btnTarget;
 
         private readonly VCLabel lblCharacters;
+        private readonly List<VCCreatureProperty> listProperties;
         private readonly VCLabel lblNeeds;
+        private readonly List<VCCreatureNeed> listNeeds;
         private readonly VCLabel lblInterests;
         private readonly VCSeparator separator1;
         private readonly VCSeparator separator2;
-
-        private readonly VCIconAndDigitValue idvFood;
-        private readonly VCIconAndDigitValue idvRest;
-        private readonly VCIconAndDigitValue idvEntertainment;
-        private readonly VCIconAndDigitValue idvNeedMoney;
-
-        private readonly List<VCCreatureProperty> listProperties;
 
         private readonly VCIconAndDigitValue idvInterestAttack;
         private readonly VCIconAndDigitValue idvInterestDefense;
@@ -83,25 +78,11 @@ namespace Fantasy_Kingdoms_Battle
             lblNeeds.StringFormat.Alignment = StringAlignment.Near;
             lblNeeds.SetAsSlaveControl(separator1, 0, true);
 
-            idvFood = new VCIconAndDigitValue(panelStatistics, 0, lblNeeds.NextTop() - 4, 104, FormMain.Descriptors.FindNeedCreature(NameNeedCreature.Food).ImageIndex);
-            idvFood.ShowHint += IdvFood_ShowHint;
-            idvFood.SetAsSlaveControl(lblNeeds, FormMain.Config.GridSizeHalf, true);
-
-            idvRest = new VCIconAndDigitValue(panelStatistics, idvFood.NextLeft(), idvFood.ShiftY, 104, FormMain.Descriptors.FindNeedCreature(NameNeedCreature.Rest).ImageIndex);
-            idvRest.ShowHint += IdvRest_ShowHint;
-            idvRest.SetAsSlaveControl(idvFood, FormMain.Config.GridSize, false);
-
-            idvEntertainment = new VCIconAndDigitValue(panelStatistics, 0, idvFood.NextTop() - 4, 104, FormMain.Descriptors.FindNeedCreature(NameNeedCreature.Entertainment).ImageIndex);
-            idvEntertainment.ShowHint += IdvEntertainment_ShowHint;
-            idvEntertainment.SetAsSlaveControl(idvFood, FormMain.Config.GridSizeHalf, true);
-
-            idvNeedMoney = new VCIconAndDigitValue(panelStatistics, idvEntertainment.NextLeft(), idvEntertainment.ShiftY, 104, FormMain.Descriptors.FindNeedCreature(NameNeedCreature.Money).ImageIndex);
-            idvNeedMoney.ShowHint += IdvNeedsGold_ShowHint;
-            idvNeedMoney.SetAsSlaveControl(idvEntertainment, FormMain.Config.GridSize, false);
+            listNeeds = new List<VCCreatureNeed>();
 
             // Интересы
-            separator2 = new VCSeparator(panelStatistics, 0, idvEntertainment.NextTop() - 4);
-            separator2.SetAsSlaveControl(idvEntertainment, FormMain.Config.GridSizeHalf, true);
+            separator2 = new VCSeparator(panelStatistics, 0, lblNeeds.NextTop() - 4);
+            separator2.SetAsSlaveControl(lblNeeds, FormMain.Config.GridSizeHalf, true);
 
             lblInterests = new VCLabel(panelStatistics, 0, separator2.NextTop() - 8, Program.formMain.fontSmall, Color.White, 16, "Интересы:");
             lblInterests.StringFormat.Alignment = StringAlignment.Near;
@@ -177,35 +158,6 @@ namespace Fantasy_Kingdoms_Battle
         private void IdvInterestAttack_ShowHint(object sender, EventArgs e)
         {
 
-        }
-
-        private void IdvRest_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForNeed(Hero.Rest);
-        }
-
-        private void IdvNeedsGold_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForNeed(Hero.Money);
-        }
-
-        private void IdvEntertainment_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForNeed(Hero.Entertainment);
-        }
-
-        private void ShowHintForNeed(CreatureNeed cn)
-        {
-            Program.formMain.formHint.AddStep2Header(cn.Need.Descriptor.Name);
-            Program.formMain.formHint.AddStep3Type("Потребность");
-            Program.formMain.formHint.AddStep4Level($"{cn.Need.Descriptor.Name}: {DecIntegerBy10(cn.Value)}/{DecIntegerBy10(100)}"
-                + Environment.NewLine + $"Увеличение в день: {DecIntegerBy10(cn.IncreasePerDay)}");
-            Program.formMain.formHint.AddStep5Description(cn.Need.Descriptor.Description);
-        }
-
-        private void IdvFood_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintForNeed(Hero.Food);
         }
 
         private void LvGold_ShowHint(object sender, EventArgs e)
@@ -287,10 +239,49 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Потребности
-            idvFood.Text = DecIntegerBy10(Hero.Food.Value).ToString();
-            idvRest.Text = DecIntegerBy10(Hero.Rest.Value).ToString();
-            idvEntertainment.Text = DecIntegerBy10(Hero.Entertainment.Value).ToString();
-            idvNeedMoney.Text = DecIntegerBy10(Hero.Money.Value).ToString();
+            int numberNeed = 0;
+            nextLeft = 0;
+            nextTop = lblNeeds.NextTop() - 4;
+            masterControl = null;
+
+            for (int i = 0; i < Hero.Needs.Length; i++)
+                if (Hero.Needs[i] != null)
+                {
+                    VCCreatureNeed idv = GetVCNeed(numberNeed);
+                    idv.SetNeed(Hero.Needs[i]);
+                    idv.ShiftX = nextLeft;
+                    idv.ShiftY = nextTop;
+
+                    if (numberNeed % 4 == 3)
+                    {
+                        nextLeft = 0;
+                        nextTop = idv.NextTop() - 4;
+                    }
+                    else
+                    {
+                        nextLeft = idv.NextLeft() - 4;
+                    }
+
+                    if (numberNeed % 4 == 0)
+                    {
+                        if (masterControl != null)
+                            masterControl.SlaveControls.Remove(separator2);
+                        separator2.SetAsSlaveControl(idv, FormMain.Config.GridSizeHalf, true);
+                        masterControl = idv;
+                    }
+
+                    panelStatistics.ArrangeControl(idv);
+
+                    numberNeed++;
+                }
+
+            Assert(numberNeed >= 1);
+
+            for (; numberNeed < Hero.Needs.Length; numberNeed++)
+            {
+                listNeeds[numberNeed].SetNeed(null);
+                listNeeds[numberNeed].SlaveControls.Clear();
+            }
 
             base.Draw(g);
 
@@ -305,6 +296,22 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     VCCreatureProperty idv = new VCCreatureProperty(panelStatistics, 0, 0, 51);
                     listProperties.Add(idv);
+
+                    return idv;
+                }
+            }
+
+            VCCreatureNeed GetVCNeed(int number)
+            {
+                if (listNeeds.Count > number)
+                {
+                    listNeeds[number].SlaveControls?.Clear();
+                    return listNeeds[number];
+                }
+                else
+                {
+                    VCCreatureNeed idv = new VCCreatureNeed(panelStatistics, 0, 0, 51);
+                    listNeeds.Add(idv);
 
                     return idv;
                 }

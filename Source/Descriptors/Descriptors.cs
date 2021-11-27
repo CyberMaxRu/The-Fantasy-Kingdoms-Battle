@@ -535,15 +535,15 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Свойство существа " + ID + " не найдено.");
         }
 
-        internal DescriptorNeed FindNeedCreature(NameNeedCreature nnc)
+        internal DescriptorNeed FindNeedCreature(string ID)
         {
             foreach (DescriptorNeed nc in NeedsCreature)
             {
-                if (nc.NameNeed == nnc)
+                if (nc.ID == ID)
                     return nc;
             }
 
-            throw new Exception($"Потребность существа {nnc} не найдена.");
+            throw new Exception($"Потребность существа {ID} не найдена.");
         }
 
         internal DescriptorTypeCreature FindTypeCreature(string ID)
