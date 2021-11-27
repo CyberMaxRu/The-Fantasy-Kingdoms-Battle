@@ -90,6 +90,7 @@
     <TradePost>TradePost</TradePost>
     <CityGraveyard>CityGraveyard</CityGraveyard>
     <Gold>Gold</Gold>
+    <ReasonOfDeathInBattle>InBattle</ReasonOfDeathInBattle>
   </Links>
   <Warehouse>
     <Width>10</Width>

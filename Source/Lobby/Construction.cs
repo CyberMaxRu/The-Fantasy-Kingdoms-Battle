@@ -1038,7 +1038,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(m.BattleParticipant == this);
             Debug.Assert(Monsters.IndexOf(m) != -1);
 
-            m.SetIsDead(ReasonOfDeath.InBattle);
+            m.SetIsDead(FormMain.Descriptors.ReasonOfDeathInBattle);
             CombatHeroes.Remove(m);
             Monsters.Remove(m);
 

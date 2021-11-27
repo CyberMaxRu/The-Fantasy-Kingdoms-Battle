@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <ReasonOfDeath>
+    <ID>InBattle</ID>
+    <Name>Смерть в бою</Name>
+  </ReasonOfDeath>
+  <ReasonOfDeath>
+    <ID>HungerFood</ID>
+    <Name>Смерть от голода</Name>
+  </ReasonOfDeath>
+  <ReasonOfDeath>
+    <ID>HungerWater</ID>
+    <Name>Смерть от жажды</Name>
+  </ReasonOfDeath>
+  <ReasonOfDeath>
+    <ID>Emaciation</ID>
+    <Name>Смерть от истощения</Name>
+  </ReasonOfDeath>
+  <ReasonOfDeath>
+    <ID>Boredom</ID>
+    <Name>Суицид от скуки</Name>
+  </ReasonOfDeath>
+  <ReasonOfDeath>
+    <ID>Poverty</ID>
+    <Name>Суицид от нищеты</Name>
+  </ReasonOfDeath>
+  <ReasonOfDeath>
+    <ID>Homesickness</ID>
+    <Name>Суицид от тоски по дому</Name>
+  </ReasonOfDeath>
+</Descriptors>

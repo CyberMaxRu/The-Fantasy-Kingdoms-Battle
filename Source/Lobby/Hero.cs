@@ -295,7 +295,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep1Name(GetNameHero());
                 Program.formMain.formHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
                 Program.formMain.formHint.AddStep4Level($"Уровень {Level}");
-                Program.formMain.formHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}{NameReasonOfDeath()}");
+                Program.formMain.formHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}{ReasonOfDeath.Name}");
             }
         }
 
@@ -412,7 +412,7 @@ namespace Fantasy_Kingdoms_Battle
                 SortAbilities();
         }
 
-        internal override void SetIsDead(ReasonOfDeath reason)
+        internal override void SetIsDead(DescriptorReasonOfDeath reason)
         {
             base.SetIsDead(reason);
 
@@ -423,31 +423,6 @@ namespace Fantasy_Kingdoms_Battle
             NeedMoveToAbode = Player.Graveyard;
 
             Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.HeroIsDead);
-        }
-
-        internal string NameReasonOfDeath()
-        {
-            Debug.Assert(!IsLive);
-
-            switch (ReasonOfDeath)
-            {
-                case ReasonOfDeath.InBattle:
-                    return "Смерть в бою";
-                case ReasonOfDeath.HungerFood:
-                    return "Смерть от голода";
-                case ReasonOfDeath.HungerWater:
-                    return "Смерть от жажды";
-                case ReasonOfDeath.Emaciation:
-                    return "Смерть от истощения";
-                case ReasonOfDeath.Boredom:
-                    return "Суицид от скуки";
-                case ReasonOfDeath.Poverty:
-                    return "Суицид от нищеты";
-                case ReasonOfDeath.Homesickness:
-                    return "Суицид от тоски по дому";
-                default:
-                    throw new Exception($"Неизвестная причина смерти: {ReasonOfDeath}.");
-            }
         }
     }
 }

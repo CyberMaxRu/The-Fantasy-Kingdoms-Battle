@@ -21,12 +21,12 @@ namespace Fantasy_Kingdoms_Battle
             IncreasePerDay = GetIntegerNotNull(n, "IncreasePerDay");
 
             Debug.Assert(MinValueOnHire >= 0);
-            Debug.Assert(MinValueOnHire <= 100);
+            Debug.Assert(MinValueOnHire <= 1000);
             Debug.Assert(MaxValueOnHire >= 0);
-            Debug.Assert(MaxValueOnHire <= 100);
+            Debug.Assert(MaxValueOnHire <= 1000);
             Debug.Assert(MinValueOnHire < MaxValueOnHire);
             Debug.Assert(IncreasePerDay > 0);
-            Debug.Assert(IncreasePerDay < 100);
+            Debug.Assert(IncreasePerDay < 1000);
         }
 
         internal DescriptorNeed Descriptor { get; }

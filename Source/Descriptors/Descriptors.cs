@@ -131,6 +131,14 @@ namespace Fantasy_Kingdoms_Battle
                 Items.Add(new DescriptorItem(n));
             }
 
+            // Загрузка конфигурации причин смерти существ
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ReasonsOfDeath.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ReasonOfDeath"))
+            {
+                ReasonsOfDeath.Add(new DescriptorReasonOfDeath(n));
+            }
+
             // Загрузка конфигурации ядов
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Poisons.xml");
 
@@ -293,6 +301,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstruction c in Constructions)
                 c.AfterTuneLinks();
 
+            //
+            ReasonOfDeathInBattle = FindReasonOfDeath(FormMain.Config.IDReasonOfDeathInBattle);
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -325,6 +336,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
 
         // Существа
+        internal List<DescriptorReasonOfDeath> ReasonsOfDeath { get; } = new List<DescriptorReasonOfDeath>();
         internal List<DescriptorPoison> Poisons { get; } = new List<DescriptorPoison>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();
@@ -348,6 +360,8 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         private List<(string, Bitmap)> Textures = new List<(string, Bitmap)>();
+
+        internal DescriptorReasonOfDeath ReasonOfDeathInBattle { get; }
 
         //
         internal CapitalPage FindCapitalPage(string ID)
@@ -385,6 +399,17 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
+        internal DescriptorReasonOfDeath FindReasonOfDeath(string ID)
+        {
+            foreach (DescriptorReasonOfDeath r in ReasonsOfDeath)
+            {
+                if (r.ID == ID)
+                    return r;
+            }
+
+            throw new Exception("Причина смерти " + ID + " не найдена.");
+        }
+
         internal DescriptorResource FindResource(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorResource r in Resources)
@@ -398,7 +423,6 @@ namespace Fantasy_Kingdoms_Battle
 
             return null;
         }
-
 
         internal DescriptorItem FindItem(string ID, bool mustBeExists = true)
         {

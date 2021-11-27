@@ -9,8 +9,6 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ReasonOfDeath { None, InBattle, HungerFood, HungerWater, Emaciation, Boredom, Poverty, Homesickness };
-
     // Базовый класс существа
     internal abstract class Creature : BigEntity
     {
@@ -112,7 +110,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти
-        internal ReasonOfDeath ReasonOfDeath { get; private set; } = ReasonOfDeath.None;// Причина смерти
+        internal DescriptorReasonOfDeath ReasonOfDeath { get; private set; }// Причина смерти
 
         // Повышение уровня
         private void LevelUp()
@@ -188,11 +186,11 @@ namespace Fantasy_Kingdoms_Battle
             return Quiver is null ? 0 : Quiver.Descriptor.QuantityShots;
         }
 
-        internal virtual void SetIsDead(ReasonOfDeath reason)
+        internal virtual void SetIsDead(DescriptorReasonOfDeath reason)
         {
             Debug.Assert(IsLive);
             Debug.Assert(DayOfDeath == 0);
-            Debug.Assert(ReasonOfDeath == ReasonOfDeath.None);
+            Debug.Assert(ReasonOfDeath is null);
 
             IsLive = false;
             DayOfDeath = BattleParticipant.Lobby.Turn;

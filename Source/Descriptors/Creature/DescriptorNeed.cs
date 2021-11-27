@@ -16,10 +16,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             Index = Descriptors.NeedsCreature.Count;
 
-            ReasonOfDeath = (ReasonOfDeath)Enum.Parse(typeof(ReasonOfDeath), GetStringNotNull(n, "ReasonOfDeath"));
+            ReasonOfDeath = Descriptors.FindReasonOfDeath(GetStringNotNull(n, "ReasonOfDeath"));
         }
 
         internal int Index { get; }
-        internal ReasonOfDeath ReasonOfDeath { get; }// Причина смерти при неудовлетворении потребности
+        internal DescriptorReasonOfDeath ReasonOfDeath { get; }// Причина смерти при неудовлетворении потребности
     }
 }

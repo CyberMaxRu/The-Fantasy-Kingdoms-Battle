@@ -155,6 +155,8 @@ namespace Fantasy_Kingdoms_Battle
             IDCityGraveyard = xmlDoc.SelectSingleNode("Game/Links/CityGraveyard").InnerText;
             Debug.Assert(IDCityGraveyard.Length > 0);
             NameResourceGold = xmlDoc.SelectSingleNode("Game/Links/Gold").InnerText;
+            IDReasonOfDeathInBattle = xmlDoc.SelectSingleNode("Game/Links/ReasonOfDeathInBattle").InnerText;
+            Debug.Assert(IDReasonOfDeathInBattle.Length > 0);
 
             WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
             Debug.Assert(WarehouseWidth >= 5);
@@ -315,6 +317,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string IDHolyPlace { get; private set; }// ID Святой земли
         internal string IDTradePost { get; private set; }// ID торгового поста
         internal string IDCityGraveyard { get; private set; }// ID торгового поста
+        internal string IDReasonOfDeathInBattle { get; private set; }// ID причины смерти - в бою
         internal string NameResourceGold { get; private set; }// ID ресурса - золото
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
