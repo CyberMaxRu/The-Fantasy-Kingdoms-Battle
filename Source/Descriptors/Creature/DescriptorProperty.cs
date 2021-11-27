@@ -16,21 +16,11 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorProperty(XmlNode n) : base(n)
         {
             Index = Descriptors.PropertiesCreature.Count;
-            MinValue = GetIntegerNotNull(n, "MinValue");
-            MaxValue = GetIntegerNotNull(n, "MaxValue");
 
             NameProperty = (NamePropertyCreature)Enum.Parse(typeof(NamePropertyCreature), ID);
-
-            Debug.Assert(MinValue >= -1000);
-            Debug.Assert(MinValue <= 0);
-            Debug.Assert(MaxValue > 0);
-            Debug.Assert(MaxValue <= 1000);
-            Debug.Assert(MinValue < MaxValue);
         }
 
         internal int Index { get; }
         internal NamePropertyCreature NameProperty { get; }
-        internal int MinValue { get; }
-        internal int MaxValue { get; }
     }
 }

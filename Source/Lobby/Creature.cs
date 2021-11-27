@@ -414,10 +414,10 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (cp.Value > cp.Property.MaxValue)
-                cp.Value = cp.Property.MaxValue;
-            else if (cp.Value < cp.Property.MinValue)
-                cp.Value = cp.Property.MinValue;
+            if (cp.Value > FormMain.Config.MaxValueProperty)
+                cp.Value = FormMain.Config.MaxValueProperty;
+            else if (cp.Value < -FormMain.Config.MaxValueProperty)
+                cp.Value = -FormMain.Config.MaxValueProperty;
         }
 
         internal virtual void PrepareTurn()

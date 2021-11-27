@@ -76,6 +76,9 @@ namespace Fantasy_Kingdoms_Battle
             MinRowsEntities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MinRowsEntityInPlate").InnerText);
             Debug.Assert(MinRowsEntities >= 2);
             Debug.Assert(MinRowsEntities <= 6);
+            MaxValueProperty = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MaxValueProperty").InnerText);
+            Debug.Assert(MaxValueProperty >= 1_000);
+            Debug.Assert(MaxValueProperty <= 10_000);
 
             ConstructionMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxLines").InnerText);
             Debug.Assert(ConstructionMaxLines >= 2);
@@ -310,6 +313,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlateWidth { get; private set; }// Количество ячеек на панели справа по горизонтали
         internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
+        internal int MaxValueProperty { get; private set; }// 
+
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
         internal string IDConstructionCastle { get; private set; }// ID Замка

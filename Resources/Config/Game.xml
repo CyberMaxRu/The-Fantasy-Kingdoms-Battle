@@ -15,6 +15,7 @@
     <QuantityInternalAvatars>16</QuantityInternalAvatars>
     <MaxQuantityExternalAvatars>8</MaxQuantityExternalAvatars>
     <MaxElementInStartBonus>4</MaxElementInStartBonus>
+    <MaxValueProperty>1000</MaxValueProperty>
   </Interface>
   <Colors>
     <Common>
