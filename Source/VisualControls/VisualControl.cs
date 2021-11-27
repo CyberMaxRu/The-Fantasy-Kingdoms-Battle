@@ -73,8 +73,10 @@ namespace Fantasy_Kingdoms_Battle
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
-        internal VisualControl NextControl { get; set; }
-        internal Point ShiftNextControl { get; set; }
+        internal List<VisualControl> SlaveControls { get; private set; }
+        internal int ShiftAtMasterControl { get; set; }
+        internal bool ShiftFromMasterControlToDown { get; set; } = true;
+
 
         internal event EventHandler Click;
         internal event EventHandler RightClick;
@@ -275,21 +277,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void ArrangeControls()
         {
-            if (NextControl != null)
-            {
-                Assert(NextControl != this);
-                Assert(NextControl.Parent == Parent);
-                Assert((ShiftNextControl.X > 0) || (ShiftNextControl.Y > 0));
-                Assert(!((ShiftNextControl.X > 0) && (ShiftNextControl.Y > 0)));
-
-                if (ShiftNextControl.X > 0)
-                    NextControl.ShiftX = ShiftX + Width + ShiftNextControl.X;
-                else
-                    NextControl.ShiftY = ShiftY + Height + ShiftNextControl.Y;
-
-                Parent.ArrangeControl(NextControl);
-            }
-
             foreach (VisualControl vc in Controls)
             {
                 /*if (vc.Visible && ((vc.Width == 0) || (vc.Height == 0)))
@@ -378,6 +365,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (checkInList)
             {
+                Assert(vc.Parent == this);
                 Debug.Assert(Controls.IndexOf(vc) != -1);
             }
 
@@ -390,6 +378,29 @@ namespace Fantasy_Kingdoms_Battle
 
             //Debug.Assert(Left >= 0);
             //Debug.Assert(Top >= 0);
+
+            if (vc.SlaveControls != null)
+            {
+                foreach (VisualControl svc in vc.SlaveControls)
+                {
+                    Assert(svc != this);
+                    Assert(svc != vc);
+                    Assert(svc.Parent == vc.Parent);
+
+                    if (svc.ShiftFromMasterControlToDown)
+                    {
+                        svc.ShiftX = vc.ShiftX;
+                        svc.ShiftY = vc.ShiftY + vc.Height + svc.ShiftAtMasterControl;
+                    }
+                    else
+                    {
+                        svc.ShiftX = vc.ShiftX + vc.Width + svc.ShiftAtMasterControl;
+                        svc.ShiftY = vc.ShiftY;
+                    }
+
+                    ArrangeControl(svc);
+                }
+            }
 
             vc.ArrangeControls();
         }
@@ -483,6 +494,22 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (VisualControl vc in Controls)
                 vc.VisualLayer = VisualLayer;
+        }
+
+        internal void SetAsSlaveControl(VisualControl vcMaster, int shift, bool toDown)
+        {
+            if (vcMaster.SlaveControls is null)
+            {
+                vcMaster.SlaveControls = new List<VisualControl>();
+            }
+            else
+            {
+                Assert(vcMaster.SlaveControls.IndexOf(this) == -1);
+            }
+                
+            vcMaster.SlaveControls.Add(this);
+            ShiftAtMasterControl = shift;
+            ShiftFromMasterControlToDown = toDown;
         }
     }
 }
