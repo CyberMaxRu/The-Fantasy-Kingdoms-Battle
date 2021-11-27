@@ -225,39 +225,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -486,39 +486,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -717,39 +717,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -928,39 +928,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -1138,39 +1138,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -1330,39 +1330,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -1520,39 +1520,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -1715,39 +1715,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -1874,39 +1874,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -2031,39 +2031,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -2187,39 +2187,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -2344,39 +2344,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -2501,39 +2501,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -2659,39 +2659,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -2772,39 +2772,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
@@ -2909,39 +2909,39 @@
     <Needs>
       <Need>
         <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Water</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
       <Need>
         <ID>ReturnToHome</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
       </Need>
     </Needs>
     <CoefficientFlags>
