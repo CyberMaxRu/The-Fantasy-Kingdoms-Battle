@@ -1,30 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class VCCreatureNeed : VCIconAndDigitValue
+    internal class VCCreatureNeed : VCCreaturePropertyMain
     {
         private CreatureNeed need;
 
         public VCCreatureNeed(VisualControl parent, int shiftX, int shiftY, int width)
-            : base(parent, shiftX, shiftY, width, -1)
+            : base(parent, shiftX, shiftY, width)
         {
 
         }
 
-        internal void SetNeed(CreatureNeed need)
+        internal override void SetProperty(CreaturePropertyMain property)
         {
-            this.need = need;
-            Visible = this.need != null;
+            base.SetProperty(property); 
+
+            need = property as CreatureNeed;
         }
 
         internal override void Draw(Graphics g)
         {
             ImageIndex = need.Need.Descriptor.ImageIndex;
-            Text = FormatDecimal100AsInt(need.Value);
 
             base.Draw(g);
         }
@@ -33,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header(need.Need.Descriptor.Name);
             Program.formMain.formHint.AddStep3Type("Потребность");
-            Program.formMain.formHint.AddStep4Level($"{need.Need.Descriptor.Name}: {FormatDecimal100(need.Value)}/{FormatDecimal100(100)}"
+            Program.formMain.formHint.AddStep4Level($"{need.Need.Descriptor.Name}: {FormatDecimal100(need.Value)}/{FormatDecimal100(1000)}"
                 + Environment.NewLine + $"Увеличение в день: {FormatDecimal100(need.IncreasePerDay)}");
             Program.formMain.formHint.AddStep5Description(need.Need.Descriptor.Description);
 

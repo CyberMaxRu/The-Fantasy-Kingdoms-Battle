@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 string idProperty;
                 int valueProperty;
-                DescriptorPropertyCreature dpc;
+                DescriptorProperty dpc;
                 for (int i = 0; i < np.ChildNodes.Count; i++)
                 {
                     idProperty = np.ChildNodes[i].Name;
@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
                     dpc = Descriptors.FindPropertyCreature(idProperty);
 
                     // Проверяем, что нет повтора свойства
-                    foreach ((DescriptorPropertyCreature, int) dpc2 in ListProperty)
+                    foreach ((DescriptorProperty, int) dpc2 in ListProperty)
                     {
                         Debug.Assert(dpc2.Item1.ID != idProperty);
                     }
@@ -48,11 +48,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<(DescriptorPropertyCreature, int)> ListProperty = new List<(DescriptorPropertyCreature, int)>();
+        internal List<(DescriptorProperty, int)> ListProperty = new List<(DescriptorProperty, int)>();
 
         internal int GetValueProperty(NamePropertyCreature name)
         {
-            foreach ((DescriptorPropertyCreature, int) d in ListProperty)
+            foreach ((DescriptorProperty, int) d in ListProperty)
             {
                 if (d.Item1.NameProperty == name)
                     return d.Item2;

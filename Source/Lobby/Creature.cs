@@ -45,9 +45,9 @@ namespace Fantasy_Kingdoms_Battle
             // Создаем свойства
             Properties = new CreatureProperty[FormMain.Descriptors.PropertiesCreature.Count];
 
-            foreach (DescriptorPropertyCreature pc in TypeCreature.Properties)
+            foreach (DescriptorProperty pc in TypeCreature.Properties)
             {
-                Properties[pc.Index] = new CreatureProperty(pc);
+                Properties[pc.Index] = new CreatureProperty(this, pc);
             }
 
             // Создаем потребности
@@ -59,11 +59,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Создаем интересы
-            interests = new CreatureInterest[FormMain.Descriptors.InterestCreature.Count];
+            Interests = new CreatureInterest[FormMain.Descriptors.InterestCreature.Count];
 
             foreach (DescriptorCreatureInterest dci in TypeCreature.Interests)
             {
-                interests[dci.Descriptor.Index] = new CreatureInterest(this, dci);
+                Interests[dci.Descriptor.Index] = new CreatureInterest(this, dci);
             }
 
             // Берем оружие и доспехи
@@ -115,7 +115,7 @@ namespace Fantasy_Kingdoms_Battle
         // Индивидуальные свойства существа
         internal CreatureProperty[] Properties { get; }// Характеристики        
         internal CreatureNeed[] Needs { get; }// Потребности
-        internal CreatureInterest[] interests { get; }// Интересы
+        internal CreatureInterest[] Interests { get; }// Интересы
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти

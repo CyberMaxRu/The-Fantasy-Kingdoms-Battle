@@ -160,7 +160,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/PropertyCreature"))
             {
-                PropertiesCreature.Add(new DescriptorPropertyCreature(n));
+                PropertiesCreature.Add(new DescriptorProperty(n));
             }
 
             // Загрузка конфигурации потребностей существ
@@ -271,7 +271,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorGroupItems i in GroupItems)
                 i.TuneLinks();
 
-            foreach (DescriptorPropertyCreature pc in PropertiesCreature)
+            foreach (DescriptorProperty pc in PropertiesCreature)
                 pc.TuneLinks();
 
             foreach (DescriptorNeed pc in NeedsCreature)
@@ -345,7 +345,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<DescriptorStateCreature> StatesCreature { get; } = new List<DescriptorStateCreature>();
-        internal List<DescriptorPropertyCreature> PropertiesCreature { get; } = new List<DescriptorPropertyCreature>();
+        internal List<DescriptorProperty> PropertiesCreature { get; } = new List<DescriptorProperty>();
         internal List<DescriptorNeed> NeedsCreature { get; } = new List<DescriptorNeed>();
         internal List<DescriptorInterest> InterestCreature { get; } = new List<DescriptorInterest>();
         internal List<DescriptorTypeCreature> TypeCreatures { get; } = new List<DescriptorTypeCreature>();
@@ -543,14 +543,14 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Состояние существа " + ID + " не найдено.");
         }
 
-        internal DescriptorPropertyCreature FindPropertyCreature(NamePropertyCreature npc)
+        internal DescriptorProperty FindPropertyCreature(NamePropertyCreature npc)
         {
             return FindPropertyCreature(npc.ToString());
         }
 
-        internal DescriptorPropertyCreature FindPropertyCreature(string ID)
+        internal DescriptorProperty FindPropertyCreature(string ID)
         {
-            foreach (DescriptorPropertyCreature pc in PropertiesCreature)
+            foreach (DescriptorProperty pc in PropertiesCreature)
             {
                 if (pc.ID == ID)
                     return pc;

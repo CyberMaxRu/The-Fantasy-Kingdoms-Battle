@@ -122,7 +122,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     nameProperty = nnl.InnerText;
 
-                    foreach (DescriptorPropertyCreature dpc in Properties)
+                    foreach (DescriptorProperty dpc in Properties)
                     {
                         Assert(dpc.ID != nameProperty);
                     }
@@ -331,7 +331,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
         internal ListDescriptorPerks Perks { get; }// Дефолтные перки        
-        internal List<DescriptorPropertyCreature> Properties { get; } = new List<DescriptorPropertyCreature>();// Свойства у существа
+        internal List<DescriptorProperty> Properties { get; } = new List<DescriptorProperty>();// Свойства у существа
         internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
         internal List<DescriptorCreatureInterest> Interests { get; } = new List<DescriptorCreatureInterest>();// Интересы
         internal int MovePoints { get; }// Очков движения по умолчанию
@@ -403,7 +403,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (DescriptorPerk dp in Perks)
             {
-                foreach ((DescriptorPropertyCreature, int) pc in dp.ListProperty)
+                foreach ((DescriptorProperty, int) pc in dp.ListProperty)
                 {
                     Assert(Properties.IndexOf(pc.Item1) != -1, $"{ID}: у перка {dp.ID} есть характеристика {pc.Item1.ID}, которая недоступна существу.");
                 }

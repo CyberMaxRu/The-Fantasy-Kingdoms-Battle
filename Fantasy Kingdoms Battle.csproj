@@ -77,7 +77,7 @@
     <Compile Include="Source\Descriptors\Construction\DescriptorTypeConstruction.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorNeed.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorPoison.cs" />
-    <Compile Include="Source\Descriptors\Creature\DescriptorPropertyCreature.cs" />
+    <Compile Include="Source\Descriptors\Creature\DescriptorProperty.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorTypeAbility.cs" />
     <Compile Include="Source\Descriptors\Creature\ListDescriptorPerks.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreatureNeed.cs" />
@@ -115,6 +115,7 @@
     <Compile Include="Source\Lobby\CreatureInterest.cs" />
     <Compile Include="Source\Lobby\CreatureNeed.cs" />
     <Compile Include="Source\Lobby\CreatureProperty.cs" />
+    <Compile Include="Source\Lobby\CreaturePropertyMain.cs" />
     <Compile Include="Source\Lobby\CreatureVisitEvent.cs" />
     <Compile Include="Source\Lobby\EntityForCreature.cs" />
     <Compile Include="Source\Lobby\EntityForConstruction.cs" />
@@ -135,8 +136,10 @@
     <Compile Include="Source\Lobby\CreatureVisit.cs" />
     <Compile Include="Source\Panels\PanelLocationInfo.cs" />
     <Compile Include="Source\VisualControls\VCCellSimple.cs" />
+    <Compile Include="Source\VisualControls\VCCreatureInterest.cs" />
     <Compile Include="Source\VisualControls\VCCreatureNeed.cs" />
     <Compile Include="Source\VisualControls\VCCreatureProperty.cs" />
+    <Compile Include="Source\VisualControls\VCCreaturePropertyMain.cs" />
     <Compile Include="Source\VisualControls\VCCustomNotice.cs" />
     <Compile Include="Source\VisualControls\VCIconAndDigitValue.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />

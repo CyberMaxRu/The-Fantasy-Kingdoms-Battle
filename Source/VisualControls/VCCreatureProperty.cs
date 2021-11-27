@@ -8,26 +8,26 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class VCCreatureProperty : VCIconAndDigitValue
+    internal sealed class VCCreatureProperty : VCCreaturePropertyMain
     {
         private CreatureProperty property;
 
         public VCCreatureProperty(VisualControl parent, int shiftX, int shiftY, int width)
-            : base(parent, shiftX, shiftY, width, -1)
+            : base(parent, shiftX, shiftY, width)
         {
 
         }
 
-        internal void SetProperty(CreatureProperty property)
+        internal override void SetProperty(CreaturePropertyMain property)
         {
-            this.property = property;
-            Visible = this.property != null;
+            base.SetProperty(property);
+
+            this.property = property as CreatureProperty;
         }
 
         internal override void Draw(Graphics g)
         {
             ImageIndex = property.Property.ImageIndex;
-            Text = FormatDecimal100AsInt(property.Value);
 
             base.Draw(g);
         }

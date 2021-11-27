@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс свойства существа
-    internal sealed class CreatureProperty
+    internal sealed class CreatureProperty : CreaturePropertyMain
     {
-        public CreatureProperty(DescriptorPropertyCreature pc)
+        public CreatureProperty(Creature creature, DescriptorProperty pc) : base(creature)
         {
             Property = pc;
         }
 
-        internal DescriptorPropertyCreature Property { get; }
-        internal int Value { get; set; }
+        internal DescriptorProperty Property { get; }
         internal List<Perk> ListSource { get; } = new List<Perk>();
     }
 }

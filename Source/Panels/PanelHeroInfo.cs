@@ -36,11 +36,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblNeeds;
         private readonly List<VCCreatureNeed> listNeeds;
         private readonly VCLabel lblInterests;
-
-        private readonly VCIconAndDigitValue idvInterestAttack;
-        private readonly VCIconAndDigitValue idvInterestDefense;
-        private readonly VCIconAndDigitValue idvInterestExplore;
-        private readonly VCIconAndDigitValue idvInterestOther;
+        private readonly List<VCCreatureInterest> listInterests;
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -68,32 +64,24 @@ namespace Fantasy_Kingdoms_Battle
             lblProperties.StringFormat.Alignment = StringAlignment.Near;
 
             listProperties = new List<VCCreatureProperty>();
+            for (int i = 0; i < FormMain.Descriptors.PropertiesCreature.Count; i++)
+                listProperties.Add(new VCCreatureProperty(panelStatistics, 0, 0, 51));
 
             // Потребности
             lblNeeds = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
             lblNeeds.StringFormat.Alignment = StringAlignment.Near;
 
             listNeeds = new List<VCCreatureNeed>();
+            for (int i = 0; i < FormMain.Descriptors.NeedsCreature.Count; i++)
+                listNeeds.Add(new VCCreatureNeed(panelStatistics, 0, 0, 51));
 
             // Интересы
             lblInterests = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Интересы:");
             lblInterests.StringFormat.Alignment = StringAlignment.Near;
 
-            idvInterestAttack = new VCIconAndDigitValue(panelStatistics, 0, lblInterests.NextTop() - 4, 104, FormMain.GUI_16_INTEREST_ATTACK);
-            idvInterestAttack.ShowHint += IdvInterestAttack_ShowHint;
-            idvInterestAttack.SetAsSlaveControl(lblInterests, FormMain.Config.GridSizeHalf, true);
-
-            idvInterestDefense = new VCIconAndDigitValue(panelStatistics, idvInterestAttack.NextLeft(), idvInterestAttack.ShiftY, 104, FormMain.GUI_16_INTEREST_DEFENSE);
-            idvInterestDefense.ShowHint += IdvInterestDefense_ShowHint;
-            idvInterestDefense.SetAsSlaveControl(idvInterestAttack, FormMain.Config.GridSizeHalf, false);
-
-            idvInterestExplore = new VCIconAndDigitValue(panelStatistics, 0, idvInterestDefense.NextTop() - 4, 104, FormMain.GUI_16_INTEREST_EXPLORE);
-            idvInterestExplore.ShowHint += IdvInterestExplore_ShowHint;
-            idvInterestExplore.SetAsSlaveControl(idvInterestAttack, FormMain.Config.GridSizeHalf, true);
-
-            idvInterestOther = new VCIconAndDigitValue(panelStatistics, idvInterestExplore.NextLeft(), idvInterestExplore.ShiftY, 104, FormMain.GUI_16_INTEREST_OTHER);
-            idvInterestOther.ShowHint += IdvInterestOther_ShowHint;
-            idvInterestOther.SetAsSlaveControl(idvInterestExplore, FormMain.Config.GridSizeHalf, false);
+            listInterests = new List<VCCreatureInterest>();
+            for (int i = 0; i < FormMain.Descriptors.InterestCreature.Count; i++)
+                listInterests.Add(new VCCreatureInterest(panelStatistics, 0, 0, 51));
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -131,26 +119,6 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        private void IdvInterestOther_ShowHint(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IdvInterestExplore_ShowHint(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IdvInterestDefense_ShowHint(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IdvInterestAttack_ShowHint(object sender, EventArgs e)
-        {
-
-        }
-
         private void LvGold_ShowHint(object sender, EventArgs e)
         {
             Program.formMain.formHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
@@ -183,52 +151,12 @@ namespace Fantasy_Kingdoms_Battle
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
 
-            // Свойства
-            int numberProperty = 0;
-            int nextLeft = 0;
-            int nextTop = lblProperties.NextTop() - 4;
-            VisualControl masterControl = null;
-            for (int i = 0; i < Hero.Properties.Length; i++)
-                if (Hero.Properties[i] != null)
-                {
-                    VCCreatureProperty idv = GetVCProperty(numberProperty);
-                    idv.SetProperty(Hero.Properties[i]);
-                    idv.ShiftX = nextLeft;
-                    idv.ShiftY = nextTop;
+            // 
+            ShowChapter(lblProperties, lblNeeds, Hero.Properties.ToList(), listProperties);
+            ShowChapter(lblNeeds, lblInterests, Hero.Needs.ToList(), listNeeds);
+            ShowChapter(lblInterests, null, Hero.Interests.ToList(), listInterests);
 
-                    if (numberProperty % 4 == 3)
-                    {
-                        nextLeft = 0;
-                        nextTop = idv.NextTop() - 4;
-                    }
-                    else
-                    {
-                        nextLeft = idv.NextLeft() - 4;
-                    }
-
-                    if (numberProperty % 4 == 0)
-                    {
-                        if (masterControl != null)
-                            masterControl.SlaveControls.Remove(lblProperties);
-                        lblNeeds.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
-                        masterControl = idv;
-                    }
-
-                    panelStatistics.ArrangeControl(idv);
-
-                    numberProperty++;
-                }
-
-            Assert(numberProperty >= 1);
-
-            for (; numberProperty < Hero.Properties.Length; numberProperty++)
-            {
-                listProperties[numberProperty].SetProperty(null);
-                listProperties[numberProperty].SlaveControls.Clear();
-            }
-
-            // Потребности
-            int numberNeed = 0;
+            /*int numberNeed = 0;
             nextLeft = 0;
             nextTop = lblNeeds.NextTop() - 4;
             masterControl = null;
@@ -270,39 +198,61 @@ namespace Fantasy_Kingdoms_Battle
             {
                 listNeeds[numberNeed].SetNeed(null);
                 listNeeds[numberNeed].SlaveControls.Clear();
-            }
+            }*/
 
             base.Draw(g);
 
-            VCCreatureProperty GetVCProperty(int number)
+            void ShowChapter<T, T1>(VCLabel toplabel, VCLabel bottomlabel, List<T> listProperty, List<T1> listControls) where T : CreaturePropertyMain where T1 : VCCreaturePropertyMain
             {
-                if (listProperties.Count > number)
-                {
-                    listProperties[number].SlaveControls?.Clear();
-                    return listProperties[number];
-                }
-                else
-                {
-                    VCCreatureProperty idv = new VCCreatureProperty(panelStatistics, 0, 0, 51);
-                    listProperties.Add(idv);
+                int numberProperty = 0;
+                int nextLeft = 0;
+                int nextTop = toplabel.NextTop() - 4;
+                VisualControl masterControl = null;
 
-                    return idv;
-                }
-            }
-
-            VCCreatureNeed GetVCNeed(int number)
-            {
-                if (listNeeds.Count > number)
+                for (int i = 0; i < listProperty.Count; i++)
                 {
-                    listNeeds[number].SlaveControls?.Clear();
-                    return listNeeds[number];
-                }
-                else
-                {
-                    VCCreatureNeed idv = new VCCreatureNeed(panelStatistics, 0, 0, 51);
-                    listNeeds.Add(idv);
+                    listControls[i].SlaveControls?.Clear();
 
-                    return idv;
+                    if (listProperty[i] != null)
+                    {
+                        VCCreaturePropertyMain idv = listControls[numberProperty];
+                        idv.SetProperty(listProperty[i]);
+                        idv.ShiftX = nextLeft;
+                        idv.ShiftY = nextTop;
+
+                        if (numberProperty % 4 == 3)
+                        {
+                            nextLeft = 0;
+                            nextTop = idv.NextTop() - 4;
+                        }
+                        else
+                        {
+                            nextLeft = idv.NextLeft() - 4;
+                        }
+
+                        if (bottomlabel != null)
+                        {
+                            if (numberProperty % 4 == 0)
+                            {
+                                if (masterControl != null)
+                                    masterControl.SlaveControls.Remove(bottomlabel);
+                                bottomlabel.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
+                                masterControl = idv;
+                            }
+                        }
+
+                        panelStatistics.ArrangeControl(idv);
+
+                        numberProperty++;
+                    }
+                }
+
+                Assert(numberProperty >= 1);
+
+                for (; numberProperty < listProperty.Count; numberProperty++)
+                {
+                    listControls[numberProperty].SetProperty(null);
+                    listControls[numberProperty].SlaveControls?.Clear();
                 }
             }
         }

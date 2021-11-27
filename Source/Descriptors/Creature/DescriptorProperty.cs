@@ -11,9 +11,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum NamePropertyCreature { Honor = 0, Enthusiasm = 1, Morale = 2, Luck = 3, Stealth = 4, Vigilance = 5 };
 
-    internal sealed class DescriptorPropertyCreature : DescriptorEntity
+    internal sealed class DescriptorProperty : DescriptorEntity
     {
-        public DescriptorPropertyCreature(XmlNode n) : base(n)
+        public DescriptorProperty(XmlNode n) : base(n)
         {
             Index = Descriptors.PropertiesCreature.Count;
             MinValue = GetIntegerNotNull(n, "MinValue");
