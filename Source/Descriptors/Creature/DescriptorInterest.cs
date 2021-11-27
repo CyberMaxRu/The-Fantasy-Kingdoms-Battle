@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorInterest(XmlNode n) : base(n)
         {
+            Index = Descriptors.InterestCreature.Count;
         }
+        internal int Index { get; }
     }
 }

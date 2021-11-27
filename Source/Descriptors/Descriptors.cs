@@ -570,6 +570,17 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Потребность существа {ID} не найдена.");
         }
 
+        internal DescriptorInterest FindInterestCreature(string ID)
+        {
+            foreach (DescriptorInterest di in InterestCreature)
+            {
+                if (di.ID == ID)
+                    return di;
+            }
+
+            throw new Exception($"Интерес существа {ID} не найден.");
+        }
+
         internal DescriptorTypeCreature FindTypeCreature(string ID)
         {
             foreach (DescriptorTypeCreature tu in TypeCreatures)

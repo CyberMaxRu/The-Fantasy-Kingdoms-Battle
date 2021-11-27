@@ -58,6 +58,14 @@ namespace Fantasy_Kingdoms_Battle
                 Needs[dcn.Descriptor.Index] = new CreatureNeed(this, dcn);
             }
 
+            // Создаем интересы
+            interests = new CreatureInterest[FormMain.Descriptors.InterestCreature.Count];
+
+            foreach (DescriptorCreatureInterest dci in TypeCreature.Interests)
+            {
+                interests[dci.Descriptor.Index] = new CreatureInterest(this, dci);
+            }
+
             // Берем оружие и доспехи
             if (TypeCreature.WeaponMelee != null)
             {
@@ -107,6 +115,7 @@ namespace Fantasy_Kingdoms_Battle
         // Индивидуальные свойства существа
         internal CreatureProperty[] Properties { get; }// Характеристики        
         internal CreatureNeed[] Needs { get; }// Потребности
+        internal CreatureInterest[] interests { get; }// Интересы
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти

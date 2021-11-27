@@ -9,29 +9,25 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс настройки потребности для типа существ
-    internal sealed class DescriptorCreatureNeed : Descriptor
+    // Класс настройки интереса для типа существ
+    internal class DescriptorCreatureInterest : Descriptor
     {
-        public DescriptorCreatureNeed(DescriptorNeed nd, XmlNode n) : base()
+        public DescriptorCreatureInterest(DescriptorInterest di, XmlNode n) : base()
         {
-            Descriptor = nd;
+            Descriptor = di;
 
             MinValueOnHire = GetIntegerNotNull(n, "MinValueOnHire");
             MaxValueOnHire = GetIntegerNotNull(n, "MaxValueOnHire");
-            IncreasePerDay = GetIntegerNotNull(n, "IncreasePerDay");
 
             Debug.Assert(MinValueOnHire >= 0);
             Debug.Assert(MinValueOnHire <= 1000);
             Debug.Assert(MaxValueOnHire >= 0);
             Debug.Assert(MaxValueOnHire <= 1000);
             Debug.Assert(MinValueOnHire < MaxValueOnHire);
-            Debug.Assert(IncreasePerDay > 0);
-            Debug.Assert(IncreasePerDay < 1000);
         }
 
-        internal DescriptorNeed Descriptor { get; }
+        internal DescriptorInterest Descriptor { get; }
         internal int MinValueOnHire { get; }// Минимальное значение при найме
         internal int MaxValueOnHire { get; }// Максимальное значение при найме
-        internal int IncreasePerDay { get; }// Увеличение в день
     }
 }
