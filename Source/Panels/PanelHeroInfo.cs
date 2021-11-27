@@ -31,13 +31,11 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Button btnDismiss;
         private readonly VCButtonTargetLair btnTarget;
 
-        private readonly VCLabel lblCharacters;
+        private readonly VCLabel lblProperties;
         private readonly List<VCCreatureProperty> listProperties;
         private readonly VCLabel lblNeeds;
         private readonly List<VCCreatureNeed> listNeeds;
         private readonly VCLabel lblInterests;
-        private readonly VCSeparator separator1;
-        private readonly VCSeparator separator2;
 
         private readonly VCIconAndDigitValue idvInterestAttack;
         private readonly VCIconAndDigitValue idvInterestDefense;
@@ -66,27 +64,20 @@ namespace Fantasy_Kingdoms_Battle
             lvGold.ShowHint += LvGold_ShowHint;
 
             // Основные характеристики
-            lblCharacters = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Основные характеристики:");
-            lblCharacters.StringFormat.Alignment = StringAlignment.Near;
+            lblProperties = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Основные характеристики:");
+            lblProperties.StringFormat.Alignment = StringAlignment.Near;
 
             listProperties = new List<VCCreatureProperty>();
 
             // Потребности
-            separator1 = new VCSeparator(panelStatistics, 0, lblCharacters.NextTop());
-
-            lblNeeds = new VCLabel(panelStatistics, 0, separator1.NextTop() - 8, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
+            lblNeeds = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
             lblNeeds.StringFormat.Alignment = StringAlignment.Near;
-            lblNeeds.SetAsSlaveControl(separator1, 0, true);
 
             listNeeds = new List<VCCreatureNeed>();
 
             // Интересы
-            separator2 = new VCSeparator(panelStatistics, 0, lblNeeds.NextTop() - 4);
-            separator2.SetAsSlaveControl(lblNeeds, FormMain.Config.GridSizeHalf, true);
-
-            lblInterests = new VCLabel(panelStatistics, 0, separator2.NextTop() - 8, Program.formMain.fontSmall, Color.White, 16, "Интересы:");
+            lblInterests = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Интересы:");
             lblInterests.StringFormat.Alignment = StringAlignment.Near;
-            lblInterests.SetAsSlaveControl(separator2, 0, true);
 
             idvInterestAttack = new VCIconAndDigitValue(panelStatistics, 0, lblInterests.NextTop() - 4, 104, FormMain.GUI_16_INTEREST_ATTACK);
             idvInterestAttack.ShowHint += IdvInterestAttack_ShowHint;
@@ -169,11 +160,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ArrangeControls()
         {
-            lblCharacters.Width = panelStatistics.Width;
+            lblProperties.Width = panelStatistics.Width;
             lblNeeds.Width = panelStatistics.Width;
             lblInterests.Width = panelStatistics.Width;
-            separator1.Width = panelStatistics.Width;
-            separator2.Width = panelStatistics.Width;
 
             base.ArrangeControls();
         }
@@ -197,7 +186,7 @@ namespace Fantasy_Kingdoms_Battle
             // Свойства
             int numberProperty = 0;
             int nextLeft = 0;
-            int nextTop = lblCharacters.NextTop() - 4;
+            int nextTop = lblProperties.NextTop() - 4;
             VisualControl masterControl = null;
             for (int i = 0; i < Hero.Properties.Length; i++)
                 if (Hero.Properties[i] != null)
@@ -220,8 +209,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (numberProperty % 4 == 0)
                     {
                         if (masterControl != null)
-                            masterControl.SlaveControls.Remove(separator1);
-                        separator1.SetAsSlaveControl(idv, FormMain.Config.GridSizeHalf, true);
+                            masterControl.SlaveControls.Remove(lblProperties);
+                        lblNeeds.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
                         masterControl = idv;
                     }
 
@@ -265,8 +254,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (numberNeed % 4 == 0)
                     {
                         if (masterControl != null)
-                            masterControl.SlaveControls.Remove(separator2);
-                        separator2.SetAsSlaveControl(idv, FormMain.Config.GridSizeHalf, true);
+                            masterControl.SlaveControls.Remove(lblNeeds);
+                        lblInterests.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
                         masterControl = idv;
                     }
 
