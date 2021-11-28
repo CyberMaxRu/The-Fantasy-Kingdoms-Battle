@@ -4,7 +4,7 @@
     <ID>InterestAttack</ID>
     <Name>Атака</Name>
     <Description></Description>
-    <ImageIndex>15</ImageIndex>
+    <ImageIndex>24</ImageIndex>
   </InterestCreature>
   <InterestCreature>
     <ID>InterestDefense</ID>
@@ -16,37 +16,31 @@
     <ID>InterestScout</ID>
     <Name>Разведка</Name>
     <Description></Description>
-    <ImageIndex>15</ImageIndex>
+    <ImageIndex>23</ImageIndex>
   </InterestCreature>
-  <InterestCreature>
-    <ID>InterestVisit</ID>
-    <Name>Посещение</Name>
-    <Description></Description>
-    <ImageIndex>15</ImageIndex>
-  </InterestCreature>
-  <InterestCreature>
+ы  <InterestCreature>
     <ID>InterestTheft</ID>
     <Name>Воровство</Name>
     <Description></Description>
-    <ImageIndex>15</ImageIndex>
+    <ImageIndex>13</ImageIndex>
   </InterestCreature>
   <InterestCreature>
     <ID>InterestExecuteQuestAttack</ID>
     <Name>Выполнение задания атаки</Name>
     <Description></Description>
-    <ImageIndex>16</ImageIndex>
+    <ImageIndex>9</ImageIndex>
   </InterestCreature>
   <InterestCreature>
     <ID>InterestExecuteQuestDefense</ID>
     <Name>Выполнение задания защиты</Name>
     <Description></Description>
-    <ImageIndex>16</ImageIndex>
+    <ImageIndex>10</ImageIndex>
   </InterestCreature>
   <InterestCreature>
     <ID>InterestExecuteQuestScout</ID>
     <Name>Выполнение задания разведки</Name>
     <Description></Description>
-    <ImageIndex>16</ImageIndex>
+    <ImageIndex>7</ImageIndex>
   </InterestCreature>
   <InterestCreature>
     <ID>InterestKilling</ID>
