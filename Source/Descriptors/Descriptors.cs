@@ -243,13 +243,15 @@ namespace Fantasy_Kingdoms_Battle
                 Creatures.Add(new DescriptorCreature(n));
             }
 
-            // Загрузка конфигурации налогов
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Taxes.xml");
+            // Загрузка конфигурации уровней налогов
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\LevelTaxes.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Tax"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/LevelTax"))
             {
-                Taxes.Add(new DescriptorTax(n));
+                Taxes.Add(new DescriptorLevelTax(n));
             }
+
+            DefaultLevelTax = FindLevelTax(FormMain.Config.NameDefaultLevelTax);
 
             // Настраиваем связи
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
@@ -364,7 +366,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxLevelSkill { get; }
 
         //
-        internal List<DescriptorTax> Taxes { get; } = new List<DescriptorTax>();
+        internal List<DescriptorLevelTax> Taxes { get; } = new List<DescriptorLevelTax>();
+        internal DescriptorLevelTax DefaultLevelTax { get; }
 
         //
         internal List<string> ExternalAvatars { get; } = new List<string>();
@@ -643,6 +646,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип ландшафта " + ID + " не найден.");
+        }
+
+        internal DescriptorLevelTax FindLevelTax(string ID)
+        {
+            foreach (DescriptorLevelTax lt in Taxes)
+            {
+                if (lt.ID == ID)
+                    return lt;
+            }
+
+            throw new Exception("Уровень налогов " + ID + " не найден.");
         }
 
         internal void AddVisit(DescriptorConstructionVisitSimple visit)

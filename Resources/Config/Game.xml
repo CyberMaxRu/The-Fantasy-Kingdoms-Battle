@@ -16,6 +16,7 @@
     <MaxQuantityExternalAvatars>8</MaxQuantityExternalAvatars>
     <MaxElementInStartBonus>4</MaxElementInStartBonus>
     <MaxValueProperty>1000</MaxValueProperty>
+    <DefaultLevelTax>Normal</DefaultLevelTax>
   </Interface>
   <Colors>
     <Common>

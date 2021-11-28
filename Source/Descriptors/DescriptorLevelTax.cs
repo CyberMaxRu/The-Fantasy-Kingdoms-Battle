@@ -2,9 +2,9 @@
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorTax : DescriptorWithID
+    internal sealed class DescriptorLevelTax : DescriptorWithID
     {
-        public DescriptorTax(XmlNode n) : base(n)
+        public DescriptorLevelTax(XmlNode n) : base(n)
         {
             Percent = GetIntegerFromXmlNode(n, "Percent", 0, 200);
         }

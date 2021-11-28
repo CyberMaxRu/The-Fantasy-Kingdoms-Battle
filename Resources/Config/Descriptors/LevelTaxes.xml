@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
-  <Tax>
+  <LevelTax>
     <ID>None</ID>
     <Name>Нет</Name>
     <Percent>0</Percent>
-  </Tax>
-  <Tax>
+  </LevelTax>
+  <LevelTax>
     <ID>Low</ID>
     <Name>Низкий</Name>
     <Percent>25</Percent>
-  </Tax>
-  <Tax>
+  </LevelTax>
+  <LevelTax>
     <ID>Normal</ID>
     <Name>Нормальный</Name>
     <Percent>50</Percent>
-  </Tax>
-  <Tax>
+  </LevelTax>
+  <LevelTax>
     <ID>High</ID>
     <Name>Высокий</Name>
     <Percent>75</Percent>
-  </Tax>
-  <Tax>
+  </LevelTax>
+  <LevelTax>
     <ID>VeryHigh</ID>
     <Name>Очень высокий</Name>
     <Percent>100</Percent>
-  </Tax>
+  </LevelTax>
 </Descriptors>
