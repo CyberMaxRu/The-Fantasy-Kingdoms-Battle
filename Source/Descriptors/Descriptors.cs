@@ -243,6 +243,14 @@ namespace Fantasy_Kingdoms_Battle
                 Creatures.Add(new DescriptorCreature(n));
             }
 
+            // Загрузка конфигурации налогов
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Taxes.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Tax"))
+            {
+                Taxes.Add(new DescriptorTax(n));
+            }
+
             // Настраиваем связи
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
                 tl.TuneLinks();
@@ -354,6 +362,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorResource> Resources { get; } = new List<DescriptorResource>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
         internal int MaxLevelSkill { get; }
+
+        //
+        internal List<DescriptorTax> Taxes { get; } = new List<DescriptorTax>();
 
         //
         internal List<string> ExternalAvatars { get; } = new List<string>();
