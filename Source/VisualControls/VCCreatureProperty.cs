@@ -39,19 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep5Description(property.Property.Description);
             if (property.ListSource.Count > 0)
             {
-                List<(DescriptorEntity, string)> list = new List<(DescriptorEntity, string)>();
-
-                foreach (Perk p in property.ListSource)
-                {
-                    for (int i = 0; i < p.ListProperty.Length; i++)
-                    {
-                        if (p.ListProperty[i] != 0)
-                            list.Add((p.Descriptor, FormatDecimal100(p.ListProperty[i], true)));
-                    }
-                }
-
-                Assert(list.Count > 0);
-                Program.formMain.formHint.AddStep19Descriptors(list);
+                Program.formMain.formHint.AddStep19Perks(property.ListSource, property.Property.Index);
             }
 
             return true;

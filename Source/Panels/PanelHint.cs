@@ -778,7 +778,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep19Descriptors(List<(DescriptorEntity, string)> list)
+        internal void AddStep19Perks(List<Perk> list, int indexProperty)
         {
             if (list.Count > 0)
             {
@@ -789,8 +789,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     cell = GetCell(i);
                     cell.Visible = true;
-                    cell.Descriptor = list[i].Item1;
-                    cell.Text = list[i].Item2;
+                    cell.ImageIndex = list[i].GetImageIndex();
+                    cell.Text = Utils.FormatDecimal100(list[i].ListProperty[indexProperty]);
                     cell.ShiftY = nextTop;
                     cell.ShiftX = nextLeft;
                     nextLeft = cell.NextLeft();
