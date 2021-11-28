@@ -4681,6 +4681,21 @@
         <MaxValueOnHire>600</MaxValueOnHire>
       </Property>
     </Properties>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>900</MaxValueOnHire>
+        <IncreasePerDay>100</IncreasePerDay>
+      </Need>
+    </Needs>
+    <Interests>
+      <Interest>
+        <ID>InterestKilling</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>400</MaxValueOnHire>
+      </Interest>
+    </Interests>
     <Reward>
       <Gold>25</Gold>
       <Greatness>1</Greatness>
