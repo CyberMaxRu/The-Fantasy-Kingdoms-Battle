@@ -66,6 +66,8 @@ namespace Fantasy_Kingdoms_Battle
             PercentCorruption = 10;
             ChangeCorruption = 1;
 
+            CurrentLevelTax = FormMain.Descriptors.DefaultLevelTax;
+
             // Настраиваем стартовые бонусы
             if (lobby.TypeLobby.VariantStartBonus > 0)
             {
@@ -475,6 +477,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Construction> Constructions { get; } = new List<Construction>();
         internal int LevelCastle => Castle.Level;
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
+
+        internal DescriptorLevelTax CurrentLevelTax { get; private set; }// Текущий уровень налогов
         internal int Gold { get => BaseResources[FormMain.Descriptors.Gold.Number].Quantity; }// Текущее количество золота
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы
