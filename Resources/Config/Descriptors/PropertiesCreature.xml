@@ -36,4 +36,16 @@
     <Description>Чем больше зоркость, тем больше вероятность, что существо заметит что-то важное.</Description>
     <ImageIndex>31</ImageIndex>
   </PropertyCreature>
+  <PropertyCreature>
+    <ID>KingContentment</ID>
+    <Name>Довольство королем</Name>
+    <Description>Чем больше довольства, тем лучше чувствуют себя подданные. При отрицательном значении есть вероятность бунта.</Description>
+    <ImageIndex>36</ImageIndex>
+  </PropertyCreature>
+  <PropertyCreature>
+    <ID>LordContentment</ID>
+    <Name>Довольство лордом</Name>
+    <Description>Чем больше довольства, тем лучше чувствуют себя подданные. При отрицательном значении есть вероятность бунта.</Description>
+    <ImageIndex>37</ImageIndex>
+  </PropertyCreature>
 </Descriptors>
