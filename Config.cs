@@ -249,6 +249,7 @@ namespace Fantasy_Kingdoms_Battle
             Gui48_Battle2 = GetGui48ImageIndex("Battle2");
             Gui48_NeighborCastle = GetGui48ImageIndex("NeighborCastle");
             Gui48_Cheating = GetGui48ImageIndex("Cheating");
+            Gui48_Money = GetGui48ImageIndex("Money");
             Gui48_Finance = GetGui48ImageIndex("Finance");
 
             int GetGui48ImageIndex(string name)
@@ -410,6 +411,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gui48_Battle2 { get; }
         internal int Gui48_NeighborCastle { get; }
         internal int Gui48_Cheating { get; }
+        internal int Gui48_Money { get; }
         internal int Gui48_Finance { get; }
 
         //

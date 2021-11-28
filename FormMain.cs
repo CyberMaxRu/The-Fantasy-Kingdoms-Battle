@@ -123,6 +123,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl vcRightPanel;
         private PanelWithPanelEntity panelCombatHeroes;
 
+        private readonly List<VCIconButton48> listBtnLevelTax;
+
         private WindowAdvice winAdvice;
 
         private VCCell[] pageTournamentPlayers;
@@ -689,7 +691,11 @@ namespace Fantasy_Kingdoms_Battle
             pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта графства", "Просмотр своих владений", PageMap_ShowHint);
             pageLocation = pageControl.AddPage(0, "", "", PageLocation_ShowHint);
 
+            listBtnLevelTax = new List<VCIconButton48>();
+
+
             DrawPageConstructions();
+            DrawPageFinance();
             DrawHeroes();
             DrawWarehouse();
             DrawPageTournament();
@@ -1401,6 +1407,11 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем логова
             UpdateNeighborhoods();
 
+            foreach (VCIconButton48 b in listBtnLevelTax)
+            {
+                b.ManualSelected = b.Tag == curAppliedPlayer.CurrentLevelTax.Index;
+            }
+
             // Показываем героев
             ShowEvents();
             AdjustPanelLoses();
@@ -1467,6 +1478,36 @@ namespace Fantasy_Kingdoms_Battle
                         panels[tck.Page.Index, tck.CoordInPage.Y, tck.CoordInPage.X] = tck.Panel;
                     }
                 }
+            }
+        }
+
+
+        private void DrawPageFinance()
+        {
+            VCLabel l = new VCLabel(pageFinance.Page, 0, 0, fontParagraph, Color.White, 16, "Уровень налогов:");
+            l.Width = l.Font.WidthText(l.Text);
+
+            int nextLeft = 0;
+            foreach (DescriptorLevelTax lt in Descriptors.LevelTaxes)
+            {
+                VCIconButton48 btn = new VCIconButton48(pageFinance.Page, nextLeft, l.NextTop(), Config.Gui48_Money);
+                btn.Text = lt.Percent.ToString() + "%";
+                btn.Hint = lt.Name;
+                btn.Click += BtnLevelTax_Click;
+                btn.Tag = lt.Index;
+                listBtnLevelTax.Add(btn);
+
+                nextLeft = btn.NextLeft();
+            }
+        }
+
+        private void BtnLevelTax_Click(object sender, EventArgs e)
+        {
+            if (!((VCIconButton48)sender).ManualSelected)
+            {
+                listBtnLevelTax[curAppliedPlayer.CurrentLevelTax.Index].ManualSelected = false;
+                curAppliedPlayer.CurrentLevelTax = Descriptors.LevelTaxes[((VCIconButton48)sender).Tag];
+                ((VCIconButton48)sender).ManualSelected = true;
             }
         }
 

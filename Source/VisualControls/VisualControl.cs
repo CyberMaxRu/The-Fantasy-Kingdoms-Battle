@@ -67,6 +67,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Bitmap BackgroundImage { get; set; }// Фоновое изображение
 
+        internal int Tag { get; set; }
         // Защищенные свойства
         internal bool MouseOver { get; private set; }// Курсор мыши находится над контролом
         protected bool MouseClicked { get; private set; }// ЛКМ нажата

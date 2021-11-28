@@ -478,7 +478,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int LevelCastle => Castle.Level;
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
 
-        internal DescriptorLevelTax CurrentLevelTax { get; private set; }// Текущий уровень налогов
+        internal DescriptorLevelTax CurrentLevelTax { get; set; }// Текущий уровень налогов
         internal int Gold { get => BaseResources[FormMain.Descriptors.Gold.Number].Quantity; }// Текущее количество золота
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы

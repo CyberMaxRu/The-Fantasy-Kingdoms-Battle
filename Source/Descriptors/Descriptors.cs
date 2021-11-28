@@ -248,7 +248,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/LevelTax"))
             {
-                Taxes.Add(new DescriptorLevelTax(n));
+                LevelTaxes.Add(new DescriptorLevelTax(n));
             }
 
             DefaultLevelTax = FindLevelTax(FormMain.Config.NameDefaultLevelTax);
@@ -366,7 +366,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxLevelSkill { get; }
 
         //
-        internal List<DescriptorLevelTax> Taxes { get; } = new List<DescriptorLevelTax>();
+        internal List<DescriptorLevelTax> LevelTaxes { get; } = new List<DescriptorLevelTax>();
         internal DescriptorLevelTax DefaultLevelTax { get; }
 
         //
@@ -650,7 +650,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorLevelTax FindLevelTax(string ID)
         {
-            foreach (DescriptorLevelTax lt in Taxes)
+            foreach (DescriptorLevelTax lt in LevelTaxes)
             {
                 if (lt.ID == ID)
                     return lt;
