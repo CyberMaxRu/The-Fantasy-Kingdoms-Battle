@@ -1627,11 +1627,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Location l = (sender as VCImage128).Entity as Location;
 
+            //Utils.Assert(imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected);
             imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = false;
             SelectPlayerObject(l);
-            imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = true;
-
             SetPageLocation(l, true);
+            imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = true;
         }
 
         private void Location_ShowHint(object sender, EventArgs e)
