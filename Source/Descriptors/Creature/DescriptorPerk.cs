@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorPerk(XmlNode n) : base(n)
         {
+            ListProperty = new int[Descriptors.PropertiesCreature.Count];
+
             // Загружаем изменяемые свойства
             XmlNode np = n.SelectSingleNode("Properties");
             if (np != null)
@@ -26,13 +28,8 @@ namespace Fantasy_Kingdoms_Battle
                     valueProperty = Convert.ToInt32(np.ChildNodes[i].InnerText);
                     dpc = Descriptors.FindPropertyCreature(idProperty);
 
-                    // Проверяем, что нет повтора свойства
-                    foreach ((DescriptorProperty, int) dpc2 in ListProperty)
-                    {
-                        Debug.Assert(dpc2.Item1.ID != idProperty);
-                    }
-
-                    ListProperty.Add((dpc, valueProperty));
+                    Debug.Assert(ListProperty[dpc.Index] == 0);
+                    ListProperty[dpc.Index] = valueProperty;
                 }
             }
 
@@ -48,18 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<(DescriptorProperty, int)> ListProperty = new List<(DescriptorProperty, int)>();
-
-        internal int GetValueProperty(NamePropertyCreature name)
-        {
-            foreach ((DescriptorProperty, int) d in ListProperty)
-            {
-                if (d.Item1.NameProperty == name)
-                    return d.Item2;
-            }
-
-            return 0;
-        }
+        internal int[] ListProperty { get; }
 
         internal override string GetTypeEntity() => "Особенность";
     }

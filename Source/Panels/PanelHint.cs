@@ -38,10 +38,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly List<VCLabelValue> listRequiredResources = new List<VCLabelValue>();
         internal readonly VCLabelValue lblBuilders;
-        internal readonly VCLabelValue lblHonor;
-        internal readonly VCLabelValue lblEnthusiasm;
-        internal readonly VCLabelValue lblMorale;
-        internal readonly VCLabelValue lblLuck;
+
+        internal readonly List<VCLabelValue> listProperties = new List<VCLabelValue>();
         internal readonly VCLabelValue lblInterest;
         internal readonly VCLabelValue lblDaysBuilding;
         internal readonly VCLabelValue lblCostGold;
@@ -120,23 +118,15 @@ namespace Fantasy_Kingdoms_Battle
             lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuilders.Width = widthControl;
 
-            lblHonor = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), Color.White, false);
-            lblHonor.ImageIndex = FormMain.GUI_16_HONOR;
-            lblHonor.Width = widthControl;
+            listProperties = new List<VCLabelValue>();
+            foreach (DescriptorProperty dp in FormMain.Descriptors.PropertiesCreature)
+            {
+                VCLabelValue lv = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), Color.White, false);
+                lv.Width = widthControl;
+                listProperties.Add(lv);
+            }
 
-            lblEnthusiasm = new VCLabelValue(this, FormMain.Config.GridSize, lblHonor.NextTop(), Color.White, false);
-            lblEnthusiasm.ImageIndex = FormMain.GUI_16_ENTHUSIASM;
-            lblEnthusiasm.Width = widthControl;
-
-            lblMorale = new VCLabelValue(this, FormMain.Config.GridSize, lblEnthusiasm.NextTop(), Color.White, false);
-            lblMorale.ImageIndex = FormMain.GUI_16_MORALE;
-            lblMorale.Width = widthControl;
-
-            lblLuck = new VCLabelValue(this, FormMain.Config.GridSize, lblMorale.NextTop(), Color.White, false);
-            lblLuck.ImageIndex = FormMain.GUI_16_LUCK;
-            lblLuck.Width = widthControl;
-
-            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblLuck.NextTop(), Color.White, false);
+            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), Color.White, false);
             lblInterest.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
             lblInterest.Width = widthControl;
 
@@ -270,11 +260,10 @@ namespace Fantasy_Kingdoms_Battle
             foreach (VCLabel l in listRequiredResources)
                 l.Visible = false;
 
+            foreach (VCLabelValue l in listProperties)
+                l.Visible = false;
+
             lblBuilders.Visible = false;
-            lblHonor.Visible = false;
-            lblEnthusiasm.Visible = false;
-            lblMorale.Visible = false;
-            lblLuck.Visible = false;
             lblInterest.Visible = false;
             lblDaysBuilding.Visible = false;
             lblCostGold.Visible = false;
@@ -476,51 +465,18 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep9Honor(int honor)
+        internal void AddStep9Properties(int[] props)
         {
-            if (honor != 0)
+            for (int i = 0; i < props.Length; i++)
             {
-                lblHonor.ShiftY = nextTop;
-                lblHonor.Text = Utils.DecIntegerBy10(honor, true);
-                lblHonor.Visible = true;
-
-                nextTop = lblHonor.NextTop();
-            }
-        }
-
-        internal void AddStep9Enthusiasm(int enthusiasm)
-        {
-            if (enthusiasm != 0)
-            {
-                lblEnthusiasm.ShiftY = nextTop;
-                lblEnthusiasm.Text = Utils.DecIntegerBy10(enthusiasm, true);
-                lblEnthusiasm.Visible = true;
-
-                nextTop = lblEnthusiasm.NextTop();
-            }
-        }
-
-        internal void AddStep9Morale(int morale)
-        {
-            if (morale != 0)
-            {
-                lblMorale.ShiftY = nextTop;
-                lblMorale.Text = Utils.DecIntegerBy10(morale, true);
-                lblMorale.Visible = true;
-
-                nextTop = lblMorale.NextTop();
-            }
-        }
-
-        internal void AddStep9Luck(int luck)
-        {
-            if (luck != 0)
-            {
-                lblLuck.ShiftY = nextTop;
-                lblLuck.Text = Utils.FormatInteger(luck);
-                lblLuck.Visible = true;
-
-                nextTop = lblLuck.NextTop();
+                if (props[i] != 0)
+                {
+                    listProperties[i].ShiftY = nextTop;
+                    listProperties[i].ImageIndex = FormMain.Descriptors.PropertiesCreature[i].ImageIndex;
+                    listProperties[i].Text = Utils.FormatDecimal100(props[i], true);
+                    listProperties[i].Visible = true;
+                    nextTop = listProperties[i].NextTop();
+                }
             }
         }
 

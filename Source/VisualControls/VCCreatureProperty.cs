@@ -43,9 +43,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (Perk p in property.ListSource)
                 {
-                    Assert(p.Descriptor.GetValueProperty(property.Property.NameProperty) != 0);
-
-                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.GetValueProperty(property.Property.NameProperty), true)));
+                    for (int i = 0; i < p.Descriptor.ListProperty.Length; i++)
+                    {
+                        if (p.Descriptor.ListProperty[i] != 0)
+                            list.Add((p.Descriptor, FormatDecimal100(p.Descriptor.ListProperty[i], true)));
+                    }
                 }
 
                 Assert(list.Count > 0);

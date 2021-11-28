@@ -406,7 +406,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Perk p in Perks)
             {
-                value = p.Descriptor.GetValueProperty(cp.Property.NameProperty);
+                value = p.Descriptor.ListProperty[cp.Property.Index];
                 if (value != 0)
                 {
                     cp.ListSource.Add(p);

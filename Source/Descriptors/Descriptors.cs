@@ -543,11 +543,6 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Состояние существа " + ID + " не найдено.");
         }
 
-        internal DescriptorProperty FindPropertyCreature(NamePropertyCreature npc)
-        {
-            return FindPropertyCreature(npc.ToString());
-        }
-
         internal DescriptorProperty FindPropertyCreature(string ID)
         {
             foreach (DescriptorProperty pc in PropertiesCreature)

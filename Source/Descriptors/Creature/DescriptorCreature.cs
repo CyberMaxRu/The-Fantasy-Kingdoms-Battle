@@ -403,9 +403,9 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (DescriptorPerk dp in Perks)
             {
-                foreach ((DescriptorProperty, int) pc in dp.ListProperty)
+                for (int i = 0; i < dp.ListProperty.Length; i++)
                 {
-                    Assert(Properties.IndexOf(pc.Item1) != -1, $"{ID}: у перка {dp.ID} есть характеристика {pc.Item1.ID}, которая недоступна существу.");
+                    Assert(Properties.IndexOf(Descriptors.PropertiesCreature[i]) != -1, $"{ID}: у перка {dp.ID} есть характеристика {Descriptors.PropertiesCreature[i].ID}, которая недоступна существу.");
                 }
             }
         }

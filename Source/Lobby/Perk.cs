@@ -30,10 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header(Descriptor.Name, Descriptor.ImageIndex);
             Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-            Program.formMain.formHint.AddStep9Honor(Descriptor.GetValueProperty(NamePropertyCreature.Honor));
-            Program.formMain.formHint.AddStep9Enthusiasm(Descriptor.GetValueProperty(NamePropertyCreature.Enthusiasm));
-            Program.formMain.formHint.AddStep9Morale(Descriptor.GetValueProperty(NamePropertyCreature.Morale));
-            Program.formMain.formHint.AddStep9Luck(Descriptor.GetValueProperty(NamePropertyCreature.Luck));
+            Program.formMain.formHint.AddStep9Properties(Descriptor.ListProperty);
             Program.formMain.formHint.AddStep18Owner(Owner);
         }
     }
