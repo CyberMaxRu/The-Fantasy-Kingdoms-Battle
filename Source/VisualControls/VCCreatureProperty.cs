@@ -43,10 +43,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (Perk p in property.ListSource)
                 {
-                    for (int i = 0; i < p.Descriptor.ListProperty.Length; i++)
+                    for (int i = 0; i < p.ListProperty.Length; i++)
                     {
-                        if (p.Descriptor.ListProperty[i] != 0)
-                            list.Add((p.Descriptor, FormatDecimal100(p.Descriptor.ListProperty[i], true)));
+                        if (p.ListProperty[i] != 0)
+                            list.Add((p.Descriptor, FormatDecimal100(p.ListProperty[i], true)));
                     }
                 }
 

@@ -11,6 +11,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public EntityForCreature(Creature creature)
         {
+            Debug.Assert(creature != null);
+
             Creature = creature;
         }
 

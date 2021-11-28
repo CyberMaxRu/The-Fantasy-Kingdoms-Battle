@@ -48,4 +48,10 @@
     <Description>Чем больше довольства, тем лучше чувствуют себя подданные. При отрицательном значении есть вероятность бунта.</Description>
     <ImageIndex>37</ImageIndex>
   </PropertyCreature>
+  <PropertyCreature>
+    <ID>Agression</ID>
+    <Name>Агрессивность</Name>
+    <Description>Чем выше агрессивность, тем больше вероятность, что существо будет само искать жертву для нападения.</Description>
+    <ImageIndex>38</ImageIndex>
+  </PropertyCreature>
 </Descriptors>

@@ -116,18 +116,17 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode np = n.SelectSingleNode("Properties");
             if (np != null)
             {
-                string nameProperty;
-
                 foreach (XmlNode nnl in np.SelectNodes("Property"))
                 {
-                    nameProperty = nnl.InnerText;
+                    string idProperty = GetStringNotNull(nnl, "ID");
+                    DescriptorCreatureProperty dcp = new DescriptorCreatureProperty(Descriptors.FindPropertyCreature(idProperty), nnl);
 
-                    foreach (DescriptorProperty dpc in Properties)
+                    foreach (DescriptorCreatureProperty dcp2 in Properties)
                     {
-                        Assert(dpc.ID != nameProperty);
+                        Assert(dcp2.Descriptor.ID != dcp.Descriptor.ID);
                     }
 
-                    Properties.Add(Descriptors.FindPropertyCreature(nameProperty));
+                    Properties.Add(dcp);
                 }
             }
 
@@ -331,7 +330,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
         internal ListDescriptorPerks Perks { get; }// Дефолтные перки        
-        internal List<DescriptorProperty> Properties { get; } = new List<DescriptorProperty>();// Свойства у существа
+        internal List<DescriptorCreatureProperty> Properties { get; } = new List<DescriptorCreatureProperty>();// Свойства у существа
         internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
         internal List<DescriptorCreatureInterest> Interests { get; } = new List<DescriptorCreatureInterest>();// Интересы
         internal int MovePoints { get; }// Очков движения по умолчанию
@@ -408,7 +407,18 @@ namespace Fantasy_Kingdoms_Battle
                     if (dp.ListProperty[i] != 0)
                     {
                         DescriptorProperty p = Descriptors.PropertiesCreature[i];
-                        Assert(Properties.IndexOf(p) != -1, $"{ID}: у перка {dp.ID} есть характеристика {Descriptors.PropertiesCreature[i].ID}, которая недоступна существу.");
+
+                        bool found = false;
+                        foreach (DescriptorCreatureProperty dcp in Properties)
+                        {
+                            if (dcp.Descriptor.ID == p.ID)
+                            {
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        Assert(found, $"{ID}: у перка {dp.ID} есть характеристика {p.ID}, которая недоступна существу.");
                     }
                 }
             }

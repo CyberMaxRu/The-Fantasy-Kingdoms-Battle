@@ -36,18 +36,12 @@ namespace Fantasy_Kingdoms_Battle
                 AddItemToInventory(CreateItem(inv.Item1, inv.Item2));
             }
 
-            // Берем дефолтные перки
-            foreach (DescriptorPerk dp in TypeCreature.Perks)
-            {
-                AddPerk(dp, this);
-            }
-
             // Создаем свойства
             Properties = new CreatureProperty[FormMain.Descriptors.PropertiesCreature.Count];
 
-            foreach (DescriptorProperty pc in TypeCreature.Properties)
+            foreach (DescriptorCreatureProperty dcp in TypeCreature.Properties)
             {
-                Properties[pc.Index] = new CreatureProperty(this, pc);
+                Properties[dcp.Descriptor.Index] = new CreatureProperty(this, dcp.Descriptor);
             }
 
             // Создаем потребности
@@ -64,6 +58,15 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCreatureInterest dci in TypeCreature.Interests)
             {
                 Interests[dci.Descriptor.Index] = new CreatureInterest(this, dci);
+            }
+
+            // Создаем перк существа по его характеристикам
+            Perks.Add(new Perk(this, TypeCreature.Properties));
+
+            // Берем дефолтные перки
+            foreach (DescriptorPerk dp in TypeCreature.Perks)
+            {
+                AddPerk(dp, this);
             }
 
             // Берем оружие и доспехи
@@ -359,7 +362,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (Perk p in Perks)
             {
-                Debug.Assert(p.Descriptor.ID != dp.ID);
+                if (p.Descriptor != null)
+                    Debug.Assert(p.Descriptor.ID != dp.ID);
             }
 
             Perks.Add(new Perk(this, dp, fromEntity, -1));
@@ -406,7 +410,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Perk p in Perks)
             {
-                value = p.Descriptor.ListProperty[cp.Property.Index];
+                value = p.ListProperty[cp.Property.Index];
                 if (value != 0)
                 {
                     cp.ListSource.Add(p);

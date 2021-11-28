@@ -212,17 +212,48 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <Perks>
-      <Perk>PerkWarrior</Perk>
     </Perks>
     <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -521,19 +552,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkHunter</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -801,19 +863,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkCleric</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -1061,19 +1154,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkMage</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -1320,19 +1444,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkElf</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>250</MinValueOnHire>
+        <MaxValueOnHire>250</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -1561,19 +1716,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkDwarf</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -1800,19 +1986,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkRogue</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>-300</MinValueOnHire>
+        <MaxValueOnHire>-100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>400</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>400</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -2044,19 +2261,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkDarkPriest</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -2252,19 +2500,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkPriest</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -2458,19 +2737,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkPaladin</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -2663,19 +2973,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkBladeMaster</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -2869,19 +3210,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkBeastMaster</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -3075,19 +3447,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkMarksman</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -3282,19 +3685,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkFireMage</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -3444,19 +3878,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkIceMage</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -3630,19 +4095,50 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <Properties>
-      <Property>Honor</Property>
-      <Property>Enthusiasm</Property>
-      <Property>Morale</Property>
-      <Property>Luck</Property>
-      <Property>Stealth</Property>
-      <Property>Vigilance</Property>
-      <Property>KingContentment</Property>
-      <Property>LordContentment</Property>
-    </Properties>
     <Perks>
-      <Perk>PerkDeathKnight</Perk>
     </Perks>
+    <Properties>
+      <Property>
+        <ID>Honor</ID>
+        <MinValueOnHire>-400</MinValueOnHire>
+        <MaxValueOnHire>-400</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Enthusiasm</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Morale</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Luck</ID>
+        <MinValueOnHire>30</MinValueOnHire>
+        <MaxValueOnHire>30</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Stealth</ID>
+        <MinValueOnHire>600</MinValueOnHire>
+        <MaxValueOnHire>600</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>Vigilance</ID>
+        <MinValueOnHire>500</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>KingContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>LordContentment</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Needs>
       <Need>
         <ID>Food</ID>
@@ -4176,6 +4672,15 @@
       <Ability>Fangs</Ability>
       <Ability>Predator</Ability>
     </Abilities>
+    <Perks>
+    </Perks>
+    <Properties>
+      <Property>
+        <ID>Agression</ID>
+        <MinValueOnHire>400</MinValueOnHire>
+        <MaxValueOnHire>600</MaxValueOnHire>
+      </Property>
+    </Properties>
     <Reward>
       <Gold>25</Gold>
       <Greatness>1</Greatness>

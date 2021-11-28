@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\Descriptors\Creature\DescriptorCreatureInterest.cs" />
+    <Compile Include="Source\Descriptors\Creature\DescriptorCreatureProperty.cs" />
+    <Compile Include="Source\Descriptors\Creature\DescriptorCreaturePropertyMain.cs" />
     <Compile Include="Source\Descriptors\Creature\ReasonOfDeath.cs" />
     <Compile Include="Source\Descriptors\CapitalPage.cs" />
     <Compile Include="Source\Descriptors\CellMenu\DescriptorEntityForActiveEntity.cs" />
