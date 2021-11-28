@@ -29,9 +29,6 @@ namespace Fantasy_Kingdoms_Battle
                 FullName = TypeCreature.Name;
             }
 
-            //
-            Initialize();
-
             string GetRandomName(List<string> list)
             {
                 return list.Count > 0 ? list[Player.Lobby.Rnd.Next(list.Count)] : "";
@@ -361,20 +358,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(income > 0);
 
             Gold += income;
-        }
-
-        internal void Initialize()
-        {
-
-            // Считаем энтузиазм и лояльность
-            PerksChanged();
-        }
-
-        internal override void PrepareTurn()
-        {
-            base.PrepareTurn();
-
-            Initialize();
         }
 
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)

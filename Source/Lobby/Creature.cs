@@ -97,6 +97,9 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 Level = 1;
+
+            //
+            Initialize();
         }
         internal int IDCreature { get; }// Уникальный код существа
         internal DescriptorCreature TypeCreature { get; }
@@ -426,6 +429,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PrepareTurn()
         {
+            Initialize();
+
             // Расчет потребностей
             if (BattleParticipant.Lobby.Turn > 0)
             {
@@ -448,6 +453,13 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
+        }
+
+        internal virtual void Initialize()
+        {
+
+            // 
+            PerksChanged();
         }
     }
 }
