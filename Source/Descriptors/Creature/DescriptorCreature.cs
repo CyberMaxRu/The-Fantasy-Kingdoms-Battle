@@ -405,7 +405,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int i = 0; i < dp.ListProperty.Length; i++)
                 {
-                    Assert(Properties.IndexOf(Descriptors.PropertiesCreature[i]) != -1, $"{ID}: у перка {dp.ID} есть характеристика {Descriptors.PropertiesCreature[i].ID}, которая недоступна существу.");
+                    if (dp.ListProperty[i] != 0)
+                    {
+                        DescriptorProperty p = Descriptors.PropertiesCreature[i];
+                        Assert(Properties.IndexOf(p) != -1, $"{ID}: у перка {dp.ID} есть характеристика {Descriptors.PropertiesCreature[i].ID}, которая недоступна существу.");
+                    }
                 }
             }
         }
