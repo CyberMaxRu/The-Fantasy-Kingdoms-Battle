@@ -110,6 +110,7 @@ namespace Fantasy_Kingdoms_Battle
         // Главные страницы игры
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageResultTurn;
+        private readonly VCPageButton pageFinance;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
         private readonly List<VCPageButton> pagesCapital;
@@ -669,6 +670,7 @@ namespace Fantasy_Kingdoms_Battle
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
             pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Итоги хода", "Сводка", PageResultTurn_ShowHint);
+            pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", PageFinance_ShowHint);
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageControl.Separate();
@@ -763,6 +765,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpMainMenu.ShiftY = (sizeGamespace.Height - bmpMainMenu.Height) / 2 - (Config.GridSize * 1);
 
             pageResultTurn.PageImage = MainControlbackground("Paper");
+            pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
 
@@ -974,6 +977,11 @@ namespace Fantasy_Kingdoms_Battle
             formHint.AddSimpleHint("Итоги хода");
         }
 
+        private void PageFinance_ShowHint(object sender, EventArgs e)
+        {
+            formHint.AddSimpleHint("Финансовая информация");
+        }
+        
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
             formHint.AddStep2Header("Турнир");
