@@ -74,7 +74,10 @@ namespace Fantasy_Kingdoms_Battle
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
+
+        //
         internal List<VisualControl> SlaveControls { get; private set; }
+        internal VisualControl MasterControl { get; private set; }
         internal int ShiftAtMasterControl { get; set; }
         internal bool ShiftFromMasterControlToDown { get; set; } = true;
 
@@ -499,6 +502,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SetAsSlaveControl(VisualControl vcMaster, int shift, bool toDown)
         {
+            if (MasterControl != null)
+            {
+                Assert(MasterControl.SlaveControls.IndexOf(this) != -1);
+                MasterControl.SlaveControls.Remove(this);
+            }
+
             if (vcMaster.SlaveControls is null)
             {
                 vcMaster.SlaveControls = new List<VisualControl>();
@@ -509,8 +518,23 @@ namespace Fantasy_Kingdoms_Battle
             }
                 
             vcMaster.SlaveControls.Add(this);
+            MasterControl = vcMaster;
             ShiftAtMasterControl = shift;
             ShiftFromMasterControlToDown = toDown;
+        }
+
+        internal void ClearSlaveControls()
+        {
+            if (SlaveControls != null)
+            {
+                foreach (VisualControl vc in SlaveControls)
+                {
+                    Assert(vc.MasterControl == this);
+                    vc.MasterControl = null;
+                }
+
+                SlaveControls.Clear();
+            }
         }
     }
 }
