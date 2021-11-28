@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
+using static Fantasy_Kingdoms_Battle.Utils;    
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -48,6 +49,14 @@ namespace Fantasy_Kingdoms_Battle
         private VCCell panelRangeWeapon;
         private VCCell panelArmour;
         protected VCIconAndDigitValue lvGold;
+
+        private readonly VCLabel lblProperties;
+        private readonly List<VCCreatureProperty> listProperties;
+        private readonly VCLabel lblNeeds;
+        private readonly List<VCCreatureNeed> listNeeds;
+        private readonly VCLabel lblInterests;
+        private readonly List<VCCreatureInterest> listInterests;
+
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
         public PanelCreatureInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -97,6 +106,30 @@ namespace Fantasy_Kingdoms_Battle
             panelAbilitiesAndSecSkills.ArrangeControl(panelSecondarySkills);
             panelAbilitiesAndSecSkills.Height = panelSecondarySkills.NextTop();
             separSecSkills = new VCSeparator(panelAbilitiesAndSecSkills, 0, 0);
+
+            // Основные характеристики
+            lblProperties = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Основные характеристики:");
+            lblProperties.StringFormat.Alignment = StringAlignment.Near;
+
+            listProperties = new List<VCCreatureProperty>();
+            for (int i = 0; i < FormMain.Descriptors.PropertiesCreature.Count; i++)
+                listProperties.Add(new VCCreatureProperty(panelStatistics, 0, 0, 51));
+
+            // Потребности
+            lblNeeds = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
+            lblNeeds.StringFormat.Alignment = StringAlignment.Near;
+
+            listNeeds = new List<VCCreatureNeed>();
+            for (int i = 0; i < FormMain.Descriptors.NeedsCreature.Count; i++)
+                listNeeds.Add(new VCCreatureNeed(panelStatistics, 0, 0, 51));
+
+            // Интересы
+            lblInterests = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Интересы:");
+            lblInterests.StringFormat.Alignment = StringAlignment.Near;
+
+            listInterests = new List<VCCreatureInterest>();
+            for (int i = 0; i < FormMain.Descriptors.InterestCreature.Count; i++)
+                listInterests.Add(new VCCreatureInterest(panelStatistics, 0, 0, 51));
 
             pageControl.ApplyMinSize();
 
@@ -165,6 +198,9 @@ namespace Fantasy_Kingdoms_Battle
             labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
             separSecSkills.Width = panelAbilities.Width;
             panelStatistics.Height = pageControl.Height - panelStatistics.ShiftY - FormMain.Config.GridSize;
+            lblProperties.Width = panelStatistics.Width;
+            lblNeeds.Width = panelStatistics.Width;
+            lblInterests.Width = panelStatistics.Width;
 
             base.ArrangeControls();
         }
@@ -195,6 +231,11 @@ namespace Fantasy_Kingdoms_Battle
             btnInventory.Quantity = Creature.Inventory.Count;
             btnAbilities.Quantity = Creature.Abilities.Count;
             btnPerks.Quantity = Creature.Perks.Count;
+
+            // 
+            ShowChapter(lblProperties, lblNeeds, Creature.Properties.ToList(), listProperties);
+            ShowChapter(lblNeeds, lblInterests, Creature.Needs.ToList(), listNeeds);
+            ShowChapter(lblInterests, null, Creature.Interests.ToList(), listInterests);
 
             base.Draw(g);
             
@@ -233,6 +274,60 @@ namespace Fantasy_Kingdoms_Battle
                     l.ForeColor = FormMain.Config.UnitHighNormalParam;
                 else
                     l.ForeColor = FormMain.Config.UnitLowNormalParam;
+            }
+
+            void ShowChapter<T, T1>(VCLabel toplabel, VCLabel bottomlabel, List<T> listProperty, List<T1> listControls) where T : CreaturePropertyMain where T1 : VCCreaturePropertyMain
+            {
+                int numberProperty = 0;
+                int nextLeft = 0;
+                int nextTop = toplabel.NextTop() - 4;
+
+                for (int i = 0; i < listProperty.Count; i++)
+                {
+                    listControls[i].ClearSlaveControls();
+
+                    if (listProperty[i] != null)
+                    {
+                        VCCreaturePropertyMain idv = listControls[numberProperty];
+                        idv.SetProperty(listProperty[i]);
+                        idv.ShiftX = nextLeft;
+                        idv.ShiftY = nextTop;
+
+                        if (numberProperty % 4 == 3)
+                        {
+                            nextLeft = 0;
+                            nextTop = idv.NextTop() - 4;
+                        }
+                        else
+                        {
+                            nextLeft = idv.NextLeft() - 4;
+                        }
+
+                        if (bottomlabel != null)
+                        {
+                            if (numberProperty % 4 == 0)
+                            {
+                                bottomlabel.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
+                            }
+                        }
+
+                        panelStatistics.ArrangeControl(idv);
+
+                        numberProperty++;
+                    }
+                }
+
+                if ((numberProperty == 0) && (bottomlabel != null))
+                {
+                    bottomlabel.SetAsSlaveControl(toplabel, FormMain.Config.GridSize, true);
+                    panelStatistics.ArrangeControl(toplabel);
+                }
+
+                for (; numberProperty < listProperty.Count; numberProperty++)
+                {
+                    listControls[numberProperty].SetProperty(null);
+                    listControls[numberProperty].ClearSlaveControls();
+                }
             }
         }
 
