@@ -42,11 +42,17 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal virtual void PerksChanged()
+        {
+            CalcProperties();
+        }
+
         protected void CalcProperties()
         {
-            for (int i = 0; i < Properties.Count; i++)
-                if (Properties[i] != null)
-                    CalcProperty(Properties[i]);
+            if (Properties != null)
+                for (int i = 0; i < Properties.Count; i++)
+                    if (Properties[i] != null)
+                        CalcProperty(Properties[i]);
         }
 
         protected void CalcProperty(CreatureProperty cp)
@@ -69,6 +75,13 @@ namespace Fantasy_Kingdoms_Battle
                 cp.Value = FormMain.Config.MaxValueProperty;
             else if (cp.Value < -FormMain.Config.MaxValueProperty)
                 cp.Value = -FormMain.Config.MaxValueProperty;
+        }
+
+        internal virtual void Initialize()
+        {
+
+            // 
+            PerksChanged();
         }
     }
 }

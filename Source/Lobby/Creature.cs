@@ -419,11 +419,6 @@ namespace Fantasy_Kingdoms_Battle
                 Perks.Remove(removedPerk);
         }
 
-        internal virtual void PerksChanged()
-        {
-            CalcProperties();
-        }
-
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
 
@@ -455,13 +450,6 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
-        }
-
-        internal virtual void Initialize()
-        {
-
-            // 
-            PerksChanged();
         }
     }
 }

@@ -223,6 +223,8 @@ namespace Fantasy_Kingdoms_Battle
                 Perks.Add(MainPerk);
             }
 
+            Initialize();
+
             if (needNotice)
                 Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);
 
@@ -557,6 +559,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Level > 0)
             {
+                Initialize();
+
                 if (Lobby.Turn > 1)
                 {
                     if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
