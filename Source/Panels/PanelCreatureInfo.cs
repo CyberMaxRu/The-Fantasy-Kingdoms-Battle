@@ -266,60 +266,6 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     l.ForeColor = FormMain.Config.UnitLowNormalParam;
             }
-
-            void ShowChapter<T, T1>(VCLabel toplabel, VCLabel bottomlabel, List<T> listProperty, List<T1> listControls) where T : CreaturePropertyMain where T1 : VCCreaturePropertyMain
-            {
-                int numberProperty = 0;
-                int nextLeft = 0;
-                int nextTop = toplabel.NextTop() - 4;
-
-                for (int i = 0; i < listProperty.Count; i++)
-                {
-                    listControls[i].ClearSlaveControls();
-
-                    if (listProperty[i] != null)
-                    {
-                        VCCreaturePropertyMain idv = listControls[numberProperty];
-                        idv.SetProperty(listProperty[i]);
-                        idv.ShiftX = nextLeft;
-                        idv.ShiftY = nextTop;
-
-                        if (numberProperty % 4 == 3)
-                        {
-                            nextLeft = 0;
-                            nextTop = idv.NextTop() - 4;
-                        }
-                        else
-                        {
-                            nextLeft = idv.NextLeft() - 4;
-                        }
-
-                        if (bottomlabel != null)
-                        {
-                            if (numberProperty % 4 == 0)
-                            {
-                                bottomlabel.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
-                            }
-                        }
-
-                        panelStatistics.ArrangeControl(idv);
-
-                        numberProperty++;
-                    }
-                }
-
-                if ((numberProperty == 0) && (bottomlabel != null))
-                {
-                    bottomlabel.SetAsSlaveControl(toplabel, FormMain.Config.GridSize, true);
-                    panelStatistics.ArrangeControl(toplabel);
-                }
-
-                for (; numberProperty < listProperty.Count; numberProperty++)
-                {
-                    listControls[numberProperty].SetProperty(null);
-                    listControls[numberProperty].ClearSlaveControls();
-                }
-            }
         }
 
         protected override int GetImageIndex() => Creature.TypeCreature.ImageIndex;
