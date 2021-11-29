@@ -6133,6 +6133,18 @@
         <Number>1</Number>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
+        <Properties>
+          <Property>
+            <ID>Disguise</ID>
+            <MinValueOnHire>100</MinValueOnHire>
+            <MaxValueOnHire>200</MaxValueOnHire>
+          </Property>
+          <Property>
+            <ID>ConstructionDangerous</ID>
+            <MinValueOnHire>0</MinValueOnHire>
+            <MaxValueOnHire>0</MaxValueOnHire>
+          </Property>
+        </Properties>
       </Level>
     </Levels>
     <Monsters>

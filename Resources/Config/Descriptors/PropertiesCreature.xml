@@ -60,4 +60,17 @@
     <Description>Чем опаснее существо, тем больше вероятность, что с ним не захотят связываться.</Description>
     <ImageIndex>40</ImageIndex>
   </PropertyCreature>
+  <PropertyCreature>
+    <ID>ConstructionDangerous</ID>
+    <Name>Опасность</Name>
+    <Description>Чем опаснее в объекте существа, тем большую опасность оно создаёт.</Description>
+    <ImageIndex>40</ImageIndex>
+    <AverageFromCreatures>CreatureDangerous</AverageFromCreatures>
+  </PropertyCreature>
+  <PropertyCreature>
+    <ID>Disguise</ID>
+    <Name>Маскировка</Name>
+    <Description>Чем больше маскировка, тем труднее найти объект в локации.</Description>
+    <ImageIndex>39</ImageIndex>
+  </PropertyCreature>
 </Descriptors>

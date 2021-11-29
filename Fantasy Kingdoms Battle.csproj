@@ -93,6 +93,7 @@
     <Compile Include="Source\Descriptors\DescriptorVisual.cs" />
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Descriptors\Item\DescriptorResource.cs" />
+    <Compile Include="Source\Descriptors\ListDefaultProperties.cs" />
     <Compile Include="Source\Descriptors\Location\DescriptorTypeLandscape.cs" />
     <Compile Include="Source\Descriptors\Requirement\ListDescriptorRequirements.cs" />
     <Compile Include="Source\Descriptors\Requirement\RequirementConstruction.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Source\Lobby\CreatureVisitEvent.cs" />
     <Compile Include="Source\Lobby\EntityForCreature.cs" />
     <Compile Include="Source\Lobby\EntityForConstruction.cs" />
+    <Compile Include="Source\Lobby\EntityProperties.cs" />
     <Compile Include="Source\Lobby\GroupItem.cs" />
     <Compile Include="Source\Lobby\Location.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />

@@ -92,6 +92,14 @@ namespace Fantasy_Kingdoms_Battle
                 StartBonuses.Add(new StartBonus(n));
             }
 
+            // Загрузка конфигурации свойств существ
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\PropertiesCreature.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/PropertyCreature"))
+            {
+                PropertiesCreature.Add(new DescriptorProperty(n));
+            }
+
             // Загрузка конфигурации типов сооружений
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeConstructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeConstruction"))
@@ -153,14 +161,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeAttack"))
             {
                 TypeAttacks.Add(new DescriptorAttack(n));
-            }
-
-            // Загрузка конфигурации свойств существ
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\PropertiesCreature.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/PropertyCreature"))
-            {
-                PropertiesCreature.Add(new DescriptorProperty(n));
             }
 
             // Загрузка конфигурации потребностей существ

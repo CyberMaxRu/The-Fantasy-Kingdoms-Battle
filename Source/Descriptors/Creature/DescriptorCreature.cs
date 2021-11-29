@@ -116,18 +116,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode np = n.SelectSingleNode("Properties");
             if (np != null)
             {
-                foreach (XmlNode nnl in np.SelectNodes("Property"))
-                {
-                    string idProperty = GetStringNotNull(nnl, "ID");
-                    DescriptorCreatureProperty dcp = new DescriptorCreatureProperty(Descriptors.FindPropertyCreature(idProperty), nnl);
-
-                    foreach (DescriptorCreatureProperty dcp2 in Properties)
-                    {
-                        Assert(dcp2.Descriptor.ID != dcp.Descriptor.ID);
-                    }
-
-                    Properties.Add(dcp);
-                }
+                Properties = new ListDefaultProperties(np);
             }
 
             // Загружаем дефолтные перки
@@ -330,7 +319,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
         internal ListDescriptorPerks Perks { get; }// Дефолтные перки        
-        internal List<DescriptorCreatureProperty> Properties { get; } = new List<DescriptorCreatureProperty>();// Свойства у существа
+        internal ListDefaultProperties Properties { get; }// Свойства у существа
         internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
         internal List<DescriptorCreatureInterest> Interests { get; } = new List<DescriptorCreatureInterest>();// Интересы
         internal int MovePoints { get; }// Очков движения по умолчанию

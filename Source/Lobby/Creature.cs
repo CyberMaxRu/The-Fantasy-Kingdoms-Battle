@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Создаем свойства
             Properties = new CreatureProperty[FormMain.Descriptors.PropertiesCreature.Count];
-
+            
             if (TypeCreature.Properties != null)
             {
                 foreach (DescriptorCreatureProperty dcp in TypeCreature.Properties)

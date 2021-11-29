@@ -38,6 +38,14 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем перки, которые дает сооружение
             ListPerks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
+            // Загружаем характеристики
+            XmlNode np = n.SelectSingleNode("Properties");
+            if (np != null)
+            {
+                Properties = new ListDefaultProperties(np);
+            }
+
+            //
             if ((forConstruction.Category == CategoryConstruction.Lair) || (forConstruction.Category == CategoryConstruction.Place))
             {
                 //Debug.Assert(DaysBuilding == 0);
@@ -72,6 +80,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListSmallEntity Extensions { get; }// Сущности, относящиеся к уровню
         internal DescriptorConstructionVisitSimple DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
+        internal ListDefaultProperties Properties { get; }// Список характеристик
 
 
         protected override string GetName(XmlNode n)
