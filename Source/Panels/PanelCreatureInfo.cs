@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class PanelCreatureInfo : PanelBaseInfo
     {
-        private readonly VCLabel lblKindHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
         private readonly Label lblMana;
@@ -67,11 +66,7 @@ namespace Fantasy_Kingdoms_Battle
             panelSecondarySkills = new PanelWithPanelEntity(4);
             panelPerks = new PanelWithPanelEntity(4);
 
-            lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontMedCaptionC, FormMain.Config.CommonCaptionPage, 16, "");
-            lblKindHero.StringFormat.Alignment = StringAlignment.Near;
-            lblKindHero.TruncLongText = true;
-
-            bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, lblKindHero.NextTop(), Program.formMain.bmpBandStateCreature);
+            bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.bmpBandStateCreature);
             bmpStateBackground.ShowHint += BmpState_ShowHint;
             bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.ilStateHero.GetImage(0, true, false));
             bmpState.ShowHintParent = true;
@@ -140,8 +135,6 @@ namespace Fantasy_Kingdoms_Battle
 
             panelAbilitiesAndSecSkills.Width = pageControl.Width;
 
-            lblKindHero.Width = Width - lblKindHero.ShiftX - FormMain.Config.GridSize;
-
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
             lblHealth = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblLevel.Top + lblLevel.Height + Config.GRID_SIZE);
@@ -194,7 +187,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ArrangeControls()
         {
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
-            lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
             labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
             separSecSkills.Width = panelAbilities.Width;
             panelStatistics.Height = pageControl.Height - panelStatistics.ShiftY - FormMain.Config.GridSize;
@@ -208,7 +200,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             imgIcon.Level = Creature.GetLevel();
-            lblKindHero.Text = $"{Creature.TypeCreature.Name} ({Creature.TypeCreature.TypeCreature.Name})";
             bmpState.Bitmap = Program.formMain.ilStateHero.GetImage(Creature.StateCreature.ImageIndex, true, false);
             labelNameState.Text = Creature.StateCreature.Name;
 
