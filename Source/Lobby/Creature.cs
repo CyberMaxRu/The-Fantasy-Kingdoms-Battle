@@ -61,7 +61,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Создаем перк существа по его характеристикам
-            Perks.Add(new Perk(this, TypeCreature.Properties));
+            MainPerk = new Perk(this, TypeCreature.Properties);
+            Perks.Add(MainPerk);
 
             // Берем дефолтные перки
             foreach (DescriptorPerk dp in TypeCreature.Perks)
@@ -111,6 +112,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<Item> Inventory { get; } = new List<Item>();
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
+        internal Perk MainPerk { get; }// Основной перк существа 
         internal List<Perk> Perks { get; } = new List<Perk>();// Перки
         internal Item MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
         internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
@@ -133,31 +135,65 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IsLive);
             Debug.Assert(Level < TypeCreature.MaxLevel);
 
-            // Прибавляем безусловные параметры
-            if (TypeCreature.ConfigNextLevel != null)
+            //
+            Level++;
+
+            if (Level > 1)
             {
-                ParametersBase.Health += TypeCreature.ConfigNextLevel.Health;
-                ParametersBase.Mana += TypeCreature.ConfigNextLevel.Mana;
-                ParametersBase.Stamina += TypeCreature.ConfigNextLevel.Stamina;
-
-                // Прибавляем очки характеристик
-                int t;
-                for (int i = 0; i < TypeCreature.ConfigNextLevel.StatPoints; i++)
+                // Прибавляем безусловные параметры
+                if (TypeCreature.ConfigNextLevel != null)
                 {
-                    t = BattleParticipant.Lobby.Rnd.Next(100);
+                    ParametersBase.Health += TypeCreature.ConfigNextLevel.Health;
+                    ParametersBase.Mana += TypeCreature.ConfigNextLevel.Mana;
+                    ParametersBase.Stamina += TypeCreature.ConfigNextLevel.Stamina;
 
-                    if (t < TypeCreature.ConfigNextLevel.WeightStrength)
-                        ParametersBase.Strength++;
-                    else if (t < TypeCreature.ConfigNextLevel.WeightStrength + TypeCreature.ConfigNextLevel.WeightDexterity)
-                        ParametersBase.Dexterity++;
-                    else if (t < TypeCreature.ConfigNextLevel.WeightStrength + TypeCreature.ConfigNextLevel.WeightDexterity + TypeCreature.ConfigNextLevel.WeightMagic)
-                        ParametersBase.Magic++;
-                    else
-                        ParametersBase.Vitality++;
+                    // Прибавляем очки характеристик
+                    int t;
+                    for (int i = 0; i < TypeCreature.ConfigNextLevel.StatPoints; i++)
+                    {
+                        t = BattleParticipant.Lobby.Rnd.Next(100);
+
+                        if (t < TypeCreature.ConfigNextLevel.WeightStrength)
+                            ParametersBase.Strength++;
+                        else if (t < TypeCreature.ConfigNextLevel.WeightStrength + TypeCreature.ConfigNextLevel.WeightDexterity)
+                            ParametersBase.Dexterity++;
+                        else if (t < TypeCreature.ConfigNextLevel.WeightStrength + TypeCreature.ConfigNextLevel.WeightDexterity + TypeCreature.ConfigNextLevel.WeightMagic)
+                            ParametersBase.Magic++;
+                        else
+                            ParametersBase.Vitality++;
+                    }
+                }
+
+                // Делаем изменение характеристик
+                foreach (DescriptorCreatureProperty cp in TypeCreature.Properties.Where(d => d.ChangePerLevel != 0))
+                {
+                    MainPerk.ListProperty[cp.Descriptor.Index] = ValidateValueProperty(MainPerk.ListProperty[cp.Descriptor.Index], cp.ChangePerLevel);
+                }
+
+                // Делаем изменение изменения потребностей
+                foreach (DescriptorCreatureNeed dcn in TypeCreature.Needs.Where(d => d.ChangePerLevel != 0))
+                {
+                    Needs[dcn.Descriptor.Index].IncreasePerDay = ValidateValueProperty(Needs[dcn.Descriptor.Index].IncreasePerDay, dcn.ChangePerLevel);
+                    Utils.Assert(Needs[dcn.Descriptor.Index].IncreasePerDay > 0);
+                }
+
+                // Делаем изменение интересов
+                foreach (DescriptorCreatureInterest dci in TypeCreature.Interests.Where(d => d.ChangePerLevel != 0))
+                {
+                    Interests[dci.Descriptor.Index].Value = ValidateValueProperty(Interests[dci.Descriptor.Index].Value, dci.ChangePerLevel);
                 }
             }
+        }
 
-            Level++;
+        private int ValidateValueProperty(int val, int change)
+        {
+            val += change;
+            if (val > FormMain.Config.MaxValueProperty)
+                val = FormMain.Config.MaxValueProperty;
+            if (val < -FormMain.Config.MaxValueProperty)
+                val = -FormMain.Config.MaxValueProperty;
+
+            return val;
         }
 
         internal void UpdateBaseParameters()
