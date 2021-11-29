@@ -217,7 +217,7 @@
       <Property>
         <ID>Honor</ID>
         <MinValueOnHire>100</MinValueOnHire>
-        <MaxValueOnHire>100</MaxValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>        
       </Property>
       <Property>
         <ID>Enthusiasm</ID>
@@ -2043,6 +2043,7 @@
         <ID>Stealth</ID>
         <MinValueOnHire>400</MinValueOnHire>
         <MaxValueOnHire>500</MaxValueOnHire>
+        <ChangePerLevel>4</ChangePerLevel>
       </Property>
       <Property>
         <ID>Vigilance</ID>
@@ -2061,8 +2062,9 @@
       </Property>
       <Property>
         <ID>CreatureDangerous</ID>
-        <MinValueOnHire>-1000</MinValueOnHire>
-        <MaxValueOnHire>-1000</MaxValueOnHire>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+        <ChangePerLevel>2</ChangePerLevel>
       </Property>
     </Properties>
     <Needs>
@@ -2083,12 +2085,14 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>500</MaxValueOnHire>
         <IncreasePerDay>100</IncreasePerDay>
+        <ChangePerLevel>-1</ChangePerLevel>
       </Need>
       <Need>
         <ID>Entertainment</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>500</MaxValueOnHire>
         <IncreasePerDay>100</IncreasePerDay>
+        <ChangePerLevel>1</ChangePerLevel>
       </Need>
       <Need>
         <ID>Money</ID>
@@ -2143,6 +2147,7 @@
         <ID>InterestKilling</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>500</MaxValueOnHire>
+        <ChangePerLevel>2</ChangePerLevel>
       </Interest>
       <Interest>
         <ID>InterestDemolition</ID>
