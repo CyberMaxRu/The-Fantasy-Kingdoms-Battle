@@ -37,15 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Создаем свойства
-            Properties = new CreatureProperty[FormMain.Descriptors.PropertiesCreature.Count];
-            
-            if (TypeCreature.Properties != null)
-            {
-                foreach (DescriptorCreatureProperty dcp in TypeCreature.Properties)
-                {
-                    Properties[dcp.Descriptor.Index] = new CreatureProperty(this, dcp.Descriptor);
-                }
-            }
+            Properties = new EntityProperties(this, TypeCreature.Properties);
 
             // Создаем потребности
             Needs = new CreatureNeed[FormMain.Descriptors.NeedsCreature.Count];
@@ -127,7 +119,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorStateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         // Индивидуальные свойства существа
-        internal CreatureProperty[] Properties { get; }// Характеристики        
+        internal EntityProperties Properties { get; }// Характеристики
         internal CreatureNeed[] Needs { get; }// Потребности
         internal CreatureInterest[] Interests { get; }// Интересы
         //
@@ -432,7 +424,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CalcProperties()
         {
-            for (int i = 0; i < Properties.Length; i++)
+            for (int i = 0; i < Properties.Count; i++)
                 if (Properties[i] != null)
                     CalcProperty(Properties[i]);
         }
