@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс свойства существа
     internal sealed class CreatureProperty : CreaturePropertyMain
     {
-        public CreatureProperty(Creature creature, DescriptorProperty pc) : base(creature)
+        public CreatureProperty(BigEntity creature, DescriptorProperty pc) : base(creature)
         {
             Property = pc;
         }

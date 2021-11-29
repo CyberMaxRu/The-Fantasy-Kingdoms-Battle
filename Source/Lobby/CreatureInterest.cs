@@ -9,11 +9,11 @@ namespace Fantasy_Kingdoms_Battle
     // Интерес существа
     internal sealed class CreatureInterest : CreaturePropertyMain
     {
-        public CreatureInterest(Creature creature, DescriptorCreatureInterest ci) : base(creature)
+        public CreatureInterest(BigEntity creature, DescriptorCreatureInterest ci) : base(creature)
         {
             Descriptor = ci;
 
-            Value = Creature.BattleParticipant.Lobby.Rnd.Next(ci.MinValueOnHire, ci.MaxValueOnHire + 1);
+            Value = Creature.Lobby.Rnd.Next(ci.MinValueOnHire, ci.MaxValueOnHire + 1);
         }
 
         internal DescriptorCreatureInterest Descriptor { get; }

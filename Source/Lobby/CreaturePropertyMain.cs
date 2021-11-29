@@ -8,12 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class CreaturePropertyMain
     {
-        public CreaturePropertyMain(Creature c)
+        public CreaturePropertyMain(BigEntity c)
         {
             Creature = c;
         }
 
-        internal Creature Creature { get; }
+        internal BigEntity Creature { get; }
         internal int Value { get; set; }// Текущее значение
     }
 }

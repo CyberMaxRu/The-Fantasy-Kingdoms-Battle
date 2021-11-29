@@ -9,11 +9,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class BigEntity : Entity
     {
-        public BigEntity() : base()
+        public BigEntity(Lobby lobby) : base()
         {
-
+            Lobby = lobby;
         }
 
+        internal Lobby Lobby { get; }  
         internal List<CellMenuConstruction> Researches { get; } = new List<CellMenuConstruction>();
 
         internal abstract void ShowInfo(int selectPage = -1);

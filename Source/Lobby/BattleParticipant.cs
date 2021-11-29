@@ -18,12 +18,10 @@ namespace Fantasy_Kingdoms_Battle
             return c1.IDCreature - c2.IDCreature;
         }
 
-        public BattleParticipant(Lobby lobby)
+        public BattleParticipant(Lobby lobby) : base(lobby)
         {
-            Lobby = lobby;
         }
 
-        internal Lobby Lobby { get; }
         internal bool BattleCalced { get; set; } = false;
         internal bool IsLive { get; set; } = true;/*private set*/
         internal List<Battle> HistoryBattles { get; } = new List<Battle>();
