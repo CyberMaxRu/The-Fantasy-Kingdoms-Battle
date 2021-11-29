@@ -21,17 +21,20 @@ namespace Fantasy_Kingdoms_Battle
             if (creature.CategoryCreature == CategoryCreature.Hero)
             {
                 FullName = (creature.PrefixName.Length > 0 ? creature.PrefixName + " " : "")
-                    + GetRandomName(creature.NameFromTypeHero == null ? creature.Names : creature.NameFromTypeHero.Names)
-                    + " " + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.SurnameFromTypeHero.Surnames);
+                    + GetRandomName(creature.NameFromTypeHero == null ? creature.Names : creature.NameFromTypeHero.Names, false)
+                    + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.SurnameFromTypeHero.Surnames, true);
             }
             else
             {
                 FullName = TypeCreature.Name;
             }
 
-            string GetRandomName(List<string> list)
+            string GetRandomName(List<string> list, bool isSurname)
             {
-                return list.Count > 0 ? list[Player.Lobby.Rnd.Next(list.Count)] : "";
+                string s = list.Count > 0 ? list[Player.Lobby.Rnd.Next(list.Count)] : "";
+                if (isSurname && (s.Length > 0))
+                     s = (s[0] != ',' ? " " : "") + s;
+                return s;
             }
         }
 
