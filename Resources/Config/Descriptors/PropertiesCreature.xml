@@ -54,4 +54,10 @@
     <Description>Чем выше агрессивность, тем больше вероятность, что существо будет само искать жертву для нападения.</Description>
     <ImageIndex>38</ImageIndex>
   </PropertyCreature>
+  <PropertyCreature>
+    <ID>CreatureDangerous</ID>
+    <Name>Опасность</Name>
+    <Description>Чем опаснее существо, тем больше вероятность, что с ним не захотят связываться.</Description>
+    <ImageIndex>40</ImageIndex>
+  </PropertyCreature>
 </Descriptors>

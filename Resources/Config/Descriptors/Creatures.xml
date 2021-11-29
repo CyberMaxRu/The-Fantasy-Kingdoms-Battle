@@ -254,6 +254,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -595,6 +600,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -906,6 +916,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>100</MinValueOnHire>
+        <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -1197,6 +1212,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -1487,6 +1507,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -1759,6 +1784,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>200</MinValueOnHire>
+        <MaxValueOnHire>200</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -2028,6 +2058,11 @@
         <ID>LordContentment</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>-1000</MinValueOnHire>
+        <MaxValueOnHire>-1000</MaxValueOnHire>
       </Property>
     </Properties>
     <Needs>
@@ -2304,6 +2339,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -2543,6 +2583,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -2780,6 +2825,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -3015,6 +3065,11 @@
         <ID>LordContentment</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
     </Properties>
     <Needs>
@@ -3253,6 +3308,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -3489,6 +3549,11 @@
         <ID>LordContentment</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
     </Properties>
     <Needs>
@@ -3728,6 +3793,11 @@
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
+      </Property>
     </Properties>
     <Needs>
       <Need>
@@ -3920,6 +3990,11 @@
         <ID>LordContentment</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
     </Properties>
     <Needs>
@@ -4137,6 +4212,11 @@
         <ID>LordContentment</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>300</MinValueOnHire>
+        <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
     </Properties>
     <Needs>
@@ -4679,6 +4759,11 @@
         <ID>Agression</ID>
         <MinValueOnHire>400</MinValueOnHire>
         <MaxValueOnHire>600</MaxValueOnHire>
+      </Property>
+      <Property>
+        <ID>CreatureDangerous</ID>
+        <MinValueOnHire>150</MinValueOnHire>
+        <MaxValueOnHire>150</MaxValueOnHire>
       </Property>
     </Properties>
     <Needs>
