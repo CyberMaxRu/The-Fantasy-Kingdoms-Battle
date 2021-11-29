@@ -122,6 +122,8 @@ namespace Fantasy_Kingdoms_Battle
         internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
+        internal EntityProperties Properties { get; private set; }
+
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
         private void TuneCellMenuBuildOrUpgrade()
@@ -214,6 +216,9 @@ namespace Fantasy_Kingdoms_Battle
                     SatisfactionNeeds[need.Item1.Index] = need.Item2;
                 }
             }
+
+            //
+            Properties = new EntityProperties(this, TypeConstruction.Levels[Level].Properties);
 
             if (needNotice)
                 Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);
