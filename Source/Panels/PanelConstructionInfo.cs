@@ -14,6 +14,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblTypeConstruction;
         private VCIconAndDigitValue lblGold;
         private readonly VisualControl tabProducts;
+        private VCLabel lblSectionProperty;
+        private readonly List<VCCreatureProperty> listProperties;
         private VCLabel lblSectionVisits;
         private VCLabel lblSectionExtensions;
         private VCLabel lblSectionImprovements;
@@ -58,6 +60,12 @@ namespace Fantasy_Kingdoms_Battle
             btnVisitors = pageControl.AddTab("Посетители", FormMain.Config.Gui48_Exit, panelVisitors);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
+            lblSectionProperty = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Основные характеристики:");
+            lblSectionProperty.StringFormat.Alignment = StringAlignment.Near;
+            listProperties = new List<VCCreatureProperty>();
+            for (int i = 0; i < FormMain.Descriptors.PropertiesCreature.Count; i++)
+                listProperties.Add(new VCCreatureProperty(tabProducts, 0, 0, 51));
+
             lblSectionVisits = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Посещение:");
             lblSectionVisits.StringFormat.Alignment = StringAlignment.Near;
             lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Доп. сооружения:");
@@ -94,6 +102,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
             lblTypeConstruction.Width = Width - lblTypeConstruction.ShiftX * 2;
             tabProducts.Width = pageControl.Width;
+            lblSectionProperty.Width = pageControl.Width;
             lblSectionVisits.Width = pageControl.Width;
             lblSectionExtensions.Width = pageControl.Width;
             lblSectionImprovements.Width = pageControl.Width;
@@ -149,7 +158,9 @@ namespace Fantasy_Kingdoms_Battle
             //pageControl.SetPageVisible(1, Construction.TypeConstruction.TrainedHero != null);
             //pageControl.SetPageVisible(2, Construction.TypeConstruction.TrainedHero != null);
 
-            int nextTop = 0;
+            ShowChapter(lblSectionProperty, lblSectionVisits, Construction.Properties?.ToList(), listProperties);
+            int nextTop = lblSectionVisits.ShiftY;
+
             DrawList(lblSectionVisits, panelVisits, Construction.Visits);
             DrawList(lblSectionExtensions, panelExtensions, Construction.Extensions);
             DrawList(lblSectionImprovements, panelImprovements, Construction.Improvements);

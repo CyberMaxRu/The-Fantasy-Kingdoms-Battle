@@ -94,48 +94,53 @@ namespace Fantasy_Kingdoms_Battle
             int nextLeft = 0;
             int nextTop = toplabel.NextTop() - 4;
 
-            for (int i = 0; i < listProperty.Count; i++)
+            if (listProperty != null)
             {
-                listControls[i].ClearSlaveControls();
-
-                if (listProperty[i] != null)
+                for (int i = 0; i < listProperty.Count; i++)
                 {
-                    VCCreaturePropertyMain idv = listControls[numberProperty];
-                    idv.SetProperty(listProperty[i]);
-                    idv.ShiftX = nextLeft;
-                    idv.ShiftY = nextTop;
+                    listControls[i].ClearSlaveControls();
 
-                    if (numberProperty % 4 == 3)
+                    if (listProperty[i] != null)
                     {
-                        nextLeft = 0;
-                        nextTop = idv.NextTop() - 4;
-                    }
-                    else
-                    {
-                        nextLeft = idv.NextLeft() - 4;
-                    }
+                        VCCreaturePropertyMain idv = listControls[numberProperty];
+                        idv.SetProperty(listProperty[i]);
+                        idv.ShiftX = nextLeft;
+                        idv.ShiftY = nextTop;
 
-                    if (bottomlabel != null)
-                    {
-                        if (numberProperty % 4 == 0)
+                        if (numberProperty % 4 == 3)
                         {
-                            bottomlabel.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
+                            nextLeft = 0;
+                            nextTop = idv.NextTop() - 4;
                         }
+                        else
+                        {
+                            nextLeft = idv.NextLeft() - 4;
+                        }
+
+                        if (bottomlabel != null)
+                        {
+                            if (numberProperty % 4 == 0)
+                            {
+                                bottomlabel.SetAsSlaveControl(idv, FormMain.Config.GridSize, true);
+                            }
+                        }
+
+                        toplabel.Parent.ArrangeControl(idv);
+
+                        numberProperty++;
                     }
-
-                    toplabel.ArrangeControl(idv);
-
-                    numberProperty++;
                 }
             }
+
+            toplabel.Visible = numberProperty > 0;
 
             if ((numberProperty == 0) && (bottomlabel != null))
             {
                 bottomlabel.SetAsSlaveControl(toplabel, FormMain.Config.GridSize, true);
-                toplabel.ArrangeControl(toplabel);
+                toplabel.Parent.ArrangeControl(toplabel);
             }
 
-            for (; numberProperty < listProperty.Count; numberProperty++)
+            for (; numberProperty < listControls.Count; numberProperty++)
             {
                 listControls[numberProperty].SetProperty(null);
                 listControls[numberProperty].ClearSlaveControls();
