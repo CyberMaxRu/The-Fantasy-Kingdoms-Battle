@@ -122,8 +122,6 @@ namespace Fantasy_Kingdoms_Battle
         internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
-        internal EntityProperties Properties { get; private set; }
-
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
         private void TuneCellMenuBuildOrUpgrade()

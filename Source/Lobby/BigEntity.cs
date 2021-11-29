@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Lobby Lobby { get; }  
         internal List<CellMenuConstruction> Researches { get; } = new List<CellMenuConstruction>();
+        internal EntityProperties Properties { get; set; }// Характеристики
 
         internal abstract void ShowInfo(int selectPage = -1);
         internal abstract void HideInfo();

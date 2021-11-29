@@ -119,7 +119,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorStateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         // Индивидуальные свойства существа
-        internal EntityProperties Properties { get; }// Характеристики
         internal CreatureNeed[] Needs { get; }// Потребности
         internal CreatureInterest[] Interests { get; }// Интересы
         //
