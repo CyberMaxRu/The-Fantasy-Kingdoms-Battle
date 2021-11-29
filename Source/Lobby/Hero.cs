@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 FullName = (creature.PrefixName.Length > 0 ? creature.PrefixName + " " : "")
                     + GetRandomName(creature.NameFromTypeHero == null ? creature.Names : creature.NameFromTypeHero.Names)
-                    + " " + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.Surnames);
+                    + " " + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.SurnameFromTypeHero.Surnames);
             }
             else
             {
