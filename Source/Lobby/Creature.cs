@@ -39,9 +39,12 @@ namespace Fantasy_Kingdoms_Battle
             // Создаем свойства
             Properties = new CreatureProperty[FormMain.Descriptors.PropertiesCreature.Count];
 
-            foreach (DescriptorCreatureProperty dcp in TypeCreature.Properties)
+            if (TypeCreature.Properties != null)
             {
-                Properties[dcp.Descriptor.Index] = new CreatureProperty(this, dcp.Descriptor);
+                foreach (DescriptorCreatureProperty dcp in TypeCreature.Properties)
+                {
+                    Properties[dcp.Descriptor.Index] = new CreatureProperty(this, dcp.Descriptor);
+                }
             }
 
             // Создаем потребности
@@ -61,8 +64,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Создаем перк существа по его характеристикам
-            MainPerk = new Perk(this, TypeCreature.Properties);
-            Perks.Add(MainPerk);
+            if (TypeCreature.Properties != null)
+            {
+                MainPerk = new Perk(this, TypeCreature.Properties);
+                Perks.Add(MainPerk);
+            }
 
             // Берем дефолтные перки
             foreach (DescriptorPerk dp in TypeCreature.Perks)
