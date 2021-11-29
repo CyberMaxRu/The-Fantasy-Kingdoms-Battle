@@ -394,11 +394,11 @@ namespace Fantasy_Kingdoms_Battle
                     if (svc.ShiftFromMasterControlToDown)
                     {
                         svc.ShiftX = vc.ShiftX;
-                        svc.ShiftY = vc.ShiftY + vc.Height + svc.ShiftAtMasterControl;
+                        svc.ShiftY = vc.ShiftY + (vc.Visible ? vc.Height + svc.ShiftAtMasterControl : 0);
                     }
                     else
                     {
-                        svc.ShiftX = vc.ShiftX + vc.Width + svc.ShiftAtMasterControl;
+                        svc.ShiftX = vc.ShiftX + (vc.Visible ? vc.Width + svc.ShiftAtMasterControl : 0);
                         svc.ShiftY = vc.ShiftY;
                     }
 
