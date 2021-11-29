@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public Construction(Player p, DescriptorConstruction b, Location location) : base(p.Lobby)
+        public Construction(Player p, DescriptorConstruction b, Location location) : base(b, p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             TuneCellMenuBuildOrUpgrade();
         }
 
-        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, TypeNoticeForPlayer typeNotice) : base(p.Lobby)
+        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, TypeNoticeForPlayer typeNotice) : base(l, p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
@@ -217,6 +217,11 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             Properties = new EntityProperties(this, TypeConstruction.Levels[Level].Properties);
+            if (TypeConstruction.Levels[Level].Properties != null)
+            {
+                MainPerk = new Perk(this, TypeConstruction.Levels[Level].Properties);
+                Perks.Add(MainPerk);
+            }
 
             if (needNotice)
                 Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);

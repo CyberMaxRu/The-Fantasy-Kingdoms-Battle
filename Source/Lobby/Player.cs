@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
-        public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby)
+        public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby)
         {
             Descriptor = player;
             PlayerIndex = playerIndex;

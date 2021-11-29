@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private static int sequenceID = 0;// Генератор уникального кода героя
 
-        public Creature(DescriptorCreature tc, BattleParticipant bp) : base(bp.Lobby)
+        public Creature(DescriptorCreature tc, BattleParticipant bp) : base(tc, bp.Lobby)
         {
             TypeCreature = tc;
             BattleParticipant = bp;
@@ -110,8 +110,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<Item> Inventory { get; } = new List<Item>();
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
-        internal Perk MainPerk { get; }// Основной перк существа 
-        internal List<Perk> Perks { get; } = new List<Perk>();// Перки
         internal Item MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
         internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
         internal Item Armour { get; private set; }// Доспех        
@@ -421,13 +419,6 @@ namespace Fantasy_Kingdoms_Battle
                 Perks.Remove(removedPerk);
         }
 
-        private void CalcProperties()
-        {
-            for (int i = 0; i < Properties.Count; i++)
-                if (Properties[i] != null)
-                    CalcProperty(Properties[i]);
-        }
-
         internal virtual void PerksChanged()
         {
             CalcProperties();
@@ -436,28 +427,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
 
-        }
-
-        private void CalcProperty(CreatureProperty cp)
-        {
-            cp.ListSource.Clear();
-            cp.Value = 0;
-            int value;
-
-            foreach (Perk p in Perks)
-            {
-                value = p.ListProperty[cp.Property.Index];
-                if (value != 0)
-                {
-                    cp.ListSource.Add(p);
-                    cp.Value += value;
-                }
-            }
-
-            if (cp.Value > FormMain.Config.MaxValueProperty)
-                cp.Value = FormMain.Config.MaxValueProperty;
-            else if (cp.Value < -FormMain.Config.MaxValueProperty)
-                cp.Value = -FormMain.Config.MaxValueProperty;
         }
 
         internal virtual void PrepareTurn()
