@@ -30,6 +30,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblCaptionPanelSound;
         private VCCheckBox chkbPlaySound;
         private VCCheckBox chkbPlayMusic;
+        private readonly VCHorizTrackBar tbVolumeSound;
+        private readonly VCHorizTrackBar tbVolumeMusic;
 
         private VisualControl vcPanelInterface;
         private VCLabel lblCaptionPanelInterface;
@@ -70,20 +72,22 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowGrid.Width = 320;
             vcPanelBatttlefield.ApplyMaxSize();
             vcPanelBatttlefield.Height += 8;
-            lblCaptionPanelBattlefield.Width = vcPanelBatttlefield.Width - (FormMain.Config.GridSize * 2);
+            lblCaptionPanelBattlefield.Width = vcPanelBatttlefield.Width - (FormMain.Config.GridSize * 2); 
 
             vcPanelSound = new VisualControl(ClientControl, 0, vcPanelBatttlefield.NextTop());
             vcPanelSound.ShowBorder = true;
             lblCaptionPanelSound = new VCLabel(vcPanelSound, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Настройки звука:");
             lblCaptionPanelSound.StringFormat.Alignment = StringAlignment.Near;
             chkbPlaySound = new VCCheckBox(vcPanelSound, FormMain.Config.GridSize, lblCaptionPanelSound.NextTop(), "Звуки");
-            chkbPlaySound.Width = 320;
+            chkbPlaySound.Width = 152;
             chkbPlaySound.Click += ChkbPlaySound_Click;
             chkbPlayMusic = new VCCheckBox(vcPanelSound, FormMain.Config.GridSize, chkbPlaySound.NextTop(), "Музыка");
-            chkbPlayMusic.Width = 320;
+            chkbPlayMusic.Width = 152;
             chkbPlayMusic.Click += ChkbPlayMusic_Click;
             vcPanelSound.ApplyMaxSize();
             vcPanelSound.Height += 8;
+            tbVolumeSound = new VCHorizTrackBar(vcPanelSound, chkbPlaySound.NextLeft(), chkbPlaySound.ShiftY);
+            tbVolumeMusic = new VCHorizTrackBar(vcPanelSound, chkbPlayMusic.NextLeft(), chkbPlayMusic.ShiftY);
             lblCaptionPanelSound.Width = vcPanelSound.Width - (FormMain.Config.GridSize * 2);
 
             vcPanelInterface = new VisualControl(ClientControl, 0, vcPanelSound.NextTop());
@@ -119,6 +123,9 @@ namespace Fantasy_Kingdoms_Battle
             vcPanelBatttlefield.Width = ClientControl.Width - (vcPanelBatttlefield.ShiftX * 2);
             vcPanelSound.Width = ClientControl.Width - (vcPanelSound.ShiftX * 2);
             vcPanelInterface.Width = ClientControl.Width - (vcPanelInterface.ShiftX * 2);
+
+            tbVolumeSound.Width = ClientControl.Width - tbVolumeSound.ShiftX - FormMain.Config.GridSize;
+            tbVolumeMusic.Width = ClientControl.Width - tbVolumeMusic.ShiftX - FormMain.Config.GridSize; 
         }
 
         private void ChkbPlayMusic_Click(object sender, EventArgs e)

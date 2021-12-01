@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             Utils.Assert(bmpTileBackground.Width == 1);
 
             Bitmap bmpButtons = Program.formMain.LoadBitmap("ScrollBarHorizButtons.png");
-            blButtons = new BitmapList(bmpButtons, bmpButtons.Height, true, true);
+            blButtons = new BitmapList(bmpButtons, new Size(bmpButtons.Height, bmpButtons.Height), true, true);
             bmpButtons.Dispose();
 
             bmpTick = Program.formMain.LoadBitmap("ScrollBarHorizTick.png");

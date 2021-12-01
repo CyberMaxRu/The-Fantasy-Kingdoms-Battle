@@ -70,7 +70,8 @@ namespace Fantasy_Kingdoms_Battle
                     Level = Entity.GetLevel();
                     Text = Entity.GetText();
 
-                    Debug.Assert(BitmapList.Size == 48);
+                    Debug.Assert(BitmapList.Size.Width == 48);
+                    Debug.Assert(BitmapList.Size.Height == 48);
                 }
                 else
                     ImageIndex = -1;

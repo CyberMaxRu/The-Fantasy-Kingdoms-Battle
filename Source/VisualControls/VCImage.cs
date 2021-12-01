@@ -12,8 +12,8 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = bitmapList;
             ImageIndex = imageIndex;
 
-            Width = BitmapList.Size;
-            Height = BitmapList.Size;
+            Width = BitmapList.Size.Width;
+            Height = BitmapList.Size.Height;
         }
 
         internal BitmapList BitmapList { get; set; }

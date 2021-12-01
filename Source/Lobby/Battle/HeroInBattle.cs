@@ -634,7 +634,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Рисуем полоску жизни
-            GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.imListObjects48.Size - 6, Program.formMain.imListObjects48.Size - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
+            GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.imListObjects48.Size.Width - 6, Program.formMain.imListObjects48.Size.Height - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
 
             // Применяем исчезновение
             if (inDisappearance)

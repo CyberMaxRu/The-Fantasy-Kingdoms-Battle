@@ -155,7 +155,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             if ((BitmapList != null) && (ImageIndex >= 0))
-                LeftMargin = BitmapList.Size + FormMain.Config.GridSize;
+                LeftMargin = BitmapList.Size.Width + FormMain.Config.GridSize;
         }
     }
 }

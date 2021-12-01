@@ -18,10 +18,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<Bitmap> listBitmapNormalOver;
         private readonly List<Bitmap> listBitmapDisabledOver;
 
-        public BitmapList(Bitmap bmp, int size, bool withDisabled, bool withOver)
+        public BitmapList(Bitmap bmp, Size size, bool withDisabled, bool withOver)
         {
-            Debug.Assert(bmp.Width % size == 0);
-            Debug.Assert(bmp.Height % size == 0);
+            Debug.Assert(bmp.Width % size.Width == 0);
+            Debug.Assert(bmp.Height % size.Height == 0);
 
             Size = size;
             WithDisabled = withDisabled;
@@ -43,11 +43,12 @@ namespace Fantasy_Kingdoms_Battle
             AddBitmap(bmp);
         }
 
-        public BitmapList(BitmapList fromList, int newSize, int borderWidth, Bitmap mask)
+        public BitmapList(BitmapList fromList, Size newSize, int borderWidth, Bitmap mask)
         {
-            Debug.Assert(mask.Width == newSize);
-            Debug.Assert(mask.Height == newSize);
-            Debug.Assert(newSize < fromList.Size);
+            Debug.Assert(mask.Width == newSize.Width);
+            Debug.Assert(mask.Height == newSize.Height);
+            Debug.Assert(newSize.Width < fromList.Size.Width);
+            Debug.Assert(newSize.Height < fromList.Size.Height);
 
             Size = newSize;
             WithDisabled = fromList.WithDisabled;
@@ -71,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int Size { get; }
+        internal Size Size { get; }
         internal bool WithDisabled { get; set; }
         internal bool WithOver { get; set; }
         internal int Count { get => listBitmapNormal.Count; }
@@ -80,8 +81,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (mask != null)
             {
-                Debug.Assert(mask.Width == Size);
-                Debug.Assert(mask.Height == Size);
+                Debug.Assert(mask.Width == Size.Width);
+                Debug.Assert(mask.Height == Size.Height);
             }
 
             listBitmapNormal?[idx]?.Dispose();
@@ -89,10 +90,10 @@ namespace Fantasy_Kingdoms_Battle
             listBitmapDisabled?[idx]?.Dispose();
             listBitmapDisabledOver?[idx]?.Dispose();
 
-            Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size - (borderWidth * 2), fromList.Size - (borderWidth * 2));
-            Rectangle rectTarget = new Rectangle(0, 0, Size, Size);
+            Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size.Width - (borderWidth * 2), fromList.Size.Height - (borderWidth * 2));
+            Rectangle rectTarget = new Rectangle(0, 0, Size.Width, Size.Height);
 
-            Bitmap bmpDest = new Bitmap(Size, Size);
+            Bitmap bmpDest = new Bitmap(Size.Width, Size.Height);
             Graphics gDest = Graphics.FromImage(bmpDest);
 
             gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -186,8 +187,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CreateArray(List<Bitmap> list, Bitmap bitmap)
         {
-            int columns = bitmap.Width / Size;
-            int lines = bitmap.Height / Size;
+            int columns = bitmap.Width / Size.Width;
+            int lines = bitmap.Height / Size.Height;
             list.Capacity = list.Capacity + columns * lines;
             Bitmap bmp;
             Graphics g;
@@ -195,10 +196,10 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < lines; y++)
                 for (int x = 0; x < columns; x++)
                 {
-                    bmp = new Bitmap(Size, Size);
+                    bmp = new Bitmap(Size.Width, Size.Height);
                     using (g = Graphics.FromImage(bmp))
                     {
-                        g.DrawImage(bitmap, 0, 0, new Rectangle(x * Size, y * Size, Size, Size), GraphicsUnit.Pixel);
+                        g.DrawImage(bitmap, 0, 0, new Rectangle(x * Size.Width, y * Size.Height, Size.Width, Size.Height), GraphicsUnit.Pixel);
                     }
 
                     list.Add(bmp);

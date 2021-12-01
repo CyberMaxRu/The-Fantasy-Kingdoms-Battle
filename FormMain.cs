@@ -419,20 +419,20 @@ namespace Fantasy_Kingdoms_Battle
             bmpMaskSmall = LoadBitmap("MaskSmall.png");// Нужна ли еще?
 
             // Иконки игровых объектов. Также включает встроенные аватары игроков и пул пустых иконок под внешние аватары
-            imListObjects128 = new BitmapList(LoadBitmap("Objects.png"), 128, true, true);
+            imListObjects128 = new BitmapList(LoadBitmap("Objects.png"), new Size(128, 128), true, true);
             // Добавляем места под внешние аватары
             imListObjects128.AddEmptySlots(Config.MaxQuantityExternalAvatars);
-            imListObjects48 = new BitmapList(imListObjects128, 48, Config.BorderInBigIcons, bmpMaskSmall);
+            imListObjects48 = new BitmapList(imListObjects128, new Size(48, 48), Config.BorderInBigIcons, bmpMaskSmall);
             LoadBitmapObjects();
 
             imListObjects48.AddBitmap(LoadBitmap("Gui48.png"));
 
-            ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
-            ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, true);
-            ilParameters = new BitmapList(LoadBitmap("Parameters.png"), 24, true, false);
-            ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), 24, true, false);
-            ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), 48, true, false);
-            blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), 24, false, false);
+            ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), new Size(16, 16), true, false);
+            ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), new Size(24, 24), true, true);
+            ilParameters = new BitmapList(LoadBitmap("Parameters.png"), new Size(24, 24), true, false);
+            ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), new Size(24, 24), true, false);
+            ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), new Size(48, 48), true, false);
+            blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), new Size(24, 24), false, false);
 
             //MakeAlpha();
 
@@ -603,8 +603,8 @@ namespace Fantasy_Kingdoms_Battle
             btnEndTurn.HighlightUnderMouse = true;
             btnEndTurn.ShowBorder = true;
             panelLairWithFlags = new VisualControl(MainControl, 0, Config.GridSize);
-            panelLairWithFlags.Width = imListObjects48.Size;
-            panelLairWithFlags.Height = imListObjects48.Size;
+            panelLairWithFlags.Width = imListObjects48.Size.Width;
+            panelLairWithFlags.Height = imListObjects48.Size.Height;
 
             // Отладочная информация
             vcDebugInfo = new VisualControl();
@@ -628,7 +628,7 @@ namespace Fantasy_Kingdoms_Battle
             CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
             for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                    CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 22 + (x * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)));
+                    CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 22 + (x * (imListObjects48.Size.Width + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size.Height + DISTANCE_BETWEEN_CELLS)));
 
             // Панель со всеми героями
             panelCombatHeroes = new PanelWithPanelEntity(4, false, 12, 12);
@@ -1608,7 +1608,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int y = 0; y < lobby.TypeLobby.MapHeight; y++)
                     for (int x = 0; x < lobby.TypeLobby.MapWidth; x++)
                     {
-                        imgLocations[y, x] = new VCImage128(pageMap.Page, x * (imListObjects128.Size + Config.GridSize), y * (imListObjects128.Size + Config.GridSize));
+                        imgLocations[y, x] = new VCImage128(pageMap.Page, x * (imListObjects128.Size.Width + Config.GridSize), y * (imListObjects128.Size.Height + Config.GridSize));
                         imgLocations[y, x].ShowHint += Location_ShowHint;
                         imgLocations[y, x].Click += Map_Click;
                     }
