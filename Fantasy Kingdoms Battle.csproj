@@ -146,6 +146,7 @@
     <Compile Include="Source\VisualControls\VCCreatureProperty.cs" />
     <Compile Include="Source\VisualControls\VCCreaturePropertyMain.cs" />
     <Compile Include="Source\VisualControls\VCCustomNotice.cs" />
+    <Compile Include="Source\VisualControls\VCHorizTrackBar.cs" />
     <Compile Include="Source\VisualControls\VCIconAndDigitValue.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage24.cs" />
