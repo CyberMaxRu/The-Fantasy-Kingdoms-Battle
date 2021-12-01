@@ -15,11 +15,15 @@ namespace Fantasy_Kingdoms_Battle
         private readonly static Bitmap bmpTileBackground;
         private readonly static Bitmap bmpTick;
         private readonly static int shiftTick;
+        private readonly static int shiftTracker;
 
         private readonly static BitmapList blButtons;
+        private readonly static BitmapList blTracker;
 
         private readonly VCImage btnLeft;
         private readonly VCImage btnRight;
+        private readonly VCImage btnTracker;
+        private int widthTrackband;
         private Bitmap bmpBackground;
 
         static VCHorizTrackBar()
@@ -29,7 +33,10 @@ namespace Fantasy_Kingdoms_Battle
 
             Bitmap bmpButtons = Program.formMain.LoadBitmap("ScrollBarHorizButtons.png");
             blButtons = new BitmapList(bmpButtons, new Size(bmpButtons.Height, bmpButtons.Height), true, true);
-            bmpButtons.Dispose();
+
+            Bitmap bmpTracker = Program.formMain.LoadBitmap("ScrollBarHorizTracker.png");
+            blTracker = new BitmapList(bmpTracker, new Size(bmpTracker.Width, bmpTracker.Height), true, true);
+            shiftTracker = blTracker.Size.Width / 2;
 
             bmpTick = Program.formMain.LoadBitmap("ScrollBarHorizTick.png");
             shiftTick = bmpTick.Width / 2;
@@ -41,8 +48,30 @@ namespace Fantasy_Kingdoms_Battle
 
             btnLeft = new VCImage(this, 0, 0, blButtons, 0);
             btnLeft.HighlightUnderMouse = true;
+            btnLeft.Click += BtnLeft_Click;
             btnRight = new VCImage(this, 0, 0, blButtons, 1);
             btnRight.HighlightUnderMouse = true;
+            btnRight.Click += BtnRight_Click;
+
+            btnTracker = new VCImage(this, 0, 0, blTracker, 0);
+        }
+
+        private void BtnRight_Click(object sender, EventArgs e)
+        {
+            if (Position < Max)
+            {
+                Position++;
+                Program.formMain.SetNeedRedrawFrame();
+            }
+        }
+
+        private void BtnLeft_Click(object sender, EventArgs e)
+        {
+            if (Position > Min)
+            {
+                Position--;
+                Program.formMain.SetNeedRedrawFrame();
+            }
         }
 
         internal int Min { get; set; } = 0;
@@ -72,6 +101,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 gBody.Dispose();
+
+                widthTrackband = Width - btnLeft.Width - btnRight.Width - shiftTracker - shiftTracker + 2;
             }
 
             g.DrawImageUnscaled(bmpBackground, Left + btnLeft.Width, Top);
@@ -88,7 +119,27 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            Utils.Assert(Position >= Min);
+            Utils.Assert(Position <= Max);
+
+            btnTracker.ShiftX = btnLeft.Width - 1 + (Position * widthTrackband / 100) - shiftTracker;
+            ArrangeControl(btnTracker);
+
             base.Draw(g);
+        }
+
+        internal override void DoClick()
+        {
+            base.DoClick();
+
+            Point mp = Program.formMain.MousePosToControl(this);
+            int posAtTrackband = mp.X - btnLeft.Width;
+            if ((posAtTrackband < 0) || (posAtTrackband > widthTrackband))
+                return;
+
+            Position = posAtTrackband * 100 / widthTrackband;
+
+            Program.formMain.SetNeedRedrawFrame();
         }
     }
 }

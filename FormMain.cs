@@ -1935,6 +1935,11 @@ namespace Fantasy_Kingdoms_Battle
             mousePos.Y -= topLeftFrame.Y;
         }
 
+        internal Point MousePosToControl(VisualControl vc)
+        {
+            return new Point(mousePos.X - vc.Left, mousePos.Y - vc.Top);
+        }
+
         private void TreatMouseMove(bool leftDown)
         {
             Point oldMousePos = mousePos;
