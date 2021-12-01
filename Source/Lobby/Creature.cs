@@ -69,16 +69,16 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Берем оружие и доспехи
-            if (TypeCreature.WeaponMelee != null)
+            if (TypeCreature.DefaultWeaponMelee != null)
             {
-                MeleeWeapon = new Item(this, TypeCreature.WeaponMelee, 1);
+                MeleeWeapon = new Item(this, TypeCreature.DefaultWeaponMelee, 1);
                 //MeleeWeapon.AddModificator(FormMain.Config.FindItem("EnchantWeaponAttack"));
                 //MeleeWeapon.AddModificator(FormMain.Config.FindItem("EnchantWeaponPoison"));
             }
-            if (TypeCreature.WeaponRange != null)
-                RangeWeapon = new Item(this, TypeCreature.WeaponRange, 1);
-            if (TypeCreature.Armour != null)
-                Armour = new Item(this, TypeCreature.Armour, 1);
+            if (TypeCreature.DefaultWeaponRanged != null)
+                RangeWeapon = new Item(this, TypeCreature.DefaultWeaponRanged, 1);
+            if (TypeCreature.DefaultArmour != null)
+                Armour = new Item(this, TypeCreature.DefaultArmour, 1);
             FindQuiver();
             
             if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)

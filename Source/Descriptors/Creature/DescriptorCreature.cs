@@ -303,9 +303,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal DescriptorAttack TypeAttackMelee { get;}// Тип рукопашной атаки
         internal DescriptorAttack TypeAttackRange { get; }// Тип дистанционной атаки
-        internal DescriptorItem WeaponMelee { get; private set; }// Рукопашное оружие
-        internal DescriptorItem WeaponRange { get; private set; }// Стрелковое оружие
-        internal DescriptorItem Armour { get; private set; }// Доспех по умолчанию
+        internal DescriptorItem DefaultWeaponMelee { get; private set; }// Рукопашное оружие
+        internal DescriptorItem DefaultWeaponRanged { get; private set; }// Стрелковое оружие
+        internal DescriptorItem DefaultArmour { get; private set; }// Доспех по умолчанию
         internal DescriptorReward TypeReward { get; }// Награда за убийство существа
         internal double[] CoefficientFlags { get; }// Поправочные коэффициенты для флагов
         internal List<PriorityConstructionForShopping> PriorityConstructionForShoppings { get; } = new List<PriorityConstructionForShopping>();
@@ -355,7 +355,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем дефолтное оружие и доспехи
             if (nameMeleeWeapon.Length > 0)
             {
-                WeaponMelee = FormMain.Descriptors.FindItem(nameMeleeWeapon);
+                DefaultWeaponMelee = FormMain.Descriptors.FindItem(nameMeleeWeapon);
                 nameMeleeWeapon = "";
 
                 //Debug.Assert(WeaponMelee.ClassHero == this);
@@ -363,7 +363,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (nameRangeWeapon.Length > 0)
             {
-                WeaponRange = FormMain.Descriptors.FindItem(nameRangeWeapon);
+                DefaultWeaponRanged = FormMain.Descriptors.FindItem(nameRangeWeapon);
                 nameRangeWeapon = "";
 
                 //Debug.Assert(WeaponMelee.ClassHero == this);
@@ -371,7 +371,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (nameArmour.Length > 0)
             {
-                Armour = FormMain.Descriptors.FindItem(nameArmour);
+                DefaultArmour = FormMain.Descriptors.FindItem(nameArmour);
                 nameArmour = "";
 
                 //Debug.Assert(Armour.ClassHero == this);
