@@ -9,9 +9,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class VCHorizTrackBar : VisualControl
     {
-        private readonly static Bitmap bmpButtonLeft;
-        private readonly static Bitmap bmpButtonRight;
-        private readonly static Bitmap bmpButtonTrack;
         private readonly static Bitmap bmpTileBackground;
         private readonly static Bitmap bmpTick;
         private readonly static int shiftTick;
@@ -27,7 +24,6 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
 
         private int position;
-        private bool trackerCaptured;      
 
         static VCHorizTrackBar()
         {
@@ -57,6 +53,8 @@ namespace Fantasy_Kingdoms_Battle
             btnRight.Click += BtnRight_Click;
 
             btnTracker = new VCImage(this, 0, 0, blTracker, 0);
+            btnTracker.Visible = false;
+            btnTracker.ManualDraw = true;
         }
 
         private void BtnRight_Click(object sender, EventArgs e)
@@ -133,6 +131,8 @@ namespace Fantasy_Kingdoms_Battle
             ArrangeControl(btnTracker);
 
             base.Draw(g);
+
+            btnTracker.Draw(g);
         }
 
         internal override void DoClick()
@@ -140,20 +140,22 @@ namespace Fantasy_Kingdoms_Battle
             base.DoClick();
 
             Point mp = Program.formMain.MousePosToControl(this);
-            int posAtTrackband = mp.X - btnLeft.Width - shiftTracker;
-            if ((posAtTrackband < 0) || (posAtTrackband > widthTrackband))
-                return;
-
-            //trackerCaptured = 
-
-            Position = posAtTrackband * 100 / widthTrackband;
-
-            Program.formMain.SetNeedRedrawFrame();
-        }
-
-        private void UpdatePostTracker()
-        {
-
+            int posAtTrackband = mp.X - btnLeft.Width - shiftTracker + 1;
+            if ((posAtTrackband >= -shiftTracker) && (posAtTrackband < 0))
+            {
+                Position = Min;
+                Program.formMain.SetNeedRedrawFrame();
+            }
+            else if ((posAtTrackband > widthTrackband) && (posAtTrackband <= widthTrackband + shiftTracker))
+            {
+                Position = Max;
+                Program.formMain.SetNeedRedrawFrame();
+            }
+            else if ((posAtTrackband >= 0) && (posAtTrackband <= widthTrackband))
+            {
+                Position = posAtTrackband * 100 / widthTrackband;
+                Program.formMain.SetNeedRedrawFrame();
+            }
         }
 
         internal override void MouseMove(bool leftDown)

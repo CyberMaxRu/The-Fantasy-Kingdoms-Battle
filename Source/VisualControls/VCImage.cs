@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             // Иконка
-            if (Visible && (ImageIndex != -1))
+            if ((Visible || ManualDraw) && (ImageIndex != -1))
             {
                 BitmapList.DrawImage(g, ImageIndex, /*UseFilter*/ ImageIsEnabled, HighlightUnderMouse && MouseOver && !MouseClicked, Left, Top);
             }
