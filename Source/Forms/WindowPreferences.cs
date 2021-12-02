@@ -87,7 +87,9 @@ namespace Fantasy_Kingdoms_Battle
             vcPanelSound.ApplyMaxSize();
             vcPanelSound.Height += 8;
             tbVolumeSound = new VCHorizTrackBar(vcPanelSound, chkbPlaySound.NextLeft(), chkbPlaySound.ShiftY);
+            tbVolumeSound.OnPositionChanged += TbVolumeSound_OnPositionChanged;
             tbVolumeMusic = new VCHorizTrackBar(vcPanelSound, chkbPlayMusic.NextLeft(), chkbPlayMusic.ShiftY);
+            tbVolumeMusic.OnPositionChanged += TbVolumeMusic_OnPositionChanged;
             lblCaptionPanelSound.Width = vcPanelSound.Width - (FormMain.Config.GridSize * 2);
 
             vcPanelInterface = new VisualControl(ClientControl, 0, vcPanelSound.NextTop());
@@ -128,6 +130,16 @@ namespace Fantasy_Kingdoms_Battle
             tbVolumeMusic.Width = ClientControl.Width - tbVolumeMusic.ShiftX - FormMain.Config.GridSize; 
         }
 
+        private void TbVolumeMusic_OnPositionChanged(object sender, EventArgs e)
+        {
+            settings.VolumeMusic = tbVolumeMusic.Position;
+        }
+
+        private void TbVolumeSound_OnPositionChanged(object sender, EventArgs e)
+        {
+            settings.VolumeSound = tbVolumeSound.Position;
+        }
+
         private void ChkbPlayMusic_Click(object sender, EventArgs e)
         {
             settings.PlayMusic = chkbPlayMusic.Checked;
@@ -149,6 +161,8 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
             chkbPlaySound.Checked = settings.PlaySound;
             chkbPlayMusic.Checked = settings.PlayMusic;
+            tbVolumeSound.Position = settings.VolumeSound;
+            tbVolumeMusic.Position = settings.VolumeMusic;
             chkbShowShortNames.Checked = settings.ShowShortNames;
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
@@ -185,6 +199,8 @@ namespace Fantasy_Kingdoms_Battle
             settings.BattlefieldShowGrid = chkbShowGrid.Checked;
             settings.PlaySound = chkbPlaySound.Checked;
             settings.PlayMusic = chkbPlayMusic.Checked;
+            settings.VolumeSound = tbVolumeSound.Position;
+            settings.VolumeMusic = tbVolumeMusic.Position;
             settings.ShowShortNames = chkbShowShortNames.Checked;
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
             settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;

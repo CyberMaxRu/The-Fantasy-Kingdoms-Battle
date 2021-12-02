@@ -37,6 +37,8 @@ namespace Fantasy_Kingdoms_Battle
             playlistFull.AddRange(Directory.GetFiles(dirResources + @"Music\Music"));
 
             Debug.Assert(playlistFull.Count > 0);
+
+            UpdateVolumeSound();
         }
 
         internal Settings Settings { get; }
@@ -141,6 +143,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 StopPlay();
             }
+        }
+
+        internal void UpdateVolumeSound()
+        {
+            mpMusic.Volume = (float)Settings.VolumeMusic / 100;
+            mpTheme.Volume = mpMusic.Volume;
         }
     }
 }

@@ -15,6 +15,8 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class Settings
     {
         private bool playMusic;
+        private int volumeSound;
+        private int volumeMusic;
 
         public Settings()
         {
@@ -36,6 +38,12 @@ namespace Fantasy_Kingdoms_Battle
 
                     PlaySound = XmlUtils.GetBoolean(doc, "Settings/Sound/PlaySound", PlaySound);
                     PlayMusic = XmlUtils.GetBoolean(doc, "Settings/Sound/PlayMusic", PlayMusic);
+                    VolumeSound = XmlUtils.GetInteger(doc, "Settings/Sound/VolumeSound");
+                    VolumeMusic = XmlUtils.GetInteger(doc, "Settings/Sound/VolumeMusic");
+                    Debug.Assert(volumeSound >= 0);
+                    Debug.Assert(volumeSound <= 100);
+                    Debug.Assert(volumeMusic >= 0);
+                    Debug.Assert(volumeMusic >= 0);
 
                     ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
                     ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
@@ -71,11 +79,39 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal int VolumeSound
+        {
+            get => volumeSound;
+            set
+            {
+                if (volumeSound != value)
+                {
+                    volumeSound = value;
+                    VolumeSoundChanged?.Invoke(this, new EventArgs());
+                }
+}
+        }
+        internal int VolumeMusic
+        {
+            get => volumeMusic;
+            set
+            {
+                if (volumeMusic != value)
+                {
+                    volumeMusic = value;
+                    VolumeMusicChanged?.Invoke(this, new EventArgs());
+                }
+            }
+        }
+
         internal bool ShowShortNames { get; set; }
         internal bool ShowTypeCellMenu { get; set; }
         internal bool HideFulfilledRequirements { get; set; }
 
         internal event EventHandler PlayMusicChanged;
+        internal event EventHandler VolumeSoundChanged;
+        internal event EventHandler VolumeMusicChanged;
 
         internal void SetDefault()
         {
@@ -86,6 +122,8 @@ namespace Fantasy_Kingdoms_Battle
             BattlefieldShowGrid = false;
             PlaySound = true;
             PlayMusic = true;
+            VolumeSound = 50;
+            VolumeMusic = 50;
             ShowShortNames = false;
             ShowTypeCellMenu = true;
             HideFulfilledRequirements = true;
@@ -114,6 +152,8 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteStartElement("Sound");
             textWriter.WriteElementString("PlaySound", PlaySound.ToString());
             textWriter.WriteElementString("PlayMusic", PlayMusic.ToString());
+            textWriter.WriteElementString("VolumeSound", VolumeSound.ToString());
+            textWriter.WriteElementString("VolumeMusic", VolumeMusic.ToString());
             textWriter.WriteEndElement();
 
             textWriter.WriteStartElement("Interface");

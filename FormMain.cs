@@ -330,6 +330,8 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем настройки
             Settings = new Settings();
             Settings.PlayMusicChanged += Settings_PlayMusicChanged;
+            Settings.VolumeSoundChanged += Settings_VolumeSoundChanged;
+            Settings.VolumeMusicChanged += Settings_VolumeMusicChanged;
 
             MainConfig = new MainConfig(dirResources);
             // Проверяем требование по разрешению экрана
@@ -807,6 +809,7 @@ namespace Fantasy_Kingdoms_Battle
             mpPushButton.Open(new Uri(dirResources + @"Sound\Interface\Button\PushButton.wav"));
             mpConstructionComplete = new System.Windows.Media.MediaPlayer();
             mpConstructionComplete.Open(new Uri(dirResources + @"Sound\Interface\Construction\ConstructionComplete.wav"));
+            UpdateVolumeSound();
 
             //formHint = new FormHint(ilGui16, ilParameters);
 
@@ -833,6 +836,24 @@ namespace Fantasy_Kingdoms_Battle
                 lblStage.Refresh();
             }
 
+        }
+
+        private void Settings_VolumeMusicChanged(object sender, EventArgs e)
+        {
+            playerMusic.UpdateVolumeSound();
+        }
+
+        private void Settings_VolumeSoundChanged(object sender, EventArgs e)
+        {
+            UpdateVolumeSound();
+        }
+
+        private void UpdateVolumeSound()
+        {
+            mpSoundSelect.Volume = (float)Settings.VolumeSound / 100;
+            mpSelectButton.Volume = mpSoundSelect.Volume;
+            mpPushButton.Volume = mpSoundSelect.Volume;
+            mpConstructionComplete.Volume = mpSoundSelect.Volume;
         }
 
         private void DrawPageLocation()

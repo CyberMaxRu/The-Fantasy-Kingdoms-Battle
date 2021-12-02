@@ -26,7 +26,8 @@ namespace Fantasy_Kingdoms_Battle
         private int widthTrackband;
         private Bitmap bmpBackground;
 
-        private bool trackerCaptured;
+        private int position;
+        private bool trackerCaptured;      
 
         static VCHorizTrackBar()
         {
@@ -78,8 +79,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Min { get; set; } = 0;
         internal int Max { get; set; } = 100;
-        internal int Position { get; private set; } = 0;
+        internal int Position { get => position; set { if (position != value) { position = value; OnPositionChanged?.Invoke(this, new EventArgs()); } } }
         internal int Frequency { get; set; } = 1;
+        internal event EventHandler OnPositionChanged;
 
         internal override void ArrangeControls()
         {

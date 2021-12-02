@@ -10,8 +10,10 @@
     <ShowGrid>False</ShowGrid>
   </Battlefield>
   <Sound>
-    <PlaySound>False</PlaySound>
+    <PlaySound>True</PlaySound>
     <PlayMusic>False</PlayMusic>
+    <VolumeSound>37</VolumeSound>
+    <VolumeMusic>53</VolumeMusic>
   </Sound>
   <Interface>
     <ShowShortNames>False</ShowShortNames>
