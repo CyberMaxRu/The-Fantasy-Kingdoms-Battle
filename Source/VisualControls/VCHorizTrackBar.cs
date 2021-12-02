@@ -26,6 +26,8 @@ namespace Fantasy_Kingdoms_Battle
         private int widthTrackband;
         private Bitmap bmpBackground;
 
+        private bool trackerCaptured;
+
         static VCHorizTrackBar()
         {
             bmpTileBackground = Program.formMain.LoadBitmap("ScrollBarHorizBack.png");
@@ -77,7 +79,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Min { get; set; } = 0;
         internal int Max { get; set; } = 100;
         internal int Position { get; private set; } = 0;
-        internal int Frequency { get; set; } = 5;
+        internal int Frequency { get; set; } = 1;
 
         internal override void ArrangeControls()
         {
@@ -107,12 +109,15 @@ namespace Fantasy_Kingdoms_Battle
 
             g.DrawImageUnscaled(bmpBackground, Left + btnLeft.Width, Top);
 
+            g.DrawImageUnscaled(bmpTick, Left + btnLeft.Width + shiftTracker, Top);
+            g.DrawImageUnscaled(bmpTick, Left + Width - btnRight.Width - shiftTracker, Top);
+
             if (Frequency > 0)
             {
                 float step = (float)bmpBackground.Width / (Frequency + 1);
                 for (int i = 1; i <= Frequency; i++)
                 {
-                    g.DrawImageUnscaled(bmpTick, Left + btnLeft.Width + (int)(i * step) - shiftTick, Top);
+                    g.DrawImageUnscaled(bmpTick, Left + btnLeft.Width + (int)(i * step) - shiftTracker, Top);
                 }
             }
         }
@@ -122,7 +127,7 @@ namespace Fantasy_Kingdoms_Battle
             Utils.Assert(Position >= Min);
             Utils.Assert(Position <= Max);
 
-            btnTracker.ShiftX = btnLeft.Width - 1 + (Position * widthTrackband / 100) - shiftTracker;
+            btnTracker.ShiftX = btnLeft.Width - 1 + (Position * widthTrackband / 100) + shiftTracker;
             ArrangeControl(btnTracker);
 
             base.Draw(g);
@@ -137,9 +142,32 @@ namespace Fantasy_Kingdoms_Battle
             if ((posAtTrackband < 0) || (posAtTrackband > widthTrackband))
                 return;
 
+            //trackerCaptured = 
+
             Position = posAtTrackband * 100 / widthTrackband;
 
             Program.formMain.SetNeedRedrawFrame();
+        }
+
+        internal override void MouseMove(bool leftDown)
+        {
+            base.MouseMove(leftDown);
+
+            if (leftDown)
+            {
+                Point mp = Program.formMain.MousePosToControl(this);
+                int posAtTrackband = mp.X - btnLeft.Width;
+                if (posAtTrackband < 0)
+                    Position = Min;
+                else if (posAtTrackband > widthTrackband)
+                    Position = Max;
+                else
+                {
+                    Position = (Max - Min) * posAtTrackband / widthTrackband;
+                }
+
+                Program.formMain.SetNeedRedrawFrame();
+            }
         }
     }
 }
