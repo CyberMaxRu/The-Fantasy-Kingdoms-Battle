@@ -20,44 +20,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public Settings()
         {
-            SetDefault();
-
-            if (File.Exists(Program.formMain.dirResources + "Settings.xml"))
-            {
-                XmlDocument doc = new XmlDocument();
-                try
-                {
-                    doc.Load(Program.formMain.dirResources + "Settings.xml");
-
-                    ShowSplashVideo = XmlUtils.GetBoolean(doc, "Settings/Game/ShowSplashVideo", ShowSplashVideo);
-                    FullScreenMode = XmlUtils.GetBoolean(doc, "Settings/Game/FullScreenMode", FullScreenMode);
-                    CheckUpdateOnStartup = XmlUtils.GetBoolean(doc, "Settings/Game/CheckUpdatesOnStartup", CheckUpdateOnStartup);
-
-                    BattlefieldShowPath = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowPath", BattlefieldShowPath);
-                    BattlefieldShowGrid = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowGrid", BattlefieldShowGrid);
-
-                    PlaySound = XmlUtils.GetBoolean(doc, "Settings/Sound/PlaySound", PlaySound);
-                    PlayMusic = XmlUtils.GetBoolean(doc, "Settings/Sound/PlayMusic", PlayMusic);
-                    VolumeSound = XmlUtils.GetInteger(doc, "Settings/Sound/VolumeSound");
-                    VolumeMusic = XmlUtils.GetInteger(doc, "Settings/Sound/VolumeMusic");
-                    Debug.Assert(volumeSound >= 0);
-                    Debug.Assert(volumeSound <= 100);
-                    Debug.Assert(volumeMusic >= 0);
-                    Debug.Assert(volumeMusic >= 0);
-
-                    ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
-                    ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
-                    HideFulfilledRequirements = XmlUtils.GetBoolean(doc, "Settings/Interface/HideFulfilledRequirements", HideFulfilledRequirements);
-
-                    DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
-                }
-                catch (Exception e)
-                {
-                    GuiUtils.ShowException(e);
-
-                   SetDefault();
-                }
-            }
+            LoadSettings();
         }
 
         internal bool ShowSplashVideo { get; set; }
@@ -127,6 +90,48 @@ namespace Fantasy_Kingdoms_Battle
             ShowShortNames = false;
             ShowTypeCellMenu = true;
             HideFulfilledRequirements = true;
+        }
+
+        internal void LoadSettings()
+        {
+            SetDefault();
+
+            if (File.Exists(Program.formMain.dirResources + "Settings.xml"))
+            {
+                XmlDocument doc = new XmlDocument();
+                try
+                {
+                    doc.Load(Program.formMain.dirResources + "Settings.xml");
+
+                    ShowSplashVideo = XmlUtils.GetBoolean(doc, "Settings/Game/ShowSplashVideo", ShowSplashVideo);
+                    FullScreenMode = XmlUtils.GetBoolean(doc, "Settings/Game/FullScreenMode", FullScreenMode);
+                    CheckUpdateOnStartup = XmlUtils.GetBoolean(doc, "Settings/Game/CheckUpdatesOnStartup", CheckUpdateOnStartup);
+
+                    BattlefieldShowPath = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowPath", BattlefieldShowPath);
+                    BattlefieldShowGrid = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowGrid", BattlefieldShowGrid);
+
+                    PlaySound = XmlUtils.GetBoolean(doc, "Settings/Sound/PlaySound", PlaySound);
+                    PlayMusic = XmlUtils.GetBoolean(doc, "Settings/Sound/PlayMusic", PlayMusic);
+                    VolumeSound = XmlUtils.GetInteger(doc, "Settings/Sound/VolumeSound");
+                    VolumeMusic = XmlUtils.GetInteger(doc, "Settings/Sound/VolumeMusic");
+                    Debug.Assert(volumeSound >= 0);
+                    Debug.Assert(volumeSound <= 100);
+                    Debug.Assert(volumeMusic >= 0);
+                    Debug.Assert(volumeMusic >= 0);
+
+                    ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
+                    ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
+                    HideFulfilledRequirements = XmlUtils.GetBoolean(doc, "Settings/Interface/HideFulfilledRequirements", HideFulfilledRequirements);
+
+                    DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
+                }
+                catch (Exception e)
+                {
+                    GuiUtils.ShowException(e);
+
+                    SetDefault();
+                }
+            }
         }
 
         internal void SaveSettings()

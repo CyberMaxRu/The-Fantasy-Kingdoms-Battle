@@ -41,9 +41,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private Settings settings;
 
-        private bool playSound;
-        private bool playMusic;
-
         public WindowPreferences() : base()
         {
             windowCaption.Caption = "Настройки игры";
@@ -167,9 +164,6 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
 
-            playSound = settings.PlaySound;
-            playMusic = settings.PlayMusic;
-
             /*            
                         filenameAvatar = settings.FileNameAvatar;
                         directoryAvatar = settings.DirectoryAvatar;
@@ -184,8 +178,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            settings.PlaySound = playSound;
-            settings.PlayMusic = playMusic;
+            settings.LoadSettings();
+            ApplySettings(settings);
 
             CloseForm(DialogAction.None);
         }
