@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
             Utils.Assert(Position >= Min);
             Utils.Assert(Position <= Max);
 
-            btnTracker.ShiftX = btnLeft.Width - 1 + (Position * widthTrackband / 100) + shiftTracker;
+            btnTracker.ShiftX = btnLeft.Width - 1 + (Position * widthTrackband / 100);// + shiftTracker;
             ArrangeControl(btnTracker);
 
             base.Draw(g);
@@ -140,7 +140,7 @@ namespace Fantasy_Kingdoms_Battle
             base.DoClick();
 
             Point mp = Program.formMain.MousePosToControl(this);
-            int posAtTrackband = mp.X - btnLeft.Width;
+            int posAtTrackband = mp.X - btnLeft.Width - shiftTracker;
             if ((posAtTrackband < 0) || (posAtTrackband > widthTrackband))
                 return;
 
@@ -151,6 +151,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
+        private void UpdatePostTracker()
+        {
+
+        }
+
         internal override void MouseMove(bool leftDown)
         {
             base.MouseMove(leftDown);
@@ -158,7 +163,7 @@ namespace Fantasy_Kingdoms_Battle
             if (leftDown)
             {
                 Point mp = Program.formMain.MousePosToControl(this);
-                int posAtTrackband = mp.X - btnLeft.Width;
+                int posAtTrackband = mp.X - btnLeft.Width - shiftTracker;
                 if (posAtTrackband < 0)
                     Position = Min;
                 else if (posAtTrackband > widthTrackband)
