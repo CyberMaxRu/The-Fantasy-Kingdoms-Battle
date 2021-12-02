@@ -254,6 +254,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
+        internal virtual void MouseMove(bool leftDown)
+        {
+
+        }
+
         internal virtual void RightButtonClick()
         {
             if (AllowClick())

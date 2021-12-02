@@ -1962,6 +1962,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if (curControl == controlWithHint)
             {
+                curControl.MouseMove(leftDown);
                 /*if (hintShowed)
                 {
                     timerHover.Stop();
