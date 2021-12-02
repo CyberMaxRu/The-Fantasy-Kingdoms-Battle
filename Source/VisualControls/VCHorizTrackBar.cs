@@ -111,15 +111,15 @@ namespace Fantasy_Kingdoms_Battle
 
             g.DrawImageUnscaled(bmpBackground, Left + btnLeft.Width, Top);
 
-            g.DrawImageUnscaled(bmpTick, Left + btnLeft.Width + shiftTracker, Top);
-            g.DrawImageUnscaled(bmpTick, Left + Width - btnRight.Width - shiftTracker, Top);
+            g.DrawImageUnscaled(bmpTick, Left + btnLeft.Width - 1 + shiftTracker - shiftTick, Top);
+            g.DrawImageUnscaled(bmpTick, Left + Width - btnRight.Width - shiftTracker - shiftTick, Top);
 
             if (Frequency > 0)
             {
-                float step = (float)bmpBackground.Width / (Frequency + 1);
+                float step = (float)widthTrackband / (Frequency + 1);
                 for (int i = 1; i <= Frequency; i++)
                 {
-                    g.DrawImageUnscaled(bmpTick, Left + btnLeft.Width + (int)(i * step) - shiftTracker, Top);
+                    g.DrawImageUnscaled(bmpTick, Left + btnLeft.Width - 1 + shiftTracker - shiftTick + (int)(i * step), Top);
                 }
             }
         }
