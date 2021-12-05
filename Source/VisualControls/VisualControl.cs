@@ -221,8 +221,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void MouseEnter(bool leftButtonDown)
         {
-            Debug.Assert(!MouseOver);
-            Debug.Assert(Visible);
+            Assert(!MouseOver);
+            Assert(Visible);
+            Assert(IsActiveControl);
 
             MouseOver = true;
             MouseClicked = leftButtonDown;
@@ -245,7 +246,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void MouseLeave()
         {
-            Debug.Assert(MouseOver);
+            Assert(MouseOver);
+            Assert(IsActiveControl);
 
             MouseOver = false;
             MouseClicked = false;
