@@ -11,8 +11,8 @@
   </Battlefield>
   <Sound>
     <PlaySound>True</PlaySound>
-    <PlayMusic>True</PlayMusic>
-    <VolumeSound>50</VolumeSound>
+    <PlayMusic>False</PlayMusic>
+    <VolumeSound>100</VolumeSound>
     <VolumeMusic>50</VolumeMusic>
   </Sound>
   <Interface>

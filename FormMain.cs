@@ -1929,8 +1929,38 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnMouseUp(e);
 
-            if ((e.Button == MouseButtons.Left) || (e.Button == MouseButtons.Right))
+            if (clickedControl != null)
             {
+                if (e.Button == MouseButtons.Left)
+                {
+                    clickedControl.MouseUp(MousePosToControl(clickedControl));
+                    clickedControl = null;
+
+                    // Во время нажатия кнопки мог произойти выход из программы
+                    if (ProgramState == ProgramState.NeedQuit)
+                    {
+                        if (!(lobby is null))
+                            EndLobby();
+                        Close();
+                    }
+
+                    if (IsDisposed)
+                        return;
+                }
+                else if (e.Button == MouseButtons.Right)
+                {
+                    if (controlWithHint != null)
+                    {
+                        Debug.Assert(controlWithHint.Visible);
+                        controlWithHint.RightButtonClick();
+                    }
+                }
+            }
+
+            ShowFrame(true);
+
+            return;
+
                 controlClicked = controlWithHint;
 
                 if (e.Button == MouseButtons.Left)
@@ -1940,14 +1970,14 @@ namespace Fantasy_Kingdoms_Battle
                     if (controlWithHint != null)
                     {
                         Debug.Assert(controlWithHint.Visible);
-                        controlWithHint.MouseUp();
+                        controlWithHint.MouseUp(MousePosToControl(clickedControl));
                         // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
                         // Но он будет все равно считаться активным, так как прописан в controlWithHint
                         // Поэтому перед кликом убираем его
                         controlWithHint = null;
-                        controlClicked.DoClick();
+                        //controlClicked.DoClick();
 
-                        // Во время нажатия кнопки мог произойти выход из программы
+                        /*// Во время нажатия кнопки мог произойти выход из программы
                         if (ProgramState == ProgramState.NeedQuit)
                         {
                             if (!(lobby is null))
@@ -1955,7 +1985,7 @@ namespace Fantasy_Kingdoms_Battle
                             Close();
                         }
                         if (IsDisposed)
-                            return;
+                            return;*/
 
                         // Если был клик на ячейке меню, обновляем меню, так как меняется список исследований и как следствие подсказки
                         // Так как ячейка может быть невидимой, обновляем меню перед проверкой, какой контрол сейчас под мышкой
@@ -2015,9 +2045,7 @@ namespace Fantasy_Kingdoms_Battle
                     mousePos = new Point(0, 0);
                     TreatMouseMove(false);
                 }*/
-            }
-
-            ShowFrame(true);
+        
         }
 
         private VisualControl ControlUnderMouse()
@@ -2092,7 +2120,7 @@ namespace Fantasy_Kingdoms_Battle
                 //SetNeedRedrawFrame();
             }
 
-            ShowFrame(false);
+            ShowFrame(true);
         }
 
         private void ControlForHintLeave()
@@ -2111,6 +2139,8 @@ namespace Fantasy_Kingdoms_Battle
                 controlClicked.MouseLeave();
                 controlClicked = null;
             }
+
+            clickedControl = null;
 
             VisualControl.PanelHint.HideHint();
 

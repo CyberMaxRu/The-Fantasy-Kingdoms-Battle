@@ -257,13 +257,17 @@ namespace Fantasy_Kingdoms_Battle
             MouseClicked = true;
         }
 
-        internal virtual void MouseUp()
+        internal virtual void MouseUp(Point p)
         {
             Debug.Assert(Visible);
             Debug.Assert(IsActiveControl);
             Debug.Assert(MouseClicked);
 
             MouseClicked = false;
+
+            if (AllowClick())
+                if ((p.X >= 0) && (p.X < width) && (p.Y >= 0) && (p.Y < height))
+                    DoClick();
         }
 
         internal virtual void DoClick()
@@ -271,19 +275,18 @@ namespace Fantasy_Kingdoms_Battle
             Assert(Visible);
             Assert(IsActiveControl);
 
-            if (AllowClick())
-                if (IsActiveControl)
-                {
-                    if (PlaySoundOnClick)
-                        Program.formMain.PlayPushButton();
-                    Click?.Invoke(this, new EventArgs());
-                }
-                else
-                {
-                    if (PlaySoundOnClick)
-                        Program.formMain.PlayPushButton();
-                    Parent.DoClick();
-                }
+            if (IsActiveControl)
+            {
+                if (PlaySoundOnClick)
+                    Program.formMain.PlayPushButton();
+                Click?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                if (PlaySoundOnClick)
+                    Program.formMain.PlayPushButton();
+                Parent.DoClick();
+            }
         }
 
         internal virtual void RightButtonClick()

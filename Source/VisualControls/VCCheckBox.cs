@@ -52,9 +52,9 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.NeedRedrawFrame();
         }
 
-        internal override void MouseUp()
+        internal override void MouseUp(Point p)
         {
-            base.MouseUp();
+            base.MouseUp(p);
 
             Checked = !Checked;
             Program.formMain.PlayPushButton();
