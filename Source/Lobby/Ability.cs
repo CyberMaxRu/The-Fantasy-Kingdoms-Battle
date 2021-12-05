@@ -24,12 +24,12 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool GetNormalImage() => Creature.Level >= Descriptor.MinUnitLevel;
         internal override string GetText() => Program.formMain.Settings.ShowShortNames ? Descriptor.TypeAbility.ShortName : "";
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
-            Program.formMain.formHint.AddStep2Header(Descriptor.Name, Descriptor.ImageIndex);
-            Program.formMain.formHint.AddStep3Type(Descriptor.TypeAbility.Name);
-            Program.formMain.formHint.AddStep4Level($"Уровень для обучения: {Descriptor.MinUnitLevel}");
-            Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+            panelHint.AddStep2Header(Descriptor.Name, Descriptor.ImageIndex);
+            panelHint.AddStep3Type(Descriptor.TypeAbility.Name);
+            panelHint.AddStep4Level($"Уровень для обучения: {Descriptor.MinUnitLevel}");
+            panelHint.AddStep5Description(Descriptor.Description);
         }
     }
 }

@@ -272,14 +272,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCMenuCell[,] CellsMenu { get; }
 
-        internal PanelHint formHint;
-
         //
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
         internal HumanPlayer CurrentHumanPlayer { get; private set; }
-
-        private readonly Timer timerHover;
 
         public FormMain()
         {
@@ -596,14 +592,22 @@ namespace Fantasy_Kingdoms_Battle
             labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
             labelNamePlayer.Width = 16;
 
-            btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
+            btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, null);
             btnInGameMenu.HighlightUnderMouse = true;
             btnInGameMenu.ShowBorder = false;
-            btnCheating = CreateButton(bmpTopPanel, Config.Gui48_Cheating, btnInGameMenu.NextLeft(), btnInGameMenu.ShiftY, BtnCheating_Click, BtnCheating_ShowHint);
+            btnInGameMenu.Hint = "Меню";
+            btnInGameMenu.HintDescription = "Показать внутриигровое меню";
+            btnCheating = CreateButton(bmpTopPanel, Config.Gui48_Cheating, btnInGameMenu.NextLeft(), btnInGameMenu.ShiftY, BtnCheating_Click, null);
             btnCheating.HighlightUnderMouse = true;
-            btnEndTurn = CreateButton(bmpTopPanel, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+            btnCheating.Hint = "Читинг";
+            btnCheating.HintDescription = "Открыть настройки читинга";
+
+            btnEndTurn = CreateButton(bmpTopPanel, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, null);
             btnEndTurn.HighlightUnderMouse = true;
             btnEndTurn.ShowBorder = true;
+            btnEndTurn.Hint = "Конец хода";
+            btnEndTurn.HintDescription = "Завершение хода";
+
             panelLairWithFlags = new VisualControl(MainControl, 0, Config.GridSize);
             panelLairWithFlags.Width = imListObjects48.Size.Width;
             panelLairWithFlags.Height = imListObjects48.Size.Height;
@@ -673,8 +677,10 @@ namespace Fantasy_Kingdoms_Battle
             // Страницы игры
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
-            pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Итоги хода", "Сводка", PageResultTurn_ShowHint);
-            pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", PageFinance_ShowHint);
+            pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Итоги хода", "Сводка", null);
+            pageResultTurn.Hint = "Итоги хода";
+            pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", null);
+            pageFinance.Hint = "Финансовая информация";
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageControl.Separate();
@@ -690,8 +696,10 @@ namespace Fantasy_Kingdoms_Battle
 
             //pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
             pageControl.Separate();
-            pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта графства", "Просмотр своих владений", PageMap_ShowHint);
-            pageLocation = pageControl.AddPage(0, "", "", PageLocation_ShowHint);
+            pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта графства", "Просмотр своих владений", null);
+            pageMap.Hint = "Карта графства";
+            pageLocation = pageControl.AddPage(0, "", "", null);
+            pageLocation.Hint = "Тут должна быть подсказка";
 
             listBtnLevelTax = new List<VCIconButton48>();
 
@@ -785,15 +793,7 @@ namespace Fantasy_Kingdoms_Battle
             layerMainMenu.ArrangeControls();
             layerGame.ArrangeControls();
 
-            formHint = new PanelHint();
             //
-            timerHover = new Timer()
-            {
-                Interval = SystemInformation.MouseHoverTime,
-                Enabled = false
-            };
-            timerHover.Tick += TimerHover_Tick;
-
             SetStage("Прибираем после строителей");
 
             //
@@ -882,26 +882,9 @@ namespace Fantasy_Kingdoms_Battle
             pageLocation.Page.ArrangeControls();
         }
 
-        private void PageLocation_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddSimpleHint("Тут должна быть подсказка");
-        }
-
-        private void PageMap_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddSimpleHint("Карта графства");
-        }
-
         private Bitmap MainControlbackground(string nameTexture)
         {
             return GuiUtils.MakeCustomBackground(Config.GetTexture(nameTexture), MainControl);
-        }
-
-
-        private void BtnCheating_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddStep2Header("Читинг");
-            formHint.AddStep5Description("Открыть настройки читинга");
         }
 
         private void BtnCheating_Click(object sender, EventArgs e)
@@ -912,8 +895,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelCorruption_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("Воровство");
-            formHint.AddStep5Description($"Всего процент: {curAppliedPlayer.PercentCorruption}" + Environment.NewLine
+            VisualControl.PanelHint.AddStep2Header("Воровство");
+            VisualControl.PanelHint.AddStep5Description($"Всего процент: {curAppliedPlayer.PercentCorruption}" + Environment.NewLine
                 + $"Изменение за день: {curAppliedPlayer.ChangeCorruption}");
         }
 
@@ -924,8 +907,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelHeroes_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("Герои");
-                formHint.AddStep5Description($"Нанято героев: {curAppliedPlayer.CombatHeroes.Count}" + Environment.NewLine
+            VisualControl.PanelHint.AddStep2Header("Герои");
+            VisualControl.PanelHint.AddStep5Description($"Нанято героев: {curAppliedPlayer.CombatHeroes.Count}" + Environment.NewLine
                 + $"Максимум героев: {curAppliedPlayer.Lobby.TypeLobby.MaxHeroes}");
         }
 
@@ -944,8 +927,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelBuilders_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("Строители");
-            formHint.AddStep5Description("Всего строителей: " + curAppliedPlayer.Builders.ToString()
+            VisualControl.PanelHint.AddStep2Header("Строители");
+            VisualControl.PanelHint.AddStep5Description("Всего строителей: " + curAppliedPlayer.Builders.ToString()
                 + Environment.NewLine + "Свободно строителей: " + curAppliedPlayer.FreeBuilders.ToString());
         }
 
@@ -959,19 +942,14 @@ namespace Fantasy_Kingdoms_Battle
             SelectPlayerObject(null);
         }
 
-        private void PageTemples_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddSimpleHint("Храмы");
-        }
-
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("Уровень величия: " + curAppliedPlayer.LevelGreatness.ToString());
-            formHint.AddStep5Description($"Очков набрано: {curAppliedPlayer.PointGreatness} из {curAppliedPlayer.PointGreatnessForNextLevel}"
-                    + Environment.NewLine
-                    + "До следующего уровня: " + (curAppliedPlayer.PointGreatnessForNextLevel - curAppliedPlayer.PointGreatness).ToString()
-                    + Environment.NewLine
-                    + "Прибавление в день: " + curAppliedPlayer.PointGreatnessPerDay().ToString());
+            VisualControl.PanelHint.AddStep2Header("Уровень величия: " + curAppliedPlayer.LevelGreatness.ToString());
+            VisualControl.PanelHint.AddStep5Description($"Очков набрано: {curAppliedPlayer.PointGreatness} из {curAppliedPlayer.PointGreatnessForNextLevel}"
+                + Environment.NewLine
+                + "До следующего уровня: " + (curAppliedPlayer.PointGreatnessForNextLevel - curAppliedPlayer.PointGreatness).ToString()
+                + Environment.NewLine
+                + "Прибавление в день: " + curAppliedPlayer.PointGreatnessPerDay().ToString());
         }
 
         private void LabelDay_Click(object sender, EventArgs e)
@@ -995,31 +973,21 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("Герои");
-            formHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
+            VisualControl.PanelHint.AddStep2Header("Герои");
+            VisualControl.PanelHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
-        private void PageResultTurn_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddSimpleHint("Итоги хода");
-        }
-
-        private void PageFinance_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddSimpleHint("Финансовая информация");
-        }
-        
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("Турнир");
-            formHint.AddStep5Description(lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." : 
+            VisualControl.PanelHint.AddStep2Header("Турнир");
+            VisualControl.PanelHint.AddStep5Description(lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." : 
                     curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Сегодня битва с другим игроком");
         }
 
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("Ход игры");
-            formHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Day}{Environment.NewLine}"
+            VisualControl.PanelHint.AddStep2Header("Ход игры");
+            VisualControl.PanelHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Day}{Environment.NewLine}"
                 + $"Всего дней: {lobby.Turn}");
         }
         
@@ -1144,29 +1112,12 @@ namespace Fantasy_Kingdoms_Battle
             ShowInGameMenu();
         }
 
-        private void BtnInGameMenu_MouseHover(object sender, EventArgs e)
-        {
-            formHint.Clear();
-            formHint.AddStep2Header("Меню");
-            formHint.AddStep5Description("Показать внутриигровое меню");
-            formHint.DrawHint(btnInGameMenu);
-        }
-
         private void BtnEndTurn_Click(object sender, EventArgs e)
         {
             StopSoundSelect();
-            formHint.HideHint();
-            timerHover.Stop();
+            VisualControl.PanelHint.HideHint();
 
             curAppliedPlayer.EndTurn();
-        }
-
-        private void BtnEndTurn_MouseHover(object sender, EventArgs e)
-        {
-            formHint.Clear();
-            formHint.AddStep2Header("Конец хода");
-            formHint.AddStep5Description("Завершение хода");
-            formHint.DrawHint(btnEndTurn);
         }
 
         internal void ShowWindowPreferences()
@@ -1215,8 +1166,8 @@ namespace Fantasy_Kingdoms_Battle
 
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];
-            formHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
-
+            VisualControl.PanelHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
+             
             SetNeedRedrawFrame();
         }
 
@@ -1658,8 +1609,8 @@ namespace Fantasy_Kingdoms_Battle
         private void Location_ShowHint(object sender, EventArgs e)
         {
             Location l = (sender as VCImage128).Entity as Location;
-            formHint.AddStep2Header(l.Settings.Name);
-            formHint.AddStep5Description(l.Settings.TypeLandscape.Description);
+            VisualControl.PanelHint.AddStep2Header(l.Settings.Name);
+            VisualControl.PanelHint.AddStep5Description(l.Settings.TypeLandscape.Description);
         }
 
         internal void RestartLobby()
@@ -1821,9 +1772,9 @@ namespace Fantasy_Kingdoms_Battle
             // Здесь исправляется баг - если после клика надо заново отрисовать подсказку, то во время рисования подсказки
             // контрол может оставаться видимым, а после отрисовки кадра - невидимым, так как в некоторых классах
             // настройка происходит в методе Draw
-            if (formHint.Visible && !(controlWithHint is null) && controlWithHint.Visible)
+            if (VisualControl.PanelHint.Visible && !(controlWithHint is null) && controlWithHint.Visible)
             {
-                formHint.Paint(gfxRenderFrame);
+                VisualControl.PanelHint.Paint(gfxRenderFrame);
             }
 
             if (debugMode)
@@ -1978,7 +1929,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (curControl == null)
             {
-                timerHover.Stop();
                 ControlForHintLeave();
             }
             else if (curControl == controlWithHint)
@@ -1999,23 +1949,22 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 // Если при переходе на новый контрол у него так же есть подсказка, просто перерисовываем текст, не скрываем её
-                curControl.DoShowHint();
-                if ((controlWithHint != null) && formHint.ExistHint)
+                //curControl.DoShowHint();
+                if (controlWithHint != null)
                 {
                     controlWithHint.MouseLeave();
                     controlWithHint = curControl;
                     controlWithHint.MouseEnter(leftDown);
-                    formHint.Visible = true;
+                    //formHint.Visible = true;
                 }
                 else
                 {
                     ControlForHintLeave();
                     controlWithHint = curControl;
                     controlWithHint.MouseEnter(leftDown);
-                    timerHover.Start();
                 }
 
-                SetNeedRedrawFrame();
+                //SetNeedRedrawFrame();
             }
 
             ShowFrame(false);
@@ -2038,7 +1987,7 @@ namespace Fantasy_Kingdoms_Battle
                 controlClicked = null;
             }
 
-            formHint.HideHint();
+            VisualControl.PanelHint.HideHint();
 
             ShowFrame(false);
         }
@@ -2048,7 +1997,6 @@ namespace Fantasy_Kingdoms_Battle
             base.OnMouseLeave(e);
 
             ControlForHintLeave();
-            formHint.HideHint();
 
             // Если мышь покидает пределы окна, надо отрисовать его, т.к. теряется фокус у активного контрола
             ShowFrame(true);
@@ -2135,19 +2083,18 @@ namespace Fantasy_Kingdoms_Battle
                     if ((controlWithHint != null) && !controlWithHint.MouseOver)
                     {
                         controlWithHint.MouseEnter(false);
-                        timerHover.Start();
                     }
                 }
                 controlClicked = null;
 
-                if (formHint.Visible)
+                /*if (formHint.Visible)
                 {
                     controlWithHint.DoShowHint();
 
                     // После клика может оказаться, что подсказки нет (контрол скрыт, например)
-                    if (!formHint.ExistHint)
-                        formHint.HideHint();
-                }
+                    //if (!formHint.ExistHint)
+                    //    formHint.HideHint();
+                }*/
 
                 ShowFrame(false);
 
@@ -2164,38 +2111,6 @@ namespace Fantasy_Kingdoms_Battle
                     TreatMouseMove(false);
                 }*/
             }
-        }
-
-        private void TimerHover_Tick(object sender, EventArgs e)
-        {
-            if (controlWithHint != null)
-            {
-                Debug.Assert(controlWithHint.Visible);
-                /*if (controlWithHint.VisualLayer != currentLayer)
-                {
-                    timerHover.Stop();
-                    MessageBox.Show($"{controlWithHint.VisualLayer.Name}, {currentLayer.Name}");
-                }*/
-
-                timerHover.Stop();
-                controlWithHint.DoShowHint();
-
-                if (formHint.ExistHint)
-                {
-                    Debug.Assert(controlWithHint.Visible);
-
-                    formHint.Visible = true;
-                    needRepaintFrame = true;
-                    Invalidate(true);
-
-                    Debug.Assert(controlWithHint.Visible);
-                }
-            }
-        }
-
-        internal void StopShowHint()
-        {
-            timerHover.Stop();
         }
 
         internal void NeedRedrawFrame()

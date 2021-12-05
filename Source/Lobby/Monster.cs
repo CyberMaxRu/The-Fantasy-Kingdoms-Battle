@@ -17,14 +17,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(level > 0);
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
             //Debug.Assert(IsLive);
 
-            Program.formMain.formHint.AddStep2Header(TypeCreature.Name);
-            Program.formMain.formHint.AddStep5Description(TypeCreature.Description);
-            Program.formMain.formHint.AddStep7Reward(TypeCreature.TypeReward.Cost.ValueGold());
-            Program.formMain.formHint.AddStep8Greatness(TypeCreature.TypeReward.Greatness, 0);
+            panelHint.AddStep2Header(TypeCreature.Name);
+            panelHint.AddStep5Description(TypeCreature.Description);
+            panelHint.AddStep7Reward(TypeCreature.TypeReward.Cost.ValueGold());
+            panelHint.AddStep8Greatness(TypeCreature.TypeReward.Greatness, 0);
         }
 
         internal override void HideInfo()

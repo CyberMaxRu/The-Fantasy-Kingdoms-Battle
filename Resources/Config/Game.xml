@@ -17,6 +17,7 @@
     <MaxElementInStartBonus>4</MaxElementInStartBonus>
     <MaxValueProperty>1000</MaxValueProperty>
     <DefaultLevelTax>Normal</DefaultLevelTax>
+    <MouseHoverTime>0</MouseHoverTime>
   </Interface>
   <Colors>
     <Common>

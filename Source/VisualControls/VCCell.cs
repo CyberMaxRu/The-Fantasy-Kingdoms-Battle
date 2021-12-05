@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Entity != null)
             {
-                Entity.PrepareHint();
+                Entity.PrepareHint(PanelHint);
                 return true;
             }
 

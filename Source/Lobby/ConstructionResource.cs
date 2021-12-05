@@ -20,11 +20,11 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.ImageIndex;
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
-            Program.formMain.formHint.AddStep2Header(Descriptor.Name, GetImageIndex());
-            Program.formMain.formHint.AddStep3Type("Ресурс");
-            Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+            panelHint.AddStep2Header(Descriptor.Name, GetImageIndex());
+            panelHint.AddStep3Type("Ресурс");
+            panelHint.AddStep5Description(Descriptor.Description);
         }
     }
 }

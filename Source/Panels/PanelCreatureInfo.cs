@@ -178,8 +178,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BmpState_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep2Header(Creature.StateCreature.Name);
-            Program.formMain.formHint.AddStep5Description(Creature.StateCreature.Description);
+            PanelHint.AddStep2Header(Creature.StateCreature.Name);
+            PanelHint.AddStep5Description(Creature.StateCreature.Description);
         }
 
         internal Creature Creature { get => Entity as Creature; }

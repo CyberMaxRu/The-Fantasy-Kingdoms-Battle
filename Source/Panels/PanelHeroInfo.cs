@@ -90,7 +90,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LvGold_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
+            PanelHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
         }
 
         internal Hero Hero { get => Entity as Hero; }

@@ -61,8 +61,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DialogAction ShowDialog()
         {
-            Program.formMain.formHint.HideHint();
-            Program.formMain.StopShowHint();
+            PanelHint.HideHint();
 
             AdjustSize();
             ToCentre();
@@ -76,8 +75,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Show(bool toCentre = true)
         {
-            Program.formMain.formHint.HideHint();
-            Program.formMain.StopShowHint();
+            PanelHint.HideHint();
 
             AdjustSize();
             if (toCentre)

@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             // Если на ячейке исследования больше нет, то сообщаем, что подсказки нет
             if (research != null)
             {
-                research.PrepareHint();
+                research.PrepareHint(PanelHint);
                 return true;
             }
 

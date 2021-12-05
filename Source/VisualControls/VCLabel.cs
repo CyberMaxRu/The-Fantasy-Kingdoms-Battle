@@ -145,7 +145,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool PrepareHint()
         {
             if (TruncLongText && TextTrunced)
-                Program.formMain.formHint.AddSimpleHint(Text);
+                PanelHint.AddSimpleHint(Text);
 
             return true;
         }

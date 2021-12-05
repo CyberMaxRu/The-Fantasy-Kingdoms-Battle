@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex() => Descriptor.ImageIndex;
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
             
         }

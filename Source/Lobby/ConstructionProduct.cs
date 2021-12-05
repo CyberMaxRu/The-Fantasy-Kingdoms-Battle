@@ -58,13 +58,13 @@ namespace Fantasy_Kingdoms_Battle
             return Product.Selling.Gold;
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
-            Program.formMain.formHint.AddStep2Header(Descriptor.Name, GetImageIndex());
-            Program.formMain.formHint.AddStep5Description(Product.Description);
-            Program.formMain.formHint.AddStep10CostGold(GetCostGold());
+            panelHint.AddStep2Header(Descriptor.Name, GetImageIndex());
+            panelHint.AddStep5Description(Product.Description);
+            panelHint.AddStep10CostGold(GetCostGold());
             if (DescriptorItem != null)
-                Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
+                panelHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
         }
 
         internal bool IsAvailableForCreature(DescriptorCreature dc)

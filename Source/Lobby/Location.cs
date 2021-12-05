@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
             
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
             
         }

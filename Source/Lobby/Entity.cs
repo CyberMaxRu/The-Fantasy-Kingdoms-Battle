@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual string GetLevel() => "";
         internal virtual int GetQuantity() => 0;
         internal virtual string GetText() => "";
-        internal abstract void PrepareHint();
+        internal abstract void PrepareHint(PanelHint panelHint);
 
         internal virtual void Click(VCCell pe)
         {

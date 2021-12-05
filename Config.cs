@@ -91,6 +91,9 @@ namespace Fantasy_Kingdoms_Battle
             MaxElementInStartBonus = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MaxElementInStartBonus").InnerText);
             Debug.Assert(ConstructionMaxLines >= 1);
             Debug.Assert(ConstructionMaxLines <= 10);
+            MouseHoverTime = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MouseHoverTime").InnerText);
+            Debug.Assert(MouseHoverTime >= 0);
+            Debug.Assert(MouseHoverTime <= 10_000);
 
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
             Debug.Assert(HeroInRow >= 3);
@@ -162,6 +165,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IDReasonOfDeathInBattle.Length > 0);
             NameDefaultLevelTax = xmlDoc.SelectSingleNode("Game/Interface/DefaultLevelTax").InnerText;
             Debug.Assert(NameDefaultLevelTax.Length > 0);
+
 
             WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
             Debug.Assert(WarehouseWidth >= 5);
@@ -318,6 +322,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
         internal int MaxValueProperty { get; private set; }// 
+        internal int MouseHoverTime { get; set; }
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин

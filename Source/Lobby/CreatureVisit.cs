@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             return Visit.ImageIndex;
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
             //return Event.
         }

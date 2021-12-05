@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
         internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();
-        internal virtual void PrepareHint() { }
+        internal virtual void PrepareHint(PanelHint panelHint) { }
         internal abstract void Click();
         internal abstract void Execute();
         internal abstract bool InstantExecute();

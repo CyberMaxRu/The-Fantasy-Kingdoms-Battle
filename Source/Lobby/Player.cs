@@ -835,11 +835,11 @@ namespace Fantasy_Kingdoms_Battle
             base.PreparingForBattle();
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
-            Program.formMain.formHint.AddStep1Name(GetName());
-            Program.formMain.formHint.AddStep4Level($"{PositionInLobby} место", GetImageIndex());
-            Program.formMain.formHint.AddStep5Description("Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
+            panelHint.AddStep1Name(GetName());
+            panelHint.AddStep4Level($"{PositionInLobby} место", GetImageIndex());
+            panelHint.AddStep5Description("Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
                     + " " + Environment.NewLine
                     + "Поражений: " + CurrentLoses.ToString()
@@ -1242,18 +1242,18 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal void PrepareHintForBuildTypeConstruction(DescriptorConstruction type)
+        internal void PrepareHintForBuildTypeConstruction(PanelHint panelHint, DescriptorConstruction type)
         {
-            Program.formMain.formHint.AddStep2Header(type.Name);
-            Program.formMain.formHint.AddStep4Level("Уровень 1");
-            Program.formMain.formHint.AddStep5Description(type.Description);
-            //Program.formMain.formHint.AddStep6Income(type.Levels[1].Income);
-            Program.formMain.formHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
-            Program.formMain.formHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
-            Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
-            Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
-            Program.formMain.formHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);
-            Program.formMain.formHint.AddStep13Builders(type.Levels[1].GetCreating().Builders, FreeBuilders >= type.Levels[1].GetCreating().Builders);
+            panelHint.AddStep2Header(type.Name);
+            panelHint.AddStep4Level("Уровень 1");
+            panelHint.AddStep5Description(type.Description);
+            //panelHint.AddStep6Income(type.Levels[1].Income);
+            panelHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
+            panelHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
+            panelHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
+            panelHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
+            panelHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);
+            panelHint.AddStep13Builders(type.Levels[1].GetCreating().Builders, FreeBuilders >= type.Levels[1].GetCreating().Builders);
         }
 
         //

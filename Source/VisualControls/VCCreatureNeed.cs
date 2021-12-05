@@ -30,11 +30,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            Program.formMain.formHint.AddStep2Header(need.Need.Descriptor.Name);
-            Program.formMain.formHint.AddStep3Type("Потребность");
-            Program.formMain.formHint.AddStep4Level($"{need.Need.Descriptor.Name}: {FormatDecimal100(need.Value)}/{FormatDecimal100(1000)}"
+            PanelHint.AddStep2Header(need.Need.Descriptor.Name);
+            PanelHint.AddStep3Type("Потребность");
+            PanelHint.AddStep4Level($"{need.Need.Descriptor.Name}: {FormatDecimal100(need.Value)}/{FormatDecimal100(1000)}"
                 + Environment.NewLine + $"Увеличение в день: {FormatDecimal100(need.IncreasePerDay)}");
-            Program.formMain.formHint.AddStep5Description(need.Need.Descriptor.Description);
+            PanelHint.AddStep5Description(need.Need.Descriptor.Description);
 
             return true;
         }

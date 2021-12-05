@@ -27,12 +27,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Info is null)
             {
-                Program.formMain.formHint.AddSimpleHint("Поражения в битве нет");
+                PanelHint.AddSimpleHint("Поражения в битве нет");
             }
             else
             {
-                Program.formMain.formHint.AddStep2Header($"Поражение от: {Info.Opponent.GetName()}");
-                Program.formMain.formHint.AddStep5Description($"День: {Info.Day}");
+                PanelHint.AddStep2Header($"Поражение от: {Info.Opponent.GetName()}");
+                PanelHint.AddStep5Description($"День: {Info.Day}");
             }
 
             return true;

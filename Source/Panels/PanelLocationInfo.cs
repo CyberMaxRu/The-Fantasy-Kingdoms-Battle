@@ -47,14 +47,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Location.Ownership)
             {
-                Program.formMain.formHint.Clear();
-                Program.formMain.formHint.AddStep2Header(Location.Player.GetName());
-                Program.formMain.formHint.AddStep4Level("Владелец местности");
+                PanelHint.AddStep2Header(Location.Player.GetName());
+                PanelHint.AddStep4Level("Владелец местности");
             }
             else
             {
-                Program.formMain.formHint.Clear();
-                Program.formMain.formHint.AddSimpleHint("У местности нет владельца");
+                PanelHint.AddSimpleHint("У местности нет владельца");
             }
         }
     }

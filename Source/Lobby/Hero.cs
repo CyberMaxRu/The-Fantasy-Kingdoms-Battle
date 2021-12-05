@@ -281,21 +281,21 @@ namespace Fantasy_Kingdoms_Battle
             return TypeCreature.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? FullName : Player.GetName();
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
             if (IsLive)
             {
-                Program.formMain.formHint.AddStep1Name(GetNameHero());
-                Program.formMain.formHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
-                Program.formMain.formHint.AddStep4Level($"Уровень {Level}");
-                Program.formMain.formHint.AddStep5Description(TypeCreature.Description);
+                panelHint.AddStep1Name(GetNameHero());
+                panelHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
+                panelHint.AddStep4Level($"Уровень {Level}");
+                panelHint.AddStep5Description(TypeCreature.Description);
             }
             else
             {
-                Program.formMain.formHint.AddStep1Name(GetNameHero());
-                Program.formMain.formHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
-                Program.formMain.formHint.AddStep4Level($"Уровень {Level}");
-                Program.formMain.formHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}{ReasonOfDeath.Name}");
+                panelHint.AddStep1Name(GetNameHero());
+                panelHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
+                panelHint.AddStep4Level($"Уровень {Level}");
+                panelHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}{ReasonOfDeath.Name}");
             }
         }
 

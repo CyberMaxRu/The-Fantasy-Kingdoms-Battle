@@ -42,13 +42,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex() => Descriptor != null ? Descriptor.ImageIndex : BigEntity.GetImageIndex();
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
-            Program.formMain.formHint.AddStep2Header(Descriptor != null ? Descriptor.Name : BigEntity.Descriptor.Name, GetImageIndex());
+            panelHint.AddStep2Header(Descriptor != null ? Descriptor.Name : BigEntity.Descriptor.Name, GetImageIndex());
             if (Descriptor != null)
-                Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-            Program.formMain.formHint.AddStep9Properties(ListProperty);
-            Program.formMain.formHint.AddStep18Owner(Owner);
+                panelHint.AddStep5Description(Descriptor.Description);
+            panelHint.AddStep9Properties(ListProperty);
+            panelHint.AddStep18Owner(Owner);
         }
     }
 }

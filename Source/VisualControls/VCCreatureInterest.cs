@@ -29,10 +29,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            Program.formMain.formHint.AddStep2Header(interest.Descriptor.Descriptor.Name);
-            Program.formMain.formHint.AddStep3Type("Интерес");
-            Program.formMain.formHint.AddStep4Level($"{interest.Descriptor.Descriptor.Name}: {FormatDecimal100(interest.Value)}/{FormatDecimal100(1000)}");
-            Program.formMain.formHint.AddStep5Description(interest.Descriptor.Descriptor.Description);
+            PanelHint.AddStep2Header(interest.Descriptor.Descriptor.Name);
+            PanelHint.AddStep3Type("Интерес");
+            PanelHint.AddStep4Level($"{interest.Descriptor.Descriptor.Name}: {FormatDecimal100(interest.Value)}/{FormatDecimal100(1000)}");
+            PanelHint.AddStep5Description(interest.Descriptor.Descriptor.Description);
 
             return true;
         }

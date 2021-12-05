@@ -19,6 +19,11 @@ namespace Fantasy_Kingdoms_Battle
         private Entity entity;
         private bool _disposed = false;
 
+        static VisualControl()
+        {
+            PanelHint = new PanelHint();
+        }
+
         public VisualControl()
         {
             _visible = true;
@@ -37,6 +42,8 @@ namespace Fantasy_Kingdoms_Battle
 
         ~VisualControl() => Dispose(false);
 
+        internal static PanelHint PanelHint { get; }
+
         internal VisualControl Parent { get; private set; }
         internal VisualControl VisualLayer { get; private set; }
         internal int Left { get { return left; } private set { left = value; ValidateRectangle(); ArrangeControls(); } }
@@ -51,7 +58,22 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Visible
         {
             get => _visible;
-            set { if (_visible != value) { _visible = value; if (_visible) Program.formMain.ControlShowed(this); else Program.formMain.ControlHided(this); } }
+            set
+            {
+                if (_visible != value)
+                {
+                    _visible = value;
+                    if (_visible) 
+                        Program.formMain.ControlShowed(this);
+                    else
+                        Program.formMain.ControlHided(this);
+                }
+
+                if (!_visible && (PanelHint != null) && (PanelHint.ForControl == this))
+                {
+                    PanelHint.HideHint();
+                }
+            }
         }// Видимость контрола
         internal bool ManualDraw { get; set; }// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
@@ -59,7 +81,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
-        internal string Hint { get; set; }// Подсказка к контролу
+        internal string Hint { get; set; } = "";// Подсказка к контролу
+        internal string HintDescription { get; set; } = "";// Дополнительная информация к подсказке к контролу
+
         internal bool ClickOnParent { get; set; }// Вызывать клик у родителя
         internal bool ManualSelected { get; set; } = false;
         internal bool PlaySoundOnEnter { get; set; } = false;// Проигрывать звук при входе в контрол
@@ -188,29 +212,29 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Visible);
 
-            if (Hint != null)
+            if (Hint.Length > 0)
             {
-                Program.formMain.formHint.Clear();
-                Program.formMain.formHint.AddSimpleHint(Hint);
-                Program.formMain.formHint.DrawHint(this);
+                if (HintDescription.Length == 0)
+                {
+                    PanelHint.AddSimpleHint(Hint);
+                }
+                else
+                {
+                    PanelHint.AddStep2Header(Hint);
+                    PanelHint.AddStep5Description(HintDescription);
+                }
             }
             else if (ShowHintParent && Parent.ShowHint != null)
             {
-                Program.formMain.formHint.Clear();
                 Parent.ShowHint.Invoke(this, new EventArgs());
-                Program.formMain.formHint.DrawHint(Parent);
             }
             else if (ShowHint != null)
             {
-                Program.formMain.formHint.Clear();
                 ShowHint.Invoke(this, new EventArgs());
-                Program.formMain.formHint.DrawHint(this);
             }
             else
             {
-                Program.formMain.formHint.Clear();
-                if (PrepareHint())
-                    Program.formMain.formHint.DrawHint(this);
+                PrepareHint();
             }
         }
 
@@ -226,6 +250,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.PlaySelectButton();
             }
+
+            if (ShowHintParent && Parent.ShowHint != null)
+                PanelHint.SetControl(Parent);
+            else
+                PanelHint.SetControl(this);
         }
 
         internal virtual void MouseLeave()
@@ -234,6 +263,7 @@ namespace Fantasy_Kingdoms_Battle
 
             MouseOver = false;
             MouseClicked = false;
+            PanelHint.HideHint();
         }
 
         internal virtual void MouseDown()

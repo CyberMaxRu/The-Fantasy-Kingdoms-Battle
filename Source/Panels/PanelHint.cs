@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
+using System.Windows.Forms;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -59,6 +61,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Color colorBackground;
         private Bitmap bmpBackground;
         private int widthControl;
+
+        private readonly Timer timerHover;// Таймер для показывания подсказки
 
         private const int PANEL_WIDTH = 296;
 
@@ -232,10 +236,19 @@ namespace Fantasy_Kingdoms_Battle
                         };*/
 
             Clear();
+
+            timerHover = new Timer()
+            {
+                Interval = FormMain.Config.MouseHoverTime == 0 ? SystemInformation.MouseHoverTime : FormMain.Config.MouseHoverTime,
+                Enabled = false
+            };
+            timerHover.Tick += TimerHover_Tick;
         }
 
         internal bool ExistHint { get; set; }
-        internal void Clear()
+        internal VisualControl ForControl { get; private set; }// Подсказка для этого контрола
+
+        private void Clear()
         {
             ExistHint = false;
             lblName.Visible = false;
@@ -908,31 +921,70 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = lblTooltip.NextTop();
         }
 
-        internal void DrawHint(VisualControl c)
+        internal void SetControl(VisualControl c)
         {
-            if (!ExistHint)
-                return;
+            Assert(c != null);
+            Assert(c != this);
 
-            Debug.Assert(c.Visible);
-            Debug.Assert(c.Width > 8);
-            Debug.Assert(c.Height > 8);
+            ForControl = c;
+            timerHover.Start();
+        }
+
+        internal void HideHint()
+        {
+            if (Visible)
+            {
+                Visible = false;
+                timerHover.Stop();
+                ForControl = null;
+                Clear();
+                Program.formMain.SetNeedRedrawFrame();
+                //Program.formMain.ShowFrame(false);
+            }
+        }
+
+        private void TimerHover_Tick(object sender, EventArgs e)
+        {
+            timerHover.Stop();
+
+            Assert(ForControl != null);
+            Assert(ForControl.Visible);
+
+            ForControl.DoShowHint();
+            if (ExistHint)
+            {
+                DrawHint();
+                Visible = true;
+
+                Program.formMain.SetNeedRedrawFrame();
+                Program.formMain.ShowFrame(false);
+
+                Assert(ForControl.Visible);
+            }
+        }
+
+        internal void DrawHint()
+        {
+            Debug.Assert(ForControl.Visible);
+            Debug.Assert(ForControl.Width > 8);
+            Debug.Assert(ForControl.Height > 8);
             Debug.Assert((lblName.Text.Length > 0) || (lblHeader.Text.Length > 0));
 
             Height = nextTop;
 
-            Point l = new Point(c.Left, c.Top + c.Height + 4);
+            Point l = new Point(ForControl.Left, ForControl.Top + ForControl.Height + 4);
             // Если подсказка уходит за пределы экрана игры, меняем ее положение
             if (l.X + Width > Program.formMain.sizeGamespace.Width - FormMain.Config.GridSize)
                 l.X = Program.formMain.sizeGamespace.Width - Width - FormMain.Config.GridSize;
             if (l.Y + Height > Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize)
-                l.Y = l.Y - Height - c.Height - 7;
+                l.Y = l.Y - Height - ForControl.Height - 7;
 
             // Если подсказка не помещается ни снизу, ни сверху, показываем ее справа или слева
             if (l.Y < 0)
             {
                 l.Y = Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize - Height;
                 // Здесь нужна проверка на то, где рисовать - слева или справа
-                l.X = c.Left + c.Width + 4;
+                l.X = ForControl.Left + ForControl.Width + 4;
             }
 
             // Сначала меняем высоту, а потом меням координату, чтобы при ArrangeControls не срабатывал Assert
@@ -954,14 +1006,6 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImageUnscaled(bmpBackground, Left, Top);
 
             base.Draw(g);
-        }
-
-        internal void HideHint()
-        {
-            ExistHint = false;
-
-            if (Visible)
-                Visible = false;
         }
 
         private Color ColorRequirements(bool met)

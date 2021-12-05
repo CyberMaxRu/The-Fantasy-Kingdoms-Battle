@@ -48,13 +48,13 @@ namespace Fantasy_Kingdoms_Battle
             return 0;// DescriptorConstructionEvent.co.;
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
-            Program.formMain.formHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, GetImageIndex());
-            Program.formMain.formHint.AddStep3Type("Мероприятие");
-            Program.formMain.formHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
-            Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-            Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);
+            panelHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, GetImageIndex());
+            panelHint.AddStep3Type("Мероприятие");
+            panelHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
+            panelHint.AddStep5Description(Descriptor.Description);
+            panelHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);
         }
 
         internal bool IsAvailableForCreature(DescriptorCreature dc)

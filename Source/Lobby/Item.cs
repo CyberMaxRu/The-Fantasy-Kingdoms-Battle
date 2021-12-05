@@ -39,15 +39,15 @@ namespace Fantasy_Kingdoms_Battle
             return Quantity == 1 ? 0 : Quantity;
         }
 
-        internal override void PrepareHint()
+        internal override void PrepareHint(PanelHint panelHint)
         {
-            Program.formMain.formHint.AddStep2Header(Descriptor.Name);
-            Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-            Program.formMain.formHint.AddStep9ListNeeds(Descriptor.ListNeeds, false);
-            Program.formMain.formHint.AddStep14PlayerItem(this);
-            Program.formMain.formHint.AddStep17Signer(Signer);
-            Program.formMain.formHint.AddStep19Descriptors(Modifiers);
-            Program.formMain.formHint.AddStep20Perks(Descriptor.Perks);
+            panelHint.AddStep2Header(Descriptor.Name);
+            panelHint.AddStep5Description(Descriptor.Description);
+            panelHint.AddStep9ListNeeds(Descriptor.ListNeeds, false);
+            panelHint.AddStep14PlayerItem(this);
+            panelHint.AddStep17Signer(Signer);
+            panelHint.AddStep19Descriptors(Modifiers);
+            panelHint.AddStep20Perks(Descriptor.Perks);
         }
 
         internal void AddModificator(DescriptorItem descriptor)

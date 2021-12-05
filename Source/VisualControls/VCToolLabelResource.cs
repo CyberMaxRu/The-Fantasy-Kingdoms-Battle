@@ -17,8 +17,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void VCToolLabelResource_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep2Header(Resource.Name);
-            Program.formMain.formHint.AddStep5Description("Количество ресурса на складах");
+            PanelHint.AddStep2Header(Resource.Name);
+            PanelHint.AddStep5Description("Количество ресурса на складах");
         }
 
         internal DescriptorBaseResource Resource { get; }
