@@ -1921,7 +1921,7 @@ namespace Fantasy_Kingdoms_Battle
                     clickedControl.MouseDown();
                 }
 
-                ShowFrame(false);
+                ShowFrame(true);
             }
         }
 
@@ -2003,8 +2003,6 @@ namespace Fantasy_Kingdoms_Battle
                     //    formHint.HideHint();
                 }*/
 
-                ShowFrame(false);
-
                 // Если после отрисовки кадра контрола стал невидимым, выходим из него
                 if (!(controlWithHint is null) && !controlWithHint.Visible)
                 {
@@ -2018,6 +2016,8 @@ namespace Fantasy_Kingdoms_Battle
                     TreatMouseMove(false);
                 }*/
             }
+
+            ShowFrame(true);
         }
 
         private VisualControl ControlUnderMouse()

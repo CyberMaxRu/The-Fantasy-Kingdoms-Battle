@@ -255,7 +255,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!MouseClicked);
 
             MouseClicked = true;
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal virtual void MouseUp()
@@ -265,8 +264,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MouseClicked);
 
             MouseClicked = false;
-
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal virtual void DoClick()
