@@ -28,8 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             labelCaption = new VCLabel(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
-            labelCaption.Visible = false;
-            labelCaption.ManualDraw = true;
+            labelCaption.IsActiveControl = false;
         }
 
         internal string Caption { get; set; }
@@ -59,12 +58,10 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(bmpPressed != null);
 
             bmpForDraw = !Enabled ? bmpDisabled : MouseOver && MouseClicked ? bmpPressed : MouseOver ? bmpHot : bmpNormal;
-
-            base.Draw(g);
-
             labelCaption.Text = Caption;
             labelCaption.Color = !enabled ? Color.DarkGray : MouseOver ? Color.Gold : Color.PaleTurquoise;
-            labelCaption.Draw(g);
+
+            base.Draw(g);
         }
 
         protected override bool AllowClick() => Enabled;
