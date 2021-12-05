@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCImage24(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.ilGui24, imageIndex)
         {
-
+            IsActiveControl = false;
         }
     }
 }
