@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             StringFormat.LineAlignment = StringAlignment.Center;
             Width = 160;
             LeftMargin = 32;
+            IsActiveControl = true;
 
             BitmapList = Program.formMain.blCheckBox;
         }

@@ -10,6 +10,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             StringFormat.Alignment = StringAlignment.Near;
             StringFormat.LineAlignment = StringAlignment.Near;
+            IsActiveControl = true;
 
             BitmapList = Program.formMain.ilGui16;
             ImageIndex = imageIndex;
