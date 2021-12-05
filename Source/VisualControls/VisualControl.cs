@@ -81,7 +81,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool IsActiveControl { get; set; } = true;// Контрол активный - показывает подсказку, обрабатывает клики и т.д.
         internal bool IsError { get; set; }
-        internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
         internal string Hint { get; set; } = "";// Подсказка к контролу
         internal string HintDescription { get; set; } = "";// Дополнительная информация к подсказке к контролу
 
@@ -186,7 +185,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual bool PrepareHint()
         {
-            return ShowHintParent && Parent.PrepareHint();
+            return true;//sShowHintParent && Parent.PrepareHint();
         }
 
         internal virtual void DoShowHint()
@@ -204,10 +203,6 @@ namespace Fantasy_Kingdoms_Battle
                     PanelHint.AddStep2Header(Hint);
                     PanelHint.AddStep5Description(HintDescription);
                 }
-            }
-            else if (ShowHintParent && Parent.ShowHint != null)
-            {
-                Parent.ShowHint.Invoke(this, new EventArgs());
             }
             else if (ShowHint != null)
             {
@@ -233,10 +228,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.PlaySelectButton();
             }
 
-            if (ShowHintParent && Parent.ShowHint != null)
-                PanelHint.SetControl(Parent);
-            else
-                PanelHint.SetControl(this);
+            PanelHint.SetControl(this);
         }
 
         internal virtual void MouseMove(bool leftDown)

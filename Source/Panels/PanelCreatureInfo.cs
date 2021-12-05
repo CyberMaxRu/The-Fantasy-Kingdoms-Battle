@@ -69,11 +69,11 @@ namespace Fantasy_Kingdoms_Battle
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.bmpBandStateCreature);
             bmpStateBackground.ShowHint += BmpState_ShowHint;
             bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.ilStateHero.GetImage(0, true, false));
-            bmpState.ShowHintParent = true;
+            bmpState.IsActiveControl = false;
             labelNameState = new VCLabel(bmpStateBackground, 36, 8, Program.formMain.fontSmallC, Color.White, 16, "");
             labelNameState.StringFormat.Alignment = StringAlignment.Near;
             labelNameState.StringFormat.LineAlignment = StringAlignment.Center;
-            labelNameState.ShowHintParent = true;
+            labelNameState.IsActiveControl = false;
 
             panelSpecialization = new VCCell(this, imgIcon.NextLeft(), imgIcon.ShiftY);
             panelMeleeWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
