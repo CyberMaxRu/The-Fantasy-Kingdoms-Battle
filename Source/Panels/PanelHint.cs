@@ -941,6 +941,12 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.SetNeedRedrawFrame();
                 //Program.formMain.ShowFrame(false);
             }
+            else if (timerHover.Enabled)
+            {
+                timerHover.Stop();
+                ForControl = null;
+                Clear();
+            }
         }
 
         private void TimerHover_Tick(object sender, EventArgs e)
