@@ -173,26 +173,6 @@ namespace Fantasy_Kingdoms_Battle
                 PaintBorder(g);
         }
 
-        internal virtual void DoClick()
-        {
-            Assert(Visible);
-            Assert(IsActiveControl);
-
-            if (AllowClick())
-                if (IsActiveControl)
-                {
-                    if (PlaySoundOnClick)
-                        Program.formMain.PlayPushButton();
-                    Click?.Invoke(this, new EventArgs());
-                }
-                else
-                {
-                    if (PlaySoundOnClick)
-                        Program.formMain.PlayPushButton();
-                    Parent.DoClick();
-                }
-        }
-
         protected virtual bool Selected() => ManualSelected;
         protected virtual bool AllowClick() => true;
 
@@ -258,6 +238,11 @@ namespace Fantasy_Kingdoms_Battle
                 PanelHint.SetControl(this);
         }
 
+        internal virtual void MouseMove(bool leftDown)
+        {
+
+        }
+
         internal virtual void MouseLeave()
         {
             Debug.Assert(MouseOver);
@@ -285,9 +270,24 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
-        internal virtual void MouseMove(bool leftDown)
+        internal virtual void DoClick()
         {
+            Assert(Visible);
+            Assert(IsActiveControl);
 
+            if (AllowClick())
+                if (IsActiveControl)
+                {
+                    if (PlaySoundOnClick)
+                        Program.formMain.PlayPushButton();
+                    Click?.Invoke(this, new EventArgs());
+                }
+                else
+                {
+                    if (PlaySoundOnClick)
+                        Program.formMain.PlayPushButton();
+                    Parent.DoClick();
+                }
         }
 
         internal virtual void RightButtonClick()
