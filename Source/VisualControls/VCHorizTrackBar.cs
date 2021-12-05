@@ -158,14 +158,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void MouseMove(bool leftDown)
+        internal override void MouseMove(Point p, bool leftDown)
         {
-            base.MouseMove(leftDown);
+            base.MouseMove(p, leftDown);
 
             if (leftDown)
             {
-                Point mp = Program.formMain.MousePosToControl(this);
-                int posAtTrackband = mp.X - btnLeft.Width - shiftTracker;
+                int posAtTrackband = p.X - btnLeft.Width - shiftTracker;
                 if (posAtTrackband < 0)
                     Position = Min;
                 else if (posAtTrackband > widthTrackband)

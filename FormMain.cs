@@ -1933,7 +1933,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if (curControl == controlWithHint)
             {
-                curControl.MouseMove(leftDown);
+                curControl.MouseMove(MousePosToControl(curControl), leftDown);
                 /*if (hintShowed)
                 {
                     timerHover.Stop();

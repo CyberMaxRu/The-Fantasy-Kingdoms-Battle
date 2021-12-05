@@ -214,6 +214,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        // Событие входа указателя мыши в контрол
         internal virtual void MouseEnter(bool leftButtonDown)
         {
             Assert(!MouseOver);
@@ -231,7 +232,8 @@ namespace Fantasy_Kingdoms_Battle
             PanelHint.SetControl(this);
         }
 
-        internal virtual void MouseMove(bool leftDown)
+        // Событие движения мыши в коонтроле
+        internal virtual void MouseMove(Point p, bool leftDown)
         {
 
         }
