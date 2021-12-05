@@ -1913,7 +1913,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (!(controlWithHint is null))
                 {
-                    Debug.Assert(controlWithHint.Visible);
                     controlWithHint.MouseDown();
                 }
 
