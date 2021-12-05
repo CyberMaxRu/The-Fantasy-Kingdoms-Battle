@@ -22,6 +22,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Caption = caption;
             Width = 160;
+            PlaySoundOnEnter = true;
+            PlaySoundOnClick = true;
 
             labelCaption = new VCLabel(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
@@ -31,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string Caption { get; set; }
-        internal bool Enabled { get => enabled; set { enabled = value; Program.formMain.NeedRedrawFrame(); } }
+        internal bool Enabled { get => enabled; set { enabled = value; PlaySoundOnEnter = enabled; Program.formMain.NeedRedrawFrame(); } }
         protected override int WidthCap() => 31;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandButtonNormal;
 
@@ -63,26 +65,6 @@ namespace Fantasy_Kingdoms_Battle
             labelCaption.Text = Caption;
             labelCaption.Color = !enabled ? Color.DarkGray : MouseOver ? Color.Gold : Color.PaleTurquoise;
             labelCaption.Draw(g);
-        }
-
-        internal override void MouseEnter(bool leftButtonDown)
-        {
-            base.MouseEnter(leftButtonDown);
-
-            if (Enabled)
-            {
-                Program.formMain.PlaySelectButton();
-            }
-        }
-
-        internal override void MouseDown()
-        {
-            base.MouseDown();
-
-            if (Enabled)
-            {
-                Program.formMain.PlayPushButton();
-            }
         }
 
         protected override bool AllowClick() => Enabled;
