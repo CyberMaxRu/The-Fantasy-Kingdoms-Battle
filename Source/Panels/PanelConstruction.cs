@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.StringFormat.Alignment = StringAlignment.Center;
             //lblNameMapObject.ShowBorder = true;
             lblNameMapObject.TruncLongText = true;
-            lblNameMapObject.Click += ImgLair_Click;
+            lblNameMapObject.IsActiveControl = false;
 
             imgMapObject = new VCImage128(this, FormMain.Config.GridSize, lblNameMapObject.NextTop());
             imgMapObject.HighlightUnderMouse = true;

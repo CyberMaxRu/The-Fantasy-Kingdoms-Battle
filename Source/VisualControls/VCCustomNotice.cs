@@ -21,10 +21,8 @@ namespace Fantasy_Kingdoms_Battle
             Cell = new VCCellSimple(this, 0, 3);
 
             lblCaption = new VCLabel(this, Cell.NextLeft(), 4, Program.formMain.fontMedCaptionC, Color.Gray, 16, "");
-            lblCaption.ClickOnParent = true;
 
             lblText = new VCLabel(this, lblCaption.ShiftX, 27, Program.formMain.fontMedCaptionC, Color.Gray, 16, "");
-            lblText.ClickOnParent = true;
             Height = 54;
             Width = width;
 

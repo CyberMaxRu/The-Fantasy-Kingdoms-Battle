@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             Text = text;
             Font = font;
             Color = foreColor;
+            IsActiveControl = false;
 
             StringFormat = new StringFormat()
             {

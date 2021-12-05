@@ -79,12 +79,12 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
         internal Entity Entity { get => entity; set { SetEntity(value); } }// Объект, ассоциированный с контролом
 
+        internal bool IsActiveControl { get; set; } = true;// Контрол активный - показывает подсказку, обрабатывает клики и т.д.
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
         internal string Hint { get; set; } = "";// Подсказка к контролу
         internal string HintDescription { get; set; } = "";// Дополнительная информация к подсказке к контролу
 
-        internal bool ClickOnParent { get; set; }// Вызывать клик у родителя
         internal bool ManualSelected { get; set; } = false;
         internal bool PlaySoundOnEnter { get; set; } = false;// Проигрывать звук при входе в контрол
         internal bool PlaySoundOnClick { get; set; } = false;// Проигрывать звук при клике
@@ -175,10 +175,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void DoClick()
         {
-            Debug.Assert(Visible);
+            Assert(Visible);
+            Assert(IsActiveControl);
 
             if (AllowClick())
-                if (!ClickOnParent)
+                if (IsActiveControl)
                 {
                     if (PlaySoundOnClick)
                         Program.formMain.PlayPushButton();
@@ -291,15 +292,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void RightButtonClick()
         {
+            Assert(IsActiveControl);
+            Assert(Visible);
+
             if (AllowClick())
-                if (!ClickOnParent)
-                {
-                    RightClick?.Invoke(this, new EventArgs());
-                }
-                else
-                {
-                    Parent.RightButtonClick();
-                }
+                RightClick?.Invoke(this, new EventArgs());
         }
 
         internal virtual void KeyPress(KeyPressEventArgs e)
@@ -387,7 +384,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (vc.Visible)
                     {
                         ivc = vc.GetControl(x, y);
-                        if (!(ivc is null))
+                        if (!(ivc is null) && ivc.IsActiveControl)
                             return ivc;
                     }
                 }

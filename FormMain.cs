@@ -625,7 +625,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Правая панель с героями и меню
             vcRightPanel = new VisualControl(MainControl, 0, Config.GridSize);
-            vcRightPanel.ClickOnParent = true;
+            vcRightPanel.IsActiveControl = false;
 
             // Создаем меню
             bitmapMenu = new VCBitmap(vcRightPanel, 0, 0, LoadBitmap("Menu.png"));
