@@ -10,6 +10,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Media;
 using System.Text;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -64,6 +65,7 @@ namespace Fantasy_Kingdoms_Battle
         private Point mousePos;
         private VisualControl controlWithHint;
         private VisualControl controlClicked;
+        private VisualControl clickedControl;
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
@@ -1911,9 +1913,12 @@ namespace Fantasy_Kingdoms_Battle
 
             if (e.Button == MouseButtons.Left)
             {
-                if (!(controlWithHint is null))
+                if (controlWithHint != null)
                 {
-                    controlWithHint.MouseDown();
+                    Assert(clickedControl is null);
+                        
+                    clickedControl = controlWithHint;
+                    clickedControl.MouseDown();
                 }
 
                 ShowFrame(false);
