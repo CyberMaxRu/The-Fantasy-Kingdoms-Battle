@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = Program.formMain.ilGui16;
             StringFormat.Alignment = StringAlignment.Near;
             ShiftImage = new Point(4, 4);
+            IsActiveControl = true;
             TopMargin = 2;
             LeftMargin = 0;
             RightMargin = 5;
