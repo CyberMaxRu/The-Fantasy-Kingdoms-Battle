@@ -1837,13 +1837,6 @@ namespace Fantasy_Kingdoms_Battle
             return b;
         }
 
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-
-            TreatMouseMove(e.Button == MouseButtons.Left);
-        }
-
         private void ShowInGameMenu()
         {
             WindowMenuInGame w = new WindowMenuInGame();
@@ -1893,103 +1886,13 @@ namespace Fantasy_Kingdoms_Battle
                 currentLayer.KeyUp(e);
                 ShowFrame(false);
             }
-        }        
-
-        private VisualControl ControlUnderMouse()
-        {
-            return currentLayer.GetControl(mousePos.X, mousePos.Y);
         }
 
-        private void UpdateMousePos()
+        protected override void OnMouseMove(MouseEventArgs e)
         {
-            mousePos = PointToClient(Cursor.Position);
-            mousePos.X -= topLeftFrame.X;
-            mousePos.Y -= topLeftFrame.Y;
-        }
+            base.OnMouseMove(e);
 
-        internal Point MousePosToControl(VisualControl vc)
-        {
-            return new Point(mousePos.X - vc.Left, mousePos.Y - vc.Top);
-        }
-
-        private void TreatMouseMove(bool leftDown)
-        {
-            Point oldMousePos = mousePos;
-            UpdateMousePos();
-
-            if (!mousePos.Equals(oldMousePos))
-            {
-                UpdateCurrentControl(leftDown);
-            }
-        }
-
-        private void UpdateCurrentControl(bool leftDown)
-        {
-            VisualControl curControl = ControlUnderMouse();
-
-            if (curControl == null)
-            {
-                ControlForHintLeave();
-            }
-            else if (curControl == controlWithHint)
-            {
-                curControl.MouseMove(MousePosToControl(curControl), leftDown);
-                /*if (hintShowed)
-                {
-                    timerHover.Stop();
-                    formHint.HideHint();
-                }
-                else
-                {
-                    // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
-                    timerHover.Stop();
-                    timerHover.Start();
-                }*/
-            }
-            else
-            {
-                // Если при переходе на новый контрол у него так же есть подсказка, просто перерисовываем текст, не скрываем её
-                //curControl.DoShowHint();
-                if (controlWithHint != null)
-                {
-                    controlWithHint.MouseLeave();
-                    controlWithHint = curControl;
-                    controlWithHint.MouseEnter(leftDown);
-                    //formHint.Visible = true;
-                }
-                else
-                {
-                    ControlForHintLeave();
-                    controlWithHint = curControl;
-                    controlWithHint.MouseEnter(leftDown);
-                }
-
-                //SetNeedRedrawFrame();
-            }
-
-            ShowFrame(false);
-        }
-
-        private void ControlForHintLeave()
-        {
-            if ((controlWithHint != null) && (controlWithHint == controlClicked))
-                controlClicked = null;
-
-            if (controlWithHint != null)
-            {
-                controlWithHint.MouseLeave();
-                controlWithHint = null;
-            }
-
-            if (controlClicked != null)
-            {
-                controlClicked.MouseLeave();
-                controlClicked = null;
-            }
-
-            VisualControl.PanelHint.HideHint();
-
-            ShowFrame(false);
+            TreatMouseMove(e.Button == MouseButtons.Left);
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -2111,6 +2014,103 @@ namespace Fantasy_Kingdoms_Battle
                     TreatMouseMove(false);
                 }*/
             }
+        }
+
+        private VisualControl ControlUnderMouse()
+        {
+            return currentLayer.GetControl(mousePos.X, mousePos.Y);
+        }
+
+        private void UpdateMousePos()
+        {
+            mousePos = PointToClient(Cursor.Position);
+            mousePos.X -= topLeftFrame.X;
+            mousePos.Y -= topLeftFrame.Y;
+        }
+
+        internal Point MousePosToControl(VisualControl vc)
+        {
+            return new Point(mousePos.X - vc.Left, mousePos.Y - vc.Top);
+        }
+
+        private void TreatMouseMove(bool leftDown)
+        {
+            Point oldMousePos = mousePos;
+            UpdateMousePos();
+
+            if (!mousePos.Equals(oldMousePos))
+            {
+                UpdateCurrentControl(leftDown);
+            }
+        }
+
+        private void UpdateCurrentControl(bool leftDown)
+        {
+            VisualControl curControl = ControlUnderMouse();
+
+            if (curControl == null)
+            {
+                ControlForHintLeave();
+            }
+            else if (curControl == controlWithHint)
+            {
+                curControl.MouseMove(MousePosToControl(curControl), leftDown);
+                /*if (hintShowed)
+                {
+                    timerHover.Stop();
+                    formHint.HideHint();
+                }
+                else
+                {
+                    // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
+                    timerHover.Stop();
+                    timerHover.Start();
+                }*/
+            }
+            else
+            {
+                // Если при переходе на новый контрол у него так же есть подсказка, просто перерисовываем текст, не скрываем её
+                //curControl.DoShowHint();
+                if (controlWithHint != null)
+                {
+                    controlWithHint.MouseLeave();
+                    controlWithHint = curControl;
+                    controlWithHint.MouseEnter(leftDown);
+                    //formHint.Visible = true;
+                }
+                else
+                {
+                    ControlForHintLeave();
+                    controlWithHint = curControl;
+                    controlWithHint.MouseEnter(leftDown);
+                }
+
+                //SetNeedRedrawFrame();
+            }
+
+            ShowFrame(false);
+        }
+
+        private void ControlForHintLeave()
+        {
+            if ((controlWithHint != null) && (controlWithHint == controlClicked))
+                controlClicked = null;
+
+            if (controlWithHint != null)
+            {
+                controlWithHint.MouseLeave();
+                controlWithHint = null;
+            }
+
+            if (controlClicked != null)
+            {
+                controlClicked.MouseLeave();
+                controlClicked = null;
+            }
+
+            VisualControl.PanelHint.HideHint();
+
+            ShowFrame(false);
         }
 
         internal void NeedRedrawFrame()
