@@ -71,16 +71,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Enabled)
             {
-                Program.formMain.SetNeedRedrawFrame();
                 Program.formMain.PlaySelectButton();
             }
-        }
-
-        internal override void MouseLeave()
-        {
-            base.MouseLeave();
-
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void MouseDown()
@@ -89,17 +81,10 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Enabled)
             {
-                Program.formMain.SetNeedRedrawFrame();
                 Program.formMain.PlayPushButton();
             }
         }
 
-        internal override void MouseUp()
-        {
-            base.MouseUp();
-
-            Program.formMain.SetNeedRedrawFrame();
-        }
         protected override bool AllowClick() => Enabled;
     }
 }
