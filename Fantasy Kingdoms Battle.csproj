@@ -95,6 +95,8 @@
     <Compile Include="Source\Descriptors\Item\DescriptorResource.cs" />
     <Compile Include="Source\Descriptors\ListDefaultProperties.cs" />
     <Compile Include="Source\Descriptors\Location\DescriptorTypeLandscape.cs" />
+    <Compile Include="Source\Descriptors\Map\DescriptorMap.cs" />
+    <Compile Include="Source\Descriptors\Map\DescriptorPointMap.cs" />
     <Compile Include="Source\Descriptors\Requirement\ListDescriptorRequirements.cs" />
     <Compile Include="Source\Descriptors\Requirement\RequirementConstruction.cs" />
     <Compile Include="Source\Descriptors\Requirement\RequirementDestroyedLairs.cs" />
@@ -375,6 +377,8 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Source\Map\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

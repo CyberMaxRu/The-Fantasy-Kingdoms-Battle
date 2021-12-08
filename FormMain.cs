@@ -125,7 +125,9 @@ namespace Fantasy_Kingdoms_Battle
         private PanelWithPanelEntity panelHeroes;
         private readonly VisualControl vcRightPanel;
         private PanelWithPanelEntity panelCombatHeroes;
+
         private VCMap mapArdania;
+        private DescriptorMap descriptorMap;
 
         private readonly List<VCIconButton48> listBtnLevelTax;
 
@@ -1516,6 +1518,15 @@ namespace Fantasy_Kingdoms_Battle
         private void DrawPageRealMap()
         {
             mapArdania = new VCMap(pageRealMap.Page, 0, 0, "Ardania150.png");
+            mapArdania.Click += MapArdania_Click;
+
+            descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania);
+        }
+
+        private void MapArdania_Click(object sender, EventArgs e)
+        {
+            Point p = mapArdania.MousePosToCoord(MousePosToControl(mapArdania));
+            descriptorMap.SearchBorder(p);
         }
 
         private void AdjustPageTournament()

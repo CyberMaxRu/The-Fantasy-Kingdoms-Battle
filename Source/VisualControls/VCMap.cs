@@ -6,7 +6,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class VCMap : VisualControl
     {
-        private Bitmap bmp;
         private Point shiftBitmap;
         private Rectangle windowDraw = new Rectangle();
         private Point pointRightButtonClicked;
@@ -14,17 +13,19 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCMap(VisualControl parent, int shiftX, int shiftY, string filenameBitmap) : base(parent, shiftX, shiftY)
         {
-            bmp = Program.formMain.LoadBitmap(filenameBitmap, @"Icons\Conq");
+            Bitmap = Program.formMain.LoadBitmap(filenameBitmap, @"Icons\Conq");
         }
+
+        internal Bitmap Bitmap { get; }
 
         internal override void Draw(Graphics g)
         {
-            Debug.Assert(bmp != null);
+            Debug.Assert(Bitmap != null);
             UpdateWindow();
 
             base.Draw(g);
 
-            g.DrawImage(bmp, Left, Top, windowDraw, GraphicsUnit.Pixel);
+            g.DrawImage(Bitmap, Left, Top, windowDraw, GraphicsUnit.Pixel);
         }
 
         private void UpdateWindow()
@@ -57,15 +58,20 @@ namespace Fantasy_Kingdoms_Battle
                 shiftBitmap = new Point(shiftBitmapRightButtonClicked.X + pointRightButtonClicked.X - p.X, shiftBitmapRightButtonClicked.Y + pointRightButtonClicked.Y - p.Y);
                 if (shiftBitmap.X < 0)
                     shiftBitmap.X = 0;
-                if (shiftBitmap.X > bmp.Width - Width)
-                    shiftBitmap.X = bmp.Width - Width;
+                if (shiftBitmap.X > Bitmap.Width - Width)
+                    shiftBitmap.X = Bitmap.Width - Width;
                 if (shiftBitmap.Y < 0)
                     shiftBitmap.Y = 0;
-                if (shiftBitmap.Y > bmp.Height - Height)
-                    shiftBitmap.Y = bmp.Height - Height;
+                if (shiftBitmap.Y > Bitmap.Height - Height)
+                    shiftBitmap.Y = Bitmap.Height - Height;
 
                 UpdateWindow();
             }
+        }
+
+        internal Point MousePosToCoord(Point p)
+        {
+            return new Point(shiftBitmap.X + p.X, shiftBitmap.Y + p.Y);
         }
     }
 }
