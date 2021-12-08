@@ -1936,6 +1936,17 @@ namespace Fantasy_Kingdoms_Battle
 
                 ShowFrame(true);
             }
+            else if (e.Button == MouseButtons.Right)
+            {
+                if (controlWithHint != null)
+                {
+                    //Assert(clickedControl is null);// Need restore
+
+                    controlWithHint.MouseRightDown(MousePosToControl(controlWithHint));
+                }
+
+                ShowFrame(true);
+            }
         }
 
         protected override void OnMouseUp(MouseEventArgs e)

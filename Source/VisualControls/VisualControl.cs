@@ -257,6 +257,10 @@ namespace Fantasy_Kingdoms_Battle
             MouseClicked = true;
         }
 
+        internal virtual void MouseRightDown(Point p)
+        {
+        }
+
         internal virtual void MouseUp(Point p)
         {
             Debug.Assert(Visible);
