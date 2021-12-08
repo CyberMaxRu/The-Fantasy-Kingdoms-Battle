@@ -233,7 +233,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Событие движения мыши в коонтроле
-        internal virtual void MouseMove(Point p, bool leftDown)
+        internal virtual void MouseMove(Point p, bool leftDown, bool rightDown)
         {
 
         }
@@ -261,7 +261,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Visible);
             Debug.Assert(IsActiveControl);
-            Debug.Assert(MouseClicked);
+            //Debug.Assert(MouseClicked);// Need restore
 
             MouseClicked = false;
 

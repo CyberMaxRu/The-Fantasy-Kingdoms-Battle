@@ -116,6 +116,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
         private readonly List<VCPageButton> pagesCapital;
+        private readonly VCPageButton pageRealMap;
         private readonly VCPageButton pageMap;
         private readonly VCPageButton pageLocation;
         //private readonly VCPageButton pageTemples;
@@ -124,6 +125,7 @@ namespace Fantasy_Kingdoms_Battle
         private PanelWithPanelEntity panelHeroes;
         private readonly VisualControl vcRightPanel;
         private PanelWithPanelEntity panelCombatHeroes;
+        private VCMap mapArdania;
 
         private readonly List<VCIconButton48> listBtnLevelTax;
 
@@ -685,6 +687,8 @@ namespace Fantasy_Kingdoms_Battle
             pageFinance.Hint = "Финансовая информация";
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
+            pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
+            pageRealMap.Hint = "Карта Ардании";
             pageControl.Separate();
 
             pagesCapital = new List<VCPageButton>();
@@ -712,6 +716,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawWarehouse();
             DrawPageTournament();
             DrawPageLocation();
+            DrawPageRealMap();
 
             // Вычисляем максимальный размер страниц
             pageControl.ApplyMaxSize();
@@ -781,6 +786,9 @@ namespace Fantasy_Kingdoms_Battle
             labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
             bmpMainMenu.ShiftX = sizeGamespace.Width - bmpMainMenu.Width - Config.GridSize;
             bmpMainMenu.ShiftY = (sizeGamespace.Height - bmpMainMenu.Height) / 2 - (Config.GridSize * 1);
+
+            mapArdania.Width = pageRealMap.Page.Width;
+            mapArdania.Height = pageRealMap.Page.Height;
 
             pageResultTurn.PageImage = MainControlbackground("Paper");
             pageFinance.PageImage = MainControlbackground("Finance");
@@ -1505,6 +1513,11 @@ namespace Fantasy_Kingdoms_Battle
             // Ячейки игроков
         }
 
+        private void DrawPageRealMap()
+        {
+            mapArdania = new VCMap(pageRealMap.Page, 0, 0, "Ardania150.png");
+        }
+
         private void AdjustPageTournament()
         {
             if (pageTournamentPlayers is null)
@@ -1894,7 +1907,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnMouseMove(e);
 
-            TreatMouseMove(e.Button == MouseButtons.Left);
+            TreatMouseMove(e.Button == MouseButtons.Left, e.Button == MouseButtons.Right);
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -1915,7 +1928,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (controlWithHint != null)
                 {
-                    Assert(clickedControl is null);
+                    //Assert(clickedControl is null);// Need restore
                         
                     clickedControl = controlWithHint;
                     clickedControl.MouseDown();
@@ -2065,18 +2078,18 @@ namespace Fantasy_Kingdoms_Battle
             return new Point(mousePos.X - vc.Left, mousePos.Y - vc.Top);
         }
 
-        private void TreatMouseMove(bool leftDown)
+        private void TreatMouseMove(bool leftDown, bool rightDown)
         {
             Point oldMousePos = mousePos;
             UpdateMousePos();
 
             if (!mousePos.Equals(oldMousePos))
             {
-                UpdateCurrentControl(leftDown);
+                UpdateCurrentControl(leftDown, rightDown);
             }
         }
 
-        private void UpdateCurrentControl(bool leftDown)
+        private void UpdateCurrentControl(bool leftDown, bool rightDown)
         {
             VisualControl curControl = ControlUnderMouse();
 
@@ -2086,7 +2099,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if (curControl == controlWithHint)
             {
-                curControl.MouseMove(MousePosToControl(curControl), leftDown);
+                curControl.MouseMove(MousePosToControl(curControl), leftDown, rightDown);
                 /*if (hintShowed)
                 {
                     timerHover.Stop();
@@ -2594,7 +2607,7 @@ namespace Fantasy_Kingdoms_Battle
             VisualControl curControl = ControlUnderMouse();
             if (curControl == vc)
             {
-                UpdateCurrentControl(false);
+                UpdateCurrentControl(false, false);
             }
         }
 

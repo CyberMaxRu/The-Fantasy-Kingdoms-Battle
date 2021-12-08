@@ -158,9 +158,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void MouseMove(Point p, bool leftDown)
+        internal override void MouseMove(Point p, bool leftDown, bool rightDown)
         {
-            base.MouseMove(p, leftDown);
+            base.MouseMove(p, leftDown, rightDown);
 
             if (leftDown)
             {
