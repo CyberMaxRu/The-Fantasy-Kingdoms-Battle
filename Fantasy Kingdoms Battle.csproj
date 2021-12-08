@@ -151,6 +151,7 @@
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage24.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
+    <Compile Include="Source\VisualControls\VCMap.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorAbility.cs" />
     <Compile Include="Source\Lobby\Battle\Battle.cs" />
