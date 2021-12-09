@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -27,17 +28,17 @@ namespace Fantasy_Kingdoms_Battle
 
         static VCHorizTrackBar()
         {
-            bmpTileBackground = Program.formMain.LoadBitmap("ScrollBarHorizBack.png");
+            bmpTileBackground = LoadBitmap("ScrollBarHorizBack.png");
             Utils.Assert(bmpTileBackground.Width == 1);
 
-            Bitmap bmpButtons = Program.formMain.LoadBitmap("ScrollBarHorizButtons.png");
+            Bitmap bmpButtons = LoadBitmap("ScrollBarHorizButtons.png");
             blButtons = new BitmapList(bmpButtons, new Size(bmpButtons.Height, bmpButtons.Height), true, true);
 
-            Bitmap bmpTracker = Program.formMain.LoadBitmap("ScrollBarHorizTracker.png");
+            Bitmap bmpTracker = LoadBitmap("ScrollBarHorizTracker.png");
             blTracker = new BitmapList(bmpTracker, new Size(bmpTracker.Width, bmpTracker.Height), true, true);
             shiftTracker = blTracker.Size.Width / 2;
 
-            bmpTick = Program.formMain.LoadBitmap("ScrollBarHorizTick.png");
+            bmpTick = LoadBitmap("ScrollBarHorizTick.png");
             shiftTick = bmpTick.Width / 2;
         }
 

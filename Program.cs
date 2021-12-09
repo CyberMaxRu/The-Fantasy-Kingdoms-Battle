@@ -23,6 +23,17 @@ namespace Fantasy_Kingdoms_Battle
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
+                // Настройка переменной с папкой ресурсов
+                WorkFolder = Environment.CurrentDirectory;
+
+                if (WorkFolder.Contains("Debug"))
+                    WorkFolder = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
+                else if (WorkFolder.Contains("Release"))
+                    WorkFolder = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 11);
+                else
+                    WorkFolder += @"\";
+
+                FolderResources = Directory.Exists(WorkFolder + @"User_mods\Main") ? WorkFolder + @"User_mods\Main\" : WorkFolder + @"Resources\";
                 new FormMain();
                 Application.Run(formMain);
             }
@@ -42,5 +53,8 @@ namespace Fantasy_Kingdoms_Battle
                 Environment.Exit(-1);
             }
         }
+
+        internal static string WorkFolder { get; private set; }
+        internal static string FolderResources { get; private set; }
     }
 }

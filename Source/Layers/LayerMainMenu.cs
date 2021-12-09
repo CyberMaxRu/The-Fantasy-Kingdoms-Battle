@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -22,15 +23,15 @@ namespace Fantasy_Kingdoms_Battle
         public LayerMainMenu() : base()
         {
             // Лого
-            bitmapLogo = new VCBitmap(this, 0, 0, Program.formMain.LoadBitmap("Logo.png"));
-            bitmapNameGame = new VCBitmap(bitmapLogo, 0, 0, Program.formMain.LoadBitmap("NameGame.png"));
+            bitmapLogo = new VCBitmap(this, 0, 0, LoadBitmap("Logo.png"));
+            bitmapNameGame = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("NameGame.png"));
 
             labelVersion = new VCLabel(bitmapLogo, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol,
                 $"Сборка {FormMain.VERSION} от {FormMain.DATE_VERSION}");
             labelVersion.SetWidthByText();
 
             // Главное меню
-            bmpMainMenu = new VCBitmap(bitmapLogo, 0, 0, Program.formMain.LoadBitmap("MenuMain.png"));
+            bmpMainMenu = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("MenuMain.png"));
 
             btnTournament = new VCButton(bmpMainMenu, 80, 88, "Турнир");
             btnTournament.Width = bmpMainMenu.Width - 80 - 80;

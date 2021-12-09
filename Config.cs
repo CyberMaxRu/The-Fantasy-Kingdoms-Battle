@@ -10,17 +10,17 @@ using System.Drawing.Text;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Config
     {
-        public Config(string pathResources, FormMain fm)
+        public Config(FormMain fm)
         {
             FormMain.Config = this;
             Descriptor.Config = this;
             CellOfMenu.Config = this;
-            PathResources = pathResources;
 
             // 
             MaxLevelSkill = 3;
@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlDocument xmlDoc;
 
             //
-            LoadTextures(pathResources);
+            LoadTextures(Program.FolderResources);
 
             // Загружаем конфигурацию игры
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
@@ -262,7 +262,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем внешние аватары
-            if (File.Exists(pathResources + @"\ExternalAvatars.xml"))
+            if (File.Exists(Program.FolderResources + @"\ExternalAvatars.xml"))
                 xmlDoc = CreateXmlDocument(@"\ExternalAvatars.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/ExternalAvatars/ExternalAvatar"))
             {
@@ -275,12 +275,10 @@ namespace Fantasy_Kingdoms_Battle
             XmlDocument CreateXmlDocument(string pathToXml)
             {
                 XmlDocument doc = new XmlDocument();
-                doc.Load(pathResources + pathToXml);
+                doc.Load(Program.FolderResources + pathToXml);
                 return doc;
             }
         }
-
-        internal string PathResources { get; }
 
         internal int MaxLevelSkill { get; }
 
@@ -481,7 +479,7 @@ namespace Fantasy_Kingdoms_Battle
             string[] files = Directory.GetFiles(pathResources + @"Icons\Textures");
             foreach (string filename in files)
             {
-                Bitmap bmp = Program.formMain.LoadBitmap(Path.GetFileName(filename), @"Icons\Textures");
+                Bitmap bmp = LoadBitmap(Path.GetFileName(filename), @"Icons\Textures");
                 Textures.Add((Path.GetFileNameWithoutExtension(filename), bmp));
             }
         }
@@ -499,7 +497,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SaveExternalAvatars()
         {
-            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "ExternalAvatars.xml", Encoding.UTF8);
+            XmlTextWriter textWriter = new XmlTextWriter(Program.FolderResources + "ExternalAvatars.xml", Encoding.UTF8);
             textWriter.WriteStartDocument();
             textWriter.Formatting = Formatting.Indented;
             textWriter.WriteStartElement("ExternalAvatars");

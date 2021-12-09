@@ -15,10 +15,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Descriptors
     {
-        public Descriptors(string pathResources, FormMain fm)
+        public Descriptors(FormMain fm)
         {
             FormMain.Descriptors = this;
-            PathResources = pathResources;
 
             // 
             MaxLevelSkill = 3;
@@ -38,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка игроков-людей
-            if (File.Exists(pathResources + "Players.xml"))
+            if (File.Exists(Program.FolderResources + "Players.xml"))
             {
                 xmlDoc = CreateXmlDocument("Players.xml");
                 foreach (XmlNode n in xmlDoc.SelectNodes("/Players/Player"))
@@ -318,12 +317,11 @@ namespace Fantasy_Kingdoms_Battle
             XmlDocument CreateXmlDocument(string pathToXml)
             {
                 XmlDocument doc = new XmlDocument();
-                doc.Load(pathResources + pathToXml);
+                doc.Load(Program.FolderResources + pathToXml);
                 return doc;
             }
         }
 
-        internal string PathResources { get; }
         internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
@@ -724,7 +722,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SaveHumanPlayers()
         {
-            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "Players.xml", Encoding.UTF8);
+            XmlTextWriter textWriter = new XmlTextWriter(Program.FolderResources + "Players.xml", Encoding.UTF8);
             textWriter.WriteStartDocument();
             textWriter.Formatting = Formatting.Indented;
 

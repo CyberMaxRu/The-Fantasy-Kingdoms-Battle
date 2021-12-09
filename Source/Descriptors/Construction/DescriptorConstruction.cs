@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.External);
             HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (ID == Config.IDConstructionCastle);
-            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
+            uriSoundSelect = new Uri(Program.FolderResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
             nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
             Debug.Assert(Name != nameTypePlaceForConstruct);
 

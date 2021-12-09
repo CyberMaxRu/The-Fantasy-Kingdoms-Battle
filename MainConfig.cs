@@ -10,11 +10,11 @@ namespace Fantasy_Kingdoms_Battle
 {
     public sealed class MainConfig
     {
-        public MainConfig(string dirResources)
+        public MainConfig()
         {
             // Открываем файл main.xml
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(dirResources + "Main.xml");
+            xmlDoc.Load(Program.FolderResources + "Main.xml");
 
             CurrentVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Main"), "Version");
             ScreenMinSize = new Size(XmlUtils.GetIntegerNotNull(xmlDoc, "Main/ScreenMinWidth"), XmlUtils.GetIntegerNotNull(xmlDoc, "Main/ScreenMinHeight"));

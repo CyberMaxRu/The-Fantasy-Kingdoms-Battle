@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCMap(VisualControl parent, int shiftX, int shiftY, string filenameBitmap) : base(parent, shiftX, shiftY)
         {
-            Bitmap = Program.formMain.LoadBitmap(filenameBitmap, @"Icons\Conq");
+            Bitmap = LoadBitmap(filenameBitmap, @"Icons\Conq");
         }
 
         internal Bitmap Bitmap { get; }

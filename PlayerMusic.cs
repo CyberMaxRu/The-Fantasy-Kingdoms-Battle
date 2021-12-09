@@ -23,18 +23,18 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Uri fileWinLobbyTheme;
         private readonly Uri fileLossLobbyTheme;
 
-        public PlayerMusic(string dirResources, Settings settings)
+        public PlayerMusic(Settings settings)
         {
             Settings = settings;
 
             mpMusic = new MediaPlayer();
             mpTheme = new MediaPlayer();
 
-            fileMainTheme = new Uri(dirResources + @"Music\Themes\main_menu_music.mp3");
-            fileWinLobbyTheme = new Uri(dirResources + @"Music\Themes\won_music.mp3");
-            fileLossLobbyTheme = new Uri(dirResources + @"Music\Themes\loose_music.mp3");
+            fileMainTheme = new Uri(Program.FolderResources + @"Music\Themes\main_menu_music.mp3");
+            fileWinLobbyTheme = new Uri(Program.FolderResources + @"Music\Themes\won_music.mp3");
+            fileLossLobbyTheme = new Uri(Program.FolderResources + @"Music\Themes\loose_music.mp3");
 
-            playlistFull.AddRange(Directory.GetFiles(dirResources + @"Music\Music"));
+            playlistFull.AddRange(Directory.GetFiles(Program.FolderResources + @"Music\Music"));
 
             Debug.Assert(playlistFull.Count > 0);
 

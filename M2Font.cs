@@ -8,6 +8,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -16,12 +17,12 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap[] symbols;
         internal int maxWidthSymbol;
 
-        public M2Font(string dirResources, string filename)
+        public M2Font(string filename)
         {
-            Bitmap bmpFonts = Program.formMain.LoadBitmap(filename + ".png", "Fonts");
+            Bitmap bmpFonts = LoadBitmap(filename + ".png", "Fonts");
 
             // Загружаем tuv-файл
-            string file = File.ReadAllText(dirResources + @"Fonts\" + filename + ".tuv", Encoding.GetEncoding(1251));
+            string file = File.ReadAllText(Program.FolderResources + @"Fonts\" + filename + ".tuv", Encoding.GetEncoding(1251));
             string [] conf = file.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
             int count = Convert.ToInt32(conf[1].Substring(9));

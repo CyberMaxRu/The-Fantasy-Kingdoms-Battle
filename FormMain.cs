@@ -23,8 +23,6 @@ namespace Fantasy_Kingdoms_Battle
         internal const string VERSION = "0.3.17";
         internal const string DATE_VERSION = "06.11.2021";
         private const string VERSION_POSTFIX = "в разработке";
-        internal readonly string dirCurrent;
-        internal readonly string dirResources;
 
         internal ProgramState ProgramState { get; private set; } = ProgramState.Started;
         internal bool gameStarted = false;
@@ -129,8 +127,6 @@ namespace Fantasy_Kingdoms_Battle
         private VCImage128[,] imgLocations;
         private PanelConstruction[,] constructionsOfLocation;
 
-        private const int DEFAULT_DPI = 96;
-
         private const int MAX_LAIRS_WIDTH = 4;
         private const int MAX_LAIRS_HEIGHT = 3;
 
@@ -212,8 +208,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Lobby CurrentLobby { get { return lobby; } }
 
-        private readonly float dpiX;
-        private readonly float dpiY;
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBorderForIcon;
         internal readonly Bitmap bmpBorderForIconAlly;
@@ -282,28 +276,9 @@ namespace Fantasy_Kingdoms_Battle
 
             Text = NAME_PROJECT + " (сборка " + VERSION + ")";
 
-            // Настройка переменной с папкой ресурсов
-            dirCurrent = Environment.CurrentDirectory;
-
-            if (dirCurrent.Contains("Debug"))
-                dirCurrent = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
-            else if (dirCurrent.Contains("Release"))
-                dirCurrent = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 11);
-            else
-                dirCurrent += "\\";
-
-            // Ищем главную пользовательскую модификацию
-            dirResources = Directory.Exists(dirCurrent + @"User_mods\Main") ? dirCurrent + @"User_mods\Main\" : dirCurrent + @"Resources\";
-
-            // Определяем DPI для корректировки картинок
-            Graphics gDpi = Graphics.FromHwnd(IntPtr.Zero);
-            dpiX = gDpi.DpiX;
-            dpiY = gDpi.DpiY;
-            gDpi.Dispose();
-
             // Обновляем обновлятор
             string newName;
-            foreach (string file in System.IO.Directory.EnumerateFiles(dirCurrent))
+            foreach (string file in System.IO.Directory.EnumerateFiles(Program.WorkFolder))
             {
                 if (Path.GetFileName(file).StartsWith("Updater.") && Path.GetFileName(file).EndsWith(".new"))
                     try
@@ -326,7 +301,7 @@ namespace Fantasy_Kingdoms_Battle
             Settings.VolumeSoundChanged += Settings_VolumeSoundChanged;
             Settings.VolumeMusicChanged += Settings_VolumeMusicChanged;
 
-            MainConfig = new MainConfig(dirResources);
+            MainConfig = new MainConfig();
             // Проверяем требование по разрешению экрана
             if ((Screen.PrimaryScreen.Bounds.Width < MainConfig.ScreenMinSize.Width) || (Screen.PrimaryScreen.Bounds.Height < MainConfig.ScreenMinSize.Height))
             {
@@ -341,16 +316,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 CheckForNewVersion();
             }
-
-            fontSmall = new M2Font(dirResources, "small");
-            fontSmallC = new M2Font(dirResources, "small_c");
-            fontMedCaptionC = new M2Font(dirResources, "med_caption_c");
-            fontMedCaption = new M2Font(dirResources, "med_caption");
-            fontBigCaptionC = new M2Font(dirResources, "big_caption_c");
-            fontBigCaption = new M2Font(dirResources, "big_caption");
-            fontSmallBC = new M2Font(dirResources, "_small_b_c");
-            fontParagraph = new M2Font(dirResources, "paragraph");
-            fontParagraphC = new M2Font(dirResources, "paragraph_c");
 
             // Формируем и показываем сплэш-заставку
             Image splashBitmap = LoadBitmap("Splash.png");
@@ -398,8 +363,18 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем конфигурацию
             SetStage("Открываем сундуки");
-            _ = new Config(dirResources, this);
-            _ = new Descriptors(dirResources, this);
+            _ = new Config(this);
+            _ = new Descriptors(this);
+
+            fontSmall = new M2Font("small");
+            fontSmallC = new M2Font("small_c");
+            fontMedCaptionC = new M2Font("med_caption_c");
+            fontMedCaption = new M2Font("med_caption");
+            fontBigCaptionC = new M2Font("big_caption_c");
+            fontBigCaption = new M2Font("big_caption");
+            fontSmallBC = new M2Font("_small_b_c");
+            fontParagraph = new M2Font("paragraph");
+            fontParagraphC = new M2Font("paragraph_c");
 
             brushQuantity = new SolidBrush(Config.CommonQuantity);
             brushCost = new SolidBrush(Config.CommonCost);
@@ -764,14 +739,14 @@ namespace Fantasy_Kingdoms_Battle
             ShowNamePlayer(pageControl.CurrentPage.Caption);
 
             //
-            playerMusic = new PlayerMusic(dirResources, Settings);
+            playerMusic = new PlayerMusic(Settings);
             mpSoundSelect = new System.Windows.Media.MediaPlayer();
             mpSelectButton = new System.Windows.Media.MediaPlayer();
-            mpSelectButton.Open(new Uri(dirResources + @"Sound\Interface\Button\SelectButton.wav"));
+            mpSelectButton.Open(new Uri(Program.FolderResources + @"Sound\Interface\Button\SelectButton.wav"));
             mpPushButton = new System.Windows.Media.MediaPlayer();
-            mpPushButton.Open(new Uri(dirResources + @"Sound\Interface\Button\PushButton.wav"));
+            mpPushButton.Open(new Uri(Program.FolderResources + @"Sound\Interface\Button\PushButton.wav"));
             mpConstructionComplete = new System.Windows.Media.MediaPlayer();
-            mpConstructionComplete.Open(new Uri(dirResources + @"Sound\Interface\Construction\ConstructionComplete.wav"));
+            mpConstructionComplete.Open(new Uri(Program.FolderResources + @"Sound\Interface\Construction\ConstructionComplete.wav"));
             UpdateVolumeSound();
 
             //formHint = new FormHint(ilGui16, ilParameters);
@@ -779,7 +754,7 @@ namespace Fantasy_Kingdoms_Battle
             splashForm.Dispose();
 
             // Курсор
-            CustomCursor.CreateCursor(dirResources + @"Cursor\Cursor_simple.png");
+            CustomCursor.CreateCursor(Program.FolderResources + @"Cursor\Cursor_simple.png");
             Cursor = CustomCursor.GetCursor();
 
             //
@@ -984,7 +959,7 @@ namespace Fantasy_Kingdoms_Battle
                 KeyDown += FormMain_KeyDown;
                 KeyPreview = true;
 
-                axWindowsMediaPlayer1.URL = dirResources + @"Video\Rebirth.avi";
+                axWindowsMediaPlayer1.URL = Program.FolderResources + @"Video\Rebirth.avi";
                 axWindowsMediaPlayer1.uiMode = "none";
                 axWindowsMediaPlayer1.Location = new Point(0, 0);
                 axWindowsMediaPlayer1.enableContextMenu = false;
@@ -2352,18 +2327,6 @@ namespace Fantasy_Kingdoms_Battle
             return po == selectedPlayerObject;
         }
 
-        internal Bitmap LoadBitmap(string filename, string folder = "Icons")
-        {
-            Bitmap bmp = new Bitmap(dirResources + $"{folder}\\" + filename);
-            Debug.Assert(Math.Round(bmp.HorizontalResolution) == DEFAULT_DPI);
-            Debug.Assert(Math.Round(bmp.VerticalResolution) == DEFAULT_DPI);
-
-            if ((dpiX != DEFAULT_DPI) || (dpiY != DEFAULT_DPI))
-                bmp.SetResolution(dpiX, dpiY);
-
-            return bmp;
-        }
-
         internal void SetProgrameState(ProgramState ps)
         {
             ProgramState = ps;
@@ -2387,14 +2350,14 @@ namespace Fantasy_Kingdoms_Battle
                 for (int i = 0; ; i++)
                 {
                     newFilenameAvatar = $"Avatar{i}.png";
-                    if (!File.Exists(dirResources + @"ExternalAvatars\" + newFilenameAvatar))
+                    if (!File.Exists(Program.FolderResources + @"ExternalAvatars\" + newFilenameAvatar))
                         break;
                 }
 
                 // Записываем аватар в папку аватаров
-                if (!Directory.Exists(dirResources + @"ExternalAvatars\"))
-                    Directory.CreateDirectory(dirResources + @"ExternalAvatars\");
-                bmpAvatar.Save(dirResources + @"ExternalAvatars\" + newFilenameAvatar, ImageFormat.Png);
+                if (!Directory.Exists(Program.FolderResources + @"ExternalAvatars\"))
+                    Directory.CreateDirectory(Program.FolderResources + @"ExternalAvatars\");
+                bmpAvatar.Save(Program.FolderResources + @"ExternalAvatars\" + newFilenameAvatar, ImageFormat.Png);
                 Config.ExternalAvatars.Add(newFilenameAvatar);
                 Config.SaveExternalAvatars();
 
@@ -2420,8 +2383,8 @@ namespace Fantasy_Kingdoms_Battle
             Config.SaveExternalAvatars();
 
             // Удаляем файл
-            if (File.Exists(dirResources + @"ExternalAvatars\" + filename))
-                File.Delete(dirResources + @"ExternalAvatars\" + filename);
+            if (File.Exists(Program.FolderResources + @"ExternalAvatars\" + filename))
+                File.Delete(Program.FolderResources + @"ExternalAvatars\" + filename);
 
             LoadBitmapObjects();
         }
@@ -2438,11 +2401,11 @@ namespace Fantasy_Kingdoms_Battle
                 string localFilename = Config.ExternalAvatars[idx];
 
                 // Удаляем старый файл
-                if (File.Exists(dirResources + @"ExternalAvatars\" + localFilename))
-                    File.Delete(dirResources + @"ExternalAvatars\" + localFilename);
+                if (File.Exists(Program.FolderResources + @"ExternalAvatars\" + localFilename))
+                    File.Delete(Program.FolderResources + @"ExternalAvatars\" + localFilename);
 
                 // Записываем аватар в папку аватаров
-                bmpAvatar.Save(dirResources + @"ExternalAvatars\" + localFilename, ImageFormat.Png);
+                bmpAvatar.Save(Program.FolderResources + @"ExternalAvatars\" + localFilename, ImageFormat.Png);
                 bmpAvatar.Dispose();
 
                 // Загружаем заново иконки
@@ -2463,7 +2426,7 @@ namespace Fantasy_Kingdoms_Battle
             Bitmap bmpAvatar;
             for (int i = 0; i < Config.ExternalAvatars.Count; i++)
             {
-                bmpAvatar = GuiUtils.PrepareAvatar(dirResources + @"ExternalAvatars\" + Config.ExternalAvatars[i]);
+                bmpAvatar = GuiUtils.PrepareAvatar(Program.FolderResources + @"ExternalAvatars\" + Config.ExternalAvatars[i]);
                 imListObjects128.ReplaceImage(bmpAvatar, Config.ImageIndexExternalAvatar + i);
                 imListObjects48.ReplaceImageWithResize(imListObjects128, Config.ImageIndexExternalAvatar + i, 1, bmpMaskSmall);
             }

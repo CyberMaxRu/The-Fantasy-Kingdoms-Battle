@@ -9,6 +9,19 @@ namespace Fantasy_Kingdoms_Battle
     // Класс вспомогательных методов
     internal sealed class Utils
     {
+        private static float dpiX;
+        private static float dpiY;
+        private static int DEFAULT_DPI = 96;
+
+        static Utils()
+        {
+            // Определяем DPI для корректировки картинок
+            Graphics gDpi = Graphics.FromHwnd(IntPtr.Zero);
+            dpiX = gDpi.DpiX;
+            dpiY = gDpi.DpiY;
+            gDpi.Dispose();
+        }
+
         internal static double DistanceBetweenPoints(Point p1, Point p2)
         {
             return Math.Sqrt(Math.Pow(p2.X - p1.X, 2) + Math.Pow(p2.Y - p1.Y, 2));
@@ -103,6 +116,18 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debugger.Break();
             throw new Exception(text);
+        }
+
+        internal static Bitmap LoadBitmap(string filename, string folder = "Icons")
+        {
+            Bitmap bmp = new Bitmap(Program.FolderResources + $@"{folder}\{filename}");
+            Debug.Assert(Math.Round(bmp.HorizontalResolution) == DEFAULT_DPI);
+            Debug.Assert(Math.Round(bmp.VerticalResolution) == DEFAULT_DPI);
+
+            if ((dpiX != DEFAULT_DPI) || (dpiY != DEFAULT_DPI))
+                bmp.SetResolution(dpiX, dpiY);
+
+            return bmp;
         }
     }
 }

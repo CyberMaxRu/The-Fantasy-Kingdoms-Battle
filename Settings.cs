@@ -96,12 +96,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             SetDefault();
 
-            if (File.Exists(Program.formMain.dirResources + "Settings.xml"))
+            if (File.Exists(Program.FolderResources + "Settings.xml"))
             {
                 XmlDocument doc = new XmlDocument();
                 try
                 {
-                    doc.Load(Program.formMain.dirResources + "Settings.xml");
+                    doc.Load(Program.FolderResources + "Settings.xml");
 
                     ShowSplashVideo = XmlUtils.GetBoolean(doc, "Settings/Game/ShowSplashVideo", ShowSplashVideo);
                     FullScreenMode = XmlUtils.GetBoolean(doc, "Settings/Game/FullScreenMode", FullScreenMode);
@@ -136,7 +136,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SaveSettings()
         {
-            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "Settings.xml", Encoding.UTF8);
+            XmlTextWriter textWriter = new XmlTextWriter(Program.FolderResources + "Settings.xml", Encoding.UTF8);
             textWriter.WriteStartDocument();
             textWriter.Formatting = Formatting.Indented;
 
