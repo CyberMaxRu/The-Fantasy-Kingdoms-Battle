@@ -158,5 +158,10 @@ namespace Fantasy_Kingdoms_Battle
             if ((BitmapList != null) && (ImageIndex >= 0))
                 LeftMargin = BitmapList.Size.Width + FormMain.Config.GridSize;
         }
+
+        internal void SetWidthByText()
+        {
+            Width = Font.WidthText(Text);
+        }
     }
 }
