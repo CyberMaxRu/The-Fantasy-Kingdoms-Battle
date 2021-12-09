@@ -160,7 +160,7 @@ namespace Fantasy_Kingdoms_Battle
                 CellMenuConstruction cm = Construction.ListQueueProcessing[0];
                 btnQueue.Visible = true;
                 btnQueue.ImageIndex = cm.GetImageIndex();
-                btnQueue.Text = cm.DaysLeft.ToString() + " д.";
+                btnQueue.LowText = cm.DaysLeft.ToString() + " д.";
                 btnQueue.Level = Construction.ListQueueProcessing.Count.ToString();
             }
             else
@@ -210,7 +210,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для улучшения.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
+                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
@@ -221,7 +221,7 @@ namespace Fantasy_Kingdoms_Battle
                             if (Construction.TypeConstruction.ID == FormMain.Config.IDHolyPlace)
                             {
                                 btnBuildOrUpgrade.Visible = true;
-                                btnBuildOrUpgrade.Text = "";
+                                btnBuildOrUpgrade.LowText = "";
                                 btnBuildOrUpgrade.Level = "";
                                 btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_Temple;
                                 btnBuildOrUpgrade.ImageIsEnabled = true;
@@ -237,7 +237,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для постройки.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
+                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
@@ -260,7 +260,7 @@ namespace Fantasy_Kingdoms_Battle
                     btnAction.ImageIsEnabled = Construction.Player.ExistsFreeFlag();
                     int level = (int)(Construction.PriorityFlag + 1);
                     btnAction.Level = level == 0 ? "" : level.ToString();
-                    btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ValueGold().ToString() : "";
+                    btnAction.LowText = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ValueGold().ToString() : "";
                 }
 
                 Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Construction.PriorityFlag == PriorityExecution.None)));
@@ -278,13 +278,13 @@ namespace Fantasy_Kingdoms_Battle
                             btnAction.ImageIndex = FormMain.Config.Gui48_FlagAttack;
                             btnInhabitants.Visible = Construction.Monsters.Count > 0;
                             if (btnInhabitants.Visible)
-                                btnInhabitants.Text = Construction.Monsters.Count.ToString();
+                                btnInhabitants.LowText = Construction.Monsters.Count.ToString();
                             break;
                         case TypeFlag.Defense:
                             btnAction.ImageIndex = FormMain.Config.Gui48_FlagDefense;
                             btnInhabitants.Visible = Construction.Monsters.Count > 0;
                             if (btnInhabitants.Visible)
-                                btnInhabitants.Text = Construction.Monsters.Count.ToString();
+                                btnInhabitants.LowText = Construction.Monsters.Count.ToString();
                             break;
                         default:
                             throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
@@ -298,7 +298,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 btnAttackHeroes.Visible = Construction.listAttackedHero.Count > 0;
                 if (btnAttackHeroes.Visible)
-                    btnAttackHeroes.Text = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
+                    btnAttackHeroes.LowText = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
 
                 lblRewardGold.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Cost.ValueGold() > 0);
                 if (lblRewardGold.Visible)

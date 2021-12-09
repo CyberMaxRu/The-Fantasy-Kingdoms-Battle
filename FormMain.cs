@@ -1256,7 +1256,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowPlayerNotices()
         {
-            pageResultTurn.Text = curAppliedPlayer.ListNoticesForPlayer.Count > 0 ? curAppliedPlayer.ListNoticesForPlayer.Count.ToString() : "";
+            pageResultTurn.LowText = curAppliedPlayer.ListNoticesForPlayer.Count > 0 ? curAppliedPlayer.ListNoticesForPlayer.Count.ToString() : "";
 
             if (curAppliedPlayer.ListNoticesForPlayer.Count > 0)
             {
@@ -1393,7 +1393,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorLevelTax lt in Descriptors.LevelTaxes)
             {
                 VCIconButton48 btn = new VCIconButton48(pageFinance.Page, nextLeft, l.NextTop(), Config.Gui48_Money);
-                btn.Text = lt.Percent.ToString() + "%";
+                btn.LowText = lt.Percent.ToString() + "%";
                 btn.Hint = lt.Name;
                 btn.Click += BtnLevelTax_Click;
                 btn.Tag = lt.Index;
@@ -1694,7 +1694,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelHeroes.Text = curAppliedPlayer.CombatHeroes.Count.ToString() + "/" + curAppliedPlayer.Lobby.TypeLobby.MaxHeroes.ToString();
                 labelCorruption.Text = $"{curAppliedPlayer.PercentCorruption}% ({(curAppliedPlayer.ChangeCorruption > 0 ? "+" : "")}{curAppliedPlayer.ChangeCorruption}%)";
 
-                pageTournament.Text = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
+                pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
 
                 foreach (VCToolLabelResource l in labelsResources)

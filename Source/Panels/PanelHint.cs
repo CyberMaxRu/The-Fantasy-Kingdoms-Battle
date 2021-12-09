@@ -803,7 +803,7 @@ namespace Fantasy_Kingdoms_Battle
                     cell = GetCell(i);
                     cell.Visible = true;
                     cell.ImageIndex = list[i].GetImageIndex();
-                    cell.Text = Utils.FormatDecimal100(list[i].ListProperty[indexProperty]);
+                    cell.LowText = Utils.FormatDecimal100(list[i].ListProperty[indexProperty]);
                     cell.ShiftY = nextTop;
                     cell.ShiftX = nextLeft;
                     nextLeft = cell.NextLeft();

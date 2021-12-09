@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
                 ImageIsEnabled = false;
                 Level = "";
                 Quantity = 0;
-                Text = "";
+                LowText = "";
             }
             else
             {
