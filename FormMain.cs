@@ -251,7 +251,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRedrawFrame;
 
         private readonly List<VisualControl> Layers;
-        private readonly VisualControl layerGame;
+        private readonly LayerGameSingle layerGame;
         private VisualControl currentLayer;
 
         private readonly VisualControl panelEmptyInfo;
@@ -475,7 +475,7 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = layerMainMenu;
 
             // Слой игры
-            layerGame = new VisualControl();
+            layerGame = new LayerGameSingle();
 
             // Создаем панели игроков
             bmpTopPanel = new VCBitmap(layerGame, 0, 0, null);
