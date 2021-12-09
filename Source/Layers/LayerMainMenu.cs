@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
             labelVersion = new VCLabel(bitmapLogo, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol,
                 $"Сборка {FormMain.VERSION} от {FormMain.DATE_VERSION}");
-            labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
+            labelVersion.SetWidthByText();
 
             // Главное меню
             bmpMainMenu = new VCBitmap(bitmapLogo, 0, 0, Program.formMain.LoadBitmap("MenuMain.png"));
