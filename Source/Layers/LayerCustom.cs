@@ -8,5 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class LayerCustom : VisualControl
     {
+        internal static Config Config { get; set; }
+        internal static Descriptors Descriptors { get; set; }
     }
 }

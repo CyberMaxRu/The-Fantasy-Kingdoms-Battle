@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем конфигурацию игры
             Descriptor.Descriptors = this;
             CellOfMenu.Descriptors = this;
+            LayerCustom.Descriptors = this;
 
             // Загрузка компьютерных игроков
             xmlDoc = CreateXmlDocument("Config\\ComputerPlayers.xml");
