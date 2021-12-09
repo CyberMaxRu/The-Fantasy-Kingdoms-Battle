@@ -29,15 +29,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void HideInfo()
         {
-            Program.formMain.panelMonsterInfo.Visible = false;
+            Lobby.Layer.panelMonsterInfo.Visible = false;
         }
 
         internal override void ShowInfo(int selectPage = -1)
         {
             Debug.Assert(IsLive);
 
-            Program.formMain.panelMonsterInfo.Entity = this;
-            Program.formMain.panelMonsterInfo.Visible = true;
+            Lobby.Layer.panelMonsterInfo.Entity = this;
+            Lobby.Layer.panelMonsterInfo.Visible = true;
         }
     }
 }

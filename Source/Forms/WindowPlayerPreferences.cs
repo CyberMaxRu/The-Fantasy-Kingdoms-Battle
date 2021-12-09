@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class WindowPlayerPreferences : VCForm
     {
+        private Lobby lobby;
         private int curImageIndexAvatar;
 
         private readonly VCButton btnAccept;
@@ -28,8 +29,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnDeleteAvatar;
         private readonly VCSeparator sprBottom;
 
-        public WindowPlayerPreferences() : base()
+        public WindowPlayerPreferences(Lobby lobby) : base()
         {
+            this.lobby = lobby;
             curImageIndexAvatar = Program.formMain.CurrentHumanPlayer.ImageIndex;
 
             windowCaption.Caption = "Настройки игрока";
@@ -188,7 +190,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            if ((Program.formMain.CurrentLobby != null) && !Program.formMain.CurrentLobby.CheckUniqueAvatars())
+            if ((lobby != null) && !lobby.CheckUniqueAvatars())
             {
                 WindowInfo.ShowInfo("Информация", "Выбранный аватар уже используется другим игроком.\n\rВыберите другой аватар.");
                 return;
@@ -199,7 +201,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            if ((Program.formMain.CurrentLobby != null) && !Program.formMain.CurrentLobby.CheckUniqueAvatars())
+            if ((lobby != null) && !lobby.CheckUniqueAvatars())
             {
                 WindowInfo.ShowInfo("Информация", "Выбранный аватар уже используется другим игроком.\n\rВыберите другой аватар.");
                 return;
@@ -219,15 +221,15 @@ namespace Fantasy_Kingdoms_Battle
                         return;
                     }
 
-                if (Program.formMain.CurrentLobby != null)
+                if (lobby != null)
                 {
-                    Debug.Assert(Program.formMain.CurrentLobby.CheckUniqueNamePlayers());
+                    Debug.Assert(lobby.CheckUniqueNamePlayers());
                 }
 
                 Program.formMain.CurrentHumanPlayer.Name = editName.Text;
                 FormMain.Descriptors.SaveHumanPlayers();
-                if (Program.formMain.CurrentLobby != null)
-                    Program.formMain.ShowCurrentPlayerLobby();
+                if (lobby != null)
+                    lobby.Layer.ShowCurrentPlayerLobby();
             }
 
             CloseForm(DialogAction.OK);

@@ -9,6 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     class WindowMenuInGame : CustomWindow
     {
+        private Lobby lobby;
         private VCBitmap bmpMenu;
         private VCButton btnBackToGame;
         private VCButton btnNewGame;
@@ -17,8 +18,9 @@ namespace Fantasy_Kingdoms_Battle
         private VCButton btnExitToMainMenu;
         private VCButton btnExitToWindows;
 
-        public WindowMenuInGame()
+        public WindowMenuInGame(Lobby lobby)
         {
+            this.lobby = lobby;
             bmpMenu = new VCBitmap(this, 0, 0, Program.formMain.bmpMenuInGame);
             Width = bmpMenu.Width;
             Height = bmpMenu.Height;
@@ -60,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
         {
-            WindowPlayerPreferences w = new WindowPlayerPreferences();
+            WindowPlayerPreferences w = new WindowPlayerPreferences(lobby);
             w.ShowDialog();
         }
 

@@ -84,7 +84,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     CurrentPage.ManualSelected = false;
                     CurrentPage.Page.Visible = false;
-                    CurrentPage.SelectedPlayerObject = Program.formMain.selectedPlayerObject;
+                    CurrentPage.SelectedPlayerObject = Program.formMain.layerGame.selectedPlayerObject;
                 }
                 CurrentPage = pc;
                 CurrentPage.ManualSelected = true;
@@ -93,7 +93,7 @@ namespace Fantasy_Kingdoms_Battle
                 if ((CurrentPage.Location != null) && (CurrentPage.SelectedPlayerObject is null))
                     CurrentPage.SelectedPlayerObject = CurrentPage.Location;
 
-                Program.formMain.SelectPlayerObject(CurrentPage.SelectedPlayerObject);
+                Program.formMain.layerGame?.SelectPlayerObject(CurrentPage.SelectedPlayerObject);
 
                 Program.formMain.SetNeedRedrawFrame();
 

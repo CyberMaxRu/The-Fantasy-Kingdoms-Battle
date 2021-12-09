@@ -192,7 +192,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (cmBuild != null)
                 {
                     Researches.Remove(cmBuild);
-                    Program.formMain.UpdateMenu();
+                    Lobby.Layer.UpdateMenu();
                 }
             }
 
@@ -530,8 +530,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Destroyed);
 
-            Program.formMain.panelConstructionInfo.Visible = false;
-            Program.formMain.panelLairInfo.Visible = false;
+            Lobby.Layer.panelConstructionInfo.Visible = false;
+            Lobby.Layer.panelLairInfo.Visible = false;
         }
 
         internal override void ShowInfo(int selectPage = -1)
@@ -540,15 +540,15 @@ namespace Fantasy_Kingdoms_Battle
 
             if (TypeConstruction.IsOurConstruction)
             {
-                Program.formMain.panelConstructionInfo.Visible = true;
-                Program.formMain.panelConstructionInfo.Entity = this;
+                Lobby.Layer.panelConstructionInfo.Visible = true;
+                Lobby.Layer.panelConstructionInfo.Entity = this;
                 if (selectPage >= 0)
-                    Program.formMain.panelConstructionInfo.SelectPage(selectPage);
+                    Lobby.Layer.panelConstructionInfo.SelectPage(selectPage);
             }
             else
             {
-                Program.formMain.panelConstructionInfo.Visible = true;
-                Program.formMain.panelConstructionInfo.Entity = this;
+                Lobby.Layer.panelConstructionInfo.Visible = true;
+                Lobby.Layer.panelConstructionInfo.Entity = this;
 //                Program.formMain.panelLairInfo.Visible = true;
 //                Program.formMain.panelLairInfo.Entity = this;
             }
@@ -858,7 +858,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Player.UpPriorityFlag(this);
 
-            Program.formMain.LairsWithFlagChanged();
+            Lobby.Layer.LairsWithFlagChanged();
         }
 
         internal ListBaseResources Cashback()
@@ -961,7 +961,7 @@ namespace Fantasy_Kingdoms_Battle
             while (listAttackedHero.Count > 0)
                 RemoveAttackingHero(listAttackedHero[0]);
 
-            Program.formMain.LairsWithFlagChanged();
+            Lobby.Layer.LairsWithFlagChanged();
         }
 
 
@@ -1016,7 +1016,7 @@ namespace Fantasy_Kingdoms_Battle
             Destroyed = true;
 
             // Если сооружение было выбрано, очищаем ссылку
-            Program.formMain.ObjectDestroyed(this);
+            Lobby.Layer.ObjectDestroyed(this);
 
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
@@ -1054,8 +1054,8 @@ namespace Fantasy_Kingdoms_Battle
             CombatHeroes.Remove(m);
             Monsters.Remove(m);
 
-            if (Program.formMain.PlayerObjectIsSelected(m))
-                Program.formMain.SelectPlayerObject(null);
+            if (Lobby.Layer.PlayerObjectIsSelected(m))
+                Lobby.Layer.SelectPlayerObject(null);
         }
 
         // Раздаем деньги за флаг героям
@@ -1189,7 +1189,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Click(VCCell pe)
         {
             base.Click(pe);
-            Program.formMain.SelectPlayerObject(this);
+            Lobby.Layer.SelectPlayerObject(this);
         }
 
         internal override string GetName()

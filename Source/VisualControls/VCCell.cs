@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool Selected()
         {
-            return ManualSelected || ((Entity != null) && (Entity != null) && Program.formMain.PlayerObjectIsSelected(Entity));
+            return ManualSelected || ((Entity != null) && (Entity != null) && Program.formMain.layerGame.PlayerObjectIsSelected(Entity));
         }
 
         protected override bool PlaySelectSound()

@@ -309,15 +309,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void HideInfo()
         {
-            Program.formMain.panelHeroInfo.Visible = false;
+            Lobby.Layer.panelHeroInfo.Visible = false;
         }
 
         internal override void ShowInfo(int selectPage = -1)
         {
             Debug.Assert(IsLive);
 
-            Program.formMain.panelHeroInfo.Visible = true;
-            Program.formMain.panelHeroInfo.Entity = this;
+            Lobby.Layer.panelHeroInfo.Visible = true;
+            Lobby.Layer.panelHeroInfo.Entity = this;
         }
 
         internal void ClearState()

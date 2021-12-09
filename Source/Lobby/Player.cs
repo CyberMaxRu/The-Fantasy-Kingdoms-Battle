@@ -322,7 +322,7 @@ namespace Fantasy_Kingdoms_Battle
                     quantity--;
                 }
 
-                Program.formMain.UpdateNeighborhoods();
+                Lobby.Layer.UpdateNeighborhoods();
             }
         }
 
@@ -567,7 +567,7 @@ namespace Fantasy_Kingdoms_Battle
                 ListFlags.Insert(0, FlagAttackToOpponent);
             }
 
-            Program.formMain.LairsWithFlagChanged();
+            Lobby.Layer.LairsWithFlagChanged();
         }
 
         internal Construction GetPlayerConstruction(DescriptorConstruction b)
@@ -597,7 +597,7 @@ namespace Fantasy_Kingdoms_Battle
             SetTaskForHeroes();
 
             if (Descriptor.TypePlayer == TypePlayer.Human)
-                Program.formMain.ListHeroesChanged();
+                Lobby.Layer.ListHeroesChanged();
         }
 
         internal void Constructed(Construction pb)
@@ -1049,8 +1049,8 @@ namespace Fantasy_Kingdoms_Battle
 
             l.Location.Lairs[l.Y, l.X] = null;
 
-            if (Program.formMain.PlayerObjectIsSelected(l))
-                Program.formMain.SelectPlayerObject(null);
+            if (Lobby.Layer.PlayerObjectIsSelected(l))
+                Lobby.Layer.SelectPlayerObject(null);
         }
 
         internal void ApplyReward(Construction l)
@@ -1087,7 +1087,7 @@ namespace Fantasy_Kingdoms_Battle
             startBonusApplied = true;
 
             if (GetTypePlayer() == TypePlayer.Human)
-                Program.formMain.ShowPlayerNotices();
+                Lobby.Layer.ShowPlayerNotices();
         }
 
         internal void AddLose()

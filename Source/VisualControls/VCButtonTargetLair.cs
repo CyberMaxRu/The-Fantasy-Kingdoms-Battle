@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((Lair != null) && (Lair.TypeFlag != TypeFlag.Battle))
             {
                 //Program.formMain.ActivatePageLairs(Lair.Location.Settings.Number);
-                Program.formMain.SelectPlayerObject(Lair);
+                Program.formMain.layerGame.SelectPlayerObject(Lair);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool Selected()
         {
-            return (Lair != null) && Program.formMain.PlayerObjectIsSelected(Lair);
+            return (Lair != null) && Program.formMain.layerGame.PlayerObjectIsSelected(Lair);
         }
     }
 }

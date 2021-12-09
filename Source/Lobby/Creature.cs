@@ -284,7 +284,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(IsLive);
 
-            Program.formMain.SelectPlayerObject(this);
+            Program.formMain.layerGame.SelectPlayerObject(this);
         }
 
         internal override void CustomDraw(Graphics g, int x, int y, bool drawState)

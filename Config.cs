@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             FormMain.Config = this;
             Descriptor.Config = this;
             CellOfMenu.Config = this;
+            LayerCustom.Config = this;
 
             // 
             MaxLevelSkill = 3;

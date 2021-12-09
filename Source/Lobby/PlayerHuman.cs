@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.PrepareTurn();
 
-            Program.formMain.ActivatePageResultTurn();
+            Lobby.Layer.ActivatePageResultTurn();
         }
 
         internal override void DoTurn()

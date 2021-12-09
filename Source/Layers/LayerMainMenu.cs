@@ -76,13 +76,11 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnTournament_Click(object sender, EventArgs e)
         {
             Program.formMain.StartNewLobby();
-            if (Program.formMain.CurrentLobby != null)
-                Program.formMain.ReturnFromLobby();
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
         {
-            WindowPlayerPreferences w = new WindowPlayerPreferences();
+            WindowPlayerPreferences w = new WindowPlayerPreferences(null);
             w.ShowDialog();
         }
 

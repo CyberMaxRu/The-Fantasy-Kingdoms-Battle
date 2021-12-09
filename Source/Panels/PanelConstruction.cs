@@ -117,7 +117,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnHeroes_Click(object sender, EventArgs e)
         {
             SelectThisConstruction();
-            Program.formMain.panelConstructionInfo.SelectPageInhabitant();
+            Construction.Lobby.Layer.panelConstructionInfo.SelectPageInhabitant();
         }
 
         internal Construction Construction { get; private set; }
@@ -144,8 +144,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
             imgMapObject.ImageIndex = Construction.ImageIndexLair();
             imgMapObject.ImageIsEnabled = Construction.ImageEnabled();
             imgMapObject.Level = Construction.GetLevel();
@@ -331,12 +329,12 @@ namespace Fantasy_Kingdoms_Battle
         private void SelectThisConstruction()
         {
             Debug.Assert(Entity != null);
-            Program.formMain.SelectPlayerObject(Entity as BigEntity);
+            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity);
         }
 
         protected override bool Selected()
         {
-            return (Entity != null) && Program.formMain.PlayerObjectIsSelected(Entity);
+            return (Entity != null) && Construction.Lobby.Layer.PlayerObjectIsSelected(Entity);
         }
         private void BtnHeroes_ShowHint(object sender, EventArgs e)
         {
@@ -350,8 +348,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnBuildOrUpgrade_Click(object sender, EventArgs e)
         {
-            Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
             SelectThisConstruction();
 
             if (Construction.TypeConstruction.ID == FormMain.Config.IDHolyPlace)
@@ -366,8 +362,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction = po as Construction;
             SwitchStyle();
-            
-            Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
         }
 
         private void PlaySelect()
@@ -421,8 +415,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAttackHeroes_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(Entity as BigEntity);
-            Program.formMain.panelLairInfo.SelectPageHeroes();
+            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity);
+            Construction.Lobby.Layer.panelLairInfo.SelectPageHeroes();
         }
 
         private void BtnCancel_ShowHint(object sender, EventArgs e)
@@ -534,8 +528,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(Entity as BigEntity);
-            Program.formMain.panelLairInfo.SelectPageInhabitants();
+            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity);
+            Construction.Lobby.Layer.panelLairInfo.SelectPageInhabitants();
         }
 
         private void BtnAction_Click(object sender, EventArgs e)

@@ -17,10 +17,11 @@ namespace Fantasy_Kingdoms_Battle
         private static int generation = 0;
         private bool stopLobby = false;
 
-        public Lobby(TypeLobby tl)
+        public Lobby(TypeLobby tl, LayerGameSingle layer)
         {
             ID = generation++;
             TypeLobby = tl;
+            Layer = layer;
             StateLobby = StateLobby.Start;
             Turn = 1;
             Day = 1;
@@ -120,6 +121,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal LayerGameSingle Layer { get; }
         internal int ID { get; }// Уникальный код лобби
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal Player[] Players { get; }
@@ -245,7 +247,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         SetPlayerAsCurrent(i);
                         Players[i].PrepareTurn();
-                        Program.formMain.ShowCurrentPlayerLobby();
+                        Layer.ShowCurrentPlayerLobby();
 
                         if (HumanIsWin)
                         {
@@ -340,8 +342,8 @@ namespace Fantasy_Kingdoms_Battle
 */
             SetPlayerAsCurrent(-1);
             StateLobby = StateLobby.CalcTurn;
-            Program.formMain.ShowCurrentPlayerLobby();
-            Program.formMain.ShowNamePlayer("Расчет дня");
+            Layer.ShowCurrentPlayerLobby();
+            Layer.ShowNamePlayer("Расчет дня");
             CalcFinalityTurn();
 
             if (IsDayForBattleBetweenPlayers())

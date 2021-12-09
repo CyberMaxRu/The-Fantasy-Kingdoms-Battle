@@ -118,8 +118,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Visible);
 
             Visible = false;
-            Program.formMain.CurrentLobby.CurrentPlayer.RemoveNoticeForPlayer(this);
-            Program.formMain.ShowPlayerNotices();
+            Program.formMain.layerGame.CurrentLobby.CurrentPlayer.RemoveNoticeForPlayer(this);
+            Program.formMain.layerGame.ShowPlayerNotices();
             Program.formMain.NeedRedrawFrame();
             Dispose();
         }
@@ -132,23 +132,23 @@ namespace Fantasy_Kingdoms_Battle
         private void Cell_Click(object sender, EventArgs e)
         {
             if (Entity is Construction c)
-                Program.formMain.SelectConstruction(c);
+                Program.formMain.layerGame.SelectConstruction(c);
             else if (Entity is Hero h)
             {
                 if (h.IsLive)
-                    Program.formMain.SelectPlayerObject(h);
+                    Program.formMain.layerGame.SelectPlayerObject(h);
             }
             else if (Entity is ConstructionProduct cp)
             {
-                Program.formMain.SelectConstruction(cp.Construction, 0);
+                Program.formMain.layerGame.SelectConstruction(cp.Construction, 0);
             }
             else if (Entity is ConstructionExtension ce)
             {
-                Program.formMain.SelectConstruction(ce.Construction, 0);
+                Program.formMain.layerGame.SelectConstruction(ce.Construction, 0);
             }
             else if (Entity is ConstructionImprovement ci)
             {
-                Program.formMain.SelectConstruction(ci.Construction, 0);
+                Program.formMain.layerGame.SelectConstruction(ci.Construction, 0);
             }
             else
                 throw new Exception("Неизвестная сущность.");

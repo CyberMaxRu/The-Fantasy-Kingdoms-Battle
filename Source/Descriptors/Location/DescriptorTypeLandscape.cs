@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap GetBackgroundImage()
         {
             if (BackgroundImage is null)
-                BackgroundImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(NameTexture), Program.formMain.MainControl);
+                BackgroundImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(NameTexture), Program.formMain.layerGame.MainControl);
 
             return BackgroundImage;
         }

@@ -96,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnShowAll_Click(object sender, EventArgs e)
         {
-            Program.formMain.CurrentLobby.CurrentPlayer.UnhideAll();
+            player.UnhideAll();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

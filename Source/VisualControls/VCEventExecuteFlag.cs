@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BmpTarget_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(Target);
+            Program.formMain.layerGame.SelectPlayerObject(Target);
         }
 
         internal TypeFlag TypeFlag { get; }

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class CustomWindow : VisualControl
+    internal abstract class CustomWindow : LayerCustom
     {
         private DispatcherFrame frame;
         private DialogAction dialogResult;
@@ -71,22 +71,6 @@ namespace Fantasy_Kingdoms_Battle
             Dispatcher.PushFrame(frame);
 
             return dialogResult;
-        }
-
-        internal void Show(bool toCentre = true)
-        {
-            PanelHint.HideHint();
-
-            AdjustSize();
-            if (toCentre)
-                ToCentre();
-            Program.formMain.LayerChanged();
-
-            if (FormMain.Descriptors.AutoCreatedPlayer)
-            {
-                WindowPlayerPreferences wpf = new WindowPlayerPreferences();
-                wpf.ShowDialog();
-            }
         }
     }
 }

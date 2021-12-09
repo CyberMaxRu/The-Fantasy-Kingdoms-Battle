@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Hero.Dismiss();
                 Entity = null;
-                Program.formMain.SelectPlayerObject(null);
+                Program.formMain.layerGame.SelectPlayerObject(null);
                 Program.formMain.SetNeedRedrawFrame();
             }
         }

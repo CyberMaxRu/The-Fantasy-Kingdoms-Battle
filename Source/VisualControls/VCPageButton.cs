@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void Page_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(null);
+            Program.formMain.layerGame.SelectPlayerObject(null);
         }
 
         internal void UpdateLairs(Player player)

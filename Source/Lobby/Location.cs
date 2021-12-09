@@ -79,13 +79,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ShowInfo(int selectPage = -1)
         {
-            Program.formMain.panelLocationInfo.Entity = this;
-            Program.formMain.panelLocationInfo.Visible = true;
+            Lobby.Layer.panelLocationInfo.Entity = this;
+            Lobby.Layer.panelLocationInfo.Visible = true;
         }
 
         internal override void HideInfo()
         {
-            Program.formMain.panelLocationInfo.Visible = false;
+            Lobby.Layer.panelLocationInfo.Visible = false;
         }
     }
 }
