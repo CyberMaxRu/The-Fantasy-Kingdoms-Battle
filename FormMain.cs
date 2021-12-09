@@ -90,8 +90,6 @@ namespace Fantasy_Kingdoms_Battle
         private Graphics gfxRenderFrame;// Graphics кадра
         private Graphics gfxRenderClientArea;// Graphics клиентской области
 
-        // Первый слой (главное меню)
-        private readonly LayerMainMenu layerMainMenu;
         private readonly VCBitmap bitmapMenu;
         private readonly VCBitmap bmpTopPanel;
         private readonly VCBitmap bmpPreparedToolbar;
@@ -250,7 +248,8 @@ namespace Fantasy_Kingdoms_Battle
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
 
-        private readonly List<VisualControl> Layers;
+        private readonly List<LayerCustom> Layers;
+        private readonly LayerMainMenu layerMainMenu;
         private readonly LayerGameSingle layerGame;
         private VisualControl currentLayer;
 
@@ -469,7 +468,7 @@ namespace Fantasy_Kingdoms_Battle
             SetStage("Строим замок");
 
             // Создаем слой игрового поля
-            Layers = new List<VisualControl>();
+            Layers = new List<LayerCustom>();
             layerMainMenu = new LayerMainMenu();
             Layers.Add(layerMainMenu);
             currentLayer = layerMainMenu;
@@ -1073,7 +1072,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddLayer(VisualControl vc, string name)
+        internal void AddLayer(LayerCustom vc, string name)
         {
             Debug.Assert(Layers.Count <= 5);
             Debug.Assert(currentLayer.Controls.Count > 0);
@@ -1088,7 +1087,7 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = vc;
         }
 
-        internal void ExchangeLayer(VisualControl oldLayer, VisualControl newLayer)
+        internal void ExchangeLayer(LayerCustom oldLayer, LayerCustom newLayer)
         {
             Debug.Assert(Layers.Count == 1);
             Debug.Assert(Layers[0] == oldLayer);
@@ -1097,7 +1096,7 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = newLayer;
         }
 
-        internal void RemoveLayer(VisualControl vl)
+        internal void RemoveLayer(LayerCustom vl)
         {
             Debug.Assert(Layers.Count > 1);
             Debug.Assert(Layers[Layers.Count - 1] == vl);
