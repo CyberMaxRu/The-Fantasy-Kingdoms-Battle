@@ -1393,7 +1393,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorLevelTax lt in Descriptors.LevelTaxes)
             {
                 VCIconButton48 btn = new VCIconButton48(pageFinance.Page, nextLeft, l.NextTop(), Config.Gui48_Money);
-                btn.LowText = lt.Percent.ToString() + "%";
+                btn.HighText = lt.Percent.ToString() + "%";
                 btn.Hint = lt.Name;
                 btn.Click += BtnLevelTax_Click;
                 btn.Tag = lt.Index;
