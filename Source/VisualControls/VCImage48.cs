@@ -11,17 +11,24 @@ namespace Fantasy_Kingdoms_Battle
     // Класс для иконок 48 * 48
     internal class VCImage48 : VCImage
     {
+        private VCLabel labelHighText;
+        private VCLabel labelLowText;
         private VCLabel labelLevel;
-        private VCLabel labelText;
         protected VCLabel labelQuantity;
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
-            labelText = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, Color, 16, "");
-            labelText.StringFormat.LineAlignment = StringAlignment.Far;
-            labelText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
-            labelText.ManualDraw = true;
-            labelText.Width = Width;
+            labelHighText = new VCLabel(this, 0, 2, Program.formMain.fontSmallC, Color, 16, "");
+            labelHighText.StringFormat.LineAlignment = StringAlignment.Near;
+            labelHighText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
+            labelHighText.ManualDraw = true;
+            labelHighText.Width = Width;
+
+            labelLowText = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, Color, 16, "");
+            labelLowText.StringFormat.LineAlignment = StringAlignment.Far;
+            labelLowText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
+            labelLowText.ManualDraw = true;
+            labelLowText.Width = Width;
 
             labelLevel = new VCLabel(this, 0, 1, Program.formMain.fontSmallC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
@@ -38,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             labelQuantity.Width = Width - 4;
         }
 
+        internal string HighText { get; set; } = "";
         internal string LowText { get; set; } = "";
         internal Color Color { get; set; } = FormMain.Config.CommonCost;
         internal string Level { get; set; } = "";
@@ -52,12 +60,20 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (Visible && (ImageIndex != -1))
             {
+                // Верхний текст
+                if (HighText.Length > 0)
+                {
+                    labelHighText.Text = HighText;
+                    labelHighText.Color = Color;
+                    labelHighText.Draw(g);
+                }
+
                 // Цена
                 if (LowText.Length > 0)
                 {
-                    labelText.Text = LowText;
-                    labelText.Color = Color;
-                    labelText.Draw(g);
+                    labelLowText.Text = LowText;
+                    labelLowText.Color = Color;
+                    labelLowText.Draw(g);
                 }
 
                 // Уровень
