@@ -57,28 +57,10 @@ namespace Fantasy_Kingdoms_Battle
             btnTracker.ManualDraw = true;
         }
 
-        private void BtnRight_Click(object sender, EventArgs e)
-        {
-            if (Position < Max)
-            {
-                Position++;
-                Program.formMain.SetNeedRedrawFrame();
-            }
-        }
-
-        private void BtnLeft_Click(object sender, EventArgs e)
-        {
-            if (Position > Min)
-            {
-                Position--;
-                Program.formMain.SetNeedRedrawFrame();
-            }
-        }
-
         internal int Min { get; set; } = 0;
         internal int Max { get; set; } = 100;
         internal int Position { get => position; set { if (position != value) { position = value; OnPositionChanged?.Invoke(this, new EventArgs()); } } }
-        internal int Frequency { get; set; } = 1;
+        internal int Frequency { get; set; } = 3;
         internal event EventHandler OnPositionChanged;
 
         internal override void ArrangeControls()
@@ -174,6 +156,24 @@ namespace Fantasy_Kingdoms_Battle
                     Position = (Max - Min) * posAtTrackband / widthTrackband;
                 }
 
+                Program.formMain.SetNeedRedrawFrame();
+            }
+        }
+
+        private void BtnRight_Click(object sender, EventArgs e)
+        {
+            if (Position < Max)
+            {
+                Position++;
+                Program.formMain.SetNeedRedrawFrame();
+            }
+        }
+
+        private void BtnLeft_Click(object sender, EventArgs e)
+        {
+            if (Position > Min)
+            {
+                Position--;
                 Program.formMain.SetNeedRedrawFrame();
             }
         }

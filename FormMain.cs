@@ -93,19 +93,10 @@ namespace Fantasy_Kingdoms_Battle
         private Graphics gfxRenderClientArea;// Graphics клиентской области
 
         // Первый слой (главное меню)
-        private readonly VisualControl layerMainMenu;
+        private readonly LayerMainMenu layerMainMenu;
+        private readonly VCBitmap bitmapMenu;
         private readonly VCBitmap bmpTopPanel;
         private readonly VCBitmap bmpPreparedToolbar;
-        private readonly VCBitmap bitmapLogo;
-        private readonly VCBitmap bitmapNameGame;
-        private readonly VCBitmap bitmapMenu;
-        private readonly VCLabel labelVersion;
-        private readonly VCBitmap bmpMainMenu;
-        private readonly VCButton btnTournament;
-        private readonly VCButton btnPlayerPreferences;
-        private readonly VCButton btnGamePreferences;
-        private readonly VCButton btnAboutProgram;
-        private readonly VCButton btnExitToWindows;
 
         internal BigEntity selectedPlayerObject;
 
@@ -504,41 +495,9 @@ namespace Fantasy_Kingdoms_Battle
 
             // Создаем слой игрового поля
             Layers = new List<VisualControl>();
-            layerMainMenu = new VisualControl();
+            layerMainMenu = new LayerMainMenu();
             Layers.Add(layerMainMenu);
             currentLayer = layerMainMenu;
-
-            // Лого
-            bitmapLogo = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("Logo.png"));
-            bitmapNameGame = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("NameGame.png"));
-
-            labelVersion = new VCLabel(bitmapLogo, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
-                $"Сборка {VERSION} от {DATE_VERSION}");
-            labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
-
-            // Главное меню
-            bmpMainMenu = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("MenuMain.png"));
-
-            btnTournament = new VCButton(bmpMainMenu, 80, 88, "Турнир");
-            btnTournament.Width = bmpMainMenu.Width - 80 - 80;
-            btnTournament.Click += BtnTournament_Click;
-
-            btnExitToWindows = new VCButton(bmpMainMenu, 80, bmpMainMenu.Height - 96, "Выход в Windows");
-            btnExitToWindows.Width = bmpMainMenu.Width - 80 - 80;
-            btnExitToWindows.Click += BtnExitToWindows_Click;
-
-            btnAboutProgram = new VCButton(bmpMainMenu, 80, btnExitToWindows.ShiftY - 40, "О программе");
-            btnAboutProgram.Width = bmpMainMenu.Width - 80 - 80;
-            btnAboutProgram.Click += BtnAboutProgram_Click;
-
-            btnGamePreferences = new VCButton(bmpMainMenu, 80, btnAboutProgram.ShiftY - 40, "Настройки игры");
-            btnGamePreferences.Width = bmpMainMenu.Width - 80 - 80;
-            btnGamePreferences.Click += BtnPreferences_Click;
-
-            btnPlayerPreferences = new VCButton(bmpMainMenu, 80, btnGamePreferences.ShiftY - 40, "Настройки игрока");
-            btnPlayerPreferences.Width = bmpMainMenu.Width - 80 - 80;
-            btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
-
 
             // Слой игры
             layerGame = new VisualControl();
@@ -778,17 +737,6 @@ namespace Fantasy_Kingdoms_Battle
             bmpPreparedToolbar.ShiftX = 0;
             MainControl.ShiftX = 0;
 
-            layerMainMenu.Width = sizeGamespace.Width;
-            layerMainMenu.Height = sizeGamespace.Height;
-            bitmapLogo.ShiftX = (layerMainMenu.Width - bitmapLogo.Width) / 2;
-            bitmapLogo.ShiftY = (layerMainMenu.Height - bitmapLogo.Height) / 2;
-            bitmapNameGame.ShiftX = (layerMainMenu.Width - bitmapNameGame.Width) / 2;
-            bitmapNameGame.ShiftY = 32;//(bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
-            labelVersion.ShiftX = sizeGamespace.Width - labelVersion.Width - Config.GridSize;
-            labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
-            bmpMainMenu.ShiftX = sizeGamespace.Width - bmpMainMenu.Width - Config.GridSize;
-            bmpMainMenu.ShiftY = (sizeGamespace.Height - bmpMainMenu.Height) / 2 - (Config.GridSize * 1);
-
             mapArdania.Width = pageRealMap.Page.Width;
             mapArdania.Height = pageRealMap.Page.Height;
 
@@ -802,7 +750,10 @@ namespace Fantasy_Kingdoms_Battle
                 pagesCapital[i].PageImage = MainControlbackground(Descriptors.CapitalPages[i].NameTexture);
             }
 
+            layerMainMenu.Width = sizeGamespace.Width;
+            layerMainMenu.Height = sizeGamespace.Height;
             layerMainMenu.ArrangeControls();
+
             layerGame.ArrangeControls();
 
             //
@@ -1181,14 +1132,6 @@ namespace Fantasy_Kingdoms_Battle
             VisualControl.PanelHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
              
             SetNeedRedrawFrame();
-        }
-
-        internal void ShowWindowAboutProgram()
-        {
-            WindowAboutProgram w = new WindowAboutProgram();
-            w.ShowDialog();
-            w.Dispose();
-            ShowFrame(true);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -2589,39 +2532,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 File.WriteAllLines(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Config\" + nameTypeHero + "_Surname.txt", names);
             }
-        }
-
-        private void BtnPlayerPreferences_Click(object sender, EventArgs e)
-        {
-            WindowPlayerPreferences w = new WindowPlayerPreferences();
-            w.ShowDialog();
-        }
-
-        private void BtnExitToWindows_Click(object sender, EventArgs e)
-        {
-            WindowConfirmExit f = new WindowConfirmExit();
-            if (f.ShowDialog() == DialogAction.OK)
-            {
-                SetProgrameState(ProgramState.NeedQuit);
-                Close();
-            }
-        }
-
-        private void BtnAboutProgram_Click(object sender, EventArgs e)
-        {
-            ShowWindowAboutProgram();
-        }
-
-        private void BtnPreferences_Click(object sender, EventArgs e)
-        {
-            ShowWindowPreferences();
-        }
-
-        private void BtnTournament_Click(object sender, EventArgs e)
-        {
-            StartNewLobby();
-            if (!(lobby is null))
-                ReturnFromLobby();
         }
 
         internal void ControlShowed(VisualControl vc)

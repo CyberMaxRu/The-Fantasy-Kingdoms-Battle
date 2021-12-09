@@ -106,6 +106,7 @@
     <Compile Include="Source\Forms\WindowCheating.cs" />
     <Compile Include="Source\Layers\LayerConquestEditor.cs" />
     <Compile Include="Source\Layers\LayerCustom.cs" />
+    <Compile Include="Source\Layers\LayerMainMenu.cs" />
     <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\CellOfMenu.cs" />
