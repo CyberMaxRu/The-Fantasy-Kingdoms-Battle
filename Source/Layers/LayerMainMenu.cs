@@ -10,10 +10,10 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class LayerMainMenu : LayerCustom
     {
-        private readonly VCBitmap bitmapLogo;
+        private readonly Bitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
-        private readonly VCLabel labelVersion;
         private readonly VCBitmap bmpMainMenu;
+        private readonly VCLabel labelVersion;
         private readonly VCButton btnTournament;
         private readonly VCButton btnPlayerPreferences;
         private readonly VCButton btnGamePreferences;
@@ -22,16 +22,16 @@ namespace Fantasy_Kingdoms_Battle
 
         public LayerMainMenu() : base()
         {
-            // Лого
-            bitmapLogo = new VCBitmap(this, 0, 0, LoadBitmap("Logo.png"));
-            bitmapNameGame = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("NameGame.png"));
+            // Фон
+            bitmapLogo = LoadBitmap("Logo.png");
+            bitmapNameGame = new VCBitmap(this, 0, 0, LoadBitmap("NameGame.png"));
 
-            labelVersion = new VCLabel(bitmapLogo, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol,
+            labelVersion = new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol,
                 $"Сборка {FormMain.VERSION} от {FormMain.DATE_VERSION}");
             labelVersion.SetWidthByText();
 
             // Главное меню
-            bmpMainMenu = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("MenuMain.png"));
+            bmpMainMenu = new VCBitmap(this, 0, 0, LoadBitmap("MenuMain.png"));
 
             btnTournament = new VCButton(bmpMainMenu, 80, 88, "Турнир");
             btnTournament.Width = bmpMainMenu.Width - 80 - 80;
@@ -54,11 +54,8 @@ namespace Fantasy_Kingdoms_Battle
             btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
         }
 
-
         internal override void ArrangeControls()
         {
-            bitmapLogo.ShiftX = (Width - bitmapLogo.Width) / 2;
-            bitmapLogo.ShiftY = (Height - bitmapLogo.Height) / 2;
             bitmapNameGame.ShiftX = (Width - bitmapNameGame.Width) / 2;
             bitmapNameGame.ShiftY = 32;//(bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
             labelVersion.ShiftX = Program.formMain.sizeGamespace.Width - labelVersion.Width - FormMain.Config.GridSize;
@@ -67,6 +64,13 @@ namespace Fantasy_Kingdoms_Battle
             bmpMainMenu.ShiftY = (Program.formMain.sizeGamespace.Height - bmpMainMenu.Height) / 2 - (FormMain.Config.GridSize * 1);
 
             base.ArrangeControls();
+        }
+
+        internal override void DrawBackground(Graphics g)
+        {
+            base.DrawBackground(g);
+
+            g.DrawImageUnscaled(bitmapLogo, 0, 0);
         }
 
         private void BtnTournament_Click(object sender, EventArgs e)
