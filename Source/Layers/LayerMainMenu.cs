@@ -15,10 +15,13 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCButton btnTournament;
+        private readonly VCButton btnEditorConquest;
         private readonly VCButton btnPlayerPreferences;
         private readonly VCButton btnGamePreferences;
         private readonly VCButton btnAboutProgram;
         private readonly VCButton btnExitToWindows;
+
+        private LayerEditorConquest layerEditor;
 
         public LayerMainMenu() : base()
         {
@@ -37,6 +40,10 @@ namespace Fantasy_Kingdoms_Battle
             btnTournament.Width = bmpMainMenu.Width - 80 - 80;
             btnTournament.Click += BtnTournament_Click;
 
+            btnEditorConquest = new VCButton(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
+            btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
+            btnEditorConquest.Click += BtnEditorConquest_Click;
+
             btnExitToWindows = new VCButton(bmpMainMenu, 80, bmpMainMenu.Height - 96, "Выход в Windows");
             btnExitToWindows.Width = bmpMainMenu.Width - 80 - 80;
             btnExitToWindows.Click += BtnExitToWindows_Click;
@@ -53,6 +60,14 @@ namespace Fantasy_Kingdoms_Battle
             btnPlayerPreferences.Width = bmpMainMenu.Width - 80 - 80;
             btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
         }
+
+        private void BtnEditorConquest_Click(object sender, EventArgs e)
+        {
+            if (layerEditor is null)
+                layerEditor = new LayerEditorConquest();
+
+            Program.formMain.ExchangeLayer(this, layerEditor);
+       }
 
         internal override void ArrangeControls()
         {
