@@ -401,8 +401,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = Width - Program.formMain.ClientSize.Width + Program.formMain.sizeGamespace.Width;
             Height = Height - Program.formMain.ClientSize.Height + Program.formMain.sizeGamespace.Height;
-            Width = Program.formMain.sizeGamespace.Width;
-            Height = Program.formMain.sizeGamespace.Height;
 
             layerMainMenu.Width = sizeGamespace.Width;
             layerMainMenu.Height = sizeGamespace.Height;
@@ -785,7 +783,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Рисуем фон
             gfxRenderFrame.CompositingMode = CompositingMode.SourceCopy;
-            gfxRenderFrame.DrawImageUnscaled(bmpRenderBackgroundFrame, 0, 0);
+            //gfxRenderFrame.DrawImageUnscaled(bmpRenderBackgroundFrame, 0, 0);
             gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
             // Рисуем контролы

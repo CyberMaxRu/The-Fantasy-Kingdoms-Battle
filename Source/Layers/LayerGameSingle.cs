@@ -324,6 +324,9 @@ namespace Fantasy_Kingdoms_Battle
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
 
+            Width = Program.formMain.sizeGamespace.Width;
+            Height = Program.formMain.sizeGamespace.Height;
+
             for (int i = 0; i < Descriptors.CapitalPages.Count; i++)
             {
                 pagesCapital[i].PageImage = MainControlbackground(Descriptors.CapitalPages[i].NameTexture);
