@@ -56,7 +56,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Рендеринг
         private Bitmap bmpRenderClientArea;// Фон клиентской области, на который налагается кадр
-        private Bitmap bmpRenderBackgroundFrame;// Фон рисунка, на котором рисуются контролы
         private Bitmap bmpRenderFrame;// Рисунок, на котором рисуются контролы (без учета полноэкранного режима)
         private Graphics gfxRenderFrame;// Graphics кадра
         private Graphics gfxRenderClientArea;// Graphics клиентской области
@@ -781,11 +780,6 @@ namespace Fantasy_Kingdoms_Battle
             if ((bmpRenderClientArea == null) || (bmpRenderClientArea == null) || !bmpRenderFrame.Size.Equals(sizeGamespace) || !bmpRenderClientArea.Size.Equals(ClientSize))
                 PrepareBackground();
 
-            // Рисуем фон
-            gfxRenderFrame.CompositingMode = CompositingMode.SourceCopy;
-            //gfxRenderFrame.DrawImageUnscaled(bmpRenderBackgroundFrame, 0, 0);
-            gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
-
             // Рисуем контролы
             gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
@@ -849,8 +843,6 @@ namespace Fantasy_Kingdoms_Battle
 
                     gfxRenderFrame?.Dispose();
                     gfxRenderFrame = Graphics.FromImage(bmpRenderFrame);
-
-                    bmpRenderBackgroundFrame = GuiUtils.MakeBackground(sizeGamespace);
                 }
             }
         }
