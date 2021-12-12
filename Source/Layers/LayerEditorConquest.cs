@@ -10,8 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class LayerEditorConquest : LayerCustom
     {
         private Bitmap bmpBackground;
-        private Bitmap bmpMap;
-        private VCBitmap bmpMinimap;
+        private VCBitmap bmpBorderMinimap;
 
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageMap;
@@ -21,6 +20,9 @@ namespace Fantasy_Kingdoms_Battle
 
         VCButton btnLoadPicture;
         VCButton btnSetBorder;
+        VCButton btnFindRegions;
+        VCButton btnSaveMap;
+        VCButton btnLoadMap;
 
         public LayerEditorConquest() : base()
         {
@@ -41,10 +43,10 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.ArrangeControls();
             pageControl.ActivatePage(pageMap);
 
-            bmpMinimap = new VCBitmap(this, 0, 0, Utils.LoadBitmap("Map.png"));
-            bmpMinimap.ShiftY = Height - bmpMinimap.Height;
+            bmpBorderMinimap = new VCBitmap(this, 0, 0, Utils.LoadBitmap("Map.png"));
+            bmpBorderMinimap.ShiftY = Height - bmpBorderMinimap.Height;
 
-            pageControl.ShiftX = bmpMinimap.NextLeft();
+            pageControl.ShiftX = bmpBorderMinimap.NextLeft();
 
             btnLoadPicture = new VCButton(this, Width - 248, FormMain.Config.GridSize, "Загрузить картинку");
             btnLoadPicture.Width = 240;
@@ -54,7 +56,36 @@ namespace Fantasy_Kingdoms_Battle
             btnSetBorder.Width = 240;
             btnSetBorder.Click += BtnSetBorder_Click;
 
+            btnFindRegions = new VCButton(this, Width - 248, btnSetBorder.NextTop(), "Найти регионы");
+            btnFindRegions.Width = 240;
+            btnFindRegions.Click += BtnFindRegions_Click;
+
+            btnSaveMap = new VCButton(this, Width - 248, btnFindRegions.NextTop(), "Сохранить карту");
+            btnSaveMap.Width = 240;
+            btnSaveMap.Click += BtnSaveMap_Click;
+
+            btnLoadMap = new VCButton(this, Width - 248, btnSaveMap.NextTop(), "Загрузить карту");
+            btnLoadMap.Width = 240;
+            btnLoadMap.Click += BtnLoadMap_Click;
+
             ArrangeControls();
+        }
+
+        private void BtnLoadMap_Click(object sender, EventArgs e)
+        {
+            descriptorMap = new DescriptorMap(Program.FolderResources + @"Icons\conq\Conquest");
+            mapArdania.Bitmap = descriptorMap.Bitmap;
+        }
+
+        private void BtnSaveMap_Click(object sender, EventArgs e)
+        {
+            descriptorMap.SaveToFile(Program.FolderResources + @"Icons\conq\Conquest");
+
+        }
+
+        private void BtnFindRegions_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void BtnSetBorder_Click(object sender, EventArgs e)
@@ -73,10 +104,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnLoadPicture_Click(object sender, EventArgs e)
         {
-            bmpMap = Utils.LoadBitmap(@"Conq\Ardania150_cut.png");
-            mapArdania.Bitmap = bmpMap;
-
-            descriptorMap = new DescriptorMap(mapArdania.Bitmap);
+            descriptorMap = new DescriptorMap(Utils.LoadBitmap(@"Conq\Ardania150_cut.png"));
+            mapArdania.Bitmap = descriptorMap.Bitmap;
         }
 
         internal override void DrawBackground(Graphics g)
@@ -84,6 +113,9 @@ namespace Fantasy_Kingdoms_Battle
             base.DrawBackground(g);
 
             g.DrawImageUnscaled(bmpBackground, 0, 0);
+
+            if (descriptorMap?.MiniMap != null)
+                g.DrawImageUnscaled(descriptorMap.MiniMap, 14, Height - descriptorMap.MiniMap.Height - 12);
         }
     }
 }
