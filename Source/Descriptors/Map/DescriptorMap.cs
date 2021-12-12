@@ -10,18 +10,18 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorMap
     {
-        private VCMap map;
+        private Bitmap bmp;
 
-        public DescriptorMap(int width, int height, VCMap map)
+        public DescriptorMap(int width, int height, Bitmap bmp)
         {
             Width = width;
             Height = height;
             PointsMap = new DescriptorPointMap[Height, Width];
-            this.map = map;
+            this.bmp = bmp;
 
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
-                    PointsMap[y, x] = new DescriptorPointMap(x, y, map.Bitmap.GetPixel(x, y), TypePointMap.Undefined);                    
+                    PointsMap[y, x] = new DescriptorPointMap(x, y, bmp.GetPixel(x, y), TypePointMap.Undefined);                    
         }
 
         internal int Width { get; }
@@ -32,13 +32,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (PointsMap[p.Y, p.X].TypePoint == TypePointMap.Undefined)
             {
-                SearchBorderAround(p.X, p.Y, map.Bitmap.GetPixel(p.X, p.Y));
+                SearchBorderAround(p.X, p.Y, bmp.GetPixel(p.X, p.Y));
             }
 
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
                     if (PointsMap[y, x].TypePoint == TypePointMap.Border)
-                        map.Bitmap.SetPixel(x, y, Color.GreenYellow);
+                        bmp.SetPixel(x, y, Color.GreenYellow);
         }
 
         internal void SearchBorderAround(int x, int y, Color c)
@@ -89,7 +89,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (PointsMap[iy, ix].TypePoint == TypePointMap.Undefined)
                 {
-                    Color color = map.Bitmap.GetPixel(ix, iy);
+                    Color color = bmp.GetPixel(ix, iy);
                     if ((color.R <= 15) && (color.G <= 15) && (color.B <= 15))
                     {
                         PointsMap[iy, ix].TypePoint = TypePointMap.Border;

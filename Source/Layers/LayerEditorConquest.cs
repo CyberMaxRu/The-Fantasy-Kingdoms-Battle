@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.ArrangeControls();
             pageControl.ActivatePage(pageMap);
 
-            descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania);
+            descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania.Bitmap);
 
             bmpMinimap = new VCBitmap(this, 0, 0, Utils.LoadBitmap("Map.png"));
             bmpMinimap.ShiftY = Height - bmpMinimap.Height;

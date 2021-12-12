@@ -372,7 +372,7 @@ namespace Fantasy_Kingdoms_Battle
             mapArdania = new VCMap(pageRealMap.Page, 0, 0, "Ardania150.png");
             mapArdania.Click += MapArdania_Click;
 
-            descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania);
+            descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania.Bitmap);
         }
 
         private void MapArdania_Click(object sender, EventArgs e)
