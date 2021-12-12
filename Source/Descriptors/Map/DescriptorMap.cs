@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
-                    Descriptors[y, x] = new DescriptorPointMap(x, y, TypePointMap.Undefined);                    
+                    Descriptors[y, x] = new DescriptorPointMap(x, y, map.Bitmap.GetPixel(x, y), TypePointMap.Undefined);                    
         }
 
         internal int Width { get; }

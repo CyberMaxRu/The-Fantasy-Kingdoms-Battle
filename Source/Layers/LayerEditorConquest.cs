@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             pageControl = new VCPageControl(this, 8, 8);
             //pageControl.PageChanged += PageControl_PageChanged;
             pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Карта Ардании", null);
-            pageMap.Hint = "Итоги хода";
+            pageMap.Hint = "Карта Ардании";
 
             mapArdania = new VCMap(pageMap.Page, 0, 0, "Ardania150_cut.png");
             mapArdania.Width = 800;

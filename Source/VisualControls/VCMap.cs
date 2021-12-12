@@ -13,19 +13,23 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCMap(VisualControl parent, int shiftX, int shiftY, string filenameBitmap) : base(parent, shiftX, shiftY)
         {
-            Bitmap = LoadBitmap(filenameBitmap, @"Icons\Conq");
+            if (filenameBitmap.Length > 0)
+                Bitmap = LoadBitmap(filenameBitmap, @"Icons\Conq");
         }
 
         internal Bitmap Bitmap { get; }
 
         internal override void Draw(Graphics g)
         {
-            Debug.Assert(Bitmap != null);
-            UpdateWindow();
+            if (Bitmap != null)
+            {
+                UpdateWindow();
+            }
 
             base.Draw(g);
 
-            g.DrawImage(Bitmap, Left, Top, windowDraw, GraphicsUnit.Pixel);
+            if (Bitmap != null)
+                g.DrawImage(Bitmap, Left, Top, windowDraw, GraphicsUnit.Pixel);
         }
 
         private void UpdateWindow()
@@ -38,8 +42,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseRightDown(p);
 
-            pointRightButtonClicked = p;
-            shiftBitmapRightButtonClicked = shiftBitmap;
+            if (Bitmap != null)
+            {
+                pointRightButtonClicked = p;
+                shiftBitmapRightButtonClicked = shiftBitmap;
+            }
         }
 
         internal override void RightButtonClick()

@@ -11,15 +11,17 @@ namespace Fantasy_Kingdoms_Battle
 
     internal struct DescriptorPointMap
     {
-        public DescriptorPointMap(int x, int y, TypePointMap typePoint)
+        public DescriptorPointMap(int x, int y, Color color, TypePointMap typePoint)
         {
             X = x;
             Y = y;
+            Color = color;
             TypePoint = typePoint;
         }
 
         public int X;
         public int Y;
         public TypePointMap TypePoint;
+        public Color Color;
     }
 }
