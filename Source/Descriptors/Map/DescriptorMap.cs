@@ -287,6 +287,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void FindCenters()
+        {
+
+        }
+
         private IEnumerable<Point> GetNeighbours(int x, int y)
         {
             if ((x > 0) && (y > 0))

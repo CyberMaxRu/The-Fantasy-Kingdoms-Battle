@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         VCButton btnLoadPicture;
         VCButton btnSetBorder;
         VCButton btnFindRegions;
+        VCButton btnFindCenters;
         VCButton btnSaveMap;
         VCButton btnLoadMap;
 
@@ -60,6 +61,10 @@ namespace Fantasy_Kingdoms_Battle
             btnFindRegions.Width = 240;
             btnFindRegions.Click += BtnFindRegions_Click;
 
+            btnFindCenters = new VCButton(this, Width - 248, btnSetBorder.NextTop(), "Найти центры");
+            btnFindCenters.Width = 240;
+            btnFindCenters.Click += BtnFindCenters_Click;
+
             btnSaveMap = new VCButton(this, Width - 248, btnFindRegions.NextTop(), "Сохранить карту");
             btnSaveMap.Width = 240;
             btnSaveMap.Click += BtnSaveMap_Click;
@@ -69,6 +74,11 @@ namespace Fantasy_Kingdoms_Battle
             btnLoadMap.Click += BtnLoadMap_Click;
 
             ArrangeControls();
+        }
+
+        private void BtnFindCenters_Click(object sender, EventArgs e)
+        {
+            descriptorMap.FindCenters();
         }
 
         private void BtnLoadMap_Click(object sender, EventArgs e)
