@@ -70,17 +70,17 @@ namespace Fantasy_Kingdoms_Battle
                     AddNeighbours(ix - 1, iy - 1);
                 if (iy > 0)
                     AddNeighbours(ix, iy - 1);
-                if ((ix < Width) && (iy > 0))
+                if ((ix < Width - 1) && (iy > 0))
                     AddNeighbours(ix + 1, iy - 1);
                 if (ix > 0)
                     AddNeighbours(ix - 1, iy);
-                if (ix < Width)
+                if (ix < Width - 1)
                     AddNeighbours(ix + 1, iy);
-                if ((ix > 0) && (iy < Height))
+                if ((ix > 0) && (iy < Height - 1))
                     AddNeighbours(ix - 1, iy + 1);
                 if (iy < Height)
                     AddNeighbours(ix, iy + 1);
-                if ((ix < Width) && (iy < Height))
+                if ((ix < Width - 1) && (iy < Height - 1))
                     AddNeighbours(ix + 1, iy + 1);
 
             }
