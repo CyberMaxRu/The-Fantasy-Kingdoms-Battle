@@ -10,6 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class LayerEditorConquest : LayerCustom
     {
         private Bitmap bmpBackground;
+        private Bitmap bmpMap;
         private VCBitmap bmpMinimap;
 
         private readonly VCPageControl pageControl;
@@ -17,6 +18,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private VCMap mapArdania;
         private DescriptorMap descriptorMap;
+
+        VCButton btnLoadPicture;
 
         public LayerEditorConquest() : base()
         {
@@ -28,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Карта Ардании", null);
             pageMap.Hint = "Карта Ардании";
 
-            mapArdania = new VCMap(pageMap.Page, 0, 0, "Ardania150_cut.png");
+            mapArdania = new VCMap(pageMap.Page, 0, 0);
             mapArdania.Width = 800;
             mapArdania.Height = 600;
             //mapArdania.Click += MapArdania_Click;
@@ -37,14 +40,24 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.ArrangeControls();
             pageControl.ActivatePage(pageMap);
 
-            descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania.Bitmap);
+            descriptorMap = new DescriptorMap(mapArdania.Bitmap);
 
             bmpMinimap = new VCBitmap(this, 0, 0, Utils.LoadBitmap("Map.png"));
             bmpMinimap.ShiftY = Height - bmpMinimap.Height;
 
             pageControl.ShiftX = bmpMinimap.NextLeft();
 
+            btnLoadPicture = new VCButton(this, 0, FormMain.Config.GridSize, "Загрузить картинку");
+            btnLoadPicture.Width = 80;
+            btnLoadPicture.Click += BtnLoadPicture_Click;
+
             ArrangeControls();
+        }
+
+        private void BtnLoadPicture_Click(object sender, EventArgs e)
+        {
+            bmpMap = Utils.LoadBitmap(@"Icons\Conq\Ardania150_cut.png");
+            mapArdania.Bitmap = bmpMap;
         }
 
         internal override void DrawBackground(Graphics g)

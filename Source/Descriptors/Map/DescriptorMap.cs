@@ -12,10 +12,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         private Bitmap bmp;
 
-        public DescriptorMap(int width, int height, Bitmap bmp)
+        public DescriptorMap(Bitmap bmp)
         {
-            Width = width;
-            Height = height;
+            Width = bmp.Width;
+            Height = bmp.Height;
             PointsMap = new DescriptorPointMap[Height, Width];
             this.bmp = bmp;
 

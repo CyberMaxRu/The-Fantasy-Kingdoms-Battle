@@ -11,13 +11,11 @@ namespace Fantasy_Kingdoms_Battle
         private Point pointRightButtonClicked;
         private Point shiftBitmapRightButtonClicked;
 
-        public VCMap(VisualControl parent, int shiftX, int shiftY, string filenameBitmap) : base(parent, shiftX, shiftY)
+        public VCMap(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            if (filenameBitmap.Length > 0)
-                Bitmap = LoadBitmap(filenameBitmap, @"Icons\Conq");
         }
 
-        internal Bitmap Bitmap { get; }
+        internal Bitmap Bitmap { get; set; }
 
         internal override void Draw(Graphics g)
         {
