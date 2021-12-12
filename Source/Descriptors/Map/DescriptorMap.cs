@@ -16,28 +16,28 @@ namespace Fantasy_Kingdoms_Battle
         {
             Width = width;
             Height = height;
-            Descriptors = new DescriptorPointMap[Height, Width];
+            PointsMap = new DescriptorPointMap[Height, Width];
             this.map = map;
 
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
-                    Descriptors[y, x] = new DescriptorPointMap(x, y, map.Bitmap.GetPixel(x, y), TypePointMap.Undefined);                    
+                    PointsMap[y, x] = new DescriptorPointMap(x, y, map.Bitmap.GetPixel(x, y), TypePointMap.Undefined);                    
         }
 
         internal int Width { get; }
         internal int Height { get; }
-        internal DescriptorPointMap[,] Descriptors { get; }
+        internal DescriptorPointMap[,] PointsMap { get; }
 
         internal void SearchBorder(Point p)
         {
-            if (Descriptors[p.Y, p.X].TypePoint == TypePointMap.Undefined)
+            if (PointsMap[p.Y, p.X].TypePoint == TypePointMap.Undefined)
             {
                 SearchBorderAround(p.X, p.Y, map.Bitmap.GetPixel(p.X, p.Y));
             }
 
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
-                    if (Descriptors[y, x].TypePoint == TypePointMap.Border)
+                    if (PointsMap[y, x].TypePoint == TypePointMap.Border)
                         map.Bitmap.SetPixel(x, y, Color.GreenYellow);
         }
 
@@ -87,12 +87,12 @@ namespace Fantasy_Kingdoms_Battle
 
             void AddNeighbours(int ix, int iy)
             {
-                if (Descriptors[iy, ix].TypePoint == TypePointMap.Undefined)
+                if (PointsMap[iy, ix].TypePoint == TypePointMap.Undefined)
                 {
                     Color color = map.Bitmap.GetPixel(ix, iy);
                     if ((color.R <= 15) && (color.G <= 15) && (color.B <= 15))
                     {
-                        Descriptors[iy, ix].TypePoint = TypePointMap.Border;
+                        PointsMap[iy, ix].TypePoint = TypePointMap.Border;
                         points2.Add(new Point(ix, iy));
                     }
                 }
