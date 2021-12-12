@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Diagnostics;
 using static Fantasy_Kingdoms_Battle.Utils;
 
@@ -10,24 +11,25 @@ namespace Fantasy_Kingdoms_Battle
         private Rectangle windowDraw = new Rectangle();
         private Point pointRightButtonClicked;
         private Point shiftBitmapRightButtonClicked;
+        private Point pointMouse;
 
         public VCMap(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
         }
 
-        internal Bitmap Bitmap { get; set; }
+        internal DescriptorMap Map { get; set; }
 
         internal override void Draw(Graphics g)
         {
-            if (Bitmap != null)
+            if (Map?.Bitmap != null)
             {
                 UpdateWindow();
             }
 
             base.Draw(g);
 
-            if (Bitmap != null)
-                g.DrawImage(Bitmap, Left, Top, windowDraw, GraphicsUnit.Pixel);
+            if (Map?.Bitmap != null)
+                g.DrawImage(Map.Bitmap, Left, Top, windowDraw, GraphicsUnit.Pixel);
         }
 
         private void UpdateWindow()
@@ -40,10 +42,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseRightDown(p);
 
-            if (Bitmap != null)
+            if (Map.Bitmap != null)
             {
                 pointRightButtonClicked = p;
                 shiftBitmapRightButtonClicked = shiftBitmap;
+
             }
         }
 
@@ -63,20 +66,51 @@ namespace Fantasy_Kingdoms_Battle
                 shiftBitmap = new Point(shiftBitmapRightButtonClicked.X + pointRightButtonClicked.X - p.X, shiftBitmapRightButtonClicked.Y + pointRightButtonClicked.Y - p.Y);
                 if (shiftBitmap.X < 0)
                     shiftBitmap.X = 0;
-                if (shiftBitmap.X > Bitmap.Width - Width)
-                    shiftBitmap.X = Bitmap.Width - Width;
+                if (shiftBitmap.X > Map.Bitmap.Width - Width)
+                    shiftBitmap.X = Map.Bitmap.Width - Width;
                 if (shiftBitmap.Y < 0)
                     shiftBitmap.Y = 0;
-                if (shiftBitmap.Y > Bitmap.Height - Height)
-                    shiftBitmap.Y = Bitmap.Height - Height;
+                if (shiftBitmap.Y > Map.Bitmap.Height - Height)
+                    shiftBitmap.Y = Map.Bitmap.Height - Height;
 
                 UpdateWindow();
             }
+
+            pointMouse = new Point(shiftBitmap.X + p.X, shiftBitmap.Y + p.Y);
+
+            PanelHint.HideHint();
+            PanelHint.SetControl(this);
         }
 
         internal Point MousePosToCoord(Point p)
         {
             return new Point(shiftBitmap.X + p.X, shiftBitmap.Y + p.Y);
+        }
+
+        internal override bool PrepareHint()
+        {
+            if (Map != null)
+            {
+                switch (Map.PointsMap[pointMouse.Y, pointMouse.X].TypePoint)
+                {
+                    case TypePointMap.Undefined:
+                        PanelHint.AddSimpleHint("Область не определена");
+                        break;
+                    case TypePointMap.Border:
+                        PanelHint.AddSimpleHint("Граница");
+                        break;
+                    case TypePointMap.Region:
+                        PanelHint.AddStep2Header(Map.PointsMap[pointMouse.Y, pointMouse.X].Region.Name);
+                        PanelHint.AddStep3Type("Область");
+                        break;
+                    default:
+                        throw new Exception("Неизвестный тип точки");
+                }
+
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

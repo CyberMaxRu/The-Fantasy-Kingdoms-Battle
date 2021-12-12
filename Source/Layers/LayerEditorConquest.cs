@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnLoadMap_Click(object sender, EventArgs e)
         {
             descriptorMap = new DescriptorMap(Program.FolderResources + @"Icons\conq\Conquest");
-            mapArdania.Bitmap = descriptorMap.Bitmap;
+            mapArdania.Map = descriptorMap;
         }
 
         private void BtnSaveMap_Click(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnLoadPicture_Click(object sender, EventArgs e)
         {
             descriptorMap = new DescriptorMap(Utils.LoadBitmap(@"Conq\Ardania150_cut.png"));
-            mapArdania.Bitmap = descriptorMap.Bitmap;
+            mapArdania.Map = descriptorMap;
         }
 
         internal override void DrawBackground(Graphics g)
