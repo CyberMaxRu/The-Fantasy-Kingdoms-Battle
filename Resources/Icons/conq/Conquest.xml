@@ -3,6 +3,672 @@
   <Map>
     <Width>2568</Width>
     <Height>2400</Height>
-    <SizeFileMap>49305600</SizeFileMap>
+    <SizeFileMap>73958400</SizeFileMap>
   </Map>
+  <Regions>
+    <Region>
+      <ID>1</ID>
+      <Name>Регион #1</Name>
+    </Region>
+    <Region>
+      <ID>2</ID>
+      <Name>Регион #2</Name>
+    </Region>
+    <Region>
+      <ID>3</ID>
+      <Name>Регион #3</Name>
+    </Region>
+    <Region>
+      <ID>4</ID>
+      <Name>Регион #4</Name>
+    </Region>
+    <Region>
+      <ID>5</ID>
+      <Name>Регион #5</Name>
+    </Region>
+    <Region>
+      <ID>6</ID>
+      <Name>Регион #6</Name>
+    </Region>
+    <Region>
+      <ID>7</ID>
+      <Name>Регион #7</Name>
+    </Region>
+    <Region>
+      <ID>8</ID>
+      <Name>Регион #8</Name>
+    </Region>
+    <Region>
+      <ID>9</ID>
+      <Name>Регион #9</Name>
+    </Region>
+    <Region>
+      <ID>10</ID>
+      <Name>Регион #10</Name>
+    </Region>
+    <Region>
+      <ID>11</ID>
+      <Name>Регион #11</Name>
+    </Region>
+    <Region>
+      <ID>12</ID>
+      <Name>Регион #12</Name>
+    </Region>
+    <Region>
+      <ID>13</ID>
+      <Name>Регион #13</Name>
+    </Region>
+    <Region>
+      <ID>14</ID>
+      <Name>Регион #14</Name>
+    </Region>
+    <Region>
+      <ID>15</ID>
+      <Name>Регион #15</Name>
+    </Region>
+    <Region>
+      <ID>16</ID>
+      <Name>Регион #16</Name>
+    </Region>
+    <Region>
+      <ID>17</ID>
+      <Name>Регион #17</Name>
+    </Region>
+    <Region>
+      <ID>18</ID>
+      <Name>Регион #18</Name>
+    </Region>
+    <Region>
+      <ID>19</ID>
+      <Name>Регион #19</Name>
+    </Region>
+    <Region>
+      <ID>20</ID>
+      <Name>Регион #20</Name>
+    </Region>
+    <Region>
+      <ID>21</ID>
+      <Name>Регион #21</Name>
+    </Region>
+    <Region>
+      <ID>22</ID>
+      <Name>Регион #22</Name>
+    </Region>
+    <Region>
+      <ID>23</ID>
+      <Name>Регион #23</Name>
+    </Region>
+    <Region>
+      <ID>24</ID>
+      <Name>Регион #24</Name>
+    </Region>
+    <Region>
+      <ID>25</ID>
+      <Name>Регион #25</Name>
+    </Region>
+    <Region>
+      <ID>26</ID>
+      <Name>Регион #26</Name>
+    </Region>
+    <Region>
+      <ID>27</ID>
+      <Name>Регион #27</Name>
+    </Region>
+    <Region>
+      <ID>28</ID>
+      <Name>Регион #28</Name>
+    </Region>
+    <Region>
+      <ID>29</ID>
+      <Name>Регион #29</Name>
+    </Region>
+    <Region>
+      <ID>30</ID>
+      <Name>Регион #30</Name>
+    </Region>
+    <Region>
+      <ID>31</ID>
+      <Name>Регион #31</Name>
+    </Region>
+    <Region>
+      <ID>32</ID>
+      <Name>Регион #32</Name>
+    </Region>
+    <Region>
+      <ID>33</ID>
+      <Name>Регион #33</Name>
+    </Region>
+    <Region>
+      <ID>34</ID>
+      <Name>Регион #34</Name>
+    </Region>
+    <Region>
+      <ID>35</ID>
+      <Name>Регион #35</Name>
+    </Region>
+    <Region>
+      <ID>36</ID>
+      <Name>Регион #36</Name>
+    </Region>
+    <Region>
+      <ID>37</ID>
+      <Name>Регион #37</Name>
+    </Region>
+    <Region>
+      <ID>38</ID>
+      <Name>Регион #38</Name>
+    </Region>
+    <Region>
+      <ID>39</ID>
+      <Name>Регион #39</Name>
+    </Region>
+    <Region>
+      <ID>40</ID>
+      <Name>Регион #40</Name>
+    </Region>
+    <Region>
+      <ID>41</ID>
+      <Name>Регион #41</Name>
+    </Region>
+    <Region>
+      <ID>42</ID>
+      <Name>Регион #42</Name>
+    </Region>
+    <Region>
+      <ID>43</ID>
+      <Name>Регион #43</Name>
+    </Region>
+    <Region>
+      <ID>44</ID>
+      <Name>Регион #44</Name>
+    </Region>
+    <Region>
+      <ID>45</ID>
+      <Name>Регион #45</Name>
+    </Region>
+    <Region>
+      <ID>46</ID>
+      <Name>Регион #46</Name>
+    </Region>
+    <Region>
+      <ID>47</ID>
+      <Name>Регион #47</Name>
+    </Region>
+    <Region>
+      <ID>48</ID>
+      <Name>Регион #48</Name>
+    </Region>
+    <Region>
+      <ID>49</ID>
+      <Name>Регион #49</Name>
+    </Region>
+    <Region>
+      <ID>50</ID>
+      <Name>Регион #50</Name>
+    </Region>
+    <Region>
+      <ID>51</ID>
+      <Name>Регион #51</Name>
+    </Region>
+    <Region>
+      <ID>52</ID>
+      <Name>Регион #52</Name>
+    </Region>
+    <Region>
+      <ID>53</ID>
+      <Name>Регион #53</Name>
+    </Region>
+    <Region>
+      <ID>54</ID>
+      <Name>Регион #54</Name>
+    </Region>
+    <Region>
+      <ID>55</ID>
+      <Name>Регион #55</Name>
+    </Region>
+    <Region>
+      <ID>56</ID>
+      <Name>Регион #56</Name>
+    </Region>
+    <Region>
+      <ID>57</ID>
+      <Name>Регион #57</Name>
+    </Region>
+    <Region>
+      <ID>58</ID>
+      <Name>Регион #58</Name>
+    </Region>
+    <Region>
+      <ID>59</ID>
+      <Name>Регион #59</Name>
+    </Region>
+    <Region>
+      <ID>60</ID>
+      <Name>Регион #60</Name>
+    </Region>
+    <Region>
+      <ID>61</ID>
+      <Name>Регион #61</Name>
+    </Region>
+    <Region>
+      <ID>62</ID>
+      <Name>Регион #62</Name>
+    </Region>
+    <Region>
+      <ID>63</ID>
+      <Name>Регион #63</Name>
+    </Region>
+    <Region>
+      <ID>64</ID>
+      <Name>Регион #64</Name>
+    </Region>
+    <Region>
+      <ID>65</ID>
+      <Name>Регион #65</Name>
+    </Region>
+    <Region>
+      <ID>66</ID>
+      <Name>Регион #66</Name>
+    </Region>
+    <Region>
+      <ID>67</ID>
+      <Name>Регион #67</Name>
+    </Region>
+    <Region>
+      <ID>68</ID>
+      <Name>Регион #68</Name>
+    </Region>
+    <Region>
+      <ID>69</ID>
+      <Name>Регион #69</Name>
+    </Region>
+    <Region>
+      <ID>70</ID>
+      <Name>Регион #70</Name>
+    </Region>
+    <Region>
+      <ID>71</ID>
+      <Name>Регион #71</Name>
+    </Region>
+    <Region>
+      <ID>72</ID>
+      <Name>Регион #72</Name>
+    </Region>
+    <Region>
+      <ID>73</ID>
+      <Name>Регион #73</Name>
+    </Region>
+    <Region>
+      <ID>74</ID>
+      <Name>Регион #74</Name>
+    </Region>
+    <Region>
+      <ID>75</ID>
+      <Name>Регион #75</Name>
+    </Region>
+    <Region>
+      <ID>76</ID>
+      <Name>Регион #76</Name>
+    </Region>
+    <Region>
+      <ID>77</ID>
+      <Name>Регион #77</Name>
+    </Region>
+    <Region>
+      <ID>78</ID>
+      <Name>Регион #78</Name>
+    </Region>
+    <Region>
+      <ID>79</ID>
+      <Name>Регион #79</Name>
+    </Region>
+    <Region>
+      <ID>80</ID>
+      <Name>Регион #80</Name>
+    </Region>
+    <Region>
+      <ID>81</ID>
+      <Name>Регион #81</Name>
+    </Region>
+    <Region>
+      <ID>82</ID>
+      <Name>Регион #82</Name>
+    </Region>
+    <Region>
+      <ID>83</ID>
+      <Name>Регион #83</Name>
+    </Region>
+    <Region>
+      <ID>84</ID>
+      <Name>Регион #84</Name>
+    </Region>
+    <Region>
+      <ID>85</ID>
+      <Name>Регион #85</Name>
+    </Region>
+    <Region>
+      <ID>86</ID>
+      <Name>Регион #86</Name>
+    </Region>
+    <Region>
+      <ID>87</ID>
+      <Name>Регион #87</Name>
+    </Region>
+    <Region>
+      <ID>88</ID>
+      <Name>Регион #88</Name>
+    </Region>
+    <Region>
+      <ID>89</ID>
+      <Name>Регион #89</Name>
+    </Region>
+    <Region>
+      <ID>90</ID>
+      <Name>Регион #90</Name>
+    </Region>
+    <Region>
+      <ID>91</ID>
+      <Name>Регион #91</Name>
+    </Region>
+    <Region>
+      <ID>92</ID>
+      <Name>Регион #92</Name>
+    </Region>
+    <Region>
+      <ID>93</ID>
+      <Name>Регион #93</Name>
+    </Region>
+    <Region>
+      <ID>94</ID>
+      <Name>Регион #94</Name>
+    </Region>
+    <Region>
+      <ID>95</ID>
+      <Name>Регион #95</Name>
+    </Region>
+    <Region>
+      <ID>96</ID>
+      <Name>Регион #96</Name>
+    </Region>
+    <Region>
+      <ID>97</ID>
+      <Name>Регион #97</Name>
+    </Region>
+    <Region>
+      <ID>98</ID>
+      <Name>Регион #98</Name>
+    </Region>
+    <Region>
+      <ID>99</ID>
+      <Name>Регион #99</Name>
+    </Region>
+    <Region>
+      <ID>100</ID>
+      <Name>Регион #100</Name>
+    </Region>
+    <Region>
+      <ID>101</ID>
+      <Name>Регион #101</Name>
+    </Region>
+    <Region>
+      <ID>102</ID>
+      <Name>Регион #102</Name>
+    </Region>
+    <Region>
+      <ID>103</ID>
+      <Name>Регион #103</Name>
+    </Region>
+    <Region>
+      <ID>104</ID>
+      <Name>Регион #104</Name>
+    </Region>
+    <Region>
+      <ID>105</ID>
+      <Name>Регион #105</Name>
+    </Region>
+    <Region>
+      <ID>106</ID>
+      <Name>Регион #106</Name>
+    </Region>
+    <Region>
+      <ID>107</ID>
+      <Name>Регион #107</Name>
+    </Region>
+    <Region>
+      <ID>108</ID>
+      <Name>Регион #108</Name>
+    </Region>
+    <Region>
+      <ID>109</ID>
+      <Name>Регион #109</Name>
+    </Region>
+    <Region>
+      <ID>110</ID>
+      <Name>Регион #110</Name>
+    </Region>
+    <Region>
+      <ID>111</ID>
+      <Name>Регион #111</Name>
+    </Region>
+    <Region>
+      <ID>112</ID>
+      <Name>Регион #112</Name>
+    </Region>
+    <Region>
+      <ID>113</ID>
+      <Name>Регион #113</Name>
+    </Region>
+    <Region>
+      <ID>114</ID>
+      <Name>Регион #114</Name>
+    </Region>
+    <Region>
+      <ID>115</ID>
+      <Name>Регион #115</Name>
+    </Region>
+    <Region>
+      <ID>116</ID>
+      <Name>Регион #116</Name>
+    </Region>
+    <Region>
+      <ID>117</ID>
+      <Name>Регион #117</Name>
+    </Region>
+    <Region>
+      <ID>118</ID>
+      <Name>Регион #118</Name>
+    </Region>
+    <Region>
+      <ID>119</ID>
+      <Name>Регион #119</Name>
+    </Region>
+    <Region>
+      <ID>120</ID>
+      <Name>Регион #120</Name>
+    </Region>
+    <Region>
+      <ID>121</ID>
+      <Name>Регион #121</Name>
+    </Region>
+    <Region>
+      <ID>122</ID>
+      <Name>Регион #122</Name>
+    </Region>
+    <Region>
+      <ID>123</ID>
+      <Name>Регион #123</Name>
+    </Region>
+    <Region>
+      <ID>124</ID>
+      <Name>Регион #124</Name>
+    </Region>
+    <Region>
+      <ID>125</ID>
+      <Name>Регион #125</Name>
+    </Region>
+    <Region>
+      <ID>126</ID>
+      <Name>Регион #126</Name>
+    </Region>
+    <Region>
+      <ID>127</ID>
+      <Name>Регион #127</Name>
+    </Region>
+    <Region>
+      <ID>128</ID>
+      <Name>Регион #128</Name>
+    </Region>
+    <Region>
+      <ID>129</ID>
+      <Name>Регион #129</Name>
+    </Region>
+    <Region>
+      <ID>130</ID>
+      <Name>Регион #130</Name>
+    </Region>
+    <Region>
+      <ID>131</ID>
+      <Name>Регион #131</Name>
+    </Region>
+    <Region>
+      <ID>132</ID>
+      <Name>Регион #132</Name>
+    </Region>
+    <Region>
+      <ID>133</ID>
+      <Name>Регион #133</Name>
+    </Region>
+    <Region>
+      <ID>134</ID>
+      <Name>Регион #134</Name>
+    </Region>
+    <Region>
+      <ID>135</ID>
+      <Name>Регион #135</Name>
+    </Region>
+    <Region>
+      <ID>136</ID>
+      <Name>Регион #136</Name>
+    </Region>
+    <Region>
+      <ID>137</ID>
+      <Name>Регион #137</Name>
+    </Region>
+    <Region>
+      <ID>138</ID>
+      <Name>Регион #138</Name>
+    </Region>
+    <Region>
+      <ID>139</ID>
+      <Name>Регион #139</Name>
+    </Region>
+    <Region>
+      <ID>140</ID>
+      <Name>Регион #140</Name>
+    </Region>
+    <Region>
+      <ID>141</ID>
+      <Name>Регион #141</Name>
+    </Region>
+    <Region>
+      <ID>142</ID>
+      <Name>Регион #142</Name>
+    </Region>
+    <Region>
+      <ID>143</ID>
+      <Name>Регион #143</Name>
+    </Region>
+    <Region>
+      <ID>144</ID>
+      <Name>Регион #144</Name>
+    </Region>
+    <Region>
+      <ID>145</ID>
+      <Name>Регион #145</Name>
+    </Region>
+    <Region>
+      <ID>146</ID>
+      <Name>Регион #146</Name>
+    </Region>
+    <Region>
+      <ID>147</ID>
+      <Name>Регион #147</Name>
+    </Region>
+    <Region>
+      <ID>148</ID>
+      <Name>Регион #148</Name>
+    </Region>
+    <Region>
+      <ID>149</ID>
+      <Name>Регион #149</Name>
+    </Region>
+    <Region>
+      <ID>150</ID>
+      <Name>Регион #150</Name>
+    </Region>
+    <Region>
+      <ID>151</ID>
+      <Name>Регион #151</Name>
+    </Region>
+    <Region>
+      <ID>152</ID>
+      <Name>Регион #152</Name>
+    </Region>
+    <Region>
+      <ID>153</ID>
+      <Name>Регион #153</Name>
+    </Region>
+    <Region>
+      <ID>154</ID>
+      <Name>Регион #154</Name>
+    </Region>
+    <Region>
+      <ID>155</ID>
+      <Name>Регион #155</Name>
+    </Region>
+    <Region>
+      <ID>156</ID>
+      <Name>Регион #156</Name>
+    </Region>
+    <Region>
+      <ID>157</ID>
+      <Name>Регион #157</Name>
+    </Region>
+    <Region>
+      <ID>158</ID>
+      <Name>Регион #158</Name>
+    </Region>
+    <Region>
+      <ID>159</ID>
+      <Name>Регион #159</Name>
+    </Region>
+    <Region>
+      <ID>160</ID>
+      <Name>Регион #160</Name>
+    </Region>
+    <Region>
+      <ID>161</ID>
+      <Name>Регион #161</Name>
+    </Region>
+    <Region>
+      <ID>162</ID>
+      <Name>Регион #162</Name>
+    </Region>
+    <Region>
+      <ID>163</ID>
+      <Name>Регион #163</Name>
+    </Region>
+    <Region>
+      <ID>164</ID>
+      <Name>Регион #164</Name>
+    </Region>
+    <Region>
+      <ID>165</ID>
+      <Name>Регион #165</Name>
+    </Region>
+    <Region>
+      <ID>166</ID>
+      <Name>Регион #166</Name>
+    </Region>
+  </Regions>
 </Conquest>

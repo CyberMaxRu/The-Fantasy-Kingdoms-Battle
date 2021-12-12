@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Xml;    
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -16,6 +17,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             ID = id++;
             Name = "Регион #" + ID.ToString();
+        }
+
+        public Region(XmlNode n)
+        {
+            ID = XmlUtils.GetIntegerNotNull(n, "ID");
+            Name = XmlUtils.GetStringNotNull(n, "Name");
         }
 
         internal int ID { get; }

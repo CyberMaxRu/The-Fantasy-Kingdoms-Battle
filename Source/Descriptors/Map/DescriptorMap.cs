@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
-                    PointsMap[y, x] = new DescriptorPointMap(x, y, Bitmap.GetPixel(x, y), TypePointMap.Undefined);
+                    PointsMap[y, x] = new DescriptorPointMap(x, y, Bitmap.GetPixel(x, y), TypePointMap.Undefined, null);
         }
 
         public DescriptorMap(string filename)
@@ -32,6 +32,15 @@ namespace Fantasy_Kingdoms_Battle
             Width = XmlUtils.GetIntegerNotNull(xmldoc, "Conquest/Map/Width");
             Height = XmlUtils.GetIntegerNotNull(xmldoc, "Conquest/Map/Height");
             int size = XmlUtils.GetIntegerNotNull(xmldoc, "Conquest/Map/SizeFileMap");
+
+            XmlNode ne = xmldoc.SelectSingleNode("Conquest/Regions");
+            if (ne != null)
+            {
+                foreach (XmlNode l in ne.SelectNodes("Region"))
+                {
+                    Regions.Add(new Region(l));
+                }
+            }
 
             FileStream fs = new FileStream(filename + ".map", FileMode.Open);
 
@@ -46,10 +55,10 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
                 {
-                    shift = (y * Width + x) * sizeof(int) * 2;
+                    shift = (y * Width + x) * sizeof(int) * 3;
                     Color color = Color.FromArgb(GetInt(shift));
-                    int tt = GetInt(shift + sizeof(int));
-                    PointsMap[y, x] = new DescriptorPointMap(x, y, color, (TypePointMap)tt);
+                    int idx = GetInt(shift + (sizeof(int) * 2));
+                    PointsMap[y, x] = new DescriptorPointMap(x, y, color, (TypePointMap)GetInt(shift + sizeof(int)), idx == -1 ? null : Regions[idx]);
                     Bitmap.SetPixel(x, y, color);
                 }
 
@@ -69,6 +78,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap Bitmap { get; }
         internal Bitmap MiniMap { get; private set; }
         internal int ScaleMiniMap { get; } = 12;
+        internal List<Region> Regions = new List<Region>();
 
         internal void SearchBorder(Point p)
         {
@@ -152,18 +162,19 @@ namespace Fantasy_Kingdoms_Battle
 
             FileStream fs = new FileStream(filename + ".map", FileMode.Create);
 
-            byte[] arr = new byte[Width * Height * sizeof(int) * 2];
+            byte[] arr = new byte[Width * Height * sizeof(int) * 3];
 
             int shift;
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
                 {
-                    shift = (y * Width + x) * sizeof(int) * 2;
+                    shift = (y * Width + x) * sizeof(int) * 3;
 
                     //WriteInt(shift, x);
                     //WriteInt(shift, y);
                     WriteInt(shift, PointsMap[y, x].Color.ToArgb());
                     WriteInt(shift + sizeof(int), (int)PointsMap[y, x].TypePoint);
+                    WriteInt(shift + sizeof(int) * 2, PointsMap[y, x].Region != null ? Regions.IndexOf(PointsMap[y, x].Region) : -1);
                 }
 
             fs.Write(arr, 0, arr.Length);
@@ -176,7 +187,21 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteElementString("SizeFileMap", arr.Length.ToString());
             textWriter.WriteEndElement();
 
-            textWriter.WriteEndElement();
+            //
+            textWriter.WriteStartElement("Regions");
+            foreach (Region r in Regions)
+            {
+                textWriter.WriteStartElement("Region");
+
+                textWriter.WriteElementString("ID", r.ID.ToString());
+                textWriter.WriteElementString("Name", r.Name);
+
+                textWriter.WriteEndElement();// Region
+            }
+            textWriter.WriteEndElement();// Regions
+
+            //
+            textWriter.WriteEndElement();// Conquest
             textWriter.Close();
             textWriter.Dispose();
 
@@ -221,6 +246,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         PointsMap[y, x].TypePoint = TypePointMap.Region;
                         PointsMap[y, x].Region = new Region();
+                        Regions.Add(PointsMap[y, x].Region);
                         TreatRegion(PointsMap[y, x]);
                     }
                 }
