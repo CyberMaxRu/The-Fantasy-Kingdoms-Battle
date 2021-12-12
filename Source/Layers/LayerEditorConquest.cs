@@ -10,6 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class LayerEditorConquest : LayerCustom
     {
         private Bitmap bmpBackground;
+        private VCBitmap bmpMinimap;
 
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageMap;
@@ -27,16 +28,23 @@ namespace Fantasy_Kingdoms_Battle
             pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Карта Ардании", null);
             pageMap.Hint = "Итоги хода";
 
-            pageControl.Width = 800;
-            pageControl.Height = 600;
-            pageControl.ArrangeControls();
-
-            mapArdania = new VCMap(pageMap.Page, 0, 0, "Ardania150.png");
+            mapArdania = new VCMap(pageMap.Page, 0, 0, "Ardania150_cut.png");
+            mapArdania.Width = 800;
+            mapArdania.Height = 600;
             //mapArdania.Click += MapArdania_Click;
-            mapArdania.Width = pageMap.Page.Width;
-            mapArdania.Height = pageMap.Page.Height;
+
+            pageControl.ApplyMaxSize();
+            pageControl.ArrangeControls();
+            pageControl.ActivatePage(pageMap);
 
             descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania);
+
+            bmpMinimap = new VCBitmap(this, 0, 0, Utils.LoadBitmap("Map.png"));
+            bmpMinimap.ShiftY = Height - bmpMinimap.Height;
+
+            pageControl.ShiftX = bmpMinimap.NextLeft();
+
+            ArrangeControls();
         }
 
         internal override void DrawBackground(Graphics g)

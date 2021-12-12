@@ -97,7 +97,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 Program.formMain.SetNeedRedrawFrame();
 
-                PageChanged.Invoke(this, new EventArgs());
+                PageChanged?.Invoke(this, new EventArgs());
             }
         }
     }
