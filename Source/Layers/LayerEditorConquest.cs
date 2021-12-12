@@ -40,15 +40,13 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.ArrangeControls();
             pageControl.ActivatePage(pageMap);
 
-            descriptorMap = new DescriptorMap(mapArdania.Bitmap);
-
             bmpMinimap = new VCBitmap(this, 0, 0, Utils.LoadBitmap("Map.png"));
             bmpMinimap.ShiftY = Height - bmpMinimap.Height;
 
             pageControl.ShiftX = bmpMinimap.NextLeft();
 
-            btnLoadPicture = new VCButton(this, 0, FormMain.Config.GridSize, "Загрузить картинку");
-            btnLoadPicture.Width = 80;
+            btnLoadPicture = new VCButton(this, Width - 248, FormMain.Config.GridSize, "Загрузить картинку");
+            btnLoadPicture.Width = 240;
             btnLoadPicture.Click += BtnLoadPicture_Click;
 
             ArrangeControls();
@@ -56,8 +54,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnLoadPicture_Click(object sender, EventArgs e)
         {
-            bmpMap = Utils.LoadBitmap(@"Icons\Conq\Ardania150_cut.png");
+            bmpMap = Utils.LoadBitmap(@"Conq\Ardania150_cut.png");
             mapArdania.Bitmap = bmpMap;
+
+            descriptorMap = new DescriptorMap(mapArdania.Bitmap);
         }
 
         internal override void DrawBackground(Graphics g)
