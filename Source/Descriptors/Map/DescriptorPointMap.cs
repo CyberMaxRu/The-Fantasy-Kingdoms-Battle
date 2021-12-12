@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypePointMap { Border, Province, Sea, Other, Undefined };
+    internal enum TypePointMap { Border, Region, Undefined };
 
     internal struct DescriptorPointMap
     {
@@ -18,12 +18,14 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             Color = color;
             TypePoint = typePoint;
+            Region = null;
         }
 
         public int X;
         public int Y;
         public TypePointMap TypePoint;
         public Color Color;
+        public Region Region;
 
         internal void WriteToXml(XmlTextWriter writer)
         {

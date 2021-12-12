@@ -13,7 +13,5 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
-
-
     }
 }

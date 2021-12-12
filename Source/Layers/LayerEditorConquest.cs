@@ -85,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnFindRegions_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            descriptorMap.DetermineRegions();
         }
 
         private void BtnSetBorder_Click(object sender, EventArgs e)

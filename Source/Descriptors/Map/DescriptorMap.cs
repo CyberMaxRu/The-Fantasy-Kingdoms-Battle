@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
-                    PointsMap[y, x] = new DescriptorPointMap(x, y, Bitmap.GetPixel(x, y), TypePointMap.Undefined);                    
+                    PointsMap[y, x] = new DescriptorPointMap(x, y, Bitmap.GetPixel(x, y), TypePointMap.Undefined);
         }
 
         public DescriptorMap(string filename)
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = XmlUtils.GetIntegerNotNull(xmldoc, "Conquest/Map/Width");
             Height = XmlUtils.GetIntegerNotNull(xmldoc, "Conquest/Map/Height");
-            int size = XmlUtils.GetIntegerNotNull(xmldoc, "Conquest/Map/SizeFileMap"); 
+            int size = XmlUtils.GetIntegerNotNull(xmldoc, "Conquest/Map/SizeFileMap");
 
             FileStream fs = new FileStream(filename + ".map", FileMode.Open);
 
@@ -48,9 +48,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     shift = (y * Width + x) * sizeof(int) * 2;
                     Color color = Color.FromArgb(GetInt(shift));
-                    PointsMap[y, x] = new DescriptorPointMap(x, y, color, (TypePointMap)GetInt(shift + sizeof(int)));
+                    int tt = GetInt(shift + sizeof(int));
+                    PointsMap[y, x] = new DescriptorPointMap(x, y, color, (TypePointMap)tt);
                     Bitmap.SetPixel(x, y, color);
                 }
+
+            fs.Close();
 
             MakeMiniMap();
 
@@ -121,7 +124,6 @@ namespace Fantasy_Kingdoms_Battle
                     AddNeighbours(ix, iy + 1);
                 if ((ix < Width - 1) && (iy < Height - 1))
                     AddNeighbours(ix + 1, iy + 1);
-
             }
 
             void AddNeighbours(int ix, int iy)
@@ -208,6 +210,75 @@ namespace Fantasy_Kingdoms_Battle
 
                 return Color.White;
             }
+        }
+
+        internal void DetermineRegions()
+        {
+            for (int y = 0; y < Height; y++)
+                for (int x = 0; x < Width; x++)
+                {
+                    if (PointsMap[y, x].TypePoint == TypePointMap.Undefined)
+                    {
+                        PointsMap[y, x].TypePoint = TypePointMap.Region;
+                        PointsMap[y, x].Region = new Region();
+                        TreatRegion(PointsMap[y, x]);
+                    }
+                }
+
+            void TreatRegion(DescriptorPointMap d)
+            {
+                List<Point> points = new List<Point>();
+                List<Point> points2 = new List<Point>();
+                TreatPoint(d.X, d.Y);
+                points.AddRange(points2);
+                points2.Clear();
+
+                for (; ; )
+                {
+                    foreach (Point p in points)
+                    {
+                        TreatPoint(p.X, p.Y);
+                    }
+
+                    if (points2.Count == 0)
+                        break;
+
+                    points.Clear();
+                    points.AddRange(points2);
+                    points2.Clear();
+                }
+
+                void TreatPoint(int ix, int iy)
+                {
+                    foreach (Point p in GetNeighbours(ix, iy))
+                        if (PointsMap[p.Y, p.X].TypePoint == TypePointMap.Undefined)
+                        {
+                            PointsMap[p.Y, p.X].TypePoint = TypePointMap.Region;
+                            PointsMap[p.Y, p.X].Region = d.Region;
+                            points2.Add(p);
+                        }
+                }
+            }
+        }
+
+        private IEnumerable<Point> GetNeighbours(int x, int y)
+        {
+            if ((x > 0) && (y > 0))
+                yield return new Point(x - 1, y - 1);
+            if (y > 0)
+                yield return new Point(x, y - 1);
+            if ((x < Width - 1) && (y > 0))
+                yield return new Point(x + 1, y - 1);
+            if (x > 0)
+                yield return new Point(x - 1, y);
+            if (x < Width - 1)
+                yield return new Point(x + 1, y);
+            if ((x > 0) && (y < Height - 1))
+                yield return new Point(x - 1, y + 1);
+            if (y < Height - 1)
+                yield return new Point(x, y + 1);
+            if ((x < Width - 1) && (y < Height - 1))
+                yield return new Point(x + 1, y + 1);
         }
     }
 }
