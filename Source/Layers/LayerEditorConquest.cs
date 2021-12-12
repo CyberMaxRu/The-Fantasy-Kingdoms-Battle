@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorMap descriptorMap;
 
         VCButton btnLoadPicture;
+        VCButton btnSetBorder;
 
         public LayerEditorConquest() : base()
         {
@@ -34,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
             mapArdania = new VCMap(pageMap.Page, 0, 0);
             mapArdania.Width = 800;
             mapArdania.Height = 600;
-            //mapArdania.Click += MapArdania_Click;
+            mapArdania.Click += MapArdania_Click;
 
             pageControl.ApplyMaxSize();
             pageControl.ArrangeControls();
@@ -49,7 +50,25 @@ namespace Fantasy_Kingdoms_Battle
             btnLoadPicture.Width = 240;
             btnLoadPicture.Click += BtnLoadPicture_Click;
 
+            btnSetBorder = new VCButton(this, Width - 248, btnLoadPicture.NextTop(), "Указать границу");
+            btnSetBorder.Width = 240;
+            btnSetBorder.Click += BtnSetBorder_Click;
+
             ArrangeControls();
+        }
+
+        private void BtnSetBorder_Click(object sender, EventArgs e)
+        {
+            btnSetBorder.ManualSelected = !btnSetBorder.ManualSelected;
+        }
+
+        private void MapArdania_Click(object sender, EventArgs e)
+        {
+            if (btnSetBorder.ManualSelected)
+            {
+                Point p = mapArdania.MousePosToCoord(Program.formMain.MousePosToControl(mapArdania));
+                descriptorMap.SearchBorder(p);
+            }
         }
 
         private void BtnLoadPicture_Click(object sender, EventArgs e)
