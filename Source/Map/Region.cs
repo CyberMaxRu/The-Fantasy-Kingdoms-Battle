@@ -28,5 +28,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ID { get; }
         internal string Name { get; }
         internal Point Center { get; set; }
+        internal List<Point> Points { get; } = new List<Point>();
     }
 }

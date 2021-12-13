@@ -60,6 +60,8 @@ namespace Fantasy_Kingdoms_Battle
                     int idx = GetInt(shift + (sizeof(int) * 2));
                     PointsMap[y, x] = new DescriptorPointMap(x, y, color, (TypePointMap)GetInt(shift + sizeof(int)), idx == -1 ? null : Regions[idx]);
                     Bitmap.SetPixel(x, y, color);
+                    if (PointsMap[y, x].Region != null)
+                        PointsMap[y, x].Region.Points.Add(new Point(x, y));
                 }
 
             fs.Close();
@@ -281,6 +283,7 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             PointsMap[p.Y, p.X].TypePoint = TypePointMap.Region;
                             PointsMap[p.Y, p.X].Region = d.Region;
+                            d.Region.Points.Add(p);
                             points2.Add(p);
                         }
                 }
