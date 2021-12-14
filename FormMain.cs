@@ -321,7 +321,7 @@ namespace Fantasy_Kingdoms_Battle
             ilParameters = new BitmapList(LoadBitmap("Parameters.png"), new Size(24, 24), true, false);
             ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), new Size(24, 24), true, false);
             ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), new Size(48, 48), true, false);
-            blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), new Size(24, 24), false, false);
+            blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), new Size(24, 24), true, true);
 
             //MakeAlpha();
 

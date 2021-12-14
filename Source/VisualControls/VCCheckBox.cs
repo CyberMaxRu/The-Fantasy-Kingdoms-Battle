@@ -21,6 +21,8 @@ namespace Fantasy_Kingdoms_Battle
         public VCCheckBox(VisualControl parent, int shiftX, int shiftY, string text) : base(parent, shiftX, shiftY, Program.formMain.blCheckBox, 0)
         {
             HighlightUnderMouse = true;
+            PlaySoundOnEnter = true;
+            PlaySoundOnClick = true;
 
             label = new VCLabel(this, BitmapList.Size.Width + FormMain.Config.GridSize, 0, Program.formMain.fontParagraph, Color.PaleTurquoise, 24, text);
             label.StringFormat.Alignment = StringAlignment.Near;
@@ -38,28 +40,11 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
-        internal override void MouseDown()
-        {
-            base.MouseDown();
-
-            Program.formMain.NeedRedrawFrame();
-        }
-
         internal override void MouseUp(Point p)
         {
             base.MouseUp(p);
 
             Checked = !Checked;
-            Program.formMain.PlayPushButton();
-            Program.formMain.NeedRedrawFrame();
-        }
-
-        internal override void MouseEnter(bool leftButtonDown)
-        {
-            base.MouseEnter(leftButtonDown);
-
-            Program.formMain.PlaySelectButton();
-            Program.formMain.NeedRedrawFrame();
         }
     }
 }
