@@ -10,16 +10,15 @@ namespace Fantasy_Kingdoms_Battle
     internal class VCIconAndDigitValue : VCLabel
     {
         public VCIconAndDigitValue(VisualControl parent, int shiftX, int shiftY, int width, int imageIndex)
-            : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 24, "")
+            : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 24, "", Program.formMain.ilGui16)
         {
-            BitmapList = Program.formMain.ilGui16;
             StringFormat.Alignment = StringAlignment.Near;
             ShiftImage = new Point(4, 4);
             IsActiveControl = true;
             TopMargin = 2;
             LeftMargin = 0;
             RightMargin = 5;
-            ImageIndex = imageIndex;
+            Image.ImageIndex = imageIndex;
             StringFormat.Alignment = StringAlignment.Far;
             Width = width;
         }

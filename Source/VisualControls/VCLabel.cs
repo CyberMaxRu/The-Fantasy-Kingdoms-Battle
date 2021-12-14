@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         private string preparedText;
         private Color preparedColor;
 
-        public VCLabel(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int height, string text) : base(parent, shiftX, shiftY)
+        public VCLabel(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int height, string text, BitmapList bitmapList = null) : base(parent, shiftX, shiftY)
         {
             Height = height;
             Text = text;
@@ -32,20 +32,25 @@ namespace Fantasy_Kingdoms_Battle
             // Рисуем выше на два пиксела и увеличиваем высоту, так как у текст сверху пустота, а снизу происходит обрезка,
             // хотя по высоте все вмещается
             TopMargin = 0;
+
+            if (bitmapList != null)
+            {
+                Image = new VCImage(this, 0, 0, bitmapList, -1);
+                Image.IsActiveControl = false;
+            }
         }
 
         internal string Text { get; set; }
         internal M2Font Font { get; set; }
         internal Color Color { get; set; }
 
-        internal BitmapList BitmapList { get; set; }
-        internal int ImageIndex { get; set; } = -1;
-        internal bool ImageIsEnabled { get; set; } = true;
+        internal VCImage Image { get; }
+        internal Point ShiftImage { get; set; } = new Point(0, 0);
+
         internal int LeftMargin { get; set; }
         internal int RightMargin { get; set; }
         internal int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
-        internal Point ShiftImage { get; set; } = new Point(0, 0);
         internal bool TruncLongText { get; set; } = false;
         internal bool TextTrunced { get; private set; } = false;
 
@@ -56,14 +61,16 @@ namespace Fantasy_Kingdoms_Battle
                 return;
             Debug.Assert(Width > 0);
 
+            if (Image != null)
+            {
+                Image.ShiftX = ShiftImage.X;
+                Image.ShiftY = ShiftImage.Y;
+                ArrangeControl(Image);
+            }
+
             if (Visible || ManualDraw)
             {
                 TextTrunced = false;
-
-                if ((BitmapList != null) && (ImageIndex >= 0))
-                {
-                    BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, false, Left + ShiftImage.X, Top + ShiftImage.Y);
-                }
 
                 if (Text.Length > 0)
                 {
@@ -155,8 +162,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ArrangeControls();
 
-            if ((BitmapList != null) && (ImageIndex >= 0))
-                LeftMargin = BitmapList.Size.Width + FormMain.Config.GridSize;
+            if ((Image != null) && (Image.ImageIndex >= 0))
+                LeftMargin = Image.BitmapList.Size.Width + FormMain.Config.GridSize;
         }
 
         internal void SetWidthByText()

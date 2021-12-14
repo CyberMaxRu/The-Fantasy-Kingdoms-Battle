@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            ImageIndex = property.Property.ImageIndex;
+            Image.ImageIndex = property.Property.ImageIndex;
 
             base.Draw(g);
         }

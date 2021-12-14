@@ -29,7 +29,17 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             if (Map?.Bitmap != null)
+            {
                 g.DrawImage(Map.Bitmap, Left, Top, windowDraw, GraphicsUnit.Pixel);
+
+                foreach (Region r in Map.Regions)
+                {
+                    if (windowDraw.Contains(r.Center))
+                    {
+                        //r.LabelNameRegion.ShiftX
+                    }
+                }
+            }
         }
 
         private void UpdateWindow()

@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            lvGold.ImageIndex = FormMain.GUI_16_PURSE;
+            lvGold.Image.ImageIndex = FormMain.GUI_16_PURSE;
             lvGold.ShowHint += LvGold_ShowHint;
 
             return;

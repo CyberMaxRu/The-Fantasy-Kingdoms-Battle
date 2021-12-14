@@ -100,15 +100,15 @@ namespace Fantasy_Kingdoms_Battle
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
             lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome, false);
-            lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
+            lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.Width = widthControl;
 
             lblGreatnessAdd = new VCLabelValue(this, FormMain.Config.GridSize, lblIncome.NextTop(), FormMain.Config.HintIncome, false);
-            lblGreatnessAdd.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblGreatnessAdd.Image.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatnessAdd.Width = widthControl;
 
             lblBuildersPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessAdd.NextTop(), FormMain.Config.HintIncome, false);
-            lblBuildersPerDay.ImageIndex = FormMain.GUI_16_BUILDER;
+            lblBuildersPerDay.Image.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuildersPerDay.Width = widthControl;
 
             lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop());
@@ -119,7 +119,7 @@ namespace Fantasy_Kingdoms_Battle
             lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
 
             lblBuilders = new VCLabelValue(this, FormMain.Config.GridSize, lblTextForRequirement.NextTop(), FormMain.Config.HintIncome, false);
-            lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
+            lblBuilders.Image.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuilders.Width = widthControl;
 
             listProperties = new List<VCLabelValue>();
@@ -131,15 +131,15 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), Color.White, false);
-            lblInterest.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
+            lblInterest.Image.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
             lblInterest.Width = widthControl;
 
             lblDaysBuilding = new VCLabelValue(this, FormMain.Config.GridSize, lblInterest.NextTop(), FormMain.Config.HintIncome, false);
-            lblDaysBuilding.ImageIndex = FormMain.GUI_16_DAY;
+            lblDaysBuilding.Image.ImageIndex = FormMain.GUI_16_DAY;
             lblDaysBuilding.Width = widthControl;
 
             lblCostGold = new VCLabelValue(this, FormMain.Config.GridSize, lblDaysBuilding.NextTop(), FormMain.Config.HintIncome, false);
-            lblCostGold.ImageIndex = FormMain.GUI_16_GOLD;
+            lblCostGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblCostGold.Width = widthControl;
 
             lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
@@ -485,7 +485,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (props[i] != 0)
                 {
                     listProperties[i].ShiftY = nextTop;
-                    listProperties[i].ImageIndex = FormMain.Descriptors.PropertiesCreature[i].ImageIndex;
+                    listProperties[i].Image.ImageIndex = FormMain.Descriptors.PropertiesCreature[i].ImageIndex;
                     listProperties[i].Text = Utils.FormatDecimal100(props[i], true);
                     listProperties[i].Visible = true;
                     nextTop = listProperties[i].NextTop();
@@ -517,7 +517,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         lv = GetLabel(i);
                         lv.Visible = true;
-                        lv.ImageIndex = FormMain.Descriptors.NeedsCreature[i].ImageIndex;
+                        lv.Image.ImageIndex = FormMain.Descriptors.NeedsCreature[i].ImageIndex;
                         lv.Text = Utils.DecIntegerBy10(array[i]);
                         lv.ShiftY = nextTop;
 
@@ -554,7 +554,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     lv = GetLabel(i);
                     lv.Visible = true;
-                    lv.ImageIndex = need.Item1.ImageIndex;
+                    lv.Image.ImageIndex = need.Item1.ImageIndex;
                     lv.Text = Utils.DecIntegerBy10(need.Item2, showPlus);
                     lv.ShiftY = nextTop;
 
@@ -660,7 +660,7 @@ namespace Fantasy_Kingdoms_Battle
                         lbl.Visible = true;
                         lbl.Color = ColorRequirements(ownRes[i].Quantity >= requiresRes[i].Quantity);
                         lbl.Text = requiresRes[i].Quantity.ToString();
-                        lbl.ImageIndex = FormMain.Descriptors.BaseResources[i].ImageIndex16;
+                        lbl.Image.ImageIndex = FormMain.Descriptors.BaseResources[i].ImageIndex16;
                         lbl.ShiftX = nextLeft;
                         lbl.ShiftY = nextTop;
 

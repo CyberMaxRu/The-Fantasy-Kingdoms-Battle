@@ -58,13 +58,13 @@ namespace Fantasy_Kingdoms_Battle
 
             lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
             lblIncome.Width = imgMapObject.Width;
-            lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
+            lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
 
             lblGreatness = new VCLabelValue(this, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
             lblGreatness.Width = lblIncome.Width;
-            lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblGreatness.Image.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblGreatness.Color = FormMain.Config.HintIncome;
             lblGreatness.Hint = "Прибавление величия при строительстве и в день";
@@ -87,13 +87,13 @@ namespace Fantasy_Kingdoms_Battle
 
             lblRewardGold = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), FormMain.Config.HintIncome, true);
             lblRewardGold.Width = btnCancel.ShiftX - FormMain.Config.GridSize - lblRewardGold.ShiftX;
-            lblRewardGold.ImageIndex = FormMain.GUI_16_GOLD;
+            lblRewardGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblRewardGold.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGold.Hint = "Награда золотом за уничтожение";
 
             lblRewardGreatness = new VCLabelValue(this, lblRewardGold.ShiftX, lblRewardGold.NextTop() - FormMain.Config.GridSizeHalf, FormMain.Config.HintIncome, true);
             lblRewardGreatness.Width = lblRewardGold.Width;
-            lblRewardGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblRewardGreatness.Image.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
@@ -174,7 +174,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     lblIncome.Text = $"+{income}";
                     lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
-                    lblIncome.ImageIsEnabled = Construction.Level > 0;
+                    lblIncome.Image.ImageIsEnabled = Construction.Level > 0;
                     lblIncome.Visible = true;
                 }
                 else
@@ -192,7 +192,7 @@ namespace Fantasy_Kingdoms_Battle
                         lblGreatness.Text = Utils.FormatGreatness(0, Construction.GreatnessPerDay());
 
                     lblGreatness.Color = FormMain.Config.ColorGreatness(Construction.Level > 0);
-                    lblGreatness.ImageIsEnabled = Construction.Level > 0;
+                    lblGreatness.Image.ImageIsEnabled = Construction.Level > 0;
                 }
 
                 if (Construction.TypeConstruction.PlayerCanBuild)

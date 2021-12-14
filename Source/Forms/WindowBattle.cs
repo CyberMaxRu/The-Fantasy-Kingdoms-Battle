@@ -139,16 +139,14 @@ namespace Fantasy_Kingdoms_Battle
             lblTimer.StringFormat.Alignment = StringAlignment.Center;
             lblTimer.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblDamagePlayer1 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "");
-            lblDamagePlayer1.BitmapList = Program.formMain.ilGui24;
-            lblDamagePlayer1.ImageIndex = FormMain.GUI_24_STAR;
+            lblDamagePlayer1 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.ilGui24);
+            lblDamagePlayer1.Image.ImageIndex = FormMain.GUI_24_STAR;
             lblDamagePlayer1.Width = 64;
             lblDamagePlayer1.StringFormat.Alignment = StringAlignment.Far;
             lblDamagePlayer1.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblDamagePlayer2 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "");
-            lblDamagePlayer2.BitmapList = Program.formMain.ilGui24;
-            lblDamagePlayer2.ImageIndex = FormMain.GUI_24_STAR;
+            lblDamagePlayer2 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.ilGui24);
+            lblDamagePlayer2.Image.ImageIndex = FormMain.GUI_24_STAR;
             lblDamagePlayer2.Width = 64;
             lblDamagePlayer2.StringFormat.Alignment = StringAlignment.Far;
             lblDamagePlayer2.StringFormat.LineAlignment = StringAlignment.Center;

@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            ImageIndex = need.Need.Descriptor.ImageIndex;
+            Image.ImageIndex = need.Need.Descriptor.ImageIndex;
 
             base.Draw(g);
         }

@@ -194,7 +194,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnVisitors.Quantity = Construction.listAttackedHero.Count;
             }
 
-            lblInterest.ImageIsEnabled = Construction.Level > 0;
+            lblInterest.Image.ImageIsEnabled = Construction.Level > 0;
             lblInterest.Text = Construction.GetInterest() > 0 ? Utils.DecIntegerBy10(Construction.GetInterest(), false) : "";
 
             base.Draw(g);
