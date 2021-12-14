@@ -8,8 +8,9 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - чекбокс
-    internal sealed class VCCheckBox : VCLabel
+    internal sealed class VCCheckBox : VCImage
     {
+        private readonly VCLabel label;
         private const int IMAGE_INDEX_CHECKED = 0;
         private const int IMAGE_INDEX_UNCHECKED = 1;
         private const int IMAGE_INDEX_HOT = 2;
@@ -17,30 +18,22 @@ namespace Fantasy_Kingdoms_Battle
         private const int IMAGE_INDEX_FLAG = 4;
         private const int IMAGE_INDEX_UNCHECKED_DISABLED = 5;
 
-        public VCCheckBox(VisualControl parent, int shiftX, int shiftY, string text) : base(parent, shiftX, shiftY, Program.formMain.fontParagraph, Color.PaleTurquoise, 24, text)
+        public VCCheckBox(VisualControl parent, int shiftX, int shiftY, string text) : base(parent, shiftX, shiftY, Program.formMain.blCheckBox, 0)
         {
-            StringFormat.Alignment = StringAlignment.Near;
-            StringFormat.LineAlignment = StringAlignment.Center;
-            Width = 160;
-            LeftMargin = 32;
-            IsActiveControl = true;
+            HighlightUnderMouse = true;
 
-            BitmapList = Program.formMain.blCheckBox;
+            label = new VCLabel(this, BitmapList.Size.Width + FormMain.Config.GridSize, 0, Program.formMain.fontParagraph, Color.PaleTurquoise, 24, text);
+            label.StringFormat.Alignment = StringAlignment.Near;
+            label.StringFormat.LineAlignment = StringAlignment.Center;
+            label.SetWidthByText();
+            Width = label.ShiftX + label.Width;
         }
 
         internal bool Checked { get; set; }
 
         internal override void Draw(Graphics g)
         {
-            if (MouseOver)
-            {
-                if (MouseClicked)
-                    ImageIndex = Checked ? IMAGE_INDEX_CHECKED : IMAGE_INDEX_UNCHECKED;
-                else
-                    ImageIndex = IMAGE_INDEX_HOT;
-            }
-            else
-                ImageIndex = Checked ? IMAGE_INDEX_CHECKED : IMAGE_INDEX_UNCHECKED;
+            ImageIndex = Checked ? IMAGE_INDEX_CHECKED : IMAGE_INDEX_UNCHECKED;
 
             base.Draw(g);
         }
