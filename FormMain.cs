@@ -281,8 +281,9 @@ namespace Fantasy_Kingdoms_Battle
             splashForm.Refresh();
 
             // Загружаем конфигурацию
-            SetStage("Открываем сундуки");
+            SetStage("Читаем книгу");
             _ = new Config(this);
+            SetStage("Изучаем справочник");
             _ = new Descriptors(this);
 
             fontSmall = new M2Font("small");
