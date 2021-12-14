@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             HighlightUnderMouse = true;
             PlaySoundOnClick = true;
+            IsActiveControl = true;
         }
 
         internal static VCIconButton24 CreateButton(VisualControl parent, int shiftX, int shiftY, int imageIndex, EventHandler onClick)
