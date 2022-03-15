@@ -40,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbShowShortNames;
         private VCCheckBox chkbShowTypeCellMenu;
         private VCCheckBox chkbHideFulfilledRequirements;
+        private VCCheckBox chkbShowExtraHint;
 
         private Settings settings;
 
@@ -101,6 +102,8 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowTypeCellMenu.Width = 400;
             chkbHideFulfilledRequirements = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowTypeCellMenu.NextTop(), "Скрывать выполненные требования");
             chkbHideFulfilledRequirements.Width = 400;
+            chkbShowExtraHint = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbHideFulfilledRequirements.NextTop(), "Показывать дополнительную подсказку");
+            chkbShowExtraHint.Width = 400;
             vcPanelInterface.ApplyMaxSize();
             vcPanelInterface.Height += 8;
             lblCaptionPanelInterface.Width = vcPanelInterface.Width - (FormMain.Config.GridSize * 2);
@@ -168,6 +171,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowShortNames.Checked = settings.ShowShortNames;
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
+            chkbShowExtraHint.Checked = settings.ShowExtraHint;
 
             /*            
                         filenameAvatar = settings.FileNameAvatar;
@@ -203,6 +207,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.ShowShortNames = chkbShowShortNames.Checked;
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
             settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
+            settings.ShowExtraHint = chkbShowExtraHint.Checked;
             settings.SaveSettings();
 
             CloseForm(DialogAction.OK);

@@ -19,5 +19,6 @@
     <ShowShortNames>False</ShowShortNames>
     <ShowTypeCellMenu>True</ShowTypeCellMenu>
     <HideFulfilledRequirements>True</HideFulfilledRequirements>
+    <ShowExtraHint>True</ShowExtraHint>
   </Interface>
 </Settings>

@@ -910,15 +910,18 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(text.Length > 0);
 
-            lblSeparateTooltip.Visible = true;
-            lblSeparateTooltip.ShiftY = nextTop;
+            if (Program.formMain.Settings.ShowExtraHint)
+            {
+                lblSeparateTooltip.Visible = true;
+                lblSeparateTooltip.ShiftY = nextTop;
 
-            lblTooltip.ShiftY = lblSeparateTooltip.NextTop();
-            lblTooltip.Text = text;
-            lblTooltip.Height = lblTooltip.MinHeigth();
-            lblTooltip.Visible = true;
+                lblTooltip.ShiftY = lblSeparateTooltip.NextTop();
+                lblTooltip.Text = text;
+                lblTooltip.Height = lblTooltip.MinHeigth();
+                lblTooltip.Visible = true;
 
-            nextTop = lblTooltip.NextTop();
+                nextTop = lblTooltip.NextTop();
+            }
         }
 
         internal void SetControl(VisualControl c)
