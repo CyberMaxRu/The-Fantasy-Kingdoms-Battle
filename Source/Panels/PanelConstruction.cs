@@ -51,6 +51,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnQueue = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, -1);
             btnQueue.ShowHint += BtnQueue_ShowHint;
+            btnQueue.Click += BtnQueue_Click;
 
             btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
@@ -107,6 +108,14 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
 
             Click += ImgLair_Click;
+        }
+
+        private void BtnQueue_Click(object sender, EventArgs e)
+        {
+            if (Construction.ListQueueProcessing.Count > 0)
+            {
+                Construction.RemoveEntityFromQueueProcessing(Construction.ListQueueProcessing[0]);
+            }
         }
 
         private void BtnQueue_ShowHint(object sender, EventArgs e)
