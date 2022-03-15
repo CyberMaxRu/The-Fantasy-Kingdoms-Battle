@@ -40,9 +40,9 @@ namespace Fantasy_Kingdoms_Battle
             btnTournament.Width = bmpMainMenu.Width - 80 - 80;
             btnTournament.Click += BtnTournament_Click;
 
-            btnEditorConquest = new VCButton(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
+            /*btnEditorConquest = new VCButton(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
-            btnEditorConquest.Click += BtnEditorConquest_Click;
+            btnEditorConquest.Click += BtnEditorConquest_Click;*/
 
             btnExitToWindows = new VCButton(bmpMainMenu, 80, bmpMainMenu.Height - 96, "Выход в Windows");
             btnExitToWindows.Width = bmpMainMenu.Width - 80 - 80;
