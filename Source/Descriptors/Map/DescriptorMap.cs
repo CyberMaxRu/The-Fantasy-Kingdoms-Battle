@@ -12,6 +12,8 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorMap
     {
+        private VCBitmap originBitmap;
+
         public DescriptorMap(Bitmap bmp)
         {
             Width = bmp.Width;
@@ -197,6 +199,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 textWriter.WriteElementString("ID", r.ID.ToString());
                 textWriter.WriteElementString("Name", r.Name);
+                textWriter.WriteElementString("Square", r.Points.Count.ToString());
+                textWriter.WriteElementString("Left", r.Bounds.Left.ToString());
+                textWriter.WriteElementString("Top", r.Bounds.Top.ToString());
+                textWriter.WriteElementString("Width", r.Bounds.Width.ToString());
+                textWriter.WriteElementString("Height", r.Bounds.Height.ToString());
+                textWriter.WriteElementString("Center", $"{r.Center.X},{r.Center.Y}");
 
                 textWriter.WriteEndElement();// Region
             }
@@ -292,7 +300,37 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void FindCenters()
         {
+            foreach (Region r in Regions)
+            {
+                Point leftTop = new Point(Width, Height);
+                Point rightTop = new Point(0, Height);
+                Point leftBottom = new Point(Width, 0);
+                Point rightBottom = new Point(0, 0);
 
+                foreach (Point p in r.Points)
+                {
+                    if ((p.X <= leftTop.X) && (p.Y <= leftTop.Y))
+                        leftTop = p;
+                    if ((p.X >= rightTop.X) && (p.Y <= rightTop.Y))
+                        rightTop = p;
+                    if ((p.X <= leftBottom.X) && (p.Y >= leftBottom.Y))
+                        leftBottom = p;
+                    if ((p.X >= rightBottom.X) && (p.Y >= rightBottom.Y))
+                        rightBottom = p;
+                }
+
+                int left = Math.Min(leftTop.X, leftBottom.X);
+                int right = Math.Max(rightTop.X, rightBottom.X);
+                int top = Math.Min(leftTop.Y, rightTop.Y);
+                int bottom = Math.Max(leftBottom.Y, rightBottom.Y);
+
+                r.Bounds = new Rectangle(left, top, right - left, bottom - top);
+                //if (r.Bounds.Width == 0)
+                    //Assert(r.Bounds.Width > 0);
+                //Assert(r.Bounds.Height > 0);
+
+                r.Center = new Point(r.Bounds.X + r.Bounds.Width / 2, r.Bounds.Y + r.Bounds.Height / 2);
+            }
         }
 
         private IEnumerable<Point> GetNeighbours(int x, int y)

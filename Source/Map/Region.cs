@@ -23,11 +23,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             ID = XmlUtils.GetIntegerNotNull(n, "ID");
             Name = XmlUtils.GetStringNotNull(n, "Name");
+
+            //LabelNameRegion = new VCLabel(null, 0, Center.Y, Program.formMain.fontSmallC, Color.White, 16, Name);
+            //LabelNameRegion.SetWidthByText();
+            //LabelNameRegion.ShiftX = Center.X - (LabelNameRegion.Width / 2);
         }
 
         internal int ID { get; }
         internal string Name { get; }
         internal Point Center { get; set; }
         internal List<Point> Points { get; } = new List<Point>();
+        internal Rectangle Bounds { get; set; }
+        internal VCLabel LabelNameRegion { get; set; }
     }
 }

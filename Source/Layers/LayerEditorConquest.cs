@@ -61,11 +61,11 @@ namespace Fantasy_Kingdoms_Battle
             btnFindRegions.Width = 240;
             btnFindRegions.Click += BtnFindRegions_Click;
 
-            btnFindCenters = new VCButton(this, Width - 248, btnSetBorder.NextTop(), "Найти центры");
+            btnFindCenters = new VCButton(this, Width - 248, btnFindRegions.NextTop(), "Найти центры");
             btnFindCenters.Width = 240;
             btnFindCenters.Click += BtnFindCenters_Click;
 
-            btnSaveMap = new VCButton(this, Width - 248, btnFindRegions.NextTop(), "Сохранить карту");
+            btnSaveMap = new VCButton(this, Width - 248, btnFindCenters.NextTop(), "Сохранить карту");
             btnSaveMap.Width = 240;
             btnSaveMap.Click += BtnSaveMap_Click;
 
