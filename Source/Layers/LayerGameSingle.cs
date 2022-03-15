@@ -835,8 +835,8 @@ namespace Fantasy_Kingdoms_Battle
         private void Location_ShowHint(object sender, EventArgs e)
         {
             Location l = (sender as VCImage128).Entity as Location;
-            VisualControl.PanelHint.AddStep2Header(l.Settings.Name);
-            VisualControl.PanelHint.AddStep5Description(l.Settings.TypeLandscape.Description);
+            PanelHint.AddStep2Header(l.Settings.Name);
+            PanelHint.AddStep5Description(l.Settings.TypeLandscape.Description);
         }
 
         internal void RestartLobby()
@@ -996,7 +996,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnEndTurn_Click(object sender, EventArgs e)
         {
             Program.formMain.StopSoundSelect();
-            VisualControl.PanelHint.HideHint();
+            PanelHint.HideHint();
 
             curAppliedPlayer.EndTurn();
         }
@@ -1039,15 +1039,15 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelCorruption_ShowHint(object sender, EventArgs e)
         {
-            VisualControl.PanelHint.AddStep2Header("Воровство");
-            VisualControl.PanelHint.AddStep5Description($"Всего процент: {curAppliedPlayer.PercentCorruption}" + Environment.NewLine
+            PanelHint.AddStep2Header("Воровство");
+            PanelHint.AddStep5Description($"Всего процент: {curAppliedPlayer.PercentCorruption}" + Environment.NewLine
                 + $"Изменение за день: {curAppliedPlayer.ChangeCorruption}");
         }
 
         private void LabelHeroes_ShowHint(object sender, EventArgs e)
         {
-            VisualControl.PanelHint.AddStep2Header("Герои");
-            VisualControl.PanelHint.AddStep5Description($"Нанято героев: {curAppliedPlayer.CombatHeroes.Count}" + Environment.NewLine
+            PanelHint.AddStep2Header("Герои");
+            PanelHint.AddStep5Description($"Нанято героев: {curAppliedPlayer.CombatHeroes.Count}" + Environment.NewLine
                 + $"Максимум героев: {curAppliedPlayer.Lobby.TypeLobby.MaxHeroes}");
         }
 
@@ -1066,8 +1066,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelBuilders_ShowHint(object sender, EventArgs e)
         {
-            VisualControl.PanelHint.AddStep2Header("Строители");
-            VisualControl.PanelHint.AddStep5Description("Всего строителей: " + curAppliedPlayer.Builders.ToString()
+            PanelHint.AddStep2Header("Строители");
+            PanelHint.AddStep5Description("Всего строителей: " + curAppliedPlayer.Builders.ToString()
                 + Environment.NewLine + "Свободно строителей: " + curAppliedPlayer.FreeBuilders.ToString());
         }
 
@@ -1083,8 +1083,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
         {
-            VisualControl.PanelHint.AddStep2Header("Уровень величия: " + curAppliedPlayer.LevelGreatness.ToString());
-            VisualControl.PanelHint.AddStep5Description($"Очков набрано: {curAppliedPlayer.PointGreatness} из {curAppliedPlayer.PointGreatnessForNextLevel}"
+            PanelHint.AddStep2Header("Уровень величия: " + curAppliedPlayer.LevelGreatness.ToString());
+            PanelHint.AddStep5Description($"Очков набрано: {curAppliedPlayer.PointGreatness} из {curAppliedPlayer.PointGreatnessForNextLevel}"
                 + Environment.NewLine
                 + "До следующего уровня: " + (curAppliedPlayer.PointGreatnessForNextLevel - curAppliedPlayer.PointGreatness).ToString()
                 + Environment.NewLine
@@ -1101,21 +1101,21 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
         {
-            VisualControl.PanelHint.AddStep2Header("Герои");
-            VisualControl.PanelHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
+            PanelHint.AddStep2Header("Герои");
+            PanelHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            VisualControl.PanelHint.AddStep2Header("Турнир");
-            VisualControl.PanelHint.AddStep5Description(lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." :
+            PanelHint.AddStep2Header("Турнир");
+            PanelHint.AddStep5Description(lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." :
                     curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Сегодня битва с другим игроком");
         }
 
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
-            VisualControl.PanelHint.AddStep2Header("Ход игры");
-            VisualControl.PanelHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Day}{Environment.NewLine}"
+            PanelHint.AddStep2Header("Ход игры");
+            PanelHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Day}{Environment.NewLine}"
                 + $"Всего дней: {lobby.Turn}");
         }
 
