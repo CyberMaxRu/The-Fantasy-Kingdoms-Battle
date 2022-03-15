@@ -47,6 +47,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
+        // Контролы тулбара
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabelResource[] labelsResources;
@@ -1114,9 +1115,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
-            PanelHint.AddStep2Header("Ход игры");
-            PanelHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Day}{Environment.NewLine}"
-                + $"Всего дней: {lobby.Turn}");
+            PanelHint.AddStep2Header($"Ход игры: {lobby.Turn}");
+            PanelHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Day}{Environment.NewLine}");
+            PanelHint.AddStep21Tooltip($"В неделе 7 дней.{Environment.NewLine}В месяце 4 недели.");
         }
 
         internal override void Draw(Graphics g)
