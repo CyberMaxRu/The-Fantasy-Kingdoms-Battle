@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Data>
+  <URLHistory>https://vk.com/@majesty_2_vozrozhdeniye-majesty-2-collection-155</URLHistory>
+  <Files>
+    <File>
+      <LastUpdate>14.10.2021 15:40</LastUpdate>
+      <FileName>M2Editor.exe</FileName>
+      <Folder></Folder>
+      <URL>18Q6OqxqQQIRW8OJoRYs0hM17Pm5zaCeh</URL>
+    </File>
+    <File>
+      <LastUpdate>14.10.2021 15:40</LastUpdate>
+      <FileName>Majesty2.exe</FileName>
+      <Folder></Folder>
+      <URL>13205-tX02Njb0dpZsDXUKad2UYoep8m4</URL>
+    </File>
+    <File>
+      <LastUpdate>14.10.2021 15:40</LastUpdate>
+      <FileName>texts.pak</FileName>
+      <Folder>localization\texts</Folder>
+      <URL>1qIWqlYXSoXugqsJl_abUlX7HMtaRIu4p</URL>
+    </File>
+	<File>
+      <LastUpdate>14.10.2021 15:41</LastUpdate>
+      <FileName>resource_patch.pak</FileName>
+      <Folder>resource</Folder>
+      <URL>1GlGrhp8xlEfvr0Oo22nb_9yxfQoHUrAy</URL>
+    </File>
+		<File>
+      <LastUpdate>05.05.2021 00:04</LastUpdate>
+      <FileName>app.dll</FileName>
+      <Folder></Folder>
+      <URL>14M-92cPTk1CaOomZq4FRCrbMjElWeEZX</URL>
+    </File>
+	<File>
+      <LastUpdate>04.05.2021 21:30</LastUpdate>
+      <FileName>base.dll</FileName>
+      <Folder></Folder>
+      <URL>11omFAuYsAIt1I-kFp1lHVTTRElo2wdBg</URL>
+    </File>
+	<File>
+      <LastUpdate>24.04.2021 23:36</LastUpdate>
+      <FileName>gembase.dll</FileName>
+      <Folder></Folder>
+      <URL>1mEJxiesBeQ6jP9XIgV8EMa8C4bHPOxrS</URL>
+    </File>
+	<File>
+      <LastUpdate>04.05.2021 15:58</LastUpdate>
+      <FileName>io.dll</FileName>
+      <Folder></Folder>
+      <URL>12fmtrUnxPhLTrZUFi4Ycc3TMTeEf4E5d</URL>
+    </File>
+	<File>
+      <LastUpdate>09.06.2021 01:07</LastUpdate>
+      <FileName>render.dll</FileName>
+      <Folder></Folder>
+      <URL>15CkyJ6u_3z4iQBUWaZAcOWiTgwYC8t9M</URL>
+    </File>
+	<File>
+      <LastUpdate>28.04.2021 13:28</LastUpdate>
+      <FileName>scene.dll</FileName>
+      <Folder></Folder>
+      <URL>18f2yDH0svulgAsPiFIlKT1r23em89jze</URL>
+    </File>
+  </Files>
+</Data>
+
