@@ -168,7 +168,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnQueue.Visible = true;
                 btnQueue.ImageIndex = cm.GetImageIndex();
                 btnQueue.LowText = cm.DaysLeft.ToString() + " д.";
-                btnQueue.Level = Construction.ListQueueProcessing.Count.ToString();
+                btnQueue.Level = Construction.ListQueueProcessing.Count == 1 ? "" : Construction.ListQueueProcessing.Count.ToString();
             }
             else
                 btnQueue.Visible = false;
