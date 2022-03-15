@@ -9,666 +9,1662 @@
     <Region>
       <ID>1</ID>
       <Name>Регион #1</Name>
+      <Square>567305</Square>
+      <Left>0</Left>
+      <Top>0</Top>
+      <Width>1145</Width>
+      <Height>867</Height>
+      <Center>572,433</Center>
     </Region>
     <Region>
       <ID>2</ID>
       <Name>Регион #2</Name>
+      <Square>16255</Square>
+      <Left>1097</Left>
+      <Top>0</Top>
+      <Width>189</Width>
+      <Height>59</Height>
+      <Center>1191,29</Center>
     </Region>
     <Region>
       <ID>3</ID>
       <Name>Регион #3</Name>
+      <Square>473</Square>
+      <Left>1282</Left>
+      <Top>0</Top>
+      <Width>29</Width>
+      <Height>29</Height>
+      <Center>1296,14</Center>
     </Region>
     <Region>
       <ID>4</ID>
       <Name>Регион #4</Name>
+      <Square>1659</Square>
+      <Left>1318</Left>
+      <Top>0</Top>
+      <Width>142</Width>
+      <Height>4</Height>
+      <Center>1389,2</Center>
     </Region>
     <Region>
       <ID>5</ID>
       <Name>Регион #5</Name>
+      <Square>1749</Square>
+      <Left>1432</Left>
+      <Top>0</Top>
+      <Width>61</Width>
+      <Height>107</Height>
+      <Center>1462,53</Center>
     </Region>
     <Region>
       <ID>6</ID>
       <Name>Регион #6</Name>
+      <Square>37554</Square>
+      <Left>1440</Left>
+      <Top>0</Top>
+      <Width>336</Width>
+      <Height>112</Height>
+      <Center>1608,56</Center>
     </Region>
     <Region>
       <ID>7</ID>
       <Name>Регион #7</Name>
+      <Square>6370</Square>
+      <Left>1748</Left>
+      <Top>0</Top>
+      <Width>114</Width>
+      <Height>17</Height>
+      <Center>1805,8</Center>
     </Region>
     <Region>
       <ID>8</ID>
       <Name>Регион #8</Name>
+      <Square>37916</Square>
+      <Left>1782</Left>
+      <Top>0</Top>
+      <Width>287</Width>
+      <Height>144</Height>
+      <Center>1925,72</Center>
     </Region>
     <Region>
       <ID>9</ID>
       <Name>Регион #9</Name>
+      <Square>196242</Square>
+      <Left>1836</Left>
+      <Top>0</Top>
+      <Width>731</Width>
+      <Height>435</Height>
+      <Center>2201,217</Center>
     </Region>
     <Region>
       <ID>10</ID>
       <Name>Регион #10</Name>
+      <Square>40059</Square>
+      <Left>1169</Left>
+      <Top>7</Top>
+      <Width>274</Width>
+      <Height>147</Height>
+      <Center>1306,80</Center>
     </Region>
     <Region>
       <ID>11</ID>
       <Name>Регион #11</Name>
+      <Square>20084</Square>
+      <Left>746</Left>
+      <Top>34</Top>
+      <Width>190</Width>
+      <Height>208</Height>
+      <Center>841,138</Center>
     </Region>
     <Region>
       <ID>12</ID>
       <Name>Регион #12</Name>
+      <Square>48519</Square>
+      <Left>1334</Left>
+      <Top>116</Top>
+      <Width>309</Width>
+      <Height>117</Height>
+      <Center>1488,174</Center>
     </Region>
     <Region>
       <ID>13</ID>
       <Name>Регион #13</Name>
+      <Square>35735</Square>
+      <Left>1599</Left>
+      <Top>128</Top>
+      <Width>269</Width>
+      <Height>143</Height>
+      <Center>1733,199</Center>
     </Region>
     <Region>
       <ID>14</ID>
       <Name>Регион #14</Name>
+      <Square>80771</Square>
+      <Left>885</Left>
+      <Top>137</Top>
+      <Width>323</Width>
+      <Height>330</Height>
+      <Center>1046,302</Center>
     </Region>
     <Region>
       <ID>15</ID>
       <Name>Регион #15</Name>
+      <Square>33220</Square>
+      <Left>1137</Left>
+      <Top>160</Top>
+      <Width>285</Width>
+      <Height>180</Height>
+      <Center>1279,250</Center>
     </Region>
     <Region>
       <ID>16</ID>
       <Name>Регион #16</Name>
+      <Square>31467</Square>
+      <Left>2252</Left>
+      <Top>166</Top>
+      <Width>274</Width>
+      <Height>146</Height>
+      <Center>2389,239</Center>
     </Region>
     <Region>
       <ID>17</ID>
       <Name>Регион #17</Name>
+      <Square>15821</Square>
+      <Left>654</Left>
+      <Top>246</Top>
+      <Width>124</Width>
+      <Height>258</Height>
+      <Center>716,375</Center>
     </Region>
     <Region>
       <ID>18</ID>
       <Name>Регион #18</Name>
+      <Square>21091</Square>
+      <Left>761</Left>
+      <Top>248</Top>
+      <Width>103</Width>
+      <Height>313</Height>
+      <Center>812,404</Center>
     </Region>
     <Region>
       <ID>19</ID>
       <Name>Регион #19</Name>
+      <Square>65722</Square>
+      <Left>1457</Left>
+      <Top>278</Top>
+      <Width>414</Width>
+      <Height>203</Height>
+      <Center>1664,379</Center>
     </Region>
     <Region>
       <ID>20</ID>
       <Name>Регион #20</Name>
+      <Square>63304</Square>
+      <Left>2305</Left>
+      <Top>324</Top>
+      <Width>262</Width>
+      <Height>335</Height>
+      <Center>2436,491</Center>
     </Region>
     <Region>
       <ID>21</ID>
       <Name>Регион #21</Name>
+      <Square>39466</Square>
+      <Left>1207</Left>
+      <Top>344</Top>
+      <Width>276</Width>
+      <Height>80</Height>
+      <Center>1345,384</Center>
     </Region>
     <Region>
       <ID>22</ID>
       <Name>Регион #22</Name>
+      <Square>68232</Square>
+      <Left>1954</Left>
+      <Top>358</Top>
+      <Width>419</Width>
+      <Height>190</Height>
+      <Center>2163,453</Center>
     </Region>
     <Region>
       <ID>23</ID>
       <Name>Регион #23</Name>
+      <Square>60645</Square>
+      <Left>1622</Left>
+      <Top>372</Top>
+      <Width>477</Width>
+      <Height>202</Height>
+      <Center>1860,473</Center>
     </Region>
     <Region>
       <ID>24</ID>
       <Name>Регион #24</Name>
+      <Square>6258</Square>
+      <Left>713</Left>
+      <Top>419</Top>
+      <Width>64</Width>
+      <Height>129</Height>
+      <Center>745,483</Center>
     </Region>
     <Region>
       <ID>25</ID>
       <Name>Регион #25</Name>
+      <Square>92</Square>
+      <Left>1472</Left>
+      <Top>427</Top>
+      <Width>18</Width>
+      <Height>24</Height>
+      <Center>1481,439</Center>
     </Region>
     <Region>
       <ID>26</ID>
       <Name>Регион #26</Name>
+      <Square>2</Square>
+      <Left>1470</Left>
+      <Top>453</Top>
+      <Width>0</Width>
+      <Height>1</Height>
+      <Center>1470,453</Center>
     </Region>
     <Region>
       <ID>27</ID>
       <Name>Регион #27</Name>
+      <Square>32498</Square>
+      <Left>313</Left>
+      <Top>465</Top>
+      <Width>324</Width>
+      <Height>37</Height>
+      <Center>475,483</Center>
     </Region>
     <Region>
       <ID>28</ID>
       <Name>Регион #28</Name>
+      <Square>166</Square>
+      <Left>2563</Left>
+      <Top>471</Top>
+      <Width>4</Width>
+      <Height>50</Height>
+      <Center>2565,496</Center>
     </Region>
     <Region>
       <ID>29</ID>
       <Name>Регион #29</Name>
+      <Square>12</Square>
+      <Left>1481</Left>
+      <Top>472</Top>
+      <Width>7</Width>
+      <Height>2</Height>
+      <Center>1484,473</Center>
     </Region>
     <Region>
       <ID>30</ID>
       <Name>Регион #30</Name>
+      <Square>70199</Square>
+      <Left>952</Left>
+      <Top>474</Top>
+      <Width>340</Width>
+      <Height>285</Height>
+      <Center>1122,616</Center>
     </Region>
     <Region>
       <ID>31</ID>
       <Name>Регион #31</Name>
+      <Square>74392</Square>
+      <Left>1379</Left>
+      <Top>476</Top>
+      <Width>465</Width>
+      <Height>169</Height>
+      <Center>1611,560</Center>
     </Region>
     <Region>
       <ID>32</ID>
       <Name>Регион #32</Name>
+      <Square>14</Square>
+      <Left>1464</Left>
+      <Top>477</Top>
+      <Width>8</Width>
+      <Height>5</Height>
+      <Center>1468,479</Center>
     </Region>
     <Region>
       <ID>33</ID>
       <Name>Регион #33</Name>
+      <Square>36520</Square>
+      <Left>835</Left>
+      <Top>497</Top>
+      <Width>274</Width>
+      <Height>118</Height>
+      <Center>972,556</Center>
     </Region>
     <Region>
       <ID>34</ID>
       <Name>Регион #34</Name>
+      <Square>23086</Square>
+      <Left>462</Left>
+      <Top>510</Top>
+      <Width>260</Width>
+      <Height>122</Height>
+      <Center>592,571</Center>
     </Region>
     <Region>
       <ID>35</ID>
       <Name>Регион #35</Name>
+      <Square>107807</Square>
+      <Left>1207</Left>
+      <Top>548</Top>
+      <Width>404</Width>
+      <Height>228</Height>
+      <Center>1409,662</Center>
     </Region>
     <Region>
       <ID>36</ID>
       <Name>Регион #36</Name>
+      <Square>43649</Square>
+      <Left>2255</Left>
+      <Top>554</Top>
+      <Width>312</Width>
+      <Height>229</Height>
+      <Center>2411,668</Center>
     </Region>
     <Region>
       <ID>37</ID>
       <Name>Регион #37</Name>
+      <Square>121163</Square>
+      <Left>608</Left>
+      <Top>588</Top>
+      <Width>415</Width>
+      <Height>296</Height>
+      <Center>815,736</Center>
     </Region>
     <Region>
       <ID>38</ID>
       <Name>Регион #38</Name>
+      <Square>51217</Square>
+      <Left>1760</Left>
+      <Top>611</Top>
+      <Width>337</Width>
+      <Height>171</Height>
+      <Center>1928,696</Center>
     </Region>
     <Region>
       <ID>39</ID>
       <Name>Регион #39</Name>
+      <Square>33447</Square>
+      <Left>2053</Left>
+      <Top>612</Top>
+      <Width>260</Width>
+      <Height>187</Height>
+      <Center>2183,705</Center>
     </Region>
     <Region>
       <ID>40</ID>
       <Name>Регион #40</Name>
+      <Square>5</Square>
+      <Left>712</Left>
+      <Top>646</Top>
+      <Width>1</Width>
+      <Height>3</Height>
+      <Center>712,647</Center>
     </Region>
     <Region>
       <ID>41</ID>
       <Name>Регион #41</Name>
+      <Square>40783</Square>
+      <Left>456</Left>
+      <Top>675</Top>
+      <Width>192</Width>
+      <Height>207</Height>
+      <Center>552,778</Center>
     </Region>
     <Region>
       <ID>42</ID>
       <Name>Регион #42</Name>
+      <Square>22523</Square>
+      <Left>85</Left>
+      <Top>740</Top>
+      <Width>284</Width>
+      <Height>89</Height>
+      <Center>227,784</Center>
     </Region>
     <Region>
       <ID>43</ID>
       <Name>Регион #43</Name>
+      <Square>78900</Square>
+      <Left>1504</Left>
+      <Top>753</Top>
+      <Width>311</Width>
+      <Height>229</Height>
+      <Center>1659,867</Center>
     </Region>
     <Region>
       <ID>44</ID>
       <Name>Регион #44</Name>
+      <Square>46301</Square>
+      <Left>2283</Left>
+      <Top>758</Top>
+      <Width>284</Width>
+      <Height>213</Height>
+      <Center>2425,864</Center>
     </Region>
     <Region>
       <ID>45</ID>
       <Name>Регион #45</Name>
+      <Square>37739</Square>
+      <Left>2015</Left>
+      <Top>759</Top>
+      <Width>270</Width>
+      <Height>125</Height>
+      <Center>2150,821</Center>
     </Region>
     <Region>
       <ID>46</ID>
       <Name>Регион #46</Name>
+      <Square>57567</Square>
+      <Left>948</Left>
+      <Top>781</Top>
+      <Width>360</Width>
+      <Height>203</Height>
+      <Center>1128,882</Center>
     </Region>
     <Region>
       <ID>47</ID>
       <Name>Регион #47</Name>
+      <Square>53584</Square>
+      <Left>1783</Left>
+      <Top>787</Top>
+      <Width>241</Width>
+      <Height>326</Height>
+      <Center>1903,950</Center>
     </Region>
     <Region>
       <ID>48</ID>
       <Name>Регион #48</Name>
+      <Square>54250</Square>
+      <Left>235</Left>
+      <Top>843</Top>
+      <Width>258</Width>
+      <Height>242</Height>
+      <Center>364,964</Center>
     </Region>
     <Region>
       <ID>49</ID>
       <Name>Регион #49</Name>
+      <Square>21757</Square>
+      <Left>0</Left>
+      <Top>847</Top>
+      <Width>127</Width>
+      <Height>210</Height>
+      <Center>63,952</Center>
     </Region>
     <Region>
       <ID>50</ID>
       <Name>Регион #50</Name>
+      <Square>22</Square>
+      <Left>1063</Left>
+      <Top>850</Top>
+      <Width>6</Width>
+      <Height>7</Height>
+      <Center>1066,853</Center>
     </Region>
     <Region>
       <ID>51</ID>
       <Name>Регион #51</Name>
+      <Square>122217</Square>
+      <Left>1920</Left>
+      <Top>863</Top>
+      <Width>647</Width>
+      <Height>489</Height>
+      <Center>2243,1107</Center>
     </Region>
     <Region>
       <ID>52</ID>
       <Name>Регион #52</Name>
+      <Square>18200</Square>
+      <Left>123</Left>
+      <Top>884</Top>
+      <Width>170</Width>
+      <Height>96</Height>
+      <Center>208,932</Center>
     </Region>
     <Region>
       <ID>53</ID>
       <Name>Регион #53</Name>
+      <Square>30453</Square>
+      <Left>2266</Left>
+      <Top>907</Top>
+      <Width>301</Width>
+      <Height>145</Height>
+      <Center>2416,979</Center>
     </Region>
     <Region>
       <ID>54</ID>
       <Name>Регион #54</Name>
+      <Square>42945</Square>
+      <Left>447</Left>
+      <Top>936</Top>
+      <Width>259</Width>
+      <Height>161</Height>
+      <Center>576,1016</Center>
     </Region>
     <Region>
       <ID>55</ID>
       <Name>Регион #55</Name>
+      <Square>30833</Square>
+      <Left>1155</Left>
+      <Top>950</Top>
+      <Width>260</Width>
+      <Height>133</Height>
+      <Center>1285,1016</Center>
     </Region>
     <Region>
       <ID>56</ID>
       <Name>Регион #56</Name>
+      <Square>19366</Square>
+      <Left>67</Left>
+      <Top>986</Top>
+      <Width>195</Width>
+      <Height>142</Height>
+      <Center>164,1057</Center>
     </Region>
     <Region>
       <ID>57</ID>
       <Name>Регион #57</Name>
+      <Square>19059</Square>
+      <Left>835</Left>
+      <Top>989</Top>
+      <Width>205</Width>
+      <Height>166</Height>
+      <Center>937,1072</Center>
     </Region>
     <Region>
       <ID>58</ID>
       <Name>Регион #58</Name>
+      <Square>53926</Square>
+      <Left>1340</Left>
+      <Top>1025</Top>
+      <Width>260</Width>
+      <Height>139</Height>
+      <Center>1470,1094</Center>
     </Region>
     <Region>
       <ID>59</ID>
       <Name>Регион #59</Name>
+      <Square>29225</Square>
+      <Left>665</Left>
+      <Top>1032</Top>
+      <Width>204</Width>
+      <Height>211</Height>
+      <Center>767,1137</Center>
     </Region>
     <Region>
       <ID>60</ID>
       <Name>Регион #60</Name>
+      <Square>1138088</Square>
+      <Left>0</Left>
+      <Top>1069</Top>
+      <Width>2567</Width>
+      <Height>1330</Height>
+      <Center>1283,1734</Center>
     </Region>
     <Region>
       <ID>61</ID>
       <Name>Регион #61</Name>
+      <Square>22810</Square>
+      <Left>806</Left>
+      <Top>1086</Top>
+      <Width>215</Width>
+      <Height>109</Height>
+      <Center>913,1140</Center>
     </Region>
     <Region>
       <ID>62</ID>
       <Name>Регион #62</Name>
+      <Square>58057</Square>
+      <Left>1021</Left>
+      <Top>1087</Top>
+      <Width>337</Width>
+      <Height>186</Height>
+      <Center>1189,1180</Center>
     </Region>
     <Region>
       <ID>63</ID>
       <Name>Регион #63</Name>
+      <Square>53001</Square>
+      <Left>1580</Left>
+      <Top>1107</Top>
+      <Width>357</Width>
+      <Height>148</Height>
+      <Center>1758,1181</Center>
     </Region>
     <Region>
       <ID>64</ID>
       <Name>Регион #64</Name>
+      <Square>35762</Square>
+      <Left>301</Left>
+      <Top>1122</Top>
+      <Width>156</Width>
+      <Height>110</Height>
+      <Center>379,1177</Center>
     </Region>
     <Region>
       <ID>65</ID>
       <Name>Регион #65</Name>
+      <Square>22531</Square>
+      <Left>1876</Left>
+      <Top>1126</Top>
+      <Width>197</Width>
+      <Height>174</Height>
+      <Center>1974,1213</Center>
     </Region>
     <Region>
       <ID>66</ID>
       <Name>Регион #66</Name>
+      <Square>28892</Square>
+      <Left>159</Left>
+      <Top>1134</Top>
+      <Width>146</Width>
+      <Height>253</Height>
+      <Center>232,1260</Center>
     </Region>
     <Region>
       <ID>67</ID>
       <Name>Регион #67</Name>
+      <Square>27141</Square>
+      <Left>557</Left>
+      <Top>1151</Top>
+      <Width>223</Width>
+      <Height>185</Height>
+      <Center>668,1243</Center>
     </Region>
     <Region>
       <ID>68</ID>
       <Name>Регион #68</Name>
+      <Square>30331</Square>
+      <Left>2055</Left>
+      <Top>1180</Top>
+      <Width>188</Width>
+      <Height>98</Height>
+      <Center>2149,1229</Center>
     </Region>
     <Region>
       <ID>69</ID>
       <Name>Регион #69</Name>
+      <Square>16951</Square>
+      <Left>455</Left>
+      <Top>1183</Top>
+      <Width>197</Width>
+      <Height>186</Height>
+      <Center>553,1276</Center>
     </Region>
     <Region>
       <ID>70</ID>
       <Name>Регион #70</Name>
+      <Square>28259</Square>
+      <Left>2237</Left>
+      <Top>1184</Top>
+      <Width>238</Width>
+      <Height>171</Height>
+      <Center>2356,1269</Center>
     </Region>
     <Region>
       <ID>71</ID>
       <Name>Регион #71</Name>
+      <Square>15268</Square>
+      <Left>950</Left>
+      <Top>1197</Top>
+      <Width>182</Width>
+      <Height>132</Height>
+      <Center>1041,1263</Center>
     </Region>
     <Region>
       <ID>72</ID>
       <Name>Регион #72</Name>
+      <Square>17320</Square>
+      <Left>839</Left>
+      <Top>1249</Top>
+      <Width>185</Width>
+      <Height>97</Height>
+      <Center>931,1297</Center>
     </Region>
     <Region>
       <ID>73</ID>
       <Name>Регион #73</Name>
+      <Square>17489</Square>
+      <Left>1390</Left>
+      <Top>1259</Top>
+      <Width>186</Width>
+      <Height>135</Height>
+      <Center>1483,1326</Center>
     </Region>
     <Region>
       <ID>74</ID>
       <Name>Регион #74</Name>
+      <Square>23532</Square>
+      <Left>395</Left>
+      <Top>1269</Top>
+      <Width>203</Width>
+      <Height>185</Height>
+      <Center>496,1361</Center>
     </Region>
     <Region>
       <ID>75</ID>
       <Name>Регион #75</Name>
+      <Square>41738</Square>
+      <Left>1523</Left>
+      <Top>1274</Top>
+      <Width>294</Width>
+      <Height>198</Height>
+      <Center>1670,1373</Center>
     </Region>
     <Region>
       <ID>76</ID>
       <Name>Регион #76</Name>
+      <Square>27473</Square>
+      <Left>1258</Left>
+      <Top>1278</Top>
+      <Width>212</Width>
+      <Height>202</Height>
+      <Center>1364,1379</Center>
     </Region>
     <Region>
       <ID>77</ID>
       <Name>Регион #77</Name>
+      <Square>33065</Square>
+      <Left>1987</Left>
+      <Top>1283</Top>
+      <Width>267</Width>
+      <Height>173</Height>
+      <Center>2120,1369</Center>
     </Region>
     <Region>
       <ID>78</ID>
       <Name>Регион #78</Name>
+      <Square>31411</Square>
+      <Left>1081</Left>
+      <Top>1289</Top>
+      <Width>265</Width>
+      <Height>111</Height>
+      <Center>1213,1344</Center>
     </Region>
     <Region>
       <ID>79</ID>
       <Name>Регион #79</Name>
+      <Square>23706</Square>
+      <Left>742</Left>
+      <Top>1293</Top>
+      <Width>201</Width>
+      <Height>134</Height>
+      <Center>842,1360</Center>
     </Region>
     <Region>
       <ID>80</ID>
       <Name>Регион #80</Name>
+      <Square>24445</Square>
+      <Left>2248</Left>
+      <Top>1316</Top>
+      <Width>210</Width>
+      <Height>85</Height>
+      <Center>2353,1358</Center>
     </Region>
     <Region>
       <ID>81</ID>
       <Name>Регион #81</Name>
+      <Square>28704</Square>
+      <Left>2421</Left>
+      <Top>1323</Top>
+      <Width>146</Width>
+      <Height>276</Height>
+      <Center>2494,1461</Center>
     </Region>
     <Region>
       <ID>82</ID>
       <Name>Регион #82</Name>
+      <Square>24426</Square>
+      <Left>48</Left>
+      <Top>1325</Top>
+      <Width>200</Width>
+      <Height>231</Height>
+      <Center>148,1440</Center>
     </Region>
     <Region>
       <ID>83</ID>
       <Name>Регион #83</Name>
+      <Square>24733</Square>
+      <Left>1760</Left>
+      <Top>1329</Top>
+      <Width>233</Width>
+      <Height>106</Height>
+      <Center>1876,1382</Center>
     </Region>
     <Region>
       <ID>84</ID>
       <Name>Регион #84</Name>
+      <Square>31533</Square>
+      <Left>523</Left>
+      <Top>1368</Top>
+      <Width>219</Width>
+      <Height>117</Height>
+      <Center>632,1426</Center>
     </Region>
     <Region>
       <ID>85</ID>
       <Name>Регион #85</Name>
+      <Square>25087</Square>
+      <Left>196</Left>
+      <Top>1390</Top>
+      <Width>249</Width>
+      <Height>87</Height>
+      <Center>320,1433</Center>
     </Region>
     <Region>
       <ID>86</ID>
       <Name>Регион #86</Name>
+      <Square>20671</Square>
+      <Left>948</Left>
+      <Top>1401</Top>
+      <Width>166</Width>
+      <Height>40</Height>
+      <Center>1031,1421</Center>
     </Region>
     <Region>
       <ID>87</ID>
       <Name>Регион #87</Name>
+      <Square>24043</Square>
+      <Left>669</Left>
+      <Top>1421</Top>
+      <Width>174</Width>
+      <Height>199</Height>
+      <Center>756,1520</Center>
     </Region>
     <Region>
       <ID>88</ID>
       <Name>Регион #88</Name>
+      <Square>6904</Square>
+      <Left>1696</Left>
+      <Top>1435</Top>
+      <Width>114</Width>
+      <Height>58</Height>
+      <Center>1753,1464</Center>
     </Region>
     <Region>
       <ID>89</ID>
       <Name>Регион #89</Name>
+      <Square>21220</Square>
+      <Left>1805</Left>
+      <Top>1435</Top>
+      <Width>210</Width>
+      <Height>103</Height>
+      <Center>1910,1486</Center>
     </Region>
     <Region>
       <ID>90</ID>
       <Name>Регион #90</Name>
+      <Square>30270</Square>
+      <Left>778</Left>
+      <Top>1446</Top>
+      <Width>231</Width>
+      <Height>198</Height>
+      <Center>893,1545</Center>
     </Region>
     <Region>
       <ID>91</ID>
       <Name>Регион #91</Name>
+      <Square>8957</Square>
+      <Left>1618</Left>
+      <Top>1458</Top>
+      <Width>132</Width>
+      <Height>71</Height>
+      <Center>1684,1493</Center>
     </Region>
     <Region>
       <ID>92</ID>
       <Name>Регион #92</Name>
+      <Square>5666</Square>
+      <Left>1416</Left>
+      <Top>1465</Top>
+      <Width>108</Width>
+      <Height>37</Height>
+      <Center>1470,1483</Center>
     </Region>
     <Region>
       <ID>93</ID>
       <Name>Регион #93</Name>
+      <Square>37373</Square>
+      <Left>2196</Left>
+      <Top>1468</Top>
+      <Width>257</Width>
+      <Height>139</Height>
+      <Center>2324,1537</Center>
     </Region>
     <Region>
       <ID>94</ID>
       <Name>Регион #94</Name>
+      <Square>33279</Square>
+      <Left>300</Left>
+      <Top>1475</Top>
+      <Width>305</Width>
+      <Height>143</Height>
+      <Center>452,1546</Center>
     </Region>
     <Region>
       <ID>95</ID>
       <Name>Регион #95</Name>
+      <Square>8186</Square>
+      <Left>1325</Left>
+      <Top>1481</Top>
+      <Width>92</Width>
+      <Height>80</Height>
+      <Center>1371,1521</Center>
     </Region>
     <Region>
       <ID>96</ID>
       <Name>Регион #96</Name>
+      <Square>30555</Square>
+      <Left>1993</Left>
+      <Top>1482</Top>
+      <Width>205</Width>
+      <Height>106</Height>
+      <Center>2095,1535</Center>
     </Region>
     <Region>
       <ID>97</ID>
       <Name>Регион #97</Name>
+      <Square>9325</Square>
+      <Left>1489</Left>
+      <Top>1489</Top>
+      <Width>156</Width>
+      <Height>60</Height>
+      <Center>1567,1519</Center>
     </Region>
     <Region>
       <ID>98</ID>
       <Name>Регион #98</Name>
+      <Square>12131</Square>
+      <Left>1133</Left>
+      <Top>1505</Top>
+      <Width>191</Width>
+      <Height>66</Height>
+      <Center>1228,1538</Center>
     </Region>
     <Region>
       <ID>99</ID>
       <Name>Регион #99</Name>
+      <Square>7334</Square>
+      <Left>1682</Left>
+      <Top>1533</Top>
+      <Width>81</Width>
+      <Height>67</Height>
+      <Center>1722,1566</Center>
     </Region>
     <Region>
       <ID>100</ID>
       <Name>Регион #100</Name>
+      <Square>7220</Square>
+      <Left>1406</Left>
+      <Top>1537</Top>
+      <Width>94</Width>
+      <Height>71</Height>
+      <Center>1453,1572</Center>
     </Region>
     <Region>
       <ID>101</ID>
       <Name>Регион #101</Name>
+      <Square>22544</Square>
+      <Left>932</Left>
+      <Top>1542</Top>
+      <Width>201</Width>
+      <Height>106</Height>
+      <Center>1032,1595</Center>
     </Region>
     <Region>
       <ID>102</ID>
       <Name>Регион #102</Name>
+      <Square>8192</Square>
+      <Left>1575</Left>
+      <Top>1542</Top>
+      <Width>100</Width>
+      <Height>95</Height>
+      <Center>1625,1589</Center>
     </Region>
     <Region>
       <ID>103</ID>
       <Name>Регион #103</Name>
+      <Square>8347</Square>
+      <Left>1754</Left>
+      <Top>1543</Top>
+      <Width>114</Width>
+      <Height>71</Height>
+      <Center>1811,1578</Center>
     </Region>
     <Region>
       <ID>104</ID>
       <Name>Регион #104</Name>
+      <Square>10918</Square>
+      <Left>1253</Left>
+      <Top>1568</Top>
+      <Width>103</Width>
+      <Height>89</Height>
+      <Center>1304,1612</Center>
     </Region>
     <Region>
       <ID>105</ID>
       <Name>Регион #105</Name>
+      <Square>4</Square>
+      <Left>1844</Left>
+      <Top>1584</Top>
+      <Width>2</Width>
+      <Height>1</Height>
+      <Center>1845,1584</Center>
     </Region>
     <Region>
       <ID>106</ID>
       <Name>Регион #106</Name>
+      <Square>7249</Square>
+      <Left>1437</Left>
+      <Top>1587</Top>
+      <Width>133</Width>
+      <Height>53</Height>
+      <Center>1503,1613</Center>
     </Region>
     <Region>
       <ID>107</ID>
       <Name>Регион #107</Name>
+      <Square>10133</Square>
+      <Left>1121</Left>
+      <Top>1588</Top>
+      <Width>137</Width>
+      <Height>90</Height>
+      <Center>1189,1633</Center>
     </Region>
     <Region>
       <ID>108</ID>
       <Name>Регион #108</Name>
+      <Square>27682</Square>
+      <Left>2407</Left>
+      <Top>1588</Top>
+      <Width>160</Width>
+      <Height>182</Height>
+      <Center>2487,1679</Center>
     </Region>
     <Region>
       <ID>109</ID>
       <Name>Регион #109</Name>
+      <Square>7494</Square>
+      <Left>1600</Left>
+      <Top>1602</Top>
+      <Width>121</Width>
+      <Height>86</Height>
+      <Center>1660,1645</Center>
     </Region>
     <Region>
       <ID>110</ID>
       <Name>Регион #110</Name>
+      <Square>8599</Square>
+      <Left>1867</Left>
+      <Top>1603</Top>
+      <Width>118</Width>
+      <Height>45</Height>
+      <Center>1926,1625</Center>
     </Region>
     <Region>
       <ID>111</ID>
       <Name>Регион #111</Name>
+      <Square>25905</Square>
+      <Left>2089</Left>
+      <Top>1613</Top>
+      <Width>173</Width>
+      <Height>148</Height>
+      <Center>2175,1687</Center>
     </Region>
     <Region>
       <ID>112</ID>
       <Name>Регион #112</Name>
+      <Square>9405</Square>
+      <Left>1325</Left>
+      <Top>1619</Top>
+      <Width>113</Width>
+      <Height>111</Height>
+      <Center>1381,1674</Center>
     </Region>
     <Region>
       <ID>113</ID>
       <Name>Регион #113</Name>
+      <Square>39331</Square>
+      <Left>2231</Left>
+      <Top>1628</Top>
+      <Width>265</Width>
+      <Height>176</Height>
+      <Center>2363,1716</Center>
     </Region>
     <Region>
       <ID>114</ID>
       <Name>Регион #114</Name>
+      <Square>10941</Square>
+      <Left>1477</Left>
+      <Top>1643</Top>
+      <Width>131</Width>
+      <Height>129</Height>
+      <Center>1542,1707</Center>
     </Region>
     <Region>
       <ID>115</ID>
       <Name>Регион #115</Name>
+      <Square>21381</Square>
+      <Left>827</Left>
+      <Top>1651</Top>
+      <Width>142</Width>
+      <Height>91</Height>
+      <Center>898,1696</Center>
     </Region>
     <Region>
       <ID>116</ID>
       <Name>Регион #116</Name>
+      <Square>8451</Square>
+      <Left>1810</Left>
+      <Top>1656</Top>
+      <Width>111</Width>
+      <Height>57</Height>
+      <Center>1865,1684</Center>
     </Region>
     <Region>
       <ID>117</ID>
       <Name>Регион #117</Name>
+      <Square>8644</Square>
+      <Left>1158</Left>
+      <Top>1658</Top>
+      <Width>123</Width>
+      <Height>114</Height>
+      <Center>1219,1715</Center>
     </Region>
     <Region>
       <ID>118</ID>
       <Name>Регион #118</Name>
+      <Square>6443</Square>
+      <Left>1698</Left>
+      <Top>1660</Top>
+      <Width>125</Width>
+      <Height>95</Height>
+      <Center>1760,1707</Center>
     </Region>
     <Region>
       <ID>119</ID>
       <Name>Регион #119</Name>
+      <Square>28525</Square>
+      <Left>84</Left>
+      <Top>1681</Top>
+      <Width>398</Width>
+      <Height>121</Height>
+      <Center>283,1741</Center>
     </Region>
     <Region>
       <ID>120</ID>
       <Name>Регион #120</Name>
+      <Square>10002</Square>
+      <Left>1372</Left>
+      <Top>1685</Top>
+      <Width>154</Width>
+      <Height>82</Height>
+      <Center>1449,1726</Center>
     </Region>
     <Region>
       <ID>121</ID>
       <Name>Регион #121</Name>
+      <Square>13949</Square>
+      <Left>1025</Left>
+      <Top>1690</Top>
+      <Width>140</Width>
+      <Height>177</Height>
+      <Center>1095,1778</Center>
     </Region>
     <Region>
       <ID>122</ID>
       <Name>Регион #122</Name>
+      <Square>7071</Square>
+      <Left>1267</Left>
+      <Top>1701</Top>
+      <Width>119</Width>
+      <Height>121</Height>
+      <Center>1326,1761</Center>
     </Region>
     <Region>
       <ID>123</ID>
       <Name>Регион #123</Name>
+      <Square>7038</Square>
+      <Left>1899</Left>
+      <Top>1706</Top>
+      <Width>82</Width>
+      <Height>141</Height>
+      <Center>1940,1776</Center>
     </Region>
     <Region>
       <ID>124</ID>
       <Name>Регион #124</Name>
+      <Square>22870</Square>
+      <Left>1533</Left>
+      <Top>1715</Top>
+      <Width>246</Width>
+      <Height>161</Height>
+      <Center>1656,1795</Center>
     </Region>
     <Region>
       <ID>125</ID>
       <Name>Регион #125</Name>
+      <Square>15380</Square>
+      <Left>932</Left>
+      <Top>1730</Top>
+      <Width>115</Width>
+      <Height>161</Height>
+      <Center>989,1810</Center>
     </Region>
     <Region>
       <ID>126</ID>
       <Name>Регион #126</Name>
+      <Square>14377</Square>
+      <Left>1719</Left>
+      <Top>1737</Top>
+      <Width>180</Width>
+      <Height>76</Height>
+      <Center>1809,1775</Center>
     </Region>
     <Region>
       <ID>127</ID>
       <Name>Регион #127</Name>
+      <Square>10801</Square>
+      <Left>1108</Left>
+      <Top>1762</Top>
+      <Width>103</Width>
+      <Height>108</Height>
+      <Center>1159,1816</Center>
     </Region>
     <Region>
       <ID>128</ID>
       <Name>Регион #128</Name>
+      <Square>9249</Square>
+      <Left>1427</Left>
+      <Top>1763</Top>
+      <Width>137</Width>
+      <Height>65</Height>
+      <Center>1495,1795</Center>
     </Region>
     <Region>
       <ID>129</ID>
       <Name>Регион #129</Name>
+      <Square>9442</Square>
+      <Left>1208</Left>
+      <Top>1769</Top>
+      <Width>115</Width>
+      <Height>120</Height>
+      <Center>1265,1829</Center>
     </Region>
     <Region>
       <ID>130</ID>
       <Name>Регион #130</Name>
+      <Square>5874</Square>
+      <Left>1972</Left>
+      <Top>1797</Top>
+      <Width>111</Width>
+      <Height>57</Height>
+      <Center>2027,1825</Center>
     </Region>
     <Region>
       <ID>131</ID>
       <Name>Регион #131</Name>
+      <Square>22928</Square>
+      <Left>2092</Left>
+      <Top>1801</Top>
+      <Width>196</Width>
+      <Height>121</Height>
+      <Center>2190,1861</Center>
     </Region>
     <Region>
       <ID>132</ID>
       <Name>Регион #132</Name>
+      <Square>7968</Square>
+      <Left>1363</Left>
+      <Top>1815</Top>
+      <Width>109</Width>
+      <Height>85</Height>
+      <Center>1417,1857</Center>
     </Region>
     <Region>
       <ID>133</ID>
       <Name>Регион #133</Name>
+      <Square>8778</Square>
+      <Left>1278</Left>
+      <Top>1828</Top>
+      <Width>113</Width>
+      <Height>63</Height>
+      <Center>1334,1859</Center>
     </Region>
     <Region>
       <ID>134</ID>
       <Name>Регион #134</Name>
+      <Square>4416</Square>
+      <Left>1699</Left>
+      <Top>1831</Top>
+      <Width>71</Width>
+      <Height>32</Height>
+      <Center>1734,1847</Center>
     </Region>
     <Region>
       <ID>135</ID>
       <Name>Регион #135</Name>
+      <Square>9085</Square>
+      <Left>1770</Left>
+      <Top>1837</Top>
+      <Width>122</Width>
+      <Height>72</Height>
+      <Center>1831,1873</Center>
     </Region>
     <Region>
       <ID>136</ID>
       <Name>Регион #136</Name>
+      <Square>25277</Square>
+      <Left>948</Left>
+      <Top>1846</Top>
+      <Width>194</Width>
+      <Height>186</Height>
+      <Center>1045,1939</Center>
     </Region>
     <Region>
       <ID>137</ID>
       <Name>Регион #137</Name>
+      <Square>10026</Square>
+      <Left>1885</Left>
+      <Top>1853</Top>
+      <Width>186</Width>
+      <Height>58</Height>
+      <Center>1978,1882</Center>
     </Region>
     <Region>
       <ID>138</ID>
       <Name>Регион #138</Name>
+      <Square>15135</Square>
+      <Left>1453</Left>
+      <Top>1864</Top>
+      <Width>155</Width>
+      <Height>95</Height>
+      <Center>1530,1911</Center>
     </Region>
     <Region>
       <ID>139</ID>
       <Name>Регион #139</Name>
+      <Square>7675</Square>
+      <Left>1603</Left>
+      <Top>1867</Top>
+      <Width>107</Width>
+      <Height>40</Height>
+      <Center>1656,1887</Center>
     </Region>
     <Region>
       <ID>140</ID>
       <Name>Регион #140</Name>
+      <Square>15811</Square>
+      <Left>723</Left>
+      <Top>1868</Top>
+      <Width>127</Width>
+      <Height>168</Height>
+      <Center>786,1952</Center>
     </Region>
     <Region>
       <ID>141</ID>
       <Name>Регион #141</Name>
+      <Square>17337</Square>
+      <Left>808</Left>
+      <Top>1870</Top>
+      <Width>164</Width>
+      <Height>92</Height>
+      <Center>890,1916</Center>
     </Region>
     <Region>
       <ID>142</ID>
       <Name>Регион #142</Name>
+      <Square>10662</Square>
+      <Left>1169</Left>
+      <Top>1895</Top>
+      <Width>148</Width>
+      <Height>67</Height>
+      <Center>1243,1928</Center>
     </Region>
     <Region>
       <ID>143</ID>
       <Name>Регион #143</Name>
+      <Square>14111</Square>
+      <Left>1671</Left>
+      <Top>1910</Top>
+      <Width>120</Width>
+      <Height>159</Height>
+      <Center>1731,1989</Center>
     </Region>
     <Region>
       <ID>144</ID>
       <Name>Регион #144</Name>
+      <Square>7227</Square>
+      <Left>1819</Left>
+      <Top>1916</Top>
+      <Width>135</Width>
+      <Height>92</Height>
+      <Center>1886,1962</Center>
     </Region>
     <Region>
       <ID>145</ID>
       <Name>Регион #145</Name>
+      <Square>7205</Square>
+      <Left>1907</Left>
+      <Top>1925</Top>
+      <Width>130</Width>
+      <Height>46</Height>
+      <Center>1972,1948</Center>
     </Region>
     <Region>
       <ID>146</ID>
       <Name>Регион #146</Name>
+      <Square>7931</Square>
+      <Left>1056</Left>
+      <Top>1927</Top>
+      <Width>125</Width>
+      <Height>138</Height>
+      <Center>1118,1996</Center>
     </Region>
     <Region>
       <ID>147</ID>
       <Name>Регион #147</Name>
+      <Square>1773</Square>
+      <Left>654</Left>
+      <Top>1953</Top>
+      <Width>34</Width>
+      <Height>13</Height>
+      <Center>671,1959</Center>
     </Region>
     <Region>
       <ID>148</ID>
       <Name>Регион #148</Name>
+      <Square>9726</Square>
+      <Left>1748</Left>
+      <Top>1960</Top>
+      <Width>140</Width>
+      <Height>80</Height>
+      <Center>1818,2000</Center>
     </Region>
     <Region>
       <ID>149</ID>
       <Name>Регион #149</Name>
+      <Square>11718</Square>
+      <Left>1511</Left>
+      <Top>1968</Top>
+      <Width>163</Width>
+      <Height>59</Height>
+      <Center>1592,1997</Center>
     </Region>
     <Region>
       <ID>150</ID>
       <Name>Регион #150</Name>
+      <Square>18029</Square>
+      <Left>1897</Left>
+      <Top>1978</Top>
+      <Width>178</Width>
+      <Height>67</Height>
+      <Center>1986,2011</Center>
     </Region>
     <Region>
       <ID>151</ID>
       <Name>Регион #151</Name>
+      <Square>13244</Square>
+      <Left>1151</Left>
+      <Top>1985</Top>
+      <Width>149</Width>
+      <Height>56</Height>
+      <Center>1225,2013</Center>
     </Region>
     <Region>
       <ID>152</ID>
       <Name>Регион #152</Name>
+      <Square>13853</Square>
+      <Left>2335</Left>
+      <Top>2015</Top>
+      <Width>181</Width>
+      <Height>159</Height>
+      <Center>2425,2094</Center>
     </Region>
     <Region>
       <ID>153</ID>
       <Name>Регион #153</Name>
+      <Square>16885</Square>
+      <Left>838</Left>
+      <Top>2019</Top>
+      <Width>166</Width>
+      <Height>72</Height>
+      <Center>921,2055</Center>
     </Region>
     <Region>
       <ID>154</ID>
       <Name>Регион #154</Name>
+      <Square>13685</Square>
+      <Left>1092</Left>
+      <Top>2049</Top>
+      <Width>140</Width>
+      <Height>81</Height>
+      <Center>1162,2089</Center>
     </Region>
     <Region>
       <ID>155</ID>
       <Name>Регион #155</Name>
+      <Square>18450</Square>
+      <Left>1398</Left>
+      <Top>2066</Top>
+      <Width>252</Width>
+      <Height>71</Height>
+      <Center>1524,2101</Center>
     </Region>
     <Region>
       <ID>156</ID>
       <Name>Регион #156</Name>
+      <Square>8622</Square>
+      <Left>1589</Left>
+      <Top>2066</Top>
+      <Width>159</Width>
+      <Height>93</Height>
+      <Center>1668,2112</Center>
     </Region>
     <Region>
       <ID>157</ID>
       <Name>Регион #157</Name>
+      <Square>11620</Square>
+      <Left>736</Left>
+      <Top>2069</Top>
+      <Width>99</Width>
+      <Height>129</Height>
+      <Center>785,2133</Center>
     </Region>
     <Region>
       <ID>158</ID>
       <Name>Регион #158</Name>
+      <Square>7659</Square>
+      <Left>1710</Left>
+      <Top>2069</Top>
+      <Width>136</Width>
+      <Height>100</Height>
+      <Center>1778,2119</Center>
     </Region>
     <Region>
       <ID>159</ID>
       <Name>Регион #159</Name>
+      <Square>13226</Square>
+      <Left>950</Left>
+      <Top>2071</Top>
+      <Width>170</Width>
+      <Height>101</Height>
+      <Center>1035,2121</Center>
     </Region>
     <Region>
       <ID>160</ID>
       <Name>Регион #160</Name>
+      <Square>8485</Square>
+      <Left>826</Left>
+      <Top>2120</Top>
+      <Width>135</Width>
+      <Height>98</Height>
+      <Center>893,2169</Center>
     </Region>
     <Region>
       <ID>161</ID>
       <Name>Регион #161</Name>
+      <Square>10651</Square>
+      <Left>1170</Left>
+      <Top>2133</Top>
+      <Width>128</Width>
+      <Height>76</Height>
+      <Center>1234,2171</Center>
     </Region>
     <Region>
       <ID>162</ID>
       <Name>Регион #162</Name>
+      <Square>10354</Square>
+      <Left>1600</Left>
+      <Top>2141</Top>
+      <Width>91</Width>
+      <Height>136</Height>
+      <Center>1645,2209</Center>
     </Region>
     <Region>
       <ID>163</ID>
       <Name>Регион #163</Name>
+      <Square>8112</Square>
+      <Left>1707</Left>
+      <Top>2160</Top>
+      <Width>126</Width>
+      <Height>69</Height>
+      <Center>1770,2194</Center>
     </Region>
     <Region>
       <ID>164</ID>
       <Name>Регион #164</Name>
+      <Square>15126</Square>
+      <Left>1478</Left>
+      <Top>2177</Top>
+      <Width>141</Width>
+      <Height>97</Height>
+      <Center>1548,2225</Center>
     </Region>
     <Region>
       <ID>165</ID>
       <Name>Регион #165</Name>
+      <Square>6665</Square>
+      <Left>1046</Left>
+      <Top>2190</Top>
+      <Width>131</Width>
+      <Height>56</Height>
+      <Center>1111,2218</Center>
     </Region>
     <Region>
       <ID>166</ID>
       <Name>Регион #166</Name>
+      <Square>15377</Square>
+      <Left>910</Left>
+      <Top>2191</Top>
+      <Width>165</Width>
+      <Height>109</Height>
+      <Center>992,2245</Center>
     </Region>
   </Regions>
 </Conquest>
