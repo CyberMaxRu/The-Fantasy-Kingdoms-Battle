@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.17</ActualVersion>
+  <ActualVersion>0.3.18</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -560,6 +560,13 @@
       <Line>[+] Найм героев теперь из меню сооружения.</Line>
       <Line>[+] Строительство сооружений в несколько ходов.</Line>
       <Line>[+] Исследования, мероприятия в сооружении готовятся несколько ходов.</Line>
+      <Line>[*] Много иных улучшений и исправленных ошибок.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.18</Number>
+    <DateBuild>16.03.2022</DateBuild>
+    <Description>
       <Line>[*] Много иных улучшений и исправленных ошибок.</Line>
     </Description>
   </Version>
