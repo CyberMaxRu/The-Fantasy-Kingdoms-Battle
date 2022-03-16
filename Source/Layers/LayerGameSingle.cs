@@ -730,6 +730,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void SetPageLocation(Location l, bool showInfo)
         {
             curAppliedPlayer.CurrentLocation = l;
+            pageLocation.PageImage = l.Settings.TypeLandscape.GetBackgroundImage();
             UpdateNeighborhoods();
         }
 
