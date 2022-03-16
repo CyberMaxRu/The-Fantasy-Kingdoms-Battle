@@ -192,7 +192,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Visible);
 
-            if (Hint.Length > 0)
+            if (Hint?.Length > 0)
             {
                 if (HintDescription.Length == 0)
                 {
