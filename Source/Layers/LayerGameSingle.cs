@@ -327,6 +327,7 @@ namespace Fantasy_Kingdoms_Battle
             pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
+            pageMap.PageImage = MainControlbackground("Map");
 
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
