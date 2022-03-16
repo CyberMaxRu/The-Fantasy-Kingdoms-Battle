@@ -952,6 +952,7 @@ namespace Fantasy_Kingdoms_Battle
             if (curAppliedPlayer != lobby.CurrentPlayer)
             {
                 curAppliedPlayer = lobby.CurrentPlayer;
+                pageLocation.PageImage = curAppliedPlayer.CurrentLocation.Settings.TypeLandscape.GetBackgroundImage();
             }
 
             ShowLobby();
