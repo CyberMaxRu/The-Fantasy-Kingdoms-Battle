@@ -232,8 +232,8 @@ namespace Fantasy_Kingdoms_Battle
             pageFinance.Hint = "Финансовая информация";
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
-            pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
-            pageRealMap.Hint = "Карта Ардании";
+            //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
+            //pageRealMap.Hint = "Карта Ардании";
             pageControl.Separate();
 
             pagesCapital = new List<VCPageButton>();
@@ -317,8 +317,11 @@ namespace Fantasy_Kingdoms_Battle
             bmpPreparedToolbar.ShiftX = 0;
             MainControl.ShiftX = 0;
 
-            mapArdania.Width = pageRealMap.Page.Width;
-            mapArdania.Height = pageRealMap.Page.Height;
+            if (pageRealMap != null)
+            {
+                mapArdania.Width = pageRealMap.Page.Width;
+                mapArdania.Height = pageRealMap.Page.Height;
+            }
 
             pageResultTurn.PageImage = MainControlbackground("Paper");
             pageFinance.PageImage = MainControlbackground("Finance");
@@ -370,8 +373,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageRealMap()
         {
-            mapArdania = new VCMap(pageRealMap.Page, 0, 0);
-            mapArdania.Click += MapArdania_Click;
+            if (pageRealMap != null)
+            {
+                mapArdania = new VCMap(pageRealMap.Page, 0, 0);
+                mapArdania.Click += MapArdania_Click;
+            }
 
             //descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania.Bitmap);
         }
