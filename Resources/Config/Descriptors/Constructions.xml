@@ -1357,7 +1357,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <SoundSelect>guild_rogue_select.wav</SoundSelect>
+    <SoundSelect>guard_barrack_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelGuardBarrack1</ID>
@@ -1433,7 +1433,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <SoundSelect>guild_rogue_select.wav</SoundSelect>
+    <SoundSelect>guild_rogue2_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelGuildRogue1</ID>
@@ -2976,7 +2976,7 @@
     <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
+    <SoundSelect>workshop_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelWorkshop1</ID>
@@ -3803,7 +3803,7 @@
     <Pos>3,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <SoundSelect>library_select.wav</SoundSelect>
+    <SoundSelect>park_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelPark1</ID>
@@ -4045,7 +4045,7 @@
     <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <SoundSelect>statue_select.wav</SoundSelect>
+    <SoundSelect>town_square_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelTownSquare1</ID>
@@ -4300,7 +4300,7 @@
     <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <SoundSelect>statue_select.wav</SoundSelect>
+    <SoundSelect>treasure_department_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelTreasureDepartment1</ID>
@@ -4353,7 +4353,7 @@
     <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <SoundSelect>statue_select.wav</SoundSelect>
+    <SoundSelect>municipality_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelMunicipality1</ID>
@@ -4406,7 +4406,7 @@
     <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <SoundSelect>training_hall_select.wav</SoundSelect>
+    <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelArena1</ID>
@@ -4798,7 +4798,7 @@
     <Pos>4,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <SoundSelect>arena_select.wav</SoundSelect>
+    <SoundSelect>dungeon_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelDungeon1</ID>
