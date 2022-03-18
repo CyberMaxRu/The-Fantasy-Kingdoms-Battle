@@ -85,6 +85,13 @@ namespace Fantasy_Kingdoms_Battle
                 TypeLobbies.Add(new TypeLobby(n));
             }
 
+            // Загрузка постоянных бонусов
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\PersistentBonuses.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/PersistentBonuses/PersistentBonus"))
+            {
+                PersistentBonuses.Add(new DescriptorPersistentBonus(n));
+            }
+
             // Загрузка стартовых бонусов
             xmlDoc = CreateXmlDocument(@"Config\StartBonus.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/StartBonuses/StartBonus"))
@@ -325,6 +332,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
+        internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
         internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();

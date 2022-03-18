@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PersistentBonuses>
+  <PersistentBonus>
+    <ID>PB_E1</ID>
+    <Name>Замок дополнительно приносит 1000 золота в день</Name>
+    <Type>Economic</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_E2</ID>
+    <Name>Строительство сооружений стоит золота меньше на 10%</Name>
+    <Type>Economic</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_E3</ID>
+    <Name>Сооружения приносят золота больше на 5%</Name>
+    <Type>Economic</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_E4</ID>
+    <Name>Исследования стоят меньше золота на 10%</Name>
+    <Type>Economic</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_M1</ID>
+    <Name>Герои ближнего боя наносят урон больше на 10%</Name>
+    <Type>Military</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_M2</ID>
+    <Name>Герои дальнего боя наносят урон больше на 10%</Name>
+    <Type>Military</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_M3</ID>
+    <Name>Герои наносят магический урон больше на 10%</Name>
+    <Type>Military</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_M4</ID>
+    <Name>Герои получают магический урон меньше на 10%</Name>
+    <Type>Military</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_M5</ID>
+    <Name>Герои получают здоровье больше на 10%</Name>
+    <Type>Military</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_M6</ID>
+    <Name>Герои получают опыт больше на 5%</Name>
+    <Type>Other</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_O1</ID>
+    <Name>+1 строитель в Замке</Name>
+    <Type>Other</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_O2</ID>
+    <Name>Настроение героев уменьшается в два раза медленнее</Name>
+    <Type>Other</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_O3</ID>
+    <Name>Энтузиазм героев выше на 20%</Name>
+    <Type>Other</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+  <PersistentBonus>
+    <ID>PB_O4</ID>
+    <Name>Первое поражение игнорируется</Name>
+    <Type>Other</Type>
+    <Economic/>
+    <Military/>
+    <Other/>
+  </PersistentBonus>
+</PersistentBonuses>
