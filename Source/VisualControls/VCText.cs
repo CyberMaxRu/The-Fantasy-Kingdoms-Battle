@@ -163,7 +163,7 @@ namespace Fantasy_Kingdoms_Battle
                     // Если превысили свою ширину, то текущая строка - готова
                     if (widthLine > actualWidth)
                     {
-                        Debug.Assert(priorPosSpace >= 0);
+                        Debug.Assert(priorPosSpace >= 0, text + ", priorPosSpace = " + priorPosSpace.ToString());
                         tmpStr = text.Substring(0, priorPosSpace);
                         linesText.Add(tmpStr);
                         text = text.Substring(priorPosSpace + 1);

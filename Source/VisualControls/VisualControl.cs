@@ -318,12 +318,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (VisualControl vc in Controls)
             {
-                /*if (vc.Visible && ((vc.Width == 0) || (vc.Height == 0)))
+                if (vc.Visible && ((vc.Width == 0) || (vc.Height == 0)))
                 {
                     vc.ShowBorder = !vc.ShowBorder;
-                    vc.width = 1000;
-                    vc.height = 1000;
-                }*/
+                    vc.width = 100;
+                    vc.height = 100;
+                }
                 if (vc.Visible)
                 {
                     Debug.Assert(vc.Width > 0);

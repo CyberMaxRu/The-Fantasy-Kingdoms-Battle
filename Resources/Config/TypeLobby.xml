@@ -25,6 +25,7 @@
     <StartBuilders>0</StartBuilders>
     <PointStartBonus>5</PointStartBonus>
     <StartScoutedLairs>2</StartScoutedLairs>
+    <VariantPersistentBonus>3</VariantPersistentBonus>
     <VariantStartBonus>3</VariantStartBonus>
     <MaxLoses>3</MaxLoses>
     <MapWidth>5</MapWidth>

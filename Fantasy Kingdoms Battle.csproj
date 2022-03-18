@@ -105,6 +105,7 @@
     <Compile Include="Source\Descriptors\Requirement\RequirementGoods.cs" />
     <Compile Include="Source\Descriptors\Requirement\RequirementTypeConstruction.cs" />
     <Compile Include="Source\Forms\WindowCheating.cs" />
+    <Compile Include="Source\Forms\WindowSelectPersistentBonuses.cs" />
     <Compile Include="Source\Layers\LayerCustom.cs" />
     <Compile Include="Source\Layers\LayerEditorConquest.cs" />
     <Compile Include="Source\Layers\LayerGameSingle.cs" />

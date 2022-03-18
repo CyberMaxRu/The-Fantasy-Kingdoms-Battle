@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -67,6 +68,30 @@ namespace Fantasy_Kingdoms_Battle
             ChangeCorruption = 1;
 
             CurrentLevelTax = FormMain.Descriptors.DefaultLevelTax;
+
+            // Настраиваем постоянные бонусы
+            if (lobby.TypeLobby.VariantPersistentBonus > 0)
+            {
+                VariantPersistentBonus = new List<DescriptorPersistentBonus>[(int)TypePersistentBonus.Other + 1];
+                for (int i = 0; i < VariantPersistentBonus.GetLength(0); i++)
+                    VariantPersistentBonus[i] = new List<DescriptorPersistentBonus>();
+
+                // Сначала добавляем все бонусы в списки
+                foreach (DescriptorPersistentBonus dpb in FormMain.Descriptors.PersistentBonuses)
+                {
+                    VariantPersistentBonus[(int)dpb.Type].Add(dpb);
+                }
+
+                for (int i = 0; i < VariantPersistentBonus.GetLength(0); i++)
+                {
+                    Assert(VariantPersistentBonus[i].Count >= lobby.TypeLobby.VariantPersistentBonus);
+
+                    while (VariantPersistentBonus[i].Count > lobby.TypeLobby.VariantPersistentBonus)
+                    {
+                        VariantPersistentBonus[i].RemoveAt(lobby.Rnd.Next(VariantPersistentBonus[i].Count));
+                    }
+                }
+            }
 
             // Настраиваем стартовые бонусы
             if (lobby.TypeLobby.VariantStartBonus > 0)
@@ -510,6 +535,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int FreeBuilders { get; private set; }
         internal List<Entity> QueueBuilding { get; } = new List<Entity>();// Очередь строительства
 
+        internal List<DescriptorPersistentBonus>[] VariantPersistentBonus { get; }
+        internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
         internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов
 
         internal int ExtraLevelUp { get; private set; }

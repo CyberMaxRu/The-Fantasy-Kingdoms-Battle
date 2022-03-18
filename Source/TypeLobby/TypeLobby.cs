@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             DaysBeforeNextBattleBetweenPlayers = XmlUtils.GetInteger(n, "DaysBeforeNextBattleBetweenPlayers");
             StartBuilders = XmlUtils.GetInteger(n, "StartBuilders");
             PointStartBonus = XmlUtils.GetInteger(n, "PointStartBonus");
+            VariantPersistentBonus = XmlUtils.GetInteger(n, "VariantPersistentBonus");
             VariantStartBonus = XmlUtils.GetInteger(n, "VariantStartBonus");
             StartScoutedLairs = XmlUtils.GetInteger(n, "StartScoutedLairs");
             MaxLoses = XmlUtils.GetInteger(n, "MaxLoses");
@@ -59,8 +60,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(StartBuilders <= 10);
             Debug.Assert(PointStartBonus >= 0);
             Debug.Assert(PointStartBonus <= 20);
-            Debug.Assert(VariantStartBonus >= 0);
-            Debug.Assert(VariantStartBonus <= 3);
+            Debug.Assert(VariantPersistentBonus >= 2);
+            Debug.Assert(VariantPersistentBonus <= 4);
+            Debug.Assert(VariantStartBonus >= 2);
+            Debug.Assert(VariantStartBonus <= 4);
             Debug.Assert(((PointStartBonus > 0) && (VariantStartBonus > 0)) || ((PointStartBonus == 0) && (VariantStartBonus == 0)));
             Debug.Assert(StartScoutedLairs >= 0);
             Debug.Assert(StartScoutedLairs <= 12);
@@ -184,6 +187,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DaysBeforeNextBattleBetweenPlayers { get; }
         internal int StartBuilders { get; }
         internal int PointStartBonus { get; }
+        internal int VariantPersistentBonus { get; }
         internal int VariantStartBonus { get; }
         internal int StartScoutedLairs { get; }
         internal int MaxLoses { get; }

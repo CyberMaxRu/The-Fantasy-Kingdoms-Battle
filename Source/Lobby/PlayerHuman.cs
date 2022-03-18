@@ -26,6 +26,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.SelectStartBonus();
 
+            // Выбор постоянного бонуса
+            WindowSelectPersistentBonuses wpb = new WindowSelectPersistentBonuses(this);
+            wpb.ShowDialog();
+
             // Выбор стартового бонуса
             WindowSelectStartBonus w = new WindowSelectStartBonus(VariantsStartBonuses);
             w.ShowDialog();
