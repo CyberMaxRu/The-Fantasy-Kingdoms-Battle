@@ -222,14 +222,24 @@ namespace Fantasy_Kingdoms_Battle
                 CoefficientFlags[(int)TypeFlag.Battle] = GetDouble(ncf, "Battle");
             }
 
+            XmlNode additBonus = n.SelectSingleNode("AdditionalBonus");
+            if (additBonus != null)
+                AdditionalBonus = new CreatureModifyParameters(additBonus);
+
             // Загружаем имена и фамилии
             if (CategoryCreature == CategoryCreature.Hero)
             {
                 LoadName("Names", "Name", Names);
                 LoadName("Surnames", "Surname", Surnames);
 
+                Assert(AdditionalBonus != null);
+
                 Debug.Assert(((Names.Count > 0) && (nameFromTypeHero.Length == 0)) || ((Names.Count == 0) && (nameFromTypeHero.Length > 0)));
                 Debug.Assert(((Surnames.Count > 0) && (surnameFromTypeHero.Length == 0)) || ((Surnames.Count == 0) && (surnameFromTypeHero.Length > 0)));
+            }
+            else
+            {
+                Assert(AdditionalBonus is null);
             }
 
             // Загружаем дефолтное оружие и доспехи
@@ -323,6 +333,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
         internal List<DescriptorCreatureInterest> Interests { get; } = new List<DescriptorCreatureInterest>();// Интересы
         internal int MovePoints { get; }// Очков движения по умолчанию
+        internal CreatureModifyParameters AdditionalBonus { get; }
         //
 
         internal int MaxQuantityItem(DescriptorItem i)

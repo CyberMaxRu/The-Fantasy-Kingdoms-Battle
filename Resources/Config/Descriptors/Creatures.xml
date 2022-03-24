@@ -180,6 +180,9 @@
         <Gold>200</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>20</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -520,6 +523,9 @@
         <Gold>150</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <RangeAttackPercent>10</RangeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
@@ -843,6 +849,9 @@
         <Gold>350</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <RangeAttackPercent>10</RangeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1138,6 +1147,9 @@
         <Gold>500</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <RangeAttackPercent>10</RangeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1435,6 +1447,9 @@
         <Gold>700</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <RangeAttackPercent>10</RangeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1712,6 +1727,9 @@
         <Gold>700</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <RangeAttackPercent>10</RangeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1986,6 +2004,9 @@
         <Gold>100</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <RangeAttackPercent>10</RangeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
@@ -2268,6 +2289,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2512,6 +2536,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2754,6 +2781,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2995,6 +3025,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -3234,6 +3267,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -3478,6 +3514,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -3722,6 +3761,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -3920,6 +3962,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -4141,6 +4186,9 @@
         <Gold>1000</Gold>
       </Cost>
     </Creating>
+    <AdditionalBonus>
+      <MeleeAttackPercent>10</MeleeAttackPercent>
+    </AdditionalBonus>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
