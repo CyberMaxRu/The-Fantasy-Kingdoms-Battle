@@ -1460,9 +1460,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cell.DaysProcessed == 0);
             Debug.Assert(cell.PosInQueue == 0);
             Debug.Assert(cell.PurchaseValue is null);
+            Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().Builders);
 
             cell.PurchaseValue = new ListBaseResources(cell.GetCost());
             Player.SpendResource(cell.PurchaseValue);
+            Player.UseFreeBuilder(cell.Descriptor.CreatedEntity.GetCreating().Builders);
             ListQueueProcessing.Add(cell);
             //Player.AddEntityToQueueBuilding()
             cell.PosInQueue = ListQueueProcessing.Count;
@@ -1477,6 +1479,7 @@ namespace Fantasy_Kingdoms_Battle
 
             cell.PosInQueue = 0;
             Player.ReturnResource(cell.PurchaseValue);
+            Player.UnuseFreeBuilders(cell.Descriptor.CreatedEntity.GetCreating().Builders);
             cell.PurchaseValue = null;
             ListQueueProcessing.Remove(cell);
 

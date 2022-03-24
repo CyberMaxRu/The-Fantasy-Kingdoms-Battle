@@ -91,13 +91,14 @@ namespace Fantasy_Kingdoms_Battle
 
                     Program.formMain.PlayPushButton();
 
-                    if (InstantExecute() || (Descriptor.CreatedEntity.GetCreating().DaysProcessing == 0))
+                    DaysLeft = InstantExecute() ? 1 : Descriptor.CreatedEntity.GetCreating().DaysProcessing;
+                    if (DaysLeft > 0)
+                        DaysLeft--;
+
+                    if ((DaysLeft == 0) || InstantExecute())
                         Execute();
                     else
-                    {
                         Construction.AddEntityToQueueProcessing(this);
-                        DaysLeft = Descriptor.CreatedEntity.GetCreating().DaysProcessing;
-                    }
                 }
             }
             else
@@ -263,9 +264,10 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {*/
-                Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, Construction.Location, TypeNoticeForPlayer.Build);
-                Construction.Location.Lairs[pc.Y, pc.X] = pc;
-                Program.formMain.layerGame.SelectPlayerObject(pc);
+
+            Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, Construction.Location, TypeNoticeForPlayer.Build);
+            Construction.Location.Lairs[pc.Y, pc.X] = pc;
+            Program.formMain.layerGame.SelectPlayerObject(pc);
             //}
 
             if (Construction.Player.GetTypePlayer() == TypePlayer.Human)
