@@ -564,8 +564,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     topLeftFrame = new Point((ClientSize.Width - sizeGamespace.Width) / 2, (ClientSize.Height - sizeGamespace.Height) / 2);
 
-                    Debug.Assert(topLeftFrame.X >= 0);
-                    Debug.Assert(topLeftFrame.Y >= 0);
+                    Debug.Assert(topLeftFrame.X >= 0, $"topLeftFrame.X = {topLeftFrame.X}");
+                    Debug.Assert(topLeftFrame.Y >= 0, $"topLeftFrame.Y = {topLeftFrame.Y}");
                 }
                 else
                 {
