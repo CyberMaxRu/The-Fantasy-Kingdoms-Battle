@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             wpb.ShowDialog();
 
             // Выбор стартового бонуса
-            WindowSelectStartBonus w = new WindowSelectStartBonus(VariantsStartBonuses);
+            WindowSelectStartBonus w = new WindowSelectStartBonus(this, VariantsStartBonuses);
             w.ShowDialog();
 
             if (Program.formMain.ProgramState != ProgramState.NeedQuit)

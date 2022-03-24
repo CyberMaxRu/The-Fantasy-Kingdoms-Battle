@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblMilitary;
         private readonly VCLabel lblOther;
         private readonly VCButton btnOk;
+        private readonly VCButton btnRandom;
         private readonly VCText[,] arrayBonuses;
         private readonly Player player;
 
@@ -71,6 +72,11 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.Enabled = false;
             AcceptButton = btnOk;
 
+            btnRandom = new VCButton(ClientControl, 0, btnOk.ShiftY, "Случайный выбор");
+            btnRandom.Width = 208;
+            btnRandom.Click += BtnRandom_Click;
+            CancelButton = btnRandom;
+
             //
             ClientControl.Width = arrayBonuses[0, arrayBonuses.GetLength(1) - 1].NextLeft();
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
@@ -78,6 +84,12 @@ namespace Fantasy_Kingdoms_Battle
             lblEconomic.Width = ClientControl.Width;
             lblMilitary.Width = ClientControl.Width;
             lblOther.Width = ClientControl.Width;
+        }
+
+        private void BtnRandom_Click(object sender, EventArgs e)
+        {
+            player.SelectRandomPersistentBonus();
+            CloseForm(DialogAction.None);
         }
 
         private void Text_Click(object sender, EventArgs e)
@@ -112,6 +124,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 btnOk.ShiftX = (ClientControl.Width - btnOk.Width) / 2;
                 btnOk.ShiftY = ClientControl.Height - btnOk.Height;
+
+                btnRandom.ShiftY = btnOk.ShiftY;
             }
         }
 

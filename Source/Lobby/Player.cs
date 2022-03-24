@@ -1235,6 +1235,18 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(VariantsStartBonuses.Count > 0);
         }
 
+        internal void SelectRandomPersistentBonus()
+        {
+            // Применяем случайные постоянные бонусы
+            for (int y = 0; y < VariantPersistentBonus.GetLength(0); y++)
+                PersistentBonuses.Add(VariantPersistentBonus[y][Lobby.Rnd.Next(VariantPersistentBonus[y].Count)]);
+        }
+
+        internal StartBonus GetRandomStartBonus()
+        {
+            return VariantsStartBonuses[Lobby.Rnd.Next(VariantsStartBonuses.Count)];
+        }
+
         internal int PointGreatnessPerDay()
         {
             int g = 0;

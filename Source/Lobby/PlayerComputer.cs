@@ -19,12 +19,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.SelectStartBonus();
 
-            // Применяем случайные постоянные бонусы
-            for (int y = 0; y < VariantPersistentBonus.GetLength(0); y++)
-                PersistentBonuses.Add(VariantPersistentBonus[y][Lobby.Rnd.Next(VariantPersistentBonus[y].Count)]);
-
-            //
-            ApplyStartBonus(VariantsStartBonuses[Lobby.Rnd.Next(VariantsStartBonuses.Count)]);
+            SelectRandomPersistentBonus();
+            ApplyStartBonus(GetRandomStartBonus());
         }
 
         internal override void DoTurn()

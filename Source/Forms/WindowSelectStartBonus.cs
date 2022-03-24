@@ -13,14 +13,17 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class WindowSelectStartBonus : VCForm
     {
         private readonly VCButton btnOk;
+        private readonly VCButton btnRandom;
         private readonly List<VisualControl> listBoxes = new List<VisualControl>();
         private List<StartBonus> list;
+        private readonly Player player;
 
-        public WindowSelectStartBonus(List<StartBonus> listStartBonuses) : base()
+        public WindowSelectStartBonus(Player p, List<StartBonus> listStartBonuses) : base()
         {
             Debug.Assert(listStartBonuses.Count > 0);
 
             windowCaption.Caption = "Выбор стартового бонуса";
+            player = p;
             list = listStartBonuses;
 
             // Создаем ящики с выбором бонуса
@@ -67,6 +70,11 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.Enabled = false;
             AcceptButton = btnOk;
 
+            btnRandom = new VCButton(ClientControl, 0, btnOk.ShiftY, "Случайный выбор");
+            btnRandom.Width = 208;
+            btnRandom.Click += BtnRandom_Click;
+            CancelButton = btnRandom;
+
             //
             ClientControl.Width = nextLeft - FormMain.Config.GridSize;
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
@@ -86,6 +94,12 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = evnt.NextTop();
                 parent.Width = evnt.NextLeft();
             }
+        }
+
+        private void BtnRandom_Click(object sender, EventArgs e)
+        {
+            SelectedBonus = player.GetRandomStartBonus();
+            CloseForm(DialogAction.None);
         }
 
         internal StartBonus SelectedBonus { get; private set; }
@@ -110,6 +124,8 @@ namespace Fantasy_Kingdoms_Battle
 
             btnOk.ShiftX = (ClientControl.Width - btnOk.Width) / 2;
             btnOk.ShiftY = ClientControl.Height - btnOk.Height;
+
+            btnRandom.ShiftY = btnOk.ShiftY;
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
