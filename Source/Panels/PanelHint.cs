@@ -36,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabel lblTextForRequirement;
         internal readonly List<VCText> listRequirements = new List<VCText>();
         internal readonly VCLabelValue lblIncome;
+        internal readonly VCLabelValue lblSalary;
         internal readonly VCLabelValue lblGreatnessAdd;
         internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly List<VCLabelValue> listRequiredResources = new List<VCLabelValue>();
@@ -103,7 +104,11 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.Width = widthControl;
 
-            lblGreatnessAdd = new VCLabelValue(this, FormMain.Config.GridSize, lblIncome.NextTop(), FormMain.Config.HintIncome, false);
+            lblSalary = new VCLabelValue(this, FormMain.Config.GridSize, lblIncome.NextTop(), FormMain.Config.HintIncome, false);
+            lblSalary.Image.ImageIndex = FormMain.GUI_16_PURSE;
+            lblSalary.Width = widthControl;
+
+            lblGreatnessAdd = new VCLabelValue(this, FormMain.Config.GridSize, lblSalary.NextTop(), FormMain.Config.HintIncome, false);
             lblGreatnessAdd.Image.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatnessAdd.Width = widthControl;
 
@@ -261,6 +266,7 @@ namespace Fantasy_Kingdoms_Battle
             lblAction.Visible = false;
             lblDescription.Visible = false;
             lblIncome.Visible = false;
+            lblSalary.Visible = false;
             lblGreatnessAdd.Visible = false;
             lblBuildersPerDay.Visible = false;
 
@@ -447,6 +453,22 @@ namespace Fantasy_Kingdoms_Battle
                 lblIncome.Visible = true;
 
                 nextTop = lblIncome.NextTop();
+            }
+        }
+
+        internal void AddStep75Salary(int salary)
+        {
+            Debug.Assert(salary >= 0);
+
+            if (salary > 0)
+            {
+                Debug.Assert(!lblSalary.Visible);
+
+                lblSalary.ShiftY = nextTop;
+                lblSalary.Text = $"{salary} в неделю";
+                lblSalary.Visible = true;
+
+                nextTop = lblSalary.NextTop();
             }
         }
 
