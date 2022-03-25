@@ -443,7 +443,7 @@ namespace Fantasy_Kingdoms_Battle
                             cn.DaysMax++;
                             if (cn.DaysMax > 3)
                             {
-                                SetIsDead(cn.Need.Descriptor.ReasonOfDeath);
+                                //SetIsDead(cn.Need.Descriptor.ReasonOfDeath);
                                 break;
                             }
                         }

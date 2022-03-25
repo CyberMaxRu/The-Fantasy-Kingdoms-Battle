@@ -49,6 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
             if (Descriptor.TypePlayer == TypePlayer.Computer)
                 BaseResources[FormMain.Descriptors.Gold.Number].Quantity = 100_000;
+            ResourceGold = BaseResources[FormMain.Descriptors.Gold.Number];
 
             // Создаем справочик количества приоритетов флагов
             foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
@@ -292,6 +293,28 @@ namespace Fantasy_Kingdoms_Battle
 
                 AllHeroes.Remove(h);
                 CombatHeroes.Remove(h);
+            }
+
+            // Если первое число недели, то выплачиваем жалованье
+            if (Lobby.Day == 1)
+            {
+                int salary;
+                int daysHired;
+                int resultSalary;
+                foreach (Hero h in AllHeroes)
+                {
+                    salary = h.TypeCreature.Salary;
+                    if (salary != 0)
+                    {                        
+                        daysHired = Lobby.Turn - h.TurnOfHire;
+                        if (daysHired > FormMain.DAYS_IN_WEEK)
+                            daysHired = daysHired % FormMain.DAYS_IN_WEEK;
+                        resultSalary = daysHired == FormMain.DAYS_IN_WEEK ? salary : salary / FormMain.DAYS_IN_WEEK * daysHired;
+
+                        SpendGold(resultSalary);
+                        h.AddGold(resultSalary);
+                    }
+                }
             }
 
             Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
@@ -548,6 +571,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы
         internal ListBaseResources BaseResourcesCollected { get; } = new ListBaseResources();// Собрано базовых ресурсов
+        internal BaseResource ResourceGold { get; }// Ресурс - золото
 
         internal List<DescriptorCreature> VariantsBonusedTypeSimpleHero { get; }// Варианты типов простых героев для выбора постоянного бонуса
         internal List<DescriptorCreature> VariantsBonusedTypeTempleHero { get; }// Варианты храмовников для выбора постоянного бонуса
@@ -1209,6 +1233,23 @@ namespace Fantasy_Kingdoms_Battle
 
                         BaseResources[i].Quantity -= res[i].Quantity;
                     }
+                }
+
+                UpdateResourceInCastle();
+            }
+        }
+
+        internal void SpendGold(int gold)
+        {
+            Assert(gold >= 0);
+
+            if (gold > 0)
+            {
+                if (!CheatingIgnoreBaseResources)
+                {                    
+                    Debug.Assert(ResourceGold.Quantity >= 0);
+                    Debug.Assert(ResourceGold.Quantity >= gold);
+                    ResourceGold.Quantity -= gold;
                 }
 
                 UpdateResourceInCastle();
