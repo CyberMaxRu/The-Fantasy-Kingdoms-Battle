@@ -17,6 +17,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnRandom;
         private readonly VCText[,] arrayBonuses;
         private readonly Player player;
+        private readonly VCCellSimple[] arraySimpleHeroes;
+        private readonly VCCellSimple[] arrayTempleHeroes;
+        private readonly VCLabel lblSelectSimpleHero;
+        private readonly VCLabel lblSelectTempleHero;
 
         public WindowSelectPersistentBonuses(Player p) : base()
         {
@@ -43,11 +47,11 @@ namespace Fantasy_Kingdoms_Battle
 
             void DrawLine(int line, List<DescriptorPersistentBonus> list)
             {
-                int nextLeft = FormMain.Config.GridSize;
+                int nextLeft2 = FormMain.Config.GridSize;
 
                 for (int x = 0; x < arrayBonuses.GetLength(1); x++)
                 {
-                    VCText text = new VCText(ClientControl, nextLeft, nextTop, Program.formMain.fontParagraph, Color.MediumTurquoise, 200);
+                    VCText text = new VCText(ClientControl, nextLeft2, nextTop, Program.formMain.fontParagraph, Color.MediumTurquoise, 200);
                     text.StringFormat.LineAlignment = StringAlignment.Center;
                     text.Padding = new System.Windows.Forms.Padding(FormMain.Config.GridSize);
                     text.Text = list[x].Name;
@@ -59,12 +63,44 @@ namespace Fantasy_Kingdoms_Battle
                     text.Tag = line;
                     arrayBonuses[line, x] = text;
 
-                    nextLeft = text.NextLeft();
+                    nextLeft2 = text.NextLeft();
 
                 }
 
                 nextTop = arrayBonuses[line, 0].NextTop();
             }
+
+            lblSelectSimpleHero = new VCLabel(ClientControl, 0, nextTop, Program.formMain.fontParagraph, Color.MediumTurquoise, 16, "Выберите бонус обычного героя:");
+            lblSelectSimpleHero.SetWidthByText();
+            lblSelectSimpleHero.StringFormat.Alignment = StringAlignment.Center;
+            nextTop = lblSelectSimpleHero.NextTop();
+
+            arraySimpleHeroes = new VCCellSimple[player.Lobby.TypeLobby.VariantsUpSimpleHero];
+            int nextLeft = FormMain.Config.GridSize;
+            for (int i = 0; i < arraySimpleHeroes.GetLength(0); i++)
+            {
+                arraySimpleHeroes[i] = new VCCellSimple(ClientControl, nextLeft, nextTop);
+                arraySimpleHeroes[i].ImageIndex = player.VariantsBonusedTypeSimpleHero[i].ImageIndex;
+                arraySimpleHeroes[i].Click += SimpleHero_Click;
+                nextLeft = arraySimpleHeroes[i].NextLeft();
+            }
+
+            lblSelectTempleHero = new VCLabel(ClientControl, 0, lblSelectSimpleHero.ShiftY, Program.formMain.fontParagraph, Color.MediumTurquoise, 16, "Выберите бонус храмовника:");
+            lblSelectTempleHero.SetWidthByText();
+            lblSelectTempleHero.StringFormat.Alignment = StringAlignment.Center;
+
+            arrayTempleHeroes = new VCCellSimple[player.Lobby.TypeLobby.VariantsUpTempleHero];
+            nextLeft = FormMain.Config.GridSize;
+            for (int i = 0; i < arrayTempleHeroes.GetLength(0); i++)
+            {
+                arrayTempleHeroes[i] = new VCCellSimple(ClientControl, nextLeft, nextTop);
+                arrayTempleHeroes[i].ImageIndex = player.VariantsBonusedTypeTempleHero[i].ImageIndex;
+                arrayTempleHeroes[i].Click += TempleHero_Click;
+                nextLeft = arrayTempleHeroes[i].NextLeft();
+            }
+
+            //
+            nextTop = arraySimpleHeroes[0].NextTop();
 
             btnOk = new VCButton(ClientControl, 0, nextTop + (FormMain.Config.GridSize * 2), "ОК");
             btnOk.Width = 160;
@@ -86,20 +122,40 @@ namespace Fantasy_Kingdoms_Battle
             lblOther.Width = ClientControl.Width;
         }
 
+        private void TempleHero_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < arrayTempleHeroes.GetLength(0); i++)
+            {
+                arrayTempleHeroes[i].ManualSelected = arrayTempleHeroes[i] == sender;
+
+                if (arrayTempleHeroes[i].ManualSelected)
+                    player.SelectedBonusTempleHero = player.VariantsBonusedTypeTempleHero[i];
+            }
+
+            UpdateAllowClose();
+        }
+
+        private void SimpleHero_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < arraySimpleHeroes.GetLength(0); i++)
+            {
+                arraySimpleHeroes[i].ManualSelected = arraySimpleHeroes[i] == sender;
+
+                if (arraySimpleHeroes[i].ManualSelected)
+                    player.SelectedBonusSimpleHero = player.VariantsBonusedTypeSimpleHero[i];
+            }
+
+            UpdateAllowClose();
+        }
+
         private void BtnRandom_Click(object sender, EventArgs e)
         {
             player.SelectRandomPersistentBonus();
             CloseForm(DialogAction.None);
         }
 
-        private void Text_Click(object sender, EventArgs e)
+        private void UpdateAllowClose()
         {
-            int line = (sender as VCText).Tag;
-            for (int i = 0; i < arrayBonuses.GetLength(1); i++)
-            {
-                arrayBonuses[line, i].ManualSelected = arrayBonuses[line, i] == sender;
-            }
-
             //
             int selected = 0;
             for (int y = 0; y < arrayBonuses.GetLength(0); y++)
@@ -110,10 +166,18 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                     }
 
-            btnOk.Enabled = selected == arrayBonuses.GetLength(0);
+            btnOk.Enabled = (player.SelectedBonusSimpleHero != null) && (player.SelectedBonusTempleHero != null) && (selected == arrayBonuses.GetLength(0));
+        }
 
-            //
-            Program.formMain.NeedRedrawFrame();
+        private void Text_Click(object sender, EventArgs e)
+        {
+            int line = (sender as VCText).Tag;
+            for (int i = 0; i < arrayBonuses.GetLength(1); i++)
+            {
+                arrayBonuses[line, i].ManualSelected = arrayBonuses[line, i] == sender;
+            }
+
+            UpdateAllowClose();
         }
 
         internal override void AdjustSize()
@@ -126,6 +190,24 @@ namespace Fantasy_Kingdoms_Battle
                 btnOk.ShiftY = ClientControl.Height - btnOk.Height;
 
                 btnRandom.ShiftY = btnOk.ShiftY;
+
+                int halfParent = lblSelectSimpleHero.Parent.Width / 2;
+                lblSelectSimpleHero.ShiftX = (halfParent - lblSelectSimpleHero.Width) / 2;
+                lblSelectTempleHero.ShiftX = halfParent + ((halfParent - lblSelectTempleHero.Width) / 2);
+
+                int nextLeft = (halfParent - (((arraySimpleHeroes[0].Width + FormMain.Config.GridSize) * arraySimpleHeroes.GetLength(0)) - FormMain.Config.GridSize)) / 2;
+                for (int i = 0; i < arraySimpleHeroes.GetLength(0); i++)
+                {
+                    arraySimpleHeroes[i].ShiftX = nextLeft;
+                    nextLeft = arraySimpleHeroes[i].NextLeft();
+                }
+
+                nextLeft = halfParent + (halfParent - (((arrayTempleHeroes[0].Width + FormMain.Config.GridSize) * arrayTempleHeroes.GetLength(0)) - FormMain.Config.GridSize)) / 2;
+                for (int i = 0; i < arrayTempleHeroes.GetLength(0); i++)
+                {
+                    arrayTempleHeroes[i].ShiftX = nextLeft;
+                    nextLeft = arrayTempleHeroes[i].NextLeft();
+                }
             }
         }
 

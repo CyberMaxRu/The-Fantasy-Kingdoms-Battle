@@ -93,6 +93,46 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            // Настраиваем варианты бонусов типов героев
+            VariantsBonusedTypeSimpleHero = new List<DescriptorCreature>();
+            VariantsBonusedTypeTempleHero = new List<DescriptorCreature>();
+
+            List<DescriptorCreature> listSimpleHero = new List<DescriptorCreature>();
+            List<DescriptorCreature> listTempleHero = new List<DescriptorCreature>();
+            foreach (DescriptorCreature dc in FormMain.Descriptors.Creatures)
+            {
+                if (dc.CategoryCreature == CategoryCreature.Hero)
+                {
+                    switch (dc.TypeHero)
+                    {
+                        case TypeHero.Base:
+                        case TypeHero.Advanced:
+                            listSimpleHero.Add(dc);
+                            break;
+                        case TypeHero.Temple:
+                            listTempleHero.Add(dc);
+                            break;
+                        default:
+                            DoException($"Неизвестный тип героя: {dc.TypeHero}");
+                            break;
+                    }
+                }
+            }
+
+            while (VariantsBonusedTypeSimpleHero.Count < lobby.TypeLobby.VariantsUpSimpleHero)
+            {
+                int idx = lobby.Rnd.Next(listSimpleHero.Count);
+                VariantsBonusedTypeSimpleHero.Add(listSimpleHero[idx]);
+                listSimpleHero.RemoveAt(idx);
+            }
+
+            while (VariantsBonusedTypeTempleHero.Count < lobby.TypeLobby.VariantsUpTempleHero)
+            {
+                int idx = lobby.Rnd.Next(listTempleHero.Count);
+                VariantsBonusedTypeTempleHero.Add(listTempleHero[idx]);
+                listTempleHero.RemoveAt(idx);
+            }
+
             // Настраиваем стартовые бонусы
             if (lobby.TypeLobby.VariantStartBonus > 0)
             {
@@ -508,6 +548,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы
         internal ListBaseResources BaseResourcesCollected { get; } = new ListBaseResources();// Собрано базовых ресурсов
+
+        internal List<DescriptorCreature> VariantsBonusedTypeSimpleHero { get; }// Варианты типов простых героев для выбора постоянного бонуса
+        internal List<DescriptorCreature> VariantsBonusedTypeTempleHero { get; }// Варианты храмовников для выбора постоянного бонуса
+        internal DescriptorCreature SelectedBonusSimpleHero { get; set; }
+        internal DescriptorCreature SelectedBonusTempleHero { get; set; }
 
         //
         internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий в графстве
@@ -1238,8 +1283,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void SelectRandomPersistentBonus()
         {
             // Применяем случайные постоянные бонусы
-            for (int y = 0; y < VariantPersistentBonus.GetLength(0); y++)
-                PersistentBonuses.Add(VariantPersistentBonus[y][Lobby.Rnd.Next(VariantPersistentBonus[y].Count)]);
+            for (int i = 0; i < VariantPersistentBonus.GetLength(0); i++)
+                PersistentBonuses.Add(VariantPersistentBonus[i][Lobby.Rnd.Next(VariantPersistentBonus[i].Count)]);
+
+            SelectedBonusSimpleHero = VariantsBonusedTypeSimpleHero[Lobby.Rnd.Next(VariantsBonusedTypeSimpleHero.Count)];
+            SelectedBonusTempleHero = VariantsBonusedTypeTempleHero[Lobby.Rnd.Next(VariantsBonusedTypeTempleHero.Count)];
         }
 
         internal StartBonus GetRandomStartBonus()

@@ -28,6 +28,8 @@ namespace Fantasy_Kingdoms_Battle
             PointStartBonus = XmlUtils.GetInteger(n, "PointStartBonus");
             VariantPersistentBonus = XmlUtils.GetInteger(n, "VariantPersistentBonus");
             VariantStartBonus = XmlUtils.GetInteger(n, "VariantStartBonus");
+            VariantsUpSimpleHero = XmlUtils.GetInteger(n, "VariantsUpSimpleHero");
+            VariantsUpTempleHero = XmlUtils.GetInteger(n, "VariantsUpTempleHero");
             StartScoutedLairs = XmlUtils.GetInteger(n, "StartScoutedLairs");
             MaxLoses = XmlUtils.GetInteger(n, "MaxLoses");
             MapWidth = XmlUtils.GetInteger(n, "MapWidth");
@@ -65,6 +67,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(VariantStartBonus >= 2);
             Debug.Assert(VariantStartBonus <= 4);
             Debug.Assert(((PointStartBonus > 0) && (VariantStartBonus > 0)) || ((PointStartBonus == 0) && (VariantStartBonus == 0)));
+            Debug.Assert(VariantsUpSimpleHero >= 1);
+            Debug.Assert(VariantsUpSimpleHero <= FormMain.Config.MaxHeroForSelectBonus);
+            Debug.Assert(VariantsUpTempleHero >= 1);
+            Debug.Assert(VariantsUpTempleHero <= FormMain.Config.MaxHeroForSelectBonus);
             Debug.Assert(StartScoutedLairs >= 0);
             Debug.Assert(StartScoutedLairs <= 12);
             Debug.Assert(MaxLoses >= 1);
@@ -189,6 +195,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointStartBonus { get; }
         internal int VariantPersistentBonus { get; }
         internal int VariantStartBonus { get; }
+        internal int VariantsUpSimpleHero { get; }
+        internal int VariantsUpTempleHero { get; }
         internal int StartScoutedLairs { get; }
         internal int MaxLoses { get; }
         internal int MapWidth{ get; }

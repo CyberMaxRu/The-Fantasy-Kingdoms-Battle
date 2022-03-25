@@ -27,6 +27,8 @@
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantPersistentBonus>3</VariantPersistentBonus>
     <VariantStartBonus>3</VariantStartBonus>
+    <VariantsUpSimpleHero>3</VariantsUpSimpleHero>
+    <VariantsUpTempleHero>3</VariantsUpTempleHero>
     <MaxLoses>3</MaxLoses>
     <MapWidth>5</MapWidth>
     <MapHeight>5</MapHeight>

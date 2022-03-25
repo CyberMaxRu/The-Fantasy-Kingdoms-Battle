@@ -271,7 +271,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            Debug.Assert(((RangeWeapon != null) && (Quiver != null)) || ((RangeWeapon is null) && (Quiver is null)));
+            //Debug.Assert(((RangeWeapon != null) && (Quiver != null)) || ((RangeWeapon is null) && (Quiver is null)));
         }
 
         // Реализация интерфейса

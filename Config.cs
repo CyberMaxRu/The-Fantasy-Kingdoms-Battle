@@ -90,8 +90,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ConstructionMaxLines <= 5);
 
             MaxElementInStartBonus = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MaxElementInStartBonus").InnerText);
-            Debug.Assert(ConstructionMaxLines >= 1);
-            Debug.Assert(ConstructionMaxLines <= 10);
+            Debug.Assert(MaxElementInStartBonus >= 1);
+            Debug.Assert(MaxElementInStartBonus <= 5);
+            MaxHeroForSelectBonus = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MaxHeroForSelectBonus").InnerText);
+            Debug.Assert(MaxHeroForSelectBonus >= 1);
+            Debug.Assert(MaxHeroForSelectBonus <= 5);
+
             MouseHoverTime = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MouseHoverTime").InnerText);
             Debug.Assert(MouseHoverTime >= 0);
             Debug.Assert(MouseHoverTime <= 10_000);
@@ -339,6 +343,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ConstructionMaxLines { get; private set; }// Максимальное количество линий сооружений
         internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
         internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса
+        internal int MaxHeroForSelectBonus { get; private set; }// Максимальное количество типов героев для выбора постоянного бонуса
 
         // Цвета
         internal Color CommonBorder { get; private set; }
