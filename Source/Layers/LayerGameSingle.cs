@@ -442,6 +442,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void ActivatePageResultTurn()
         {
             pageControl.ActivatePage(pageResultTurn);
+            UpdateNameCurrentPage();
         }
 
         private void DrawPageFinance()
@@ -1066,11 +1067,16 @@ namespace Fantasy_Kingdoms_Battle
                 + $"Максимум героев: {curAppliedPlayer.Lobby.TypeLobby.MaxHeroes}");
         }
 
+        private void UpdateNameCurrentPage()
+        {
+            ShowNamePlayer(pageControl.CurrentPage.Caption);
+        }
+
         private void PageControl_PageChanged(object sender, EventArgs e)
         {
             if (Program.formMain.currentLayer == this)
             {
-                ShowNamePlayer(pageControl.CurrentPage.Caption);
+                UpdateNameCurrentPage();
                 //if (winAdvice is null)
                 //    winAdvice = new WindowAdvice();
                 //winAdvice.ShowAdvice(pageControl.CurrentPage.Advice);
