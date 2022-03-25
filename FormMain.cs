@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const string VERSION = "0.3.18";
         internal const string DATE_VERSION = "16.03.2022";
         private const string VERSION_POSTFIX = "в разработке";
+        internal const int DAYS_IN_WEEK = 7;
 
         internal ProgramState ProgramState { get; private set; } = ProgramState.Started;
         internal bool gameStarted = false;
