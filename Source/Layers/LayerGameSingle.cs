@@ -1136,7 +1136,7 @@ namespace Fantasy_Kingdoms_Battle
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddStep2Header($"Ход игры: {lobby.Turn}");
-            PanelHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Month}{Environment.NewLine}");
+            PanelHint.AddStep5Description($"Месяц: {lobby.Month}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}День: {lobby.Day}{Environment.NewLine}");
             PanelHint.AddStep21Tooltip($"В неделе 7 дней.{Environment.NewLine}В месяце 4 недели.");
         }
 
