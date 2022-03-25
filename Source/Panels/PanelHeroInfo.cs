@@ -90,7 +90,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LvGold_ShowHint(object sender, EventArgs e)
         {
-            PanelHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
+            PanelHint.AddStep2Header(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
+            PanelHint.AddStep75Salary(Hero.SalaryPerWeek());
         }
 
         internal Hero Hero { get => Entity as Hero; }
@@ -109,7 +110,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             btnTarget.Entity = Hero.TargetByFlag;
-            lvGold.Text = Hero.Gold.ToString();
+            lvGold.Text = $"(+{Hero.SalaryPerWeek()}) {Hero.Gold}";
 
 
             /*int numberNeed = 0;
