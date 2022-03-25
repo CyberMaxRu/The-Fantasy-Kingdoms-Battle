@@ -44,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCIconButton48> listBtnLevelTax;
 
         internal readonly VisualControl MainControl;
+        internal readonly VCBitmap bmpCurtain;
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
@@ -316,6 +317,8 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpPreparedToolbar.ShiftX = 0;
             MainControl.ShiftX = 0;
+
+            bmpCurtain = new VCBitmap(this, MainControl.ShiftX, MainControl.ShiftY, GuiUtils.MakeBackground(new Size(MainControl.Width, MainControl.Height)));
 
             if (pageRealMap != null)
             {
@@ -917,6 +920,8 @@ namespace Fantasy_Kingdoms_Battle
                     ShowNamePlayer(lobby.CurrentPlayer.Descriptor.Name);
                 }
             }
+
+            bmpCurtain.Visible = !MainControl.Visible;
 
             Program.formMain.ShowFrame(true);
 
