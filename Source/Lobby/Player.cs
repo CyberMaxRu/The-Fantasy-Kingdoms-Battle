@@ -301,7 +301,7 @@ namespace Fantasy_Kingdoms_Battle
                 int earnedSalary;
                 foreach (Hero h in AllHeroes)
                 {
-                    earnedSalary = h.EarnedSalary();
+                    earnedSalary = h.SalaryPerWeek();
                     if (earnedSalary > 0)
                     {
                         SpendGold(earnedSalary);

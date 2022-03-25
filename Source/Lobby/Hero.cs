@@ -413,23 +413,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int SalaryPerWeek()
         {
-            return TypeCreature.Salary;
-        }
-
-        internal int EarnedSalary()
-        {
-            int salary = SalaryPerWeek();
-            if (salary != 0)
-            {
-                salary = (int)(salary * Math.Truncate(Level / (decimal)10));
-
-                int daysHired = Lobby.Turn - TurnOfHire;
-                if (daysHired > FormMain.DAYS_IN_WEEK)
-                    daysHired = daysHired % FormMain.DAYS_IN_WEEK;
-                return daysHired == FormMain.DAYS_IN_WEEK ? salary : salary / FormMain.DAYS_IN_WEEK * daysHired;
-            }
-
-            return 0;
+            return TypeCreature.Salary != 0 ? (int)(TypeCreature.Salary * Math.Truncate(Level / (decimal)10)) : 0;
         }
     }
 }
