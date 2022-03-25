@@ -163,6 +163,7 @@
     <ImageIndex>63</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Base</TypeHero>
     <Reward>100</Reward>
     <Cost>200</Cost>
     <Construction>GuildWarrior</Construction>
@@ -504,6 +505,7 @@
     <ImageIndex>57</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Base</TypeHero>
     <Reward>75</Reward>
     <Cost>150</Cost>
     <Construction>GuildHunter</Construction>
@@ -833,6 +835,7 @@
     <ImageIndex>53</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Base</TypeHero>
     <Reward>125</Reward>
     <Cost>350</Cost>
     <Construction>GuildCleric</Construction>
@@ -1131,6 +1134,7 @@
     <ImageIndex>58</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Advanced</TypeHero>
     <Reward>150</Reward>
     <Cost>500</Cost>
     <Construction>GuildMage</Construction>
@@ -1429,6 +1433,7 @@
     <ImageIndex>56</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Elf</TypeCreature>
+    <TypeHero>Advanced</TypeHero>
     <Reward>200</Reward>
     <Cost>700</Cost>
     <Construction>GuildElf</Construction>
@@ -1711,6 +1716,7 @@
     <ImageIndex>55</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Dwarf</TypeCreature>
+    <TypeHero>Advanced</TypeHero>
     <Reward>250</Reward>
     <Cost>700</Cost>
     <Construction>GuildDwarf</Construction>
@@ -1988,6 +1994,7 @@
     <ImageIndex>62</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Advanced</TypeHero>
     <Reward>50</Reward>
     <Cost>100</Cost>
     <Construction>GuildRogue</Construction>
@@ -2272,6 +2279,7 @@
     <ImageIndex>54</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildDarkPriest</Construction>
@@ -2519,6 +2527,7 @@
     <ImageIndex>61</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildPriest</Construction>
@@ -2763,6 +2772,7 @@
     <ImageIndex>60</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildPaladin</Construction>
@@ -3007,6 +3017,7 @@
     <ImageIndex>52</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildBlademaster</Construction>
@@ -3248,6 +3259,7 @@
     <ImageIndex>51</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildBeastmaster</Construction>
@@ -3495,6 +3507,7 @@
     <ImageIndex>59</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildMarksman</Construction>
@@ -3742,6 +3755,7 @@
     <ImageIndex>135</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildFireMage</Construction>
@@ -3945,6 +3959,7 @@
     <ImageIndex>131</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildIceMage</Construction>
@@ -4169,6 +4184,7 @@
     <ImageIndex>133</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
+    <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildDeathKnight</Construction>
@@ -4399,7 +4415,7 @@
     <Name>Зомби</Name>
     <Description>Зомби - любимые игрушки некромантов. Зомби весьма сильны, но очень медлительны. Основной прием самозащиты от зомби - бег трусцой.</Description>
     <ImageIndex>103</ImageIndex>
-    <CategoryCreature>Monster</CategoryCreature>
+    s<CategoryCreature>Monster</CategoryCreature>
     <TypeCreature>Undead</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>

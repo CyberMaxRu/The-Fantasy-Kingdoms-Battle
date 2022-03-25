@@ -7,7 +7,8 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryCreature { Citizen, Hero, Monster };    
+    internal enum CategoryCreature { Citizen, Hero, Monster };
+    internal enum TypeHero { None, Base, Advanced, Temple };// Тип героя
     internal enum PriorityBuy { None = 0, Min = 100, Low = 200, Average = 300, High = 400, Max = 500 };// Приоритет обработки сооружений героями
 
 
@@ -24,6 +25,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             CategoryCreature = (CategoryCreature)Enum.Parse(typeof(CategoryCreature), n.SelectSingleNode("CategoryCreature").InnerText);
             TypeCreature = FormMain.Descriptors.FindTypeCreature(XmlUtils.GetStringNotNull(n, "TypeCreature"));
+            if (n.SelectSingleNode("TypeHero") != null)
+                TypeHero = (TypeHero)Enum.Parse(typeof(TypeHero), n.SelectSingleNode("TypeHero").InnerText);
             MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
             DefaultPositionPriority = XmlUtils.GetInteger(n, "DefaultPositionPriority");
             if (CategoryCreature != CategoryCreature.Citizen)
@@ -276,11 +279,13 @@ namespace Fantasy_Kingdoms_Battle
             if (CategoryCreature == CategoryCreature.Hero)
             {
                 Debug.Assert(CoefficientFlags != null);
+                Debug.Assert(TypeHero != TypeHero.None);
             }
             else
             {
                 Debug.Assert(PriorityConstructionForShoppings.Count == 0);
                 Debug.Assert(CoefficientFlags is null);
+                Debug.Assert(TypeHero == TypeHero.None);
             }
 
             void LoadName(string nodes, string node, List<string> list)
@@ -305,6 +310,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal CategoryCreature CategoryCreature { get; }// Категория существа
         internal DescriptorTypeCreature TypeCreature { get; }// Вид существа
+        internal TypeHero TypeHero { get; } = TypeHero.None;
         internal int MaxLevel { get; }// Максимальный уровень существа
         internal DescriptorStateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
