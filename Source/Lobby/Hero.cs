@@ -413,7 +413,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int SalaryPerWeek()
         {
-            return TypeCreature.Salary != 0 ? (int)(TypeCreature.Salary * Math.Truncate(Level / (decimal)10)) : 0;
+            return TypeCreature.Salary != 0 ? TypeCreature.Salary + (int)(TypeCreature.Salary * Math.Truncate(Level / (decimal)10)) : 0;
         }
     }
 }
