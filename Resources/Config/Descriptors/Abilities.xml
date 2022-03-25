@@ -1295,7 +1295,7 @@
     <ID>MarksmanSunburstAttack</ID>
     <Name>Солнечная стрела</Name>
     <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
-    <ImageIndex>132</ImageIndex>
+    <ImageIndex>284</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
