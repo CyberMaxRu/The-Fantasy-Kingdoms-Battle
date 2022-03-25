@@ -410,5 +410,24 @@ namespace Fantasy_Kingdoms_Battle
 
             Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.HeroIsDead);
         }
+
+        internal int SalaryPerWeek()
+        {
+            return TypeCreature.Salary;
+        }
+
+        internal int EarnedSalary()
+        {
+            int salary = SalaryPerWeek();
+            if (salary != 0)
+            {
+                int daysHired = Lobby.Turn - TurnOfHire;
+                if (daysHired > FormMain.DAYS_IN_WEEK)
+                    daysHired = daysHired % FormMain.DAYS_IN_WEEK;
+                return daysHired == FormMain.DAYS_IN_WEEK ? salary : salary / FormMain.DAYS_IN_WEEK * daysHired;
+            }
+
+            return 0;
+        }
     }
 }

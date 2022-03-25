@@ -298,22 +298,12 @@ namespace Fantasy_Kingdoms_Battle
             // Если первое число недели, то выплачиваем жалованье
             if (Lobby.Day == 1)
             {
-                int salary;
-                int daysHired;
-                int resultSalary;
+                int earnedSalary;
                 foreach (Hero h in AllHeroes)
                 {
-                    salary = h.TypeCreature.Salary;
-                    if (salary != 0)
-                    {                        
-                        daysHired = Lobby.Turn - h.TurnOfHire;
-                        if (daysHired > FormMain.DAYS_IN_WEEK)
-                            daysHired = daysHired % FormMain.DAYS_IN_WEEK;
-                        resultSalary = daysHired == FormMain.DAYS_IN_WEEK ? salary : salary / FormMain.DAYS_IN_WEEK * daysHired;
-
-                        SpendGold(resultSalary);
-                        h.AddGold(resultSalary);
-                    }
+                    earnedSalary = h.EarnedSalary();
+                    SpendGold(earnedSalary);
+                    h.AddGold(earnedSalary);
                 }
             }
 
