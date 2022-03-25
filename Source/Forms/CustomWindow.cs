@@ -68,7 +68,16 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.LayerChanged();
 
             frame = new DispatcherFrame();
-            Dispatcher.PushFrame(frame);
+            // Если использовать DispatcherFrame, то при выходе курсора за пределы клиентской области он не меняется на системный.
+            // И чтобы закрыть окно, надо кликнуть 2 раза на крестике - сначала для активации окна, потом для действия
+            // Переход на свой цикл устраняет эту проблему
+            //Dispatcher.PushFrame(frame);
+
+            while (frame.Continue)
+            {
+                Application.DoEvents();
+            }
+            
 
             return dialogResult;
         }
