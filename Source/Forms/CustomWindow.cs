@@ -75,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
 
             while (frame.Continue)
             {
+                System.Threading.Thread.Sleep(1);
                 Application.DoEvents();
             }
             
