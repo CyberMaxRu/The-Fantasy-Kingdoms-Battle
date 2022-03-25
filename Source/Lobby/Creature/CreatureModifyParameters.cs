@@ -30,9 +30,15 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     DoException($"Не опознан тип модификации {l.Name}");
             }
+
+            if (MeleeAttackPercent != 0)
+                TextHint += $"+{MeleeAttackPercent}% к урону ближнего боя{Environment.NewLine}";
+            if (RangeAttackPercent != 0)
+                TextHint += $"+{RangeAttackPercent}% к урону дальнего боя{Environment.NewLine}";
         }
 
         internal int MeleeAttackPercent { get; }
         internal int RangeAttackPercent { get; }
+        internal string TextHint { get; }
     }
 }

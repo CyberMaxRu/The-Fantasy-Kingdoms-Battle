@@ -82,6 +82,8 @@ namespace Fantasy_Kingdoms_Battle
                 arraySimpleHeroes[i] = new VCCellSimple(ClientControl, nextLeft, nextTop);
                 arraySimpleHeroes[i].ImageIndex = player.VariantsBonusedTypeSimpleHero[i].ImageIndex;
                 arraySimpleHeroes[i].Click += SimpleHero_Click;
+                arraySimpleHeroes[i].ShowHint += SimpleHero_ShowHint;
+                arraySimpleHeroes[i].Tag = i;
                 nextLeft = arraySimpleHeroes[i].NextLeft();
             }
 
@@ -96,6 +98,8 @@ namespace Fantasy_Kingdoms_Battle
                 arrayTempleHeroes[i] = new VCCellSimple(ClientControl, nextLeft, nextTop);
                 arrayTempleHeroes[i].ImageIndex = player.VariantsBonusedTypeTempleHero[i].ImageIndex;
                 arrayTempleHeroes[i].Click += TempleHero_Click;
+                arrayTempleHeroes[i].ShowHint += TempleHero_ShowHint;
+                arrayTempleHeroes[i].Tag = i;
                 nextLeft = arrayTempleHeroes[i].NextLeft();
             }
 
@@ -120,6 +124,20 @@ namespace Fantasy_Kingdoms_Battle
             lblEconomic.Width = ClientControl.Width;
             lblMilitary.Width = ClientControl.Width;
             lblOther.Width = ClientControl.Width;
+        }
+
+        private void SimpleHero_ShowHint(object sender, EventArgs e)
+        {
+            VisualControl l = sender as VisualControl;
+            PanelHint.AddStep2Header(player.VariantsBonusedTypeSimpleHero[l.Tag].Name);
+            PanelHint.AddStep5Description(player.VariantsBonusedTypeSimpleHero[l.Tag].AdditionalBonus.TextHint);
+        }
+
+        private void TempleHero_ShowHint(object sender, EventArgs e)
+        {
+            VisualControl l = sender as VisualControl;
+            PanelHint.AddStep2Header(player.VariantsBonusedTypeTempleHero[l.Tag].Name);
+            PanelHint.AddStep5Description(player.VariantsBonusedTypeTempleHero[l.Tag].AdditionalBonus.TextHint);
         }
 
         private void TempleHero_Click(object sender, EventArgs e)
