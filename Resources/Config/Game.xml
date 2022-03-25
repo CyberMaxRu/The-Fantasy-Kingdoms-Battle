@@ -15,6 +15,7 @@
     <QuantityInternalAvatars>16</QuantityInternalAvatars>
     <MaxQuantityExternalAvatars>8</MaxQuantityExternalAvatars>
     <MaxElementInStartBonus>4</MaxElementInStartBonus>
+    <MaxHeroForSelectBonus>4</MaxHeroForSelectBonus>
     <MaxValueProperty>1000</MaxValueProperty>
     <DefaultLevelTax>Normal</DefaultLevelTax>
     <MouseHoverTime>0</MouseHoverTime>
@@ -69,7 +70,7 @@
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
     <TimeInTumbstone>2.0</TimeInTumbstone>
     <TimeToDisappearance>0.8</TimeToDisappearance>
-    <MaxAbilities>8</MaxAbilities>
+    <MaxAbilities>12</MaxAbilities>
     <MaxSecondarySkills>8</MaxSecondarySkills>
   </Heroes>
   <Battle>
