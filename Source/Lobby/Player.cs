@@ -302,8 +302,11 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (Hero h in AllHeroes)
                 {
                     earnedSalary = h.EarnedSalary();
-                    SpendGold(earnedSalary);
-                    h.AddGold(earnedSalary);
+                    if (earnedSalary > 0)
+                    {
+                        SpendGold(earnedSalary);
+                        h.AddGold(earnedSalary);
+                    }
                 }
             }
 

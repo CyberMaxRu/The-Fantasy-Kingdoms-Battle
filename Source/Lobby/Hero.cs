@@ -421,6 +421,8 @@ namespace Fantasy_Kingdoms_Battle
             int salary = SalaryPerWeek();
             if (salary != 0)
             {
+                salary = (int)(salary * Math.Truncate(Level / (decimal)10));
+
                 int daysHired = Lobby.Turn - TurnOfHire;
                 if (daysHired > FormMain.DAYS_IN_WEEK)
                     daysHired = daysHired % FormMain.DAYS_IN_WEEK;
