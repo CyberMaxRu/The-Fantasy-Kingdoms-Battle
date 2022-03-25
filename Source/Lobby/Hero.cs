@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction = pb;
             Abode = Construction;
-            DayOfHire = Player.Lobby.Turn;
+            TurnOfHire = Player.Lobby.Turn;
 
             if (creature.CategoryCreature == CategoryCreature.Hero)
             {
@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
 
         // Статистика за лобби
-        internal int DayOfHire { get; }// На каком дне нанят
+        internal int TurnOfHire { get; }// На каком ходу нанят
         internal int Battles { get; }// Участвовал в сражениях
         internal int Wins { get; }// Побед        
         internal int Loses { get; }// Поражений
