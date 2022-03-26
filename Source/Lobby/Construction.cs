@@ -119,6 +119,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionService> Services { get; } = new List<ConstructionService>();// Услуги, доступные в строении
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
+        internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
         internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
@@ -283,6 +284,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 ValidateResearches();
                 FillResearches(menu);
+            }
+            else
+            {
+
             }
         }
 
@@ -1287,6 +1292,12 @@ namespace Fantasy_Kingdoms_Battle
             Abilities.Add(ca);
         }
 
+        internal void AddSpell(ConstructionSpell cs)
+        {
+            AddEntity(cs);
+            Spells.Add(cs);
+        }
+
         internal void AddMassEvent(ConstructionEvent ce)
         {
             AddEntity(ce);
@@ -1371,6 +1382,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (!Abilities.Remove(ca))
                     Debug.Fail($"Не смог удалить умение {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+            }
+            else if (entity is ConstructionSpell csp)
+            {
+                if (!Spells.Remove(csp))
+                    Debug.Fail($"Не смог удалить заклинание {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
             }
             else if (entity is ConstructionService cs)
             {

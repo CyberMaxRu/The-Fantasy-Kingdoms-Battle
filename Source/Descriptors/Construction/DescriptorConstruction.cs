@@ -175,6 +175,14 @@ namespace Fantasy_Kingdoms_Battle
                     new DescriptorConstructionService(this, l);
             }
 
+            // Загрузка информацию о заклинаниях
+            XmlNode nodeSpells = n.SelectSingleNode("Spells");
+            if (nodeSpells != null)
+            {
+                foreach (XmlNode l in nodeSpells.SelectNodes("Spell"))
+                    new DescriptorConstructionSpell(this, l);
+            }
+
             // Загружаем информацию о товарах
             XmlNode np = n.SelectSingleNode("Products");
             if (np != null)

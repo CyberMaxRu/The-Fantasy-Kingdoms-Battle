@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblSectionProperty;
         private readonly List<VCCreatureProperty> listProperties;
         private VCLabel lblSectionVisits;
+        private VCLabel lblSectionSpells;
         private VCLabel lblSectionExtensions;
         private VCLabel lblSectionImprovements;
         private VCLabel lblSectionResources;
@@ -24,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblSectionGoods;
         private VCLabel lblSectionAbilities;
         private readonly PanelWithPanelEntity panelVisits;
+        private readonly PanelWithPanelEntity panelSpells;
         private readonly PanelWithPanelEntity panelExtensions;
         private readonly PanelWithPanelEntity panelImprovements;
         private readonly PanelWithPanelEntity panelResources;
@@ -68,6 +70,8 @@ namespace Fantasy_Kingdoms_Battle
 
             lblSectionVisits = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Посещение:");
             lblSectionVisits.StringFormat.Alignment = StringAlignment.Near;
+            lblSectionSpells = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Заклинания:");
+            lblSectionSpells.StringFormat.Alignment = StringAlignment.Near;
             lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Доп. сооружения:");
             lblSectionExtensions.StringFormat.Alignment = StringAlignment.Near;
             lblSectionImprovements = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Улучшения:");
@@ -83,6 +87,8 @@ namespace Fantasy_Kingdoms_Battle
 
             panelVisits = new PanelWithPanelEntity(4, false);
             tabProducts.AddControl(panelVisits);
+            panelSpells = new PanelWithPanelEntity(4, false);
+            tabProducts.AddControl(panelSpells);
             panelExtensions = new PanelWithPanelEntity(4, false);
             tabProducts.AddControl(panelExtensions);
             panelImprovements = new PanelWithPanelEntity(4, false);
@@ -104,6 +110,7 @@ namespace Fantasy_Kingdoms_Battle
             tabProducts.Width = pageControl.Width;
             lblSectionProperty.Width = pageControl.Width;
             lblSectionVisits.Width = pageControl.Width;
+            lblSectionSpells.Width = pageControl.Width;
             lblSectionExtensions.Width = pageControl.Width;
             lblSectionImprovements.Width = pageControl.Width;
             lblSectionResources.Width = pageControl.Width;
@@ -162,6 +169,7 @@ namespace Fantasy_Kingdoms_Battle
             int nextTop = lblSectionVisits.ShiftY;
 
             DrawList(lblSectionVisits, panelVisits, Construction.Visits);
+            DrawList(lblSectionSpells, panelSpells, Construction.Spells);
             DrawList(lblSectionExtensions, panelExtensions, Construction.Extensions);
             DrawList(lblSectionImprovements, panelImprovements, Construction.Improvements);
             DrawList(lblSectionResources, panelResources, Construction.Resources);

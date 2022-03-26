@@ -250,14 +250,6 @@ namespace Fantasy_Kingdoms_Battle
                 Creatures.Add(new DescriptorCreature(n));
             }
 
-            // Загрузка конфигурации заклинаний
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Spells.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Spell"))
-            {
-                Spells.Add(new DescriptorSpell(n));
-            }
-
             // Загрузка конфигурации уровней налогов
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\LevelTaxes.xml");
 
@@ -323,7 +315,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorItem i in Items)
                 i.AfterTuneLinks();
 
-            foreach (DescriptorSpell s in Spells)
+            foreach (DescriptorConstructionSpell s in Spells)
                 s.AfterTuneLinks();
 
             foreach (DescriptorConstruction c in Constructions)
@@ -361,6 +353,7 @@ namespace Fantasy_Kingdoms_Battle
         // Сооружения
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
         internal List<DescriptorConstructionVisitSimple> ConstructionsVisits { get; } = new List<DescriptorConstructionVisitSimple>();
+        internal List<DescriptorConstructionSpell> Spells { get; } = new List<DescriptorConstructionSpell>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
 
         // Существа
@@ -381,7 +374,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
         internal List<DescriptorResource> Resources { get; } = new List<DescriptorResource>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
-        internal List<DescriptorSpell> Spells { get; } = new List<DescriptorSpell>();
         internal int MaxLevelSkill { get; }
 
         //
@@ -685,7 +677,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddEntity(DescriptorEntity entity)
         {
-            Debug.Assert(!Entities.ContainsKey(entity.ID));
+            Debug.Assert(!Entities.ContainsKey(entity.ID), $"Сущность {entity.ID} уже добавлена");
 
             Entities.Add(entity.ID, entity);
         }

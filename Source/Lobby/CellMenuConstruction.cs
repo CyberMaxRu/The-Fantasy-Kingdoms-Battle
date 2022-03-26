@@ -40,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
             Construction.Researches.Remove(this);
+            Construction.Player.Lobby.Layer.UpdateMenu();
         }
 
         protected virtual bool ConstructionMustMeConstructed() => true;
@@ -71,6 +72,8 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionBuild(c, d);
                 if (d.CreatedEntity is DescriptorCreature)
                     return new CellMenuConstructionHireCreature(c, d);
+                //if (d.CreatedEntity is DescriptorConstructionSpell)
+                //    return new CellMenuConstructionHireCreature(c, d);
 
                 throw new Exception($"Неизвестный тип сущности: {d.CreatedEntity.ID}.");
             }
@@ -152,6 +155,12 @@ namespace Fantasy_Kingdoms_Battle
                 ConstructionAbility ca = new ConstructionAbility(Construction, Entity, da);
                 Construction.AddAbility(ca);
                 Construction.Player.AddNoticeForPlayer(ca, TypeNoticeForPlayer.Research);
+            }
+            else if (Entity.SmallEntity is DescriptorConstructionSpell ds)
+            {
+                ConstructionSpell cs = new ConstructionSpell(Construction, Entity, ds);
+                Construction.AddSpell(cs);
+                Construction.Player.AddNoticeForPlayer(cs, TypeNoticeForPlayer.Research);
             }
             else
             {

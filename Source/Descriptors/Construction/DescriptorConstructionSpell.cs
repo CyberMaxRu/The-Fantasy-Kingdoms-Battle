@@ -9,16 +9,11 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс заклинания
-    internal sealed class DescriptorSpell : DescriptorSmallEntity
+    internal sealed class DescriptorConstructionSpell : DescriptorEntityForActiveEntity
     {
-        public DescriptorSpell(XmlNode n) : base(n)
+        public DescriptorConstructionSpell(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {
-            Cooldown = GetIntegerNotNull(n, "Cooldown");
-            Cost = new ListBaseResources(n.SelectSingleNode("Cost"));
         }
-
-        internal int Cooldown { get; }
-        internal ListBaseResources Cost { get; }
 
         internal override string GetTypeEntity()
         {

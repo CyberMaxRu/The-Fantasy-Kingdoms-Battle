@@ -5,6 +5,8 @@
         internal ComponentSelling(DescriptorComponentSelling descriptor)
         {
             Descriptor = descriptor;
+            if (descriptor != null)
+                Reset();
         }
 
         internal DescriptorComponentSelling Descriptor { get; }

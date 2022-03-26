@@ -248,6 +248,24 @@
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
+    <Spells>
+      <Spell>
+        <ID>EyeOfEagle</ID>
+        <Name>Глаз орла</Name>
+        <Description>Разведывает место</Description>
+        <ImageIndex>285</ImageIndex>
+        <Selling>
+          <Gold>500</Gold>
+          <Quantity>1</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>1</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
+        <Heroes>
+          <Hero>King</Hero>
+        </Heroes>
+      </Spell>
+    </Spells>
     <Products>
       <Product>
         <ID>ProductFittingClothes</ID>
@@ -338,6 +356,23 @@
           <IntervalRefresh>Day</IntervalRefresh>
         </Selling>
       </Product>
+      <Product>
+        <ID>ProductEyeOfEagle</ID>
+        <Entity>EyeOfEagle</Entity>
+        <Creating>
+          <Cost>
+            <Gold>250</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+        </Creating>
+        <Selling>
+          <Gold>500</Gold>
+          <Quantity>1</Quantity>
+          <Duration>0</Duration>
+          <DaysProcessing>1</DaysProcessing>
+          <IntervalRefresh>Day</IntervalRefresh>
+        </Selling>
+      </Product>
     </Products>
     <CellsMenu>
       <CellMenu>
@@ -351,6 +386,10 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Entity>ProductFittingClothes</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>4,1</Pos>
+        <Entity>ProductEyeOfEagle</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>1,2</Pos>
