@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Spells>
+  <Spell>
+    <ID>EyeOfEagle</ID>
+    <Name>Глаз орла</Name>
+    <Description>Разведка места</Description>
+    <ImageIndex>285</ImageIndex>
+    <Cooldown>1</Cooldown>
+    <Cost>
+      <Gold>500</Gold>
+    </Cost>
+  </Spell>
+</Spells>

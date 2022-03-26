@@ -60,6 +60,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Descriptors\DescriptorSpell.cs" />
     <Compile Include="Source\Lobby\Creature\CreatureModifyParameters.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreatureInterest.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreatureProperty.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Resources\Config\Descriptors\SecondarySkills.xml" />
     <Content Include="Resources\Config\Descriptors\Specializations.xml" />
     <Content Include="Resources\Config\Descriptors\LevelTaxes.xml" />
+    <Content Include="Resources\Config\Descriptors\Spells.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAbilities.xml" />
     <Content Include="Resources\Config\Descriptors\TypeConstructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeLandscapes.xml" />

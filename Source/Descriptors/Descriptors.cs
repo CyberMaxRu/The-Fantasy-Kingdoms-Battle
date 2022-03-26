@@ -250,6 +250,14 @@ namespace Fantasy_Kingdoms_Battle
                 Creatures.Add(new DescriptorCreature(n));
             }
 
+            // Загрузка конфигурации заклинаний
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Spells.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Spell"))
+            {
+                Spells.Add(new DescriptorSpell(n));
+            }
+
             // Загрузка конфигурации уровней налогов
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\LevelTaxes.xml");
 
@@ -315,6 +323,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorItem i in Items)
                 i.AfterTuneLinks();
 
+            foreach (DescriptorSpell s in Spells)
+                s.AfterTuneLinks();
+
             foreach (DescriptorConstruction c in Constructions)
                 c.AfterTuneLinks();
 
@@ -370,6 +381,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
         internal List<DescriptorResource> Resources { get; } = new List<DescriptorResource>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
+        internal List<DescriptorSpell> Spells { get; } = new List<DescriptorSpell>();
         internal int MaxLevelSkill { get; }
 
         //
