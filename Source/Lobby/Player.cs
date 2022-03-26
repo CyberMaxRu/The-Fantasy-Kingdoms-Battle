@@ -608,6 +608,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Item[] Warehouse = new Item[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
 
+        internal List<ConstructionSpell> ConstructionSpells { get; } = new List<ConstructionSpell>();// Все заклинания игрока
+
         // Перки от сооружений
         internal List<(Construction, DescriptorPerk)> listPerksFromConstruction = new List<(Construction, DescriptorPerk)>();
 
