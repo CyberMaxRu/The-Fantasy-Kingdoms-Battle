@@ -20,6 +20,5 @@ namespace Fantasy_Kingdoms_Battle
         internal Construction Construction { get; }
         internal DescriptorSmallEntity Descriptor { get; }
         internal ComponentSelling Selling { get; }
-
     }
 }

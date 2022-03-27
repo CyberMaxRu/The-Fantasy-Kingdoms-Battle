@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Drawing;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -122,6 +123,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
         internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
+        internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
 
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
@@ -286,7 +288,34 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                foreach (ConstructionSpell cs in Player.ConstructionSpells)
+                {
+                    if (!cs.DescriptorSpell.Scouted)
+                    {
+                        CellMenuConstructionSpell cmcs = SearchCellMenuSpell(cs);
 
+                        if (cmcs is null)
+                        {
+                            cmcs = new CellMenuConstructionSpell(this, cs);
+                            MenuSpells.Add(cmcs);
+                        }
+                        //Assert(!menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Used);                        
+
+                        menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Research = cmcs;
+                        menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Used = true;
+                    }
+                }
+            }
+
+            CellMenuConstructionSpell SearchCellMenuSpell(ConstructionSpell spell)
+            {
+                foreach (CellMenuConstructionSpell cs in MenuSpells)
+                {
+                    if (cs.Spell == spell)
+                        return cs;
+                }
+
+                return null;
             }
         }
 
@@ -587,6 +616,11 @@ namespace Fantasy_Kingdoms_Battle
 
 
                 foreach (CellMenuConstruction cm in Researches)
+                {
+                    cm.PrepareTurn();
+                }
+
+                foreach (CellMenuConstructionSpell cm in MenuSpells)
                 {
                     cm.PrepareTurn();
                 }

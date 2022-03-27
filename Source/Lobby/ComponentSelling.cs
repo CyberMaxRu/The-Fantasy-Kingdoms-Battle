@@ -1,4 +1,6 @@
-﻿namespace Fantasy_Kingdoms_Battle
+﻿using static Fantasy_Kingdoms_Battle.Utils;
+
+namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ComponentSelling
     {
@@ -20,6 +22,13 @@
         internal void Reset()
         {
             RestQuantity = Descriptor.Quantity;
+        }
+
+        internal void Use()
+        {
+            Assert(RestQuantity > 0);
+
+            RestQuantity--;
         }
     }
 }

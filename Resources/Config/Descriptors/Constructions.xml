@@ -254,6 +254,9 @@
         <Name>Глаз орла</Name>
         <Description>Разведывает место</Description>
         <ImageIndex>285</ImageIndex>
+        <Coord>1,3</Coord>
+        <Scouted>false</Scouted>
+        <Action>Scout</Action>
         <Selling>
           <Gold>500</Gold>
           <Quantity>1</Quantity>

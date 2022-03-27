@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Drawing;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -72,8 +73,6 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionBuild(c, d);
                 if (d.CreatedEntity is DescriptorCreature)
                     return new CellMenuConstructionHireCreature(c, d);
-                //if (d.CreatedEntity is DescriptorConstructionSpell)
-                //    return new CellMenuConstructionHireCreature(c, d);
 
                 throw new Exception($"Неизвестный тип сущности: {d.CreatedEntity.ID}.");
             }
@@ -90,7 +89,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (CheckRequirements())
                 {
                     if (!(this is CellMenuConstructionHireCreature))
-                        Debug.Assert(Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0);
+                        if (!(this is CellMenuConstructionSpell))
+                            Debug.Assert(Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0);
 
                     Program.formMain.PlayPushButton();
 
@@ -778,6 +778,72 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute()
         {
             return false;
+        }
+    }
+
+    internal sealed class CellMenuConstructionSpell : CellMenuConstruction
+    {
+        public CellMenuConstructionSpell(Construction forConstruction, ConstructionSpell spell) : base(forConstruction, new DescriptorCellMenu(forConstruction.TypeConstruction, spell.DescriptorSpell.Coord))
+        {
+            ForConstruction = forConstruction;
+            Spell = spell;
+            Entity = spell.DescriptorSpell;
+        }
+
+        internal Construction ForConstruction { get; }
+        internal ConstructionSpell Spell { get; }
+        internal DescriptorConstructionSpell Entity { get; }
+
+        internal override string GetLevel() => "";
+
+        internal override int GetImageIndex()
+        {
+            return Entity.ImageIndex;
+        }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            panelHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
+            panelHint.AddStep3Type("Заклинание");
+            panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
+            panelHint.AddStep5Description(Entity.Description);
+            panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
+        }
+
+        internal override ListBaseResources GetCost()
+        {
+            return new ListBaseResources(Entity.Selling.Gold);
+        }
+
+        internal override void Execute()
+        {
+            switch (Entity.Action)
+            {
+                case ActionOfSpell.Scout:
+                    Assert(ForConstruction.Hidden);
+                    ForConstruction.Unhide(false);
+                    Spell.Selling.Use();
+
+                    Assert(ForConstruction.MenuSpells.IndexOf(this) != -1);
+                    ForConstruction.MenuSpells.Remove(this);
+                    break;
+                default:
+                    DoException($"Неизвестное действие: {Entity.Action}");
+                    break;
+            }
+
+            Construction.Player.Lobby.Layer.UpdateMenu();
+        }
+
+        internal override bool CheckRequirements() => (Spell.Selling.RestQuantity > 0) && (base.CheckRequirements());
+
+        internal override bool InstantExecute() => true;
+
+        internal override void PrepareTurn()
+        {
+            base.PrepareTurn();
+
+            Spell.Selling.Reset();
         }
     }
 }
