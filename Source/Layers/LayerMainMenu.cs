@@ -90,7 +90,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnTournament_Click(object sender, EventArgs e)
         {
-            Program.formMain.StartNewLobby();
+            WindowSetupTournament w = new WindowSetupTournament();
+            if (w.ShowDialog() == DialogAction.OK)
+            {
+                Program.formMain.StartNewLobby();
+            }
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)

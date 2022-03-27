@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionSpell.cs" />
+    <Compile Include="Source\Forms\WindowOkCancel.cs" />
+    <Compile Include="Source\Forms\WindowSetupTournament.cs" />
     <Compile Include="Source\Lobby\ConstructionSpell.cs" />
     <Compile Include="Source\Lobby\Creature\CreatureModifyParameters.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreatureInterest.cs" />
