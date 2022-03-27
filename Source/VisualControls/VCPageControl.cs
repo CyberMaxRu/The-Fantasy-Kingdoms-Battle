@@ -100,5 +100,15 @@ namespace Fantasy_Kingdoms_Battle
                 PageChanged?.Invoke(this, new EventArgs());
             }
         }
+
+
+        internal void ClearSelectedObjects()
+        {
+            foreach (VCPageButton p in Pages)
+            {
+                if (p.SelectedPlayerObject != null)
+                    p.SelectedPlayerObject = null;
+            }
+        }
     }
 }

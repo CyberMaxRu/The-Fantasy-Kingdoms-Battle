@@ -855,6 +855,8 @@ namespace Fantasy_Kingdoms_Battle
         internal void RestartLobby()
         {
             Debug.Assert(lobby != null);
+            pageControl.ClearSelectedObjects();
+            SelectPlayerObject(null);
             lobby.ExitFromLobby();
             lobby = null;
 
@@ -864,6 +866,8 @@ namespace Fantasy_Kingdoms_Battle
         internal void EndLobby()
         {
             Debug.Assert(lobby != null);
+            pageControl.ClearSelectedObjects();
+            SelectPlayerObject(null);
             lobby.ExitFromLobby();
 
             ReturnFromLobby();
