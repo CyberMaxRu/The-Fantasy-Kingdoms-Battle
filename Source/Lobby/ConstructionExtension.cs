@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             panelHint.AddStep2Header(Descriptor.Name, GetImageIndex());
+            panelHint.AddStep3Type(Descriptor.GetTypeEntity());
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep9ListNeeds(Descriptor.ListNeeds, true);
             panelHint.AddStep9Interest(Descriptor.ModifyInterest, true);

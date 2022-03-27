@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             panelHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, GetImageIndex());
-            panelHint.AddStep3Type("Мероприятие");
+            panelHint.AddStep3Type(Descriptor.GetTypeEntity());
             panelHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);
