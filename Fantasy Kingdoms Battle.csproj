@@ -138,6 +138,8 @@
     <Compile Include="Source\Lobby\EntityForConstruction.cs" />
     <Compile Include="Source\Lobby\EntityProperties.cs" />
     <Compile Include="Source\Lobby\GroupItem.cs" />
+    <Compile Include="Source\Lobby\LobbySettings.cs" />
+    <Compile Include="Source\Lobby\LobbySettingsPlayer.cs" />
     <Compile Include="Source\Lobby\Location.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />
     <Compile Include="Source\Lobby\ListBaseResources.cs" />
@@ -166,6 +168,7 @@
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage24.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
+    <Compile Include="Source\VisualControls\VCLinePlayerTournament.cs" />
     <Compile Include="Source\VisualControls\VCMap.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorAbility.cs" />
