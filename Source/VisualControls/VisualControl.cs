@@ -444,10 +444,8 @@ namespace Fantasy_Kingdoms_Battle
             vc.ArrangeControls();
         }
 
-        internal int NextLeft()
-        {
-            return ShiftX + Width + FormMain.Config.GridSize;
-        }
+        internal int EndLeft() => ShiftX + Width;
+        internal int NextLeft() => EndLeft() + FormMain.Config.GridSize;
 
         internal void PlaceBeforeControl(VisualControl vc)
         {
