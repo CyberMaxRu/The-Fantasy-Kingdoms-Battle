@@ -138,5 +138,9 @@
     <Cheating>253</Cheating>
     <Money>282</Money>
     <Finance>283</Finance>
+    <RandomSelect>286</RandomSelect>
+    <ManualSelect>287</ManualSelect>
+    <ComputerPlayer>288</ComputerPlayer>
+    <HumanPlayer>289</HumanPlayer>
   </Gui48>
 </Game>

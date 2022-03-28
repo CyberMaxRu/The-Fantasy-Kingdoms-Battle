@@ -260,6 +260,10 @@ namespace Fantasy_Kingdoms_Battle
             Gui48_Cheating = GetGui48ImageIndex("Cheating");
             Gui48_Money = GetGui48ImageIndex("Money");
             Gui48_Finance = GetGui48ImageIndex("Finance");
+            Gui48_RandomSelect = GetGui48ImageIndex("RandomSelect");
+            Gui48_ManualSelect = GetGui48ImageIndex("ManualSelect");
+            Gui48_ComputerPlayer = GetGui48ImageIndex("ComputerPlayer");
+            Gui48_HumanPlayer = GetGui48ImageIndex("HumanPlayer");
 
             int GetGui48ImageIndex(string name)
             {
@@ -422,6 +426,10 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gui48_Cheating { get; }
         internal int Gui48_Money { get; }
         internal int Gui48_Finance { get; }
+        internal int Gui48_RandomSelect { get; }
+        internal int Gui48_ManualSelect { get; }
+        internal int Gui48_ComputerPlayer { get; }
+        internal int Gui48_HumanPlayer { get; }
 
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
