@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCLinePlayerTournament[] lines;
         private readonly VisualControl panelPlayers;
         private readonly VisualControl panelSettings;
+        private readonly VCIconButton48 btnLocation;
+        private readonly VCLabel lblNameLocation;
 
         public WindowSetupTournament(LobbySettings ls) : base("Настройка турнира")
         {
@@ -43,7 +45,15 @@ namespace Fantasy_Kingdoms_Battle
             // 
             panelSettings = new VisualControl(ClientControl, panelPlayers.NextLeft(), 0);
             panelSettings.ShowBorder = true;
-            VCLabel lblGold = new VCLabel(panelSettings, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.fontSmall, Color.White, 16, $"Золота на старте: {ls.TypeLobby.BaseResources.ValueGold()}");
+
+            btnLocation = new VCIconButton48(panelSettings, FormMain.Config.GridSize, FormMain.Config.GridSize, -1);
+            btnLocation.Click += BtnLocation_Click;
+            btnLocation.Tag = -1;
+            lblNameLocation = new VCLabel(panelSettings, btnLocation.NextLeft(), btnLocation.ShiftY, Program.formMain.fontSmall, Color.White, btnLocation.Height, "");
+            lblNameLocation.StringFormat.Alignment = StringAlignment.Near;
+            lblNameLocation.StringFormat.LineAlignment = StringAlignment.Center;
+            lblNameLocation.Width = 24;
+            VCLabel lblGold = new VCLabel(panelSettings, FormMain.Config.GridSize, btnLocation.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Золота на старте: {ls.TypeLobby.BaseResources.ValueGold()}");
             lblGold.SetWidthByText();
             VCLabel lblMaxHeroes = new VCLabel(panelSettings, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Максимум героев: {ls.TypeLobby.MaxHeroes}");
             lblMaxHeroes.SetWidthByText();
@@ -61,6 +71,8 @@ namespace Fantasy_Kingdoms_Battle
             //
             ClientControl.Width = panelSettings.EndLeft();
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
+
+            UpdateNameLocation();
         }
 
         internal override void AdjustSize()
@@ -70,6 +82,31 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.ShiftX = (ClientControl.Width - btnOk.Width - FormMain.Config.GridSize - btnCancel.Width) / 2;
             btnOk.ShiftY = ClientControl.Height - btnOk.Height;
             btnCancel.ShiftX = btnOk.NextLeft();
+            lblNameLocation.Width = lblNameLocation.Parent.Width - lblNameLocation.ShiftX - FormMain.Config.GridSize;
+        }
+
+        private void BtnLocation_Click(object sender, EventArgs e)
+        {
+            if (btnLocation.Tag == FormMain.Descriptors.TypeLandscapes.Count - 1)
+                btnLocation.Tag = -1;
+            else
+                btnLocation.Tag++;
+
+            UpdateNameLocation();
+        }
+
+        private void UpdateNameLocation()
+        {
+            if (btnLocation.Tag == -1)
+            {
+                btnLocation.ImageIndex = FormMain.Config.Gui48_RandomSelect;
+                lblNameLocation.Text = "Случайная";
+            }
+            else
+            {
+                btnLocation.ImageIndex = FormMain.Descriptors.TypeLandscapes[btnLocation.Tag].ImageIndex;
+                lblNameLocation.Text = FormMain.Descriptors.TypeLandscapes[btnLocation.Tag].Name;
+            }
         }
     }
 }
