@@ -6,5 +6,61 @@
     <Description>-</Description>
     <ImageIndex>17</ImageIndex>
     <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
+    <TournamentSettings>
+      <Tournament>
+        <TypeLobby>Tournament8</TypeLobby>
+        <TypeLandscape>Forest</TypeLandscape>
+        <Players>
+          <Player>
+            <Index>0</Index>
+            <Player>HumanPlayer1</Player>
+            <TypeSelectPersistentBonus>Manual</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+          <Player>
+            <Index>1</Index>
+            <Player />
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+          <Player>
+            <Index>2</Index>
+            <Player />
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+          <Player>
+            <Index>3</Index>
+            <Player />
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+          <Player>
+            <Index>4</Index>
+            <Player />
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+          <Player>
+            <Index>5</Index>
+            <Player />
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+          <Player>
+            <Index>6</Index>
+            <Player />
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+          <Player>
+            <Index>7</Index>
+            <Player />
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+          </Player>
+        </Players>
+      </Tournament>
+    </TournamentSettings>
   </Player>
 </Players>

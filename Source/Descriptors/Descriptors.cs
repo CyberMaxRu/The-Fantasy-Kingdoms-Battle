@@ -37,22 +37,6 @@ namespace Fantasy_Kingdoms_Battle
                 ComputerPlayers.Add(new ComputerPlayer(n));
             }
 
-            // Загрузка игроков-людей
-            if (File.Exists(Program.FolderResources + "Players.xml"))
-            {
-                xmlDoc = CreateXmlDocument("Players.xml");
-                foreach (XmlNode n in xmlDoc.SelectNodes("/Players/Player"))
-                {
-                    HumanPlayers.Add(new HumanPlayer(n));
-                }
-                AutoCreatedPlayer = false;
-            }
-            else
-            {
-                AddHumanPlayer("Игрок");
-                AutoCreatedPlayer = true;
-            }
-
             // Загрузка страниц столицы
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\CapitalPages.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/CapitalPage"))
@@ -82,7 +66,23 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
             {
-                TypeLobbies.Add(new TypeLobby(n));
+                TypeLobbies.Add(new TypeLobby(n, TypeLobbies.Count));
+            }
+
+            // Загрузка игроков-людей
+            if (File.Exists(Program.FolderResources + "Players.xml"))
+            {
+                xmlDoc = CreateXmlDocument("Players.xml");
+                foreach (XmlNode n in xmlDoc.SelectNodes("/Players/Player"))
+                {
+                    HumanPlayers.Add(new HumanPlayer(n));
+                }
+                AutoCreatedPlayer = false;
+            }
+            else
+            {
+                AddHumanPlayer("Игрок");
+                AutoCreatedPlayer = true;
             }
 
             // Загрузка постоянных бонусов
@@ -320,6 +320,9 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (DescriptorConstruction c in Constructions)
                 c.AfterTuneLinks();
+
+            foreach (HumanPlayer hp in HumanPlayers)
+                hp.TuneLinks();
 
             //
             ReasonOfDeathInBattle = FindReasonOfDeath(FormMain.Config.IDReasonOfDeathInBattle);
@@ -763,6 +766,34 @@ namespace Fantasy_Kingdoms_Battle
                     return false;
 
             return true;
+        }
+
+        internal DescriptorPlayer FindPlayer(string id)
+        {
+            foreach (HumanPlayer hp in HumanPlayers)
+            {
+                if (hp.ID == id)
+                    return hp;
+            }
+
+            foreach (ComputerPlayer cp in ComputerPlayers)
+            {
+                if (cp.ID == id)
+                    return cp;
+            }
+
+            return null;
+        }
+
+        internal TypeLobby FindTypeLobby(string id)
+        {
+            foreach (TypeLobby tl in TypeLobbies)
+            {
+                if (tl.ID == id)
+                    return tl;
+            }
+
+            throw new Exception("Тип лобби " + id + " не найден.");
         }
     }
 }

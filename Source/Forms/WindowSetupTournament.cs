@@ -92,20 +92,22 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnLocation.Tag++;
 
+            lobbySettings.TypeLandscape = btnLocation.Tag == -1 ? null : FormMain.Descriptors.TypeLandscapes[btnLocation.Tag];
+
             UpdateNameLocation();
         }
 
         private void UpdateNameLocation()
         {
-            if (btnLocation.Tag == -1)
+            if (lobbySettings.TypeLandscape is null)
             {
                 btnLocation.ImageIndex = FormMain.Config.Gui48_RandomSelect;
                 lblNameLocation.Text = "Случайная";
             }
             else
             {
-                btnLocation.ImageIndex = FormMain.Descriptors.TypeLandscapes[btnLocation.Tag].ImageIndex;
-                lblNameLocation.Text = FormMain.Descriptors.TypeLandscapes[btnLocation.Tag].Name;
+                btnLocation.ImageIndex = lobbySettings.TypeLandscape.ImageIndex;
+                lblNameLocation.Text = lobbySettings.TypeLandscape.Name;
             }
         }
     }

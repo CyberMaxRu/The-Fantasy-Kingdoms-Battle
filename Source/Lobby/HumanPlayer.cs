@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -32,6 +34,28 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             DisableComputerPlayerByAvatar();
+
+            // Создаем настройки всех типов лобби
+            Assert(Descriptors.TypeLobbies.Count > 0);
+            TournamentSettings = new LobbySettings[Descriptors.TypeLobbies.Count];
+
+            XmlNode ns = n.SelectSingleNode("TournamentSettings");
+            if (ns != null)
+            { 
+                foreach (XmlNode nt in ns.SelectNodes("Tournament"))
+                {
+                    LobbySettings ls = new LobbySettings(nt);
+
+                    Assert(TournamentSettings[ls.TypeLobby.Index] is null);
+                    TournamentSettings[ls.TypeLobby.Index] = ls;
+                }
+            }
+
+            for (int i = 0; i < TournamentSettings.Length; i++)
+            {
+                if (TournamentSettings[i] is null)
+                    TournamentSettings[i] = new LobbySettings(Descriptors.TypeLobbies[i], this);
+            }
         }
 
         public HumanPlayer(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex, TypePlayer.Human)
@@ -43,6 +67,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string DirectoryAvatar { get; set; }
+        internal LobbySettings[] TournamentSettings { get; }
 
         protected override void CheckData()
         {
@@ -64,6 +89,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal override void TuneLinks()
+        {
+            base.TuneLinks();
+
+            foreach (LobbySettings ls in TournamentSettings)
+                ls.TuneLinks();
+        }
+
         internal void SaveToXml(XmlTextWriter writer)
         {
             writer.WriteStartElement("Player");
@@ -72,6 +105,17 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("Description", Description);
             writer.WriteElementString("ImageIndex", (ImageIndex - FormMain.Config.ImageIndexFirstAvatar + 1).ToString());
             writer.WriteElementString("DirectoryAvatar", DirectoryAvatar);
+
+            writer.WriteStartElement("TournamentSettings");
+            foreach (LobbySettings lb in TournamentSettings)
+            {
+                writer.WriteStartElement("Tournament");
+                lb.WriteToXml(writer);
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+
+            // Конец данных игрока
             writer.WriteEndElement();
         }
     }

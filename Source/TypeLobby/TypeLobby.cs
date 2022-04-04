@@ -11,8 +11,10 @@ namespace Fantasy_Kingdoms_Battle
     // Класс типа (конфигурации) лобби
     internal sealed class TypeLobby
     {
-        public TypeLobby(XmlNode n)
+        public TypeLobby(XmlNode n, int index)
         {
+            ID = XmlUtils.GetString(n, "ID");
+            Index = index;
             Name = XmlUtils.GetString(n, "Name");
             QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
             BaseResources = new ListBaseResources(n.SelectSingleNode("BaseResources"));
@@ -180,6 +182,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal string ID { get; }
+        internal int Index { get; }
         internal string Name { get; }
         internal int QuantityPlayers { get; }
         internal ListBaseResources BaseResources { get; }

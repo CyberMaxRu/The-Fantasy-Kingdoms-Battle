@@ -90,11 +90,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnTournament_Click(object sender, EventArgs e)
         {
-            LobbySettings ls = new LobbySettings(Descriptors.TypeLobbies[0]);
-
-            WindowSetupTournament w = new WindowSetupTournament(ls);
+            WindowSetupTournament w = new WindowSetupTournament(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
             if (w.ShowDialog() == DialogAction.OK)
             {
+                FormMain.Descriptors.SaveHumanPlayers();
                 Program.formMain.StartNewLobby();
             }
         }

@@ -100,8 +100,8 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             btnTypePlayer.ImageIndex = imIndexTypePlayer;
-            btnAvatar.ImageIndex = setting.Player.ImageIndex;
-            lblName.Text = setting.Player.Name;
+            btnAvatar.ImageIndex = setting.Player != null ? setting.Player.ImageIndex : FormMain.Config.Gui48_RandomSelect;
+            lblName.Text = setting.Player != null ? setting.Player.Name : "Случайный игрок";
             btnPersistentBonus.ImageIndex = GetImageIndexBonus(setting.TypeSelectPersistentBonus);
             btnPersistentBonus.ImageIsEnabled = setting.TypePlayer == TypePlayer.Human;
             btnStartBonus.ImageIndex = GetImageIndexBonus(setting.TypeSelectStartBonus);

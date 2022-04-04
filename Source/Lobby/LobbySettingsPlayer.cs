@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using static Fantasy_Kingdoms_Battle.Utils;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -11,16 +14,31 @@ namespace Fantasy_Kingdoms_Battle
     // Настройка игрока лобби
     internal sealed class LobbySettingsPlayer
     {
-        public LobbySettingsPlayer(DescriptorPlayer player)
+        private string idPlayer;
+
+        public LobbySettingsPlayer(int index, DescriptorPlayer player)
         {
+            Index = index;
             Player = player;
 
             if (player != null)
                 TypePlayer = player.TypePlayer;
+            else
+                TypePlayer = TypePlayer.Computer;
 
             SetDefault();
         }
 
+        public LobbySettingsPlayer(XmlNode n)
+        {
+            Index = GetIntegerNotNull(n, "Index");
+            idPlayer = GetString(n, "Player");
+
+            TypeSelectPersistentBonus = (TypeSelectBonus)Enum.Parse(typeof(TypeSelectBonus), n.SelectSingleNode("TypeSelectPersistentBonus").InnerText);
+            TypeSelectStartBonus = (TypeSelectBonus)Enum.Parse(typeof(TypeSelectBonus), n.SelectSingleNode("TypeSelectStartBonus").InnerText);
+        }
+
+        internal int Index { get; }
         internal TypePlayer TypePlayer { get; set; }    
         internal DescriptorPlayer Player { get; set; }
         internal TypeSelectBonus TypeSelectPersistentBonus { get; set; }
@@ -38,6 +56,26 @@ namespace Fantasy_Kingdoms_Battle
                 TypeSelectPersistentBonus = TypeSelectBonus.Random;
                 TypeSelectStartBonus = TypeSelectBonus.Random;
             }
+        }
+
+        internal void TuneLinks()
+        {
+            if (idPlayer.Length > 0)
+                Player = FormMain.Descriptors.FindPlayer(idPlayer);
+            else
+                TypePlayer = TypePlayer.Computer;
+        }
+
+        internal void SaveToXml(XmlWriter writer)
+        {
+            writer.WriteElementString("Index", Index.ToString());
+            if (Player != null)
+                writer.WriteElementString("Player", Player.ID);
+            else
+                writer.WriteElementString("Player", "");
+
+            writer.WriteElementString("TypeSelectPersistentBonus", TypeSelectPersistentBonus.ToString());
+            writer.WriteElementString("TypeSelectStartBonus", TypeSelectStartBonus.ToString());
         }
     }
 }

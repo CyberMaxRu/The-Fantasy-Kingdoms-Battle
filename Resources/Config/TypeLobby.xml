@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TypeLobbies>
   <TypeLobby>
+    <ID>Tournament8</ID>
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
     <BaseResources>
