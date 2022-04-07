@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelSettings;
         private readonly VCIconButton48 btnLocation;
         private readonly VCLabel lblNameLocation;
+        private readonly VCButton btnDefault;
 
         public WindowSetupTournament(LobbySettings ls) : base("Настройка турнира")
         {
@@ -68,9 +69,26 @@ namespace Fantasy_Kingdoms_Battle
             panelSettings.Width += FormMain.Config.GridSize;
             panelSettings.Height = panelPlayers.Height;
 
+            btnDefault = new VCButton(ClientControl, 0, btnOk.ShiftY, "По умолчанию");
+            btnDefault.Width = 184;
+            btnDefault.Click += BtnDefault_Click;
+
             //
             ClientControl.Width = panelSettings.EndLeft();
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
+
+            UpdateNameLocation();
+        }
+
+        private void BtnDefault_Click(object sender, EventArgs e)
+        {
+            lobbySettings.SetDefault();
+
+            //
+            foreach (VCLinePlayerTournament l in lines)
+            {
+                l.UpdateData();
+            }
 
             UpdateNameLocation();
         }

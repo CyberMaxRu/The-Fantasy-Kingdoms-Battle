@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             { 
                 foreach (XmlNode nt in ns.SelectNodes("Tournament"))
                 {
-                    LobbySettings ls = new LobbySettings(nt);
+                    LobbySettings ls = new LobbySettings(nt, this);
 
                     Assert(TournamentSettings[ls.TypeLobby.Index] is null);
                     TournamentSettings[ls.TypeLobby.Index] = ls;

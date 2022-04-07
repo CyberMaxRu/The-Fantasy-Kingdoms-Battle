@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public LobbySettings(XmlNode n) : base()
+        public LobbySettings(XmlNode n, DescriptorPlayer player) : base()
         {
             string idTypeLobby = GetStringNotNull(n, "TypeLobby");
             TypeLobby = FormMain.Descriptors.FindTypeLobby(idTypeLobby);
@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (XmlNode lp in np.SelectNodes("Player"))
                 {
-                    LobbySettingsPlayer lsp = new LobbySettingsPlayer(lp);
+                    LobbySettingsPlayer lsp = new LobbySettingsPlayer(lp, player);
 
                     Assert(Players[lsp.Index] is null);
                     Players[lsp.Index] = lsp;
@@ -88,6 +88,14 @@ namespace Fantasy_Kingdoms_Battle
                 writer.WriteEndElement();
             }
             writer.WriteEndElement();
+        }
+
+        internal void SetDefault()
+        {
+            TypeLandscape = null;
+
+            for (int i = 0; i < Players.Length; i++)
+                Players[i].SetDefault();
         }
     }
 }

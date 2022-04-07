@@ -79,7 +79,7 @@ namespace Fantasy_Kingdoms_Battle
             //UpdateData();
         }
 
-        private void UpdateData()
+        internal void UpdateData()
         {
             //
             int imIndexTypePlayer = -1;

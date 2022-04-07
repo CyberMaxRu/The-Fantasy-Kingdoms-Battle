@@ -15,11 +15,13 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class LobbySettingsPlayer
     {
         private string idPlayer;
+        private DescriptorPlayer defaultPlayer;
 
         public LobbySettingsPlayer(int index, DescriptorPlayer player)
         {
             Index = index;
             Player = player;
+            defaultPlayer = player;
 
             if (player != null)
                 TypePlayer = player.TypePlayer;
@@ -29,9 +31,11 @@ namespace Fantasy_Kingdoms_Battle
             SetDefault();
         }
 
-        public LobbySettingsPlayer(XmlNode n)
+        public LobbySettingsPlayer(XmlNode n, DescriptorPlayer defPlayer)
         {
             Index = GetIntegerNotNull(n, "Index");
+            if (Index == 0)
+                defaultPlayer = defPlayer;
             idPlayer = GetString(n, "Player");
 
             TypeSelectPersistentBonus = (TypeSelectBonus)Enum.Parse(typeof(TypeSelectBonus), n.SelectSingleNode("TypeSelectPersistentBonus").InnerText);
@@ -46,6 +50,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SetDefault()
         {
+            Player = defaultPlayer;
+
             if (TypePlayer == TypePlayer.Human)
             {
                 TypeSelectPersistentBonus = TypeSelectBonus.Manual;
