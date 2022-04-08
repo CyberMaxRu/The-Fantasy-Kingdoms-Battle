@@ -229,8 +229,8 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.PageChanged += PageControl_PageChanged;
             pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Итоги хода", "Сводка", null);
             pageResultTurn.Hint = "Итоги хода";
-            pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", null);
-            pageFinance.Hint = "Финансовая информация";
+            //pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", null);
+            //pageFinance.Hint = "Финансовая информация";
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
@@ -257,7 +257,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
             DrawPageConstructions();
-            DrawPageFinance();
+            //DrawPageFinance();
             DrawHeroes();
             DrawWarehouse();
             DrawPageTournament();
@@ -327,7 +327,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             pageResultTurn.PageImage = MainControlbackground("Paper");
-            pageFinance.PageImage = MainControlbackground("Finance");
+            //pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
             pageMap.PageImage = MainControlbackground("Map");
