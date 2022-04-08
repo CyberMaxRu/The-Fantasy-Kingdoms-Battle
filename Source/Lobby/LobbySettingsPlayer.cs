@@ -42,6 +42,16 @@ namespace Fantasy_Kingdoms_Battle
             TypeSelectStartBonus = (TypeSelectBonus)Enum.Parse(typeof(TypeSelectBonus), n.SelectSingleNode("TypeSelectStartBonus").InnerText);
         }
 
+        public LobbySettingsPlayer(LobbySettingsPlayer lsp)
+        {
+            Index = lsp.Index;
+            defaultPlayer = lsp.defaultPlayer;
+            TypePlayer = lsp.TypePlayer;
+            Player = lsp.Player;
+            TypeSelectPersistentBonus = lsp.TypeSelectPersistentBonus;
+            TypeSelectStartBonus = lsp.TypeSelectStartBonus;
+        }
+
         internal int Index { get; }
         internal TypePlayer TypePlayer { get; set; }    
         internal DescriptorPlayer Player { get; set; }

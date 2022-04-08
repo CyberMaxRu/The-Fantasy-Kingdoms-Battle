@@ -64,10 +64,21 @@ namespace Fantasy_Kingdoms_Battle
             Assert(Players[0].TypePlayer == TypePlayer.Human);
         }
 
+        public LobbySettings(LobbySettings ls)
+        {
+            TypeLobby = ls.TypeLobby;
+            TypeLandscape = ls.TypeLandscape;
+
+            Players = new LobbySettingsPlayer[ls.Players.Length];
+            for (int i = 0; i < Players.Length; i++)
+            {
+                Players[i] = new LobbySettingsPlayer(ls.Players[i]);
+            }
+        }
+
         internal TypeLobby TypeLobby { get; }
         internal DescriptorTypeLandscape TypeLandscape { get; set; }
         internal LobbySettingsPlayer[] Players { get; }
-
 
         internal void TuneLinks()
         {
