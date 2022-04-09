@@ -2,7 +2,7 @@
 <TypeLobbies>
   <TypeLobby>
     <ID>Tournament8</ID>
-    <Name>8 игроков</Name>
+    <Name>Королевская битва 8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
     <BaseResources>
       <Gold>8000</Gold>

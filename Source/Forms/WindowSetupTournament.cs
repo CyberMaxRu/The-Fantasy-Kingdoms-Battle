@@ -9,6 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class WindowSetupTournament : WindowOkCancel
     {
+        private readonly VCLabel lblNameTypeLobby;
         private LobbySettings lobbySettings;
         private VCLinePlayerTournament[] lines;
         private readonly VisualControl panelPlayers;
@@ -24,7 +25,11 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.Caption = "ОК";
             btnCancel.Caption = "Отмена";
 
-            panelPlayers = new VisualControl(ClientControl, 0, 0);
+
+            lblNameTypeLobby = new VCLabel(ClientControl, 0, 0, Program.formMain.fontMedCaption, Color.Turquoise, 24, ls.TypeLobby.Name);
+            lblNameTypeLobby.Width = ClientControl.Width;
+
+            panelPlayers = new VisualControl(ClientControl, 0, lblNameTypeLobby.NextTop());
             panelPlayers.ShowBorder = true; 
 
             int nextTop = FormMain.Config.GridSize;
@@ -44,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             btnCancel.ShiftY = btnOk.ShiftY;
 
             // 
-            panelSettings = new VisualControl(ClientControl, panelPlayers.NextLeft(), 0);
+            panelSettings = new VisualControl(ClientControl, panelPlayers.NextLeft(), panelPlayers.ShiftY);
             panelSettings.ShowBorder = true;
 
             btnLocation = new VCIconButton48(panelSettings, FormMain.Config.GridSize, FormMain.Config.GridSize, -1);
@@ -101,6 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.ShiftY = ClientControl.Height - btnOk.Height;
             btnCancel.ShiftX = btnOk.NextLeft();
             lblNameLocation.Width = lblNameLocation.Parent.Width - lblNameLocation.ShiftX - FormMain.Config.GridSize;
+            lblNameTypeLobby.Width = ClientControl.Width;
         }
 
         private void BtnLocation_Click(object sender, EventArgs e)
