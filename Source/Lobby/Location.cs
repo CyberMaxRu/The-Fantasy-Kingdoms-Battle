@@ -15,12 +15,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Player = player;
             Settings = settings;
-            Ownership = settings.Ownership;
             Lairs = new Construction[Player.Lobby.TypeLobby.LairsHeight, Player.Lobby.TypeLobby.LairsWidth];
 
             // Создание рандомных логов монстров согласно настроек типа лобби
             // Для этого сначала создаем логова по минимальному списку, а оставшиеся ячейки - из оставшихся по максимуму
-            int idxCell;
+            /*int idxCell;
             int idxTypeLair;
 
             List<DescriptorConstruction> lairs = new List<DescriptorConstruction>();
@@ -52,12 +51,11 @@ namespace Fantasy_Kingdoms_Battle
                         l.Add(new Point(x, y));
 
                 return l;
-            }
+            }*/
         }
 
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
-        internal bool Ownership { get; set; }
         internal Construction[,] Lairs { get; }
 
         internal override int GetImageIndex()
@@ -65,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
             return Settings.TypeLandscape.ImageIndex;
         }
 
-        internal override bool GetNormalImage() => Ownership;
+        internal override bool GetNormalImage() => true;
 
         internal override void MakeMenu(VCMenuCell[,] menu)
         {

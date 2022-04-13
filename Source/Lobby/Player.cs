@@ -151,12 +151,22 @@ namespace Fantasy_Kingdoms_Battle
                     new Construction(this, tck, null);
             }
 
+            // Инициализация окрестностей
+            foreach (TypeLobbyConstructionSettings cs in lobby.TypeLobby.Neighbourhood)
+            {
+                for (int i = 0; i < cs.Quantity; i++)
+                {
+                    Construction c = new Construction(this, cs.Construction, null);
+                    Neighbourhood.Add(c);
+                }
+            }
+
             //
             Location l;
 
             Locations = new Location[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
 
-            foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)
+            /*foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)
             {
                 l = new Location(this, ls);
                 Debug.Assert(Locations[l.Settings.Coord.Y, l.Settings.Coord.X] is null);
@@ -167,7 +177,7 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(LocationCapital is null);
                     LocationCapital = l;
                 }
-            }
+            }*/
 
             CurrentLocation = LocationCapital;
 
@@ -342,6 +352,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         protected void ScoutRandomLair(int scoutLaires, bool needNotice)
         {
+            return;
             if (scoutLaires > 0)
             {
                 foreach (Location l in Locations)
@@ -380,7 +391,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(level <= typeConstruction.MaxLevel);
             //Debug.Assert(typeConstruction.TypePlaceForConstruct.ID == FormMain.Config.IDEmptyPlace);
 
-            if (quantity > 0)
+            /*if (quantity > 0)
             {
                 // Собираем список пустых мест
                 List<Construction> listEmptyPlaces = new List<Construction>();
@@ -404,7 +415,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Lobby.Layer.UpdateNeighborhoods();
-            }
+            }*/
         }
 
         // Расчет после завершения хода игроком
@@ -556,6 +567,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointGreatness { get; private set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal List<Construction> Constructions { get; } = new List<Construction>();
+        internal List<Construction> Neighbourhood { get; } = new List<Construction>();// Окрестности
         internal int LevelCastle => Castle.Level;
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
 

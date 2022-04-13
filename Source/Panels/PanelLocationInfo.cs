@@ -37,15 +37,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            imgIcon.ImageIsEnabled = Location.Ownership;
-            cellOwner.ImageIndex = Location.Ownership ? Location.Player.GetImageIndexAvatar() : -1;
+            imgIcon.ImageIsEnabled = true;// Location.Ownership;
+            cellOwner.ImageIndex = Location.Player.GetImageIndexAvatar();// Location.Ownership ? Location.Player.GetImageIndexAvatar() : -1;
 
             base.Draw(g);
         }
 
         private void CellOwner_ShowHint(object sender, EventArgs e)
         {
-            if (Location.Ownership)
+            /*if (Location.Ownership)
             {
                 PanelHint.AddStep2Header(Location.Player.GetName());
                 PanelHint.AddStep4Level("Владелец местности");
@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 PanelHint.AddSimpleHint("У местности нет владельца");
-            }
+            }*/
         }
     }
 }

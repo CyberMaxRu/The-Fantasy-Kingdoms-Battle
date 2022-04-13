@@ -38,7 +38,6 @@ namespace Fantasy_Kingdoms_Battle
             MapHeight = XmlUtils.GetInteger(n, "MapHeight");
             LairsWidth = XmlUtils.GetInteger(n, "LairsWidth");
             LairsHeight = XmlUtils.GetInteger(n, "LairsHeight");
-            CostMove = XmlUtils.GetIntegerNotNull(n, "Capital/CostMove");
 
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
@@ -100,11 +99,22 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");
             }
 
+            // Загружаем настройки окрестностей
+            XmlNode nodeNeighSettings = n.SelectSingleNode("Neighbourhood");
+            Debug.Assert(nodeNeighSettings != null);
+
+            foreach (XmlNode l in nodeNeighSettings.SelectNodes("TypeConstruction"))
+            {
+                TypeLobbyConstructionSettings cs = new TypeLobbyConstructionSettings(l);
+
+                Neighbourhood.Add(cs);
+            }
+
             // Загружаем настройки логов
             XmlNode nodeLairSettings = n.SelectSingleNode("Locations");
             Debug.Assert(nodeLairSettings != null);
 
-            Locations = new TypeLobbyLocationSettings[MapHeight, MapWidth];
+            Locations = new List<TypeLobbyLocationSettings>();
             TypeLobbyLocationSettings ls;
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Location"))
@@ -120,12 +130,14 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                Debug.Assert(Locations[ls.Coord.Y, ls.Coord.X] == null);
-                Locations[ls.Coord.Y, ls.Coord.X] = ls;
+                Locations.Add(ls);
+
+                /*Debug.Assert(Locations[ls.Coord.Y, ls.Coord.X] == null);
+                Locations[ls.Coord.Y, ls.Coord.X] = ls;*/
             }
 
             // Проверяем, что указаны все локации
-            string nameLocationCapital = XmlUtils.GetStringNotNull(n, "Capital/Location");
+            /*string nameLocationCapital = XmlUtils.GetStringNotNull(n, "Capital/Location");
 
             for (int y = 0; y < MapHeight; y++)
                 for (int x = 0; x < MapWidth; x++)
@@ -139,47 +151,10 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-            Debug.Assert(LocationCapital != null);
+            Debug.Assert(LocationCapital != null);*/
 
             // Проверяем, что количество у слоев указано корректно
 
-            // Загружаем настройку коэффициентов для флагов разведки и атаки
-            CoefFlagScout = LoadCoef(n.SelectSingleNode("CoefficientFlags/Scout"));
-            CoefFlagAttack = LoadCoef(n.SelectSingleNode("CoefficientFlags/Attack"));
-            CoefFlagDefense = LoadCoef(n.SelectSingleNode("CoefficientFlags/Defense"));
-
-            int[] LoadCoef(XmlNode node)
-            {
-                Debug.Assert(node != null);
-
-                PriorityExecution pe;
-                int val;
-
-                int[] array = new int[(int)PriorityExecution.Exclusive + 1];
-
-                foreach (XmlNode np in node.SelectNodes("Priority"))
-                {
-                    pe = (PriorityExecution)Enum.Parse(typeof(PriorityExecution), XmlUtils.GetStringNotNull(np, "ID"));
-                    val = XmlUtils.GetInteger(np, "Value");
-
-                    Debug.Assert(val > 0);
-                    Debug.Assert(val <= 1_000);
-                    Debug.Assert(array[(int)pe] == 0);
-
-                    array[(int)pe] = val;
-                }
-
-                // Проверяем, что указаны все коэффициенты
-                for (int i = 0; i < array.Length; i++)
-                {
-                    Debug.Assert(array[i] != 0);
-
-                    if (i > 0)
-                        Debug.Assert(array[i] > array[i - 1]);
-                }
-
-                return array;
-            }
         }
 
         internal string ID { get; }
@@ -207,12 +182,10 @@ namespace Fantasy_Kingdoms_Battle
         internal int MapHeight { get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
+        internal List<TypeLobbyConstructionSettings> Neighbourhood { get; } = new List<TypeLobbyConstructionSettings>();
         internal TypeLobbyLocationSettings LocationCapital { get; }// Локация столицы
-        internal int CostMove { get; }// Стоимость перемещения между объектами
-        internal TypeLobbyLocationSettings[,] Locations { get; }
-        internal int[] CoefFlagScout { get; }
-        internal int[] CoefFlagAttack { get; }
-        internal int[] CoefFlagDefense { get; }
+        internal List<TypeLobbyLocationSettings> Locations { get; }
+        //internal TypeLobbyLocationSettings[,] Locations { get; }
 
         internal void TuneDeferredLinks()
         {
@@ -220,6 +193,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ls.TuneLinks();
             }
+
+            foreach (TypeLobbyConstructionSettings cs in Neighbourhood)
+                cs.TuneLinks();
         }
     }
 }

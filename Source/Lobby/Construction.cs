@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
                 Researches.Add(CellMenuConstruction.Create(this, d));
 
-            Hidden = !TypeConstruction.IsInternalConstruction && !location.Ownership;
+            Hidden = !TypeConstruction.IsInternalConstruction;// && !location.Ownership;
 
             Level = b.DefaultLevel;
             if (Level > 0)
@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
             X = x;
             Y = y;
             Location = location;
-            Hidden = !location.Ownership;
+            Hidden = false;// !location.Ownership;
             DaysBuilded = 0;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External) || (TypeConstruction.Category == CategoryConstruction.Temple)
@@ -706,8 +706,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Hidden);
             AssertNotDestroyed();
 
-            return PriorityFlag < PriorityExecution.Exclusive ?
-                new ListBaseResources(Location.Settings.CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
+            return new ListBaseResources(0);
+           //return PriorityFlag < PriorityExecution.Exclusive ?
+           //     new ListBaseResources(Location.Settings.CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
         private void AssertNotHidden()
@@ -725,8 +726,9 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotHidden();
             AssertNotDestroyed();
 
-            return PriorityFlag < PriorityExecution.Exclusive ?
-                new ListBaseResources(Location.Settings.CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
+            return new ListBaseResources(0);
+            //return PriorityFlag < PriorityExecution.Exclusive ?
+            //    new ListBaseResources(Location.Settings.CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
         internal ListBaseResources CostDefense()
@@ -734,8 +736,9 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotHidden();
             AssertNotDestroyed();
 
-            return PriorityFlag < PriorityExecution.Exclusive ?
-                new ListBaseResources(Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
+            return new ListBaseResources(0);
+            //return PriorityFlag < PriorityExecution.Exclusive ?
+            //    new ListBaseResources(Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
         internal string NameLair()

@@ -14,7 +14,7 @@
           <Player>
             <Index>0</Index>
             <Player>HumanPlayer1</Player>
-            <TypeSelectPersistentBonus>Manual</TypeSelectPersistentBonus>
+            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
             <TypeSelectStartBonus>Random</TypeSelectStartBonus>
           </Player>
           <Player>

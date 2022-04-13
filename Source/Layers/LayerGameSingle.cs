@@ -476,6 +476,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateNeighborhoods()
         {
+            return;
             Location l = curAppliedPlayer.CurrentLocation;
             Debug.Assert(l != null);
 
@@ -836,13 +837,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void Map_Click(object sender, EventArgs e)
         {
-            Location l = (sender as VCImage128).Entity as Location;
+            /*Location l = (sender as VCImage128).Entity as Location;
 
             //Utils.Assert(imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected);
             imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = false;
             SelectPlayerObject(l);
             SetPageLocation(l, true);
-            imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = true;
+            imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = true;*/
         }
 
         private void Location_ShowHint(object sender, EventArgs e)
@@ -962,7 +963,8 @@ namespace Fantasy_Kingdoms_Battle
             if (curAppliedPlayer != lobby.CurrentPlayer)
             {
                 curAppliedPlayer = lobby.CurrentPlayer;
-                pageLocation.PageImage = curAppliedPlayer.CurrentLocation.Settings.TypeLandscape.GetBackgroundImage();
+                if (curAppliedPlayer.CurrentLocation != null)
+                    pageLocation.PageImage = curAppliedPlayer.CurrentLocation.Settings.TypeLandscape.GetBackgroundImage();
             }
 
             ShowLobby();
@@ -972,8 +974,8 @@ namespace Fantasy_Kingdoms_Battle
             UpdateListHeroes();
             ShowWarehouse();
             AdjustPageTournament();
-            UpdateNeighborhoods();
-            AdjustNeighborhood();
+            //UpdateNeighborhoods();
+            //AdjustNeighborhood();
             ShowPlayerNotices();
         }
 

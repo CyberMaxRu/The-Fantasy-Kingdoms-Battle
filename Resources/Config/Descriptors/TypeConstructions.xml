@@ -21,6 +21,10 @@
     <Name>Военное дело</Name>
   </TypeConstruction>
   <TypeConstruction>
+    <ID>Sanitation</ID>
+    <Name>Санитария</Name>
+  </TypeConstruction>
+  <TypeConstruction>
     <ID>Village</ID>
     <Name>Деревня</Name>
   </TypeConstruction>

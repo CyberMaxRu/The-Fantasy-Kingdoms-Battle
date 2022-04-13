@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Для этого сначала создаем логова по минимальному списку,
                 // а оставшиеся ячейки - из оставшихся по максимуму
 
-                TypeLobbyLocationSettings ls;
+                /*TypeLobbyLocationSettings ls;
                 int idx;
                 int restLairs;
 
@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
                             restLairs--;
                         }
                     }
-                }
+                }*/
             }
 
             void GenerateComputerPlayers()

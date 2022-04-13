@@ -11,6 +11,7 @@
     <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <GoldByConstruction>500</GoldByConstruction>
     <SoundSelect>guild_warrior_select.wav</SoundSelect>
     <Levels>
@@ -6451,6 +6452,26 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
+  </Construction>
+  <Construction>
+    <ID>Sewer</ID>
+    <Name>Канализация</Name>
+    <Description>Канализация, как и крысы, живущие в ней - непременный атрибут любого города Ардании. Время от времени крысы выходят из коллекторов на поверхность, чтобы просто покусать все вокруг.//- Нельзя разрушить.</Description>
+    <ImageIndex>118</ImageIndex>
+    <TypeConstruction>Sanitation</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>sewers_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>LevelSewer1</ID>
+        <Number>1</Number>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
   </Construction>
   <Construction>
     <ID>KingsSewer</ID>

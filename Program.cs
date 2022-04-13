@@ -50,6 +50,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 MessageBox.Show("Произошло исключение: "
                     + (exc.Message.Length > 0 ? Environment.NewLine + Environment.NewLine + exc.Message : "") + Environment.NewLine + Environment.NewLine + stackTrace, FormMain.NAME_PROJECT + " " + FormMain.VERSION, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Debug.Fail(exc.Message);
                 Environment.Exit(-1);
             }
         }

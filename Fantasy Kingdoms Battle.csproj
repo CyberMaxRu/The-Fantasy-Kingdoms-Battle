@@ -157,6 +157,7 @@
     <Compile Include="Source\Map\Region.cs" />
     <Compile Include="Source\Map\StrategicMap.cs" />
     <Compile Include="Source\Panels\PanelLocationInfo.cs" />
+    <Compile Include="Source\TypeLobby\TypeLobbyConstructionSettings.cs" />
     <Compile Include="Source\VisualControls\VCCellSimple.cs" />
     <Compile Include="Source\VisualControls\VCCreatureInterest.cs" />
     <Compile Include="Source\VisualControls\VCCreatureNeed.cs" />
