@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Threading;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -27,20 +28,42 @@ namespace Fantasy_Kingdoms_Battle
             base.SelectStartBonus();
 
             // Выбор постоянного бонуса
-            WindowSelectPersistentBonuses wpb = new WindowSelectPersistentBonuses(this);
-            wpb.ShowDialog();
+            switch (Lobby.Settings.Players[PlayerIndex].TypeSelectPersistentBonus)
+            {
+                case TypeSelectBonus.Manual:
+                    WindowSelectPersistentBonuses wpb = new WindowSelectPersistentBonuses(this);
+                    wpb.ShowDialog();
+                    wpb.Dispose();
+                    break;
+                case TypeSelectBonus.Random:
+                    SelectRandomPersistentBonus();
+                    break;
+                default:
+                    DoException("Неизвестный тип бонуса.");
+                    break;
+            }
 
             // Выбор стартового бонуса
-            WindowSelectStartBonus w = new WindowSelectStartBonus(this, VariantsStartBonuses);
-            w.ShowDialog();
+            switch (Lobby.Settings.Players[PlayerIndex].TypeSelectStartBonus)
+            {
+                case TypeSelectBonus.Manual:
+                    WindowSelectStartBonus w = new WindowSelectStartBonus(this, VariantsStartBonuses);
+                    w.ShowDialog();
+                    ApplyStartBonus(w.SelectedBonus);
+                    w.Dispose();
+                    break;
+                case TypeSelectBonus.Random:
+                    ApplyStartBonus(GetRandomStartBonus());
+                    break;
+                default:
+                    DoException("Неизвестный тип бонуса.");
+                    break;
+            }
 
             if (Program.formMain.ProgramState != ProgramState.NeedQuit)
             {
-                ApplyStartBonus(w.SelectedBonus);
                 Program.formMain.ShowFrame(true);// Чтобы обновились данные в тулбаре (золото, величие)
             }
-
-            w.Dispose();
         }
 
         internal override void PrepareTurn()

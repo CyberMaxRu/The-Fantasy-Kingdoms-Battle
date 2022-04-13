@@ -17,10 +17,11 @@ namespace Fantasy_Kingdoms_Battle
         private static int generation = 0;
         private bool stopLobby = false;
 
-        public Lobby(TypeLobby tl, LayerGameSingle layer)
+        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer)
         {
             ID = generation++;
             TypeLobby = tl;
+            Settings = settings;
             Layer = layer;
             StateLobby = StateLobby.Start;
             Turn = 1;
@@ -124,6 +125,7 @@ namespace Fantasy_Kingdoms_Battle
         internal LayerGameSingle Layer { get; }
         internal int ID { get; }// Уникальный код лобби
         internal TypeLobby TypeLobby { get; }// Тип лобби
+        internal LobbySettings Settings { get; }
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }// Текущий ход лобби
