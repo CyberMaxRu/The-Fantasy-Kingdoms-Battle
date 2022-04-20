@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorTypeLandscape(XmlNode n) : base(n)
         {
+            Index = Descriptors.TypeLandscapes.Count;
             NameTexture = XmlUtils.GetStringNotNull(n, "NameTexture");
 
             // Загружаем список доступных элементов
@@ -39,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nameElements.Count > 0, $"У {ID} нет элементов.");
         }
 
+        internal int Index { get; }
         internal string NameTexture { get; }
         internal List<DescriptorConstruction> Elements { get; } = new List<DescriptorConstruction>();
 
