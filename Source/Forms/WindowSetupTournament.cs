@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnLocation = new VCIconButton48(panelSettings, FormMain.Config.GridSize, FormMain.Config.GridSize, -1);
             btnLocation.Click += BtnLocation_Click;
-            btnLocation.Tag = -1;
+            btnLocation.Tag = lobbySettings.TypeLandscape != null ? lobbySettings.TypeLandscape.Index : -1;
             lblNameLocation = new VCLabel(panelSettings, btnLocation.NextLeft(), btnLocation.ShiftY, Program.formMain.fontSmall, Color.White, btnLocation.Height, "");
             lblNameLocation.StringFormat.Alignment = StringAlignment.Near;
             lblNameLocation.StringFormat.LineAlignment = StringAlignment.Center;
