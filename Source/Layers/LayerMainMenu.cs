@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
-        private readonly VCButton btnRoyalBattle;
+        private readonly VCButton btnWarOfLords;
         private readonly VCButton btnEditorConquest;
         private readonly VCButton btnPlayerPreferences;
         private readonly VCButton btnGamePreferences;
@@ -36,9 +36,9 @@ namespace Fantasy_Kingdoms_Battle
             // Главное меню
             bmpMainMenu = new VCBitmap(this, 0, 0, LoadBitmap("MenuMain.png"));
 
-            btnRoyalBattle = new VCButton(bmpMainMenu, 80, 88, "Королевская битва");
-            btnRoyalBattle.Width = bmpMainMenu.Width - 80 - 80;
-            btnRoyalBattle.Click += BtnTournament_Click;
+            btnWarOfLords = new VCButton(bmpMainMenu, 80, 88, "Война лордов");
+            btnWarOfLords.Width = bmpMainMenu.Width - 80 - 80;
+            btnWarOfLords.Click += BtnTournament_Click;
 
             /*btnEditorConquest = new VCButton(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;

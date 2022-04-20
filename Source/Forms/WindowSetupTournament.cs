@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblNameLocation;
         private readonly VCButton btnDefault;
 
-        public WindowSetupTournament(LobbySettings ls) : base("Настройка Королевской битвы")
+        public WindowSetupTournament(LobbySettings ls) : base("Настройка Войны лордов")
         {
             lobbySettings = ls;
 
