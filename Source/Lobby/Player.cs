@@ -422,7 +422,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void CalcFinalityTurn()
         {
             // Убеждаемся, что у нас не сломалось соответствие флагов
-            foreach (Location l in Locations)
+            /*foreach (Location l in Locations)
             {
                 foreach (Construction lc in l.Lairs)
                 {
@@ -434,7 +434,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(ListFlags.IndexOf(lc) == -1);
                     }
                 }
-            }
+            }*/
 
             // Расчет флагов на логова
             List<Construction> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
