@@ -25,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             Layer = layer;
             StateLobby = StateLobby.Start;
             Turn = 1;
+            TimeOfDay = FormMain.Descriptors.TimesOfDay[0];
             Day = 1;
             Week = 1;
             Month = 1;
@@ -129,6 +130,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }// Текущий ход лобби
+        internal DescriptorTimeOfDay TimeOfDay { get; private set; }// Время суток
         internal int Day { get; private set; }// День
         internal int Week { get; private set; }// Неделя
         internal int Month { get; private set; }// Месяц
@@ -371,14 +373,21 @@ namespace Fantasy_Kingdoms_Battle
 
             // Делаем начало хода
             Turn++;
-            Day++;
-            if (Day == 8)
+            if (TimeOfDay.Index < FormMain.Descriptors.TimesOfDay.Count - 1)
+                TimeOfDay = FormMain.Descriptors.TimesOfDay[TimeOfDay.Index + 1];
+            else
             {
-                Day = 1;
-                Week++;
+                TimeOfDay = FormMain.Descriptors.TimesOfDay[0];
+
+                Day++;
+                if (Day == 8)
+                {
+                    Day = 1;
+                    Week++;
+                }
+                if (Week == 5)
+                    Month++;
             }
-            if (Week == 5)
-                Month++;
 
             CurrentPlayer = null;
 

@@ -115,6 +115,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_WOOD = 26;
         internal const int GUI_16_IRON = 27;
         internal const int GUI_16_STONE = 28;
+        internal const int GUI_16_SUN = 40;
+        internal const int GUI_16_CRESCENT = 41;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;

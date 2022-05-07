@@ -44,6 +44,13 @@ namespace Fantasy_Kingdoms_Battle
                 CapitalPages.Add(new CapitalPage(n));
             }
 
+            // Загрузка времен суток
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TimesOfDay.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TimeOfDay"))
+            {
+                TimesOfDay.Add(new DescriptorTimeOfDay(n));
+            }
+
             // Загрузка типов ландшафта
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeLandscapes.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeLandscape"))
@@ -336,6 +343,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal List<DescriptorTimeOfDay> TimesOfDay { get; } = new List<DescriptorTimeOfDay>();
         internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();

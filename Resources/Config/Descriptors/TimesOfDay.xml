@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <TimeOfDay>
+    <ID>Day</ID>
+    <Name>День</Name>
+    <ImageIndex>41</ImageIndex>
+    <Description>Днем силы Света сильнее, а силы Тьмы - слабее</Description>
+  </TimeOfDay>
+  <TimeOfDay>
+    <ID>Night</ID>
+    <Name>Ночь</Name>
+    <ImageIndex>42</ImageIndex>
+    <Description>Ночью силы Тьмы сильнее, а силы Света - слабее</Description>
+  </TimeOfDay>
+</Descriptors>
