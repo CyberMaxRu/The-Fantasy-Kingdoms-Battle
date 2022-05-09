@@ -151,20 +151,13 @@ namespace Fantasy_Kingdoms_Battle
                     new Construction(this, tck, null);
             }
 
-            // Инициализация окрестностей
-            foreach (TypeLobbyConstructionSettings cs in lobby.TypeLobby.Neighbourhood)
+            foreach (TypeLobbyLocationSettings tll in lobby.TypeLobby.Locations)
             {
-                for (int i = 0; i < cs.Quantity; i++)
-                {
-                    Construction c = new Construction(this, cs.Construction, null);
-                    Neighbourhood.Add(c);
-                }
+                Location l = new Location(this, tll);
+                Locations.Add(l);
             }
 
             //
-            Location l;
-
-            Locations = new Location[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
 
             /*foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)
             {
@@ -353,7 +346,7 @@ namespace Fantasy_Kingdoms_Battle
         protected void ScoutRandomLair(int scoutLaires, bool needNotice)
         {
             return;
-            if (scoutLaires > 0)
+            /*if (scoutLaires > 0)
             {
                 foreach (Location l in Locations)
                 {
@@ -382,7 +375,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 return restScouting;
-            }
+            }*/
         }
 
         private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, Location location, int quantity, TypeNoticeForPlayer typeNotice)
@@ -559,7 +552,7 @@ namespace Fantasy_Kingdoms_Battle
                 pb.ValidateHeroes();
         }
 
-        internal DescriptorPlayer Descriptor { get; }
+        internal new DescriptorPlayer Descriptor { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal bool Initialization { get; }
@@ -567,7 +560,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointGreatness { get; private set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal List<Construction> Constructions { get; } = new List<Construction>();
-        internal List<Construction> Neighbourhood { get; } = new List<Construction>();// Окрестности
         internal int LevelCastle => Castle.Level;
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
 
@@ -587,7 +579,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий в графстве
 
         // Локации
-        internal Location[,] Locations { get; }
+        internal List<Location> Locations { get; } = new List<Location>();// Локации
         internal Location LocationCapital { get; }
         internal Location CurrentLocation { get; set; }// Текущая выбранная локация
 
@@ -681,6 +673,15 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (pb.TypeConstruction == b)
                     return pb;
+            }
+
+            foreach (Location l in Locations)
+            {
+                foreach (Construction c in l.Lairs)
+                {
+                    if (c.TypeConstruction == b)
+                        return c;
+                }
             }
 
             throw new Exception("У игрока " + GetName() + " сооружение " + b.ID + " не найдено.");
@@ -1146,7 +1147,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemoveLair(Construction l)
         {
-            Debug.Assert(l != null);
+            /*Debug.Assert(l != null);
             Debug.Assert(l.Location.Lairs[l.Y, l.X] != null);
             Debug.Assert(l.Location.Lairs[l.Y, l.X] == l);
 
@@ -1154,6 +1155,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Lobby.Layer.PlayerObjectIsSelected(l))
                 Lobby.Layer.SelectPlayerObject(null);
+            */
         }
 
         internal void ApplyReward(Construction l)

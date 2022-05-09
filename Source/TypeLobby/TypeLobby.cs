@@ -99,17 +99,6 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");
             }
 
-            // Загружаем настройки окрестностей
-            XmlNode nodeNeighSettings = n.SelectSingleNode("Neighbourhood");
-            Debug.Assert(nodeNeighSettings != null);
-
-            foreach (XmlNode l in nodeNeighSettings.SelectNodes("TypeConstruction"))
-            {
-                TypeLobbyConstructionSettings cs = new TypeLobbyConstructionSettings(l);
-
-                Neighbourhood.Add(cs);
-            }
-
             // Загружаем настройки логов
             XmlNode nodeLairSettings = n.SelectSingleNode("Locations");
             Debug.Assert(nodeLairSettings != null);
@@ -182,8 +171,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int MapHeight { get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
-        internal List<TypeLobbyConstructionSettings> Neighbourhood { get; } = new List<TypeLobbyConstructionSettings>();
-        internal TypeLobbyLocationSettings LocationCapital { get; }// Локация столицы
         internal List<TypeLobbyLocationSettings> Locations { get; }
         //internal TypeLobbyLocationSettings[,] Locations { get; }
 
@@ -193,9 +180,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ls.TuneLinks();
             }
-
-            foreach (TypeLobbyConstructionSettings cs in Neighbourhood)
-                cs.TuneLinks();
         }
     }
 }

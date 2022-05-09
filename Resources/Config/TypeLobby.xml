@@ -35,29 +35,32 @@
     <MapHeight>5</MapHeight>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
-    <Neighbourhood>
-      <TypeConstruction>
-        <ID>Sewer</ID>
-        <Quantity>1</Quantity>
-      </TypeConstruction>
-      <TypeConstruction>
-        <ID>CityGraveyard</ID>
-        <Quantity>1</Quantity>
-      </TypeConstruction>
-      <TypeConstruction>
-        <ID>PeasantHouse</ID>
-        <Quantity>5</Quantity>
-      </TypeConstruction>
-      <TypeConstruction>
-        <ID>Mill</ID>
-        <Quantity>1</Quantity>
-      </TypeConstruction>
-    </Neighbourhood>
     <Locations>
+      <Location>
+        <ID>Neighbourhood</ID>
+        <Name>Окрестности города</Name>
+        <TypeLandscape>Forest</TypeLandscape>
+        <VisibleByDefault>true</VisibleByDefault>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Sewer</ID>
+            <Quantity>1</Quantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>CityGraveyard</ID>
+            <Quantity>1</Quantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PeasantHouse</ID>
+            <Quantity>5</Quantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Location>
       <Location>
         <ID>LocationForest</ID>
         <Name>Лес</Name>
         <TypeLandscape>Forest</TypeLandscape>
+        <VisibleByDefault>true</VisibleByDefault>
         <TypeConstructions>
           <TypeConstruction>
             <ID>TradePost</ID>
@@ -105,6 +108,20 @@
         <ID>LocationSwamp</ID>
         <Name>Болото</Name>
         <TypeLandscape>Swamp</TypeLandscape>
+        <VisibleByDefault>true</VisibleByDefault>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Location>
+      <Location>
+        <ID>LocationMountain</ID>
+        <Name>Горы</Name>
+        <TypeLandscape>Mountain</TypeLandscape>
+        <VisibleByDefault>true</VisibleByDefault>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>

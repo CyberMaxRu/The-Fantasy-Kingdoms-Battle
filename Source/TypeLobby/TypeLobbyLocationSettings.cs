@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             TypeLobby = typeLobby;
 
             nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
+            VisibleByDefault = XmlUtils.GetBooleanNotNull(n, "VisibleByDefault");
 
             TypeLobbyLairSettings tlls;
 
@@ -67,6 +68,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal DescriptorTypeLandscape TypeLandscape { get; private set; }
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
+        internal bool VisibleByDefault { get; }
 
         internal override void TuneLinks()
         {

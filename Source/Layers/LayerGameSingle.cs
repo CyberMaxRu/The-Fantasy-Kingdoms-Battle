@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCPageButton> pagesCapital;
         private readonly VCPageButton pageRealMap;
         private readonly VCPageButton pageMap;
-        private readonly VCPageButton pageLocation;
+        //private readonly VCPageButton pageLocation;
         //private readonly VCPageButton pageTemples;
 
         private PanelWithPanelEntity panelWarehouse;
@@ -72,13 +72,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BigEntity selectedPlayerObject;
 
+        internal readonly List<VCLocation> listLocations = new List<VCLocation>();
 
         private WindowAdvice winAdvice;
 
         private VCCell[] pageTournamentPlayers;
         private readonly List<VCResultRound> listResultRound = new List<VCResultRound>();
-        private VCImage128[,] imgLocations;
-        private PanelConstruction[,] constructionsOfLocation;
+        //private PanelConstruction[,] constructionsOfLocation;
 
         private Lobby lobby;
         private Player curAppliedPlayer;
@@ -250,11 +250,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
-            pageControl.Separate();
-            pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта графства", "Просмотр своих владений", null);
-            pageMap.Hint = "Карта графства";
-            pageLocation = pageControl.AddPage(0, "", "", null);
-            pageLocation.Hint = "Тут должна быть подсказка";
+            //pageControl.Separate();
+            pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта", "Карта", null);
+            pageMap.Hint = "Карта";
+            //pageLocation = pageControl.AddPage(0, "", "", null);
+            //pageLocation.Hint = "Тут должна быть подсказка";
 
             listBtnLevelTax = new List<VCIconButton48>();
 
@@ -479,8 +479,39 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateNeighborhoods()
         {
+            for (int i = listLocations.Count; i < curAppliedPlayer.Locations.Count; i++)
+            {
+                VCLocation vcl = new VCLocation(pageMap.Page, 0, 0);
+                vcl.Width = pageMap.Page.Width;
+                vcl.Visible = false;
+                listLocations.Add(vcl);
+            }
+
+            foreach (VCLocation l in listLocations)
+            {
+                l.Visible = false;
+            }
+
+            for (int i = 0; i < curAppliedPlayer.Locations.Count; i++)
+            {
+                listLocations[i].Location = curAppliedPlayer.Locations[i];
+                listLocations[i].Visible = listLocations[i].Location.Visible;
+            }
+
+            int top = 0;
+            foreach (VCLocation l in listLocations)
+            {
+                if (l.Visible)
+                {
+                    l.ShiftY = top;
+                    top = l.NextTop();
+                }
+            }
+
+            pageMap.Page.ArrangeControls();
+
             return;
-            Location l = curAppliedPlayer.CurrentLocation;
+            /*Location l = curAppliedPlayer.CurrentLocation;
             Debug.Assert(l != null);
 
             pageLocation.ImageIndex = l.Settings.TypeLandscape.ImageIndex;
@@ -493,6 +524,7 @@ namespace Fantasy_Kingdoms_Battle
                     constructionsOfLocation[y, x].Entity = l.Lairs[y, x];
                     constructionsOfLocation[y, x].Visible = constructionsOfLocation[y, x].Entity != null;
                 }
+            */
         }
 
         private void ShowEvents()
@@ -586,18 +618,6 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.ArrangeControl(panelLairWithFlags);
 
             Program.formMain.SetNeedRedrawFrame();
-        }
-
-        private void AdjustNeighborhood()
-        {
-            Debug.Assert(lobby != null);
-
-            for (int y = 0; y < lobby.TypeLobby.MapHeight; y++)
-                for (int x = 0; x < lobby.TypeLobby.MapWidth; x++)
-                {
-                    imgLocations[y, x].ImageIndex = curAppliedPlayer.Locations[y, x].Settings.TypeLandscape.ImageIndex;
-                    imgLocations[y, x].Entity = curAppliedPlayer.Locations[y, x];
-                }
         }
 
         private void AdjustPanelLoses()
@@ -729,7 +749,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 SetPageLocation(construction.Location, false);
-                pageControl.ActivatePage(pageLocation);
+                pageControl.ActivatePage(pageMap);
             }
 
             SelectPlayerObject(construction, selectPage);
@@ -738,7 +758,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void SetPageLocation(Location l, bool showInfo)
         {
             curAppliedPlayer.CurrentLocation = l;
-            pageLocation.PageImage = l.Settings.TypeLandscape.GetBackgroundImage();
+            //pageLocation.PageImage = l.Settings.TypeLandscape.GetBackgroundImage();
             UpdateNeighborhoods();
         }
 
@@ -814,21 +834,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.playerMusic.PlayMusic();
                 Program.formMain.ExchangeLayer(Program.formMain.layerMainMenu, this);
-            }
-
-            if (imgLocations is null)
-            {
-                imgLocations = new VCImage128[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
-
-                for (int y = 0; y < lobby.TypeLobby.MapHeight; y++)
-                    for (int x = 0; x < lobby.TypeLobby.MapWidth; x++)
-                    {
-                        imgLocations[y, x] = new VCImage128(pageMap.Page, x * (Program.formMain.imListObjects128.Size.Width + Config.GridSize), y * (Program.formMain.imListObjects128.Size.Height + Config.GridSize));
-                        imgLocations[y, x].ShowHint += Location_ShowHint;
-                        imgLocations[y, x].Click += Map_Click;
-                    }
-
-                pageMap.Page.ArrangeControls();
             }
 
             pageControl.ActivatePage(pageResultTurn);
@@ -967,8 +972,8 @@ namespace Fantasy_Kingdoms_Battle
             if (curAppliedPlayer != lobby.CurrentPlayer)
             {
                 curAppliedPlayer = lobby.CurrentPlayer;
-                if (curAppliedPlayer.CurrentLocation != null)
-                    pageLocation.PageImage = curAppliedPlayer.CurrentLocation.Settings.TypeLandscape.GetBackgroundImage();
+                //if (curAppliedPlayer.CurrentLocation != null)
+                //    pageLocation.PageImage = curAppliedPlayer.CurrentLocation.Settings.TypeLandscape.GetBackgroundImage();
             }
 
             ShowLobby();
@@ -1026,8 +1031,11 @@ namespace Fantasy_Kingdoms_Battle
 
             curAppliedPlayer.EndTurn();
         }
+
         private void DrawPageLocation()
         {
+
+            /*
             constructionsOfLocation = new PanelConstruction[FormMain.MAX_LAIRS_HEIGHT, FormMain.MAX_LAIRS_WIDTH];
 
             int top = 0;
@@ -1049,7 +1057,7 @@ namespace Fantasy_Kingdoms_Battle
                 top += height + Config.GridSize;
             }
 
-            pageLocation.Page.ArrangeControls();
+            pageLocation.Page.ArrangeControls();*/
         }
 
         private Bitmap MainControlbackground(string nameTexture)

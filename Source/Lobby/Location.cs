@@ -15,7 +15,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             Player = player;
             Settings = settings;
-            Lairs = new Construction[Player.Lobby.TypeLobby.LairsHeight, Player.Lobby.TypeLobby.LairsWidth];
+            Visible = settings.VisibleByDefault;
+
+            // Создание сооружений согласно настройкам
+            foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
+            {
+                Lairs.Add(new Construction(player, ls.TypeLair, this));
+            }
 
             // Создание рандомных логов монстров согласно настроек типа лобби
             // Для этого сначала создаем логова по минимальному списку, а оставшиеся ячейки - из оставшихся по максимуму
@@ -53,10 +59,16 @@ namespace Fantasy_Kingdoms_Battle
                 return l;
             }*/
         }
+        public Location(Player player) : base(player.Descriptor, player.Lobby)
+        {
+            Player = player;
+            Visible = false;
+        }
 
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
-        internal Construction[,] Lairs { get; }
+        internal List<Construction> Lairs { get; } = new List<Construction>();
+        internal bool Visible { get; set; }
 
         internal override int GetImageIndex()
         {
