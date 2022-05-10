@@ -84,12 +84,13 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Capital</ID>
-    <Name>Столица</Name>
-    <Description>Столица - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
-    <ImageIndex>161</ImageIndex>
+    <ID>NeighborhoodOfCity</ID>
+    <Name>Окрестности города</Name>
+    <Description>Город - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
+    <ImageIndex>183</ImageIndex>
     <NameTexture>Capital</NameTexture>
     <Constructions>
+      <Construction>Sewer</Construction>
       <Construction>CityGraveyard</Construction>
     </Constructions>
   </TypeLandscape>

@@ -39,7 +39,7 @@
       <Location>
         <ID>Neighbourhood</ID>
         <Name>Окрестности города</Name>
-        <TypeLandscape>Forest</TypeLandscape>
+        <TypeLandscape>NeighborhoodOfCity</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <TypeConstructions>
           <TypeConstruction>

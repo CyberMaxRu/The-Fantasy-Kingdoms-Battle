@@ -1681,9 +1681,9 @@
   </Construction>
   <Construction>
     <ID>Castle</ID>
-    <Name>Замок</Name>
-    <Description>- Позволяет отдавать приказы строительства//- Содержит налоговую и охранную службы//- Здесь хранится казна королевства//- Задает уровень лояльности</Description>
-    <ImageIndex>20</ImageIndex>
+    <Name>Дворец лорда</Name>
+    <Description>- Позволяет отдавать приказы строительства//- Содержит налоговую и охранную службы//- Здесь хранится казна лорда//- Задает уровень лояльности</Description>
+    <ImageIndex>184</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
