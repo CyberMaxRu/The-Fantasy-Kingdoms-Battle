@@ -5,7 +5,6 @@
     <Name>Равнина</Name>
     <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
     <ImageIndex>167</ImageIndex>
-    <NameTexture>Plain</NameTexture>
     <Constructions>
       <Construction>Hill</Construction>
       <Construction>Meadow</Construction>
@@ -18,7 +17,6 @@
     <Name>Лес</Name>
     <Description>Лес - полон волков и медведей.</Description>
     <ImageIndex>165</ImageIndex>
-    <NameTexture>Forest</NameTexture>
     <Constructions>
       <Construction>Forest</Construction>
       <Construction>Meadow</Construction>
@@ -31,7 +29,6 @@
     <Name>Болото</Name>
     <Description>В болотах Ардании сгинуло немало смелых героев.</Description>
     <ImageIndex>164</ImageIndex>
-    <NameTexture>Swamp</NameTexture>
     <Constructions>
       <Construction>Swamp</Construction>
       <Construction>Marsh</Construction>
@@ -43,7 +40,6 @@
     <Name>Горы</Name>
     <Description>В горах можно добыть много металла. Например, золота. А там где золото - там драконы.</Description>
     <ImageIndex>166</ImageIndex>
-    <NameTexture>Mountain</NameTexture>
     <Constructions>
       <Construction>Mountain</Construction>
       <Construction>MountainSpring</Construction>
@@ -56,7 +52,6 @@
     <Name>Пустошь</Name>
     <Description>Пустошь - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
     <ImageIndex>168</ImageIndex>
-    <NameTexture>Wasteland</NameTexture>
     <Constructions>
       <Construction>Wasteland</Construction>
       <Construction>Canyon</Construction>
@@ -67,7 +62,6 @@
     <Name>Пустыня</Name>
     <Description>В пустыне легко затеряться.</Description>
     <ImageIndex>163</ImageIndex>
-    <NameTexture>Desert</NameTexture>
     <Constructions>
       <Construction>Desert</Construction>
       <Construction>Oasis</Construction>
@@ -78,7 +72,6 @@
     <Name>Деревня</Name>
     <Description>В деревне живут подданные короля - крестьяне.</Description>
     <ImageIndex>162</ImageIndex>
-    <NameTexture>Village</NameTexture>
     <Constructions>
       <Construction>PeasantHouse</Construction>
     </Constructions>
@@ -88,7 +81,6 @@
     <Name>Окрестности города</Name>
     <Description>Город - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
     <ImageIndex>183</ImageIndex>
-    <NameTexture>Capital</NameTexture>
     <Constructions>
       <Construction>Sewer</Construction>
       <Construction>CityGraveyard</Construction>

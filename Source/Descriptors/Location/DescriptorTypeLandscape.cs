@@ -18,7 +18,6 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorTypeLandscape(XmlNode n) : base(n)
         {
             Index = Descriptors.TypeLandscapes.Count;
-            NameTexture = XmlUtils.GetStringNotNull(n, "NameTexture");
 
             // Загружаем список доступных элементов
             XmlNode ne = n.SelectSingleNode("Constructions");
@@ -41,7 +40,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Index { get; }
-        internal string NameTexture { get; }
         internal List<DescriptorConstruction> Elements { get; } = new List<DescriptorConstruction>();
 
         internal override void TuneLinks()
@@ -54,14 +52,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             nameElements = null;
-        }
-
-        internal Bitmap GetBackgroundImage()
-        {
-            if (BackgroundImage is null)
-                BackgroundImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(NameTexture), Program.formMain.layerGame.MainControl);
-
-            return BackgroundImage;
         }
     }
 }
