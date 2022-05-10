@@ -14,12 +14,15 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public Construction(Player p, DescriptorConstruction b, Location location, bool visible) : base(b, p.Lobby)
+        public Construction(Player p, DescriptorConstruction b, Location location, bool visible, bool own, bool canOwn, bool isEnemy) : base(b, p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
             Location = location;
             DaysBuilded = 0;
+            PlayerIsOwner = own;
+            PlayerCanOwn = canOwn;
+            IsEnemy = IsEnemy;
 
             // Настраиваем исследования 
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
@@ -46,15 +49,18 @@ namespace Fantasy_Kingdoms_Battle
             TuneCellMenuBuildOrUpgrade();
         }
 
-        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, TypeNoticeForPlayer typeNotice) : base(l, p.Lobby)
+        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice) : base(l, p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
             X = x;
             Y = y;
             Location = location;
-            Hidden = false;// !location.Ownership;
+            Hidden = !visible;
             DaysBuilded = 0;
+            PlayerIsOwner = own;
+            PlayerCanOwn = canOwn;
+            IsEnemy = IsEnemy;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External) || (TypeConstruction.Category == CategoryConstruction.Temple)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
@@ -86,6 +92,9 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorConstruction TypeConstruction { get; }
+        internal bool PlayerIsOwner { get; private set; }// Игрок - владелец сооружения
+        internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
+        internal bool IsEnemy { get; private set; }// Это сооружение враждебно
         internal int Level { get; private set; }
         internal int DaysBuilded { get; private set; }// Сколько дней строится сооружение
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
@@ -1062,7 +1071,7 @@ namespace Fantasy_Kingdoms_Battle
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
-            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location, TypeNoticeForPlayer.None);
+            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location, true, true, true, false, TypeNoticeForPlayer.None);
             pl.Hidden = false;
             Location.Lairs.Add(pl);
         }

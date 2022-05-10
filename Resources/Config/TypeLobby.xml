@@ -46,41 +46,64 @@
             <ID>Sewer</ID>
             <Visible>true</Visible>
             <Own>true</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>CityGraveyard</ID>
             <Visible>true</Visible>
             <Own>true</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
             <Visible>true</Visible>
             <Own>true</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
             <Visible>true</Visible>
             <Own>true</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
             <Visible>true</Visible>
             <Own>true</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PeasantHouse</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>HolyPlace</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -94,36 +117,50 @@
             <ID>TradePost</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>GraveyardZombie</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>HolyPlace</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>ThroneLightning</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>WolfsDen</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
           </TypeConstruction>
           <TypeConstruction>
             <ID>BearsDen</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -137,6 +174,8 @@
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -150,6 +189,8 @@
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
           </TypeConstruction>
         </TypeConstructions>
       </Location>

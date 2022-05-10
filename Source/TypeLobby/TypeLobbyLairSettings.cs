@@ -15,8 +15,16 @@ namespace Fantasy_Kingdoms_Battle
             NameTypeLair = n.SelectSingleNode("ID").InnerText;
             Visible = XmlUtils.GetBooleanNotNull(n, "Visible");
             Own = XmlUtils.GetBooleanNotNull(n, "Own");
+            CanOwn = XmlUtils.GetBooleanNotNull(n, "CanOwn");
+            IsEnemy = XmlUtils.GetBooleanNotNull(n, "IsEnemy");
 
             Debug.Assert(!(Own && !Visible));
+
+            if (IsEnemy)
+            {
+                Debug.Assert(!Own);
+                Debug.Assert(!CanOwn);
+            }
         }
 
         internal void TuneDeferredLinks()
@@ -29,5 +37,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction TypeLair { get; private set; }
         internal bool Visible { get; }
         internal bool Own { get; }
+        internal bool CanOwn { get; }
+        internal bool IsEnemy { get; }
     }
 }
