@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DrawBackground(g);
 
-            Program.formMain.bbToolBarLabel.DrawBorder(g, Left, Top, Width, Height);
+            Program.formMain.bbToolBarLabel.DrawBorder(g, Left, Top, Width, Height, Color.Transparent);
         }
     }
 }

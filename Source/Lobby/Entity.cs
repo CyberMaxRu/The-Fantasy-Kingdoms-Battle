@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual int GetQuantity() => 0;
         internal virtual string GetText() => "";
         internal abstract void PrepareHint(PanelHint panelHint);
+        internal virtual Color GetSelectedColor() => Color.White;
 
         internal virtual void Click(VCCell pe)
         {

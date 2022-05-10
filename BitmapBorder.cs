@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс картинки с границами
     internal sealed class BitmapBorder
     {
-        private List<Bitmap> cacheBitmap = new List<Bitmap>();
+        private List<(Bitmap,Color)> cacheBitmap = new List<(Bitmap,Color)>();
         
         public BitmapBorder(Bitmap bmpOrigin, bool useCentre, int widthLeftCorner, int widthRightCorner, int heightTopCorner, int heightBottomCorner, 
             int widthHorizBand, int heightTopBand, int heightBottomBand, int heightVertBand, int widthLeftBand, int widthRightBand)
@@ -62,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Width { get; }
         internal int Height { get; }
 
-        private Bitmap PrepareBorder(int width, int height)
+        private Bitmap PrepareBorder(int width, int height, Color color)
         {
             //Debug.Assert(width >= widthBorder);
             //Debug.Assert(height >= heightBorder);
@@ -139,17 +141,41 @@ namespace Fantasy_Kingdoms_Battle
                 b.Dispose();
             }
 
+            // Если указан цвет, преобразуем
+            if (color != Color.Transparent)
+            {
+                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, bmp.PixelFormat);
+                IntPtr ptr = bmpData.Scan0;
+                int bytes = Math.Abs(bmpData.Stride) * bmp.Height;
+                byte[] rgbValues = new byte[bytes];
+                Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+                for (int counter = 0; counter < rgbValues.Length; counter += 4)
+                {
+                    if (rgbValues[counter + 3] > 0)
+                    {
+                        rgbValues[counter + 0] = Convert.ToByte(rgbValues[counter + 0] * color.B / 255);
+                        rgbValues[counter + 1] = Convert.ToByte(rgbValues[counter + 1] * color.G / 255);
+                        rgbValues[counter + 2] = Convert.ToByte(rgbValues[counter + 2] * color.R / 255);
+                    }
+                }
+
+                Marshal.Copy(rgbValues, 0, ptr, bytes);
+                bmp.UnlockBits(bmpData);
+            }
+
             g.Dispose();
             return bmp;
         }
 
-        internal void DrawBorder(Graphics g, int x, int y, int width, int height)
+        internal void DrawBorder(Graphics g, int x, int y, int width, int height, Color color)
         {
             Bitmap bmpBorder = null;
 
             // Ищем бордюр в кэше
-            foreach (Bitmap b in cacheBitmap)
-                if ((b.Width == width) && (b.Height == height))
+            foreach ((Bitmap b, Color c) in cacheBitmap)
+                if ((b.Width == width) && (b.Height == height) && (c == color))
                 {
                     bmpBorder = b;
                     break;
@@ -157,8 +183,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (bmpBorder is null)
             {
-                bmpBorder = PrepareBorder(width, height);
-                cacheBitmap.Add(bmpBorder);
+                bmpBorder = PrepareBorder(width, height, color);
+                cacheBitmap.Add((bmpBorder, color));
             }
 
             g.DrawImageUnscaled(bmpBorder, x, y);

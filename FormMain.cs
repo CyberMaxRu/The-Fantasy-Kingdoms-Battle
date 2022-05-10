@@ -829,7 +829,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         bmpRenderClientArea = GuiUtils.MakeBackground(ClientSize);
                         Graphics g = Graphics.FromImage(bmpRenderClientArea);
-                        bbGamespace.DrawBorder(g, topLeftFrame.X - 7, topLeftFrame.Y - 7, sizeGamespace.Width + 14, sizeGamespace.Height + 14);
+                        bbGamespace.DrawBorder(g, topLeftFrame.X - 7, topLeftFrame.Y - 7, sizeGamespace.Width + 14, sizeGamespace.Height + 14, Color.Transparent);
                         g.Dispose();
                     }
                     else

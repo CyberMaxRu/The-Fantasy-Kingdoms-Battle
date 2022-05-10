@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             DaysBuilded = 0;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
-            IsEnemy = IsEnemy;
+            IsEnemy = isEnemy;
 
             // Настраиваем исследования 
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
@@ -47,6 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
 
             TuneCellMenuBuildOrUpgrade();
+            UpdateSelectedColor();
         }
 
         public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice) : base(l, p.Lobby)
@@ -60,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
             DaysBuilded = 0;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
-            IsEnemy = IsEnemy;
+            IsEnemy = isEnemy;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External) || (TypeConstruction.Category == CategoryConstruction.Temple)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
@@ -89,6 +90,7 @@ namespace Fantasy_Kingdoms_Battle
                 Player.AddNoticeForPlayer(this, typeNotice);
 
             TuneCellMenuBuildOrUpgrade();
+            UpdateSelectedColor();
         }
 
         internal DescriptorConstruction TypeConstruction { get; }
@@ -106,6 +108,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
         internal bool Hidden { get; private set; }// Логово не разведано
+        internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
 
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
         internal bool Destroyed { get; private set; } = false;// Логово уничтожено, работа с ним запрещена
@@ -1553,5 +1556,19 @@ namespace Fantasy_Kingdoms_Battle
                 ListQueueProcessing[i].PosInQueue = i + 1;
             }
         }
+
+        private void UpdateSelectedColor()
+        {
+            if (PlayerIsOwner)
+                SelectedColor = Color.White;
+            else if (PlayerCanOwn)
+                SelectedColor = Color.LimeGreen;
+            else if (!IsEnemy)
+                SelectedColor = Color.Yellow;
+            else
+                SelectedColor = Color.Red;
+        }
+
+        internal override Color GetSelectedColor() => SelectedColor;
     }
 }

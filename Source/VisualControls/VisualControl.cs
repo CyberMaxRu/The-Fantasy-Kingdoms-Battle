@@ -149,7 +149,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Selected())
             {
-                Program.formMain.bbSelect.DrawBorder(g, Left - 8, Top - 8, Width + 16, Height + 16);
+                Program.formMain.bbSelect.DrawBorder(g, Left - 8, Top - 8, Width + 16, Height + 16, entity != null ? entity.GetSelectedColor() : Color.Transparent);
             }
         }
 
@@ -162,7 +162,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PaintBorder(Graphics g)
         {
-            Program.formMain.bbObject.DrawBorder(g, Left - 2, Top, Width + 4, Height + 3);
+            Program.formMain.bbObject.DrawBorder(g, Left - 2, Top, Width + 4, Height + 3, Color.Transparent);
         }
 
         internal virtual void PaintForeground(Graphics g)

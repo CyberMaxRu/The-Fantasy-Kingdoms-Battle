@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PaintBorder(Graphics g)
         {
-            Program.formMain.bbToolBarLabel.DrawBorder(g, Left, Top, Width, Height);
+            Program.formMain.bbToolBarLabel.DrawBorder(g, Left, Top, Width, Height, Color.Transparent);
         }
 
         internal override void Draw(Graphics g)
