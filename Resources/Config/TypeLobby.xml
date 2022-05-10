@@ -44,15 +44,18 @@
         <TypeConstructions>
           <TypeConstruction>
             <ID>Sewer</ID>
-            <Quantity>1</Quantity>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
           <TypeConstruction>
             <ID>CityGraveyard</ID>
-            <Quantity>1</Quantity>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
-            <Quantity>5</Quantity>
+            <MinQuantity>5</MinQuantity>
+            <MaxQuantity>5</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
