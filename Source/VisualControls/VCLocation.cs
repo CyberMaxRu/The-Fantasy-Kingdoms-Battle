@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -10,6 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     sealed internal class VCLocation : VisualControl
     {
         private readonly VCImage128 imgTypeLocation;
+        private readonly VCText nameLocation;
         private readonly List<VCCell> listCells;
 
         private Location location;
@@ -19,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
 
             imgTypeLocation = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
 
             listCells = new List<VCCell>();
 
@@ -39,6 +42,10 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateLocation()
         {
             imgTypeLocation.ImageIndex = location.Settings.TypeLandscape.ImageIndex;
+            nameLocation.Text = location.Settings.Name;
+            nameLocation.Height = nameLocation.MinHeigth();
+            nameLocation.ShiftY = imgTypeLocation.Height - nameLocation.Height;
+            imgTypeLocation.ArrangeControl(nameLocation);
 
             while (listCells.Count < Location.Lairs.Count)
             {
