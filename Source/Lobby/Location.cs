@@ -20,8 +20,8 @@ namespace Fantasy_Kingdoms_Battle
             // Создание сооружений согласно настройкам
             foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
             {
-                for (int i = 0; i < ls.MaxQuantity; i++)
-                    Lairs.Add(new Construction(player, ls.TypeLair, this));
+                Construction c = new Construction(player, ls.TypeLair, this, ls.Visible);
+                Lairs.Add(c);
             }
 
             // Создание рандомных логов монстров согласно настроек типа лобби

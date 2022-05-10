@@ -13,23 +13,10 @@ namespace Fantasy_Kingdoms_Battle
         public TypeLobbyLairSettings(XmlNode n)
         {
             NameTypeLair = n.SelectSingleNode("ID").InnerText;
-            MinQuantity = XmlUtils.GetInteger(n, "MinQuantity");
-            MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
+            Visible = XmlUtils.GetBooleanNotNull(n, "Visible");
+            Own = XmlUtils.GetBooleanNotNull(n, "Own");
 
-            Debug.Assert(MinQuantity >= 0);
-            Debug.Assert(MaxQuantity < 20);
-            Debug.Assert(MinQuantity <= MaxQuantity);
-        }
-
-        public TypeLobbyLairSettings(string ID, int quantity)
-        {
-            NameTypeLair = ID;
-            MinQuantity = quantity;
-            MaxQuantity = quantity;
-
-            Debug.Assert(MinQuantity >= 0);
-            Debug.Assert(MaxQuantity < 20);
-            Debug.Assert(MinQuantity <= MaxQuantity);
+            Debug.Assert(!(Own && !Visible));
         }
 
         internal void TuneDeferredLinks()
@@ -40,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string NameTypeLair { get; private set; }
         internal DescriptorConstruction TypeLair { get; private set; }
-        internal int MinQuantity { get; }
-        internal int MaxQuantity { get; }
+        internal bool Visible { get; }
+        internal bool Own { get; }
     }
 }

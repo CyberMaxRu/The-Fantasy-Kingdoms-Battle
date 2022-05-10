@@ -29,23 +29,14 @@ namespace Fantasy_Kingdoms_Battle
             {
                 tlls = new TypeLobbyLairSettings(l);
 
-                // Проверяем, что тип логова не повторяется
+                /*// Проверяем, что тип логова не повторяется
                 foreach (TypeLobbyLairSettings ls in LairsSettings)
                 {
                     if (tlls.NameTypeLair == ls.NameTypeLair)
                         throw new Exception($"Тип логова {tlls.NameTypeLair} повторяется в списке типов логов локации {ID}.");
-                }
+                }*/
 
                 LairsSettings.Add(tlls);
-            }
-
-            // Проверяем, что максимального количества хватает для заполнения логов, а минимальное не превышает число слотов
-            int minQuantity = 0;
-            int maxQuantity = 0;
-            foreach (TypeLobbyLairSettings ls in LairsSettings)
-            {
-                minQuantity += ls.MinQuantity;
-                maxQuantity += ls.MaxQuantity;
             }
 
             // Если количество сооружений меньше количества слотов, добиваем их пустыми местами

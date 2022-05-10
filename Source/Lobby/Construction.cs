@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public Construction(Player p, DescriptorConstruction b, Location location) : base(b, p.Lobby)
+        public Construction(Player p, DescriptorConstruction b, Location location, bool visible) : base(b, p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
                 Researches.Add(CellMenuConstruction.Create(this, d));
 
-            Hidden = !TypeConstruction.IsInternalConstruction;// && !location.Ownership;
+            Hidden = !visible;// && !location.Ownership;
 
             Level = b.DefaultLevel;
             if (Level > 0)

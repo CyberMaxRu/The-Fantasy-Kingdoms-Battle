@@ -44,18 +44,43 @@
         <TypeConstructions>
           <TypeConstruction>
             <ID>Sewer</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
+            <Visible>true</Visible>
+            <Own>true</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>CityGraveyard</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
+            <Visible>true</Visible>
+            <Own>true</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
-            <MinQuantity>5</MinQuantity>
-            <MaxQuantity>5</MaxQuantity>
+            <Visible>true</Visible>
+            <Own>true</Own>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PeasantHouse</ID>
+            <Visible>true</Visible>
+            <Own>true</Own>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PeasantHouse</ID>
+            <Visible>true</Visible>
+            <Own>true</Own>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PeasantHouse</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PeasantHouse</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>HolyPlace</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -67,43 +92,38 @@
         <TypeConstructions>
           <TypeConstruction>
             <ID>TradePost</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>Treasure</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>GraveyardZombie</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>10</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>HolyPlace</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>EmptyPlace</ID>
-            <MinQuantity>3</MinQuantity>
-            <MaxQuantity>6</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>ThroneLightning</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>WolfsDen</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>3</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
           <TypeConstruction>
             <ID>BearsDen</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>2</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -115,8 +135,8 @@
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -128,8 +148,8 @@
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
+            <Visible>false</Visible>
+            <Own>false</Own>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
