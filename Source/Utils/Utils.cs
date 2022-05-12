@@ -98,6 +98,11 @@ namespace Fantasy_Kingdoms_Battle
             return (value > 0 ? (showPlus ? "+" : "") : "-") + val100.ToString() + (modval > 0 ? "." + modval.ToString() : "");
         }
 
+        internal static string FormatPercent(int value, bool showPlus = false)
+        {
+            return DecIntegerBy10(value) + '%';
+        }
+
         internal static string FormatInteger(int value)
         {
             return (value > 0 ? "+" : "") + value.ToString();

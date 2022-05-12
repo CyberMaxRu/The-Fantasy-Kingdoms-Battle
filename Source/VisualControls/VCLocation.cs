@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCImage128 imgTypeLocation;
         private readonly VCText nameLocation;
         private readonly List<VCCell> listCells;
+        private readonly VCIconAndDigitValue lblScouted;
+        private readonly VCIconAndDigitValue lblDanger;
 
         private Location location;
 
@@ -23,10 +25,25 @@ namespace Fantasy_Kingdoms_Battle
             imgTypeLocation = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
             nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
 
+            lblScouted = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), imgTypeLocation.ShiftY, 80, 42);
+            lblScouted.ShowHint += LblScouted_ShowHint;
+            lblDanger = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), lblScouted.NextTop(), 80, 39);
+            lblDanger.ShowHint += LblDanger_ShowHint;
+
             listCells = new List<VCCell>();
 
             Width = 200;
             Height = imgTypeLocation.NextTop();
+        }
+
+        private void LblDanger_ShowHint(object sender, EventArgs e)
+        {
+            PanelHint.AddSimpleHint("Уровень опасности");
+        }
+
+        private void LblScouted_ShowHint(object sender, EventArgs e)
+        {
+            PanelHint.AddSimpleHint("Разведано");
         }
 
         internal Location Location { get => location; set { location = value; UpdateLocation(); } }
@@ -47,6 +64,9 @@ namespace Fantasy_Kingdoms_Battle
             nameLocation.ShiftY = imgTypeLocation.Height - nameLocation.Height;
             imgTypeLocation.ArrangeControl(nameLocation);
 
+            lblScouted.Text = Utils.FormatPercent(location.Scouted);
+            lblDanger.Text = Utils.FormatPercent(location.Danger);
+
             while (listCells.Count < Location.Lairs.Count)
             {
                 VCCell cell = new VCCell(this, 0, 0);
@@ -62,10 +82,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ValidateCoordCell(VCCell cell, int index)
         {
-            int cellsPerLine = (Width - imgTypeLocation.NextLeft() - FormMain.Config.GridSize) / 56;
+            int cellsPerLine = (Width - lblScouted.NextLeft() - FormMain.Config.GridSize) / 56;
             int line = index / cellsPerLine;
             int offset = index % cellsPerLine;
-            cell.ShiftX = imgTypeLocation.NextLeft() + (offset * 56);
+            cell.ShiftX = lblScouted.NextLeft() + (offset * 56);
             cell.ShiftY = imgTypeLocation.ShiftY + (line & 56);
 
             ArrangeControl(cell);

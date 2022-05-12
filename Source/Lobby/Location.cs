@@ -16,6 +16,8 @@ namespace Fantasy_Kingdoms_Battle
             Player = player;
             Settings = settings;
             Visible = settings.VisibleByDefault;
+            Scouted = settings.Scouted;
+            Danger = 333;
 
             // Создание сооружений согласно настройкам
             foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
@@ -70,6 +72,8 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobbyLocationSettings Settings { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
         internal bool Visible { get; set; }
+        internal int Scouted { get; private set; }// Сколько процентов локации разведано
+        internal int Danger { get; private set; }// Процент опасности локации
 
         internal override int GetImageIndex()
         {
