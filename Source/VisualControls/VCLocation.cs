@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
 
             imgTypeLocation = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            imgTypeLocation.Click += ImgTypeLocation_Click;
             nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
 
             lblScouted = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), imgTypeLocation.ShiftY, 80, 42);
@@ -34,6 +35,17 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = 200;
             Height = imgTypeLocation.NextTop();
+            Click += VCLocation_Click;
+        }
+
+        private void VCLocation_Click(object sender, EventArgs e)
+        {
+            Program.formMain.layerGame.SelectPlayerObject(Location);
+        }
+
+        private void ImgTypeLocation_Click(object sender, EventArgs e)
+        {
+            Program.formMain.layerGame.SelectPlayerObject(Location);
         }
 
         private void LblDanger_ShowHint(object sender, EventArgs e)
