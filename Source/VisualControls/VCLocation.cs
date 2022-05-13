@@ -25,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             imgTypeLocation = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
             imgTypeLocation.Click += ImgTypeLocation_Click;
             nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
+            nameLocation.IsActiveControl = false;
 
             lblScouted = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), imgTypeLocation.ShiftY, 80, 42);
             lblScouted.ShowHint += LblScouted_ShowHint;
