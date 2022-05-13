@@ -42,6 +42,7 @@
         <TypeLandscape>NeighborhoodOfCity</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Scouted>100</Scouted>
+        <Area>1000</Area>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Sewer</ID>
@@ -114,6 +115,7 @@
         <TypeLandscape>Forest</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Scouted>0</Scouted>
+        <Area>1000</Area>
         <TypeConstructions>
           <TypeConstruction>
             <ID>TradePost</ID>
@@ -172,6 +174,7 @@
         <TypeLandscape>Swamp</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Scouted>0</Scouted>
+        <Area>1000</Area>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -188,6 +191,7 @@
         <TypeLandscape>Mountain</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Scouted>0</Scouted>
+        <Area>1000</Area>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>

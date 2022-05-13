@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
             VisibleByDefault = XmlUtils.GetBooleanNotNull(n, "VisibleByDefault");
             Scouted = XmlUtils.GetIntegerNotNull(n, "Scouted");
+            Area = XmlUtils.GetIntegerNotNull(n, "Area");
 
             TypeLobbyLairSettings tlls;
 
@@ -55,6 +56,8 @@ namespace Fantasy_Kingdoms_Battle
 
             //Debug.Assert(minQuantity <= quantitySlotLairs);
             //Debug.Assert(maxQuantity >= quantitySlotLairs);
+            Debug.Assert(Area >= 1);
+            Debug.Assert(Area <= 1_000_000);
             Debug.Assert(Scouted >= 0);
             Debug.Assert(Scouted <= 1000);
         }
@@ -64,6 +67,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
         internal bool VisibleByDefault { get; }
         internal int Scouted { get; }
+        internal int Area { get; }// Площадь локации
 
         internal override void TuneLinks()
         {
