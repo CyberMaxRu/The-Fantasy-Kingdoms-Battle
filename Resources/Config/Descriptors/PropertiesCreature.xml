@@ -73,4 +73,10 @@
     <Description>Чем больше маскировка, тем труднее найти объект в локации.</Description>
     <ImageIndex>39</ImageIndex>
   </PropertyCreature>
+  <PropertyCreature>
+    <ID>CreatureVisibility</ID>
+    <Name>Обзор</Name>
+    <Description>Чем выше обзор, тем больше территории разведуется.</Description>
+    <ImageIndex>43</ImageIndex>
+  </PropertyCreature>
 </Descriptors>
