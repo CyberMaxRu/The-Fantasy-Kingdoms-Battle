@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
             nameLocation.ShiftY = imgTypeLocation.Height - nameLocation.Height;
             imgTypeLocation.ArrangeControl(nameLocation);
 
-            lblScouted.Text = Utils.FormatPercent(location.Scouted);
+            lblScouted.Text = Utils.FormatPercent(location.ScoutedArea);
             lblDanger.Text = Utils.FormatPercent(location.Danger);
 
             while (listCells.Count < Location.Lairs.Count)

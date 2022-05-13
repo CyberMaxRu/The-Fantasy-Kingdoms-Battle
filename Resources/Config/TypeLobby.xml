@@ -41,8 +41,8 @@
         <Name>Окрестности города</Name>
         <TypeLandscape>NeighborhoodOfCity</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
-        <Scouted>100</Scouted>
         <Area>1000</Area>
+        <ScoutedArea>200</ScoutedArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Sewer</ID>
@@ -114,8 +114,8 @@
         <Name>Лес</Name>
         <TypeLandscape>Forest</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
-        <Scouted>0</Scouted>
         <Area>1000</Area>
+        <ScoutedArea>0</ScoutedArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>TradePost</ID>
@@ -173,8 +173,8 @@
         <Name>Болото</Name>
         <TypeLandscape>Swamp</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
-        <Scouted>0</Scouted>
         <Area>1000</Area>
+        <ScoutedArea>0</ScoutedArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -190,8 +190,8 @@
         <Name>Горы</Name>
         <TypeLandscape>Mountain</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
-        <Scouted>0</Scouted>
         <Area>1000</Area>
+        <ScoutedArea>0</ScoutedArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>

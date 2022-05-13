@@ -16,8 +16,10 @@ namespace Fantasy_Kingdoms_Battle
             Player = player;
             Settings = settings;
             Visible = settings.VisibleByDefault;
-            Scouted = settings.Scouted;
+            ScoutedArea = settings.ScoutedArea;
             Danger = 333;
+
+            UpdatePercentScoutedArea();
 
             // Создание сооружений согласно настройкам
             foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
@@ -72,7 +74,8 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobbyLocationSettings Settings { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
         internal bool Visible { get; set; }
-        internal int Scouted { get; private set; }// Сколько процентов локации разведано
+        internal int ScoutedArea { get; private set; }// Сколько площади локации разведано
+        internal int PercentScoutedArea { get; private set; }// Процент разведанной территории
         internal int Danger { get; private set; }// Процент опасности локации
 
         internal override int GetImageIndex()
@@ -101,6 +104,22 @@ namespace Fantasy_Kingdoms_Battle
         internal override void HideInfo()
         {
             Lobby.Layer.panelLocationInfo.Visible = false;
+        }
+
+        internal void DoScout(int area)
+        {
+            Debug.Assert(area > 0);
+
+            ScoutedArea += area;
+            if (ScoutedArea > Settings.Area)
+                ScoutedArea = Settings.Area;
+
+            UpdatePercentScoutedArea();
+        }
+
+        private void UpdatePercentScoutedArea()
+        {
+            PercentScoutedArea = ScoutedArea / Settings.Area * 1000;
         }
     }
 }
