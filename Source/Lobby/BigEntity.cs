@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used = true;
                 }
-                else if (menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research.Construction == pr.Construction)
+                else if (((CellMenuConstruction)menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research).Construction == pr.Construction)
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
             }
         }

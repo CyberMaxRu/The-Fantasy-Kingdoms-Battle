@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCMenuCell : VCImage48
     {
         private VCLabel lblBanner;
-        private CellMenuConstruction research;
+        private CellOfMenu research;
 
         public VCMenuCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal bool Used { get; set; }
-        internal CellMenuConstruction Research
+        internal CellOfMenu Research
         {
             get { return research; }
             set

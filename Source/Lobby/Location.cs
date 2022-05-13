@@ -11,6 +11,13 @@ namespace Fantasy_Kingdoms_Battle
     // Класс локации
     internal sealed class Location : BigEntity
     {
+        private readonly DescriptorCellMenu descScout;
+        private readonly CellMenuLocationScout cmScout;
+        private readonly DescriptorCellMenu descAddScoutHero;
+        private readonly CellMenuLocationAddScoutHero cmAddScoutHero;
+        private readonly DescriptorCellMenu descCancelScout;
+        private readonly CellMenuLocationCancelScout cmCancelScout;
+
         public Location(Player player, TypeLobbyLocationSettings settings) : base(player.Descriptor, player.Lobby)
         {
             Player = player;
@@ -27,6 +34,14 @@ namespace Fantasy_Kingdoms_Battle
                 Construction c = new Construction(player, ls.TypeLair, this, ls.Visible, ls.Own, ls.CanOwn, ls.IsEnemy);
                 Lairs.Add(c);
             }
+
+            // Создание меню
+            descScout = new DescriptorCellMenu(new Point(0, 0));
+            cmScout = new CellMenuLocationScout(this, descScout);
+            descAddScoutHero = new DescriptorCellMenu(new Point(2, 2));
+            cmAddScoutHero = new CellMenuLocationAddScoutHero(this, descAddScoutHero);
+            descCancelScout = new DescriptorCellMenu(new Point(3, 2));
+            cmCancelScout = new CellMenuLocationCancelScout(this, descCancelScout);
 
             // Создание рандомных логов монстров согласно настроек типа лобби
             // Для этого сначала создаем логова по минимальному списку, а оставшиеся ячейки - из оставшихся по максимуму
@@ -77,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ScoutedArea { get; private set; }// Сколько площади локации разведано
         internal int PercentScoutedArea { get; private set; }// Процент разведанной территории
         internal int Danger { get; private set; }// Процент опасности локации
+        internal int StateMenu { get; set; }//
 
         internal override int GetImageIndex()
         {
@@ -87,7 +103,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
-            
+            switch (StateMenu)
+            {
+                case 0:
+                    menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Research = cmScout;
+                    menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Used = true;
+                    break;
+                case 1:
+                    menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Research = cmAddScoutHero;
+                    menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Used = true;
+                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Research = cmCancelScout;
+                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Used = true;
+                    break;
+            }
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -103,6 +131,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void HideInfo()
         {
+            StateMenu = 0;
             Lobby.Layer.panelLocationInfo.Visible = false;
         }
 
@@ -120,6 +149,6 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdatePercentScoutedArea()
         {
             PercentScoutedArea = ScoutedArea / Settings.Area * 1000;
-        }
+        }        
     }
 }
