@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (XmlNode l in ncm.SelectNodes("CellMenu"))
                 {
-                    DescriptorCellMenu dcm = new DescriptorCellMenu(this, l);
+                    DescriptorCellMenu dcm = new DescriptorCellMenu(l);
 
                     foreach (DescriptorCellMenu dcm2 in CellsMenu)
                     {

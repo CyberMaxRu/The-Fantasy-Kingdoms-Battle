@@ -783,7 +783,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionSpell : CellMenuConstruction
     {
-        public CellMenuConstructionSpell(Construction forConstruction, ConstructionSpell spell) : base(forConstruction, new DescriptorCellMenu(forConstruction.TypeConstruction, spell.DescriptorSpell.Coord))
+        public CellMenuConstructionSpell(Construction forConstruction, ConstructionSpell spell) : base(forConstruction, new DescriptorCellMenu(spell.DescriptorSpell.Coord))
         {
             ForConstruction = forConstruction;
             Spell = spell;

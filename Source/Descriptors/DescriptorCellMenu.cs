@@ -14,10 +14,8 @@ namespace Fantasy_Kingdoms_Battle
     // Класс описателя ячейки меню
     internal sealed class DescriptorCellMenu : Descriptor
     {
-        public DescriptorCellMenu(DescriptorActiveEntity forEntity, XmlNode n) : base()
+        public DescriptorCellMenu(XmlNode n) : base()
         {
-            ForEntity = forEntity;
-
             Coord = GetPoint(n, "Pos");
             Action = GetString(n, "Action");
             IDCreatedEntity = GetString(n, "Entity");
@@ -29,13 +27,13 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Debug.Assert(IDCreatedEntity.Length == 0, $"В {forEntity.ID} указано действие {Action} и указана сущность {IDCreatedEntity}.");
+                Debug.Assert(IDCreatedEntity.Length == 0, $"Указано действие {Action} и указана сущность {IDCreatedEntity}.");
             }
 
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
             {
-                NextCell = new DescriptorCellMenu(ForEntity, next);
+                NextCell = new DescriptorCellMenu(next);
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {IDCreatedEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
 
@@ -45,16 +43,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(DaysCooldown <= 100);
         }
 
-        public DescriptorCellMenu(DescriptorActiveEntity forEntity, Point coord) : base()
+        public DescriptorCellMenu(Point coord) : base()
         {
-            ForEntity = forEntity;
             Coord = coord;
 
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
             Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
         }
 
-        internal DescriptorActiveEntity ForEntity { get; }// Для какой активной сущности
         internal Point Coord { get; }// Координаты в меню
         internal string Action { get; }// Действие
         internal string IDCreatedEntity { get; private set; }// ID создаваемой сущности (если есть)
