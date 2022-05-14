@@ -4,11 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class BigEntity : Entity
     {
+        private List<CellMenuCreature> listCellMenuCreatures;
+        private List<Creature> listCreature;
+
+        protected CellMenuCreaturePage cmPageCreatures;
+
         public BigEntity(DescriptorEntity descriptor, Lobby lobby) : base()
         {
             Descriptor = descriptor;
@@ -24,9 +30,20 @@ namespace Fantasy_Kingdoms_Battle
         internal EntityProperties Properties { get; set; }// Характеристики
 
         internal abstract void ShowInfo(int selectPage = -1);
-        internal abstract void HideInfo();
+        internal virtual void HideInfo()
+        {
+            listCreature = null;
 
-        internal abstract void MakeMenu(VCMenuCell[,] menu);
+            if (listCellMenuCreatures != null)
+                foreach (CellMenuCreature cmc in listCellMenuCreatures)
+                    cmc.Creature = null;
+        }
+
+        internal virtual void MakeMenu(VCMenuCell[,] menu)
+        {
+            if (listCreature != null)
+                UpdateListCreatures(menu, listCreature);
+        }
 
         protected void FillResearches(VCMenuCell[,] menu)
         {
@@ -82,6 +99,46 @@ namespace Fantasy_Kingdoms_Battle
 
             // 
             PerksChanged();
+        }
+
+        internal void ShowHeroesInMenu(VCMenuCell[,] menu, List<Creature> list)
+        {
+            // Создаем действия меню
+            if (listCellMenuCreatures is null)
+            {
+                listCellMenuCreatures = new List<CellMenuCreature>();
+                DescriptorCellMenu dcm;
+                for (int y = 0; y < menu.GetLength(0) - 1; y++)
+                    for (int x = 0; x < menu.GetLength(1); x++)
+                    {
+                        dcm = new DescriptorCellMenu(new Point(x, y));
+                        listCellMenuCreatures.Add(new CellMenuCreature(this, dcm));
+                    }
+
+                dcm = new DescriptorCellMenu(new Point(0, menu.GetLength(0) - 1));
+                cmPageCreatures = new CellMenuCreaturePage(this, dcm);
+            }
+
+            cmPageCreatures.SetQuantity(list.Count);
+            listCreature = list;
+
+            UpdateListCreatures(menu, list);
+        }
+
+        private void UpdateListCreatures(VCMenuCell[,] menu, List<Creature> list)
+        {
+            int shift = cmPageCreatures.CurrentPage * listCellMenuCreatures.Count;
+            for (int i = 0; i < listCellMenuCreatures.Count; i++)
+            {
+                if (i + shift >= list.Count)
+                    break;
+                listCellMenuCreatures[i].Creature = list[i + shift];
+                menu[listCellMenuCreatures[i].Descriptor.Coord.Y, listCellMenuCreatures[i].Descriptor.Coord.X].Research = listCellMenuCreatures[i];
+                menu[listCellMenuCreatures[i].Descriptor.Coord.Y, listCellMenuCreatures[i].Descriptor.Coord.X].Used = true;
+            }
+
+            menu[cmPageCreatures.Descriptor.Coord.Y, cmPageCreatures.Descriptor.Coord.X].Research = cmPageCreatures;
+            menu[cmPageCreatures.Descriptor.Coord.Y, cmPageCreatures.Descriptor.Coord.X].Used = true;
         }
     }
 }

@@ -1421,6 +1421,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void HideInfo()
         {
+            base.HideInfo();
 
         }
 

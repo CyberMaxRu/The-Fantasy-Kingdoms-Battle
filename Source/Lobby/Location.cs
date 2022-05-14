@@ -107,6 +107,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
+            base.MakeMenu(menu);
+
             switch (StateMenu)
             {
                 case 0:
@@ -116,10 +118,15 @@ namespace Fantasy_Kingdoms_Battle
                     menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Used = true;
                     break;
                 case 1:
+                    if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
+                        ShowHeroesInMenu(menu, Player.CombatHeroes);
+                    cmPageCreatures.ChangePage = false;
+
                     menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Research = cmReturnFromScout;
                     menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Used = true;
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Research = cmAddScoutHero;
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Used = true;
+
                     break;
             }
         }
@@ -137,6 +144,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void HideInfo()
         {
+            base.HideInfo();
+
             StateMenu = 0;
             Lobby.Layer.panelLocationInfo.Visible = false;
         }

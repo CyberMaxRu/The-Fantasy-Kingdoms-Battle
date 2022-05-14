@@ -573,6 +573,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void HideInfo()
         {
+            base.HideInfo();
+
             Debug.Assert(!Destroyed);
 
             Lobby.Layer.panelConstructionInfo.Visible = false;
