@@ -120,4 +120,39 @@ namespace Fantasy_Kingdoms_Battle
             throw new NotImplementedException();
         }
     }
+
+    sealed internal class CellMenuLocationReturn : CellMenuLocation
+    {
+        private readonly ListBaseResources cost = new ListBaseResources();
+
+        public CellMenuLocationReturn(Location l, DescriptorCellMenu d) : base(l, d)
+        {
+
+        }
+
+        internal override void Click()
+        {
+            Location.StateMenu = 0;
+            Program.formMain.layerGame.UpdateMenu();
+        }
+
+        internal override void Execute()
+        {
+        }
+
+        internal override ListBaseResources GetCost()
+        {
+            return cost;
+        }
+
+        internal override int GetImageIndex()
+        {
+            return Config.ImageIndexFirstItems + 290;
+        }
+
+        internal override bool InstantExecute()
+        {
+            return true;
+        }
+    }
 }

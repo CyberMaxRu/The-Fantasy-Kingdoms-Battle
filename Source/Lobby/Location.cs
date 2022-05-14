@@ -17,6 +17,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly CellMenuLocationAddScoutHero cmAddScoutHero;
         private readonly DescriptorCellMenu descCancelScout;
         private readonly CellMenuLocationCancelScout cmCancelScout;
+        private readonly DescriptorCellMenu descReturnFromScout;
+        private readonly CellMenuLocationReturn cmReturnFromScout;
 
         public Location(Player player, TypeLobbyLocationSettings settings) : base(player.Descriptor, player.Lobby)
         {
@@ -42,6 +44,8 @@ namespace Fantasy_Kingdoms_Battle
             cmAddScoutHero = new CellMenuLocationAddScoutHero(this, descAddScoutHero);
             descCancelScout = new DescriptorCellMenu(new Point(3, 2));
             cmCancelScout = new CellMenuLocationCancelScout(this, descCancelScout);
+            descReturnFromScout = new DescriptorCellMenu(new Point(3, 2));
+            cmReturnFromScout = new CellMenuLocationReturn(this, descReturnFromScout);
 
             // Создание рандомных логов монстров согласно настроек типа лобби
             // Для этого сначала создаем логова по минимальному списку, а оставшиеся ячейки - из оставшихся по максимуму
@@ -110,10 +114,12 @@ namespace Fantasy_Kingdoms_Battle
                     menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Used = true;
                     break;
                 case 1:
+                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Research = cmReturnFromScout;
+                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Used = true;
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Research = cmAddScoutHero;
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Used = true;
-                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Research = cmCancelScout;
-                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Used = true;
+                    /*menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Research = cmCancelScout;
+                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Used = true;*/
                     break;
             }
         }
