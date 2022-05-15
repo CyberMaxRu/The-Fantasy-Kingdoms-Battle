@@ -194,7 +194,10 @@ namespace Fantasy_Kingdoms_Battle
             HeroesForScout.Add(cmc.Creature);
             Player.SetScoutForHero(cmc.Creature, this);
 
-            Program.formMain.layerGame.UpdateMenu();
+            if (Player.FreeHeroes.Count == 0)
+                cmReturnFromScout.Click();
+            else
+                Program.formMain.layerGame.UpdateMenu();
         }
     }
 }
