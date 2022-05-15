@@ -40,10 +40,10 @@ namespace Fantasy_Kingdoms_Battle
             // Создание меню
             descScout = new DescriptorCellMenu(new Point(0, 0));
             cmScout = new CellMenuLocationScout(this, descScout);
-            descCancelScout = new DescriptorCellMenu(new Point(3, 0));
-            cmCancelScout = new CellMenuLocationCancelScout(this, descCancelScout);
-            descAddScoutHero = new DescriptorCellMenu(new Point(2, 2));
+            descAddScoutHero = new DescriptorCellMenu(new Point(1, 2));
             cmAddScoutHero = new CellMenuLocationAddScoutHero(this, descAddScoutHero);
+            descCancelScout = new DescriptorCellMenu(new Point(2, 2));
+            cmCancelScout = new CellMenuLocationCancelScout(this, descCancelScout);
             descReturnFromScout = new DescriptorCellMenu(new Point(3, 2));
             cmReturnFromScout = new CellMenuLocationReturn(this, descReturnFromScout);
 
@@ -114,18 +114,18 @@ namespace Fantasy_Kingdoms_Battle
                     StopShowHeroesInMenu();
                     menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Research = cmScout;
                     menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Used = true;
-                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Research = cmCancelScout;
-                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Used = true;
                     break;
                 case 1:
                     if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
                         ShowHeroesInMenu(menu, HeroesForScout, HeroForScoutClick);
                     cmPageCreatures.ChangePage = false;
 
-                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Research = cmReturnFromScout;
-                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Used = true;
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Research = cmAddScoutHero;
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Used = true;
+                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Research = cmCancelScout;
+                    menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Used = true;
+                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Research = cmReturnFromScout;
+                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Used = true;
 
                     break;
                 case 2:
