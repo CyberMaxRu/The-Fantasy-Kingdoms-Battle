@@ -132,7 +132,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
-            Location.StateMenu = 0;
+            Location.StateMenu--;
             Program.formMain.layerGame.UpdateMenu();
         }
 

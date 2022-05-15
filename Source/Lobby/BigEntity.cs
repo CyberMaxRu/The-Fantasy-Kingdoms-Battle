@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private List<CellMenuCreature> listCellMenuCreatures;
         private List<Creature> listCreature;
+        private EventHandler creatureEventHandler;
 
         protected CellMenuCreaturePage cmPageCreatures;
 
@@ -101,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
             PerksChanged();
         }
 
-        internal void ShowHeroesInMenu(VCMenuCell[,] menu, List<Creature> list)
+        internal void ShowHeroesInMenu(VCMenuCell[,] menu, List<Creature> list, EventHandler onClick)
         {
             // Создаем действия меню
             if (listCellMenuCreatures is null)
@@ -121,18 +122,37 @@ namespace Fantasy_Kingdoms_Battle
 
             cmPageCreatures.SetQuantity(list.Count);
             listCreature = list;
+            creatureEventHandler = onClick;                
 
             UpdateListCreatures(menu, list);
         }
 
+        internal void StopShowHeroesInMenu()
+        {
+            if (listCellMenuCreatures != null)
+            {
+                listCreature = null;
+                creatureEventHandler = null;
+                foreach (CellMenuCreature c in listCellMenuCreatures)
+                {
+                    c.Creature = null;
+                    c.OnClick = null;
+                }
+            }
+        }
+
         private void UpdateListCreatures(VCMenuCell[,] menu, List<Creature> list)
         {
+            Debug.Assert(creatureEventHandler != null);
+
             int shift = cmPageCreatures.CurrentPage * listCellMenuCreatures.Count;
             for (int i = 0; i < listCellMenuCreatures.Count; i++)
             {
                 if (i + shift >= list.Count)
                     break;
                 listCellMenuCreatures[i].Creature = list[i + shift];
+                Debug.Assert(listCellMenuCreatures[i].Creature != null);
+                listCellMenuCreatures[i].OnClick = creatureEventHandler;
                 menu[listCellMenuCreatures[i].Descriptor.Coord.Y, listCellMenuCreatures[i].Descriptor.Coord.X].Research = listCellMenuCreatures[i];
                 menu[listCellMenuCreatures[i].Descriptor.Coord.Y, listCellMenuCreatures[i].Descriptor.Coord.X].Used = true;
             }

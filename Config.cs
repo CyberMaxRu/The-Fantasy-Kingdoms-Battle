@@ -180,6 +180,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(WarehouseHeight <= 10);
             WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
 
+            //
+            StateCreatureDoScoutFlat = "DoScoutFlag";
+
             // Цвета
             CommonBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Border").InnerText);
             CommonSelectedBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/SelectedBorder").InnerText);
@@ -348,6 +351,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
         internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса
         internal int MaxHeroForSelectBonus { get; private set; }// Максимальное количество типов героев для выбора постоянного бонуса
+
+        // Состояния существ
+        internal string StateCreatureDoScoutFlat { get; private set; }// Выполняет флаг разведеи
 
         // Цвета
         internal Color CommonBorder { get; private set; }

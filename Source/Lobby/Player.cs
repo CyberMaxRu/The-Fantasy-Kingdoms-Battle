@@ -561,7 +561,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal List<Construction> Constructions { get; } = new List<Construction>();
         internal int LevelCastle => Castle.Level;
+
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
+        internal List<Creature> FreeHeroes { get; } = new List<Creature>();
 
         internal DescriptorLevelTax CurrentLevelTax { get; set; }// Текущий уровень налогов
         internal int Gold { get => BaseResources[FormMain.Descriptors.Gold.Number].Quantity; }// Текущее количество золота
@@ -691,10 +693,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(CombatHeroes.IndexOf(ph) == -1);
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
+            Debug.Assert(FreeHeroes.IndexOf(ph) == -1);
 
             AllHeroes.Add(ph);
             if (ph.TypeCreature.CategoryCreature == CategoryCreature.Hero)
+            {
+                FreeHeroes.Add(ph);
                 AddCombatHero(ph);
+            }
 
             UpdatePerksFromConstructionForHero(ph);
 
@@ -1587,6 +1593,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(QueueBuilding.IndexOf(e) != -1);
 
             QueueBuilding.Remove(e);
+        }
+
+        internal void SetScoutForHero(Creature c, Location l)
+        {
+            Debug.Assert(FreeHeroes.IndexOf(c) != -1);
+            c.SetLocationForScount(l);
+            FreeHeroes.Remove(c);
         }
     }
 

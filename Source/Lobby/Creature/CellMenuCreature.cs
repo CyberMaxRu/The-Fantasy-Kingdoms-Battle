@@ -15,11 +15,15 @@ namespace Fantasy_Kingdoms_Battle
             resources = new ListBaseResources();
         }
 
+        internal EventHandler OnClick { get; set; }
+
         internal Creature Creature { get; set; }
 
         internal override void Click()
         {
-            throw new NotImplementedException();
+            Utils.Assert(Creature != null); 
+
+            OnClick?.Invoke(this, EventArgs.Empty);
         }
 
         internal override void Execute()
@@ -34,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Creature.GetImageIndex();
+            return Creature != null ? Creature.GetImageIndex() : -1;// Creature пропадает при клике на герое
         }
 
         internal override bool InstantExecute()

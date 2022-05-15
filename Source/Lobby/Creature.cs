@@ -124,6 +124,10 @@ namespace Fantasy_Kingdoms_Battle
         internal int DayOfDeath { get; private set; }// День смерти
         internal DescriptorReasonOfDeath ReasonOfDeath { get; private set; }// Причина смерти
 
+        // Действия
+        internal Location ScoutedLocation { get; private set; }// Локация, назначенная существу для разведки
+
+
         // Повышение уровня
         private void LevelUp()
         {
@@ -450,6 +454,16 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
+        }
+
+        internal void SetLocationForScount(Location l)
+        {
+            Debug.Assert(l.Player == BattleParticipant);
+            //Debug.Assert(StateCreature != FormMain.Descriptors.StateCreatureDoFlatScout);
+            Debug.Assert(ScoutedLocation is null);
+
+            ScoutedLocation = l;
+            StateCreature = FormMain.Descriptors.StateCreatureDoFlatScout;
         }
     }
 }

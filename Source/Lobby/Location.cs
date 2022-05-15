@@ -97,6 +97,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PercentScoutedArea { get; private set; }// Процент разведанной территории
         internal int Danger { get; private set; }// Процент опасности локации
         internal int StateMenu { get; set; }//
+        internal List<Creature> HeroesForScout { get; } = new List<Creature>();
 
         internal override int GetImageIndex()
         {
@@ -107,11 +108,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
-            base.MakeMenu(menu);
-
             switch (StateMenu)
             {
                 case 0:
+                    StopShowHeroesInMenu();
                     menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Research = cmScout;
                     menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Used = true;
                     menu[cmCancelScout.Descriptor.Coord.Y, cmCancelScout.Descriptor.Coord.X].Research = cmCancelScout;
@@ -119,7 +119,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case 1:
                     if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
-                        ShowHeroesInMenu(menu, Player.CombatHeroes);
+                        ShowHeroesInMenu(menu, HeroesForScout, HeroForScoutClick);
                     cmPageCreatures.ChangePage = false;
 
                     menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Research = cmReturnFromScout;
@@ -128,7 +128,18 @@ namespace Fantasy_Kingdoms_Battle
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Used = true;
 
                     break;
+                case 2:
+                    if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
+                        ShowHeroesInMenu(menu, Player.FreeHeroes, AddHeroToScout);
+                    cmPageCreatures.ChangePage = false;
+
+                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Research = cmReturnFromScout;
+                    menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Used = true;
+
+                    break;
             }
+
+            base.MakeMenu(menu);
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -165,5 +176,25 @@ namespace Fantasy_Kingdoms_Battle
         {
             PercentScoutedArea = ScoutedArea / Settings.Area * 1000;
         }        
+
+        private void HeroForScoutClick(object sender, EventArgs e)
+        {
+            CellMenuCreature cmc = sender as CellMenuCreature;
+            Debug.Assert(cmc != null);
+            Debug.Assert(cmc.Creature != null);
+
+            Program.formMain.layerGame.SelectPlayerObject(cmc.Creature);
+        }
+
+        private void AddHeroToScout(object sender, EventArgs e)
+        {
+            CellMenuCreature cmc = sender as CellMenuCreature;
+
+            Debug.Assert(HeroesForScout.IndexOf(cmc.Creature) == -1);
+            HeroesForScout.Add(cmc.Creature);
+            Player.SetScoutForHero(cmc.Creature, this);
+
+            Program.formMain.layerGame.UpdateMenu();
+        }
     }
 }

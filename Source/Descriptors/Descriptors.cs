@@ -334,6 +334,9 @@ namespace Fantasy_Kingdoms_Battle
             //
             ReasonOfDeathInBattle = FindReasonOfDeath(FormMain.Config.IDReasonOfDeathInBattle);
 
+            //
+            StateCreatureDoFlatScout = FindStateCreature(FormMain.Config.StateCreatureDoScoutFlat);
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -398,6 +401,9 @@ namespace Fantasy_Kingdoms_Battle
         private List<(string, Bitmap)> Textures = new List<(string, Bitmap)>();
 
         internal DescriptorReasonOfDeath ReasonOfDeathInBattle { get; }
+
+        //
+        internal DescriptorStateCreature StateCreatureDoFlatScout { get; }
 
         //
         internal CapitalPage FindCapitalPage(string ID)
