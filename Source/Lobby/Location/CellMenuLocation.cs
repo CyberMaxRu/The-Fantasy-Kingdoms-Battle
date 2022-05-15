@@ -107,12 +107,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
-            Location.StateMenu = 0;
-            Program.formMain.layerGame.UpdateMenu();
         }
 
         internal override void Execute()
         {
+            Location.StateMenu = 0;
+            Program.formMain.layerGame.UpdateMenu();
         }
 
         internal override ListBaseResources GetCost()
@@ -125,9 +125,14 @@ namespace Fantasy_Kingdoms_Battle
             return Config.ImageIndexFirstItems + 185;
         }
 
+        internal override bool CheckRequirements()
+        {
+            return base.CheckRequirements() && (Location.HeroesForScout.Count > 0);
+        }
+
         internal override bool InstantExecute()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         internal override void PrepareHint(PanelHint panelHint)
