@@ -22,8 +22,9 @@ namespace Fantasy_Kingdoms_Battle
 
         public CellMenuLocationScout(Location l, DescriptorCellMenu d) : base(l, d)
         {
-
         }
+
+        internal override string GetText() => Location.HeroesForScout.Count.ToString();
 
         internal override void Click()
         {
@@ -60,6 +61,8 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        internal override string GetText() => "";
+
         internal override void Click()
         {
             Location.StateMenu = 2;
@@ -84,6 +87,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             throw new NotImplementedException();
         }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            panelHint.AddSimpleHint("Нанять героев для разведки");
+        }
     }
 
     sealed internal class CellMenuLocationCancelScout : CellMenuLocation
@@ -94,6 +102,8 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+
+        internal override string GetText() => "";
 
         internal override void Click()
         {
@@ -119,6 +129,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             throw new NotImplementedException();
         }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            panelHint.AddSimpleHint("Распустить героев, нанятых на разведку");
+        }
     }
 
     sealed internal class CellMenuLocationReturn : CellMenuLocation
@@ -129,6 +144,8 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+
+        internal override string GetText() => "";
 
         internal override void Click()
         {
@@ -153,6 +170,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute()
         {
             return true;
+        }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            panelHint.AddSimpleHint("Возврат из меню");
         }
     }
 }
