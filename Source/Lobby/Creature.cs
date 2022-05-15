@@ -456,14 +456,22 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SetLocationForScount(Location l)
+        internal void SetLocationForScout(Location l)
         {
-            Debug.Assert(l.Player == BattleParticipant);
-            //Debug.Assert(StateCreature != FormMain.Descriptors.StateCreatureDoFlatScout);
-            Debug.Assert(ScoutedLocation is null);
+            if (l != null)
+            {
+                Debug.Assert(l.Player == BattleParticipant);
+                //Debug.Assert(StateCreature != FormMain.Descriptors.StateCreatureDoFlatScout);
+                Debug.Assert(ScoutedLocation is null);
 
-            ScoutedLocation = l;
-            StateCreature = FormMain.Descriptors.StateCreatureDoFlatScout;
+                ScoutedLocation = l;
+                StateCreature = FormMain.Descriptors.StateCreatureDoFlatScout;
+            }
+            else
+            {
+                ScoutedLocation = null;
+                StateCreature = TypeCreature.PersistentStateHeroAtMap;
+            }
         }
     }
 }

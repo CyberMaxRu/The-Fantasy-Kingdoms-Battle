@@ -107,12 +107,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
+            Location.DropFlagScout();
+            Program.formMain.layerGame.UpdateMenu();
         }
 
         internal override void Execute()
         {
-            Location.StateMenu = 0;
-            Program.formMain.layerGame.UpdateMenu();
         }
 
         internal override ListBaseResources GetCost()

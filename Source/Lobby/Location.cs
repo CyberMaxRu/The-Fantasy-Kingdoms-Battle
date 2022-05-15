@@ -199,5 +199,16 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Program.formMain.layerGame.UpdateMenu();
         }
+
+        internal void DropFlagScout()
+        {
+            foreach (Creature c in HeroesForScout)
+            {
+                Debug.Assert(HeroesForScout.IndexOf(c) != -1);
+                Player.SetScoutForHero(c, null);
+            }
+
+            HeroesForScout.Clear();
+        }
     }
 }

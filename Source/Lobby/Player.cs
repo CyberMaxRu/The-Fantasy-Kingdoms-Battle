@@ -1597,9 +1597,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SetScoutForHero(Creature c, Location l)
         {
-            Debug.Assert(FreeHeroes.IndexOf(c) != -1);
-            c.SetLocationForScount(l);
-            FreeHeroes.Remove(c);
+            if (l != null)
+            {
+                Debug.Assert(FreeHeroes.IndexOf(c) != -1);
+                c.SetLocationForScout(l);
+                FreeHeroes.Remove(c);
+            }
+            else
+            {
+                Debug.Assert(FreeHeroes.IndexOf(c) == -1);
+                c.SetLocationForScout(l);
+                FreeHeroes.Add(c);
+            }
         }
     }
 
