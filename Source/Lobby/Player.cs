@@ -298,21 +298,6 @@ namespace Fantasy_Kingdoms_Battle
                 CombatHeroes.Remove(h);
             }
 
-            // Если первое число недели, то выплачиваем жалованье
-            if (Lobby.Day == 1)
-            {
-                int earnedSalary;
-                foreach (Hero h in AllHeroes)
-                {
-                    earnedSalary = h.CostOfHiring();
-                    if (earnedSalary > 0)
-                    {
-                        SpendGold(earnedSalary);
-                        h.AddGold(earnedSalary);
-                    }
-                }
-            }
-
             Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
             if (Lobby.Turn == 1)
                 Builders += Lobby.TypeLobby.StartBuilders;
