@@ -110,7 +110,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             btnTarget.Entity = Hero.TargetByFlag;
-            lvGold.Text = $"(+{Hero.CostOfHiring()}) {Hero.Gold}";
+            lvGold.Text = $"{Hero.Gold}";
 
 
             /*int numberNeed = 0;
