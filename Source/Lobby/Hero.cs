@@ -48,6 +48,8 @@ namespace Fantasy_Kingdoms_Battle
 
 
         internal int PayForHire { get; private set; }// Сколько заплачено за найм
+        internal int TaxForGuild {get; private set; }// Часть золота, отданная в гильдию
+        internal int PayForHireWithoutTax { get; private set; }// Часть золота, оставленная герою, после уплаты налога в гильдию
 
         // Выполнение флагов
         internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
@@ -367,6 +369,15 @@ namespace Fantasy_Kingdoms_Battle
             Gold += income;
         }
 
+        internal void SpendGold(int spend)
+        {
+            Debug.Assert(IsLive);
+            Debug.Assert(spend > 0);
+
+            Gold -= spend;
+            Debug.Assert(Gold >= 0);
+        }
+
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)
         {
             Debug.Assert(IsLive);
@@ -423,8 +434,17 @@ namespace Fantasy_Kingdoms_Battle
         internal int Hire()
         {
             Debug.Assert(PayForHire == 0);
+            Debug.Assert(TaxForGuild == 0);
+            Debug.Assert(PayForHireWithoutTax == 0);
 
             PayForHire = CostOfHiring();
+            TaxForGuild = Construction.CalcTax(PayForHire);
+            if (TaxForGuild > 0)
+                Construction.ChangeGold(TaxForGuild);
+            PayForHireWithoutTax = PayForHire - TaxForGuild;
+            if (PayForHireWithoutTax > 0)
+                AddGold(PayForHireWithoutTax);
+
             return PayForHire;
         }
 
@@ -433,7 +453,15 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PayForHire > 0);
 
             int g = PayForHire;
+
+            if (TaxForGuild > 0)
+                Construction.ChangeGold(-TaxForGuild);
+            if (PayForHireWithoutTax > 0)
+                SpendGold(-PayForHireWithoutTax);
+
             PayForHire = 0;
+            TaxForGuild = 0;
+            PayForHireWithoutTax = 0;
             return g;
         }
     }

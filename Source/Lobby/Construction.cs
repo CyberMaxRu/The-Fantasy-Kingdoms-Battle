@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsEnemy { get; private set; }// Это сооружение враждебно
         internal int Level { get; private set; }
         internal int DaysBuilded { get; private set; }// Сколько дней строится сооружение
-        internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
+        internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }// Казна гильдии
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal Player Player { get; }
 
@@ -1569,6 +1569,21 @@ namespace Fantasy_Kingdoms_Battle
                 SelectedColor = Color.Yellow;
             else
                 SelectedColor = Color.Red;
+        }
+
+        internal void ChangeGold(int gold)
+        {
+            Gold += gold;
+
+            Debug.Assert(Gold >= 0);
+        }
+
+        internal int CalcTax(int gold)
+        {
+            Debug.Assert(gold > 0);
+            Debug.Assert(Level > 0);
+
+            return gold * TypeConstruction.Levels[Level].Tax / 100;
         }
 
         internal override Color GetSelectedColor() => SelectedColor;
