@@ -6,18 +6,31 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum ModeTextForCreature { Hire, CancelHire };
+
     sealed internal class CellMenuCreature : CellOfMenu
     {
-        private ListBaseResources resources;
-
         public CellMenuCreature(BigEntity forEntity, DescriptorCellMenu d) : base(forEntity, d)
         {
-            resources = new ListBaseResources();
         }
 
+        internal ModeTextForCreature ModeText { get; set; }
         internal EventHandler OnClick { get; set; }
 
         internal Creature Creature { get; set; }
+
+        internal override string GetText()
+        {
+            switch (ModeText)
+            {
+                case ModeTextForCreature.Hire:      
+                    return (Creature as Hero).SalaryPerDay().ToString();
+                case ModeTextForCreature.CancelHire:
+                    return "+" + (Creature as Hero).SalaryPerDay().ToString();
+                default:
+                    return "";
+            }
+        }
 
         internal override void Click()
         {
@@ -29,11 +42,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Execute()
         {
             throw new NotImplementedException();
-        }
-
-        internal override ListBaseResources GetCost()
-        {
-            return resources;
         }
 
         internal override int GetImageIndex()

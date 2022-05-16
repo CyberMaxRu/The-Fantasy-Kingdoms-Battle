@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
 
         internal virtual string GetText() => GetCost().ValueGold().ToString();
-        internal abstract ListBaseResources GetCost();
+        internal virtual ListBaseResources GetCost() => null;
         internal abstract int GetImageIndex();
         internal virtual bool GetImageIsEnabled() => CheckRequirements() && (DaysProcessed == 0);
         internal virtual string GetLevel() => "";

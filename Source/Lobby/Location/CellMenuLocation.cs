@@ -96,14 +96,12 @@ namespace Fantasy_Kingdoms_Battle
 
     sealed internal class CellMenuLocationCancelScout : CellMenuLocation
     {
-        private readonly ListBaseResources cost = new ListBaseResources();
-
         public CellMenuLocationCancelScout(Location l, DescriptorCellMenu d) : base(l, d)
         {
 
         }
 
-        internal override string GetText() => "";
+        internal override string GetText() => "+" + Location.PayForHire.ToString();
 
         internal override void Click()
         {
@@ -113,11 +111,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-        }
-
-        internal override ListBaseResources GetCost()
-        {
-            return cost;
         }
 
         internal override int GetImageIndex()

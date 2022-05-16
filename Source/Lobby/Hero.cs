@@ -47,6 +47,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get; private set; }// Количество золота у героя
 
 
+        internal int PayForHire { get; private set; }// Сколько заплачено за найм
+
         // Выполнение флагов
         internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
 
@@ -416,6 +418,23 @@ namespace Fantasy_Kingdoms_Battle
         internal int SalaryPerDay()
         {
             return TypeCreature.Salary != 0 ? TypeCreature.Salary + (int)(TypeCreature.Salary * Math.Truncate(Level / (decimal)10)) : 0;
+        }
+
+        internal int Hire()
+        {
+            Debug.Assert(PayForHire == 0);
+
+            PayForHire = SalaryPerDay();
+            return PayForHire;
+        }
+
+        internal int Unhire()
+        {
+            Debug.Assert(PayForHire > 0);
+
+            int g = PayForHire;
+            PayForHire = 0;
+            return g;
         }
     }
 }

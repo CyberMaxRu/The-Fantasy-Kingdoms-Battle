@@ -466,11 +466,15 @@ namespace Fantasy_Kingdoms_Battle
 
                 ScoutedLocation = l;
                 StateCreature = FormMain.Descriptors.StateCreatureDoFlatScout;
+                if (this is Hero h)
+                    ScoutedLocation.PayForHire += h.PayForHire;
             }
             else
             {
-                ScoutedLocation = null;
                 StateCreature = TypeCreature.PersistentStateHeroAtMap;
+                if (this is Hero h)
+                    ScoutedLocation.PayForHire -= h.PayForHire;
+                ScoutedLocation = null;
             }
         }
     }

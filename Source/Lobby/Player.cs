@@ -1271,6 +1271,22 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void ReturnGold(int gold)
+        {
+            Assert(gold >= 0);
+
+            if (gold > 0)
+            {
+                if (!CheatingIgnoreBaseResources)
+                {
+                    Debug.Assert(ResourceGold.Quantity >= 0);
+                    Debug.Assert(ResourceGold.Quantity >= gold);
+                    ResourceGold.Quantity += gold;// Здесь нужен тест на превышение суммы лимита золота
+                }
+
+                UpdateResourceInCastle();
+            }
+        }
         internal void ReturnResource(ListBaseResources res)
         {
             if (!CheatingIgnoreBaseResources)
@@ -1600,6 +1616,7 @@ namespace Fantasy_Kingdoms_Battle
             if (l != null)
             {
                 Debug.Assert(FreeHeroes.IndexOf(c) != -1);
+                SpendGold((c as Hero).Hire());
                 c.SetLocationForScout(l);
                 FreeHeroes.Remove(c);
             }
@@ -1607,6 +1624,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(FreeHeroes.IndexOf(c) == -1);
                 c.SetLocationForScout(l);
+                ReturnGold((c as Hero).Unhire());
                 FreeHeroes.Add(c);
             }
         }

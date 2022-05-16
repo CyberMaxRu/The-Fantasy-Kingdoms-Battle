@@ -98,6 +98,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Danger { get; private set; }// Процент опасности локации
         internal int StateMenu { get; set; }//
         internal List<Creature> HeroesForScout { get; } = new List<Creature>();
+        internal int PayForHire { get; set; }// Сколько было потрачено на найм
 
         internal override int GetImageIndex()
         {
@@ -117,7 +118,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case 1:
                     if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
-                        ShowHeroesInMenu(menu, HeroesForScout, HeroForScoutClick);
+                        ShowHeroesInMenu(menu, HeroesForScout, HeroForScoutClick, ModeTextForCreature.CancelHire);
                     cmPageCreatures.ChangePage = false;
 
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Research = cmAddScoutHero;
@@ -130,7 +131,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case 2:
                     if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
-                        ShowHeroesInMenu(menu, Player.FreeHeroes, AddHeroToScout);
+                        ShowHeroesInMenu(menu, Player.FreeHeroes, AddHeroToScout, ModeTextForCreature.Hire);
                     cmPageCreatures.ChangePage = false;
 
                     menu[cmReturnFromScout.Descriptor.Coord.Y, cmReturnFromScout.Descriptor.Coord.X].Research = cmReturnFromScout;
