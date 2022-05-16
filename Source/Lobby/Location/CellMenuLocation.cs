@@ -50,6 +50,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             throw new NotImplementedException();
         }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            panelHint.AddSimpleHint("Информация о задании разведки");
+        }
     }
 
     sealed internal class CellMenuLocationAddScoutHero : CellMenuLocation
