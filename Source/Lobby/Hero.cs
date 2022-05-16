@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction = pb;
             Abode = Construction;
-            TurnOfHire = Player.Lobby.Turn;
+            TurnOfTrain = Player.Lobby.Turn;
 
             if (creature.CategoryCreature == CategoryCreature.Hero)
             {
@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
 
         // Статистика за лобби
-        internal int TurnOfHire { get; }// На каком ходу нанят
+        internal int TurnOfTrain { get; }// На каком ходу нанят
         internal int Battles { get; }// Участвовал в сражениях
         internal int Wins { get; }// Побед        
         internal int Loses { get; }// Поражений
@@ -413,7 +413,7 @@ namespace Fantasy_Kingdoms_Battle
             Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.HeroIsDead);
         }
 
-        internal int SalaryPerWeek()
+        internal int SalaryPerDay()
         {
             return TypeCreature.Salary != 0 ? TypeCreature.Salary + (int)(TypeCreature.Salary * Math.Truncate(Level / (decimal)10)) : 0;
         }
