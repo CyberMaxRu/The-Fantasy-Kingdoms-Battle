@@ -394,7 +394,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Header(Creature.Name, Creature.ImageIndex);
             panelHint.AddStep3Type("Найм");
             panelHint.AddStep5Description(Creature.Description);
-            panelHint.AddStep75Salary(Creature.Salary);
+            panelHint.AddStep75Salary(Creature.CostOfHiring);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());

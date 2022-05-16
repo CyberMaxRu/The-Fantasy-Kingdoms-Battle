@@ -24,9 +24,9 @@ namespace Fantasy_Kingdoms_Battle
             switch (ModeText)
             {
                 case ModeTextForCreature.Hire:      
-                    return (Creature as Hero).SalaryPerDay().ToString();
+                    return (Creature as Hero).CostOfHiring().ToString();
                 case ModeTextForCreature.CancelHire:
-                    return "+" + (Creature as Hero).SalaryPerDay().ToString();
+                    return "+" + (Creature as Hero).CostOfHiring().ToString();
                 default:
                     return "";
             }

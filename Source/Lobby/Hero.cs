@@ -415,16 +415,16 @@ namespace Fantasy_Kingdoms_Battle
             Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.HeroIsDead);
         }
 
-        internal int SalaryPerDay()
+        internal int CostOfHiring()
         {
-            return TypeCreature.Salary != 0 ? TypeCreature.Salary + (int)(TypeCreature.Salary * Math.Truncate(Level / (decimal)10)) : 0;
+            return TypeCreature.CostOfHiring != 0 ? TypeCreature.CostOfHiring + (int)(TypeCreature.CostOfHiring * Math.Truncate(Level / (decimal)10)) : 0;
         }
 
         internal int Hire()
         {
             Debug.Assert(PayForHire == 0);
 
-            PayForHire = SalaryPerDay();
+            PayForHire = CostOfHiring();
             return PayForHire;
         }
 

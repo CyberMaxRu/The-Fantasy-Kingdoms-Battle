@@ -166,7 +166,7 @@
     <TypeHero>Base</TypeHero>
     <Reward>100</Reward>
     <Cost>200</Cost>
-    <Salary>50</Salary>
+    <CostOfHiring>50</CostOfHiring>
     <Construction>GuildWarrior</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -514,7 +514,7 @@
     <TypeHero>Base</TypeHero>
     <Reward>75</Reward>
     <Cost>150</Cost>
-    <Salary>50</Salary>
+    <CostOfHiring>50</CostOfHiring>
     <Construction>GuildHunter</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -850,7 +850,7 @@
     <TypeHero>Base</TypeHero>
     <Reward>125</Reward>
     <Cost>350</Cost>
-    <Salary>50</Salary>
+    <CostOfHiring>50</CostOfHiring>
     <Construction>GuildCleric</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -1155,7 +1155,7 @@
     <TypeHero>Advanced</TypeHero>
     <Reward>150</Reward>
     <Cost>500</Cost>
-    <Salary>100</Salary>
+    <CostOfHiring>100</CostOfHiring>
     <Construction>GuildMage</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -1460,7 +1460,7 @@
     <TypeHero>Advanced</TypeHero>
     <Reward>200</Reward>
     <Cost>700</Cost>
-    <Salary>100</Salary>
+    <CostOfHiring>100</CostOfHiring>
     <Construction>GuildElf</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -1749,7 +1749,7 @@
     <TypeHero>Advanced</TypeHero>
     <Reward>250</Reward>
     <Cost>700</Cost>
-    <Salary>100</Salary>
+    <CostOfHiring>100</CostOfHiring>
     <Construction>GuildDwarf</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>True</CanBuild>
@@ -2033,7 +2033,7 @@
     <TypeHero>Advanced</TypeHero>
     <Reward>50</Reward>
     <Cost>100</Cost>
-    <Salary>100</Salary>
+    <CostOfHiring>100</CostOfHiring>
     <Construction>GuildRogue</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -2324,7 +2324,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildDarkPriest</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -2578,7 +2578,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildPriest</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -2829,7 +2829,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildPaladin</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -3080,7 +3080,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildBlademaster</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -3328,7 +3328,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildBeastmaster</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -3582,7 +3582,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildMarksman</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -3836,7 +3836,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildFireMage</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -4046,7 +4046,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildIceMage</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
@@ -4277,7 +4277,7 @@
     <TypeHero>Temple</TypeHero>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Salary>25</Salary>
+    <CostOfHiring>25</CostOfHiring>
     <Construction>GuildDeathKnight</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>

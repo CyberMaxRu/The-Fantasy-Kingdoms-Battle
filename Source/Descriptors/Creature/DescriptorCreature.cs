@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
                 surnameFromTypeHero = XmlUtils.GetString(n, "SurnameFromTypeHero");
             }
 
-            Salary = GetInteger(n, "Salary");
+            CostOfHiring = GetInteger(n, "CostOfHiring");
 
             MovePoints = GetInteger(n, "MovePoints");
 
@@ -241,12 +241,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 Debug.Assert(((Names.Count > 0) && (nameFromTypeHero.Length == 0)) || ((Names.Count == 0) && (nameFromTypeHero.Length > 0)));
                 Debug.Assert(((Surnames.Count > 0) && (surnameFromTypeHero.Length == 0)) || ((Surnames.Count == 0) && (surnameFromTypeHero.Length > 0)));
-                Debug.Assert(Salary >= 0);
+                Debug.Assert(CostOfHiring >= 0);
             }
             else
             {
                 Assert(AdditionalBonus is null);
-                Debug.Assert(Salary == 0);
+                Debug.Assert(CostOfHiring == 0);
             }
 
             // Загружаем дефолтное оружие и доспехи
@@ -319,7 +319,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorStateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
-        internal int Salary { get; }// Жалованье
+        internal int CostOfHiring { get; }// Стоимость найма
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();// Способности существа
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal DescriptorAttack TypeAttackMelee { get;}// Тип рукопашной атаки
