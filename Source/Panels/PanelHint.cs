@@ -465,7 +465,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(!lblSalary.Visible);
 
                 lblSalary.ShiftY = nextTop;
-                lblSalary.Text = $"{salary} в неделю";
+                lblSalary.Text = $"{salary} в день";
                 lblSalary.Visible = true;
 
                 nextTop = lblSalary.NextTop();

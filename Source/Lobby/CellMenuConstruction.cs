@@ -392,7 +392,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep12Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
             */
             panelHint.AddStep2Header(Creature.Name, Creature.ImageIndex);
-            panelHint.AddStep3Type("Найм");
+            panelHint.AddStep3Type("Обучение");
             panelHint.AddStep5Description(Creature.Description);
             panelHint.AddStep75Salary(Creature.CostOfHiring);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
