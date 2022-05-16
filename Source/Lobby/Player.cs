@@ -298,18 +298,15 @@ namespace Fantasy_Kingdoms_Battle
                 CombatHeroes.Remove(h);
             }
 
-            // Если первое число недели, то выплачиваем жалованье
-            if (Lobby.Day == 1)
+            // Выплачиваем жалованье
+            int earnedSalary;
+            foreach (Hero h in AllHeroes)
             {
-                int earnedSalary;
-                foreach (Hero h in AllHeroes)
+                earnedSalary = h.SalaryPerDay();
+                if (earnedSalary > 0)
                 {
-                    earnedSalary = h.SalaryPerWeek();
-                    if (earnedSalary > 0)
-                    {
-                        SpendGold(earnedSalary);
-                        h.AddGold(earnedSalary);
-                    }
+                    SpendGold(earnedSalary);
+                    h.AddGold(earnedSalary);
                 }
             }
 

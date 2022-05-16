@@ -319,7 +319,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorStateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
-        internal int Salary { get; }// Жалованье
+        internal int Salary { get; }// Жалованье в день
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();// Способности существа
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal DescriptorAttack TypeAttackMelee { get;}// Тип рукопашной атаки

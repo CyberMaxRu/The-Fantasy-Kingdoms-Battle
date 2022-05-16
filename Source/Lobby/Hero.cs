@@ -413,7 +413,7 @@ namespace Fantasy_Kingdoms_Battle
             Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.HeroIsDead);
         }
 
-        internal int SalaryPerWeek()
+        internal int SalaryPerDay()
         {
             return TypeCreature.Salary != 0 ? TypeCreature.Salary + (int)(TypeCreature.Salary * Math.Truncate(Level / (decimal)10)) : 0;
         }
