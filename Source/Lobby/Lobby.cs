@@ -279,6 +279,8 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
+                SetPlayerAsCurrent(-1);
+
                 // Расчет результатов хода игроков
                 foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
                     p.CalcTurn();
