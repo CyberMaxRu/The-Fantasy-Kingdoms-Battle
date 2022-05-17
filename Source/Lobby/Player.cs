@@ -335,6 +335,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         l.DoScout(c.CalcScoutedArea(l));
                         c.ScoutExecuted();
+                        FreeHeroes.Add(c);
                     }
 
                     l.FindScoutedConstructions();

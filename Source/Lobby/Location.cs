@@ -189,6 +189,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (c.Hidden)
                     if (c.PercentScoutForFound < PercentScoutedArea)
                         c.Unhide(true);
+
+            HeroesForScout.Clear();
         }
 
         private void HeroForScoutClick(object sender, EventArgs e)
