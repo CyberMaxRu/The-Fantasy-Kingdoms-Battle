@@ -539,7 +539,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     panelHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
                     panelHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
-                    panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
+                    if (!((Level == 1) && (TypeConstruction.MaxLevel == 1)))
+                        panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
                     panelHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     panelHint.AddStep6Income(Income());
