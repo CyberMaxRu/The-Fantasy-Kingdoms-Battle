@@ -80,6 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             lblScouted.Text = Utils.FormatPercent(location.ScoutedArea);
             lblDanger.Text = Utils.FormatPercent(location.Danger);
 
+            // Не всегда все объекты видны. Тем не менее, создадим заранее под них ячейки - пусть будут, все равно пригодятся
             while (listCells.Count < Location.Lairs.Count)
             {
                 VCCell cell = new VCCell(this, 0, 0);
@@ -87,9 +88,19 @@ namespace Fantasy_Kingdoms_Battle
                 listCells.Add(cell);
             }
 
+            // Скрываем все ячейки
+            foreach (VCCell c in listCells)
+                c.Visible = false;
+
+            int nextCell = 0;
             for (int i = 0; i < location.Lairs.Count; i++)
             {
-                listCells[i].Entity = location.Lairs[i];
+                if (!location.Lairs[i].Hidden)
+                {
+                    listCells[nextCell].Entity = location.Lairs[i];
+                    listCells[nextCell].Visible = true;
+                    nextCell++;
+                }
             }
         }
 
