@@ -35,6 +35,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Construction c = new Construction(player, ls.TypeLair, this, ls.Visible, ls.Own, ls.CanOwn, ls.IsEnemy);
                 Lairs.Add(c);
+
+                if (!ls.Visible)
+                    c.PercentScoutForFound = player.Lobby.Rnd.Next(ls.MinPercentScout, ls.MaxPercentScout + 1);
             }
 
             // Создание меню

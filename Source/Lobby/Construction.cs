@@ -108,6 +108,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
         internal bool Hidden { get; private set; }// Логово не разведано
+        internal int PercentScoutForFound { get; set; }// Процент разведки локации, чтобы найти сооружение
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
 
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
