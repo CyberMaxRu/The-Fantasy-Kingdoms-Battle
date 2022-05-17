@@ -335,7 +335,7 @@ namespace Fantasy_Kingdoms_Battle
             ReasonOfDeathInBattle = FindReasonOfDeath(FormMain.Config.IDReasonOfDeathInBattle);
 
             //
-            IndexPropertyScout = FindPropertyCreature("Scout").Index;
+            IndexPropertyVisibility = FindPropertyCreature("CreatureVisibility").Index;
 
             //
             StateCreatureDoFlatScout = FindStateCreature(FormMain.Config.StateCreatureDoScoutFlat);
@@ -406,7 +406,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorReasonOfDeath ReasonOfDeathInBattle { get; }
 
         //
-        internal int IndexPropertyScout { get; }
+        internal int IndexPropertyVisibility { get; }
 
         //
         internal DescriptorStateCreature StateCreatureDoFlatScout { get; }
