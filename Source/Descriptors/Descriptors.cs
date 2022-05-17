@@ -338,7 +338,7 @@ namespace Fantasy_Kingdoms_Battle
             IndexPropertyVisibility = FindPropertyCreature("CreatureVisibility").Index;
 
             //
-            StateCreatureDoFlatScout = FindStateCreature(FormMain.Config.StateCreatureDoScoutFlat);
+            StateCreatureDoFlagScout = FindStateCreature(FormMain.Config.StateCreatureDoScoutFlag);
 
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
@@ -409,7 +409,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int IndexPropertyVisibility { get; }
 
         //
-        internal DescriptorStateCreature StateCreatureDoFlatScout { get; }
+        internal DescriptorStateCreature StateCreatureDoFlagScout { get; }
 
         //
         internal CapitalPage FindCapitalPage(string ID)

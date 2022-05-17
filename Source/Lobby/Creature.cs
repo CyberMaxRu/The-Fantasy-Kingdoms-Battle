@@ -465,7 +465,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(ScoutedLocation is null);
 
                 ScoutedLocation = l;
-                StateCreature = FormMain.Descriptors.StateCreatureDoFlatScout;
+                StateCreature = FormMain.Descriptors.StateCreatureDoFlagScout;
                 if (this is Hero h)
                     ScoutedLocation.PayForHire += h.PayForHire;
             }
