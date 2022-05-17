@@ -18,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             TypeLobby = typeLobby;
 
+            Name2 = XmlUtils.GetStringNotNull(n, "Name2");
             nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
             VisibleByDefault = XmlUtils.GetBooleanNotNull(n, "VisibleByDefault");
             Area = XmlUtils.GetIntegerNotNull(n, "Area");
@@ -67,6 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             PercentScoutedArea = Convert.ToInt32(ScoutedArea * 100 / Area);
         }
 
+        internal string Name2 { get; }// Наименование в падеже
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal DescriptorTypeLandscape TypeLandscape { get; private set; }
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя

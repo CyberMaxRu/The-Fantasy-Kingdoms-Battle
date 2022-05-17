@@ -39,6 +39,7 @@
       <Location>
         <ID>Neighbourhood</ID>
         <Name>Окрестности города</Name>
+        <Name2>Окрестностях города</Name2>
         <TypeLandscape>NeighborhoodOfCity</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
@@ -121,6 +122,7 @@
       <Location>
         <ID>LocationForest</ID>
         <Name>Лес</Name>
+        <Name2>Лесу</Name2>
         <TypeLandscape>Forest</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
@@ -195,6 +197,7 @@
       <Location>
         <ID>LocationSwamp</ID>
         <Name>Болото</Name>
+        <Name2>Болоте</Name2>
         <TypeLandscape>Swamp</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
@@ -215,6 +218,7 @@
       <Location>
         <ID>LocationMountain</ID>
         <Name>Горы</Name>
+        <Name2>Горах</Name2>
         <TypeLandscape>Mountain</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
