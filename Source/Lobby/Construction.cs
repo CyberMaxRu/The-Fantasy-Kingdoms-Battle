@@ -1239,7 +1239,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            return Hidden ? "" : Level == 0 ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
+            return Hidden ? "" : Level == 0 ? "" : (Level == 1) && (TypeConstruction.MaxLevel == 1) ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
         }
 
         internal override void Click(VCCell pe)
