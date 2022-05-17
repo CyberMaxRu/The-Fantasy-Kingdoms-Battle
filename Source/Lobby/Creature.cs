@@ -505,7 +505,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int CalcScoutedAreaPercent(Location l)
         {
-            return Convert.ToInt32(CalcScoutedArea(l) / l.Settings.Area * 100.0000); ;// Определяем процент разведуемой территории
+            return Convert.ToInt32(100.00 * CalcScoutedArea(l) / l.Settings.Area); ;// Определяем процент разведуемой территории
         }
     }
 }
