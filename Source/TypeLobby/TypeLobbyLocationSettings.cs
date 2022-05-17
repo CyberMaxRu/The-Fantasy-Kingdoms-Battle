@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             VisibleByDefault = XmlUtils.GetBooleanNotNull(n, "VisibleByDefault");
             Area = XmlUtils.GetIntegerNotNull(n, "Area");
             ScoutedArea = XmlUtils.GetIntegerNotNull(n, "ScoutedArea");
+            BaseScoutingArea = XmlUtils.GetIntegerNotNull(n, "BaseScoutingArea");
 
             TypeLobbyLairSettings tlls;
 
@@ -60,6 +61,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Area <= 1_000_000);
             Debug.Assert(ScoutedArea >= 0);
             Debug.Assert(ScoutedArea <= Area);
+            Debug.Assert(BaseScoutingArea > 0);
+            Debug.Assert(BaseScoutingArea <= Area);
         }
 
         internal TypeLobby TypeLobby { get; }// Тип лобби
@@ -68,6 +71,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool VisibleByDefault { get; }
         internal int Area { get; }// Площадь локации
         internal int ScoutedArea { get; }// Разведанная площадь локации (изначально)
+        internal int BaseScoutingArea { get; }// Базовая разведываемая площадь
 
         internal override void TuneLinks()
         {

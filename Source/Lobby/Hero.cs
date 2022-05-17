@@ -464,5 +464,17 @@ namespace Fantasy_Kingdoms_Battle
             PayForHireWithoutTax = 0;
             return g;
         }
+
+        internal int CalcScoutedArea()
+        {
+            Debug.Assert(ScoutedLocation != null);
+
+            return CalcScoutedArea(ScoutedLocation);
+        }
+
+        internal int CalcScoutedArea(Location l)
+        {
+            return Convert.ToInt32(Properties.PropertyScout / 100 * l.Settings.BaseScoutingArea);
+        }
     }
 }

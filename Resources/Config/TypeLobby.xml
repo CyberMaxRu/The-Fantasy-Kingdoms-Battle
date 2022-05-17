@@ -43,6 +43,7 @@
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
         <ScoutedArea>200</ScoutedArea>
+        <BaseScoutingArea>200</BaseScoutingArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Sewer</ID>
@@ -116,6 +117,7 @@
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
+        <BaseScoutingArea>100</BaseScoutingArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>TradePost</ID>
@@ -175,6 +177,7 @@
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
+        <BaseScoutingArea>50</BaseScoutingArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -192,6 +195,7 @@
         <VisibleByDefault>true</VisibleByDefault>
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
+        <BaseScoutingArea>150</BaseScoutingArea>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
