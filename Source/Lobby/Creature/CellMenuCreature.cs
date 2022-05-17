@@ -53,6 +53,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             throw new NotImplementedException();
         }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            if (BigEntity is Location l)
+                panelHint.AddSimpleHint($"Разведка: {Creature.CalcScoutedArea(l)}%");
+        }
     }
 
     sealed internal class CellMenuCreaturePage : CellOfMenu

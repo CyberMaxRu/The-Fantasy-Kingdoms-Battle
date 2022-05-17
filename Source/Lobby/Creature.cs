@@ -477,5 +477,19 @@ namespace Fantasy_Kingdoms_Battle
                 ScoutedLocation = null;
             }
         }
+
+
+        internal int CalcScoutedArea()
+        {
+            Debug.Assert(ScoutedLocation != null);
+
+            return CalcScoutedArea(ScoutedLocation);
+        }
+
+        internal int CalcScoutedArea(Location l)
+        {
+            double scoutingArea = Properties.PropertyScout / 100.0000 * l.Settings.BaseScoutingArea;// Вычисляем площадь, которую разведывает существо согласно уровню разведки
+            return Convert.ToInt32(scoutingArea / l.Settings.Area * 100.0000);// Определяем процент разведуемой территории
+        }
     }
 }
