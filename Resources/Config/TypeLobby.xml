@@ -86,6 +86,8 @@
             <Own>false</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
@@ -93,6 +95,8 @@
             <Own>false</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>50</MinPercentScout>
+            <MaxPercentScout>80</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>PeasantHouse</ID>
@@ -100,6 +104,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>true</IsEnemy>
+            <MinPercentScout>90</MinPercentScout>
+            <MaxPercentScout>100</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>HolyPlace</ID>
@@ -107,6 +113,8 @@
             <Own>false</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>50</MinPercentScout>
+            <MaxPercentScout>80</MaxPercentScout>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -125,6 +133,8 @@
             <Own>false</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>25</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -132,6 +142,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>30</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>GraveyardZombie</ID>
@@ -139,6 +151,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>true</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>10</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>HolyPlace</ID>
@@ -146,6 +160,8 @@
             <Own>false</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>50</MinPercentScout>
+            <MaxPercentScout>75</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>ThroneLightning</ID>
@@ -153,6 +169,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>true</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>WolfsDen</ID>
@@ -160,6 +178,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>true</IsEnemy>
+            <MinPercentScout>10</MinPercentScout>
+            <MaxPercentScout>75</MaxPercentScout>
           </TypeConstruction>
           <TypeConstruction>
             <ID>BearsDen</ID>
@@ -167,6 +187,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>true</IsEnemy>
+            <MinPercentScout>75</MinPercentScout>
+            <MaxPercentScout>100</MaxPercentScout>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -185,6 +207,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
           </TypeConstruction>
         </TypeConstructions>
       </Location>
@@ -203,6 +227,8 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
           </TypeConstruction>
         </TypeConstructions>
       </Location>

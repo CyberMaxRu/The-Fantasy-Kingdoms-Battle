@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode ne = n.SelectSingleNode("TypeConstructions");
             foreach (XmlNode l in ne.SelectNodes("TypeConstruction"))
             {
-                tlls = new TypeLobbyLairSettings(l);
+                tlls = new TypeLobbyLairSettings(l, this);
 
                 /*// Проверяем, что тип логова не повторяется
                 foreach (TypeLobbyLairSettings ls in LairsSettings)
@@ -63,6 +63,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ScoutedArea <= Area);
             Debug.Assert(BaseScoutingArea > 0);
             Debug.Assert(BaseScoutingArea <= Area);
+
+            PercentScoutedArea = Convert.ToInt32(ScoutedArea * 100 / Area);
         }
 
         internal TypeLobby TypeLobby { get; }// Тип лобби
@@ -71,6 +73,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool VisibleByDefault { get; }
         internal int Area { get; }// Площадь локации
         internal int ScoutedArea { get; }// Разведанная площадь локации (изначально)
+        internal int PercentScoutedArea { get; }// Процент разведанной изначально площади
         internal int BaseScoutingArea { get; }// Базовая разведываемая площадь
 
         internal override void TuneLinks()

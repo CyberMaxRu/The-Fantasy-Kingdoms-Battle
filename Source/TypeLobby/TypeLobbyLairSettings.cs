@@ -10,13 +10,15 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class TypeLobbyLairSettings
     {
-        public TypeLobbyLairSettings(XmlNode n)
+        public TypeLobbyLairSettings(XmlNode n, TypeLobbyLocationSettings ls)
         {
             NameTypeLair = n.SelectSingleNode("ID").InnerText;
             Visible = XmlUtils.GetBooleanNotNull(n, "Visible");
             Own = XmlUtils.GetBooleanNotNull(n, "Own");
             CanOwn = XmlUtils.GetBooleanNotNull(n, "CanOwn");
             IsEnemy = XmlUtils.GetBooleanNotNull(n, "IsEnemy");
+            MinPercentScout = XmlUtils.GetInteger(n, "MinPercentScout");
+            MaxPercentScout = XmlUtils.GetInteger(n, "MaxPercentScout");
 
             Debug.Assert(!(Own && !Visible));
 
@@ -24,6 +26,19 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(!Own);
                 Debug.Assert(!CanOwn);
+            }
+
+            if (Visible)
+            {
+                Debug.Assert(MinPercentScout == 0);
+                Debug.Assert(MaxPercentScout == 0);
+            }
+            else
+            {
+                Debug.Assert(MinPercentScout >= 0);
+                Debug.Assert(MaxPercentScout <= 100);
+                Debug.Assert(MinPercentScout <= MaxPercentScout);
+                Debug.Assert(MinPercentScout >= ls.PercentScoutedArea);
             }
         }
 
@@ -39,5 +54,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Own { get; }
         internal bool CanOwn { get; }
         internal bool IsEnemy { get; }
+        internal int MinPercentScout { get; }
+        internal int MaxPercentScout { get; }
     }
 }
