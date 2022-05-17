@@ -74,9 +74,9 @@
     <ImageIndex>39</ImageIndex>
   </PropertyCreature>
   <PropertyCreature>
-    <ID>CreatureVisibility</ID>
-    <Name>Обзор</Name>
-    <Description>Чем выше обзор, тем больше территории разведуется.</Description>
+    <ID>CreatureScout</ID>
+    <Name>Разведка</Name>
+    <Description>Чем выше уровень разведки, тем больше территории разведывается за один ход.</Description>
     <ImageIndex>43</ImageIndex>
   </PropertyCreature>
 </Descriptors>

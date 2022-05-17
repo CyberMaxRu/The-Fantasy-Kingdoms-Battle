@@ -26,6 +26,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BigEntity BigEntity { get; }
 
-        internal int PropertyScout { get => this[FormMain.Descriptors.IndexPropertyVisibility].Value; }
+        internal int PropertyScout { get => this[FormMain.Descriptors.IndexPropertyScout].Value; }
     }
 }

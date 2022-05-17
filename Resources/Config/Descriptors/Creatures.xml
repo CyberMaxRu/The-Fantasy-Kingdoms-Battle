@@ -265,7 +265,7 @@
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -621,7 +621,7 @@
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -947,7 +947,7 @@
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -1253,7 +1253,7 @@
         <MaxValueOnHire>200</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -1558,7 +1558,7 @@
         <MaxValueOnHire>200</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -1845,7 +1845,7 @@
         <MaxValueOnHire>200</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -2132,7 +2132,7 @@
         <ChangePerLevel>2</ChangePerLevel>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -2425,7 +2425,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -2679,7 +2679,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -2931,7 +2931,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -3182,7 +3182,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -3434,7 +3434,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -3686,7 +3686,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -3939,7 +3939,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -4147,7 +4147,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
@@ -4379,7 +4379,7 @@
         <MaxValueOnHire>300</MaxValueOnHire>
       </Property>
       <Property>
-        <ID>CreatureVisibility</ID>
+        <ID>CreatureScout</ID>
         <MinValueOnHire>100</MinValueOnHire>
         <MaxValueOnHire>100</MaxValueOnHire>
       </Property>
