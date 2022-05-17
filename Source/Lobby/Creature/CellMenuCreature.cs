@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             if (BigEntity is Location l)
-                panelHint.AddSimpleHint($"Разведка: {Creature.CalcScoutedArea(l)}%");
+                panelHint.AddSimpleHint($"Разведка: {Creature.CalcScoutedAreaPercent(l)}%");
         }
     }
 

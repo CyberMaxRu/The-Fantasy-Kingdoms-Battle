@@ -178,8 +178,16 @@ namespace Fantasy_Kingdoms_Battle
 
         private void UpdatePercentScoutedArea()
         {
-            PercentScoutedArea = ScoutedArea / Settings.Area * 1000;
+            PercentScoutedArea = Convert.ToInt32(100.00 * ScoutedArea / Settings.Area);
         }        
+
+        internal void FindScoutedConstructions()
+        {
+            foreach (Construction c in Lairs)
+                if (c.Hidden)
+                    if (c.PercentScoutForFound < PercentScoutedArea)
+                        c.Unhide(true);
+        }
 
         private void HeroForScoutClick(object sender, EventArgs e)
         {

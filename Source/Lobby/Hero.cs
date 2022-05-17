@@ -333,10 +333,11 @@ namespace Fantasy_Kingdoms_Battle
                 || (StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString())
                 || (StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
                 || (StateCreature.ID == NameStateCreature.BattleWithPlayer.ToString()));
-            Debug.Assert(TargetByFlag != null);
+            //Debug.Assert(TargetByFlag != null);// Убрано из-за локации
 
             // Убираем себя из флага на логове
-            TargetByFlag.RemoveAttackingHero(this);
+            if (TargetByFlag != null)
+                TargetByFlag.RemoveAttackingHero(this);
             SetState(NameStateCreature.Nothing);
         }
 

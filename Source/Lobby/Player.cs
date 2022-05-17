@@ -325,6 +325,18 @@ namespace Fantasy_Kingdoms_Battle
                 //if (u.Hero.CounterConstructionForBuy > 0)
                 //    u.Hero.DoShopping(u.Construction);
             }
+
+            // Выполняем разведку
+            foreach (Location l in Locations)
+            {
+                if (l.HeroesForScout.Count > 0)
+                {
+                    foreach (Creature c in l.HeroesForScout)
+                        l.DoScout(c.CalcScoutedArea(l));
+
+                    l.FindScoutedConstructions();
+                }
+            }
         }
 
         //

@@ -467,29 +467,32 @@ namespace Fantasy_Kingdoms_Battle
                 ScoutedLocation = l;
                 StateCreature = FormMain.Descriptors.StateCreatureDoFlagScout;
                 if (this is Hero h)
+                {
+                    //h.TargetByFlag = l;
                     ScoutedLocation.PayForHire += h.PayForHire;
+                }
             }
             else
             {
                 StateCreature = TypeCreature.PersistentStateHeroAtMap;
                 if (this is Hero h)
+                {
                     ScoutedLocation.PayForHire -= h.PayForHire;
+                    //h.TargetByFlag = null;
+                }
                 ScoutedLocation = null;
             }
         }
 
-
-        internal int CalcScoutedArea()
-        {
-            Debug.Assert(ScoutedLocation != null);
-
-            return CalcScoutedArea(ScoutedLocation);
-        }
-
         internal int CalcScoutedArea(Location l)
         {
-            double scoutingArea = Properties.PropertyScout / 100.0000 * l.Settings.BaseScoutingArea;// Вычисляем площадь, которую разведывает существо согласно уровню разведки
-            return Convert.ToInt32(scoutingArea / l.Settings.Area * 100.0000);// Определяем процент разведуемой территории
+            // Вычисляем площадь, которую разведывает существо согласно уровню разведки
+            return Convert.ToInt32(Properties.PropertyScout / 100.0000 * l.Settings.BaseScoutingArea);
+        }
+
+        internal int CalcScoutedAreaPercent(Location l)
+        {
+            return Convert.ToInt32(CalcScoutedArea(l) / l.Settings.Area * 100.0000); ;// Определяем процент разведуемой территории
         }
     }
 }
