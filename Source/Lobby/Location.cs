@@ -183,6 +183,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void FindScoutedConstructions()
         {
+            PayForHire = 0;
+
             foreach (Construction c in Lairs)
                 if (c.Hidden)
                     if (c.PercentScoutForFound < PercentScoutedArea)

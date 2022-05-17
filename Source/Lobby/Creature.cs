@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorReasonOfDeath ReasonOfDeath { get; private set; }// Причина смерти
 
         // Действия
-        internal Location ScoutedLocation { get; private set; }// Локация, назначенная существу для разведки
+        internal Location ScoutedLocation { get; set; }// Локация, назначенная существу для разведки
 
 
         // Повышение уровня
@@ -482,6 +482,19 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 ScoutedLocation = null;
             }
+        }
+
+        internal void ScoutExecuted()
+        {
+            StateCreature = TypeCreature.PersistentStateHeroAtMap;
+            if (this is Hero h)
+            {
+                h.PayForHire = 0;
+                h.TaxForGuild = 0;
+                h.PayForHireWithoutTax = 0;
+            }
+    
+            ScoutedLocation = null;
         }
 
         internal int CalcScoutedArea(Location l)

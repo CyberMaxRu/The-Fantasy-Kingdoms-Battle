@@ -332,7 +332,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (l.HeroesForScout.Count > 0)
                 {
                     foreach (Creature c in l.HeroesForScout)
+                    {
                         l.DoScout(c.CalcScoutedArea(l));
+                        c.ScoutExecuted();
+                    }
 
                     l.FindScoutedConstructions();
                 }

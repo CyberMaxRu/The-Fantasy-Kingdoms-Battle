@@ -47,9 +47,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get; private set; }// Количество золота у героя
 
 
-        internal int PayForHire { get; private set; }// Сколько заплачено за найм
-        internal int TaxForGuild {get; private set; }// Часть золота, отданная в гильдию
-        internal int PayForHireWithoutTax { get; private set; }// Часть золота, оставленная герою, после уплаты налога в гильдию
+        internal int PayForHire { get; set; }// Сколько заплачено за найм
+        internal int TaxForGuild {get; set; }// Часть золота, отданная в гильдию
+        internal int PayForHireWithoutTax { get; set; }// Часть золота, оставленная герою, после уплаты налога в гильдию
 
         // Выполнение флагов
         internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
