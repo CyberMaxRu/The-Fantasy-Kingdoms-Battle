@@ -8,6 +8,7 @@ namespace Fantasy_Kingdoms_Battle
         public VCIconButton48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, imageIndex)
         {
             //UseFilter = true;
+            PlaySoundOnClick = true;
             HighlightUnderMouse = true;
             ShowBorder = true;
         }
