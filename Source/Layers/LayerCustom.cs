@@ -20,5 +20,9 @@ namespace Fantasy_Kingdoms_Battle
         internal static Config Config { get; set; }
         internal static Descriptors Descriptors { get; set; }
 
+        internal virtual void ApplyCurrentWindowSize()
+        {
+
+        }
     }
 }

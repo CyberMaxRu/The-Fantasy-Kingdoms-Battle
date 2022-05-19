@@ -577,6 +577,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            currentLayer.ApplyCurrentWindowSize();
+
             if (gameStarted)
                 ShowFrame(true);
         }
