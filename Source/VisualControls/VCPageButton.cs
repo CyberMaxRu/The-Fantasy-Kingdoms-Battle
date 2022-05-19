@@ -18,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             Caption = caption;
             Advice = advice;
             Layer = layer;
+            PlaySoundOnClick = true;
 
             Page = new VisualControl(parent, 0, NextTop());
             Page.Visible = false;

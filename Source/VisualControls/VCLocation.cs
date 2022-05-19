@@ -24,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
 
             imgTypeLocation = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
             imgTypeLocation.Click += ImgTypeLocation_Click;
+            imgTypeLocation.PlaySoundOnClick = true;
             nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
             nameLocation.IsActiveControl = false;
 
@@ -84,6 +85,7 @@ namespace Fantasy_Kingdoms_Battle
             while (listCells.Count < Location.Lairs.Count)
             {
                 VCCell cell = new VCCell(this, 0, 0);
+                cell.PlaySoundOnClick = true;
                 ValidateCoordCell(cell, listCells.Count);
                 listCells.Add(cell);
             }
