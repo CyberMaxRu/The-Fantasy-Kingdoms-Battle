@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl vcPanelGame;
         private VCLabel lblCaptionPanelGame;
         private VCCheckBox chkbShowSplashVideo;
-        private VCCheckBox chkbWindowMode;
+        private VCCheckBox chkbFullscreenMode;
         private VCCheckBox chkbCheckUpdates;
 
         private VisualControl vcPanelBatttlefield;
@@ -53,8 +53,8 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPanelGame = new VCLabel(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Общие настройки:");
             lblCaptionPanelGame.StringFormat.Alignment = StringAlignment.Near;
             chkbShowSplashVideo = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, lblCaptionPanelGame.NextTop(), "Показывать видео-заставку");
-            chkbWindowMode = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbShowSplashVideo.NextTop(), "Оконный режим");
-            chkbCheckUpdates = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbWindowMode.NextTop(), "Проверять обновления при запуске");
+            chkbFullscreenMode = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbShowSplashVideo.NextTop(), "Полноэкранный режим");
+            chkbCheckUpdates = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbFullscreenMode.NextTop(), "Проверять обновления при запуске");
             vcPanelGame.ApplyMaxSize();
             vcPanelGame.Height += 8;
             lblCaptionPanelGame.Width = vcPanelGame.Width - (FormMain.Config.GridSize * 2);
@@ -160,7 +160,7 @@ namespace Fantasy_Kingdoms_Battle
             settings = s;
 
             chkbShowSplashVideo.Checked = settings.ShowSplashVideo;
-            chkbWindowMode.Checked = !settings.FullScreenMode;
+            chkbFullscreenMode.Checked = settings.FullScreenMode;
             chkbCheckUpdates.Checked = settings.CheckUpdateOnStartup;
             chkbShowPath.Checked = settings.BattlefieldShowPath;
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
@@ -196,7 +196,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnAccept_Click(object sender, EventArgs e)
         {
             settings.ShowSplashVideo = chkbShowSplashVideo.Checked;
-            settings.FullScreenMode = !chkbWindowMode.Checked;
+            settings.FullScreenMode = chkbFullscreenMode.Checked;
             settings.CheckUpdateOnStartup = chkbCheckUpdates.Checked;
             settings.BattlefieldShowPath = chkbShowPath.Checked;
             settings.BattlefieldShowGrid = chkbShowGrid.Checked;
