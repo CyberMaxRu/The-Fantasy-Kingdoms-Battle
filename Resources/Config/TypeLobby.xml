@@ -234,6 +234,15 @@
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </TypeConstruction>
         </TypeConstructions>
       </Location>
     </Locations>  
