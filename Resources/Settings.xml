@@ -2,7 +2,7 @@
 <Settings>
   <Game>
     <ShowSplashVideo>False</ShowSplashVideo>
-    <FullScreenMode>False</FullScreenMode>
+    <FullScreenMode>True</FullScreenMode>
     <CheckUpdatesOnStartup>False</CheckUpdatesOnStartup>
   </Game>
   <Battlefield>

@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblCaptionPanelGame;
         private VCCheckBox chkbShowSplashVideo;
         private VCCheckBox chkbFullscreenMode;
+        private VCCheckBox chkbStretchControlsInFSMode;
         private VCCheckBox chkbCheckUpdates;
 
         private VisualControl vcPanelBatttlefield;
@@ -54,7 +55,8 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPanelGame.StringFormat.Alignment = StringAlignment.Near;
             chkbShowSplashVideo = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, lblCaptionPanelGame.NextTop(), "Показывать видео-заставку");
             chkbFullscreenMode = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbShowSplashVideo.NextTop(), "Полноэкранный режим");
-            chkbCheckUpdates = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbFullscreenMode.NextTop(), "Проверять обновления при запуске");
+            chkbStretchControlsInFSMode = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize + 32, chkbFullscreenMode.NextTop(), "Растянуть контролы");
+            chkbCheckUpdates = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbStretchControlsInFSMode.NextTop(), "Проверять обновления при запуске");
             vcPanelGame.ApplyMaxSize();
             vcPanelGame.Height += 8;
             lblCaptionPanelGame.Width = vcPanelGame.Width - (FormMain.Config.GridSize * 2);
@@ -161,6 +163,7 @@ namespace Fantasy_Kingdoms_Battle
 
             chkbShowSplashVideo.Checked = settings.ShowSplashVideo;
             chkbFullscreenMode.Checked = settings.FullScreenMode;
+            chkbStretchControlsInFSMode.Checked = settings.StretchControlsInFSMode;
             chkbCheckUpdates.Checked = settings.CheckUpdateOnStartup;
             chkbShowPath.Checked = settings.BattlefieldShowPath;
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
@@ -197,6 +200,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             settings.ShowSplashVideo = chkbShowSplashVideo.Checked;
             settings.FullScreenMode = chkbFullscreenMode.Checked;
+            settings.StretchControlsInFSMode = chkbStretchControlsInFSMode.Checked;
             settings.CheckUpdateOnStartup = chkbCheckUpdates.Checked;
             settings.BattlefieldShowPath = chkbShowPath.Checked;
             settings.BattlefieldShowGrid = chkbShowGrid.Checked;

@@ -25,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool ShowSplashVideo { get; set; }
         internal bool FullScreenMode { get; set; }
+        internal bool StretchControlsInFSMode { get; set; }
         internal bool CheckUpdateOnStartup { get; set; }
         internal bool BattlefieldShowPath { get; set; }
         internal bool BattlefieldShowGrid { get; set; }
@@ -81,6 +82,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ShowSplashVideo = true;
             FullScreenMode = true;
+            StretchControlsInFSMode = true;
             CheckUpdateOnStartup = true;
             BattlefieldShowPath = false;
             BattlefieldShowGrid = false;
@@ -107,6 +109,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     ShowSplashVideo = XmlUtils.GetBoolean(doc, "Settings/Game/ShowSplashVideo", ShowSplashVideo);
                     FullScreenMode = XmlUtils.GetBoolean(doc, "Settings/Game/FullScreenMode", FullScreenMode);
+                    StretchControlsInFSMode = XmlUtils.GetBoolean(doc, "Settings/Game/StretchControlsInFSMode", StretchControlsInFSMode);
                     CheckUpdateOnStartup = XmlUtils.GetBoolean(doc, "Settings/Game/CheckUpdatesOnStartup", CheckUpdateOnStartup);
 
                     BattlefieldShowPath = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowPath", BattlefieldShowPath);
@@ -149,6 +152,7 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteStartElement("Game");
             textWriter.WriteElementString("ShowSplashVideo", ShowSplashVideo.ToString());
             textWriter.WriteElementString("FullScreenMode", FullScreenMode.ToString());
+            textWriter.WriteElementString("StretchControlsInFSMode", StretchControlsInFSMode.ToString());
             textWriter.WriteElementString("CheckUpdatesOnStartup", CheckUpdateOnStartup.ToString());
             textWriter.WriteEndElement();
 
