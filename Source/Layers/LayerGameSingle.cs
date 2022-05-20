@@ -288,36 +288,16 @@ namespace Fantasy_Kingdoms_Battle
 
             // Все контролы созданы, устанавливаем размеры bitmapMenu
             MainControl.Width = vcRightPanel.ShiftX + vcRightPanel.Width;
-            bmpPreparedToolbar.Bitmap = PrepareToolbar();
-            bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
-            MainControl.ShiftY = bmpPreparedToolbar.NextTop() - Config.GridSize;
-
-            bmpTopPanel.Bitmap = GuiUtils.MakeBackground(new Size(MainControl.Width, bmpPreparedToolbar.ShiftY));
-            bmpTopPanel.Width = bmpTopPanel.Bitmap.Width;
-            bmpTopPanel.Height = bmpTopPanel.Bitmap.Height;
 
             MainControl.Height = pageResultTurn.ShiftY + maxHeightControls + (Config.GridSize * 2);
 
-            // Теперь когда известна ширина окна, можно создавать картинку тулбара
-            labelNamePlayer.Height = bmpPreparedToolbar.Height;
-            panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
-            vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
+            Adjust2();
 
+            // Теперь когда известна ширина окна, можно создавать картинку тулбара
             Program.formMain.sizeGamespace = new Size(MainControl.Width, MainControl.ShiftY + MainControl.Height);
             Program.formMain.MinSizeGamespace = Program.formMain.sizeGamespace;
 
-            bitmapMenu.ShiftX = vcRightPanel.Width - bitmapMenu.Width;
-            bitmapMenu.ShiftY = vcRightPanel.Height - bitmapMenu.Height;
-            panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
-            panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
-            panelLairInfo.Height = panelConstructionInfo.Height;
-            panelHeroInfo.Height = panelConstructionInfo.Height;
-            panelMonsterInfo.Height = panelConstructionInfo.Height;
-            panelLocationInfo.Height = panelConstructionInfo.Height;
-            panelEmptyInfo.Height = panelConstructionInfo.Height;
-
-            btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
             bmpPreparedToolbar.ShiftX = 0;
             MainControl.ShiftX = 0;
@@ -330,22 +310,28 @@ namespace Fantasy_Kingdoms_Battle
                 mapArdania.Height = pageRealMap.Page.Height;
             }
 
+
+            Width = Program.formMain.sizeGamespace.Width;
+            Height = Program.formMain.sizeGamespace.Height;
+
+            MakePagesBackground();
+
+            pageControl.ActivatePage(pageResultTurn);
+            ShowNamePlayer(pageControl.CurrentPage.Caption);
+        }
+
+        private void MakePagesBackground()
+        {
             pageResultTurn.PageImage = MainControlbackground("Paper");
             //pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
             pageMap.PageImage = MainControlbackground("Map");
 
-            Width = Program.formMain.sizeGamespace.Width;
-            Height = Program.formMain.sizeGamespace.Height;
-
             for (int i = 0; i < Descriptors.CapitalPages.Count; i++)
             {
                 pagesCapital[i].PageImage = MainControlbackground(Descriptors.CapitalPages[i].NameTexture);
             }
-
-            pageControl.ActivatePage(pageResultTurn);
-            ShowNamePlayer(pageControl.CurrentPage.Caption);
         }
 
         private readonly VisualControl panelEmptyInfo;
@@ -957,8 +943,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 labelNamePlayer.Text = name;
                 labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
-                labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
-                bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
+                AdjustNamePlayer();
             }
         }
 
@@ -1063,7 +1048,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private Bitmap MainControlbackground(string nameTexture)
         {
-            return GuiUtils.MakeCustomBackground(Config.GetTexture(nameTexture), MainControl);
+            return Program.formMain.CollectionBackgroundImage.GetBitmap(nameTexture, new Size(MainControl.Width, MainControl.Height));
         }
 
         private void BtnCheating_Click(object sender, EventArgs e)
@@ -1223,8 +1208,65 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+        }
+
         internal override void ApplyCurrentWindowSize()
         {
+            base.ApplyCurrentWindowSize();
+
+            if ((MainControl.Width != Program.formMain.sizeGamespace.Width) || (MainControl.Height != Program.formMain.sizeGamespace.Height - MainControl.ShiftY))
+            {
+                MainControl.Width = Program.formMain.sizeGamespace.Width;
+                MainControl.Height = Program.formMain.sizeGamespace.Height - MainControl.ShiftY;
+
+                Adjust2();
+                ArrangeControls();
+            }
+        }
+
+        private void Adjust2()
+        {
+            bmpPreparedToolbar.Bitmap = PrepareToolbar();
+            bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
+            MainControl.ShiftY = bmpPreparedToolbar.NextTop() - Config.GridSize;
+
+            bmpTopPanel.Bitmap = GuiUtils.MakeBackground(new Size(MainControl.Width, bmpPreparedToolbar.ShiftY));
+            bmpTopPanel.Width = bmpTopPanel.Bitmap.Width;
+            bmpTopPanel.Height = bmpTopPanel.Bitmap.Height;
+
+            labelNamePlayer.Height = bmpPreparedToolbar.Height;
+            panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
+            vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
+            vcRightPanel.ShiftX = MainControl.Width - vcRightPanel.Width;
+
+            btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
+
+            bitmapMenu.ShiftX = vcRightPanel.Width - bitmapMenu.Width;
+            bitmapMenu.ShiftY = vcRightPanel.Height - bitmapMenu.Height;
+            panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
+
+            labelGreatness.ShiftX = MainControl.Width - labelGreatness.Width - 104;
+            labelCorruption.ShiftX = labelGreatness.ShiftX - labelCorruption.Width - Config.GridSize;
+            labelHeroes.ShiftX = labelCorruption.ShiftX - labelHeroes.Width - Config.GridSize;
+
+            panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
+            panelLairInfo.Height = panelConstructionInfo.Height;
+            panelHeroInfo.Height = panelConstructionInfo.Height;
+            panelMonsterInfo.Height = panelConstructionInfo.Height;
+            panelLocationInfo.Height = panelConstructionInfo.Height;
+            panelEmptyInfo.Height = panelConstructionInfo.Height;
+
+            AdjustNamePlayer();
+            MakePagesBackground();
+        }
+
+        private void AdjustNamePlayer()
+        {
+            labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
+            bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
 
         }
     }

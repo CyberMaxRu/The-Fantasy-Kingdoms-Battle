@@ -18,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             get => bmp;
             set
             {
+                bmp?.Dispose();
                 bmp = value;
                 AdjustSize();
             }

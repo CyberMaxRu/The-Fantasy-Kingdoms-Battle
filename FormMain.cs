@@ -570,7 +570,8 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Неизвестный режим");
             }
 
-            currentLayer.ApplyCurrentWindowSize();
+            layerMainMenu.ApplyCurrentWindowSize();
+            layerGame.ApplyCurrentWindowSize();
 
             if (gameStarted)
                 ShowFrame(true);

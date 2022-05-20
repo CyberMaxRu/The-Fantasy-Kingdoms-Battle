@@ -141,8 +141,8 @@ namespace Fantasy_Kingdoms_Battle
         { 
             if (BackgroundImage != null)
             {
-                Debug.Assert(width == BackgroundImage.Width);
-                Debug.Assert(height == BackgroundImage.Height);
+                //Debug.Assert(width == BackgroundImage.Width);
+                //Debug.Assert(height == BackgroundImage.Height);
 
                 g.DrawImageUnscaled(BackgroundImage, Left, Top);
             }
