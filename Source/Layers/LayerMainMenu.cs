@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class LayerMainMenu : LayerCustom
     {
-        private readonly Bitmap bitmapLogo;
+        private Bitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
@@ -26,7 +26,6 @@ namespace Fantasy_Kingdoms_Battle
         public LayerMainMenu() : base()
         {
             // Фон
-            bitmapLogo = LoadBitmap("Logo.png");
             bitmapNameGame = new VCBitmap(this, 0, 0, LoadBitmap("NameGame.png"));
 
             labelVersion = new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol,
@@ -127,6 +126,13 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.SetProgrameState(ProgramState.NeedQuit);
                 Program.formMain.Close();
             }
+        }
+
+        internal override void ApplyCurrentWindowSize()
+        {
+            base.ApplyCurrentWindowSize();
+
+            bitmapLogo = Program.formMain.CollectionBackgroundImage.GetBitmap("MainMenu", Program.formMain.Size);
         }
     }
 }

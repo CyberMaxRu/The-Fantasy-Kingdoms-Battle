@@ -185,6 +185,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly LayerMainMenu layerMainMenu;
         internal readonly LayerGameSingle layerGame;
         internal LayerCustom currentLayer { get; set; }
+        internal CollectionBackgroundImage CollectionBackgroundImage { get; }
 
         //
         internal Settings Settings { get; private set; }
@@ -238,6 +239,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 CheckForNewVersion();
             }
+
+            CollectionBackgroundImage = new CollectionBackgroundImage();
 
             // Формируем и показываем сплэш-заставку
             Image splashBitmap = LoadBitmap("Splash.png");
