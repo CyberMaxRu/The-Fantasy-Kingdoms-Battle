@@ -11,6 +11,8 @@ using System.IO;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum ScreenMode { FullScreenStretched, FillScreenWindowed, Window };
+
     // Класс настроек
     internal sealed class Settings
     {
@@ -177,6 +179,14 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteEndElement();
             textWriter.Close();
             textWriter.Dispose();
+        }
+
+        internal ScreenMode ScreenMode()
+        {
+            if (FullScreenMode)
+                return StretchControlsInFSMode ? Fantasy_Kingdoms_Battle.ScreenMode.FullScreenStretched : Fantasy_Kingdoms_Battle.ScreenMode.FillScreenWindowed;
+
+            return Fantasy_Kingdoms_Battle.ScreenMode.Window;
         }
     }
 }

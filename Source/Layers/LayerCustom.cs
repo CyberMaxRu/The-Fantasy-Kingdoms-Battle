@@ -22,7 +22,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void ApplyCurrentWindowSize()
         {
-
+            Width = Program.formMain.sizeGamespace.Width;
+            Height = Program.formMain.sizeGamespace.Height;
         }
     }
 }

@@ -304,6 +304,7 @@ namespace Fantasy_Kingdoms_Battle
             vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
 
             Program.formMain.sizeGamespace = new Size(MainControl.Width, MainControl.ShiftY + MainControl.Height);
+            Program.formMain.MinSizeGamespace = Program.formMain.sizeGamespace;
 
             bitmapMenu.ShiftX = vcRightPanel.Width - bitmapMenu.Width;
             bitmapMenu.ShiftY = vcRightPanel.Height - bitmapMenu.Height;

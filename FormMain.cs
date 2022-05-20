@@ -177,6 +177,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontParagraphC;
 
         internal Size sizeGamespace { get; set; }
+        internal Size MinSizeGamespace { get; set; }
         private Point topLeftFrame;
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
@@ -405,11 +406,11 @@ namespace Fantasy_Kingdoms_Battle
             // Слой игры
             layerGame = new LayerGameSingle();
 
-            Width = Width - Program.formMain.ClientSize.Width + Program.formMain.sizeGamespace.Width;
-            Height = Height - Program.formMain.ClientSize.Height + Program.formMain.sizeGamespace.Height;
+            Width = Width - Program.formMain.ClientSize.Width + MinSizeGamespace.Width;
+            Height = Height - Program.formMain.ClientSize.Height + MinSizeGamespace.Height;
 
-            layerMainMenu.Width = sizeGamespace.Width;
-            layerMainMenu.Height = sizeGamespace.Height;
+            layerMainMenu.Width = MinSizeGamespace.Width;
+            layerMainMenu.Height = MinSizeGamespace.Height;
 
             layerMainMenu.ArrangeControls();
             layerGame.ArrangeControls();
@@ -543,41 +544,30 @@ namespace Fantasy_Kingdoms_Battle
             ShowFrame(true);
         }
 
-        private void ApplyFullScreenModeToWindow()
-        {
-            if (Settings.FullScreenMode)
-            {
-                MaximizeBox = true;
-                FormBorderStyle = FormBorderStyle.None;
-                WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                MaximizeBox = false;
-                FormBorderStyle = FormBorderStyle.FixedSingle;
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
         private void ValidateFrame()
         {
             if (axWindowsMediaPlayer1 != null)
                 axWindowsMediaPlayer1.Size = ClientSize;
 
-            if ((bmpRenderClientArea == null) || !ClientSize.Equals(bmpRenderClientArea.Size))
+            switch (Settings.ScreenMode())
             {
-                if (Settings.FullScreenMode)
-                {
-                    topLeftFrame = new Point((ClientSize.Width - sizeGamespace.Width) / 2, (ClientSize.Height - sizeGamespace.Height) / 2);
+                case ScreenMode.FullScreenStretched:
+                    topLeftFrame = new Point(0, 0);
+                    sizeGamespace = Size;
+                    break;
+                case ScreenMode.FillScreenWindowed:
+                    topLeftFrame = new Point((ClientSize.Width - MinSizeGamespace.Width) / 2, (ClientSize.Height - MinSizeGamespace.Height) / 2);
+                    sizeGamespace = MinSizeGamespace;
 
                     Debug.Assert(topLeftFrame.X >= 0, $"topLeftFrame.X = {topLeftFrame.X}");
                     Debug.Assert(topLeftFrame.Y >= 0, $"topLeftFrame.Y = {topLeftFrame.Y}");
-                }
-                else
-                {
+                    break;
+                case ScreenMode.Window:
                     topLeftFrame = new Point(0, 0);
-                    Size = new Size(Width - ClientSize.Width + sizeGamespace.Width, Height - ClientSize.Height + sizeGamespace.Height);
-                }
+                    Size = new Size(Width - ClientSize.Width + MinSizeGamespace.Width, Height - ClientSize.Height + MinSizeGamespace.Height);
+                    break;
+                default:
+                    throw new Exception("Неизвестный режим");
             }
 
             currentLayer.ApplyCurrentWindowSize();
@@ -595,7 +585,19 @@ namespace Fantasy_Kingdoms_Battle
                 if (controlWithHint != null)
                     ControlForHintLeave();
                 //Hide();
-                ApplyFullScreenModeToWindow();
+
+                if (Settings.FullScreenMode)
+                {
+                    MaximizeBox = true;
+                    FormBorderStyle = FormBorderStyle.None;
+                    WindowState = FormWindowState.Maximized;
+                }
+                else
+                {
+                    MaximizeBox = false;
+                    FormBorderStyle = FormBorderStyle.FixedSingle;
+                    WindowState = FormWindowState.Normal;
+                }
 
 
                 //panelPlayers.Visible = false;
@@ -612,6 +614,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowWindowPreferences()
         {
+            ScreenMode sm = Settings.ScreenMode();
             WindowPreferences w = new WindowPreferences();
             w.ApplySettings(Settings);
             if (w.ShowDialog() == DialogAction.OK)
@@ -621,7 +624,7 @@ namespace Fantasy_Kingdoms_Battle
                     lobby.CurrentPlayer.Name = Settings.NamePlayer;
                 }*/
 
-                ApplyFullScreen(false);
+                ApplyFullScreen(sm != Settings.ScreenMode());
             }
         }
 
@@ -834,7 +837,8 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         bmpRenderClientArea = GuiUtils.MakeBackground(ClientSize);
                         Graphics g = Graphics.FromImage(bmpRenderClientArea);
-                        bbGamespace.DrawBorder(g, topLeftFrame.X - 7, topLeftFrame.Y - 7, sizeGamespace.Width + 14, sizeGamespace.Height + 14, Color.Transparent);
+                        if (!Settings.StretchControlsInFSMode)
+                            bbGamespace.DrawBorder(g, topLeftFrame.X - 7, topLeftFrame.Y - 7, sizeGamespace.Width + 14, sizeGamespace.Height + 14, Color.Transparent);
                         g.Dispose();
                     }
                     else

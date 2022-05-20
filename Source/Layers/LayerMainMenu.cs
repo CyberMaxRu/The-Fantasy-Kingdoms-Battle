@@ -133,6 +133,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ApplyCurrentWindowSize();
 
             bitmapLogo = Program.formMain.CollectionBackgroundImage.GetBitmap("MainMenu", Program.formMain.Size);
+            ArrangeControls();
         }
     }
 }
