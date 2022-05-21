@@ -93,10 +93,20 @@ namespace Fantasy_Kingdoms_Battle
                     colorNameEntity = Color.LimeGreen;
                     break;
                 case TypeNoticeForPlayer.Explore:
-                    Construction c = Entity as Construction;
-                    nameNotice = $"В {c.Location.Settings.Name2} обнаружен объект:";
-                    nameText = $"{c.NameLair()}";
-                    colorNameEntity = Color.DarkGoldenrod;
+                    if (Entity is Construction c)
+                    {
+                        nameNotice = $"В {c.Location.Settings.Name2} обнаружен объект:";
+                        nameText = $"{c.NameLair()}";
+                        colorNameEntity = Color.DarkGoldenrod;
+                    }
+                    else if (Entity is PathToLocation pl)
+                    {
+                        nameNotice = $"В {pl.Location.Settings.Name2} обнаружен объект:";
+                        nameText = $"{pl.DescriptorPath.Name}";
+                        colorNameEntity = Color.DarkGoldenrod;
+                    }
+                    else
+                        throw new Exception("Неизвестный тип сущности");
                     break;
                 case TypeNoticeForPlayer.HeroIsDead:
                     Hero h = Entity as Hero;

@@ -40,6 +40,13 @@ namespace Fantasy_Kingdoms_Battle
                     c.PercentScoutForFound = player.Lobby.Rnd.Next(ls.MinPercentScout, ls.MaxPercentScout + 1);
             }
 
+            // Создание путей согласно настройкам
+            foreach (TypeLobbyLocationPath lp in settings.Paths)
+            {
+                PathToLocation pl = new PathToLocation(this, lp);
+                PathToLocations.Add(pl);
+            }
+
             // Создание меню
             descScout = new DescriptorCellMenu(new Point(0, 0));
             cmScout = new CellMenuLocationScout(this, descScout);
@@ -95,6 +102,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
+        internal List<PathToLocation> PathToLocations { get; } = new List<PathToLocation>();// Пути к локациям
         internal bool Visible { get; set; }
         internal int ScoutedArea { get; private set; }// Сколько площади локации разведано
         internal int PercentScoutedArea { get; private set; }// Процент разведанной территории
@@ -187,8 +195,14 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Construction c in Lairs)
                 if (c.Hidden)
-                    if (c.PercentScoutForFound < PercentScoutedArea)
+                    if (c.PercentScoutForFound <= PercentScoutedArea)
                         c.Unhide(true);
+
+            foreach (PathToLocation pl in PathToLocations)
+                if (!pl.Visible)
+                    if (pl.PercentScoutForFound <= PercentScoutedArea)
+                        pl.Unhide(true);
+
 
             HeroesForScout.Clear();
         }
@@ -225,6 +239,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             HeroesForScout.Clear();
+        }
+
+        internal void TuneLinks()
+        {
+            foreach (PathToLocation pl in PathToLocations)
+            {
+                pl.TuneLinks();
+            }
         }
     }
 }

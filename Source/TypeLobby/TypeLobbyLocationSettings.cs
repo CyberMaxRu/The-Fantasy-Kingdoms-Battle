@@ -43,6 +43,26 @@ namespace Fantasy_Kingdoms_Battle
                 LairsSettings.Add(tlls);
             }
 
+            // Загружаем конфигурацию путей в локации
+            TypeLobbyLocationPath lp;
+            XmlNode np = n.SelectSingleNode("Paths");
+            if (np != null)
+            {
+                foreach (XmlNode p in np.SelectNodes("Path"))
+                {
+                    lp = new TypeLobbyLocationPath(p, this);
+
+                    /*// Проверяем, что тип логова не повторяется
+                    foreach (TypeLobbyLairSettings ls in LairsSettings)
+                    {
+                        if (tlls.NameTypeLair == ls.NameTypeLair)
+                            throw new Exception($"Тип логова {tlls.NameTypeLair} повторяется в списке типов логов локации {ID}.");
+                    }*/
+
+                    Paths.Add(lp);
+                }
+            }
+
             // Если количество сооружений меньше количества слотов, добиваем их пустыми местами
             /*if (maxQuantity < quantitySlotLairs)
             {
@@ -72,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal DescriptorTypeLandscape TypeLandscape { get; private set; }
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
+        internal List<TypeLobbyLocationPath> Paths { get; } = new List<TypeLobbyLocationPath>();// Пути из локации
         internal bool VisibleByDefault { get; }
         internal int Area { get; }// Площадь локации
         internal int ScoutedArea { get; }// Разведанная площадь локации (изначально)
@@ -88,6 +109,11 @@ namespace Fantasy_Kingdoms_Battle
             foreach (TypeLobbyLairSettings ls in LairsSettings)
             {
                 ls.TuneDeferredLinks();
+            }
+
+            foreach (TypeLobbyLocationPath lp in Paths)
+            {
+                lp.TuneLinks();
             }
         }
     }    

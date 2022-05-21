@@ -118,13 +118,39 @@
             <MaxPercentScout>80</MaxPercentScout>
           </TypeConstruction>
         </TypeConstructions>
+        <Paths>
+          <Path>
+            <ID>PathToForest</ID>
+            <Name>Путь в Лес</Name>
+            <Location>LocationForest</Location>
+            <Visible>false</Visible>
+            <MinPercentScout>25</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Path>
+          <Path>
+            <ID>PathToSwamp</ID>
+            <Name>Путь в Болото</Name>
+            <Location>LocationSwamp</Location>
+            <Visible>false</Visible>
+            <MinPercentScout>50</MinPercentScout>
+            <MaxPercentScout>80</MaxPercentScout>
+          </Path>
+          <Path>
+            <ID>PathToSwamp</ID>
+            <Name>Путь в Горы</Name>
+            <Location>LocationMountain</Location>
+            <Visible>false</Visible>
+            <MinPercentScout>90</MinPercentScout>
+            <MaxPercentScout>95</MaxPercentScout>
+          </Path>
+        </Paths>
       </Location>
       <Location>
         <ID>LocationForest</ID>
         <Name>Лес</Name>
         <Name2>Лесу</Name2>
         <TypeLandscape>Forest</TypeLandscape>
-        <VisibleByDefault>true</VisibleByDefault>
+        <VisibleByDefault>false</VisibleByDefault>
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
         <BaseScoutingArea>100</BaseScoutingArea>
@@ -199,7 +225,7 @@
         <Name>Болото</Name>
         <Name2>Болоте</Name2>
         <TypeLandscape>Swamp</TypeLandscape>
-        <VisibleByDefault>true</VisibleByDefault>
+        <VisibleByDefault>false</VisibleByDefault>
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
         <BaseScoutingArea>50</BaseScoutingArea>
@@ -220,7 +246,7 @@
         <Name>Горы</Name>
         <Name2>Горах</Name2>
         <TypeLandscape>Mountain</TypeLandscape>
-        <VisibleByDefault>true</VisibleByDefault>
+        <VisibleByDefault>false</VisibleByDefault>
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
         <BaseScoutingArea>150</BaseScoutingArea>
