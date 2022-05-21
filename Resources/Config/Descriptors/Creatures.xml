@@ -622,8 +622,8 @@
       </Property>
       <Property>
         <ID>CreatureScout</ID>
-        <MinValueOnHire>100</MinValueOnHire>
-        <MaxValueOnHire>100</MaxValueOnHire>
+        <MinValueOnHire>500</MinValueOnHire>
+        <MaxValueOnHire>500</MaxValueOnHire>
       </Property>
     </Properties>
     <Needs>
