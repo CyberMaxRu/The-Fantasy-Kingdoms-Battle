@@ -66,6 +66,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
         private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
 
+        private readonly PanelConstruction[,,] panels;
         private readonly VCBitmap bitmapMenu;
         private readonly VCBitmap bmpTopPanel;
         private readonly VCBitmap bmpPreparedToolbar;
@@ -83,11 +84,17 @@ namespace Fantasy_Kingdoms_Battle
         private Lobby lobby;
         private Player curAppliedPlayer;
 
+        int horInterval;
+        int verInterval;
+
         internal Lobby CurrentLobby { get { return lobby; } }
 
 
         public LayerGameSingle() : base()
         {
+            horInterval = Config.GridSize;
+            verInterval = Config.GridSize;
+
             // Создаем панели игроков
             bmpTopPanel = new VCBitmap(this, 0, 0, null);
             panelPlayers = new VisualControl(bmpTopPanel, 0, Config.GridSize);
@@ -257,6 +264,9 @@ namespace Fantasy_Kingdoms_Battle
             //pageLocation.Hint = "Тут должна быть подсказка";
 
             listBtnLevelTax = new List<VCIconButton48>();
+
+            // Создаем массив из страниц, линий и позиций
+            panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
 
 
             DrawPageConstructions();
@@ -535,9 +545,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageConstructions()
         {
-            // Создаем массив из страниц, линий и позиций
-            PanelConstruction[,,] panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
-
             // Проходим по каждому зданию, создавая ему панель
             VisualControl parent;
             foreach (DescriptorConstruction tck in Descriptors.Constructions)
@@ -1261,6 +1268,38 @@ namespace Fantasy_Kingdoms_Battle
 
             AdjustNamePlayer();
             MakePagesBackground();
+
+            // Выравниваем страницы столицы
+            // Мы достоверно знаем, что на страницах столицы 3 промежутка между сооружениями и надо еще 2 по краям по горизонтали
+            // По вертикали 2 расстояния
+            // Вообще надо переделать на константы из конфиги
+            horInterval = (MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (panels[0, 0, 0].Width * 4)) / 5;
+            verInterval = (MainControl.Height - pageResultTurn.Page.ShiftY - (panels[0, 0, 0].Height * 3) - (Config.GridSize * 2)) / 2;
+
+            for (int z = 0; z < panels.GetLength(0); z++)
+                for (int y = 0; y < panels.GetLength(1); y++)
+                    for (int x = 0; x < panels.GetLength(2); x++)
+                    {
+                        panels[z, y, x].ShiftX = (panels[z, y, x].Width + horInterval) * x;
+                        panels[z, y, x].ShiftY = (panels[z, y, x].Height + verInterval) * y;
+                    }
+
+            pageControl.ShiftX = panelEmptyInfo.ShiftX + panelEmptyInfo.Width + horInterval;
+
+            foreach (VCPageButton p in pageControl.Pages)
+            {
+                p.Page.Width = CalcWidthPage();
+            }
+
+            foreach (VCLocation l in listLocations)
+            {
+                l.Width = CalcWidthPage();
+            }
+        }
+
+        private int CalcWidthPage()
+        {
+            return MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (horInterval * 2);
         }
 
         private void AdjustNamePlayer()
