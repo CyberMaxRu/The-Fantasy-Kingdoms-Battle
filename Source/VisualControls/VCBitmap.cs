@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             get => bmp;
             set
             {
-                bmp?.Dispose();
+                //bmp?.Dispose();// Нельзя тут так делать - при смене состояния героя меняется иконка, и здесь она рушится
                 bmp = value;
                 AdjustSize();
             }
