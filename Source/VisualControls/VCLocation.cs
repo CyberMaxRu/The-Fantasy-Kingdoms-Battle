@@ -116,5 +116,10 @@ namespace Fantasy_Kingdoms_Battle
 
             ArrangeControl(cell);
         }
+
+        protected override bool Selected()
+        {
+            return Program.formMain.layerGame.PlayerObjectIsSelected(location);
+        }
     }
 }
