@@ -112,7 +112,7 @@ namespace Fantasy_Kingdoms_Battle
             int line = index / cellsPerLine;
             int offset = index % cellsPerLine;
             cell.ShiftX = lblScouted.NextLeft() + (offset * 56);
-            cell.ShiftY = imgTypeLocation.ShiftY + (line & 56);
+            cell.ShiftY = imgTypeLocation.ShiftY + (line * 56);
 
             ArrangeControl(cell);
         }
