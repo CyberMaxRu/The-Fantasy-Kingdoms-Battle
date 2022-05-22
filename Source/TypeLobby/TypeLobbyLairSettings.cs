@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             IsEnemy = XmlUtils.GetBooleanNotNull(n, "IsEnemy");
             MinPercentScout = XmlUtils.GetInteger(n, "MinPercentScout");
             MaxPercentScout = XmlUtils.GetInteger(n, "MaxPercentScout");
+            PathToLocation = XmlUtils.GetString(n, "PathToLocation");
 
             Debug.Assert(!(Own && !Visible));
 
@@ -45,7 +46,16 @@ namespace Fantasy_Kingdoms_Battle
         internal void TuneDeferredLinks()
         {
             TypeLair = FormMain.Descriptors.FindConstruction(NameTypeLair);
-            NameTypeLair = null;
+            NameTypeLair = "";
+
+            if (TypeLair.Category != CategoryConstruction.Path)
+            {
+                Debug.Assert(PathToLocation.Length == 0);
+            }
+            else
+            {
+                Debug.Assert(PathToLocation.Length > 0);
+            }
         }
 
         internal string NameTypeLair { get; private set; }
@@ -56,5 +66,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsEnemy { get; }
         internal int MinPercentScout { get; }
         internal int MaxPercentScout { get; }
+        internal string PathToLocation { get; }//
     }
 }

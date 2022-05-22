@@ -148,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstruction tck in FormMain.Descriptors.Constructions)
             {
                 if (tck.IsInternalConstruction)
-                    new Construction(this, tck, null, true, true, true, false);
+                    new Construction(this, tck, null, true, true, true, false, null);
             }
 
             foreach (TypeLobbyLocationSettings tll in lobby.TypeLobby.Locations)
@@ -156,9 +156,6 @@ namespace Fantasy_Kingdoms_Battle
                 Location l = new Location(this, tll);
                 Locations.Add(l);
             }
-
-            foreach (Location l in Locations)
-                l.TuneLinks();
 
             //
 

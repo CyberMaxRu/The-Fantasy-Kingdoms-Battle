@@ -33,18 +33,11 @@ namespace Fantasy_Kingdoms_Battle
             // Создание сооружений согласно настройкам
             foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
             {
-                Construction c = new Construction(player, ls.TypeLair, this, ls.Visible, ls.Own, ls.CanOwn, ls.IsEnemy);
+                Construction c = new Construction(player, ls.TypeLair, this, ls.Visible, ls.Own, ls.CanOwn, ls.IsEnemy, ls.PathToLocation);
                 Lairs.Add(c);
 
                 if (!ls.Visible)
                     c.PercentScoutForFound = player.Lobby.Rnd.Next(ls.MinPercentScout, ls.MaxPercentScout + 1);
-            }
-
-            // Создание путей согласно настройкам
-            foreach (TypeLobbyLocationPath lp in settings.Paths)
-            {
-                PathToLocation pl = new PathToLocation(this, lp);
-                PathToLocations.Add(pl);
             }
 
             // Создание меню
@@ -102,7 +95,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
-        internal List<PathToLocation> PathToLocations { get; } = new List<PathToLocation>();// Пути к локациям
         internal bool Visible { get; set; }
         internal int ScoutedArea { get; private set; }// Сколько площади локации разведано
         internal int PercentScoutedArea { get; private set; }// Процент разведанной территории
@@ -198,12 +190,6 @@ namespace Fantasy_Kingdoms_Battle
                     if (c.PercentScoutForFound <= PercentScoutedArea)
                         c.Unhide(true);
 
-            foreach (PathToLocation pl in PathToLocations)
-                if (!pl.Visible)
-                    if (pl.PercentScoutForFound <= PercentScoutedArea)
-                        pl.Unhide(true);
-
-
             HeroesForScout.Clear();
         }
 
@@ -239,14 +225,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             HeroesForScout.Clear();
-        }
-
-        internal void TuneLinks()
-        {
-            foreach (PathToLocation pl in PathToLocations)
-            {
-                pl.TuneLinks();
-            }
         }
     }
 }

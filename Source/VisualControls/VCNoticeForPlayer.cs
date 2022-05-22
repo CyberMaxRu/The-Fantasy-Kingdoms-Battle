@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, Improvement, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
-        ReceivedBaseResource, Explore, HeroIsDead };
+        ReceivedBaseResource, Explore, HeroIsDead, FoundLocation };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
@@ -99,10 +99,14 @@ namespace Fantasy_Kingdoms_Battle
                         nameText = $"{c.NameLair()}";
                         colorNameEntity = Color.DarkGoldenrod;
                     }
-                    else if (Entity is PathToLocation pl)
+                    else
+                        throw new Exception("Неизвестный тип сущности");
+                    break;
+                case TypeNoticeForPlayer.FoundLocation:
+                    if (Entity is Location l)
                     {
-                        nameNotice = $"В {pl.Location.Settings.Name2} обнаружен объект:";
-                        nameText = $"{pl.DescriptorPath.Name}";
+                        nameNotice = $"Обнаружена локация:";
+                        nameText = $"{l.Settings.Name}";
                         colorNameEntity = Color.DarkGoldenrod;
                     }
                     else
@@ -159,6 +163,10 @@ namespace Fantasy_Kingdoms_Battle
             else if (Entity is ConstructionImprovement ci)
             {
                 Program.formMain.layerGame.SelectConstruction(ci.Construction, 0);
+            }
+            else if (Entity is Location l)
+            {
+                Program.formMain.layerGame.SelectPlayerObject(l, 0);
             }
             else
                 throw new Exception("Неизвестная сущность.");

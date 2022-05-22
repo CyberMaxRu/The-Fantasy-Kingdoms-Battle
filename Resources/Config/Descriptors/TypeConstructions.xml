@@ -44,4 +44,8 @@
     <ID>ElementLandscape</ID>
     <Name>Ландшафт</Name>
   </TypeConstruction>
+  <TypeConstruction>
+    <ID>Path</ID>
+    <Name>Путь</Name>
+  </TypeConstruction>
 </Descriptors>

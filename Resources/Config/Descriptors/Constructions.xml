@@ -7331,4 +7331,21 @@
       </Monster>
     </Monsters>
   </Construction>
+  <Construction>
+    <ID>PathToLocation</ID>
+    <Name>Путь в локацию</Name>
+    <Description>Пути позволяют перемещаться в другую локацию.</Description>
+    <ImageIndex>185</ImageIndex>
+    <TypeConstruction>Path</TypeConstruction>
+    <Category>Path</Category>
+    <SoundSelect>select_path.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>PathToLocation1</ID>
+        <Number>1</Number>
+        <Income>0</Income>
+      </Level>
+    </Levels>
+  </Construction>
 </Descriptors>

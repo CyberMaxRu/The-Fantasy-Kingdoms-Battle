@@ -117,33 +117,37 @@
             <MinPercentScout>50</MinPercentScout>
             <MaxPercentScout>80</MaxPercentScout>
           </TypeConstruction>
-        </TypeConstructions>
-        <Paths>
-          <Path>
-            <ID>PathToForest</ID>
-            <Name>Путь в Лес</Name>
-            <Location>LocationForest</Location>
+          <TypeConstruction>
+            <ID>PathToLocation</ID>
             <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
             <MinPercentScout>25</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
-          </Path>
-          <Path>
-            <ID>PathToSwamp</ID>
-            <Name>Путь в Болото</Name>
-            <Location>LocationSwamp</Location>
+            <PathToLocation>LocationForest</PathToLocation>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PathToLocation</ID>
             <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
             <MinPercentScout>50</MinPercentScout>
             <MaxPercentScout>80</MaxPercentScout>
-          </Path>
-          <Path>
-            <ID>PathToSwamp</ID>
-            <Name>Путь в Горы</Name>
-            <Location>LocationMountain</Location>
+            <PathToLocation>LocationSwamp</PathToLocation>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PathToLocation</ID>
             <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
             <MinPercentScout>90</MinPercentScout>
             <MaxPercentScout>95</MaxPercentScout>
-          </Path>
-        </Paths>
+            <PathToLocation>LocationMountain</PathToLocation>
+          </TypeConstruction>
+        </TypeConstructions>
       </Location>
       <Location>
         <ID>LocationForest</ID>

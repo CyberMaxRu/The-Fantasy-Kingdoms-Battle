@@ -976,7 +976,7 @@ namespace Fantasy_Kingdoms_Battle
             UpdateListHeroes();
             ShowWarehouse();
             AdjustPageTournament();
-            //UpdateNeighborhoods();
+            UpdateNeighborhoods();
             //AdjustNeighborhood();
             ShowPlayerNotices();
         }

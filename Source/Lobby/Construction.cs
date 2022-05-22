@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public Construction(Player p, DescriptorConstruction b, Location location, bool visible, bool own, bool canOwn, bool isEnemy) : base(b, p.Lobby)
+        public Construction(Player p, DescriptorConstruction b, Location location, bool visible, bool own, bool canOwn, bool isEnemy, string pathToLocation) : base(b, p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
@@ -23,6 +23,8 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
             IsEnemy = isEnemy;
+
+            IDPathToLocation = pathToLocation;
 
             // Настраиваем исследования 
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
@@ -110,6 +112,8 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Hidden { get; private set; }// Логово не разведано
         internal int PercentScoutForFound { get; set; }// Процент разведки локации, чтобы найти сооружение
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
+        internal string IDPathToLocation { get; }//
+        internal Location NextLocation { get; private set; }// Дескриптор пути в другую локацию
 
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
         internal bool Destroyed { get; private set; } = false;// Логово уничтожено, работа с ним запрещена
@@ -1034,9 +1038,27 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!Destroyed);
 
             Hidden = false;
-
             if (needNotice)
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Explore);
+
+            if (IDPathToLocation.Length > 0)
+            {
+                foreach (Location l in Player.Locations)
+                {
+                    if (IDPathToLocation == l.Settings.ID)
+                    {
+                        NextLocation = l;
+                        break;
+                    }
+                }
+
+                Debug.Assert(NextLocation != null);
+
+                NextLocation.Visible = true;
+
+                if (needNotice)
+                    Player.AddNoticeForPlayer(NextLocation, TypeNoticeForPlayer.FoundLocation);
+            }
         }
 
         // Место разведано
@@ -1223,7 +1245,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
+            if (NextLocation != null)
+                return NextLocation.GetImageIndex();
+            else if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
                 return ImageIndexLair();
             else
                 return FormMain.Config.Gui48_Battle;
