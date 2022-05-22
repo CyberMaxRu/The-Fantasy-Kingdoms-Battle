@@ -121,7 +121,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case 1:
                     if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
-                        ShowHeroesInMenu(menu, HeroesForScout, HeroForScoutClick, ModeTextForCreature.CancelHire);
+                        ShowHeroesInMenu(menu, HeroesForScout, HeroForScoutClick, ModeTextForCreature.Scout);
                     cmPageCreatures.ChangePage = false;
 
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Research = cmAddScoutHero;

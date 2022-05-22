@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ModeTextForCreature { Hire, CancelHire };
+    internal enum ModeTextForCreature { Hire, Scout, };
 
     sealed internal class CellMenuCreature : CellOfMenu
     {
@@ -25,8 +25,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case ModeTextForCreature.Hire:      
                     return (Creature as Hero).CostOfHiring().ToString();
-                case ModeTextForCreature.CancelHire:
-                    return "+" + (Creature as Hero).CostOfHiring().ToString();
+                case ModeTextForCreature.Scout:
+                    return Creature != null ? (Creature as Hero).CalcScoutedAreaPercent(Creature.ScoutedLocation).ToString() + "%": "";
                 default:
                     return "";
             }
