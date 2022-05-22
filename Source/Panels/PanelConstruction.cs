@@ -173,7 +173,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnQueue.Visible = false;
 
-            if (!Construction.Hidden && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
+            if (Construction.Visible && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
             {
                 lblRewardGold.Visible = false;
                 lblRewardGreatness.Visible = false;
@@ -261,7 +261,7 @@ namespace Fantasy_Kingdoms_Battle
                 lblGreatness.Visible = false;
                 btnHeroes.Visible = false;
 
-                btnAction.Visible = Construction.Hidden || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
+                btnAction.Visible = !Construction.Visible || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
                 if (btnAction.Visible)
                 {
                     btnAction.ImageIsEnabled = Construction.Player.ExistsFreeFlag();
@@ -307,13 +307,13 @@ namespace Fantasy_Kingdoms_Battle
                 if (btnAttackHeroes.Visible)
                     btnAttackHeroes.LowText = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
 
-                lblRewardGold.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Cost.ValueGold() > 0);
+                lblRewardGold.Visible = Construction.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Cost.ValueGold() > 0);
                 if (lblRewardGold.Visible)
                 {
                     lblRewardGold.Text = Construction.TypeConstruction.Reward.Cost.ValueGold().ToString();
                 }
 
-                lblRewardGreatness.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Greatness > 0);
+                lblRewardGreatness.Visible = Construction.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Greatness > 0);
                 if (lblRewardGreatness.Visible)
                 {
                     lblRewardGreatness.Text = Construction.TypeConstruction.Reward.Greatness.ToString();
@@ -375,10 +375,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PlaySelect()
         {
-            if (Construction.Hidden)
-                Program.formMain.PlayPushButton();
-            else
+            if (Construction.Visible)
                 Construction.TypeConstruction.PlaySoundSelect();
+            else
+                Program.formMain.PlayPushButton();
         }
 
         private void SwitchStyle()
@@ -430,7 +430,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_ShowHint(object sender, EventArgs e)
         {
-            if (Construction.Hidden)
+            if (!Construction.Visible)
             {
                 if (!Construction.Cashback().ExistsResources())
                 {

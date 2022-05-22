@@ -532,7 +532,7 @@ namespace Fantasy_Kingdoms_Battle
             int builded = 0;
             foreach (Construction c in Constructions)
             {
-                if ((c.TypeConstruction.TypeConstruction == typeConstruction) && (!c.Hidden) && (c.Level > 0))
+                if ((c.TypeConstruction.TypeConstruction == typeConstruction) && c.Visible && (c.Level > 0))
                     builded++;
             }
 
@@ -1579,7 +1579,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (Construction lc in l.Lairs)
                 {
-                    if (lc.Hidden)
+                    if (!lc.Visible)
                     {
                         lc.Unhide(false);
                     }

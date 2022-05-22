@@ -55,15 +55,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Lair.Destroyed);
 
-            if (Lair.Hidden)
-            {
-                panelInhabitants.SetUnknownList();
-                btnInhabitants.Quantity = 0;
-            }
-            else
+            if (Lair.Visible)
             {
                 panelInhabitants.ApplyList(Lair.Monsters);
                 btnInhabitants.Quantity = Lair.Monsters.Count;
+            }
+            else
+            {
+                panelInhabitants.SetUnknownList();
+                btnInhabitants.Quantity = 0;
             }
 
             panelHeroes.ApplyList(Lair.listAttackedHero);

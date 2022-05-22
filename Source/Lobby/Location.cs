@@ -186,7 +186,7 @@ namespace Fantasy_Kingdoms_Battle
             PayForHire = 0;
 
             foreach (Construction c in Lairs)
-                if (c.Hidden)
+                if (!c.Visible)
                     if (c.PercentScoutForFound <= PercentScoutedArea)
                         c.Unhide(true);
 

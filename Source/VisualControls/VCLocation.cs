@@ -97,7 +97,7 @@ namespace Fantasy_Kingdoms_Battle
             int nextCell = 0;
             for (int i = 0; i < location.Lairs.Count; i++)
             {
-                if (!location.Lairs[i].Hidden)
+                if (location.Lairs[i].Visible)
                 {
                     listCells[nextCell].Entity = location.Lairs[i];
                     listCells[nextCell].Visible = true;

@@ -81,14 +81,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Lair.TypeFlag != TypeFlag.Battle)
                 {
-                    if (Lair.Hidden)
-                    {
-                        ImageIndex = FormMain.IMAGE_INDEX_UNKNOWN;
-                    }
-                    else
-                    {
-                        ImageIndex = Lair.ImageIndexLair();
-                    }
+                    ImageIndex = Lair.Visible ? Lair.ImageIndexLair() : FormMain.IMAGE_INDEX_UNKNOWN;
                 }
                 else
                 {

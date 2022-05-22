@@ -820,7 +820,7 @@ namespace Fantasy_Kingdoms_Battle
             switch (Entity.Action)
             {
                 case ActionOfSpell.Scout:
-                    Assert(ForConstruction.Hidden);
+                    Assert(!ForConstruction.Visible);
                     ForConstruction.Unhide(false);
                     Spell.Selling.Use();
 

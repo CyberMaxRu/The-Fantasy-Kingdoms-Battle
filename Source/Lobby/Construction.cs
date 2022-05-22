@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
                 Researches.Add(CellMenuConstruction.Create(this, d));
 
-            Hidden = !visible;// && !location.Ownership;
+            Visible = visible;// && !location.Ownership;
 
             Level = b.DefaultLevel;
             if (Level > 0)
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             X = x;
             Y = y;
             Location = location;
-            Hidden = !visible;
+            Visible = visible;
             DaysBuilded = 0;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
@@ -109,7 +109,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Location Location { get; set; }// Локация, на которой находится сооружение
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
-        internal bool Hidden { get; private set; }// Логово не разведано
+        internal bool Visible { get; private set; }// Сооружение видимо игроку
         internal int PercentScoutForFound { get; set; }// Процент разведки локации, чтобы найти сооружение
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
         internal string IDPathToLocation { get; }//
@@ -296,7 +296,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
             // Рисуем содержимое ячеек
-            if (!Hidden)
+            if (Visible)
             {
                 Debug.Assert(TypeConstruction != null);
 
@@ -555,7 +555,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    if (Hidden)
+                    if (!Visible)
                     {
                         panelHint.AddStep2Header("Неизвестное место");
                         panelHint.AddStep4Level("Место не разведано");
@@ -723,7 +723,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal ListBaseResources CostScout()
         {
-            Debug.Assert(Hidden);
+            Debug.Assert(!Visible);
             AssertNotDestroyed();
 
             return new ListBaseResources(0);
@@ -733,7 +733,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void AssertNotHidden()
         {
-            Debug.Assert(!Hidden, $"Логово {TypeConstruction.ID} игрока {Player.GetName()} скрыто.");
+            Debug.Assert(Visible, $"Логово {TypeConstruction.ID} игрока {Player.GetName()} скрыто.");
         }
 
         internal void AssertNotDestroyed()
@@ -764,14 +764,14 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameLair()
         {
             AssertNotDestroyed();
-            return Hidden ? "Неизвестное место" : GetName();
+            return Visible ? GetName() : "Неизвестное место";
         }
 
         internal int ImageIndexLair()
         {
             AssertNotDestroyed();
 
-            return Hidden ? FormMain.IMAGE_INDEX_UNKNOWN : TypeConstruction.ImageIndex;
+            return Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
         }
 
         internal bool ImageEnabled()
@@ -782,7 +782,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Color GetColorCaption()
         {
             if (PriorityFlag == PriorityExecution.None)
-                return Hidden ? FormMain.Config.ColorMapObjectCaption(false) : Color.MediumAquamarine;
+                return Visible ? Color.MediumAquamarine : FormMain.Config.ColorMapObjectCaption(false);
 
             switch (TypeAction())
             {
@@ -873,7 +873,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            if (Hidden)
+            if (!Visible)
                 return TypeFlag.Scout;
             if (TypeConstruction.Category == CategoryConstruction.Lair)
                 return TypeFlag.Attack;
@@ -1033,11 +1033,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Temple);
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Military);
             //Debug.Assert(TypeConstruction.Category != CategoryConstruction.External);
-            Debug.Assert(Hidden);
+            Debug.Assert(!Visible);
             Debug.Assert(TypeFlag == TypeFlag.None);
             Debug.Assert(!Destroyed);
 
-            Hidden = false;
+            Visible = true;
             if (needNotice)
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Explore);
 
@@ -1053,11 +1053,11 @@ namespace Fantasy_Kingdoms_Battle
         // Место разведано
         internal void DoScout()
         {
-            Debug.Assert(Hidden);
+            Debug.Assert(!Visible);
             Debug.Assert(TypeFlag == TypeFlag.Scout);
             AssertNotDestroyed();
 
-            Hidden = false;
+            Visible = true;
 
             // Раздаем награду. Открыть место могли без участия героев (заклинанием)
             HandOutGoldHeroes();
@@ -1090,7 +1090,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
             Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location, true, true, true, false, TypeNoticeForPlayer.None);
-            pl.Hidden = false;
+            pl.Visible = true;
             Location.Lairs.Add(pl);
         }
 
@@ -1150,9 +1150,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ListMonstersForHint()
         {
-            if (Hidden)
-                return "Пока место не разведано, существа в нем неизвестны";
-            else
+            if (Visible)
             {
                 if (Monsters.Count == 0)
                     return "Нет существ";
@@ -1167,6 +1165,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 return list;
             }
+            else
+                return "Пока место не разведано, существа в нем неизвестны";
         }
 
         internal string ListHeroesForHint()
@@ -1253,7 +1253,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            return Hidden ? "" : Level == 0 ? "" : (Level == 1) && (TypeConstruction.MaxLevel == 1) ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
+            return !Visible ? "" : Level == 0 ? "" : (Level == 1) && (TypeConstruction.MaxLevel == 1) ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
         }
 
         internal override void Click(VCCell pe)

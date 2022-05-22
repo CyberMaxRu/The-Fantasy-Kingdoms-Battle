@@ -187,15 +187,15 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                if (Construction.Hidden)
-                {
-                    panelInhabitants.SetUnknownList();
-                    btnInhabitants.Quantity = 0;
-                }
-                else
+                if (Construction.Visible)
                 {
                     panelInhabitants.ApplyList(Construction.Monsters);
                     btnInhabitants.Quantity = Construction.Monsters.Count;
+                }
+                else
+                {
+                    panelInhabitants.SetUnknownList();
+                    btnInhabitants.Quantity = 0;
                 }
 
                 panelVisits.ApplyList(Construction.listAttackedHero);
