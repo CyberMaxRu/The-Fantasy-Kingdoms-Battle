@@ -160,6 +160,24 @@
         <BaseScoutingArea>100</BaseScoutingArea>
         <Constructions>
           <Construction>
+            <ID>Lumberjack</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>40</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>StoneQuarry</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>30</MinPercentScout>
+            <MaxPercentScout>60</MaxPercentScout>
+          </Construction>
+          <Construction>
             <ID>TradePost</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -234,6 +252,15 @@
         <ScoutedArea>0</ScoutedArea>
         <BaseScoutingArea>50</BaseScoutingArea>
         <Constructions>
+          <Construction>
+            <ID>OreMine</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>40</MaxPercentScout>
+          </Construction>
           <Construction>
             <ID>Treasure</ID>
             <Visible>false</Visible>
