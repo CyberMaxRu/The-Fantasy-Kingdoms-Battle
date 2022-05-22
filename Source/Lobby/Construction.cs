@@ -1041,19 +1041,8 @@ namespace Fantasy_Kingdoms_Battle
             if (needNotice)
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Explore);
 
-            if (IDPathToLocation.Length > 0)
+            if (NextLocation != null)
             {
-                foreach (Location l in Player.Locations)
-                {
-                    if (IDPathToLocation == l.Settings.ID)
-                    {
-                        NextLocation = l;
-                        break;
-                    }
-                }
-
-                Debug.Assert(NextLocation != null);
-
                 NextLocation.Visible = true;
 
                 if (needNotice)
@@ -1610,6 +1599,23 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Level > 0);
 
             return gold * TypeConstruction.Levels[Level].Tax / 100;
+        }
+
+        internal void TuneLinks()
+        {
+            if (IDPathToLocation.Length > 0)
+            {
+                foreach (Location l in Player.Locations)
+                {
+                    if (IDPathToLocation == l.Settings.ID)
+                    {
+                        NextLocation = l;
+                        break;
+                    }
+                }
+
+                Debug.Assert(NextLocation != null);
+            }
         }
 
         internal override Color GetSelectedColor() => SelectedColor;

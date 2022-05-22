@@ -157,6 +157,10 @@ namespace Fantasy_Kingdoms_Battle
                 Locations.Add(l);
             }
 
+            foreach (Location l in Locations)
+                foreach (Construction c in l.Lairs)
+                    c.TuneLinks();
+
             //
 
             /*foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)
