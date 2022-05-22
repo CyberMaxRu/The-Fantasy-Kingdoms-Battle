@@ -231,7 +231,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetImageIndex() => Construction.GetImageIndex();
         protected override bool ImageIsEnabled() => Construction.Level > 0;
-        protected override string GetCaption() => Construction.TypeConstruction.Name;
+        protected override string GetCaption() => Construction.GetName();
 
         internal void SelectPageInhabitant()
         {

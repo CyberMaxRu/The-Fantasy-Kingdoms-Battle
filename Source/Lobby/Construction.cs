@@ -541,7 +541,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (TypeConstruction.IsOurConstruction)
                 {
-                    panelHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
+                    panelHint.AddStep2Header(GetName(), TypeConstruction.ImageIndex);
                     panelHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
                     if (!((Level == 1) && (TypeConstruction.MaxLevel == 1)))
                         panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
@@ -563,7 +563,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        panelHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
+                        panelHint.AddStep2Header(GetName(), TypeConstruction.ImageIndex);
                         panelHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
                         panelHint.AddStep5Description(TypeConstruction.Description);
 
@@ -764,7 +764,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameLair()
         {
             AssertNotDestroyed();
-            return Hidden ? "Неизвестное место" : TypeConstruction.Name;
+            return Hidden ? "Неизвестное место" : GetName();
         }
 
         internal int ImageIndexLair()
@@ -1264,7 +1264,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetName()
         {
-            return TypeConstruction.Name;
+            if (NextLocation is null)
+                return TypeConstruction.Name;
+            else
+                return "Путь в " + NextLocation.Settings.Name;
         }
 
         internal override TypePlayer GetTypePlayer()
