@@ -698,6 +698,9 @@ namespace Fantasy_Kingdoms_Battle
                     selectedPlayerObject.HideInfo();
                 }
 
+                if (po is Location)
+                    pageControl.ActivatePage(pageMap);
+
                 selectedPlayerObject = po;
                 if ((po == null) && (pageControl.CurrentPage.Location != null))
                     selectedPlayerObject = pageControl.CurrentPage.Location;
