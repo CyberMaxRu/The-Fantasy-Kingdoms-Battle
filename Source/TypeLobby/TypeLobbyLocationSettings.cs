@@ -28,8 +28,8 @@ namespace Fantasy_Kingdoms_Battle
             TypeLobbyLairSettings tlls;
 
             // Загружаем конфигурацию логов
-            XmlNode ne = n.SelectSingleNode("TypeConstructions");
-            foreach (XmlNode l in ne.SelectNodes("TypeConstruction"))
+            XmlNode ne = n.SelectSingleNode("Constructions");
+            foreach (XmlNode l in ne.SelectNodes("Construction"))
             {
                 tlls = new TypeLobbyLairSettings(l, this);
 

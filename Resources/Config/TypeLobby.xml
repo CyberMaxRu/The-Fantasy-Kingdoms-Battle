@@ -45,43 +45,43 @@
         <Area>1000</Area>
         <ScoutedArea>200</ScoutedArea>
         <BaseScoutingArea>200</BaseScoutingArea>
-        <TypeConstructions>
-          <TypeConstruction>
+        <Constructions>
+          <Construction>
             <ID>Sewer</ID>
             <Visible>true</Visible>
             <Own>true</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>CityGraveyard</ID>
             <Visible>true</Visible>
             <Own>true</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PeasantHouse</ID>
             <Visible>true</Visible>
             <Own>true</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PeasantHouse</ID>
             <Visible>true</Visible>
             <Own>true</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PeasantHouse</ID>
             <Visible>true</Visible>
             <Own>true</Own>
             <CanOwn>true</CanOwn>
             <IsEnemy>false</IsEnemy>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PeasantHouse</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -89,8 +89,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>20</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PeasantHouse</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -98,8 +98,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>50</MinPercentScout>
             <MaxPercentScout>80</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PeasantHouse</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -107,8 +107,8 @@
             <IsEnemy>true</IsEnemy>
             <MinPercentScout>90</MinPercentScout>
             <MaxPercentScout>100</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>HolyPlace</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -116,8 +116,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>50</MinPercentScout>
             <MaxPercentScout>80</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PathToLocation</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -126,8 +126,8 @@
             <MinPercentScout>25</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
             <PathToLocation>LocationForest</PathToLocation>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PathToLocation</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -136,8 +136,8 @@
             <MinPercentScout>50</MinPercentScout>
             <MaxPercentScout>80</MaxPercentScout>
             <PathToLocation>LocationSwamp</PathToLocation>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>PathToLocation</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -146,8 +146,8 @@
             <MinPercentScout>90</MinPercentScout>
             <MaxPercentScout>95</MaxPercentScout>
             <PathToLocation>LocationMountain</PathToLocation>
-          </TypeConstruction>
-        </TypeConstructions>
+          </Construction>
+        </Constructions>
       </Location>
       <Location>
         <ID>LocationForest</ID>
@@ -158,8 +158,8 @@
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
         <BaseScoutingArea>100</BaseScoutingArea>
-        <TypeConstructions>
-          <TypeConstruction>
+        <Constructions>
+          <Construction>
             <ID>TradePost</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -167,8 +167,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>25</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -176,8 +176,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>30</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>GraveyardZombie</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -185,8 +185,8 @@
             <IsEnemy>true</IsEnemy>
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>10</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>HolyPlace</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -194,8 +194,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>50</MinPercentScout>
             <MaxPercentScout>75</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>ThroneLightning</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -203,8 +203,8 @@
             <IsEnemy>true</IsEnemy>
             <MinPercentScout>20</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>WolfsDen</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -212,8 +212,8 @@
             <IsEnemy>true</IsEnemy>
             <MinPercentScout>10</MinPercentScout>
             <MaxPercentScout>75</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>BearsDen</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -221,8 +221,8 @@
             <IsEnemy>true</IsEnemy>
             <MinPercentScout>75</MinPercentScout>
             <MaxPercentScout>100</MaxPercentScout>
-          </TypeConstruction>
-        </TypeConstructions>
+          </Construction>
+        </Constructions>
       </Location>
       <Location>
         <ID>LocationSwamp</ID>
@@ -233,8 +233,8 @@
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
         <BaseScoutingArea>50</BaseScoutingArea>
-        <TypeConstructions>
-          <TypeConstruction>
+        <Constructions>
+          <Construction>
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -242,8 +242,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
-          </TypeConstruction>
-        </TypeConstructions>
+          </Construction>
+        </Constructions>
       </Location>
       <Location>
         <ID>LocationMountain</ID>
@@ -254,8 +254,8 @@
         <Area>1000</Area>
         <ScoutedArea>0</ScoutedArea>
         <BaseScoutingArea>150</BaseScoutingArea>
-        <TypeConstructions>
-          <TypeConstruction>
+        <Constructions>
+          <Construction>
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -263,8 +263,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
-          </TypeConstruction>
-          <TypeConstruction>
+          </Construction>
+          <Construction>
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
@@ -272,8 +272,8 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
-          </TypeConstruction>
-        </TypeConstructions>
+          </Construction>
+        </Constructions>
       </Location>
     </Locations>  
   </TypeLobby>
