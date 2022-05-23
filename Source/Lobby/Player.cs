@@ -268,7 +268,14 @@ namespace Fantasy_Kingdoms_Battle
             ExtraLevelUp = 0;
             ExtraResearch = 0;
 
-            foreach (Construction pc in Constructions)
+            Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
+            if (Lobby.Turn == 1)
+                Builders += Lobby.TypeLobby.StartBuilders;
+            FreeBuilders = Builders;
+
+            List<Construction> lc = new List<Construction>();
+            lc.AddRange(Constructions);
+            foreach (Construction pc in lc)// Коллекция меняется при замене объекта
                 pc.PrepareTurn();
 
             List<Hero> listForDelete = new List<Hero>();
@@ -301,11 +308,6 @@ namespace Fantasy_Kingdoms_Battle
                 AllHeroes.Remove(h);
                 CombatHeroes.Remove(h);
             }
-
-            Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
-            if (Lobby.Turn == 1)
-                Builders += Lobby.TypeLobby.StartBuilders;
-            FreeBuilders = Builders;
 
             SetTaskForHeroes();
         }
