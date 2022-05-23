@@ -123,6 +123,12 @@ namespace Fantasy_Kingdoms_Battle
                 CreateMonsters();
 
             Player.Constructions.Add(this);
+
+            if (ls.Resources != null)
+            {
+                BaseIncomeResources = new ListBaseResources(ls.Resources);
+            }
+
             // Восстановить
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;

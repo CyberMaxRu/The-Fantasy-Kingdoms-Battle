@@ -153,9 +153,9 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
-            <IncomeResources>
-              <Wood>200</Wood>
-            </IncomeResources>
+            <Resources>
+              <Wood>100</Wood>
+            </Resources>
           </Construction>
           <Construction>
             <ID>Stones</ID>
@@ -163,9 +163,9 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
-            <IncomeResources>
-              <Stone>500</Stone>
-            </IncomeResources>
+            <Resources>
+              <Stone>200</Stone>
+            </Resources>>
           </Construction>
           <Construction>
             <ID>Ore</ID>
@@ -173,9 +173,9 @@
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
-            <IncomeResources>
-              <Iron>200</Iron>
-            </IncomeResources>
+            <Resources>
+              <Iron>50</Iron>
+            </Resources>
           </Construction>
         </Constructions>
       </Location>
@@ -197,6 +197,9 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>20</MinPercentScout>
             <MaxPercentScout>40</MaxPercentScout>
+            <Resources>
+              <Wood>250</Wood>
+            </Resources>
           </Construction>
           <Construction>
             <ID>StoneQuarry</ID>
@@ -206,6 +209,9 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>30</MinPercentScout>
             <MaxPercentScout>60</MaxPercentScout>
+            <Resources>
+              <Stone>500</Stone>
+            </Resources>
           </Construction>
           <Construction>
             <ID>TradePost</ID>
@@ -290,6 +296,9 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>20</MinPercentScout>
             <MaxPercentScout>40</MaxPercentScout>
+            <Resources>
+              <Iron>200</Iron>
+            </Resources>
           </Construction>
           <Construction>
             <ID>Treasure</ID>

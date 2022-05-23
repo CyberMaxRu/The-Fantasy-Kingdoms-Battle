@@ -21,6 +21,10 @@ namespace Fantasy_Kingdoms_Battle
             MaxPercentScout = XmlUtils.GetInteger(n, "MaxPercentScout");
             PathToLocation = XmlUtils.GetString(n, "PathToLocation");
 
+            XmlNode nr = n.SelectSingleNode("Resources");
+            if (nr != null)
+                Resources = new ListBaseResources(nr);
+
             Debug.Assert(!(Own && !Visible));
 
             if (IsEnemy)
@@ -67,5 +71,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int MinPercentScout { get; }
         internal int MaxPercentScout { get; }
         internal string PathToLocation { get; }//
+        internal ListBaseResources Resources { get; }// Ресурсы в сооружении
     }
 }
