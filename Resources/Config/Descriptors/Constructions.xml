@@ -6737,6 +6737,12 @@
         <Number>1</Number>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>Lumberjack</Entity>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>Lumberjack</ID>
@@ -6782,6 +6788,12 @@
         <Number>1</Number>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>StoneQuarry</Entity>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>StoneQuarry</ID>
@@ -6827,12 +6839,18 @@
         <Number>1</Number>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>Foundry</Entity>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>Foundry</ID>
     <Name>Плавильня</Name>
     <Description>Здесь добывают железо и переплавляют в железо.</Description>
-    <ImageIndex>171</ImageIndex>
+    <ImageIndex>186</ImageIndex>
     <TypeConstruction>Village</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
