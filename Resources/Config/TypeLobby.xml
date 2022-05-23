@@ -149,30 +149,24 @@
           </Construction>
           <Construction>
             <ID>FellingArea</ID>
-            <Visible>false</Visible>
+            <Visible>true</Visible>
             <Own>false</Own>
-            <CanOwn>true</CanOwn>
+            <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
-            <MinPercentScout>20</MinPercentScout>
-            <MaxPercentScout>30</MaxPercentScout>
           </Construction>
           <Construction>
             <ID>Stones</ID>
-            <Visible>false</Visible>
+            <Visible>true</Visible>
             <Own>false</Own>
-            <CanOwn>true</CanOwn>
+            <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
-            <MinPercentScout>20</MinPercentScout>
-            <MaxPercentScout>30</MaxPercentScout>
           </Construction>
           <Construction>
             <ID>Ore</ID>
-            <Visible>false</Visible>
+            <Visible>true</Visible>
             <Own>false</Own>
-            <CanOwn>true</CanOwn>
+            <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
-            <MinPercentScout>20</MinPercentScout>
-            <MaxPercentScout>30</MaxPercentScout>
           </Construction>
         </Constructions>
       </Location>
