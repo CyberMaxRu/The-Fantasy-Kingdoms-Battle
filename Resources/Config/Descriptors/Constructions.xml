@@ -6766,6 +6766,9 @@
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
+        <Mining>
+          <Wood>1</Wood>
+        </Mining>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -6817,6 +6820,9 @@
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
+        <Mining>
+          <Stone>1</Stone>
+        </Mining>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -6868,6 +6874,9 @@
           <DaysProcessing>4</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
+        <Mining>
+          <Iron>1</Iron>
+        </Mining>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>

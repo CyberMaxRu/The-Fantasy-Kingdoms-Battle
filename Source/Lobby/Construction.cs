@@ -144,6 +144,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
+        // 
+        //internal ListBaseResources BaseIncomeResources { get; }// Базовые значения добываемых ресурсов
+
         private void TuneCellMenuBuildOrUpgrade()
         {
             CellMenuBuildOrLevelUp = null;

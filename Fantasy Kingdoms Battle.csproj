@@ -141,6 +141,7 @@
     <Compile Include="Source\Lobby\EntityForConstruction.cs" />
     <Compile Include="Source\Lobby\EntityProperties.cs" />
     <Compile Include="Source\Lobby\GroupItem.cs" />
+    <Compile Include="Source\Lobby\ListCoefMining.cs" />
     <Compile Include="Source\Lobby\LobbySettings.cs" />
     <Compile Include="Source\Lobby\LobbySettingsPlayer.cs" />
     <Compile Include="Source\Lobby\Location.cs" />

@@ -61,6 +61,10 @@ namespace Fantasy_Kingdoms_Battle
             if (Number > 1)
                 GetCreating().Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1));
 
+            XmlNode nm = n.SelectSingleNode("Mining");
+            if (nm != null)
+                Mining = new ListCoefMining(nm);
+
             Debug.Assert(Number >= 1);
             Debug.Assert(Number <= 5);
             Debug.Assert(MaxInhabitant >= 0);
@@ -90,6 +94,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionVisitSimple DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
         internal ListDefaultProperties Properties { get; }// Список характеристик
+        internal ListCoefMining Mining { get; }// Коэффициенты добычи ресурса
 
 
         protected override string GetName(XmlNode n)
