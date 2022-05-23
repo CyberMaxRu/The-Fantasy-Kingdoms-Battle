@@ -95,6 +95,42 @@ namespace Fantasy_Kingdoms_Battle
             UpdateSelectedColor();
         }
 
+        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeLair, l.Lobby)
+        {
+            Player = l.Player;
+            TypeConstruction = ls.TypeLair;
+            Location = l;
+            DaysBuilded = 0;
+            PlayerIsOwner = ls.Own;
+            PlayerCanOwn = ls.CanOwn;
+            IsEnemy = ls.IsEnemy;
+            Visible = ls.Visible;// && !location.Ownership;
+            IDPathToLocation = ls.PathToLocation;
+
+            // Настраиваем исследования 
+            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
+                Researches.Add(CellMenuConstruction.Create(this, d));
+
+            Level = ls.TypeLair.DefaultLevel;
+            if (Level > 0)
+            {
+                AddPerksToPlayer();
+                CreateProducts();
+            }
+
+            // Убрать эту проверку после настройки всех логов
+            if (TypeConstruction.Monsters.Count > 0)
+                CreateMonsters();
+
+            Player.Constructions.Add(this);
+            // Восстановить
+            //if (Construction.HasTreasury)
+            //    Gold = Construction.GoldByConstruction;
+
+            TuneCellMenuBuildOrUpgrade();
+            UpdateSelectedColor();
+        }
+
         internal DescriptorConstruction TypeConstruction { get; }
         internal bool PlayerIsOwner { get; private set; }// Игрок - владелец сооружения
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
@@ -145,7 +181,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
         // 
-        //internal ListBaseResources BaseIncomeResources { get; }// Базовые значения добываемых ресурсов
+        internal ListBaseResources BaseIncomeResources { get; }// Базовые значения добываемых ресурсов
 
         private void TuneCellMenuBuildOrUpgrade()
         {

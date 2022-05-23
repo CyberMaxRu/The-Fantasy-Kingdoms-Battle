@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             // Создание сооружений согласно настройкам
             foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
             {
-                Construction c = new Construction(player, ls.TypeLair, this, ls.Visible, ls.Own, ls.CanOwn, ls.IsEnemy, ls.PathToLocation);
+                Construction c = new Construction(this, ls);
                 Lairs.Add(c);
 
                 if (!ls.Visible)
