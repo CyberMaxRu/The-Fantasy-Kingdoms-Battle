@@ -126,7 +126,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (ls.Resources != null)
             {
-                BaseIncomeResources = new ListBaseResources(ls.Resources);
+                BaseMiningResources = new ListBaseResources(ls.Resources);
+                CurrentMiningResources = new ListBaseResources();
+                UpdateCurrentIncomeResources();
             }
 
             // Восстановить
@@ -187,7 +189,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
         // 
-        internal ListBaseResources BaseIncomeResources { get; }// Базовые значения добываемых ресурсов
+        internal ListBaseResources BaseMiningResources { get; }// Базовые значения добываемых ресурсов
+        internal ListBaseResources CurrentMiningResources { get; }// Текущие значения добываемых ресурсов
+        internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
 
         private void TuneCellMenuBuildOrUpgrade()
         {
@@ -201,6 +205,16 @@ namespace Fantasy_Kingdoms_Battle
                     CellMenuBuildOrLevelUp = cml;
                     break;
                 }
+            }
+        }
+
+        private void UpdateCurrentIncomeResources()
+        {
+            MiningBaseResources = TypeConstruction.Levels[Level].Mining != null;
+            if (MiningBaseResources)
+            {
+                for (int i = 0; i < BaseMiningResources.Count; i++)
+                    CurrentMiningResources[i].Quantity = Convert.ToInt32(BaseMiningResources[i].Quantity * TypeConstruction.Levels[Level].Mining[i] / 10);
             }
         }
 
@@ -286,6 +300,8 @@ namespace Fantasy_Kingdoms_Battle
                 MainPerk = new Perk(this, TypeConstruction.Levels[Level].Properties);
                 Perks.Add(MainPerk);
             }
+            
+            UpdateCurrentIncomeResources();// Настраиваем добычу базовых ресурсов
 
             Initialize();
 
