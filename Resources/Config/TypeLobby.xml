@@ -147,6 +147,33 @@
             <MaxPercentScout>95</MaxPercentScout>
             <PathToLocation>LocationMountain</PathToLocation>
           </Construction>
+          <Construction>
+            <ID>FellingArea</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>30</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>Stones</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>30</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>Ore</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>30</MaxPercentScout>
+          </Construction>
         </Constructions>
       </Location>
       <Location>
@@ -253,7 +280,7 @@
         <BaseScoutingArea>50</BaseScoutingArea>
         <Constructions>
           <Construction>
-            <ID>OreMine</ID>
+            <ID>Ore</ID>
             <Visible>false</Visible>
             <Own>false</Own>
             <CanOwn>true</CanOwn>

@@ -6721,9 +6721,27 @@
     </Levels>
   </Construction>
   <Construction>
+    <ID>FellingArea</ID>
+    <Name>Лесосека</Name>
+    <Description>Это удобное место, чтобы рубить деревья.</Description>
+    <ImageIndex>172</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>FellingArea1</ID>
+        <Number>1</Number>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
     <ID>Lumberjack</ID>
     <Name>Лесорубка</Name>
-    <Description>Это удобное место, чтобы рубить деревья.</Description>
+    <Description>Здесь рубят деревья.</Description>
     <ImageIndex>169</ImageIndex>
     <TypeConstruction>Village</TypeConstruction>
     <Category>External</Category>
@@ -6748,9 +6766,27 @@
     </Levels>
   </Construction>
   <Construction>
+    <ID>Stones</ID>
+    <Name>Камни</Name>
+    <Description>Здесь можно добывать камень</Description>
+    <ImageIndex>173</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>Stones1</ID>
+        <Number>1</Number>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
     <ID>StoneQuarry</ID>
     <Name>Каменный карьер</Name>
-    <Description>Здесь можно добывать камень.</Description>
+    <Description>Здесь добывается камень.</Description>
     <ImageIndex>170</ImageIndex>
     <TypeConstruction>Village</TypeConstruction>
     <Category>External</Category>
@@ -6775,9 +6811,27 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>OreMine</ID>
-    <Name>Рудная шахта</Name>
-    <Description>Здесь можно добывать железо.</Description>
+    <ID>Ore</ID>
+    <Name>Руда</Name>
+    <Description>Здесь можно добывать руду и переправлять в железо.</Description>
+    <ImageIndex>174</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>Ore1</ID>
+        <Number>1</Number>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>Foundry</ID>
+    <Name>Плавильня</Name>
+    <Description>Здесь добывают железо и переплавляют в железо.</Description>
     <ImageIndex>171</ImageIndex>
     <TypeConstruction>Village</TypeConstruction>
     <Category>External</Category>
