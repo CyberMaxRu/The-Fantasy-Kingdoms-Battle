@@ -283,7 +283,8 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.layerGame.UpdateNeighborhoods();
 
             Program.formMain.SetNeedRedrawFrame();
-            Program.formMain.PlayConstructionComplete();
+            if (!Construction.Lobby.InPrepareTurn)
+                Program.formMain.PlayConstructionComplete();
         }
 
         internal override ListBaseResources GetCost()

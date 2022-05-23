@@ -140,6 +140,8 @@ namespace Fantasy_Kingdoms_Battle
         internal Random Rnd { get; } = new Random();
         internal List<DescriptorConstruction>[,] Lairs { get; }
 
+        internal bool InPrepareTurn { get; private set; }
+
         internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
         internal int DaysLeftForBattle { get; private set; }// Осталось дней до следующей битвы между игроками
 
@@ -250,7 +252,9 @@ namespace Fantasy_Kingdoms_Battle
                     if (Players[i].IsLive || (Players[i].DayOfEndGame == Turn - 1))
                     {
                         SetPlayerAsCurrent(i);
+                        InPrepareTurn = true;
                         Players[i].PrepareTurn();
+                        InPrepareTurn = false;
                         Layer.ShowCurrentPlayerLobby();
 
                         if (HumanIsWin)
