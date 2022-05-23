@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblSectionSpells;
         private VCLabel lblSectionExtensions;
         private VCLabel lblSectionImprovements;
+        private VCLabel lblSectionBaseResources;
         private VCLabel lblSectionResources;
         private VCLabel lblSectionServices;
         private VCLabel lblSectionGoods;
@@ -28,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelWithPanelEntity panelSpells;
         private readonly PanelWithPanelEntity panelExtensions;
         private readonly PanelWithPanelEntity panelImprovements;
+        private readonly PanelWithPanelEntity panelBaseResources;
         private readonly PanelWithPanelEntity panelResources;
         private readonly PanelWithPanelEntity panelServices;
         private readonly PanelWithPanelEntity panelGoods;
@@ -76,6 +78,8 @@ namespace Fantasy_Kingdoms_Battle
             lblSectionExtensions.StringFormat.Alignment = StringAlignment.Near;
             lblSectionImprovements = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Улучшения:");
             lblSectionImprovements.StringFormat.Alignment = StringAlignment.Near;
+            lblSectionBaseResources = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Базовые ресурсы:");
+            lblSectionBaseResources.StringFormat.Alignment = StringAlignment.Near;
             lblSectionResources = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Ресурсы:");
             lblSectionResources.StringFormat.Alignment = StringAlignment.Near;
             lblSectionServices = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Услуги:");
@@ -93,6 +97,8 @@ namespace Fantasy_Kingdoms_Battle
             tabProducts.AddControl(panelExtensions);
             panelImprovements = new PanelWithPanelEntity(4, false);
             tabProducts.AddControl(panelImprovements);
+            panelBaseResources = new PanelWithPanelEntity(4, false);
+            tabProducts.AddControl(panelBaseResources);
             panelResources = new PanelWithPanelEntity(4, false);
             tabProducts.AddControl(panelResources);
             panelServices = new PanelWithPanelEntity(4, false);
@@ -113,6 +119,7 @@ namespace Fantasy_Kingdoms_Battle
             lblSectionSpells.Width = pageControl.Width;
             lblSectionExtensions.Width = pageControl.Width;
             lblSectionImprovements.Width = pageControl.Width;
+            lblSectionBaseResources.Width = pageControl.Width;
             lblSectionResources.Width = pageControl.Width;
             lblSectionServices.Width = pageControl.Width;
             lblSectionGoods.Width = pageControl.Width;
@@ -172,6 +179,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawList(lblSectionSpells, panelSpells, Construction.Spells);
             DrawList(lblSectionExtensions, panelExtensions, Construction.Extensions);
             DrawList(lblSectionImprovements, panelImprovements, Construction.Improvements);
+            DrawList(lblSectionBaseResources, panelBaseResources, Construction.BaseMiningResources);
             DrawList(lblSectionResources, panelResources, Construction.Resources);
             DrawList(lblSectionServices, panelServices, Construction.Services);
             DrawList(lblSectionGoods, panelGoods, Construction.Goods);
