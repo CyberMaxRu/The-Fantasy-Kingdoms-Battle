@@ -458,7 +458,7 @@ namespace Fantasy_Kingdoms_Battle
             if (TaxForGuild > 0)
                 Construction.ChangeGold(-TaxForGuild);
             if (PayForHireWithoutTax > 0)
-                SpendGold(-PayForHireWithoutTax);
+                SpendGold(PayForHireWithoutTax);
 
             PayForHire = 0;
             TaxForGuild = 0;
