@@ -275,7 +275,8 @@ namespace Fantasy_Kingdoms_Battle
             {*/
 
             Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, Construction.Location, true, true, true, false, TypeNoticeForPlayer.Build);
-            Construction.Location.Lairs.Add(pc);
+            Construction.Location.Lairs[Construction.Location.Lairs.IndexOf(Construction)] = pc;
+            Construction.Destroy();
             Program.formMain.layerGame.SelectPlayerObject(pc);
             //}
 

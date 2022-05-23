@@ -1065,11 +1065,23 @@ namespace Fantasy_Kingdoms_Battle
             DropFlag();
         }
 
+        // Сооружение уничтожено 
+        internal void Destroy()
+        {
+            AssertNotDestroyed();
+
+            // Убираем себя из списка логов игрока
+            Player.RemoveLair(this);
+
+            // Если сооружение было выбрано, очищаем ссылку
+            Lobby.Layer.ObjectDestroyed(this);
+            Destroyed = true;
+        }
+
         // Логово захвачено
         internal void DoCapture()
         {
             AssertNotHidden();
-            AssertNotDestroyed();
             Debug.Assert(TypeFlag == TypeFlag.Attack);
             Debug.Assert(listAttackedHero.Count > 0);
 
@@ -1078,13 +1090,8 @@ namespace Fantasy_Kingdoms_Battle
 
             DropFlag();
 
-            // Убираем себя из списка логов игрока
-            Player.RemoveLair(this);
             Player.ApplyReward(this);
-            Destroyed = true;
-
-            // Если сооружение было выбрано, очищаем ссылку
-            Lobby.Layer.ObjectDestroyed(this);
+            Destroy();
 
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
