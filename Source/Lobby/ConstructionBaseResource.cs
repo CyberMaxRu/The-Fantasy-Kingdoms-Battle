@@ -26,6 +26,11 @@ namespace Fantasy_Kingdoms_Battle
             return Quantity.ToString();
         }
 
+        internal override bool GetNormalImage()
+        {
+            return Construction.MiningBaseResources;
+        }
+
         internal override void PrepareHint(PanelHint panelHint)
         {
             panelHint.AddStep2Header(Descriptor.Name, GetImageIndex());
