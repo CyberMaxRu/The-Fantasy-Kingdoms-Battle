@@ -37,7 +37,8 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep3Type(Descriptor.GetTypeEntity());
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep4Level($"+{Quantity} в день");
-            //panelHint.AddStep10CostGold(GetCostGold());
+            if (!Construction.MiningBaseResources && (DescriptorBaseResource.ConstructionForMining != null))
+                panelHint.AddStep5Description("Постройте {" + DescriptorBaseResource.ConstructionForMining.Name + "} для добычи ресурса");
         }
     }
 }

@@ -13,6 +13,7 @@
     <Descriptions>Используется для строительства сооружений, оружия</Descriptions>
     <ImageIndex>262</ImageIndex>
     <ImageIndex16>26</ImageIndex16>
+    <ConstructionForMining>Lumberjack</ConstructionForMining>
   </BaseResource>
   <BaseResource>
     <ID>Iron</ID>
@@ -20,6 +21,7 @@
     <Descriptions>Используется для строительства оружия, доспехов</Descriptions>
     <ImageIndex>263</ImageIndex>
     <ImageIndex16>27</ImageIndex16>
+    <ConstructionForMining>Foundry</ConstructionForMining>
   </BaseResource>
   <BaseResource>
     <ID>Stone</ID>
@@ -27,5 +29,6 @@
     <Descriptions>Основной материал для строительства сооружений</Descriptions>
     <ImageIndex>264</ImageIndex>
     <ImageIndex16>28</ImageIndex16>
+    <ConstructionForMining>StoneQuarry</ConstructionForMining>
   </BaseResource>
 </Descriptors>

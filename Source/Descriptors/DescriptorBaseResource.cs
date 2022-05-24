@@ -10,10 +10,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorBaseResource : DescriptorSmallEntity
     {
+        private string constructionForMining;
         public DescriptorBaseResource(XmlNode n) : base(n)
         {
             ImageIndex16 = XmlUtils.GetIntegerNotNull(n, "ImageIndex16");
             Number = Descriptors.BaseResources.Count;
+            constructionForMining = XmlUtils.GetString(n, "ConstructionForMining");
 
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
@@ -25,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Number { get; }
         internal int ImageIndex16 { get; }
+        internal DescriptorConstruction ConstructionForMining { get; private set; }
 
         protected override int ShiftImageIndex()
         {
@@ -34,6 +37,17 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetTypeEntity()
         {
             return "Базовый ресурс";
+        }
+
+        internal override void TuneLinks()
+        {
+            base.TuneLinks();
+
+            if (constructionForMining.Length > 0)
+            {
+                ConstructionForMining = Descriptors.FindConstruction(constructionForMining);
+                constructionForMining = "";
+            }
         }
     }
 }
