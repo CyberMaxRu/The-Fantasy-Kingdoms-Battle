@@ -210,11 +210,14 @@ namespace Fantasy_Kingdoms_Battle
 
         private void UpdateCurrentIncomeResources()
         {
-            MiningBaseResources = TypeConstruction.Levels[Level].Mining != null;
-            if (MiningBaseResources)
+            if (Level > 0)
             {
-                for (int i = 0; i < BaseMiningResources.Count; i++)
-                    CurrentMiningResources[i].Quantity = Convert.ToInt32(BaseMiningResources[i].Quantity * TypeConstruction.Levels[Level].Mining[i] / 10);
+                MiningBaseResources = TypeConstruction.Levels[Level].Mining != null;
+                if (MiningBaseResources)
+                {
+                    for (int i = 0; i < BaseMiningResources.Count; i++)
+                        CurrentMiningResources[i].Quantity = Convert.ToInt32(BaseMiningResources[i].Quantity * TypeConstruction.Levels[Level].Mining[i] / 10);
+                }
             }
         }
 
