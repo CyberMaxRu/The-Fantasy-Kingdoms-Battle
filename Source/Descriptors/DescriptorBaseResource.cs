@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorBaseResource : DescriptorEntity
+    internal sealed class DescriptorBaseResource : DescriptorSmallEntity
     {
         public DescriptorBaseResource(XmlNode n) : base(n)
         {
@@ -29,6 +29,11 @@ namespace Fantasy_Kingdoms_Battle
         protected override int ShiftImageIndex()
         {
             return FormMain.Config.ImageIndexFirstItems + 1;
+        }
+
+        internal override string GetTypeEntity()
+        {
+            return "Базовый ресурс";
         }
     }
 }

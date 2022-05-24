@@ -179,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawList(lblSectionSpells, panelSpells, Construction.Spells);
             DrawList(lblSectionExtensions, panelExtensions, Construction.Extensions);
             DrawList(lblSectionImprovements, panelImprovements, Construction.Improvements);
-            DrawList(lblSectionBaseResources, panelBaseResources, Construction.BaseMiningResources);
+            DrawList(lblSectionBaseResources, panelBaseResources, Construction.BaseResources);
             DrawList(lblSectionResources, panelResources, Construction.Resources);
             DrawList(lblSectionServices, panelServices, Construction.Services);
             DrawList(lblSectionGoods, panelGoods, Construction.Goods);

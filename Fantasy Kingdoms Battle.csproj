@@ -65,6 +65,7 @@
     <Compile Include="Source\Descriptors\DescriptorTimeOfDay.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />
     <Compile Include="Source\Forms\WindowSetupTournament.cs" />
+    <Compile Include="Source\Lobby\ConstructionBaseResource.cs" />
     <Compile Include="Source\Lobby\ConstructionSpell.cs" />
     <Compile Include="Source\Lobby\Creature\CellMenuCreature.cs" />
     <Compile Include="Source\Lobby\Creature\CreatureModifyParameters.cs" />

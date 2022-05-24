@@ -126,8 +126,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (ls.Resources != null)
             {
-                BaseMiningResources = new ListBaseResources(ls.Resources);
-                CurrentMiningResources = new ListBaseResources();
+                InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
                 UpdateCurrentIncomeResources();
             }
 
@@ -177,6 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionVisit> Visits { get; } = new List<ConstructionVisit>();//
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
         internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
+        internal List<ConstructionBaseResource> BaseResources { get; } = new List<ConstructionBaseResource>();// Базовые ресурсы
         internal List<ConstructionResource> Resources { get; } = new List<ConstructionResource>();// Ресурсы
         internal List<ConstructionService> Services { get; } = new List<ConstructionService>();// Услуги, доступные в строении
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
@@ -189,8 +189,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
         // 
-        internal ListBaseResources BaseMiningResources { get; }// Базовые значения добываемых ресурсов
-        internal ListBaseResources CurrentMiningResources { get; }// Текущие значения добываемых ресурсов
+        internal ListBaseResources InitialQuantityBaseResources { get; }// Исходные значения базовых ресурсов
         internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
 
         private void TuneCellMenuBuildOrUpgrade()
@@ -212,11 +211,28 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Level > 0)
             {
-                MiningBaseResources = TypeConstruction.Levels[Level].Mining != null;
-                if (MiningBaseResources)
+                BaseResources.Clear();
+
+                if (InitialQuantityBaseResources != null)
                 {
-                    for (int i = 0; i < BaseMiningResources.Count; i++)
-                        CurrentMiningResources[i].Quantity = Convert.ToInt32(BaseMiningResources[i].Quantity * TypeConstruction.Levels[Level].Mining[i] / 10);
+                    MiningBaseResources = TypeConstruction.Levels[Level].Mining != null;
+
+                    for (int i = 0; i < InitialQuantityBaseResources.Count; i++)
+                    {
+                        if (InitialQuantityBaseResources[i].Quantity > 0)
+                        {
+                            int coefMining = TypeConstruction.Levels[Level].Mining != null ? TypeConstruction.Levels[Level].Mining[i] : 1;
+                            int quantity = Convert.ToInt32(InitialQuantityBaseResources[i].Quantity * coefMining / 10);
+                            Debug.Assert(quantity > 0);
+                            ConstructionBaseResource cbr = new ConstructionBaseResource(this, InitialQuantityBaseResources[i].Descriptor);
+                            cbr.Quantity = quantity;
+                            BaseResources.Add(cbr);
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.Assert(TypeConstruction.Levels[Level].Mining is null);
                 }
             }
         }
