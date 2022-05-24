@@ -6855,7 +6855,7 @@
   <Construction>
     <ID>Foundry</ID>
     <Name>Плавильня</Name>
-    <Description>Здесь добывают железо и переплавляют в железо.</Description>
+    <Description>Здесь добывают железную руду и переплавляют в железо.</Description>
     <ImageIndex>186</ImageIndex>
     <TypeConstruction>Village</TypeConstruction>
     <Category>External</Category>
