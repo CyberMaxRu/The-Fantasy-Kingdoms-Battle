@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgTypeLocation_Click(object sender, EventArgs e)
         {
-            Program.formMain.layerGame.SelectPlayerObject(Location);
+            Program.formMain.layerGame.SelectPlayerObject(Location, -1, true);
         }
 
         private void LblDanger_ShowHint(object sender, EventArgs e)

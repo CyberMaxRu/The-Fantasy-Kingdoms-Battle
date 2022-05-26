@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <TypeLandscape>
-    <ID>Plain</ID>
+    <ID>TypeLandscapePlain</ID>
     <Name>Равнина</Name>
     <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
     <ImageIndex>167</ImageIndex>
@@ -13,10 +13,11 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Forest</ID>
+    <ID>TypeLandscapeForest</ID>
     <Name>Лес</Name>
     <Description>Лес - полон волков и медведей.</Description>
     <ImageIndex>165</ImageIndex>
+    <SoundSelect>forest_select.wav</SoundSelect>
     <Constructions>
       <Construction>Forest</Construction>
       <Construction>Meadow</Construction>
@@ -25,10 +26,11 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Swamp</ID>
+    <ID>TypeLandscapeSwamp</ID>
     <Name>Болото</Name>
     <Description>В болотах Ардании сгинуло немало смелых героев.</Description>
     <ImageIndex>164</ImageIndex>
+    <SoundSelect>swamp_select.wav</SoundSelect>
     <Constructions>
       <Construction>Swamp</Construction>
       <Construction>Marsh</Construction>
@@ -36,10 +38,11 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Mountain</ID>
+    <ID>TypeLandscapeMountain</ID>
     <Name>Горы</Name>
     <Description>В горах можно добыть много металла. Например, золота. А там где золото - там драконы.</Description>
     <ImageIndex>166</ImageIndex>
+    <SoundSelect>mountain_select.wav</SoundSelect>
     <Constructions>
       <Construction>Mountain</Construction>
       <Construction>MountainSpring</Construction>
@@ -48,7 +51,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Wasteland</ID>
+    <ID>TypeLandscapeWasteland</ID>
     <Name>Пустошь</Name>
     <Description>Пустошь - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
     <ImageIndex>168</ImageIndex>
@@ -58,7 +61,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Desert</ID>
+    <ID>TypeLandscapeDesert</ID>
     <Name>Пустыня</Name>
     <Description>В пустыне легко затеряться.</Description>
     <ImageIndex>163</ImageIndex>
@@ -68,7 +71,7 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Village</ID>
+    <ID>TypeLandscapeVillage</ID>
     <Name>Деревня</Name>
     <Description>В деревне живут подданные короля - крестьяне.</Description>
     <ImageIndex>162</ImageIndex>
@@ -77,10 +80,11 @@
     </Constructions>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>NeighborhoodOfCity</ID>
+    <ID>TypeLandscapeNeighborhoodOfCity</ID>
     <Name>Окрестности города</Name>
     <Description>Город - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
     <ImageIndex>183</ImageIndex>
+    <SoundSelect>neighborhood_of_city_select.wav</SoundSelect>
     <Constructions>
       <Construction>Sewer</Construction>
       <Construction>CityGraveyard</Construction>

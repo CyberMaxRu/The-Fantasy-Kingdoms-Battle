@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal abstract void ShowInfo(int selectPage = -1);
 
-        internal void PlayDefaultSoundSelect()
+        internal virtual void PlayDefaultSoundSelect()
         {
             if (Descriptor.UriSoundSelect != null)
                 Program.formMain.PlaySoundSelect(Descriptor.UriSoundSelect);

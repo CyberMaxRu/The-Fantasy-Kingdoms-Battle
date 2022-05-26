@@ -6729,7 +6729,7 @@
     <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <SoundSelect>felling_area_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
@@ -6753,7 +6753,7 @@
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <SoundSelect>lumberjack_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
@@ -6783,7 +6783,7 @@
     <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <SoundSelect>stones_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
@@ -6807,7 +6807,7 @@
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <SoundSelect>stone_quarry_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
@@ -6837,7 +6837,7 @@
     <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <SoundSelect>ore_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
@@ -6861,7 +6861,7 @@
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <SoundSelect>foundry_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>

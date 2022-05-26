@@ -226,5 +226,11 @@ namespace Fantasy_Kingdoms_Battle
 
             HeroesForScout.Clear();
         }
+
+        internal override void PlayDefaultSoundSelect()
+        {
+            if (Settings.TypeLandscape.UriSoundSelect != null)
+                Program.formMain.PlaySoundSelect(Settings.TypeLandscape.UriSoundSelect);
+        }
     }
 }

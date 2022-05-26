@@ -9,7 +9,7 @@
     <TournamentSettings>
       <Tournament>
         <TypeLobby>WarOf8Lords</TypeLobby>
-        <TypeLandscape>Forest</TypeLandscape>
+        <TypeLandscape>TypeLandscapeForest</TypeLandscape>
         <Players>
           <Player>
             <Index>0</Index>

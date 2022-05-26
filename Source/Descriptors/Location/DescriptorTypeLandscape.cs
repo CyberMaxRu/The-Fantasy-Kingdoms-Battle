@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс типа местности
-    internal sealed class DescriptorTypeLandscape : DescriptorVisual
+    internal sealed class DescriptorTypeLandscape : DescriptorEntity
     {
         internal List<string> nameElements = new List<string>();
         private Bitmap BackgroundImage;
