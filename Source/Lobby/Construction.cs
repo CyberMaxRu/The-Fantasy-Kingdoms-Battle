@@ -1709,5 +1709,13 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override Color GetSelectedColor() => SelectedColor;
+
+        internal override void PlaySoundSelect()
+        {
+            if (Visible)
+                base.PlaySoundSelect();
+            else
+                Program.formMain.PlayPushButton();
+        }
     }
 }

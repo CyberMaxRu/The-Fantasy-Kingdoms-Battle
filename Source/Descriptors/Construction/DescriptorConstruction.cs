@@ -279,11 +279,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorReward HiddenReward { get; }// Скрытая награда за зачистку логова
         internal DescriptorConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
 
-        internal void PlaySoundSelect()
-        {
-            Program.formMain.PlaySoundSelect(UriSoundSelect);
-        }
-
         internal override void TuneLinks()
         {
             base.TuneLinks();

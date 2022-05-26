@@ -32,6 +32,18 @@ namespace Fantasy_Kingdoms_Battle
         internal EntityProperties Properties { get; set; }// Характеристики
 
         internal abstract void ShowInfo(int selectPage = -1);
+
+        internal void PlayDefaultSoundSelect()
+        {
+            if (Descriptor.UriSoundSelect != null)
+                Program.formMain.PlaySoundSelect(Descriptor.UriSoundSelect);
+        }
+
+        internal virtual void PlaySoundSelect()
+        {
+            PlayDefaultSoundSelect();
+        }
+
         internal virtual void HideInfo()
         {
             listCreature = null;

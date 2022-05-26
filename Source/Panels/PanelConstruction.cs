@@ -331,7 +331,7 @@ namespace Fantasy_Kingdoms_Battle
         private void ImgLair_Click(object sender, EventArgs e)
         {
             if (!Selected())
-                PlaySelect();
+                Construction.PlaySoundSelect();
             SelectThisConstruction();
         }
 
@@ -371,14 +371,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction = po as Construction;
             SwitchStyle();
-        }
-
-        private void PlaySelect()
-        {
-            if (Construction.Visible)
-                Construction.TypeConstruction.PlaySoundSelect();
-            else
-                Program.formMain.PlayPushButton();
         }
 
         private void SwitchStyle()
