@@ -1346,7 +1346,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Click(VCCell pe)
         {
             base.Click(pe);
-            Lobby.Layer.SelectPlayerObject(this);
+            Lobby.Layer.SelectPlayerObject(this, -1, true);
         }
 
         internal override string GetName()

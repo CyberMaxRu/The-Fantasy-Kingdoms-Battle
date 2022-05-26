@@ -13,7 +13,7 @@
   <Sound>
     <PlaySound>True</PlaySound>
     <PlayMusic>False</PlayMusic>
-    <VolumeSound>50</VolumeSound>
+    <VolumeSound>26</VolumeSound>
     <VolumeMusic>50</VolumeMusic>
   </Sound>
   <Interface>
