@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Xml;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
 
@@ -9,6 +10,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorEntity(XmlNode n) : base(n)
         {
+            string soundSelect = GetString(n, "SoundSelect");
+            if (soundSelect.Length > 0)
+                UriSoundSelect = new Uri(Program.FolderResources + @"Sound\Interface\ConstructionSelect\" + soundSelect);
+
             Descriptors.AddEntity(this);
         }
 
@@ -16,5 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Descriptors.AddEntity(this);
         }
+
+        internal Uri UriSoundSelect { get; }// Звук при выборе сущности
     }
 }

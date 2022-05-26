@@ -17,18 +17,18 @@ namespace Fantasy_Kingdoms_Battle
     // Тип сооружения - базовый класс для всех зданий, построек и мест
     internal sealed class DescriptorConstruction : DescriptorActiveEntity
     {
-        private readonly Uri uriSoundSelect;// Звук при выборе объекта
         private string nameTypePlaceForConstruct;
 
         public DescriptorConstruction(XmlNode n) : base(n)
         {
+            Debug.Assert(UriSoundSelect != null);
+
             if (GetString(n, "TypeConstruction").Length > 0)
                 TypeConstruction = Descriptors.FindTypeConstruction(GetString(n, "TypeConstruction"));
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.External);
             HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (ID == Config.IDConstructionCastle);
-            uriSoundSelect = new Uri(Program.FolderResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
             nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
 
             if (IsInternalConstruction)
@@ -281,7 +281,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PlaySoundSelect()
         {
-            Program.formMain.PlaySoundSelect(uriSoundSelect);
+            Program.formMain.PlaySoundSelect(UriSoundSelect);
         }
 
         internal override void TuneLinks()
