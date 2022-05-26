@@ -686,7 +686,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SelectPlayerObject(BigEntity po, int selectPage = -1)
+        internal void SelectPlayerObject(BigEntity po, int selectPage = -1, bool playSoundSelect = false)
         {
             if (selectedPlayerObject != po)
             {
@@ -707,6 +707,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (selectedPlayerObject != null)
                 {
+                    if (playSoundSelect)
+                        selectedPlayerObject.PlaySoundSelect();
+
                     selectedPlayerObject.ShowInfo();
                 }
                 else

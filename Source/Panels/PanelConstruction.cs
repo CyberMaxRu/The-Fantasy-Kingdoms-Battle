@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnHeroes_Click(object sender, EventArgs e)
         {
-            SelectThisConstruction();
+            SelectThisConstruction(false);
             Construction.Lobby.Layer.panelConstructionInfo.SelectPageInhabitant();
         }
 
@@ -330,15 +330,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgLair_Click(object sender, EventArgs e)
         {
-            if (!Selected())
-                Construction.PlaySoundSelect();
-            SelectThisConstruction();
+            SelectThisConstruction(true);
         }
 
-        private void SelectThisConstruction()
+        private void SelectThisConstruction(bool playSoundSelect)
         {
             Debug.Assert(Entity != null);
-            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity);
+            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity, -1, playSoundSelect);
         }
 
         protected override bool Selected()
@@ -357,7 +355,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnBuildOrUpgrade_Click(object sender, EventArgs e)
         {
-            SelectThisConstruction();
+            SelectThisConstruction(false);
 
             if (Construction.TypeConstruction.ID == FormMain.Config.IDHolyPlace)
                 return;
@@ -452,7 +450,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            SelectThisConstruction();
+            SelectThisConstruction(false);
             btnCancel.Visible = false;
             Construction.CancelFlag();
             Construction.Player.SetTaskForHeroes();
@@ -537,7 +535,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (btnAction.ImageIsEnabled)
             {
-                SelectThisConstruction();
+                SelectThisConstruction(false);
 
                 if (Construction.PriorityFlag < PriorityExecution.Exclusive)
                 {
