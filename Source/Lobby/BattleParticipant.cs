@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             return c1.IDCreature - c2.IDCreature;
         }
 
-        public BattleParticipant(DescriptorEntity descriptor, Lobby lobby) : base(descriptor, lobby)
+        public BattleParticipant(DescriptorEntity descriptor, Lobby lobby) : base(descriptor, lobby, null)
         {
         }
 

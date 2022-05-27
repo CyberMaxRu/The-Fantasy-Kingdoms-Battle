@@ -22,7 +22,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabelValue lblGreatness;
 
         private readonly VCIconButton48 btnAction;
-        private readonly VCIconButton48 btnCancel;
         private readonly VCIconButton48 btnInhabitants;
         private readonly VCIconButton48 btnAttackHeroes;
         private readonly VCLabelValue lblRewardGold;
@@ -74,10 +73,6 @@ namespace Fantasy_Kingdoms_Battle
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
-            btnCancel = new VCIconButton48(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, FormMain.Config.Gui48_FlagCancel);
-            btnCancel.Click += BtnCancel_Click;
-            btnCancel.ShowHint += BtnCancel_ShowHint;
-
             btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnInhabitants.Click += BtnInhabitants_Click;
             btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
@@ -87,7 +82,7 @@ namespace Fantasy_Kingdoms_Battle
             btnAttackHeroes.ShowHint += BtnAttackHeroes_ShowHint;
 
             lblRewardGold = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), FormMain.Config.HintIncome, true);
-            lblRewardGold.Width = btnCancel.ShiftX - FormMain.Config.GridSize - lblRewardGold.ShiftX;
+            lblRewardGold.Width = btnAction.ShiftX - FormMain.Config.GridSize - lblRewardGold.ShiftX;
             lblRewardGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblRewardGold.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGold.Hint = "Награда золотом за уничтожение";
@@ -173,7 +168,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnQueue.Visible = false;
 
-            if (Construction.Visible && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
+            if (Construction.ComponentObjectOfMap.Visible && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
             {
                 lblRewardGold.Visible = false;
                 lblRewardGreatness.Visible = false;
@@ -261,17 +256,14 @@ namespace Fantasy_Kingdoms_Battle
                 lblGreatness.Visible = false;
                 btnHeroes.Visible = false;
 
-                btnAction.Visible = !Construction.Visible || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
+                btnAction.Visible = !Construction.ComponentObjectOfMap.Visible || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
                 if (btnAction.Visible)
                 {
-                    btnAction.ImageIsEnabled = Construction.Player.ExistsFreeFlag();
-                    int level = (int)(Construction.PriorityFlag + 1);
+                    btnAction.ImageIsEnabled = true;// Construction.Player.ExistsFreeFlag();
+                    int level = 1;
                     btnAction.Level = level == 0 ? "" : level.ToString();
-                    btnAction.LowText = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ValueGold().ToString() : "";
+                    btnAction.LowText = Construction.RequiredGold().ValueGold().ToString();
                 }
-
-                Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Construction.PriorityFlag == PriorityExecution.None)));
-                btnCancel.Visible = Construction.PriorityFlag != PriorityExecution.None;
 
                 if (btnAction.Visible)
                 {
@@ -303,17 +295,17 @@ namespace Fantasy_Kingdoms_Battle
                     btnInhabitants.Visible = false;
                 }
 
-                btnAttackHeroes.Visible = Construction.listAttackedHero.Count > 0;
+                btnAttackHeroes.Visible = Construction.ComponentObjectOfMap.ListHeroesForFlag.Count > 0;
                 if (btnAttackHeroes.Visible)
-                    btnAttackHeroes.LowText = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
+                    btnAttackHeroes.LowText = $"{Construction.ComponentObjectOfMap.ListHeroesForFlag.Count}/{Construction.ComponentObjectOfMap.MaxHeroesForFlag()}";
 
-                lblRewardGold.Visible = Construction.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Cost.ValueGold() > 0);
+                lblRewardGold.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Cost.ValueGold() > 0);
                 if (lblRewardGold.Visible)
                 {
                     lblRewardGold.Text = Construction.TypeConstruction.Reward.Cost.ValueGold().ToString();
                 }
 
-                lblRewardGreatness.Visible = Construction.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Greatness > 0);
+                lblRewardGreatness.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Greatness > 0);
                 if (lblRewardGreatness.Visible)
                 {
                     lblRewardGreatness.Text = Construction.TypeConstruction.Reward.Greatness.ToString();
@@ -392,7 +384,6 @@ namespace Fantasy_Kingdoms_Battle
             void VisibleEnemy(bool visible)
             {
                 btnAction.Visible = visible;
-                btnCancel.Visible = visible;
                 btnInhabitants.Visible = visible;
                 btnAttackHeroes.Visible = visible;
                 lblRewardGold.Visible = visible;
@@ -418,40 +409,9 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Lobby.Layer.panelLairInfo.SelectPageHeroes();
         }
 
-        private void BtnCancel_ShowHint(object sender, EventArgs e)
-        {
-            if (!Construction.Visible)
-            {
-                if (!Construction.Cashback().ExistsResources())
-                {
-                    PanelHint.AddSimpleHint("Отмена флага разведки");
-                }
-                else
-                {
-                    PanelHint.AddStep2Header("Отмена флага разведки");
-                    PanelHint.AddStep5Description("Возврат денег");
-                    PanelHint.AddStep6Income(Construction.Cashback().ValueGold());
-                }
-            }
-            else
-            {
-                if (!Construction.Cashback().ExistsResources())
-                {
-                    PanelHint.AddSimpleHint("Отмена флага атаки");
-                }
-                else
-                {
-                    PanelHint.AddStep2Header("Отмена флага атаки");
-                    PanelHint.AddStep5Description("Возврат денег");
-                    PanelHint.AddStep6Income(Construction.Cashback().ValueGold());
-                }
-            }
-        }
-
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             SelectThisConstruction(false);
-            btnCancel.Visible = false;
             Construction.CancelFlag();
             Construction.Player.SetTaskForHeroes();
         }
@@ -461,61 +421,16 @@ namespace Fantasy_Kingdoms_Battle
             switch (Construction.TypeAction())
             {
                 case TypeFlag.Scout:
-                    if (Construction.PriorityFlag == PriorityExecution.None)
-                    {
-                        PanelHint.AddStep2Header("Разведка");
-                        PanelHint.AddStep5Description("Установить флаг разведки для отправки героев к месту");
-                    }
-                    else if (Construction.PriorityFlag < PriorityExecution.Exclusive)
-                    {
-                        PanelHint.AddStep2Header("Разведка");
-                        PanelHint.AddStep4Level(Construction.PriorityFlatToText() + " приоритет");
-                        PanelHint.AddStep5Description("Повысить приоритет разведки места");
-                    }
-                    else
-                    {
-                        PanelHint.AddStep2Header("Разведка");
-                        PanelHint.AddStep4Level(Construction.PriorityFlatToText() + " приоритет");
-                        PanelHint.AddStep5Description("Установлен максимальный приоритет флага");
-                    }
+                    PanelHint.AddStep2Header("Разведка");
+                    PanelHint.AddStep5Description("Установить флаг разведки для отправки героев к месту");
                     break;
                 case TypeFlag.Attack:
-                    if (Construction.PriorityFlag == PriorityExecution.None)
-                    {
-                        PanelHint.AddStep2Header("Атака");
-                        PanelHint.AddStep5Description("Установить флаг атаки для отправки героев к месту");
-                    }
-                    else if (Construction.PriorityFlag < PriorityExecution.Exclusive)
-                    {
-                        PanelHint.AddStep2Header("Атака");
-                        PanelHint.AddStep4Level(Construction.PriorityFlatToText() + " приоритет");
-                        PanelHint.AddStep5Description("Повысить приоритет атаки логова");
-                    }
-                    else
-                    {
-                        PanelHint.AddStep2Header("Атака");
-                        PanelHint.AddStep4Level(Construction.PriorityFlatToText() + " приоритет");
-                        PanelHint.AddStep5Description("Установлен максимальный приоритет флага");
-                    }
+                    PanelHint.AddStep2Header("Атака");
+                    PanelHint.AddStep5Description("Установить флаг атаки для отправки героев к месту");
                     break;
                 case TypeFlag.Defense:
-                    if (Construction.PriorityFlag == PriorityExecution.None)
-                    {
-                        PanelHint.AddStep2Header("Защита");
-                        PanelHint.AddStep5Description("Установить флаг защиты для отправки героев к месту");
-                    }
-                    else if (Construction.PriorityFlag < PriorityExecution.Exclusive)
-                    {
-                        PanelHint.AddStep2Header("Защита");
-                        PanelHint.AddStep4Level(Construction.PriorityFlatToText() + " приоритет");
-                        PanelHint.AddStep5Description("Повысить приоритет защиты места");
-                    }
-                    else
-                    {
-                        PanelHint.AddStep2Header("Защита");
-                        PanelHint.AddStep4Level(Construction.PriorityFlatToText() + " приоритет");
-                        PanelHint.AddStep5Description("Установлен максимальный приоритет флага");
-                    }
+                    PanelHint.AddStep2Header("Защита");
+                    PanelHint.AddStep5Description("Установить флаг защиты для отправки героев к месту");
                     break;
                 default:
                     throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
@@ -537,11 +452,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 SelectThisConstruction(false);
 
-                if (Construction.PriorityFlag < PriorityExecution.Exclusive)
-                {
-                    Construction.IncPriority();
-                    Construction.Player.SetTaskForHeroes();
-                }
+                Construction.Player.SetTaskForHeroes();
             }
         }
     }

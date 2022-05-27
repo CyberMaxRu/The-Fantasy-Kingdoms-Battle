@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
                 Researches.Add(CellMenuConstruction.Create(this, d));
 
-            Visible = visible;// && !location.Ownership;
+            ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
             Level = b.DefaultLevel;
             if (Level > 0)
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             X = x;
             Y = y;
             Location = location;
-            Visible = visible;
+            ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
             DaysBuilded = 0;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
@@ -104,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIsOwner = ls.Own;
             PlayerCanOwn = ls.CanOwn;
             IsEnemy = ls.IsEnemy;
-            Visible = ls.Visible;// && !location.Ownership;
+            ComponentObjectOfMap = new ComponentObjectOfMap(this, ls.Visible);
             IDPathToLocation = ls.PathToLocation;
 
             // Настраиваем исследования 
@@ -152,21 +152,12 @@ namespace Fantasy_Kingdoms_Battle
         internal Location Location { get; set; }// Локация, на которой находится сооружение
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
-        internal bool Visible { get; private set; }// Сооружение видимо игроку
+        internal ComponentObjectOfMap ComponentObjectOfMap { get; }// 
         internal int PercentScoutForFound { get; set; }// Процент разведки локации, чтобы найти сооружение
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
         internal string IDPathToLocation { get; }//
         internal Location NextLocation { get; private set; }// Дескриптор пути в другую локацию
-
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
-        internal bool Destroyed { get; private set; } = false;// Логово уничтожено, работа с ним запрещена
-
-        // Поддержка флага
-        internal TypeFlag TypeFlag { get; private set; } = TypeFlag.None;// Тип установленного флага
-        internal int DaySetFlag { get; private set; }// День установки флага
-        internal ListBaseResources SpendedGoldForSetFlag { get; private set; }// Сколько ресурсов было потрачено на установку флага
-        internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
-        internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
         // Small-сущности в сооружении
         internal List<EntityForConstruction> ListEntities { get; } = new List<EntityForConstruction>();// Все сущности в сооружении
@@ -379,7 +370,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
             // Рисуем содержимое ячеек
-            if (Visible)
+            if (ComponentObjectOfMap.Visible)
             {
                 Debug.Assert(TypeConstruction != null);
 
@@ -653,7 +644,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    if (!Visible)
+                    if (!ComponentObjectOfMap.Visible)
                     {
                         panelHint.AddStep2Header("Неизвестное место");
                         panelHint.AddStep4Level("Место не разведано");
@@ -821,7 +812,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal ListBaseResources CostScout()
         {
-            Debug.Assert(!Visible);
+            Debug.Assert(!ComponentObjectOfMap.Visible);
             AssertNotDestroyed();
 
             return new ListBaseResources(0);
@@ -831,12 +822,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void AssertNotHidden()
         {
-            Debug.Assert(Visible, $"Логово {TypeConstruction.ID} игрока {Player.GetName()} скрыто.");
-        }
-
-        internal void AssertNotDestroyed()
-        {
-            Debug.Assert(!Destroyed, $"Логово {TypeConstruction.ID} игрока {Player.GetName()} уничтожено.");
+            Debug.Assert(ComponentObjectOfMap.Visible, $"Логово {TypeConstruction.ID} игрока {Player.GetName()} скрыто.");
         }
 
         internal ListBaseResources CostAttack()
@@ -862,14 +848,14 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameLair()
         {
             AssertNotDestroyed();
-            return Visible ? GetName() : "Неизвестное место";
+            return ComponentObjectOfMap.Visible ? GetName() : "Неизвестное место";
         }
 
         internal int ImageIndexLair()
         {
             AssertNotDestroyed();
 
-            return Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
+            return ComponentObjectOfMap.Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
         }
 
         internal bool ImageEnabled()
@@ -879,8 +865,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Color GetColorCaption()
         {
-            if (PriorityFlag == PriorityExecution.None)
-                return Visible ? Color.MediumAquamarine : FormMain.Config.ColorMapObjectCaption(false);
+            return ComponentObjectOfMap.Visible ? Color.MediumAquamarine : FormMain.Config.ColorMapObjectCaption(false);
 
             switch (TypeAction())
             {
@@ -912,57 +897,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal bool CheckFlagRequirements()
-        {
-            AssertNotDestroyed();
-
-            if (!Player.CheckRequiredResources(RequiredGold()))
-                return false;
-
-            switch (PriorityFlag)
-            {
-                case PriorityExecution.None:
-                    return Player.QuantityFlags[PriorityExecution.None] > 0;
-                case PriorityExecution.Normal:
-                    return true;
-                case PriorityExecution.Warning:
-                    return Player.QuantityFlags[PriorityExecution.High] <= 1;
-                case PriorityExecution.High:
-                    return Player.QuantityFlags[PriorityExecution.Exclusive] == 0;
-                case PriorityExecution.Exclusive:
-                    return false;
-                default:
-                    throw new Exception("Неизвестный приоритет.");
-            }
-        }
-
         internal List<TextRequirement> GetRequirements()
         {
             AssertNotDestroyed();
 
             List<TextRequirement> list = new List<TextRequirement>();
-
-            switch (PriorityFlag)
-            {
-                case PriorityExecution.None:
-                    if (!Player.ExistsFreeFlag())
-                        list.Add(new TextRequirement(false, "Нет свободных флагов"));
-                    break;
-                case PriorityExecution.Normal:
-                    break;
-                case PriorityExecution.Warning:
-                    if (Player.QuantityFlags[PriorityExecution.High] >= 2)
-                        list.Add(new TextRequirement(false, "Флагов с высоким приоритетом может быть не более двух"));
-                    break;
-                case PriorityExecution.High:
-                    if (Player.QuantityFlags[PriorityExecution.Exclusive] >= 1)
-                        list.Add(new TextRequirement(false, "Флагов с максимальным приоритетом может быть не более одного"));
-                    break;
-                case PriorityExecution.Exclusive:
-                    break;
-                default:
-                    throw new Exception("Неизвестный приоритет.");
-            }
 
             return list;
         }
@@ -971,7 +910,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            if (!Visible)
+            if (!ComponentObjectOfMap.Visible)
                 return TypeFlag.Scout;
             if (TypeConstruction.Category == CategoryConstruction.Lair)
                 return TypeFlag.Attack;
@@ -985,144 +924,17 @@ namespace Fantasy_Kingdoms_Battle
         internal void AttackToCastle()
         {
             Debug.Assert(TypeConstruction.ID == FormMain.Config.IDConstructionCastle);
-            TypeFlag = TypeFlag.Battle;
-            DaySetFlag = Player.Lobby.Turn;
-        }
-
-        internal void IncPriority()
-        {
-            Debug.Assert(PriorityFlag < PriorityExecution.Exclusive);
-            AssertNotDestroyed();
-
-            // 
-
-            ListBaseResources cost = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
-            Player.SpendResource(cost);
-            SpendedGoldForSetFlag.AddResources(cost);
-
-            if (DaySetFlag == 0)
-            {
-                Debug.Assert(TypeFlag == TypeFlag.None);
-                TypeFlag = TypeAction();
-                DaySetFlag = Player.Lobby.Turn;
-            }
-            else
-            {
-                Debug.Assert(TypeFlag == TypeAction());
-            }
-
-            PriorityFlag++;
-            if (PriorityFlag == PriorityExecution.Normal)
-                Player.AddFlag(this);
-            else
-                Player.UpPriorityFlag(this);
-
-            Lobby.Layer.LairsWithFlagChanged();
-        }
-
-        internal ListBaseResources Cashback()
-        {
-            Debug.Assert(PriorityFlag != PriorityExecution.None);
-            Debug.Assert(SpendedGoldForSetFlag.ExistsResources());
-            Debug.Assert(DaySetFlag > 0);
-            Debug.Assert(TypeFlag != TypeFlag.None);
-            AssertNotDestroyed();
-
-            return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : new ListBaseResources();
+            ComponentObjectOfMap.TypeFlag = TypeFlag.Battle;
         }
 
         internal void CancelFlag()
         {
-            Debug.Assert(PriorityFlag != PriorityExecution.None);
-            Debug.Assert(SpendedGoldForSetFlag.ExistsResources());
-            Debug.Assert(DaySetFlag > 0);
-            Debug.Assert(TypeFlag != TypeFlag.None);
+            Debug.Assert(ComponentObjectOfMap.TypeFlag != TypeFlag.None);
             AssertNotDestroyed();
 
-            Player.ReturnResource(Cashback());
-            DropFlag();
+            //Player.ReturnResource(Cashback());
+            ComponentObjectOfMap.DropFlag();
         }
-
-        internal string PriorityFlatToText()
-        {
-            AssertNotDestroyed();
-
-            switch (PriorityFlag)
-            {
-                case PriorityExecution.None:
-                    return "Отсутствует";
-                case PriorityExecution.Normal:
-                    return "Обычный";
-                case PriorityExecution.Warning:
-                    return "Повышенный";
-                case PriorityExecution.High:
-                    return "Высокий";
-                case PriorityExecution.Exclusive:
-                    return "Максимальный";
-                default:
-                    throw new Exception("Неизвестный приоритет: " + PriorityFlag.ToString());
-            }
-        }
-
-        internal int MaxHeroesForFlag()
-        {
-            switch (TypeAction())
-            {
-                case TypeFlag.Scout:
-                    return Player.Lobby.TypeLobby.MaxHeroesForScoutFlag;
-                case TypeFlag.Attack:
-                case TypeFlag.Defense:
-                case TypeFlag.Battle:
-                    return Player.Lobby.TypeLobby.MaxHeroesForBattle;
-                default:
-                    throw new Exception($"Неизвестный тип действия: {TypeAction()}");
-            }
-        }
-
-        internal void AddAttackingHero(Hero ph)
-        {
-            Debug.Assert(ph != null);
-            Debug.Assert(listAttackedHero.IndexOf(ph) == -1);
-            Debug.Assert(ph.StateCreature.ID == NameStateCreature.Nothing.ToString());
-            Debug.Assert(ph.TargetByFlag == null);
-            AssertNotDestroyed();
-            Debug.Assert(listAttackedHero.Count < MaxHeroesForFlag());
-
-            listAttackedHero.Add(ph);
-            ph.TargetByFlag = this;
-            ph.SetState(ph.StateForFlag(TypeFlag));
-        }
-
-        internal void RemoveAttackingHero(Hero ph)
-        {
-            Debug.Assert(listAttackedHero.IndexOf(ph) != -1);
-            Debug.Assert(ph.TargetByFlag == this);
-            AssertNotDestroyed();
-
-            ph.TargetByFlag = null;
-            listAttackedHero.Remove(ph);
-            ph.SetState(NameStateCreature.Nothing);
-        }
-
-        private void DropFlag()
-        {
-            Debug.Assert(TypeFlag != TypeFlag.None);
-            AssertNotDestroyed();
-
-            Player.RemoveFlag(this);
-
-            TypeFlag = TypeFlag.None;
-            SpendedGoldForSetFlag = null;
-            DaySetFlag = 0;
-            TypeFlag = TypeFlag.None;
-            PriorityFlag = PriorityExecution.None;
-
-            while (listAttackedHero.Count > 0)
-                RemoveAttackingHero(listAttackedHero[0]);
-
-            Lobby.Layer.LairsWithFlagChanged();
-        }
-
 
         internal void Unhide(bool needNotice)
         {
@@ -1131,11 +943,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Temple);
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Military);
             //Debug.Assert(TypeConstruction.Category != CategoryConstruction.External);
-            Debug.Assert(!Visible);
-            Debug.Assert(TypeFlag == TypeFlag.None);
+            Debug.Assert(!ComponentObjectOfMap.Visible);
+            Debug.Assert(ComponentObjectOfMap.TypeFlag == TypeFlag.None);
             Debug.Assert(!Destroyed);
 
-            Visible = true;
+            ComponentObjectOfMap.Visible = true;
             if (needNotice)
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Explore);
 
@@ -1146,21 +958,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (needNotice)
                     Player.AddNoticeForPlayer(NextLocation, TypeNoticeForPlayer.FoundLocation);
             }
-        }
-
-        // Место разведано
-        internal void DoScout()
-        {
-            Debug.Assert(!Visible);
-            Debug.Assert(TypeFlag == TypeFlag.Scout);
-            AssertNotDestroyed();
-
-            Visible = true;
-
-            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
-            HandOutGoldHeroes();
-
-            DropFlag();
         }
 
         // Сооружение уничтожено 
@@ -1180,13 +977,13 @@ namespace Fantasy_Kingdoms_Battle
         internal void DoCapture()
         {
             AssertNotHidden();
-            Debug.Assert(TypeFlag == TypeFlag.Attack);
-            Debug.Assert(listAttackedHero.Count > 0);
+            Debug.Assert(ComponentObjectOfMap.TypeFlag == TypeFlag.Attack);
+            Debug.Assert(ComponentObjectOfMap.ListHeroesForFlag.Count > 0);
 
             // Раздаем награду. Открыть место могли без участия героев (заклинанием)
             HandOutGoldHeroes();
 
-            DropFlag();
+            ComponentObjectOfMap.DropFlag();
 
             Player.ApplyReward(this);
             Destroy();
@@ -1195,7 +992,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
             Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location, true, true, true, false, TypeNoticeForPlayer.None);
-            pl.Visible = true;
+            pl.ComponentObjectOfMap.Visible = true;
             Location.Lairs.Add(pl);
         }
 
@@ -1203,13 +1000,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotHidden();
             AssertNotDestroyed();
-            Debug.Assert(TypeFlag == TypeFlag.Defense);
-            Debug.Assert(listAttackedHero.Count > 0);
+            Debug.Assert(ComponentObjectOfMap.TypeFlag == TypeFlag.Defense);
+            Debug.Assert(ComponentObjectOfMap.ListHeroesForFlag.Count > 0);
 
             // Раздаем награду
             HandOutGoldHeroes();
-
-            DropFlag();
 
             // Убираем себя из списка логов игрока
             Player.RemoveLair(this);
@@ -1234,7 +1029,7 @@ namespace Fantasy_Kingdoms_Battle
         // Раздаем деньги за флаг героям
         private void HandOutGoldHeroes()
         {
-            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
+/*            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
             if (listAttackedHero.Count > 0)
             {
                 Debug.Assert(SpendedGoldForSetFlag != null);
@@ -1250,12 +1045,12 @@ namespace Fantasy_Kingdoms_Battle
                 // Остаток отдаем первому герою
                 if (delta > 0)
                     listAttackedHero[0].AddGold(delta);
-            }
+            }*/
         }
 
         internal string ListMonstersForHint()
         {
-            if (Visible)
+            if (ComponentObjectOfMap.Visible)
             {
                 if (Monsters.Count == 0)
                     return "Нет существ";
@@ -1276,13 +1071,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ListHeroesForHint()
         {
-            if (listAttackedHero.Count == 0)
+            if (ComponentObjectOfMap.ListHeroesForFlag.Count == 0)
                 return "Нет героев";
             else
             {
                 string list = "";
                 int pos = 1;
-                foreach (Hero h in listAttackedHero)
+                foreach (Hero h in ComponentObjectOfMap.ListHeroesForFlag)
                 {
                     list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
                     pos++;
@@ -1358,7 +1153,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            return !Visible ? "" : Level == 0 ? "" : (Level == 1) && (TypeConstruction.MaxLevel == 1) ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
+            return !ComponentObjectOfMap.Visible ? "" : Level == 0 ? "" : (Level == 1) && (TypeConstruction.MaxLevel == 1) ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
         }
 
         internal override void Click(VCCell pe)
@@ -1730,7 +1525,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PlaySoundSelect()
         {
-            if (Visible)
+            if (ComponentObjectOfMap.Visible)
                 base.PlaySoundSelect();
             else
                 Program.formMain.PlayPushButton();

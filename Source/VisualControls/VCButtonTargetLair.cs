@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            if ((Lair != null) && (Lair.TypeFlag != TypeFlag.Battle))
+            if ((Lair != null) && (Lair.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle))
             {
                 //Program.formMain.ActivatePageLairs(Lair.Location.Settings.Number);
                 Program.formMain.layerGame.SelectPlayerObject(Lair);
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool AllowClick()
         {
-            return base.AllowClick() && (Lair != null) && (Lair.TypeFlag != TypeFlag.Battle);
+            return base.AllowClick() && (Lair != null) && (Lair.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle);
         }
 
         internal override bool PrepareHint()
@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(!(Lair is null));
-                if (Lair.TypeFlag != TypeFlag.Battle)
+                if (Lair.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle)
                 {
                     PanelHint.AddStep2Header(Lair.NameLair());
                     PanelHint.AddStep5Description(Lair.ListHeroesForHint());
@@ -76,12 +76,12 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                ImageIsEnabled = Lair.listAttackedHero.Count > 0;
-                Quantity = Lair.listAttackedHero.Count();
+                ImageIsEnabled = Lair.ComponentObjectOfMap.ListHeroesForFlag.Count > 0;
+                Quantity = Lair.ComponentObjectOfMap.ListHeroesForFlag.Count();
 
-                if (Lair.TypeFlag != TypeFlag.Battle)
+                if (Lair.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle)
                 {
-                    ImageIndex = Lair.Visible ? Lair.ImageIndexLair() : FormMain.IMAGE_INDEX_UNKNOWN;
+                    ImageIndex = Lair.ComponentObjectOfMap.Visible ? Lair.ImageIndexLair() : FormMain.IMAGE_INDEX_UNKNOWN;
                 }
                 else
                 {
@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((Lair != null) && ShowFlag)
             {
                 int imageIndex;
-                switch (Lair.TypeFlag)
+                switch (Lair.ComponentObjectOfMap.TypeFlag)
                 {
                     case TypeFlag.Scout:
                         imageIndex = FormMain.GUI_16_FLAG_SCOUT;
@@ -114,7 +114,7 @@ namespace Fantasy_Kingdoms_Battle
                         imageIndex = FormMain.GUI_16_FLAG_ATTACK;
                         break;
                     default:
-                        throw new Exception($"Неизвестный тип флага: {Lair.TypeFlag}.");
+                        throw new Exception($"Неизвестный тип флага: {Lair.ComponentObjectOfMap.TypeFlag}.");
                 }
 
                 g.DrawImageUnscaled(Program.formMain.ilGui16.GetImage(imageIndex, true, false), Left - (Program.formMain.ilGui16.Size.Width / 2) + 4, Top - (Program.formMain.ilGui16.Size.Height / 2) + 4);

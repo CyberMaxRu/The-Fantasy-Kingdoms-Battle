@@ -337,7 +337,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Убираем себя из флага на логове
             if (TargetByFlag != null)
-                TargetByFlag.RemoveAttackingHero(this);
+                TargetByFlag.ComponentObjectOfMap.RemoveAttackingHero(this);
             SetState(NameStateCreature.Nothing);
         }
 

@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private static int sequenceID = 0;// Генератор уникального кода героя
 
-        public Creature(DescriptorCreature tc, BattleParticipant bp) : base(tc, bp.Lobby)
+        public Creature(DescriptorCreature tc, BattleParticipant bp) : base(tc, bp.Lobby, bp as Player)
         {
             TypeCreature = tc;
             BattleParticipant = bp;

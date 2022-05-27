@@ -195,7 +195,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                if (Construction.Visible)
+                if (Construction.ComponentObjectOfMap.Visible)
                 {
                     panelInhabitants.ApplyList(Construction.Monsters);
                     btnInhabitants.Quantity = Construction.Monsters.Count;
@@ -206,8 +206,8 @@ namespace Fantasy_Kingdoms_Battle
                     btnInhabitants.Quantity = 0;
                 }
 
-                panelVisits.ApplyList(Construction.listAttackedHero);
-                btnVisitors.Quantity = Construction.listAttackedHero.Count;
+                panelVisits.ApplyList(Construction.ComponentObjectOfMap.ListHeroesForFlag);
+                btnVisitors.Quantity = Construction.ComponentObjectOfMap.ListHeroesForFlag.Count;
             }
 
             lblInterest.Image.ImageIsEnabled = Construction.Level > 0;

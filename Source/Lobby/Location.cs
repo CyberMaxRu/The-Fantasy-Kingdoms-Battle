@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly DescriptorCellMenu descReturnFromScout;
         private readonly CellMenuLocationReturn cmReturnFromScout;
 
-        public Location(Player player, TypeLobbyLocationSettings settings) : base(player.Descriptor, player.Lobby)
+        public Location(Player player, TypeLobbyLocationSettings settings) : base(player.Descriptor, player.Lobby, player)
         {
             Player = player;
             Settings = settings;
@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
                 return l;
             }*/
         }
-        public Location(Player player) : base(player.Descriptor, player.Lobby)
+        public Location(Player player) : base(player.Descriptor, player.Lobby, player)
         {
             Player = player;
             Visible = false;
@@ -186,7 +186,7 @@ namespace Fantasy_Kingdoms_Battle
             PayForHire = 0;
 
             foreach (Construction c in Lairs)
-                if (!c.Visible)
+                if (!c.ComponentObjectOfMap.Visible)
                     if (c.PercentScoutForFound <= PercentScoutedArea)
                         c.Unhide(true);
 

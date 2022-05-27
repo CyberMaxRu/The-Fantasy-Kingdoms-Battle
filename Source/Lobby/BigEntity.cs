@@ -17,14 +17,17 @@ namespace Fantasy_Kingdoms_Battle
 
         protected CellMenuCreaturePage cmPageCreatures;
 
-        public BigEntity(DescriptorEntity descriptor, Lobby lobby) : base()
+        public BigEntity(DescriptorEntity descriptor, Lobby lobby, Player player) : base()
         {
             Descriptor = descriptor;
             Lobby = lobby;
+            Player = player;
         }
 
         internal DescriptorEntity Descriptor { get; }
-        internal Lobby Lobby { get; }  
+        internal Player Player { get; }
+        internal Lobby Lobby { get; }
+        internal bool Destroyed { get; set; } = false;// Сущность уничтожена, работа с ней запрещена
         internal List<CellMenuConstruction> Researches { get; } = new List<CellMenuConstruction>();
 
         internal Perk MainPerk { get; set; }// Основной перк существа 
@@ -32,6 +35,11 @@ namespace Fantasy_Kingdoms_Battle
         internal EntityProperties Properties { get; set; }// Характеристики
 
         internal abstract void ShowInfo(int selectPage = -1);
+
+        internal void AssertNotDestroyed()
+        {
+            Debug.Assert(!Destroyed, $"Сущность {Descriptor.ID} уничтожена.");
+        }
 
         internal virtual void PlayDefaultSoundSelect()
         {

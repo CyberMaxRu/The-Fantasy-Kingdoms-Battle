@@ -51,12 +51,6 @@ namespace Fantasy_Kingdoms_Battle
                 BaseResources[FormMain.Descriptors.Gold.Number].Quantity = 100_000;
             ResourceGold = BaseResources[FormMain.Descriptors.Gold.Number];
 
-            // Создаем справочик количества приоритетов флагов
-            foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
-            {
-                QuantityFlags.Add(pe, 0);
-            }
-
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
@@ -446,17 +440,17 @@ namespace Fantasy_Kingdoms_Battle
                 WindowBattle formBattle;
                 TypeFlag typeFlag;
 
-                if ((pl != null) && (pl.listAttackedHero.Count > 0) && (pl.TypeFlag != TypeFlag.Battle))
+                if ((pl != null) && (pl.ComponentObjectOfMap.ListHeroesForFlag.Count > 0) && (pl.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle))
                 {
-                    Debug.Assert((pl.TypeFlag == TypeFlag.Scout) || (pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense));
+                    Debug.Assert((pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Scout) || (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Attack) || (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Defense));
 
-                    typeFlag = pl.TypeFlag;
+                    typeFlag = pl.ComponentObjectOfMap.TypeFlag;
 
-                    if (pl.TypeFlag == TypeFlag.Scout)
+                    if (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Scout)
                     {
-                        pl.DoScout();
+                        //pl.DoScout();
                     }
-                    else if (pl.TypeFlag == TypeFlag.Attack)
+                    else if (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Attack)
                     {
                         // У Сокровища монстров может не быть. Но бой посчитать надо
                         //Debug.Assert(pl.Monsters.Count > 0);
@@ -499,12 +493,12 @@ namespace Fantasy_Kingdoms_Battle
 
                         }
                     }
-                    else if (pl.TypeFlag == TypeFlag.Defense)
+                    else if (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Defense)
                     {
                         pl.DoDefense();
                     }
                     else
-                        throw new Exception("Неизвестный флаг: " + pl.TypeFlag.ToString());
+                        throw new Exception("Неизвестный флаг: " + pl.ComponentObjectOfMap.TypeFlag.ToString());
 
                     if (this is PlayerHuman h)
                         h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeConstruction, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
@@ -534,7 +528,7 @@ namespace Fantasy_Kingdoms_Battle
             int builded = 0;
             foreach (Construction c in Constructions)
             {
-                if ((c.TypeConstruction.TypeConstruction == typeConstruction) && c.Visible && (c.Level > 0))
+                if ((c.TypeConstruction.TypeConstruction == typeConstruction) && c.ComponentObjectOfMap.Visible && (c.Level > 0))
                     builded++;
             }
 
@@ -628,7 +622,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Логова
         internal List<Construction> ListFlags { get; } = new List<Construction>();
-        internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
         internal int LairsScouted { get; private set; }
         internal int LairsShowed { get; private set; }
 
@@ -1001,7 +994,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Hero ph = CombatHeroes[i] as Hero;
                     freeHeroes.Remove(ph);
-                    FlagAttackToOpponent.AddAttackingHero(ph);
+                    FlagAttackToOpponent.ComponentObjectOfMap.AddHeroForFlag(ph);
                     ph.SetState(NameStateCreature.BattleWithPlayer);
                 }
             }
@@ -1011,9 +1004,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (CountActiveFlags() > 0)
             {
-                foreach (Construction pl in ListFlags.Where(pl => (pl != null) && (pl.TypeFlag == TypeFlag.Scout)))
+                foreach (Construction pl in ListFlags.Where(pl => (pl != null) && (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Scout)))
                 {
-                    pl.AddAttackingHero(freeHeroes[0]);
+                    pl.ComponentObjectOfMap.AddHeroForFlag(freeHeroes[0]);
                     freeHeroes.RemoveAt(0);
 
                     if (freeHeroes.Count == 0)
@@ -1022,20 +1015,20 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (freeHeroes.Count > 0)
                 {
-                    int quantityFlagAttack = ListFlags.Where(pl => (pl != null) && ((pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense))).Count();
+                    int quantityFlagAttack = ListFlags.Where(pl => (pl != null) && ((pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Attack) || (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Defense))).Count();
                     if (quantityFlagAttack > 0)
                     {
                         int heroesToFlag;
                         int heroesPerFlag = Math.Max(freeHeroes.Count / quantityFlagAttack, 1);
 
-                        foreach (Construction pl in ListFlags.Where(pl => (pl != null) && ((pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense))))
+                        foreach (Construction pl in ListFlags.Where(pl => (pl != null) && ((pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Attack) || (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Defense))))
                             if (pl != null)
                             {
                                 heroesToFlag = Math.Min(freeHeroes.Count, heroesPerFlag);
 
                                 for (int i = 0; i < heroesToFlag; i++)
                                 {
-                                    pl.AddAttackingHero(freeHeroes[0]);
+                                    pl.ComponentObjectOfMap.AddHeroForFlag(freeHeroes[0]);
                                     freeHeroes.RemoveAt(0);
                                 }
 
@@ -1066,15 +1059,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ListFlags.Add(null);
             }
-
-            // Указываем количество свободных флагов
-            foreach (Construction pl in ListFlags)
-            {
-                if (pl == null)
-                    QuantityFlags[PriorityExecution.None]++;
-                else
-                    QuantityFlags[pl.PriorityFlag]++;
-            }
         }
 
         internal void AddFlag(Construction lair)
@@ -1085,9 +1069,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (ListFlags[i] == null)
                 {
                     ListFlags[i] = lair;
-                    QuantityFlags[PriorityExecution.None]--;
-                    QuantityFlags[lair.PriorityFlag]++;
-                    CheckFlags();
 
                     return;
                 }
@@ -1100,63 +1081,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             int idx = ListFlags.IndexOf(lair);
             Debug.Assert(idx != -1);
-            QuantityFlags[lair.PriorityFlag - 1]--;
-            QuantityFlags[lair.PriorityFlag]++;
-
-            CheckFlags();
         }
 
-
-        internal void RemoveFlag(Construction lair)
-        {
-            Debug.Assert(lair.PriorityFlag > PriorityExecution.None);
-
-            int idx = ListFlags.IndexOf(lair);
-            Debug.Assert(idx != -1);
-            ListFlags[idx] = null;
-
-            // Сжимаем флаги
-            for (int i = idx; i < ListFlags.Count - 1; i++)
-            {
-                ListFlags[i] = ListFlags[i + 1];
-            }
-            ListFlags[ListFlags.Count - 1] = null;
-            QuantityFlags[PriorityExecution.None]++;
-            QuantityFlags[lair.PriorityFlag]--;
-
-            CheckFlags();
-        }
-
-        private void CheckFlags()
-        {
-            // Проверяем, что количество флагов сходится с количеством слотов
-            // И что количество флагов с приоритетами Hight и Exclusive правильное
-            int q = 0;
-            int qNonNone = 0;
-            foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
-            {
-                q += QuantityFlags[pe];
-                if (pe > PriorityExecution.None)
-                    qNonNone += QuantityFlags[pe];
-            }
-            if (FlagAttackToOpponent != null)
-            {
-                q++;
-                qNonNone++;
-            }
-
-            Debug.Assert(q == ListFlags.Count);
-            Debug.Assert(q <= Lobby.TypeLobby.MaxQuantityFlags);
-            Debug.Assert(QuantityFlags[PriorityExecution.High] <= 2);
-            Debug.Assert(QuantityFlags[PriorityExecution.Exclusive] <= 1);
-
-            Debug.Assert(qNonNone == ListFlags.Where(l => l != null).Count());
-        }
-
-        internal bool ExistsFreeFlag()
-        {
-            return QuantityFlags[PriorityExecution.None] > 0;
-        }
 
         internal void RemoveLair(Construction l)
         {
@@ -1581,7 +1507,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (Construction lc in l.Lairs)
                 {
-                    if (!lc.Visible)
+                    if (!lc.ComponentObjectOfMap.Visible)
                     {
                         lc.Unhide(false);
                     }
