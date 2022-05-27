@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             UpdateSelectedColor();
         }
 
-        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice) : base(l, p.Lobby)
+        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(l, p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
@@ -64,6 +64,7 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
             IsEnemy = isEnemy;
+            InitialQuantityBaseResources = initQ;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External) || (TypeConstruction.Category == CategoryConstruction.Temple)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
@@ -669,7 +670,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.HideInfo();
 
-            Debug.Assert(!Destroyed);
+            //Debug.Assert(!Destroyed);// Assert не нужен - если сооружение уничтожено, его надо скрыть
 
             Lobby.Layer.panelConstructionInfo.Visible = false;
             Lobby.Layer.panelLairInfo.Visible = false;

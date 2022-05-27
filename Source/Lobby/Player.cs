@@ -267,11 +267,23 @@ namespace Fantasy_Kingdoms_Battle
                 Builders += Lobby.TypeLobby.StartBuilders;
             FreeBuilders = Builders;
 
+            ListBaseResources lbs = new ListBaseResources();
             List<Construction> lc = new List<Construction>();
             lc.AddRange(Constructions);
             foreach (Construction pc in lc)// Коллекция меняется при замене объекта
+            {
+                // Прибавляем ресурсы
+                if ((pc.Level > 0) && pc.MiningBaseResources)
+                {
+                    foreach (ConstructionBaseResource cbs in pc.BaseResources)
+                        lbs[cbs.DescriptorBaseResource.Number].Quantity += cbs.Quantity;
+                }
                 pc.PrepareTurn();
+            }
 
+            ReceivedResource(lbs);
+
+            //
             List<Hero> listForDelete = new List<Hero>();
 
             foreach (Hero h in CombatHeroes)
