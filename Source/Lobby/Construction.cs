@@ -790,7 +790,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetQuantity()
         {
-            return 0;
+            return ComponentObjectOfMap is null ? 0 :ComponentObjectOfMap.ListHeroesForFlag.Count;
         }
 
         private void CreateMonsters()
