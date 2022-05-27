@@ -372,6 +372,11 @@ namespace Fantasy_Kingdoms_Battle
                 Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
         }
 
+        internal override bool CheckRequirements()
+        {
+            return base.CheckRequirements() && (Construction.Heroes.Count < Construction.MaxHeroes());
+        }
+
         internal override ListBaseResources GetCost()
         {
             return Descriptor.CreatedEntity.GetCreating().CostResources;
