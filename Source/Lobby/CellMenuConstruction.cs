@@ -374,7 +374,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return base.CheckRequirements() && (Construction.Heroes.Count < Construction.MaxHeroes());
+            return base.CheckRequirements() && Construction.AllowHire();
         }
 
         internal override ListBaseResources GetCost()
@@ -401,7 +401,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Creature.Description);
             panelHint.AddStep75Salary(Creature.CostOfHiring);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirements());
+            panelHint.AddStep11Requirement(Construction.GetTextRequirementsHire());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
 

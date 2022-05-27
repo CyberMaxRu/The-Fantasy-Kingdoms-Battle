@@ -557,6 +557,21 @@ namespace Fantasy_Kingdoms_Battle
             return Level < TypeConstruction.MaxLevel ? BuildersPerDayForLevel(Level + 1) : 0;
         }
 
+        internal bool AllowHire()
+        {
+            if (Level == 0)
+                return false;
+
+            if ((Level > 0) && (Heroes.Count == MaxHeroes()))
+                return false;
+
+            if (MaxHeroesAtPlayer())
+                return false;
+
+            return true;
+
+        }
+
         internal List<TextRequirement> GetTextRequirementsHire()
         {
             List<TextRequirement> list = new List<TextRequirement>();
