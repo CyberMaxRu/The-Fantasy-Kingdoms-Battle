@@ -102,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
             private set
             { 
                 percentScoutedArea = value;
-                percentNonScoutedArea = 1000 - percentNonScoutedArea;
+                percentNonScoutedArea = 1000 - percentScoutedArea;
 
                 Debug.Assert(percentScoutedArea <= 1_000);
                 Debug.Assert(percentNonScoutedArea >= 0);
