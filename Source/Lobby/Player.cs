@@ -1505,6 +1505,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (Location l in Locations)
             {
+                if (!l.Visible)
+                {
+                    l.Visible = true;
+                    l.DoScout(l.NonScoutedArea);
+                }
+
                 foreach (Construction lc in l.Lairs)
                 {
                     if (!lc.ComponentObjectOfMap.Visible)
