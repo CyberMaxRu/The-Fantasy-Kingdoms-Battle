@@ -40,7 +40,7 @@
         <Name>Окрестности города</Name>
         <Name2>Окрестностях города</Name2>
         <TypeLandscape>TypeLandscapeNeighborhoodOfCity</TypeLandscape>
-        <VisibleByDefault>true</VisibleByDefault>
+        <Visible>true</Visible>
         <PercentScoutAreaByUnit>15</PercentScoutAreaByUnit>
         <PercentScoutedArea>20</PercentScoutedArea>
         <Constructions>
@@ -182,7 +182,7 @@
         <Name>Лес</Name>
         <Name2>Лесу</Name2>
         <TypeLandscape>TypeLandscapeForest</TypeLandscape>
-        <VisibleByDefault>false</VisibleByDefault>
+        <Visible>false</Visible>
         <PercentScoutAreaByUnit>10</PercentScoutAreaByUnit>
         <PercentScoutedArea>0</PercentScoutedArea>
         <Constructions>
@@ -280,7 +280,7 @@
         <Name>Болото</Name>
         <Name2>Болоте</Name2>
         <TypeLandscape>TypeLandscapeSwamp</TypeLandscape>
-        <VisibleByDefault>false</VisibleByDefault>
+        <Visible>false</Visible>
         <PercentScoutAreaByUnit>5</PercentScoutAreaByUnit>
         <PercentScoutedArea>0</PercentScoutedArea>
         <Constructions>
@@ -312,7 +312,7 @@
         <Name>Горы</Name>
         <Name2>Горах</Name2>
         <TypeLandscape>TypeLandscapeMountain</TypeLandscape>
-        <VisibleByDefault>false</VisibleByDefault>
+        <Visible>false</Visible>
         <PercentScoutAreaByUnit>15</PercentScoutAreaByUnit>
         <PercentScoutedArea>0</PercentScoutedArea>
         <Constructions>

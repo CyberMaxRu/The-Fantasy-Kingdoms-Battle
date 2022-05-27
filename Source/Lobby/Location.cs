@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             Player = player;
             TypeLandscape = settings.TypeLandscape;
             Settings = settings;
-            Visible = settings.VisibleByDefault;
+            Visible = settings.Visible;
             PercentScoutAreaByUnit = settings.PercentScoutAreaByUnit;
             PercentScoutedArea = settings.PercentScoutedArea;
             Danger = 333;
