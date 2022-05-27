@@ -26,10 +26,8 @@ namespace Fantasy_Kingdoms_Battle
         public Location(Player player, TypeLobbyLocationSettings settings) : base(player.Descriptor, player.Lobby, player)
         {
             Player = player;
-            TypeLandscape = settings.TypeLandscape;
             Settings = settings;
             Visible = settings.Visible;
-            PercentScoutAreaByUnit = settings.PercentScoutAreaByUnit;
             PercentScoutedArea = settings.PercentScoutedArea;
             Danger = 333;
 
@@ -92,10 +90,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
-        internal DescriptorTypeLandscape TypeLandscape { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
         internal bool Visible { get; set; }
-        internal int PercentScoutAreaByUnit { get; }// Процент разведки локации за единицу разведки
         internal int PercentScoutedArea// Процент разведанной части локации
         {
             get => percentScoutedArea;
@@ -116,7 +112,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return TypeLandscape.ImageIndex;
+            return Settings.TypeLandscape.ImageIndex;
         }
 
         internal override bool GetNormalImage() => true;
@@ -231,8 +227,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PlayDefaultSoundSelect()
         {
-            if (TypeLandscape.UriSoundSelect != null)
-                Program.formMain.PlaySoundSelect(TypeLandscape.UriSoundSelect);
+            if (Settings.TypeLandscape.UriSoundSelect != null)
+                Program.formMain.PlaySoundSelect(Settings.TypeLandscape.UriSoundSelect);
         }
     }
 }
