@@ -89,11 +89,6 @@ namespace Fantasy_Kingdoms_Battle
                 return l;
             }*/
         }
-        public Location(Player player) : base(player.Descriptor, player.Lobby, player)
-        {
-            Player = player;
-            Visible = false;
-        }
 
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
