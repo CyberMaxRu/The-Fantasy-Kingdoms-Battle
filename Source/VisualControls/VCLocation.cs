@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
             nameLocation.ShiftY = imgTypeLocation.Height - nameLocation.Height;
             imgTypeLocation.ArrangeControl(nameLocation);
 
-            lblScouted.Text = Utils.FormatPercent(location.ScoutedArea);
+            lblScouted.Text = Utils.FormatPercent(location.PercentScoutedArea);
             lblDanger.Text = Utils.FormatPercent(location.Danger);
 
             // Не всегда все объекты видны. Тем не менее, создадим заранее под них ячейки - пусть будут, все равно пригодятся

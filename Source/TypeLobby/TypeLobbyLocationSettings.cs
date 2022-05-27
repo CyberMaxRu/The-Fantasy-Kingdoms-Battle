@@ -21,9 +21,8 @@ namespace Fantasy_Kingdoms_Battle
             Name2 = XmlUtils.GetStringNotNull(n, "Name2");
             nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
             VisibleByDefault = XmlUtils.GetBooleanNotNull(n, "VisibleByDefault");
-            Area = XmlUtils.GetIntegerNotNull(n, "Area");
-            ScoutedArea = XmlUtils.GetIntegerNotNull(n, "ScoutedArea");
-            BaseScoutingArea = XmlUtils.GetIntegerNotNull(n, "BaseScoutingArea");
+            PercentScoutedArea = XmlUtils.GetPercentNotNull(n, "PercentScoutedArea");
+            PercentScoutAreaByUnit = XmlUtils.GetPercentNotNull(n, "PercentScoutAreaByUnit");
 
             TypeLobbyLairSettings tlls;
 
@@ -58,14 +57,10 @@ namespace Fantasy_Kingdoms_Battle
 
             //Debug.Assert(minQuantity <= quantitySlotLairs);
             //Debug.Assert(maxQuantity >= quantitySlotLairs);
-            Debug.Assert(Area >= 1);
-            Debug.Assert(Area <= 1_000_000);
-            Debug.Assert(ScoutedArea >= 0);
-            Debug.Assert(ScoutedArea <= Area);
-            Debug.Assert(BaseScoutingArea > 0);
-            Debug.Assert(BaseScoutingArea <= Area);
-
-            PercentScoutedArea = Convert.ToInt32(ScoutedArea * 100 / Area);
+            Debug.Assert(PercentScoutedArea >= 0);
+            Debug.Assert(PercentScoutedArea <= 1000);
+            Debug.Assert(PercentScoutAreaByUnit > 0);
+            Debug.Assert(PercentScoutAreaByUnit <= 1000);
         }
 
         internal string Name2 { get; }// Наименование в падеже
@@ -73,10 +68,8 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorTypeLandscape TypeLandscape { get; private set; }
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
         internal bool VisibleByDefault { get; }
-        internal int Area { get; }// Площадь локации
-        internal int ScoutedArea { get; }// Разведанная площадь локации (изначально)
-        internal int PercentScoutedArea { get; }// Процент разведанной изначально площади
-        internal int BaseScoutingArea { get; }// Базовая разведываемая площадь
+        internal int PercentScoutedArea { get; }// Процент разведанной части локации
+        internal int PercentScoutAreaByUnit { get; }// Процент разведки локации за единицу разведки
 
         internal override void TuneLinks()
         {

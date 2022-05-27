@@ -333,7 +333,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     foreach (Creature c in l.HeroesForScout)
                     {
-                        l.DoScout(c.CalcScoutedArea(l));
+                        l.DoScout(c.CalcPercentScoutArea(l));
                         c.ScoutExecuted();
                         FreeHeroes.Add(c);
                     }
@@ -1508,7 +1508,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (!l.Visible)
                 {
                     l.Visible = true;
-                    l.DoScout(l.NonScoutedArea);
+                    l.DoScout(l.PercentNonScoutedArea);
                 }
 
                 foreach (Construction lc in l.Lairs)

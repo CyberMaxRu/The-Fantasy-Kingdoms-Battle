@@ -17,8 +17,8 @@ namespace Fantasy_Kingdoms_Battle
             Own = XmlUtils.GetBooleanNotNull(n, "Own");
             CanOwn = XmlUtils.GetBooleanNotNull(n, "CanOwn");
             IsEnemy = XmlUtils.GetBooleanNotNull(n, "IsEnemy");
-            MinPercentScout = XmlUtils.GetInteger(n, "MinPercentScout");
-            MaxPercentScout = XmlUtils.GetInteger(n, "MaxPercentScout");
+            MinPercentScout = XmlUtils.GetPercent(n, "MinPercentScout");
+            MaxPercentScout = XmlUtils.GetPercent(n, "MaxPercentScout");
             PathToLocation = XmlUtils.GetString(n, "PathToLocation");
 
             XmlNode nr = n.SelectSingleNode("Resources");
@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(MinPercentScout >= 0);
-                Debug.Assert(MaxPercentScout <= 100);
+                Debug.Assert(MaxPercentScout <= 1_000);
                 Debug.Assert(MinPercentScout <= MaxPercentScout);
                 Debug.Assert(MinPercentScout >= ls.PercentScoutedArea);
             }

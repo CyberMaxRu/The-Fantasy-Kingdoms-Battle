@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
                 case ModeTextForCreature.Hire:      
                     return (Creature as Hero).CostOfHiring().ToString();
                 case ModeTextForCreature.Scout:
-                    return Creature != null ? (Creature as Hero).CalcScoutedAreaPercent(Creature.ScoutedLocation).ToString() + "%": "";
+                    return Creature != null ? Utils.FormatPercent((Creature as Hero).CalcPercentScoutArea(Creature.LocationForScout)).ToString() : "";
                 default:
                     return "";
             }
@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             if (BigEntity is Location l)
-                panelHint.AddSimpleHint($"Разведка: {Creature.CalcScoutedAreaPercent(l)}%");
+                panelHint.AddSimpleHint($"Разведка: {Utils.FormatPercent(Creature.CalcPercentScoutArea(l))}");
         }
     }
 

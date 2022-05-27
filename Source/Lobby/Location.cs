@@ -11,9 +11,8 @@ namespace Fantasy_Kingdoms_Battle
     // Класс локации
     internal sealed class Location : BigEntity
     {
-        private int scoutedArea;
-        private int nonScoutedArea;
         private int percentScoutedArea;
+        private int percentNonScoutedArea;
 
         private readonly DescriptorCellMenu descScout;
         private readonly CellMenuLocationScout cmScout;
@@ -30,8 +29,8 @@ namespace Fantasy_Kingdoms_Battle
             TypeLandscape = settings.TypeLandscape;
             Settings = settings;
             Visible = settings.VisibleByDefault;
-            Area = settings.Area;
-            ScoutedArea = settings.ScoutedArea;
+            PercentScoutAreaByUnit = settings.PercentScoutAreaByUnit;
+            PercentScoutedArea = settings.PercentScoutedArea;
             Danger = 333;
 
             // Создание сооружений согласно настройкам
@@ -101,21 +100,20 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorTypeLandscape TypeLandscape { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
         internal bool Visible { get; set; }
-        internal int Area { get; }// Всего площадь
-        internal int ScoutedArea// Сколько площади локации разведано
+        internal int PercentScoutAreaByUnit { get; }// Процент разведки локации за единицу разведки
+        internal int PercentScoutedArea// Процент разведанной части локации
         {
-            get => scoutedArea;
+            get => percentScoutedArea;
             private set
             { 
-                scoutedArea = value;
-                nonScoutedArea = Area - scoutedArea;
-                percentScoutedArea = Convert.ToInt32(100.00 * ScoutedArea / Area);
+                percentScoutedArea = value;
+                percentNonScoutedArea = 1000 - percentNonScoutedArea;
 
-                Debug.Assert(nonScoutedArea >= 0);
+                Debug.Assert(percentScoutedArea <= 1_000);
+                Debug.Assert(percentNonScoutedArea >= 0);
             }
         }
-        internal int NonScoutedArea { get => nonScoutedArea; }// Сколько площади локации не разведано
-        internal int PercentScoutedArea { get => percentScoutedArea; }// Процент разведанной территории
+        internal int PercentNonScoutedArea { get => percentNonScoutedArea; }// Процент неразведанной части локации
         internal int Danger { get; private set; }// Процент опасности локации
         internal int StateMenu { get; set; }//
         internal List<Creature> HeroesForScout { get; } = new List<Creature>();
@@ -183,11 +181,11 @@ namespace Fantasy_Kingdoms_Battle
             Lobby.Layer.panelLocationInfo.Visible = false;
         }
 
-        internal void DoScout(int area)
+        internal void DoScout(int percentArea)
         {
-            Debug.Assert(area > 0);
+            Debug.Assert(percentArea > 0);
 
-            ScoutedArea += area;
+            PercentScoutedArea += percentArea;
         }
 
         internal void FindScoutedConstructions()

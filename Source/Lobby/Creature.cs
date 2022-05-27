@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorReasonOfDeath ReasonOfDeath { get; private set; }// Причина смерти
 
         // Действия
-        internal Location ScoutedLocation { get; set; }// Локация, назначенная существу для разведки
+        internal Location LocationForScout { get; set; }// Локация, назначенная существу для разведки
 
 
         // Повышение уровня
@@ -462,14 +462,14 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(l.Player == BattleParticipant);
                 //Debug.Assert(StateCreature != FormMain.Descriptors.StateCreatureDoFlatScout);
-                Debug.Assert(ScoutedLocation is null);
+                Debug.Assert(LocationForScout is null);
 
-                ScoutedLocation = l;
+                LocationForScout = l;
                 StateCreature = FormMain.Descriptors.StateCreatureDoFlagScout;
                 if (this is Hero h)
                 {
                     //h.TargetByFlag = l;
-                    ScoutedLocation.PayForHire += h.PayForHire;
+                    LocationForScout.PayForHire += h.PayForHire;
                 }
             }
             else
@@ -477,10 +477,10 @@ namespace Fantasy_Kingdoms_Battle
                 StateCreature = TypeCreature.PersistentStateHeroAtMap;
                 if (this is Hero h)
                 {
-                    ScoutedLocation.PayForHire -= h.PayForHire;
+                    LocationForScout.PayForHire -= h.PayForHire;
                     //h.TargetByFlag = null;
                 }
-                ScoutedLocation = null;
+                LocationForScout = null;
             }
         }
 
@@ -494,18 +494,13 @@ namespace Fantasy_Kingdoms_Battle
                 h.PayForHireWithoutTax = 0;
             }
     
-            ScoutedLocation = null;
+            LocationForScout = null;
         }
 
-        internal int CalcScoutedArea(Location l)
+        internal int CalcPercentScoutArea(Location l)
         {
-            // Вычисляем площадь, которую разведывает существо согласно уровню разведки
-            return Convert.ToInt32(Properties.PropertyScout / 100.0000 * l.Settings.BaseScoutingArea);
-        }
-
-        internal int CalcScoutedAreaPercent(Location l)
-        {
-            return Convert.ToInt32(100.00 * CalcScoutedArea(l) / l.Settings.Area); ;// Определяем процент разведуемой территории
+            // Вычисляем процент локации, который разведывает существо согласно уровню разведки
+            return Convert.ToInt32(Properties.PropertyScout * l.Settings.PercentScoutAreaByUnit / 100.0000);
         }
     }
 }

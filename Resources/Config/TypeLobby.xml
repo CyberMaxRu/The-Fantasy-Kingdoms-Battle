@@ -41,9 +41,8 @@
         <Name2>Окрестностях города</Name2>
         <TypeLandscape>TypeLandscapeNeighborhoodOfCity</TypeLandscape>
         <VisibleByDefault>true</VisibleByDefault>
-        <Area>1000</Area>
-        <ScoutedArea>200</ScoutedArea>
-        <BaseScoutingArea>200</BaseScoutingArea>
+        <PercentScoutAreaByUnit>15</PercentScoutAreaByUnit>
+        <PercentScoutedArea>20</PercentScoutedArea>
         <Constructions>
           <Construction>
             <ID>Sewer</ID>
@@ -184,9 +183,8 @@
         <Name2>Лесу</Name2>
         <TypeLandscape>TypeLandscapeForest</TypeLandscape>
         <VisibleByDefault>false</VisibleByDefault>
-        <Area>1000</Area>
-        <ScoutedArea>0</ScoutedArea>
-        <BaseScoutingArea>100</BaseScoutingArea>
+        <PercentScoutAreaByUnit>10</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
         <Constructions>
           <Construction>
             <ID>Lumberjack</ID>
@@ -283,9 +281,8 @@
         <Name2>Болоте</Name2>
         <TypeLandscape>TypeLandscapeSwamp</TypeLandscape>
         <VisibleByDefault>false</VisibleByDefault>
-        <Area>1000</Area>
-        <ScoutedArea>0</ScoutedArea>
-        <BaseScoutingArea>50</BaseScoutingArea>
+        <PercentScoutAreaByUnit>5</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
         <Constructions>
           <Construction>
             <ID>Ore</ID>
@@ -316,9 +313,8 @@
         <Name2>Горах</Name2>
         <TypeLandscape>TypeLandscapeMountain</TypeLandscape>
         <VisibleByDefault>false</VisibleByDefault>
-        <Area>1000</Area>
-        <ScoutedArea>0</ScoutedArea>
-        <BaseScoutingArea>150</BaseScoutingArea>
+        <PercentScoutAreaByUnit>15</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
         <Constructions>
           <Construction>
             <ID>Treasure</ID>
