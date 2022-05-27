@@ -23,13 +23,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             switch (ModeText)
             {
-                case ModeTextForCreature.Hire:      
-                    return (Creature as Hero).CostOfHiring().ToString();
+                case ModeTextForCreature.Hire:
+                    if (BigEntity is Location l)
+                        return Creature != null ? Utils.FormatPercent((Creature as Hero).CalcPercentScoutArea(l)).ToString() : "";
+                    else
+                        return "";
                 case ModeTextForCreature.Scout:
                     return Creature != null ? Utils.FormatPercent((Creature as Hero).CalcPercentScoutArea(Creature.LocationForScout)).ToString() : "";
                 default:
                     return "";
             }
+
         }
 
         internal override void Click()
