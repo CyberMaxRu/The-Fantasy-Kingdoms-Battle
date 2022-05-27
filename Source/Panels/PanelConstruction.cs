@@ -148,11 +148,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            imgMapObject.ImageIndex = Construction.ImageIndexLair();
+            imgMapObject.ImageIndex = Construction.GetImageIndex();
             imgMapObject.ImageIsEnabled = Construction.ImageEnabled();
             imgMapObject.Level = Construction.GetLevel();
 
-            lblNameMapObject.Text = Construction.NameLair();
+            lblNameMapObject.Text = Construction.GetName();
             lblNameMapObject.Color = Construction.GetColorCaption();
 
             btnHeroes.Visible = false;
@@ -400,7 +400,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnAttackHeroes_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddStep2Header("Герои, выполняющие флаг");
-            PanelHint.AddStep5Description(Construction.ListHeroesForHint());
+            PanelHint.AddStep5Description(Construction.ComponentObjectOfMap.ListHeroesForHint());
         }
 
         private void BtnAttackHeroes_Click(object sender, EventArgs e)

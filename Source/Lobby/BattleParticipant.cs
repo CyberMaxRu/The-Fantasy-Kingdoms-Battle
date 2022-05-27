@@ -119,7 +119,6 @@ namespace Fantasy_Kingdoms_Battle
             ph.StartCoord = new Point(coordX, coordY);
         }
 
-        internal abstract string GetName();
         internal abstract TypePlayer GetTypePlayer();
         internal abstract Player GetPlayer();
         internal abstract int GetImageIndexAvatar();

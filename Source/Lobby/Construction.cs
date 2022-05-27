@@ -844,17 +844,20 @@ namespace Fantasy_Kingdoms_Battle
             //    new ListBaseResources(Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
-        internal string NameLair()
-        {
-            AssertNotDestroyed();
-            return ComponentObjectOfMap.Visible ? GetName() : "Неизвестное место";
-        }
 
-        internal int ImageIndexLair()
+        internal override string GetName()
         {
             AssertNotDestroyed();
 
-            return ComponentObjectOfMap.Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
+            if (ComponentObjectOfMap.Visible)
+            {
+                if (NextLocation is null)
+                    return TypeConstruction.Name;
+                else
+                    return "Путь в " + NextLocation.Settings.Name;
+            }
+            else
+                return "Неизвестное место";
         }
 
         internal bool ImageEnabled()
@@ -1068,24 +1071,6 @@ namespace Fantasy_Kingdoms_Battle
                 return "Пока место не разведано, существа в нем неизвестны";
         }
 
-        internal string ListHeroesForHint()
-        {
-            if (ComponentObjectOfMap.ListHeroesForFlag.Count == 0)
-                return "Нет героев";
-            else
-            {
-                string list = "";
-                int pos = 1;
-                foreach (Hero h in ComponentObjectOfMap.ListHeroesForFlag)
-                {
-                    list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
-                    pos++;
-                }
-
-                return list;
-            }
-        }
-
         internal void PrepareHintForBuildOrUpgrade(PanelHint panelHint, int requiredLevel)
         {
             if (requiredLevel > TypeConstruction.MaxLevel)
@@ -1133,10 +1118,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
+            AssertNotDestroyed();
+
             if (NextLocation != null)
                 return NextLocation.GetImageIndex();
             else if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
-                return ImageIndexLair();
+                return ComponentObjectOfMap.Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
             else
                 return FormMain.Config.Gui48_Battle;
         }
@@ -1159,14 +1146,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.Click(pe);
             Lobby.Layer.SelectPlayerObject(this, -1, true);
-        }
-
-        internal override string GetName()
-        {
-            if (NextLocation is null)
-                return TypeConstruction.Name;
-            else
-                return "Путь в " + NextLocation.Settings.Name;
         }
 
         internal override TypePlayer GetTypePlayer()

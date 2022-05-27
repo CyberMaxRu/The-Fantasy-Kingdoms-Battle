@@ -468,7 +468,7 @@ namespace Fantasy_Kingdoms_Battle
                 StateCreature = FormMain.Descriptors.StateCreatureDoFlagScout;
                 if (this is Hero h)
                 {
-                    //h.TargetByFlag = l;
+                    h.TargetByFlag = l;
                     LocationForScout.PayForHire += h.PayForHire;
                 }
             }
@@ -478,7 +478,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (this is Hero h)
                 {
                     LocationForScout.PayForHire -= h.PayForHire;
-                    //h.TargetByFlag = null;
+                    h.TargetByFlag = null;
                 }
                 LocationForScout = null;
             }

@@ -115,6 +115,11 @@ namespace Fantasy_Kingdoms_Battle
             return Settings.TypeLandscape.ImageIndex;
         }
 
+        internal override string GetName()
+        {
+            return Settings.Name;
+        }
+
         internal override bool GetNormalImage() => true;
 
         internal override void MakeMenu(VCMenuCell[,] menu)

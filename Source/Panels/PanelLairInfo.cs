@@ -72,8 +72,8 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
-        protected override int GetImageIndex() => Lair.ImageIndexLair();
+        protected override int GetImageIndex() => Lair.GetImageIndex();
         protected override bool ImageIsEnabled() => true;
-        protected override string GetCaption() => Lair.NameLair();
+        protected override string GetCaption() => Lair.GetName();
     }
 }

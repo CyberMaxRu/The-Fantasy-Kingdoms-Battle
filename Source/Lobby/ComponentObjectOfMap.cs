@@ -78,6 +78,22 @@ namespace Fantasy_Kingdoms_Battle
             Owner.Lobby.Layer.LairsWithFlagChanged();
         }
 
+        internal string ListHeroesForHint()
+        {
+            if (ListHeroesForFlag.Count == 0)
+                return "Нет героев";
+            else
+            {
+                string list = "";
+                int pos = 1;
+                foreach (Hero h in ListHeroesForFlag)
+                {
+                    list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
+                    pos++;
+                }
 
+                return list;
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
             ManualDraw = true;
         }
 
-        internal Construction Lair { get => Entity as Construction; }
+        internal BigEntity Lair { get => Entity as BigEntity; }
         internal bool ShowFlag { get; set; } = true;
 
         internal override void DoClick()
@@ -38,21 +38,21 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Lair is null)
             { 
-                PanelHint.AddSimpleHint(Lair != null ? Lair.NameLair() : "Флаг не назначен");
+                PanelHint.AddSimpleHint(Lair != null ? Lair.GetName() : "Флаг не назначен");
             }
             else
             {
                 Debug.Assert(!(Lair is null));
                 if (Lair.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle)
                 {
-                    PanelHint.AddStep2Header(Lair.NameLair());
-                    PanelHint.AddStep5Description(Lair.ListHeroesForHint());
+                    PanelHint.AddStep2Header(Lair.GetName());
+                    PanelHint.AddStep5Description(Lair.ComponentObjectOfMap.ListHeroesForHint());
                 }
                 else
                 {
                     PanelHint.AddStep2Header("Битва против игрока");
                     PanelHint.AddStep4Level("Игрок: неизвестен");
-                    PanelHint.AddStep5Description(Lair.ListHeroesForHint());
+                    PanelHint.AddStep5Description(Lair.ComponentObjectOfMap.ListHeroesForHint());
                 }
             }
 
@@ -81,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Lair.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle)
                 {
-                    ImageIndex = Lair.ComponentObjectOfMap.Visible ? Lair.ImageIndexLair() : FormMain.IMAGE_INDEX_UNKNOWN;
+                    ImageIndex = Lair.ComponentObjectOfMap.Visible ? Lair.GetImageIndex() : FormMain.IMAGE_INDEX_UNKNOWN;
                 }
                 else
                 {

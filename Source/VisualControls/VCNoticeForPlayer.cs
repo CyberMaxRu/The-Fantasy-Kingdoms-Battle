@@ -38,12 +38,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case TypeNoticeForPlayer.Build:
                     nameNotice = "Строительство завершено:";
-                    nameText = (Entity as Construction).NameLair();
+                    nameText = (Entity as Construction).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.LevelUp:
                     nameNotice = "Сооружение улучшено:";
-                    nameText = (Entity as Construction).NameLair() + " Уровень " + (Entity as Construction).Level.ToString();
+                    nameText = (Entity as Construction).GetName() + " Уровень " + (Entity as Construction).Level.ToString();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Research:
@@ -96,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (Entity is Construction c)
                     {
                         nameNotice = $"В {c.Location.Settings.Name2} обнаружен объект:";
-                        nameText = $"{c.NameLair()}";
+                        nameText = $"{c.GetName()}";
                         colorNameEntity = Color.DarkGoldenrod;
                     }
                     else
