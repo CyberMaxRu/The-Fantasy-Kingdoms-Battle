@@ -33,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Perk MainPerk { get; set; }// Основной перк существа 
         internal List<Perk> Perks { get; } = new List<Perk>();// Перки
         internal EntityProperties Properties { get; set; }// Характеристики
+        internal ComponentObjectOfMap ComponentObjectOfMap { get; set; }
 
         internal abstract void ShowInfo(int selectPage = -1);
 

@@ -30,6 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             Visible = settings.Visible;
             PercentScoutedArea = settings.PercentScoutedArea;
             Danger = 333;
+            ComponentObjectOfMap = new ComponentObjectOfMap(this, settings.Visible);
 
             // Создание сооружений согласно настройкам
             foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
@@ -107,7 +108,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int PercentNonScoutedArea { get => percentNonScoutedArea; }// Процент неразведанной части локации
         internal int Danger { get; private set; }// Процент опасности локации
         internal int StateMenu { get; set; }//
-        internal List<Creature> HeroesForScout { get; } = new List<Creature>();
         internal int PayForHire { get; set; }// Сколько было потрачено на найм
 
         internal override int GetImageIndex()
@@ -128,7 +128,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case 1:
                     if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
-                        ShowHeroesInMenu(menu, HeroesForScout, HeroForScoutClick, ModeTextForCreature.Scout);
+                        ShowHeroesInMenu(menu, ComponentObjectOfMap.ListHeroesForFlag, HeroForScoutClick, ModeTextForCreature.Scout);
                     cmPageCreatures.ChangePage = false;
 
                     menu[cmAddScoutHero.Descriptor.Coord.Y, cmAddScoutHero.Descriptor.Coord.X].Research = cmAddScoutHero;
@@ -188,7 +188,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (c.PercentScoutForFound <= PercentScoutedArea)
                         c.Unhide(true);
 
-            HeroesForScout.Clear();
+            ComponentObjectOfMap.ListHeroesForFlag.Clear();
         }
 
         private void HeroForScoutClick(object sender, EventArgs e)
@@ -204,8 +204,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             CellMenuCreature cmc = sender as CellMenuCreature;
 
-            Debug.Assert(HeroesForScout.IndexOf(cmc.Creature) == -1);
-            HeroesForScout.Add(cmc.Creature);
+            Debug.Assert(ComponentObjectOfMap.ListHeroesForFlag.IndexOf(cmc.Creature) == -1);
+            ComponentObjectOfMap.ListHeroesForFlag.Add(cmc.Creature);
             Player.SetScoutForHero(cmc.Creature, this);
 
             if (Player.FreeHeroes.Count == 0)
@@ -216,13 +216,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DropFlagScout()
         {
-            foreach (Creature c in HeroesForScout)
+            foreach (Creature c in ComponentObjectOfMap.ListHeroesForFlag)
             {
-                Debug.Assert(HeroesForScout.IndexOf(c) != -1);
+                Debug.Assert(ComponentObjectOfMap.ListHeroesForFlag.IndexOf(c) != -1);
                 Player.SetScoutForHero(c, null);
             }
 
-            HeroesForScout.Clear();
+            ComponentObjectOfMap.ListHeroesForFlag.Clear();
         }
 
         internal override void PlayDefaultSoundSelect()

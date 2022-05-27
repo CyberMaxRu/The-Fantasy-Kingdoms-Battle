@@ -152,7 +152,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Location Location { get; set; }// Локация, на которой находится сооружение
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
-        internal ComponentObjectOfMap ComponentObjectOfMap { get; }// 
         internal int PercentScoutForFound { get; set; }// Процент разведки локации, чтобы найти сооружение
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
         internal string IDPathToLocation { get; }//

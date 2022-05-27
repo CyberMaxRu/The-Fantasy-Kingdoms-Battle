@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PayForHireWithoutTax { get; set; }// Часть золота, оставленная герою, после уплаты налога в гильдию
 
         // Выполнение флагов
-        internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
+        internal BigEntity TargetByFlag { get; set; }// Логово флага, который выполняется
 
         // Статистика за лобби
         internal int TurnOfTrain { get; }// На каком ходу нанят

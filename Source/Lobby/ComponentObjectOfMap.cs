@@ -10,17 +10,17 @@ namespace Fantasy_Kingdoms_Battle
     // Компонет - объект карты
     internal sealed class ComponentObjectOfMap
     {
-        public ComponentObjectOfMap(Construction owner, bool visible)
+        public ComponentObjectOfMap(BigEntity owner, bool visible)
         {
             Debug.Assert(owner != null);
             Owner = owner;
             Visible = visible;
         }
 
-        internal Construction Owner { get; }
+        internal BigEntity Owner { get; }
         internal bool Visible { get; set; }
         internal TypeFlag TypeFlag { get; set; } = TypeFlag.None;// Тип установленного флага
-        internal List<Hero> ListHeroesForFlag { get; } = new List<Hero>();// Список существ, выполняющих флаг
+        internal List<Creature> ListHeroesForFlag { get; } = new List<Creature>();// Список существ, выполняющих флаг
 
         internal void AddHeroForFlag(Hero ph)
         {
@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int MaxHeroesForFlag()
         {
-            switch (Owner.TypeAction())
+            switch (TypeFlag)
             {
                 case TypeFlag.Scout:
                     return 200;
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeFlag.Battle:
                     return Owner.Player.Lobby.TypeLobby.MaxHeroesForBattle;
                 default:
-                    throw new Exception($"Неизвестный тип действия: {Owner.TypeAction()}");
+                    throw new Exception($"Неизвестный тип действия: {TypeFlag}");
             }
         }
 
@@ -73,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
             TypeFlag = TypeFlag.None;
             
             while (ListHeroesForFlag.Count > 0)
-                RemoveAttackingHero(ListHeroesForFlag[0]);
+                RemoveAttackingHero(ListHeroesForFlag[0] as Hero);
 
             Owner.Lobby.Layer.LairsWithFlagChanged();
         }

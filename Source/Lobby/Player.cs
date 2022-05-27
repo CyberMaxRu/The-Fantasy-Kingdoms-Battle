@@ -329,9 +329,9 @@ namespace Fantasy_Kingdoms_Battle
             // Выполняем разведку
             foreach (Location l in Locations)
             {
-                if (l.HeroesForScout.Count > 0)
+                if (l.ComponentObjectOfMap.ListHeroesForFlag.Count > 0)
                 {
-                    foreach (Creature c in l.HeroesForScout)
+                    foreach (Creature c in l.ComponentObjectOfMap.ListHeroesForFlag)
                     {
                         l.DoScout(c.CalcPercentScoutArea(l));
                         c.ScoutExecuted();

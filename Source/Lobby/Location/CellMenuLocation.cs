@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override string GetText() => Location.HeroesForScout.Count.ToString();
+        internal override string GetText() => Location.ComponentObjectOfMap.ListHeroesForFlag.Count.ToString();
 
         internal override void Click()
         {
@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return base.CheckRequirements() && (Location.HeroesForScout.Count > 0);
+            return base.CheckRequirements() && (Location.ComponentObjectOfMap.ListHeroesForFlag.Count > 0);
         }
 
         internal override bool InstantExecute()
