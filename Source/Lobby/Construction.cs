@@ -239,6 +239,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Build(bool needNotice)
         {
+            if (!Lobby.InPrepareTurn)
+                Program.formMain.PlayConstructionComplete();
+
             if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
             {
                 Debug.Assert(Level < TypeConstruction.MaxLevel);
