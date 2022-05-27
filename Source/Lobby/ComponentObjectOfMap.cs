@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
             switch (Owner.TypeAction())
             {
                 case TypeFlag.Scout:
-                    return Owner.Player.Lobby.TypeLobby.MaxHeroesForScoutFlag;
+                    return 200;
                 case TypeFlag.Attack:
                 case TypeFlag.Defense:
                 case TypeFlag.Battle:

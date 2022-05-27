@@ -19,7 +19,6 @@
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>
     <MaxQuantityFlags>7</MaxQuantityFlags>
-    <MaxHeroesForScoutFlag>3</MaxHeroesForScoutFlag>
     <MaxHeroesForBattle>15</MaxHeroesForBattle>
     <DayStartBattleBetweenPlayers>25</DayStartBattleBetweenPlayers>
     <DaysBeforeNextBattleBetweenPlayers>5</DaysBeforeNextBattleBetweenPlayers>

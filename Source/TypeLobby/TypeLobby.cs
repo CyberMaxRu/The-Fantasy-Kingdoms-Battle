@@ -22,7 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
             StartQuantityFlags = XmlUtils.GetInteger(n, "StartQuantityFlags");
             MaxQuantityFlags = XmlUtils.GetInteger(n, "MaxQuantityFlags");
-            MaxHeroesForScoutFlag = XmlUtils.GetInteger(n, "MaxHeroesForScoutFlag");
             MaxHeroesForBattle = XmlUtils.GetInteger(n, "MaxHeroesForBattle");
             DayStartBattleBetweenPlayers = XmlUtils.GetInteger(n, "DayStartBattleBetweenPlayers");
             DaysBeforeNextBattleBetweenPlayers = XmlUtils.GetInteger(n, "DaysBeforeNextBattleBetweenPlayers");
@@ -51,8 +50,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxQuantityFlags >= 1);
             Debug.Assert(MaxQuantityFlags <= 10);
             Debug.Assert(StartQuantityFlags <= MaxQuantityFlags);
-            Debug.Assert(MaxHeroesForScoutFlag >= 1);
-            Debug.Assert(MaxHeroesForScoutFlag <= 25);
             Debug.Assert(MaxHeroesForBattle >= 1);
             Debug.Assert(MaxHeroesForBattle <= 25);
             Debug.Assert(DayStartBattleBetweenPlayers >= 1);
@@ -155,7 +152,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxHeroes { get; }
         internal int StartQuantityFlags { get; }
         internal int MaxQuantityFlags { get; }
-        internal int MaxHeroesForScoutFlag { get; }
         internal int MaxHeroesForBattle { get; }
         internal int DayStartBattleBetweenPlayers { get; }
         internal int DaysBeforeNextBattleBetweenPlayers { get; }
