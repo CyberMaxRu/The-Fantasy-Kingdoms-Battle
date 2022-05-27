@@ -11,6 +11,10 @@ namespace Fantasy_Kingdoms_Battle
     // Класс локации
     internal sealed class Location : BigEntity
     {
+        private int scoutedArea;
+        private int nonScoutedArea;
+        private int percentScoutedArea;
+
         private readonly DescriptorCellMenu descScout;
         private readonly CellMenuLocationScout cmScout;
         private readonly DescriptorCellMenu descAddScoutHero;
@@ -25,10 +29,9 @@ namespace Fantasy_Kingdoms_Battle
             Player = player;
             Settings = settings;
             Visible = settings.VisibleByDefault;
+            Area = settings.Area;
             ScoutedArea = settings.ScoutedArea;
             Danger = 333;
-
-            UpdatePercentScoutedArea();
 
             // Создание сооружений согласно настройкам
             foreach (TypeLobbyLairSettings ls in settings.LairsSettings)
@@ -96,8 +99,21 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobbyLocationSettings Settings { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
         internal bool Visible { get; set; }
-        internal int ScoutedArea { get; private set; }// Сколько площади локации разведано
-        internal int PercentScoutedArea { get; private set; }// Процент разведанной территории
+        internal int Area { get; }// Всего площадь
+        internal int ScoutedArea// Сколько площади локации разведано
+        {
+            get => scoutedArea;
+            private set
+            { 
+                scoutedArea = value;
+                nonScoutedArea = Area - scoutedArea;
+                percentScoutedArea = Convert.ToInt32(100.00 * ScoutedArea / Settings.Area);
+
+                Debug.Assert(nonScoutedArea >= 0);
+            }
+        }
+        internal int NonScoutedArea { get => nonScoutedArea; }// Сколько площади локации не разведано
+        internal int PercentScoutedArea { get => percentScoutedArea; }// Процент разведанной территории
         internal int Danger { get; private set; }// Процент опасности локации
         internal int StateMenu { get; set; }//
         internal List<Creature> HeroesForScout { get; } = new List<Creature>();
@@ -170,16 +186,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(area > 0);
 
             ScoutedArea += area;
-            if (ScoutedArea > Settings.Area)
-                ScoutedArea = Settings.Area;
-
-            UpdatePercentScoutedArea();
         }
-
-        private void UpdatePercentScoutedArea()
-        {
-            PercentScoutedArea = Convert.ToInt32(100.00 * ScoutedArea / Settings.Area);
-        }        
 
         internal void FindScoutedConstructions()
         {
