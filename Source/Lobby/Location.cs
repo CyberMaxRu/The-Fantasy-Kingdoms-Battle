@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         public Location(Player player, TypeLobbyLocationSettings settings) : base(player.Descriptor, player.Lobby, player)
         {
             Player = player;
+            TypeLandscape = settings.TypeLandscape;
             Settings = settings;
             Visible = settings.VisibleByDefault;
             Area = settings.Area;
@@ -97,6 +98,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
+        internal DescriptorTypeLandscape TypeLandscape { get; }
         internal List<Construction> Lairs { get; } = new List<Construction>();
         internal bool Visible { get; set; }
         internal int Area { get; }// Всего площадь
@@ -107,7 +109,7 @@ namespace Fantasy_Kingdoms_Battle
             { 
                 scoutedArea = value;
                 nonScoutedArea = Area - scoutedArea;
-                percentScoutedArea = Convert.ToInt32(100.00 * ScoutedArea / Settings.Area);
+                percentScoutedArea = Convert.ToInt32(100.00 * ScoutedArea / Area);
 
                 Debug.Assert(nonScoutedArea >= 0);
             }
@@ -121,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Settings.TypeLandscape.ImageIndex;
+            return TypeLandscape.ImageIndex;
         }
 
         internal override bool GetNormalImage() => true;
@@ -236,8 +238,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PlayDefaultSoundSelect()
         {
-            if (Settings.TypeLandscape.UriSoundSelect != null)
-                Program.formMain.PlaySoundSelect(Settings.TypeLandscape.UriSoundSelect);
+            if (TypeLandscape.UriSoundSelect != null)
+                Program.formMain.PlaySoundSelect(TypeLandscape.UriSoundSelect);
         }
     }
 }

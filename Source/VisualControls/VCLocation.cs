@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void UpdateLocation()
         {
-            imgTypeLocation.ImageIndex = location.Settings.TypeLandscape.ImageIndex;
+            imgTypeLocation.ImageIndex = location.GetImageIndex();
             nameLocation.Text = location.Settings.Name;
             nameLocation.Height = nameLocation.MinHeigth();
             nameLocation.ShiftY = imgTypeLocation.Height - nameLocation.Height;
