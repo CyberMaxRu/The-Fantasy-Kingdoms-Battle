@@ -52,6 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCText lblTooltip;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
+        private readonly List<VCCellSimple> listCellBaseResources = new List<VCCellSimple>();
         internal readonly VCLabel lblDamageMelee;
         internal readonly VCLabel lblDamageArcher;
         internal readonly VCLabel lblDamageMagic;
@@ -302,6 +303,9 @@ namespace Fantasy_Kingdoms_Battle
                 cp.Item1.Visible = false;
                 cp.Item2.Visible = false;
             }
+
+            foreach (VCCellSimple cell in listCellBaseResources)
+                cell.Visible = false;
 
             /*lblDamageMelee.Hide();
             lblDamageArcher.Hide();
@@ -927,6 +931,38 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal void AddStep21BaseResources(List<ConstructionBaseResource> list, bool canMining)
+        {
+            if (list.Count > 0)
+            {
+                VCCellSimple cell;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    cell = GetCell(i);
+                    cell.Visible = true;
+                    cell.ImageIsEnabled = canMining;
+                    cell.LowText = list[i].Quantity.ToString();
+                    cell.ImageIndex = list[i].Descriptor.ImageIndex;
+                    cell.ShiftY = nextTop;
+
+                    nextTop = cell.NextTop();
+                }
+
+                VCCellSimple GetCell(int index)
+                {
+                    if (index < listCell.Count)
+                        return listCellBaseResources[index];
+                    else
+                    {
+                        VCCellSimple c = new VCCellSimple(this, FormMain.Config.GridSize, 0);
+                        listCellBaseResources.Add(c);
+                        return c;
+                    }
+                }
+            }
+        }
+
 
         internal void AddStep21Tooltip(string text)
         {
