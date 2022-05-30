@@ -74,6 +74,8 @@ namespace Fantasy_Kingdoms_Battle
             base.CheckData();
 
             Debug.Assert(ImageIndex >= FormMain.Config.ImageIndexFirstAvatar);
+            if (ImageIndex >= FormMain.Config.ImageIndexFirstAvatar + FormMain.Config.QuantityInternalAvatars + FormMain.Config.ExternalAvatars.Count)
+                ImageIndex = FormMain.Config.ImageIndexFirstAvatar;
             Debug.Assert(ImageIndex < FormMain.Config.ImageIndexFirstAvatar + FormMain.Config.QuantityInternalAvatars + FormMain.Config.ExternalAvatars.Count);
         }
 
