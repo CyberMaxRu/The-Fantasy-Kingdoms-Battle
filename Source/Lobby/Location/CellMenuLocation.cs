@@ -250,11 +250,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool InstantExecute() => true;
 
-        internal override void PrepareTurn()
+        internal override void PrepareTurn(bool beginOfDay)
         {
-            base.PrepareTurn();
+            base.PrepareTurn(beginOfDay);
 
-            Spell.Selling.Reset();
+            if (beginOfDay)
+            {
+                Spell.Selling.Reset();
+            }
         }
     }
 }

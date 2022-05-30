@@ -253,7 +253,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         SetPlayerAsCurrent(i);
                         InPrepareTurn = true;
-                        Players[i].PrepareTurn();
+                        Players[i].PrepareTurn(TimeOfDay == FormMain.Descriptors.TimesOfDay[0]);
                         InPrepareTurn = false;
                         Layer.ShowCurrentPlayerLobby();
 

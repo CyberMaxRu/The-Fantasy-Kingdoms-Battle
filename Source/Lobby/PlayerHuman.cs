@@ -66,9 +66,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void PrepareTurn()
+        internal override void PrepareTurn(bool beginOfDay)
         {
-            base.PrepareTurn();
+            base.PrepareTurn(beginOfDay);
 
             Lobby.Layer.ActivatePageResultTurn();
         }

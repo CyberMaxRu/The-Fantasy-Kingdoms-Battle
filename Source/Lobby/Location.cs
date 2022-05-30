@@ -264,11 +264,11 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal void PrepareTurn()
+        internal void PrepareTurn(bool beginOfDay)
         {
             foreach (CellMenuLocationSpell cm in MenuSpells)
             {
-                cm.PrepareTurn();
+                cm.PrepareTurn(beginOfDay);
             }
         }
     }
