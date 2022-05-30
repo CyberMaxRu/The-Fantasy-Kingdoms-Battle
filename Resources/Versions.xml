@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.18</ActualVersion>
+  <ActualVersion>0.3.19</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -567,6 +567,15 @@
     <Number>0.3.18</Number>
     <DateBuild>16.03.2022</DateBuild>
     <Description>
+      <Line>[*] Много иных улучшений и исправленных ошибок.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.19</Number>
+    <DateBuild>30.05.2022</DateBuild>
+    <Description>
+      <Line>[+] Переделана работа с картой.</Line>
+      <Line>[+] Полноэкранный режим с растягиванием контролов.</Line>
       <Line>[*] Много иных улучшений и исправленных ошибок.</Line>
     </Description>
   </Version>
