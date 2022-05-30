@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Config
     {
-        public Config(FormMain fm)
+        public Config(FormMain fm, bool defaultGridSize)
         {
             FormMain.Config = this;
             Descriptor.Config = this;
@@ -34,7 +34,10 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем конфигурацию игры
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
-            GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);
+            if (defaultGridSize)
+                GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);
+            else
+                GridSize = 2;
             Debug.Assert(GridSize >= 2);
             Debug.Assert(GridSize <= 20);
             Debug.Assert(GridSize % 2 == 0);

@@ -227,12 +227,15 @@ namespace Fantasy_Kingdoms_Battle
 
             MainConfig = new MainConfig();
             // Проверяем требование по разрешению экрана
+            bool defaultGridSize = true;
             if ((Screen.PrimaryScreen.Bounds.Width < MainConfig.ScreenMinSize.Width) || (Screen.PrimaryScreen.Bounds.Height < MainConfig.ScreenMinSize.Height))
             {
                 MessageBox.Show($"Для игры необходимо разрешение экрана {MainConfig.ScreenMinSize.Width} * {MainConfig.ScreenMinSize.Height}."
-                    + Environment.NewLine + $"Текущее разрешение {Screen.PrimaryScreen.Bounds.Width} * {Screen.PrimaryScreen.Bounds.Height}.",
-                    NAME_PROJECT, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(0);
+                    + Environment.NewLine + $"Текущее разрешение {Screen.PrimaryScreen.Bounds.Width} * {Screen.PrimaryScreen.Bounds.Height}."
+                    + Environment.NewLine + Environment.NewLine + $"Программа автоматически уменьшит размер используемого пространства до минимума."
+                    + Environment.NewLine + $"Это внесет визуальные искажения в оригинальный дизайн.",
+                    NAME_PROJECT, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                defaultGridSize = false;
             }
 
             // Если включено автообновление, проверяем на их наличие
@@ -289,7 +292,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем конфигурацию
             SetStage("Читаем книгу");
-            _ = new Config(this);
+            _ = new Config(this, defaultGridSize);
             SetStage("Изучаем справочник");
             _ = new Descriptors(this);
 
