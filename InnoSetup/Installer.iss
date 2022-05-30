@@ -26,13 +26,13 @@ OutputDir=F:\Projects\C-Sharp\Fantasy King's Battle\InnoSetup
 OutputBaseFilename=FKB_Setup
 Compression=lzma
 SolidCompression=yes
-SetupIconFile=F:\Projects\C-Sharp\Fantasy King's Battle\FKB.ico
+SetupIconFile=F:\Projects\C-Sharp\Fantasy Kingdoms Battle\FKB.ico
 WizardStyle=modern
-WizardSmallImageFile=f:\Projects\C-Sharp\Fantasy King's Battle\InnoSetup\Rebirth_small.bmp
+WizardSmallImageFile=f:\Projects\C-Sharp\Fantasy Kingdoms Battle\InnoSetup\Rebirth_small.bmp
 WizardImageAlphaFormat=defined
 UninstallDisplayIcon={app}\Uninstall.ico
-LicenseFile=f:\Projects\C-Sharp\Fantasy King's Battle\InnoSetup\license.rtf
-WizardImageFile=f:\Projects\C-Sharp\Fantasy King's Battle\InnoSetup\Rebirth_wizard.bmp
+LicenseFile=f:\Projects\C-Sharp\Fantasy Kingdoms Battle\InnoSetup\license.rtf
+WizardImageFile=f:\Projects\C-Sharp\Fantasy Kingdoms Battle\InnoSetup\Rebirth_wizard.bmp
 DisableWelcomePage=no
 VersionInfoCopyright=Авторское право © 2021, Кузьмин М.А.
 [Languages]
