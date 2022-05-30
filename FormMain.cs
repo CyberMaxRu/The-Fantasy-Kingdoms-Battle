@@ -565,6 +565,7 @@ namespace Fantasy_Kingdoms_Battle
                 case ScreenMode.Window:
                     topLeftFrame = new Point(0, 0);
                     Size = new Size(Width - ClientSize.Width + MinSizeGamespace.Width, Height - ClientSize.Height + MinSizeGamespace.Height);
+                    sizeGamespace = MinSizeGamespace;
                     break;
                 default:
                     throw new Exception("Неизвестный режим");
@@ -830,7 +831,7 @@ namespace Fantasy_Kingdoms_Battle
             void PrepareBackground()
             {
                 // Переформировываем картинку фона клиентской области
-                if ((bmpRenderClientArea == null) || !bmpRenderClientArea.Size.Equals(GuiUtils.MakeBackground(ClientSize)))
+                if ((bmpRenderClientArea == null) || !bmpRenderClientArea.Size.Equals(sizeGamespace))
                 {
                     bmpRenderClientArea?.Dispose();
 
