@@ -50,30 +50,63 @@ namespace Fantasy_Kingdoms_Battle
                 return orgBmp;
             }
 
+            Bitmap newBmp;
+            Graphics g;
+            Bitmap readyBmp;
+
             // Подводим под требуемый размер 
             // Для этого определяем, на какой коэффициент надо изменить каждую из сторон
-            // Меняем картинку на общий коэффициент
             double coefWidth = (double)size.Width / orgBmp.Width;
             double coefHeight = (double)size.Height / orgBmp.Height;
             double coefCommon = Math.Max(coefWidth, coefHeight);
             Size newSize = new Size(Convert.ToInt32(orgBmp.Width * coefCommon), Convert.ToInt32(orgBmp.Height * coefCommon));
 
-            // Создаем картинку, пропорциональную исходной
-            Bitmap newBmp = new Bitmap(newSize.Width, newSize.Height);
+            // Если размер требуемый, возвращаем измененную картинку как есть
+            if (newSize.Equals(size))
+            {
+                newBmp = new Bitmap(newSize.Width, newSize.Height);
 
-            Graphics g = Graphics.FromImage(newBmp);
+                g = Graphics.FromImage(newBmp);
+                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.DrawImage(orgBmp, 0, 0, newBmp.Width, newBmp.Height);
+                g.Dispose();
+
+                newBmp.Save(folder + nameImageWithSize);
+                orgBmp.Dispose();
+
+                cacheImages.Add((nameImage, size, newBmp));
+                return newBmp;
+            }
+
+            // Создаем картинку, пропорциональную исходной
+            newBmp = new Bitmap(newSize.Width, newSize.Height);
+
+            g = Graphics.FromImage(newBmp);
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             g.DrawImage(orgBmp, 0, 0, newBmp.Width, newBmp.Height);
             g.Dispose();
 
-            // Преобразуем в картинку требуемого размер, обрезая по краям, что не вмещается
-            Bitmap readyBmp = new Bitmap(size.Width, size.Height);
-            g = Graphics.FromImage(readyBmp);
-            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.DrawImage(newBmp, 0, 0, new Rectangle(0, 0, size.Width, size.Height), GraphicsUnit.Pixel);
-            g.Dispose();
+            // Если высота больше требуемой, отрезаем низ, иначе отрезаем края
+            if (newSize.Height > size.Height)
+            {
+                readyBmp = new Bitmap(size.Width, size.Height);
+                g = Graphics.FromImage(readyBmp);
+                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.DrawImage(newBmp, 0, 0, new Rectangle(0, 0, size.Width, size.Height), GraphicsUnit.Pixel);
+                g.Dispose();
+            }
+            else
+            {
+                readyBmp = new Bitmap(size.Width, size.Height);
+                g = Graphics.FromImage(readyBmp);
+                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.DrawImage(newBmp, 0, 0, new Rectangle(Convert.ToInt32((newSize.Width - size.Width) / 2), 0, size.Width, size.Height), GraphicsUnit.Pixel);
+                g.Dispose();
+            }
 
             readyBmp.Save(folder + nameImageWithSize);
 
