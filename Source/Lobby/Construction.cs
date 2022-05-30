@@ -381,7 +381,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (ConstructionSpell cs in Player.ConstructionSpells)
                 {
-                    if (!cs.DescriptorSpell.Scouted)
+                    if ((cs.DescriptorSpell.TypeEntity == TypeEntity.Construction) && !cs.DescriptorSpell.Scouted)
                     {
                         CellMenuConstructionSpell cmcs = SearchCellMenuSpell(cs);
 
@@ -398,16 +398,17 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            CellMenuConstructionSpell SearchCellMenuSpell(ConstructionSpell spell)
-            {
-                foreach (CellMenuConstructionSpell cs in MenuSpells)
-                {
-                    if (cs.Spell == spell)
-                        return cs;
-                }
+        }
 
-                return null;
+        private CellMenuConstructionSpell SearchCellMenuSpell(ConstructionSpell spell)
+        {
+            foreach (CellMenuConstructionSpell cs in MenuSpells)
+            {
+                if (cs.Spell == spell)
+                    return cs;
             }
+
+            return null;
         }
 
         internal void ValidateResearches()

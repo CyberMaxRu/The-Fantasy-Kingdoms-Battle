@@ -109,6 +109,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Danger { get; private set; }// Процент опасности локации
         internal int StateMenu { get; set; }//
         internal int PayForHire { get; set; }// Сколько было потрачено на найм
+        internal List<CellMenuLocationSpell> MenuSpells { get; } = new List<CellMenuLocationSpell>();
+
 
         internal override int GetImageIndex()
         {
@@ -130,6 +132,25 @@ namespace Fantasy_Kingdoms_Battle
                     StopShowHeroesInMenu();
                     menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Research = cmScout;
                     menu[cmScout.Descriptor.Coord.Y, cmScout.Descriptor.Coord.X].Used = true;
+
+                    foreach (ConstructionSpell cs in Player.ConstructionSpells)
+                    {
+                        if (cs.DescriptorSpell.TypeEntity == TypeEntity.Location) 
+                            if ((!Visible && !cs.DescriptorSpell.Scouted) || (Visible && cs.DescriptorSpell.Scouted))
+                            {
+                                CellMenuLocationSpell cmcs = SearchCellMenuSpell(cs);
+
+                                if (cmcs is null)
+                                {
+                                    cmcs = new CellMenuLocationSpell(this, cs);
+                                    MenuSpells.Add(cmcs);
+                                }
+                                //Assert(!menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Used);                        
+
+                                menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Research = cmcs;
+                                menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Used = true;
+                            }
+                    }
                     break;
                 case 1:
                     if ((cmPageCreatures is null) || !cmPageCreatures.ChangePage)
@@ -186,14 +207,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void FindScoutedConstructions()
         {
-            PayForHire = 0;
-
             foreach (Construction c in Lairs)
                 if (!c.ComponentObjectOfMap.Visible)
                     if (c.PercentScoutForFound <= PercentScoutedArea)
                         c.Unhide(true);
-
-            ComponentObjectOfMap.ListHeroesForFlag.Clear();
         }
 
         private void HeroForScoutClick(object sender, EventArgs e)
@@ -234,6 +251,25 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Settings.TypeLandscape.UriSoundSelect != null)
                 Program.formMain.PlaySoundSelect(Settings.TypeLandscape.UriSoundSelect);
+        }
+
+        private CellMenuLocationSpell SearchCellMenuSpell(ConstructionSpell spell)
+        {
+            foreach (CellMenuLocationSpell cs in MenuSpells)
+            {
+                if (cs.Spell == spell)
+                    return cs;
+            }
+
+            return null;
+        }
+
+        internal void PrepareTurn()
+        {
+            foreach (CellMenuLocationSpell cm in MenuSpells)
+            {
+                cm.PrepareTurn();
+            }
         }
     }
 }

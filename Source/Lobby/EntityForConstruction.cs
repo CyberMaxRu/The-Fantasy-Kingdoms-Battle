@@ -8,15 +8,19 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class EntityForConstruction : SmallEntity
     {
-        public EntityForConstruction(Construction construction, DescriptorSmallEntity descriptor) : base()
+        public EntityForConstruction(BigEntity entity, DescriptorSmallEntity descriptor) : base()
         {
-            Construction = construction;
+            Entity = entity;
             Descriptor = descriptor;
+
+            if (Entity is Construction c)
+                Construction = c;
 
             if (descriptor is DescriptorEntityForActiveEntity ce)
                 Selling = new ComponentSelling(ce.Selling);
         }
 
+        internal BigEntity Entity { get; }
         internal Construction Construction { get; }
         internal DescriptorSmallEntity Descriptor { get; }
         internal ComponentSelling Selling { get; }

@@ -8,9 +8,13 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionBaseResource : EntityForConstruction
     {
-        public ConstructionBaseResource(Construction construction, DescriptorBaseResource br) : base(construction, br)
+        Construction construction;
+        public ConstructionBaseResource(BigEntity entity, DescriptorBaseResource br) : base(entity, br)
         {
             DescriptorBaseResource = br;
+
+            if (entity is Construction c)
+                construction = c;
         }
 
         internal DescriptorBaseResource DescriptorBaseResource { get; }
@@ -28,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool GetNormalImage()
         {
-            return Construction.MiningBaseResources;
+            return construction != null ? construction.MiningBaseResources : true;
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -37,8 +41,9 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep3Type(Descriptor.GetTypeEntity());
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep4Level($"+{Quantity} в день");
-            if (!Construction.MiningBaseResources && (DescriptorBaseResource.ConstructionForMining != null))
-                panelHint.AddStep5Description("Постройте {" + DescriptorBaseResource.ConstructionForMining.Name + "} для добычи ресурса");
+            if (construction != null)
+                if (!construction.MiningBaseResources && (DescriptorBaseResource.ConstructionForMining != null))
+                    panelHint.AddStep5Description("Постройте {" + DescriptorBaseResource.ConstructionForMining.Name + "} для добычи ресурса");
         }
     }
 }

@@ -158,9 +158,23 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if (Entity.SmallEntity is DescriptorConstructionSpell ds)
             {
-                ConstructionSpell cs = new ConstructionSpell(Construction, Entity, ds);
-                Construction.AddSpell(cs);
-                Construction.Player.AddNoticeForPlayer(cs, TypeNoticeForPlayer.Research);
+                ConstructionSpell cs;
+                switch (ds.TypeEntity)
+                {
+                    case TypeEntity.Location:
+                        cs = new ConstructionSpell(Construction, Entity, ds);
+                        Construction.AddSpell(cs);
+                        Construction.Player.AddNoticeForPlayer(cs, TypeNoticeForPlayer.Research);
+                        break;
+                    case TypeEntity.Construction:
+                        cs = new ConstructionSpell(Construction, Entity, ds);
+                        Construction.AddSpell(cs);
+                        Construction.Player.AddNoticeForPlayer(cs, TypeNoticeForPlayer.Research);
+                        break;
+                    default:
+                        DoException("Неизвестный тип сущности");
+                        break;
+                }
             }
             else
             {
@@ -824,14 +838,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             switch (Entity.Action)
             {
-                case ActionOfSpell.Scout:
-                    Assert(!ForConstruction.ComponentObjectOfMap.Visible);
-                    ForConstruction.Unhide(false);
-                    Spell.Selling.Use();
-
-                    Assert(ForConstruction.MenuSpells.IndexOf(this) != -1);
-                    ForConstruction.MenuSpells.Remove(this);
-                    break;
                 default:
                     DoException($"Неизвестное действие: {Entity.Action}");
                     break;
@@ -848,7 +854,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.PrepareTurn();
 
-            Spell.Selling.Reset();
+           Spell.Selling.Reset();
         }
     }
 }

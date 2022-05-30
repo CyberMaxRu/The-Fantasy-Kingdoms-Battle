@@ -267,6 +267,11 @@ namespace Fantasy_Kingdoms_Battle
                 Builders += Lobby.TypeLobby.StartBuilders;
             FreeBuilders = Builders;
 
+            // Начало хода у локации
+            foreach (Location l in Locations)
+                l.PrepareTurn();
+
+            //
             ListBaseResources lbs = new ListBaseResources();
             List<Construction> lc = new List<Construction>();
             lc.AddRange(Constructions);
@@ -350,7 +355,9 @@ namespace Fantasy_Kingdoms_Battle
                         FreeHeroes.Add(c);
                     }
 
+                    l.PayForHire = 0;
                     l.FindScoutedConstructions();
+                    l.ComponentObjectOfMap.ListHeroesForFlag.Clear();
                 }
             }
         }

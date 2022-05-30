@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionSpell : EntityForConstruction
     {
-        public ConstructionSpell(Construction construction, DescriptorProduct cp, DescriptorConstructionSpell ds) : base(construction, ds)
+        public ConstructionSpell(BigEntity entity, DescriptorProduct cp, DescriptorConstructionSpell ds) : base(entity, ds)
         {
             DescriptorSpell = ds;
             Product = cp;
