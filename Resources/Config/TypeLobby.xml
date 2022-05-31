@@ -175,6 +175,16 @@
               <Iron>50</Iron>
             </Resources>
           </Construction>
+          <Construction>
+            <ID>Goldmine</ID>
+            <Visible>true</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <Resources>
+              <Gold>500</Gold>
+            </Resources>
+          </Construction>
         </Constructions>
       </Location>
       <Location>
@@ -333,6 +343,16 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>0</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>Goldmine</ID>
+            <Visible>true</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <Resources>
+              <Gold>2500</Gold>
+            </Resources>
           </Construction>
         </Constructions>
       </Location>

@@ -6884,6 +6884,60 @@
     </Levels>
   </Construction>
   <Construction>
+    <ID>Goldmine</ID>
+    <Name>Золотая жила</Name>
+    <Description>Здесь можно добывать золото.</Description>
+    <ImageIndex>187</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>goldmine_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>Goldmine1</ID>
+        <Number>1</Number>
+      </Level>
+    </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>GoldenMine</Entity>
+      </CellMenu>
+    </CellsMenu>
+  </Construction>
+  <Construction>
+    <ID>GoldenMine</ID>
+    <Name>Золотая шахта</Name>
+    <Description>Здесь добывают золото.</Description>
+    <ImageIndex>171</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>golden_mine_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>LevelGoldenMine1</ID>
+        <Number>1</Number>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+          <DaysProcessing>1</DaysProcessing>
+          <Builders>1</Builders>
+        </Creating>
+        <Mining>
+          <Gold>1</Gold>
+        </Mining>
+        <Income>100</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
     <ID>FrontierPost</ID>
     <Name>Пограничная застава</Name>
     <Description>Пограничная застава - означает границу Королевства. Дальше идти нельзя.</Description>
