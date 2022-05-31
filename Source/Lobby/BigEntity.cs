@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AssertNotDestroyed()
         {
-            Debug.Assert(!Destroyed, $"Сущность {Descriptor.ID} уничтожена.");
+            //Debug.Assert(!Destroyed, $"Сущность {Descriptor.ID} уничтожена.");
         }
 
         internal virtual void PlayDefaultSoundSelect()
