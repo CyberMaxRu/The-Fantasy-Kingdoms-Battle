@@ -935,6 +935,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            bmpTopPanel.Bitmap = lobby.TimeOfDay.GetBitmap(new Size(bmpTopPanel.Width, bmpTopPanel.Height));
             bmpCurtain.Visible = !MainControl.Visible;
 
             Program.formMain.ShowFrame(true);
