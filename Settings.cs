@@ -75,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowTypeCellMenu { get; set; }
         internal bool HideFulfilledRequirements { get; set; }
         internal bool ShowExtraHint { get; set; }
+        internal bool AllowCheating { get; set; }
 
         internal event EventHandler PlayMusicChanged;
         internal event EventHandler VolumeSoundChanged;
@@ -96,6 +97,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowTypeCellMenu = true;
             HideFulfilledRequirements = true;
             ShowExtraHint = true;
+            AllowCheating = true;
         }
 
         internal void LoadSettings()
@@ -130,6 +132,7 @@ namespace Fantasy_Kingdoms_Battle
                     ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
                     HideFulfilledRequirements = XmlUtils.GetBoolean(doc, "Settings/Interface/HideFulfilledRequirements", HideFulfilledRequirements);
                     ShowExtraHint = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowExtraHint", ShowExtraHint);
+                    AllowCheating = XmlUtils.GetBoolean(doc, "Settings/Interface/AllowCheating", AllowCheating);
 
                     DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
                 }
@@ -175,6 +178,7 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteElementString("ShowTypeCellMenu", ShowTypeCellMenu.ToString());
             textWriter.WriteElementString("HideFulfilledRequirements", HideFulfilledRequirements.ToString());
             textWriter.WriteElementString("ShowExtraHint", ShowExtraHint.ToString());
+            textWriter.WriteElementString("AllowCheating", AllowCheating.ToString());
 
             textWriter.WriteEndElement();
             textWriter.Close();

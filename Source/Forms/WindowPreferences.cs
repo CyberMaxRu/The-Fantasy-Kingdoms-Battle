@@ -42,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbShowTypeCellMenu;
         private VCCheckBox chkbHideFulfilledRequirements;
         private VCCheckBox chkbShowExtraHint;
+        private VCCheckBox chkbAllowCheating;
 
         private Settings settings;
 
@@ -106,6 +107,8 @@ namespace Fantasy_Kingdoms_Battle
             chkbHideFulfilledRequirements.Width = 400;
             chkbShowExtraHint = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbHideFulfilledRequirements.NextTop(), "Показывать дополнительную подсказку");
             chkbShowExtraHint.Width = 400;
+            chkbAllowCheating = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowExtraHint.NextTop(), "Разрешить читинг");
+            chkbAllowCheating.Width = 400;
             vcPanelInterface.ApplyMaxSize();
             vcPanelInterface.Height += 8;
             lblCaptionPanelInterface.Width = vcPanelInterface.Width - (FormMain.Config.GridSize * 2);
@@ -175,6 +178,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
             chkbShowExtraHint.Checked = settings.ShowExtraHint;
+            chkbAllowCheating.Checked = settings.AllowCheating;
 
             /*            
                         filenameAvatar = settings.FileNameAvatar;
@@ -212,6 +216,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
             settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
             settings.ShowExtraHint = chkbShowExtraHint.Checked;
+            settings.AllowCheating = chkbAllowCheating.Checked;
             settings.SaveSettings();
 
             CloseForm(DialogAction.OK);

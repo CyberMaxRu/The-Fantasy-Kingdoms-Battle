@@ -1315,5 +1315,12 @@ namespace Fantasy_Kingdoms_Battle
             bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
 
         }
+
+        internal override void PreferencesChanged()
+        {
+            base.PreferencesChanged();
+
+            btnCheating.Visible = Program.formMain.Settings.AllowCheating;
+        }
     }
 }

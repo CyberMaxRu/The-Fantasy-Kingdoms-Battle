@@ -630,6 +630,11 @@ namespace Fantasy_Kingdoms_Battle
                 }*/
 
                 ApplyFullScreen(sm != Settings.ScreenMode());
+
+                foreach (LayerCustom l in Layers)
+                {
+                    l.PreferencesChanged();
+                }
             }
         }
 
