@@ -100,6 +100,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MouseHoverTime >= 0);
             Debug.Assert(MouseHoverTime <= 10_000);
 
+            ObjectMenuWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ObjectMenuWidth").InnerText);
+            Debug.Assert(ObjectMenuWidth >= 50);
+            Debug.Assert(ObjectMenuWidth <= 500);
+
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
             Debug.Assert(HeroInRow >= 3);
             Debug.Assert(HeroInRow <= 14);
@@ -330,6 +334,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
         internal int MaxValueProperty { get; private set; }// 
         internal int MouseHoverTime { get; set; }
+        internal int ObjectMenuWidth { get; set; }
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин

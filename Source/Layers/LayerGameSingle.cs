@@ -201,7 +201,7 @@ namespace Fantasy_Kingdoms_Battle
             panelCombatHeroes.Click += PanelCombatHeroes_Click;
             vcRightPanel.AddControl(panelCombatHeroes);
 
-            vcRightPanel.Width = Math.Max(bitmapMenu.Width, panelCombatHeroes.Width + Config.GridSize);
+            vcRightPanel.Width = Math.Max(FormMain.Config.ObjectMenuWidth, panelCombatHeroes.Width + Config.GridSize);
 
             // Панели информации об объектахs
             panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());

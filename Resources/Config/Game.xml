@@ -19,6 +19,7 @@
     <MaxValueProperty>1000</MaxValueProperty>
     <DefaultLevelTax>Normal</DefaultLevelTax>
     <MouseHoverTime>0</MouseHoverTime>
+    <ObjectMenuWidth>247</ObjectMenuWidth>
   </Interface>
   <Colors>
     <Common>
