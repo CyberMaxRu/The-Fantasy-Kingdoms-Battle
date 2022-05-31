@@ -6932,7 +6932,6 @@
         <Mining>
           <Gold>1</Gold>
         </Mining>
-        <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
