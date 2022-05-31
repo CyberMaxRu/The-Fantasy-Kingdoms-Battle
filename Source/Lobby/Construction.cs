@@ -212,7 +212,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         if (InitialQuantityBaseResources[i].Quantity > 0)
                         {
-                            int coefMining = TypeConstruction.Levels[Level].Mining != null ? TypeConstruction.Levels[Level].Mining[i] : 1;
+                            int coefMining = TypeConstruction.Levels[Level].Mining != null ? TypeConstruction.Levels[Level].Mining[i] : 10;
                             int quantity = Convert.ToInt32(InitialQuantityBaseResources[i].Quantity * coefMining / 10);
                             Debug.Assert(quantity > 0);
                             ConstructionBaseResource cbr = new ConstructionBaseResource(this, InitialQuantityBaseResources[i].Descriptor);

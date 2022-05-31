@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorBaseResource res;
                 for (int i = 0; i < n.ChildNodes.Count; i++)
                 {
-                    int value = Convert.ToInt32(n.ChildNodes[i].InnerText);
+                    int value = Convert.ToInt32(n.ChildNodes[i].InnerText.Replace('.', ',')) * 10;
                     res = FormMain.Descriptors.FindBaseResource(n.ChildNodes[i].Name);
                     Debug.Assert(this[res.Number] == 0);
                     Debug.Assert(value >= 0);
