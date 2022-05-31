@@ -29,9 +29,6 @@ namespace Fantasy_Kingdoms_Battle
             //
             XmlDocument xmlDoc;
 
-            //
-            LoadTextures(Program.FolderResources);
-
             // Загружаем конфигурацию игры
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
             if (defaultGridSize)
@@ -300,9 +297,6 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal List<string> ExternalAvatars { get; } = new List<string>();
 
-        //
-        private List<(string, Bitmap)> Textures = new List<(string, Bitmap)>();
-
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
@@ -495,27 +489,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             QuantityAllAvatars = QuantityInternalAvatars + ExternalAvatars.Count;
             ImageIndexLastAvatar = ImageIndexFirstAvatar + QuantityAllAvatars - 1;
-        }
-
-        private void LoadTextures(string pathResources)
-        {
-            string[] files = Directory.GetFiles(pathResources + @"Icons\Textures");
-            foreach (string filename in files)
-            {
-                Bitmap bmp = LoadBitmap(Path.GetFileName(filename), @"Icons\Textures");
-                Textures.Add((Path.GetFileNameWithoutExtension(filename), bmp));
-            }
-        }
-
-        internal Bitmap GetTexture(string id)
-        {
-            foreach ((string, Bitmap) t in Textures)
-            {
-                if (t.Item1 == id)
-                    return t.Item2;
-            }
-
-            throw new Exception($"Текстура {id} не найдена.");
         }
 
         internal void SaveExternalAvatars()
