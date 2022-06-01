@@ -99,7 +99,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            if (Map != null)
+            return false;
+            /*if (Map != null)
             {
                 switch (Map.PointsMap[pointMouse.Y, pointMouse.X].TypePoint)
                 {
@@ -120,7 +121,7 @@ namespace Fantasy_Kingdoms_Battle
                 return true;
             }
             else
-                return false;
+                return false;*/
         }
     }
 }
