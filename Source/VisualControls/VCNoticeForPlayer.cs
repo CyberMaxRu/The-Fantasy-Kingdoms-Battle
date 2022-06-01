@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.ReceivedBaseResource:
                     BaseResource br = Entity as BaseResource;
-                    nameNotice = $"Поступил ресурс {br.Descriptor.Name}:";
+                    nameNotice = $"Поступил ресурс:";
                     nameText = $"+{br.Quantity}";
                     colorNameEntity = Color.LimeGreen;
                     break;
