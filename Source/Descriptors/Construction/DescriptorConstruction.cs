@@ -340,5 +340,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Нельзя строить категорию сооружения: " + Category.ToString());
             }
         }
+
+        internal override string GetTypeEntity() => TypeConstruction.Name;
     }
 }

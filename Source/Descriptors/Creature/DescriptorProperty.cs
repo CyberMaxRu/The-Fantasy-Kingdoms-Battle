@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorProperty : DescriptorEntity
+    internal sealed class DescriptorProperty : DescriptorVisual
     {
         string nameAverageFromCreatures;
 

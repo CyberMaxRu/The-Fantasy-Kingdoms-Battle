@@ -10,7 +10,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс потребности 
-    internal sealed class DescriptorNeed : DescriptorEntity
+    internal sealed class DescriptorNeed : DescriptorVisual
     {
         public DescriptorNeed(XmlNode n) : base(n)
         {

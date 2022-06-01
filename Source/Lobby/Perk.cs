@@ -40,11 +40,12 @@ namespace Fantasy_Kingdoms_Battle
         internal Entity Owner { get; }// Владелец перка
         internal int[] ListProperty { get; }
 
+        internal override string GetName() => Descriptor != null ? Descriptor.Name : BigEntity.Descriptor.Name;
         internal override int GetImageIndex() => Descriptor != null ? Descriptor.ImageIndex : BigEntity.GetImageIndex();
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Descriptor != null ? Descriptor.Name : BigEntity.Descriptor.Name, GetImageIndex());
+            panelHint.AddStep2Entity(this);
             if (Descriptor != null)
                 panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep9Properties(ListProperty);

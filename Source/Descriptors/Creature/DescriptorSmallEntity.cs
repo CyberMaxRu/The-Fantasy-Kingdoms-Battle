@@ -55,7 +55,6 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
         protected virtual bool ForHeroes() => true;
-        internal abstract string GetTypeEntity();
 
         internal override void TuneLinks()
         {

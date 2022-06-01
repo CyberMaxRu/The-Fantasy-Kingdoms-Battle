@@ -42,6 +42,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Index { get; }
         internal List<DescriptorConstruction> Elements { get; } = new List<DescriptorConstruction>();
 
+        internal override string GetTypeEntity() => "Ландшафт";
+
         internal override void TuneLinks()
         {
             base.TuneLinks();

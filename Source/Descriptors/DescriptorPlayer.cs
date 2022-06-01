@@ -24,5 +24,6 @@ namespace Fantasy_Kingdoms_Battle
         internal TypePlayer TypePlayer { get; }
 
         protected override int ShiftImageIndex() => Config.ImageIndexFirstAvatar;
+        internal override string GetTypeEntity() => "Игрок";
     }
 }

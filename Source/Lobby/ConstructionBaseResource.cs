@@ -37,8 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Descriptor.Name, GetImageIndex());
-            panelHint.AddStep3Type(Descriptor.GetTypeEntity());
+            panelHint.AddStep2DescriptorEntity(Descriptor);
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep4Level($"+{Quantity} в день");
             if (construction != null)

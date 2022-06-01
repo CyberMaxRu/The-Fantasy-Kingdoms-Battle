@@ -323,7 +323,7 @@ namespace Fantasy_Kingdoms_Battle
             SetTaskForHeroes();
         }
         internal override bool ProperName() => true;
-        internal override string GetTypeEntity() => "Игрок";
+        internal override string GetTypeEntity() => Descriptor.GetTypeEntity();
 
         internal abstract void DoTurn();
         internal abstract void EndTurn();
@@ -1357,9 +1357,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForBuildTypeConstruction(PanelHint panelHint, DescriptorConstruction type)
         {
-            panelHint.AddStep2Header(type.Name, type.ImageIndex);
+            panelHint.AddStep2DescriptorEntity(type);
             //panelHint.AddStep4Level("Уровень 1");
-            panelHint.AddStep5Description(type.Description);
             //panelHint.AddStep6Income(type.Levels[1].Income);
             panelHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
             panelHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);

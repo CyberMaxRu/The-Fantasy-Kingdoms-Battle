@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
-            panelHint.AddStep2DescriptorSmallEntity(Entity);
+            panelHint.AddStep2DescriptorEntity(Entity);
             //panelHint.AddStep4Level(level);
             panelHint.AddStep5Description(Entity.SmallEntity.Description);
             //PanelHint.AddStep6Income(Descriptor.Income);
@@ -207,7 +207,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
-            panelHint.AddStep2DescriptorSmallEntity(Entity);
+            panelHint.AddStep2DescriptorEntity(Entity);
             //panelHint.AddStep4Level(level);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
@@ -408,8 +408,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep11Requirement(GetTextRequirementsHire());
             panelHint.AddStep12Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
             */
-            panelHint.AddStep2Header(Creature.Name, Creature.ImageIndex);
-            panelHint.AddStep3Type("Обучение");
+            panelHint.AddStep2DescriptorEntity(Creature);
             panelHint.AddStep5Description(Creature.Description);
             panelHint.AddStep75Salary(Creature.CostOfHiring);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
@@ -479,7 +478,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2DescriptorSmallEntity(ConstructionEvent);
+            panelHint.AddStep2DescriptorEntity(ConstructionEvent);
             panelHint.AddStep4Level($"Длительность: {ConstructionEvent.Duration} дн."
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.");
             panelHint.AddStep5Description(ConstructionEvent.Description);
@@ -548,7 +547,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2DescriptorSmallEntity(Entity);
+            panelHint.AddStep2DescriptorEntity(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
             panelHint.AddStep9Interest(Entity.ModifyInterest, true);
@@ -596,7 +595,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2DescriptorSmallEntity(Entity);
+            panelHint.AddStep2DescriptorEntity(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //CreatedEntity.Creating.panelHint.AddStep6Income(Descriptor.Income);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
@@ -641,7 +640,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2DescriptorSmallEntity(Entity);
+            panelHint.AddStep2DescriptorEntity(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
@@ -822,7 +821,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2DescriptorSmallEntity(Entity);
+            panelHint.AddStep2DescriptorEntity(Entity);
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());

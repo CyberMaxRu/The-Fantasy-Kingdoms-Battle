@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorInterest : DescriptorEntity
+    internal sealed class DescriptorInterest : DescriptorVisual
     {
         public DescriptorInterest(XmlNode n) : base(n)
         {

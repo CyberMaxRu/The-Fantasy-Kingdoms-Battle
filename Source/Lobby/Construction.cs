@@ -631,8 +631,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (TypeConstruction.IsOurConstruction)
                 {
-                    panelHint.AddStep2Header(GetName(), TypeConstruction.ImageIndex);
-                    panelHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
+                    panelHint.AddStep2Entity(this);
                     if (!((Level == 1) && (TypeConstruction.MaxLevel == 1)))
                         panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
                     panelHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
@@ -653,8 +652,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        panelHint.AddStep2Header(GetName(), TypeConstruction.ImageIndex);
-                        panelHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
+                        panelHint.AddStep2Entity(this);
                         panelHint.AddStep5Description(TypeConstruction.Description);
 
                         if (TypeConstruction.Reward != null)
@@ -864,7 +862,7 @@ namespace Fantasy_Kingdoms_Battle
                 return "Неизвестное место";
         }
 
-        internal override string GetTypeEntity() => TypeConstruction.Name;
+        internal override string GetTypeEntity() => TypeConstruction.TypeConstruction.Name;
 
         internal bool ImageEnabled()
         {
@@ -1084,8 +1082,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(requiredLevel > 0);
             Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
 
-            panelHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
-            panelHint.AddStep3Type(TypeConstruction.TypeConstruction.Name);
+            panelHint.AddStep2Entity(this);
             panelHint.AddStep4Level(requiredLevel == 1 ? "Уровень 1" : $"Улучшить строение ({requiredLevel} ур.)");
             panelHint.AddStep5Description(requiredLevel == 1 ? TypeConstruction.Description : "");
             panelHint.AddStep6Income(IncomeForLevel(requiredLevel));

@@ -347,6 +347,8 @@ namespace Fantasy_Kingdoms_Battle
         internal CreatureModifyParameters AdditionalBonus { get; }
         //
 
+        internal override string GetTypeEntity() => "Существо";
+
         internal int MaxQuantityItem(DescriptorItem i)
         {
             return CarryItems.ContainsKey(i) ? CarryItems[i] : 0;
