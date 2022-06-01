@@ -4,14 +4,14 @@
     <ID>Day</ID>
     <Name>День</Name>
     <ImageIndex>41</ImageIndex>
-    <Description>Днём силы Света сильнее, а силы Тьмы - слабее. Можно заниматься строительством.</Description>
+    <Description>Днём силы Света сильнее, а силы Тьмы - слабее.//Можно заниматься строительством.</Description>
     <ImageBackground>TimeOfDayDay</ImageBackground>
   </TimeOfDay>
   <TimeOfDay>
     <ID>Night</ID>
     <Name>Ночь</Name>
     <ImageIndex>42</ImageIndex>
-    <Description>Ночью силы Тьмы сильнее, а силы Света - слабее. Нельзя строить.</Description>
+    <Description>Ночью силы Тьмы сильнее, а силы Света - слабее.//Нельзя строить.</Description>
     <ImageBackground>TimeOfDayNight</ImageBackground>
   </TimeOfDay>
 </Descriptors>
