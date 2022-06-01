@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override string GetText() => Location.ComponentObjectOfMap.ListHeroesForFlag.Count.ToString();
+        internal override string GetText() => Location.ComponentObjectOfMap.ListHeroesForFlag.Count > 0 ? Location.ComponentObjectOfMap.ListHeroesForFlag.Count.ToString() : "";
 
         internal override void Click()
         {
