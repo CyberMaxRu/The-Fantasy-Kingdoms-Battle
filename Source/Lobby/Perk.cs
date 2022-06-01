@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Perk : SmallEntity
     {
-        public Perk(BigEntity creature, DescriptorPerk descriptor, Entity owner, int counter = 0) : base()
+        public Perk(BigEntity creature, DescriptorPerk descriptor, Entity owner, int counter = 0) : base(descriptor)
         {
             Debug.Assert(descriptor != null);
             Debug.Assert(owner != null);
@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             ListProperty = descriptor.ListProperty;
         }
 
-        public Perk(BigEntity creature, List<DescriptorCreatureProperty> list) : base()
+        public Perk(BigEntity creature, List<DescriptorCreatureProperty> list) : base(null)
         {
             BigEntity = creature;
 

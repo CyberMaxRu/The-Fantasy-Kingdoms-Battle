@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class GroupItem : SmallEntity
     {
-        public GroupItem(Entity owner, DescriptorGroupItems descriptor) : base()
+        public GroupItem(Entity owner, DescriptorGroupItems descriptor) : base(descriptor)
         {
             Owner = owner;
             Descriptor = descriptor;
