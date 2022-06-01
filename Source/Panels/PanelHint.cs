@@ -351,7 +351,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = lblName.NextTop();
         }
 
-        internal void AddStep2Header(string header, int imageIndexSmall = -1)
+        internal void AddStep2Header(string header, int imindex = -1)
         {
             Debug.Assert(lblHeader.Text.Length == 0);
             if (header.Length == 0)
@@ -365,7 +365,7 @@ namespace Fantasy_Kingdoms_Battle
             if (header.Length > 0)
             {
                 lblHeader.Color = Color.Yellow;
-                lblHeader.ShiftX = imageIndexSmall == -1 ? FormMain.Config.GridSize : imgCell.NextLeft();
+                lblHeader.ShiftX = FormMain.Config.GridSize;
                 lblHeader.ShiftY = nextTop;
                 lblHeader.Width = widthControl - lblHeader.ShiftX;
                 lblHeader.Text = header;
@@ -373,15 +373,31 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = lblHeader.NextTop();
             }
+        }
 
-            if (imageIndexSmall != -1)
-            {
-                imgCell.ShiftY = lblHeader.ShiftY;
-                imgCell.ImageIndex = imageIndexSmall;
-                imgCell.Visible = true;
+        internal void AddStep2HeaderSmallEntity(DescriptorSmallEntity entity)
+        {
+            Debug.Assert(lblHeader.Text.Length == 0);
 
-                nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
-            }
+            Width = PANEL_WIDTH;
+            ExistHint = true;
+
+            lblHeader.Color = Color.Yellow;
+            lblHeader.ShiftX = imgCell.NextLeft();
+            lblHeader.ShiftY = nextTop;
+            lblHeader.Width = widthControl - lblHeader.ShiftX;
+            lblHeader.Text = entity.Name;
+            lblHeader.Height = lblHeader.MinHeigth();
+
+            nextTop = lblHeader.NextTop();
+
+            imgCell.ShiftY = lblHeader.ShiftY;
+            imgCell.ImageIndex = entity.ImageIndex;
+            imgCell.Visible = true;
+
+            nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
+
+            AddStep3Type(entity.GetTypeEntity());
         }
 
         internal void AddStep3Type(string type)
