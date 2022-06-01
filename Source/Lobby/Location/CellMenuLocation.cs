@@ -117,7 +117,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal override string GetText() => "+" + Location.PayForHire.ToString();
+        internal override string GetText() => Location.PayForHire > 0 ? "+" + Location.PayForHire.ToString() : "";
 
         internal override void Click()
         {
