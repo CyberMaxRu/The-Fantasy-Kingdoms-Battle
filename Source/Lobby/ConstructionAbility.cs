@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Descriptor.Name, GetImageIndex());
+            panelHint.AddStep2Header(Descriptor.Name, Descriptor.ImageIndex);
             panelHint.AddStep3Type(DescriptorAbility.TypeAbility.Name);
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep10CostGold(GetCostGold());

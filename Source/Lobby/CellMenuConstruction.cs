@@ -129,8 +129,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
-            panelHint.AddStep2Header(Entity.Name, GetImageIndex());
-            panelHint.AddStep3Type(Entity.SmallEntity != null ? Entity.SmallEntity.GetTypeEntity() : Entity.SmallEntity.GetTypeEntity());
+            panelHint.AddStep2HeaderSmallEntity(Entity);
             //panelHint.AddStep4Level(level);
             panelHint.AddStep5Description(Entity.SmallEntity.Description);
             //PanelHint.AddStep6Income(Descriptor.Income);
@@ -208,8 +207,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint(PanelHint panelHint)
         {
             //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
-            panelHint.AddStep2Header(Entity.Name, GetImageIndex());
-            panelHint.AddStep3Type(Entity.GetTypeEntity());
+            panelHint.AddStep2HeaderSmallEntity(Entity);
             //panelHint.AddStep4Level(level);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
@@ -481,8 +479,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(ConstructionEvent.Name, ConstructionEvent.ImageIndex);
-            panelHint.AddStep3Type("Мероприятие");
+            panelHint.AddStep2HeaderSmallEntity(ConstructionEvent);
             panelHint.AddStep4Level($"Длительность: {ConstructionEvent.Duration} дн."
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.");
             panelHint.AddStep5Description(ConstructionEvent.Description);
@@ -551,8 +548,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
-            panelHint.AddStep3Type("Доп. сооружение");
+            panelHint.AddStep2HeaderSmallEntity(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
             panelHint.AddStep9Interest(Entity.ModifyInterest, true);
@@ -600,8 +596,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
-            panelHint.AddStep3Type("Улучшение");
+            panelHint.AddStep2HeaderSmallEntity(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //CreatedEntity.Creating.panelHint.AddStep6Income(Descriptor.Income);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
@@ -646,8 +641,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
-            panelHint.AddStep3Type("Турнир");
+            panelHint.AddStep2HeaderSmallEntity(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
@@ -828,8 +822,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
-            panelHint.AddStep3Type("Заклинание");
+            panelHint.AddStep2HeaderSmallEntity(Entity);
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
