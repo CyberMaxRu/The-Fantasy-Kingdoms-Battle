@@ -19,6 +19,8 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorAbility Descriptor { get; }
         internal int Pos { get; }// Позиция, под которой умение было добавлено существу. Применяется для сортировки
 
+        internal override string GetTypeEntity() => Descriptor.TypeAbility.Name;
+
         internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override string GetLevel() => Descriptor.MinUnitLevel.ToString();
         internal override bool GetNormalImage() => Creature.Level >= Descriptor.MinUnitLevel;
@@ -26,8 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(Descriptor.Name, Descriptor.ImageIndex);
-            panelHint.AddStep3Type(Descriptor.TypeAbility.Name);
+            panelHint.AddStep2Entity(this);
             panelHint.AddStep4Level($"Уровень для обучения: {Descriptor.MinUnitLevel}");
             panelHint.AddStep5Description(Descriptor.Description);
         }

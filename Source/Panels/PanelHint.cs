@@ -324,7 +324,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = lblHeader.ShiftX + lblHeader.MinWidth() + FormMain.Config.GridSize;
         }
 
-        internal void AddStep2Header(string header, int imindex = -1)
+        internal void AddStep2Header(string header)
         {
             Debug.Assert(lblHeader.Text.Length == 0);
 

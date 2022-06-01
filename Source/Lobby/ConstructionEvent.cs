@@ -24,11 +24,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
         internal bool Enabled { get; set; } = true;// Товар доступен для продажи// !!! Делать через 0 В количестве?!!!
 
-        internal override int GetImageIndex()
-        {
-            return Descriptor.ImageIndex;
-        }
-
+        internal override string GetName() => DescriptorConstructionEvent.NameGoods;
+        internal override string GetTypeEntity() => Descriptor.GetTypeEntity();
+        internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override bool GetNormalImage() => Enabled;
 
         internal override string GetText()
@@ -50,8 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, GetImageIndex());
-            panelHint.AddStep3Type(Descriptor.GetTypeEntity());
+            panelHint.AddStep2Entity(this);
             panelHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);
