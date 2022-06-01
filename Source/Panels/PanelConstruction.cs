@@ -27,6 +27,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabelValue lblRewardGold;
         private readonly VCLabelValue lblRewardGreatness;
 
+        private readonly List<VCLabelValue> listResourcesForBuild;
+
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             ShowBorder = true;
@@ -93,11 +95,25 @@ namespace Fantasy_Kingdoms_Battle
             lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
-            Height = btnAction.NextTop();
-            Width = btnAction.NextLeft();
-
             Height = btnBuildOrUpgrade.NextTop();
-            Width = btnBuildOrUpgrade.NextLeft();
+
+            listResourcesForBuild = new List<VCLabelValue>();
+            int nextTop = 0;
+
+            for (int i = FormMain.Descriptors.BaseResources.Count - 1; i >= 0; i--)
+            {
+                VCLabelValue ll = new VCLabelValue(this, 0, 0, Color.White, false);
+                ll.Image.ImageIndex = FormMain.Descriptors.BaseResources[i].ImageIndex16;
+                ll.Width = 64;
+                ll.Visible = false;
+                ll.ShiftX = imgMapObject.NextLeft();
+                ll.ShiftY = nextTop > 0 ? nextTop : Height - ll.Height - FormMain.Config.GridSizeHalf;
+                nextTop = ll.ShiftY - ll.Height - FormMain.Config.GridSizeHalf;
+
+                listResourcesForBuild.Insert(0, ll);
+            }
+
+            Width = listResourcesForBuild[0].NextLeft();
             lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
@@ -217,6 +233,8 @@ namespace Fantasy_Kingdoms_Battle
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
                             btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
+
+                            ShowResourcesForBuild();
                         }
                         else
                         {
@@ -244,6 +262,8 @@ namespace Fantasy_Kingdoms_Battle
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
                             btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
+
+                            ShowResourcesForBuild();
                         }
                     }
                 }
@@ -312,7 +332,15 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            btnBuildOrUpgrade.Visible = false;
+
             base.Draw(g);
+
+            void ShowResourcesForBuild()
+            {
+                foreach (BaseResource br in Construction.CellMenuBuildOrLevelUp.GetCost())
+                listResourcesForBuild[br.Descriptor.Number].Text = br.Quantity > 0 ? br.Quantity.ToString() : "";
+            }
         }
 
         private void ImgLair_ShowHint(object sender, EventArgs e)
