@@ -28,7 +28,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCText lblName;
         internal readonly VCText lblHeader;
         internal readonly VCCellSimple imgCell;
-        internal readonly VCImage128 img128;
         internal readonly VCText lblType;
         internal readonly VCText lblAction;
         internal readonly VCText lblDescription;
@@ -87,7 +86,6 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader.StringFormat.LineAlignment = StringAlignment.Near;
 
             imgCell = new VCCellSimple(this, FormMain.Config.GridSize, lblHeader.NextTop());
-            img128 = new VCImage128(this, FormMain.Config.GridSize, lblHeader.NextTop());
 
             lblType = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontParagraphC, Color.DarkKhaki, widthControl);
             lblType.StringFormat.Alignment = StringAlignment.Near;
@@ -262,7 +260,6 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader.Text = "";
             lblHeader.ShiftX = FormMain.Config.GridSize;
             imgCell.Visible = false;
-            img128.Visible = false;
             lblType.Visible = false;
             lblAction.Visible = false;
             lblDescription.Visible = false;
@@ -424,7 +421,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep4Level(string level, int imageIndexBig = -1)
+        internal void AddStep4Level(string level)
         {
             if (level.Length > 0)
             {
@@ -434,14 +431,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblAction.Visible = true;
 
                 nextTop = lblAction.NextTop();
-            }
-
-            if (imageIndexBig != -1)
-            {
-                img128.ShiftY = nextTop;
-                img128.ImageIndex = imageIndexBig;
-                img128.Visible = true;
-                nextTop = img128.NextTop();
             }
         }
 
