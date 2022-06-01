@@ -293,15 +293,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (IsLive)
             {
-                panelHint.AddStep1Name(GetNameHero());
-                panelHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
+                panelHint.AddStep2Entity(this);
                 panelHint.AddStep4Level($"Уровень {Level}");
                 panelHint.AddStep5Description(TypeCreature.Description);
             }
             else
             {
-                panelHint.AddStep1Name(GetNameHero());
-                panelHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
+                panelHint.AddStep2Entity(this);
                 panelHint.AddStep4Level($"Уровень {Level}");
                 panelHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}{ReasonOfDeath.Name}");
             }

@@ -968,7 +968,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep1Name(GetName());
+            panelHint.AddStep2Entity(this);
             panelHint.AddStep4Level($"{PositionInLobby} место");
             panelHint.AddStep5Description("Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine

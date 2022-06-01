@@ -361,13 +361,12 @@ namespace Fantasy_Kingdoms_Battle
             Width = PANEL_WIDTH;
             ExistHint = true;
 
-            lblHeader.Color = Color.Yellow;
+            lblHeader.Color = properName ? Color.SteelBlue : Color.Yellow;
             lblHeader.ShiftX = imgCell.NextLeft();
             lblHeader.ShiftY = nextTop;
             lblHeader.Width = widthControl - lblHeader.ShiftX;
             lblHeader.Text = name;
             lblHeader.Height = lblHeader.MinHeigth();
-            lblHeader.Color = properName ? Color.SteelBlue : Color.Yellow;
 
             nextTop = lblHeader.NextTop();
 
