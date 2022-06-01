@@ -70,6 +70,8 @@ namespace Fantasy_Kingdoms_Battle
 
         //internal bool Selected { get; set; }
 
+        internal override bool ProperName() => true;
+
         // Увольнение героя
         internal void Dismiss()
         {

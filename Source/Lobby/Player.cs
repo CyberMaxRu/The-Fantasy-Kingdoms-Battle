@@ -322,6 +322,7 @@ namespace Fantasy_Kingdoms_Battle
 
             SetTaskForHeroes();
         }
+        internal override bool ProperName() => true;
         internal override string GetTypeEntity() => "Игрок";
 
         internal abstract void DoTurn();
