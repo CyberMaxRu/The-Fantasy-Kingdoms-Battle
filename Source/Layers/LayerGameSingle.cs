@@ -191,10 +191,11 @@ namespace Fantasy_Kingdoms_Battle
             bmpObjectMenu = new VCBitmap(vcRightPanel, 0, 0, LoadBitmap("Menu.png"));
             //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
 
+            int addShift = bmpObjectMenu.Width - FormMain.Config.ObjectMenuWidth + 22;
             CellsMenu = new VCMenuCell[FormMain.PANEL_MENU_CELLS.Height, FormMain.PANEL_MENU_CELLS.Width];
             for (int y = 0; y < FormMain.PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < FormMain.PANEL_MENU_CELLS.Width; x++)
-                    CellsMenu[y, x] = new VCMenuCell(bmpObjectMenu, 22 + (x * (Program.formMain.imListObjects48.Size.Width + FormMain.DISTANCE_BETWEEN_CELLS)), 95 + (y * (Program.formMain.imListObjects48.Size.Height + FormMain.DISTANCE_BETWEEN_CELLS)));
+                    CellsMenu[y, x] = new VCMenuCell(bmpObjectMenu, addShift + (x * (Program.formMain.imListObjects48.Size.Width + FormMain.DISTANCE_BETWEEN_CELLS)), 95 + (y * (Program.formMain.imListObjects48.Size.Height + FormMain.DISTANCE_BETWEEN_CELLS)));
 
             // Панель со всеми героями
             panelCombatHeroes = new PanelWithPanelEntity(4, false, 12, 12);
