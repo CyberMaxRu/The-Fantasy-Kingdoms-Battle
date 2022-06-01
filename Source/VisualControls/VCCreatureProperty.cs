@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool PrepareHint()
         {
             PanelHint.AddStep2Header(property.Property.Name);
+            PanelHint.AddStep3Type("Основная характеристика");
             PanelHint.AddStep4Level($"{property.Property.Name}: {FormatDecimal100(property.Value)}");
             PanelHint.AddStep5Description(property.Property.Description);
             if (property.ListSource.Count > 0)
