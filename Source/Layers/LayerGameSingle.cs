@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
 
         private readonly PanelConstruction[,,] panels;
-        private readonly VCBitmap bitmapMenu;
+        private readonly VCBitmap bmpObjectMenu;
         private readonly VCBitmap bmpTopPanel;
         private readonly VCBitmap bmpPreparedToolbar;
 
@@ -188,13 +188,13 @@ namespace Fantasy_Kingdoms_Battle
             vcRightPanel.IsActiveControl = false;
 
             // Создаем меню
-            bitmapMenu = new VCBitmap(vcRightPanel, 0, 0, LoadBitmap("Menu.png"));
+            bmpObjectMenu = new VCBitmap(vcRightPanel, 0, 0, LoadBitmap("Menu.png"));
             //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
 
             CellsMenu = new VCMenuCell[FormMain.PANEL_MENU_CELLS.Height, FormMain.PANEL_MENU_CELLS.Width];
             for (int y = 0; y < FormMain.PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < FormMain.PANEL_MENU_CELLS.Width; x++)
-                    CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 22 + (x * (Program.formMain.imListObjects48.Size.Width + FormMain.DISTANCE_BETWEEN_CELLS)), 95 + (y * (Program.formMain.imListObjects48.Size.Height + FormMain.DISTANCE_BETWEEN_CELLS)));
+                    CellsMenu[y, x] = new VCMenuCell(bmpObjectMenu, 22 + (x * (Program.formMain.imListObjects48.Size.Width + FormMain.DISTANCE_BETWEEN_CELLS)), 95 + (y * (Program.formMain.imListObjects48.Size.Height + FormMain.DISTANCE_BETWEEN_CELLS)));
 
             // Панель со всеми героями
             panelCombatHeroes = new PanelWithPanelEntity(4, false, 12, 12);
@@ -1258,8 +1258,8 @@ namespace Fantasy_Kingdoms_Battle
 
             btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
-            bitmapMenu.ShiftX = vcRightPanel.Width - bitmapMenu.Width;
-            bitmapMenu.ShiftY = vcRightPanel.Height - bitmapMenu.Height;
+            bmpObjectMenu.ShiftX = vcRightPanel.Width - bmpObjectMenu.Width;
+            bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
             labelGreatness.ShiftX = MainControl.Width - labelGreatness.Width - 104;
