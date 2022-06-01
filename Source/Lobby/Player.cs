@@ -1357,7 +1357,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForBuildTypeConstruction(PanelHint panelHint, DescriptorConstruction type)
         {
-            panelHint.AddStep2DescriptorEntity(type);
+            panelHint.AddStep2Descriptor(type);
             //panelHint.AddStep4Level("Уровень 1");
             //panelHint.AddStep6Income(type.Levels[1].Income);
             panelHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);

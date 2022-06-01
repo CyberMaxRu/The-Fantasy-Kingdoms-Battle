@@ -212,7 +212,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2DescriptorEntity(Entity);
+            panelHint.AddStep2Descriptor(Entity);
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
             panelHint.AddStep12Gold(Location.Player.BaseResources, GetCost());

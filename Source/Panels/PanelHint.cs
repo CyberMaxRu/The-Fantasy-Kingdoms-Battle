@@ -344,7 +344,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep2DescriptorEntity(DescriptorEntity entity)
+        internal void AddStep2Descriptor(DescriptorEntity entity)
         {
             ShowEntity(entity.Name, entity.GetTypeEntity(), entity.ImageIndex, false);
         }
