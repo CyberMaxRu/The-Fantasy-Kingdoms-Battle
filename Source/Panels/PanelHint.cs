@@ -375,7 +375,17 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep2HeaderSmallEntity(DescriptorSmallEntity entity)
+        internal void AddStep2DescriptorSmallEntity(DescriptorSmallEntity entity)
+        {
+            ShowEntity(entity.Name, entity.GetTypeEntity(), entity.ImageIndex);
+        }
+
+        internal void AddStep2Entity(Entity entity)
+        {
+            ShowEntity(entity.GetName(), entity.GetTypeEntity(), entity.GetImageIndex());   
+        }
+
+        private void ShowEntity(string name, string typeEntity, int imageIndex)
         {
             Debug.Assert(lblHeader.Text.Length == 0);
 
@@ -386,18 +396,18 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader.ShiftX = imgCell.NextLeft();
             lblHeader.ShiftY = nextTop;
             lblHeader.Width = widthControl - lblHeader.ShiftX;
-            lblHeader.Text = entity.Name;
+            lblHeader.Text = name;
             lblHeader.Height = lblHeader.MinHeigth();
 
             nextTop = lblHeader.NextTop();
 
             imgCell.ShiftY = lblHeader.ShiftY;
-            imgCell.ImageIndex = entity.ImageIndex;
+            imgCell.ImageIndex = imageIndex;
             imgCell.Visible = true;
 
             nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
 
-            AddStep3Type(entity.GetTypeEntity());
+            AddStep3Type(typeEntity);
         }
 
         internal void AddStep3Type(string type)
