@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            research.Click();
+            research?.Click();
         }
 
         internal override bool PrepareHint()
@@ -58,76 +58,79 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (research != null)
+            if (!ManualDraw)
             {
-                ImageIndex = research.GetImageIndex();
-                Color = research.GetColorText();
-
-                if (research.PosInQueue > 0)
+                if (research != null)
                 {
-                    //Level = "";
-                    //Text = "";
-                    Level = research.PosInQueue.ToString();
+                    ImageIndex = research.GetImageIndex();
+                    Color = research.GetColorText();
 
-                    //ImageIsEnabled = false;
-                    //lblBanner.Visible = true;
-                    if (research.PosInQueue == 1)
+                    if (research.PosInQueue > 0)
                     {
-                        LowText = research.DaysLeft.ToString() + " д.";
+                        //Level = "";
+                        //Text = "";
+                        Level = research.PosInQueue.ToString();
 
-                        lblBanner.Text = research.DaysLeft.ToString();
-                        lblBanner.Color = Color.LimeGreen;
+                        //ImageIsEnabled = false;
+                        //lblBanner.Visible = true;
+                        if (research.PosInQueue == 1)
+                        {
+                            LowText = research.DaysLeft.ToString() + " д.";
+
+                            lblBanner.Text = research.DaysLeft.ToString();
+                            lblBanner.Color = Color.LimeGreen;
+                        }
+                        else
+                        {
+                            LowText = "ожид.";
+                            lblBanner.Text = research.PosInQueue.ToString();
+                            lblBanner.Color = Color.DarkGoldenrod;
+                        }
                     }
                     else
                     {
-                        LowText = "ожид.";
-                        lblBanner.Text = research.PosInQueue.ToString();
-                        lblBanner.Color = Color.DarkGoldenrod;
+                        ImageIsEnabled = true;
+                        lblBanner.Visible = false;
+                        LowText = research.GetText();
+                        Level = research.GetLevel();
                     }
-                }
-                else
-                {
-                    ImageIsEnabled = true;
-                    lblBanner.Visible = false;
-                    LowText = research.GetText();
-                    Level = research.GetLevel();
-                }
-                //ImageIsEnabled = research.CheckRequirements();
+                    //ImageIsEnabled = research.CheckRequirements();
 
-                // Накладываем фильтр
-                //if (!research.CheckRequirements())
-                //    ImageFilter = ImageFilter.Disabled;
-            }
-/*            else if ((research != null) && (research.Research.Construction != null))
-            {
-                if (research.ConstructionForBuild != null)
-                {
-                    Construction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.Construction);
-                    Debug.Assert(!(pc is null));
-                    Text = pc.CostBuyOrUpgrade().ToString();
-                    ImageIndex = pc.TypeConstruction.ImageIndex;
-                    ImageIsEnabled = research.CheckRequirements();
+                    // Накладываем фильтр
+                    //if (!research.CheckRequirements())
+                    //    ImageFilter = ImageFilter.Disabled;
                 }
+                /*            else if ((research != null) && (research.Research.Construction != null))
+                            {
+                                if (research.ConstructionForBuild != null)
+                                {
+                                    Construction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.Construction);
+                                    Debug.Assert(!(pc is null));
+                                    Text = pc.CostBuyOrUpgrade().ToString();
+                                    ImageIndex = pc.TypeConstruction.ImageIndex;
+                                    ImageIsEnabled = research.CheckRequirements();
+                                }
+                                else
+                                {
+                                    Text = research.Research.Construction.Levels[1].Cost.ToString();
+                                    ImageIndex = research.Research.Construction.ImageIndex;
+                                    ImageIsEnabled = research.Player.CanBuildTypeConstruction(research.Research.Construction);
+                                }
+                                // Накладываем фильтр
+                                //if (!research.CheckRequirements())
+                                //    ImageFilter = ImageFilter.Disabled;
+                            }*/
                 else
                 {
-                    Text = research.Research.Construction.Levels[1].Cost.ToString();
-                    ImageIndex = research.Research.Construction.ImageIndex;
-                    ImageIsEnabled = research.Player.CanBuildTypeConstruction(research.Research.Construction);
+                    ImageIndex = -1;
                 }
-                // Накладываем фильтр
-                //if (!research.CheckRequirements())
-                //    ImageFilter = ImageFilter.Disabled;
-            }*/
-            else
-            {
-                ImageIndex = -1;
             }
 
             base.Draw(g);
 
             if (Visible && (ImageIndex != -1))
             {
-                if (research.GetImageIsEnabled())
+                if (ManualDraw || research.GetImageIsEnabled())
                 {
                     if (MouseClicked && MouseOver)
                         g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Press, true, false), Left, Top);

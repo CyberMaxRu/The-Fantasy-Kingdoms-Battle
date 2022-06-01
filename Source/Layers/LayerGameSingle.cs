@@ -68,6 +68,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly PanelConstruction[,,] panels;
         private readonly VCBitmap bmpObjectMenu;
+        private readonly VCMenuCell cellObjectMenu;
         private readonly VCBitmap bmpTopPanel;
         private readonly VCBitmap bmpPreparedToolbar;
 
@@ -196,6 +197,10 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < FormMain.PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < FormMain.PANEL_MENU_CELLS.Width; x++)
                     CellsMenu[y, x] = new VCMenuCell(bmpObjectMenu, addShift + (x * (Program.formMain.imListObjects48.Size.Width + FormMain.DISTANCE_BETWEEN_CELLS)), 95 + (y * (Program.formMain.imListObjects48.Size.Height + FormMain.DISTANCE_BETWEEN_CELLS)));
+
+            cellObjectMenu = new VCMenuCell(bmpObjectMenu, addShift + 4, 40);
+            cellObjectMenu.ManualDraw = true;
+            cellObjectMenu.ShowHint += CellObjectMenu_ShowHint;
 
             // Панель со всеми героями
             panelCombatHeroes = new PanelWithPanelEntity(4, false, 12, 12);
@@ -329,6 +334,11 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ActivatePage(pageResultTurn);
             ShowNamePlayer(pageControl.CurrentPage.Caption);
+        }
+
+        private void CellObjectMenu_ShowHint(object sender, EventArgs e)
+        {
+            selectedPlayerObject?.PrepareHint(PanelHint);
         }
 
         private void MakePagesBackground()
@@ -715,6 +725,17 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     panelEmptyInfo.Visible = true;
+
+                if (selectedPlayerObject != null)
+                {
+                    cellObjectMenu.ImageIndex = selectedPlayerObject.GetImageIndex();
+                    cellObjectMenu.Visible = true;
+                }
+                else
+                {
+                    cellObjectMenu.ImageIndex = -1;
+                    cellObjectMenu.Visible = false;
+                }
 
                 UpdateMenu();
                 Program.formMain.SetNeedRedrawFrame();
