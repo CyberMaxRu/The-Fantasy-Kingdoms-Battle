@@ -8,12 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class BaseResource : SmallEntity
     {
-        public BaseResource(DescriptorBaseResource descriptor) : base()
+        public BaseResource(DescriptorBaseResource descriptor) : base(descriptor)
         {
             Descriptor = descriptor;
         }
 
-        internal DescriptorBaseResource Descriptor { get; }
+        internal new DescriptorBaseResource Descriptor { get; }
         internal int Quantity { get; set; }
 
         internal override int GetImageIndex() => Descriptor.ImageIndex;

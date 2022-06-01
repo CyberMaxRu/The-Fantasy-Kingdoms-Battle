@@ -505,5 +505,7 @@ namespace Fantasy_Kingdoms_Battle
             // Вычисляем процент локации, который разведывает существо согласно уровню разведки
             return Convert.ToInt32(Properties.PropertyScout * l.Settings.PercentScoutAreaByUnit / 100.0000);
         }
+
+        internal override string GetTypeEntity() => TypeCreature.Name;
     }
 }

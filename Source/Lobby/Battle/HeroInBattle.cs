@@ -685,5 +685,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.CustomDraw(g, x, y, drawState);           
         }
+
+        internal override string GetTypeEntity() => PlayerHero.GetTypeEntity();
+
+        internal override string GetName() => PlayerHero.GetName();
     }
 }

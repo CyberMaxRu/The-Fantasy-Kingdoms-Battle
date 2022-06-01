@@ -268,6 +268,8 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
+        internal override string GetName() => GetNameHero();
+
         internal override int GetImageIndex()
         {
             //Debug.Assert(IsLive);

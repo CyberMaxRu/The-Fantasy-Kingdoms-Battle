@@ -31,5 +31,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             
         }
+
+        internal override string GetName() => TypeSecondarySkill.Name;
+        internal override string GetTypeEntity() => "Вторичный навык";
     }
 }

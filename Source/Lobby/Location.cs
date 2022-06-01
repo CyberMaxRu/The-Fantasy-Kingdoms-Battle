@@ -111,6 +111,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PayForHire { get; set; }// Сколько было потрачено на найм
         internal List<CellMenuLocationSpell> MenuSpells { get; } = new List<CellMenuLocationSpell>();
 
+        internal override string GetTypeEntity() => "Локация";
 
         internal override int GetImageIndex()
         {

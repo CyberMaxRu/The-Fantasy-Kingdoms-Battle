@@ -864,6 +864,8 @@ namespace Fantasy_Kingdoms_Battle
                 return "Неизвестное место";
         }
 
+        internal override string GetTypeEntity() => TypeConstruction.Name;
+
         internal bool ImageEnabled()
         {
             return (Level > 0) || (TypeConstruction.MaxLevel == 0);

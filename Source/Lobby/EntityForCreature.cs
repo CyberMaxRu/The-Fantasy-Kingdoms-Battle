@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class EntityForCreature : SmallEntity
     {
-        public EntityForCreature(Creature creature)
+        public EntityForCreature(Creature creature) : base()
         {
             Debug.Assert(creature != null);
 

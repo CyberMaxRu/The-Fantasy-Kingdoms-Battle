@@ -11,8 +11,10 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Методы для поддержки работы с ячейкой
+        internal abstract string GetName();
         internal abstract int GetImageIndex();
         internal virtual bool GetNormalImage() => true;
+        internal abstract string GetTypeEntity();
         internal virtual string GetLevel() => "";
         internal virtual int GetQuantity() => 0;
         internal virtual string GetText() => "";
