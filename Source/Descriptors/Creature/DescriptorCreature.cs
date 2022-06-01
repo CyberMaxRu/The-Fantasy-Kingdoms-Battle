@@ -347,7 +347,20 @@ namespace Fantasy_Kingdoms_Battle
         internal CreatureModifyParameters AdditionalBonus { get; }
         //
 
-        internal override string GetTypeEntity() => "Существо";
+        internal override string GetTypeEntity()
+        {
+            switch (CategoryCreature)
+            {
+                case CategoryCreature.Citizen:
+                    return "Горожанин";
+                case CategoryCreature.Hero:
+                    return "Герой";
+                case CategoryCreature.Monster:
+                    return "Монстр";
+                default:
+                    throw new Exception("Неизвестная категория существа");
+            }
+        }
 
         internal int MaxQuantityItem(DescriptorItem i)
         {
