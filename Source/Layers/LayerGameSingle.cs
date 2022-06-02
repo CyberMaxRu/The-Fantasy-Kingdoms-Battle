@@ -51,8 +51,8 @@ namespace Fantasy_Kingdoms_Battle
         // Контролы тулбара
         private readonly VCToolLabel labelDay;
         private readonly VCImage imgTimesOfDay;
-        private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabelResource[] labelsResources;
+        private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelHeroes;
         private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
-        private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
+        //private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
 
         private readonly PanelConstruction[,,] panels;
         private readonly VCBitmap bmpObjectMenu;
@@ -124,24 +124,24 @@ namespace Fantasy_Kingdoms_Battle
             labelDay.Width = 96;
             imgTimesOfDay = new VCImage(labelDay, labelDay.Width - 21, 4, Program.formMain.ilGui16, -1);
             imgTimesOfDay.IsActiveControl = false;
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - 4, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
-            labelBuilders.ShowHint += LabelBuilders_ShowHint;
-            labelBuilders.Width = 88;
 
             labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
 
-            int nextLeft = labelBuilders.NextLeft() - 4;
+            int nextLeft = labelDay.NextLeft() - 4;
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, nextLeft, labelDay.ShiftY, br);
-                lblRes.Width = 88;
+                lblRes.Width = 96;
                 nextLeft = lblRes.NextLeft() - 4;
                 labelsResources[br.Number] = lblRes;
             }
 
+            labelBuilders = new VCToolLabel(bmpPreparedToolbar, nextLeft + 180, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
+            labelBuilders.ShowHint += LabelBuilders_ShowHint;
+            labelBuilders.Width = 80;
             labelHeroes = new VCToolLabel(bmpPreparedToolbar, nextLeft + 240, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
             labelHeroes.ShowHint += LabelHeroes_ShowHint;
-            labelHeroes.Width = 96;
+            labelHeroes.Width = 80;
             labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft(), labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
             labelCorruption.ShowHint += LabelCorruption_ShowHint;
             labelCorruption.Width = 128;
@@ -627,6 +627,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void AdjustPanelLoses()
         {
+            /*
             Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
 
             // Приводим в соответствие количество кнопок и логов
@@ -654,7 +655,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             bmpPreparedToolbar.ArrangeControls();
-            Program.formMain.SetNeedRedrawFrame();
+            Program.formMain.SetNeedRedrawFrame();*/
         }
 
         internal void ListHeroesChanged()
@@ -950,8 +951,8 @@ namespace Fantasy_Kingdoms_Battle
                     labelHeroes.Visible = false;
                     labelCorruption.Visible = false;
                     MainControl.Visible = false;
-                    foreach (VCImageLose il in listBtnLoses)
-                        il.Visible = false;
+                    //foreach (VCImageLose il in listBtnLoses)
+                    //    il.Visible = false;
 
                     ShowNamePlayer(lobby.CurrentPlayer.Descriptor.Name);
                 }
@@ -1284,9 +1285,10 @@ namespace Fantasy_Kingdoms_Battle
             bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
-            labelGreatness.ShiftX = MainControl.Width - labelGreatness.Width - 104;
+            labelGreatness.ShiftX = MainControl.Width - labelGreatness.Width - Config.GridSize;
             labelCorruption.ShiftX = labelGreatness.ShiftX - labelCorruption.Width - Config.GridSize;
             labelHeroes.ShiftX = labelCorruption.ShiftX - labelHeroes.Width - Config.GridSize;
+            labelBuilders.ShiftX = labelHeroes.ShiftX - labelBuilders.Width - Config.GridSize;
 
             panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
             panelLairInfo.Height = panelConstructionInfo.Height;
