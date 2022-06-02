@@ -698,7 +698,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal void PrepareTurn(bool beginOfDay)
+        internal void PrepareNewDay()
         {
             if (Level > 0)
             {
@@ -727,19 +727,19 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (CellMenuConstruction cm in Researches)
                 {
-                    cm.PrepareTurn(beginOfDay);
+                    cm.PrepareNewDay();
                 }
 
                 foreach (CellMenuConstructionSpell cm in MenuSpells)
                 {
-                    cm.PrepareTurn(beginOfDay);
+                    cm.PrepareNewDay();
                 }
 
                 if (TypeConstruction.ID != FormMain.Config.IDCityGraveyard)
                 {
                     foreach (Hero h in Heroes)
                     {
-                        h.PrepareTurn(beginOfDay);
+                        h.PrepareNewDay();
                     }
                 }
             }

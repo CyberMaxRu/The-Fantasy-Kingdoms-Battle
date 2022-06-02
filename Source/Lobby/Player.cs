@@ -257,7 +257,7 @@ namespace Fantasy_Kingdoms_Battle
             Initialization = false;
         }
 
-        internal virtual void PrepareTurn(bool beginOfDay)
+        internal void  PrepareNewDay()
         {
             ExtraLevelUp = 0;
             ExtraResearch = 0;
@@ -269,7 +269,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Начало хода у локации
             foreach (Location l in Locations)
-                l.PrepareTurn(beginOfDay);
+                l.PrepareNewDay();
 
             //
             ListBaseResources lbs = new ListBaseResources();
@@ -283,11 +283,14 @@ namespace Fantasy_Kingdoms_Battle
                     foreach (ConstructionBaseResource cbs in pc.BaseResources)
                         lbs[cbs.DescriptorBaseResource.Number].Quantity += cbs.Quantity;
                 }
-                pc.PrepareTurn(beginOfDay);
+                pc.PrepareNewDay();
             }
 
             ReceivedResource(lbs);
+        }
 
+        internal virtual void PrepareTurn(bool beginOfDay)
+        {
             //
             List<Hero> listForDelete = new List<Hero>();
 

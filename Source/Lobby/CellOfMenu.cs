@@ -40,6 +40,6 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract void Click();
         internal abstract void Execute();
         internal abstract bool InstantExecute();
-        internal virtual void PrepareTurn(bool beginOfDay) { }
+        internal virtual void PrepareNewDay() { }
     }
 }

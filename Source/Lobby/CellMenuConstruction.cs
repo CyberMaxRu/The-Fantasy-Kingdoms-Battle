@@ -489,23 +489,20 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
 
-        internal override void PrepareTurn(bool beginOfDay)
+        internal override void PrepareNewDay()
         {
-            base.PrepareTurn(beginOfDay);
+            base.PrepareNewDay();
 
-            if (beginOfDay)
+            if (cp?.Counter == 0)
             {
-                if (cp?.Counter == 0)
-                {
-                    Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.MassEventEnd);
+                Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.MassEventEnd);
 
-                    cp = null;
-                    Cooldown = ConstructionEvent.Cooldown;
-                }
-                else if (Cooldown > 0)
-                {
-                    Cooldown--;
-                }
+                cp = null;
+                Cooldown = ConstructionEvent.Cooldown;
+            }
+            else if (Cooldown > 0)
+            {
+                Cooldown--;
             }
         }
 
@@ -752,15 +749,12 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
 
-        internal override void PrepareTurn(bool beginOfDay)
+        internal override void PrepareNewDay()
         {
-            base.PrepareTurn(beginOfDay);
+            base.PrepareNewDay();
 
-            if (beginOfDay)
-            {
-                if (Counter > 0)
-                    Counter--;
-            }
+            if (Counter > 0)
+                Counter--;
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
@@ -848,12 +842,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool InstantExecute() => true;
 
-        internal override void PrepareTurn(bool beginOfDay)
+        internal override void PrepareNewDay()
         {
-            base.PrepareTurn(beginOfDay);
+            base.PrepareNewDay();
 
-            if (beginOfDay)
-                Spell.Selling.Reset();
+            Spell.Selling.Reset();
         }
     }
 }

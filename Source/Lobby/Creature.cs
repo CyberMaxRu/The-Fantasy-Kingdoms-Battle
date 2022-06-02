@@ -428,30 +428,27 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal virtual void PrepareTurn(bool beginOfDay)
+        internal virtual void PrepareNewDay()
         {
             Initialize();
 
-            if (beginOfDay)
+            // Расчет потребностей
+            if (BattleParticipant.Lobby.Turn > 0)
             {
-                // Расчет потребностей
-                if (BattleParticipant.Lobby.Turn > 0)
+                foreach (CreatureNeed cn in Needs)
                 {
-                    foreach (CreatureNeed cn in Needs)
+                    if (cn != null)
                     {
-                        if (cn != null)
+                        cn.Value += cn.IncreasePerDay - cn.Satisfacted;
+                        if (cn.Value < 0)
+                            cn.Value = 0;
+                        else if (cn.Value >= 10)
                         {
-                            cn.Value += cn.IncreasePerDay - cn.Satisfacted;
-                            if (cn.Value < 0)
-                                cn.Value = 0;
-                            else if (cn.Value >= 10)
+                            cn.DaysMax++;
+                            if (cn.DaysMax > 3)
                             {
-                                cn.DaysMax++;
-                                if (cn.DaysMax > 3)
-                                {
-                                    //SetIsDead(cn.Need.Descriptor.ReasonOfDeath);
-                                    break;
-                                }
+                                //SetIsDead(cn.Need.Descriptor.ReasonOfDeath);
+                                break;
                             }
                         }
                     }

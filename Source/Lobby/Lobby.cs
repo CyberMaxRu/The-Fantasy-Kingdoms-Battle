@@ -246,6 +246,17 @@ namespace Fantasy_Kingdoms_Battle
                 // Общая подготовка хода
                 PrepareTurn();
 
+                // Подготавливаем новый день каждого игрока
+                // Чтобы при начале хода все были в консистентном состоянии
+                if ((TimeOfDay == FormMain.Descriptors.TimesOfDay[0]) && (Turn > 1))
+                {
+                    for (int i = 0; i < Players.Length; i++)
+                    {
+                        if (Players[i].IsLive)
+                            Players[i].PrepareNewDay();
+                    }
+                }
+
                 // Действие игроков (ход людей и ИИ)
                 for (int i = 0; i < Players.Length; i++)
                 {
