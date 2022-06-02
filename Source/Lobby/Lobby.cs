@@ -248,7 +248,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Подготавливаем новый день каждого игрока
                 // Чтобы при начале хода все были в консистентном состоянии
-                if ((TimeOfDay == FormMain.Descriptors.TimesOfDay[0]) && (Turn > 1))
+                if (TimeOfDay == FormMain.Descriptors.TimesOfDay[0])
                 {
                     for (int i = 0; i < Players.Length; i++)
                     {
@@ -298,7 +298,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Расчет результатов хода игроков
                 foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
-                    p.CalcTurn();
+                    p.CalcDay();
 
                 DoEndTurn();
             }
