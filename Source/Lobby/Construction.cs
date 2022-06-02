@@ -188,14 +188,25 @@ namespace Fantasy_Kingdoms_Battle
             CellMenuBuildOrLevelUp = null;
 
             // Сооружение не построено, ищем действие для постройки
+            List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
+
             foreach (CellMenuConstruction cm in Researches)
             {
-                if ((cm is CellMenuConstructionLevelUp cml) && (cml.Descriptor.Number == Level + 1))
+                if (cm is CellMenuConstructionLevelUp cml)
                 {
-                    CellMenuBuildOrLevelUp = cml;
-                    break;
+                    if (cml.Descriptor.Number <= Level)
+                        listForDelete.Add(cm);
+                    else if (cml.Descriptor.Number == Level + 1)
+                    {
+                        Debug.Assert(CellMenuBuildOrLevelUp is null);
+                        CellMenuBuildOrLevelUp = cml;
+                    }
                 }
             }
+
+            // Удаляем все ячейки, если они относятся к уже построенным уровням
+            foreach (CellMenuConstruction cmd in listForDelete)
+                Researches.Remove(cmd);
         }
 
         private void UpdateCurrentIncomeResources()
