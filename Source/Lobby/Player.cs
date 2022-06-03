@@ -263,8 +263,6 @@ namespace Fantasy_Kingdoms_Battle
             ExtraResearch = 0;
 
             Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
-            if (Lobby.Turn == 1)
-                Builders += Lobby.TypeLobby.StartBuilders;
             FreeBuilders = Builders;
 
             // Начало хода у локации
