@@ -4901,6 +4901,10 @@
         <Entity>LevelDungeon1</Entity>
       </CellMenu>
       <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelDungeon2</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,2</Pos>
         <Entity>Executioner</Entity>
       </CellMenu>
