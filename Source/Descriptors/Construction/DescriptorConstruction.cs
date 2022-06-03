@@ -333,6 +333,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case CategoryConstruction.Guild:
                     return "Гильдия заполнена";
+                case CategoryConstruction.Military:
+                    return "Здание заполнено";
                 case CategoryConstruction.Economic:
                     throw new Exception("В экономическом здании не может быть героев для найма.");
                 case CategoryConstruction.Temple:
