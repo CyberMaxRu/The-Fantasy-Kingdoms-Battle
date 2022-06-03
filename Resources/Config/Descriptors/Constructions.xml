@@ -6726,7 +6726,7 @@
     <Name>Лесосека</Name>
     <Description>Это удобное место, чтобы рубить деревья.</Description>
     <ImageIndex>172</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceSource</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -6750,7 +6750,7 @@
     <Name>Лесорубка</Name>
     <Description>Здесь рубят деревья.</Description>
     <ImageIndex>169</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceExtraction</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -6780,7 +6780,7 @@
     <Name>Камни</Name>
     <Description>Здесь можно добывать камень</Description>
     <ImageIndex>173</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceSource</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -6804,7 +6804,7 @@
     <Name>Каменный карьер</Name>
     <Description>Здесь добывается камень.</Description>
     <ImageIndex>170</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceExtraction</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -6834,7 +6834,7 @@
     <Name>Руда</Name>
     <Description>Здесь можно добывать руду и переправлять в железо.</Description>
     <ImageIndex>174</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceSource</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -6858,7 +6858,7 @@
     <Name>Плавильня</Name>
     <Description>Здесь добывают железную руду и переплавляют в железо.</Description>
     <ImageIndex>186</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceExtraction</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -6888,7 +6888,7 @@
     <Name>Золотая жила</Name>
     <Description>Здесь можно добывать золото.</Description>
     <ImageIndex>187</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceSource</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -6912,7 +6912,7 @@
     <Name>Золотая шахта</Name>
     <Description>Здесь добывают золото.</Description>
     <ImageIndex>171</ImageIndex>
-    <TypeConstruction>Village</TypeConstruction>
+    <TypeConstruction>ResourceExtraction</TypeConstruction>
     <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>

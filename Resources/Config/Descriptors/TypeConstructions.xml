@@ -48,4 +48,12 @@
     <ID>Path</ID>
     <Name>Путь</Name>
   </TypeConstruction>
+  <TypeConstruction>
+    <ID>ResourceSource</ID>
+    <Name>Источник ресурса</Name>
+  </TypeConstruction>
+  <TypeConstruction>
+    <ID>ResourceExtraction</ID>
+    <Name>Добыча ресурса</Name>
+  </TypeConstruction>
 </Descriptors>
