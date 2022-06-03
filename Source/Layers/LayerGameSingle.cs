@@ -119,35 +119,34 @@ namespace Fantasy_Kingdoms_Battle
 
             // Метки с информацией о Королевстве
             labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.GUI_16_DAY);
+            labelDay.StringFormat.Alignment = StringAlignment.Near;
             labelDay.Click += LabelDay_Click;
             labelDay.ShowHint += LabelDay_ShowHint;
             labelDay.Width = 96;
             imgTimesOfDay = new VCImage(labelDay, labelDay.Width - 21, 4, Program.formMain.ilGui16, -1);
             imgTimesOfDay.IsActiveControl = false;
 
-            labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
-
-            int nextLeft = labelDay.NextLeft() - 4;
-            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
-            {
-                VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, nextLeft, labelDay.ShiftY, br);
-                lblRes.Width = 96;
-                nextLeft = lblRes.NextLeft() - 4;
-                labelsResources[br.Number] = lblRes;
-            }
-
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, nextLeft + 180, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
+            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
             labelBuilders.ShowHint += LabelBuilders_ShowHint;
-            labelBuilders.Width = 80;
-            labelHeroes = new VCToolLabel(bmpPreparedToolbar, nextLeft + 240, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
+            labelBuilders.Width = 64;
+            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
             labelHeroes.ShowHint += LabelHeroes_ShowHint;
             labelHeroes.Width = 80;
-            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft(), labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
+            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
             labelCorruption.ShowHint += LabelCorruption_ShowHint;
-            labelCorruption.Width = 128;
-            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft(), labelDay.ShiftY, "", FormMain.GUI_16_GREATNESS);
+            labelCorruption.Width = 112;
+            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_GREATNESS);
             labelGreatness.ShowHint += LabelGreatness_ShowHint;
-            labelGreatness.Width = 152;
+            labelGreatness.Width = 112;
+
+            labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
+
+            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
+            {
+                VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelDay.ShiftY, br);
+                lblRes.Width = 104;
+                labelsResources[br.Number] = lblRes;
+            }
 
             labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.fontMedCaptionC, Color.White, Program.formMain.fontMedCaptionC.MaxHeightSymbol, "");
             labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
@@ -1190,9 +1189,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders}";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
-                    + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")"
-                    + ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
-                    + curAppliedPlayer.PointGreatnessForNextLevel.ToString();
+                    + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
+                    //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
+                    //+ curAppliedPlayer.PointGreatnessForNextLevel.ToString();
                 labelHeroes.Text = curAppliedPlayer.CombatHeroes.Count.ToString() + "/" + curAppliedPlayer.Lobby.TypeLobby.MaxHeroes.ToString();
                 labelCorruption.Text = $"{curAppliedPlayer.PercentCorruption}% ({(curAppliedPlayer.ChangeCorruption > 0 ? "+" : "")}{curAppliedPlayer.ChangeCorruption}%)";
 
@@ -1285,10 +1284,11 @@ namespace Fantasy_Kingdoms_Battle
             bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
-            labelGreatness.ShiftX = MainControl.Width - labelGreatness.Width - Config.GridSize;
-            labelCorruption.ShiftX = labelGreatness.ShiftX - labelCorruption.Width - Config.GridSize;
-            labelHeroes.ShiftX = labelCorruption.ShiftX - labelHeroes.Width - Config.GridSize;
-            labelBuilders.ShiftX = labelHeroes.ShiftX - labelBuilders.Width - Config.GridSize;
+            int shift0 = MainControl.Width - Config.GridSizeHalf;
+            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
+            {
+                labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);
+            }
 
             panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
             panelLairInfo.Height = panelConstructionInfo.Height;

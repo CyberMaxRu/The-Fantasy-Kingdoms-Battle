@@ -8,13 +8,14 @@ namespace Fantasy_Kingdoms_Battle
         public VCToolLabel(VisualControl parent, int shiftX, int shiftY, string text, int imageIndex)
             : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text, Program.formMain.ilGui16)
         {
-            StringFormat.Alignment = StringAlignment.Near;
+            StringFormat.Alignment = StringAlignment.Far;
             StringFormat.LineAlignment = StringAlignment.Near;
             IsActiveControl = true;
 
             Image.ImageIndex = imageIndex;
             Width = 80;
             TopMargin = 2;
+            RightMargin = 6;
 
             ShiftImage = new Point(6, 4);
         }
