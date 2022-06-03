@@ -393,7 +393,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "н" : "";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "о" : "";
 
         internal override int GetImageIndex()
         {
