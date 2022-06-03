@@ -318,6 +318,7 @@ namespace Fantasy_Kingdoms_Battle
                 case CategoryConstruction.Guild:
                     return "Гильдия не построена";
                 case CategoryConstruction.Economic:
+                case CategoryConstruction.Military:
                     return "Здание не построено";
                 case CategoryConstruction.Temple:
                     return "Храм не построен";
