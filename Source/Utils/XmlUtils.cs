@@ -85,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nn = n.SelectSingleNode(name);
             Debug.Assert(nn != null, $"Поле {name} отсутствует.");
 
-            return n is null ? 0 : Convert.ToDouble(nn.InnerText.Replace(".", System.Globalization.NumberFormatInfo.InvariantInfo.NumberDecimalSeparator));
+            return n is null ? 0 : Convert.ToDouble(nn.InnerText.Replace(".", System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
         }
 
         internal static Point GetPoint(XmlNode n, string name)
