@@ -320,7 +320,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (Ability a in Abilities)
             {
-                if (a.Descriptor == da)
+                if (a.DescriptorAbility == da)
                     return true;
             }
 
@@ -331,8 +331,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(a1.Pos != a2.Pos);
 
-            DescriptorAbility d1 = a1.Descriptor;
-            DescriptorAbility d2 = a2.Descriptor;
+            DescriptorAbility d1 = a1.DescriptorAbility;
+            DescriptorAbility d2 = a2.DescriptorAbility;
 
             if (d1.TypeAbility.ID == d2.TypeAbility.ID)
             {

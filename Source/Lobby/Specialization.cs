@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Specialization : EntityForCreature
     {
-        public Specialization(Creature creature, DescriptorSpecialization type) : base(creature)
+        public Specialization(Creature creature, DescriptorSpecialization type) : base(creature, type)
         {
             TypeSpecialization = type;
         }

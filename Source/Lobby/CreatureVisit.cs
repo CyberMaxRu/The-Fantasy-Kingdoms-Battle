@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class CreatureVisit : EntityForCreature
     {
-        public CreatureVisit(Creature creature, DescriptorConstructionVisitSimple descVisit) : base(creature)
+        public CreatureVisit(Creature creature, DescriptorConstructionVisitSimple descVisit) : base(creature, descVisit)
         {
             Visit = descVisit;
         }

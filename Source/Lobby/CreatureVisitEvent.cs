@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class CreatureVisitEvent : EntityForCreature
     {
-        public CreatureVisitEvent(Creature creature, DescriptorConstructionMassEvent descriptor) : base(creature)
+        public CreatureVisitEvent(Creature creature, DescriptorConstructionMassEvent descriptor) : base(creature, descriptor)
         {
             Event = descriptor;
         }
