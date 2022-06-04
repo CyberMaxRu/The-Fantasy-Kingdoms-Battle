@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual string GetText() => DaysLeft == 0 ? GetCost().ValueGold().ToString() : DaysLeft.ToString() + " д.";
         internal virtual ListBaseResources GetCost() => null;
         internal abstract int GetImageIndex();
-        internal virtual bool GetImageIsEnabled() => CheckRequirements() && (DaysProcessed == 0);
+        internal virtual bool GetImageIsEnabled() => (DaysLeft > 0) || (CheckRequirements() && (DaysProcessed == 0));
         internal virtual string GetLevel() => "";
         internal virtual string GetDaysExecuting() => "";
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
