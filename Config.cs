@@ -135,25 +135,25 @@ namespace Fantasy_Kingdoms_Battle
             MaxDurationFrame = 1_000 / MaxFramesPerSecond;
 
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
-            Debug.Assert(MaxStatPointPerLevel >= 5);
-            Debug.Assert(MaxStatPointPerLevel <= 100);
+            Debug.Assert(MaxStatPointPerLevel >= 5, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
+            Debug.Assert(MaxStatPointPerLevel <= 100, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
             double timeInTumbstone = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeInTumbstone");
-            Debug.Assert(timeInTumbstone >= 0);
-            Debug.Assert(timeInTumbstone <= 10);
+            Debug.Assert(timeInTumbstone >= 0, $"timeInTumbstone: {timeInTumbstone}");
+            Debug.Assert(timeInTumbstone <= 10, $"timeInTumbstone: {timeInTumbstone}");
             StepsHeroInTumbstone = (int)(timeInTumbstone * StepsInSecond);
-            Debug.Assert(StepsHeroInTumbstone >= 10);
-            Debug.Assert(StepsHeroInTumbstone <= 1000);
+            Debug.Assert(StepsHeroInTumbstone >= 10, $"StepsHeroInTumbstone: {StepsHeroInTumbstone}");
+            Debug.Assert(StepsHeroInTumbstone <= 1000, $"StepsHeroInTumbstone: {StepsHeroInTumbstone}");
             double timeToDisappearance = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeToDisappearance");
-            Debug.Assert(timeToDisappearance >= 0);
-            Debug.Assert(timeToDisappearance <= 10);
+            Debug.Assert(timeToDisappearance >= 0, $"timeToDisappearance: {timeToDisappearance}");
+            Debug.Assert(timeToDisappearance <= 10, $"timeToDisappearance: {timeToDisappearance}");
             UnitStepsTimeToDisappearance = (int)(timeToDisappearance * StepsInSecond);
             Debug.Assert(StepsHeroInTumbstone >= UnitStepsTimeToDisappearance);
             MaxCreatureAbilities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxAbilities").InnerText);
-            Debug.Assert(MaxCreatureAbilities >= 4);
-            Debug.Assert(MaxCreatureAbilities <= 16);
+            Debug.Assert(MaxCreatureAbilities >= 4, $"MaxCreatureAbilities: {MaxCreatureAbilities}");
+            Debug.Assert(MaxCreatureAbilities <= 16, $"MaxCreatureAbilities: {MaxCreatureAbilities}");
             MaxCreatureSecondarySkills = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxSecondarySkills").InnerText);
-            Debug.Assert(MaxCreatureSecondarySkills >= 4);
-            Debug.Assert(MaxCreatureSecondarySkills <= 16);
+            Debug.Assert(MaxCreatureSecondarySkills >= 4, $"MaxCreatureSecondarySkills: {MaxCreatureSecondarySkills}");
+            Debug.Assert(MaxCreatureSecondarySkills <= 16, $"MaxCreatureSecondarySkills: {MaxCreatureSecondarySkills}");
 
             IDHeroAdvisor = xmlDoc.SelectSingleNode("Game/Links/HeroAdvisor").InnerText;
             Debug.Assert(IDHeroAdvisor.Length > 0);
