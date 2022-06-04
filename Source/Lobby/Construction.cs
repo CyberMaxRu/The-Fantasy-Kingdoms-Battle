@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class Construction : BattleParticipant
     {
         private int gold;
+        private int usedBuilders;
 
         public Construction(Player p, DescriptorConstruction b, Location location, bool visible, bool own, bool canOwn, bool isEnemy, string pathToLocation) : base(b, p.Lobby)
         {
@@ -252,7 +253,7 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(CheckRequirements());
                 //Debug.Assert(Player.BaseResources.ResourcesEnough(CostBuyOrUpgrade()));
 
-                Player.Constructed(this);
+                Player.AddGreatness(TypeConstruction.Levels[Level + 1].GreatnessByConstruction);
 
                 if (Level > 0)
                 {
@@ -469,7 +470,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].GetCreating().Builders))
+            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].GetCreating().Builders(Player)))
                 return false;
 
             // Проверяем, что нет события или турнира
@@ -1109,7 +1110,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep10DaysBuilding(-1, DayBuildingForLevel(requiredLevel));
             panelHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             panelHint.AddStep12Gold(Player.BaseResources, TypeConstruction.Levels[requiredLevel].GetCreating().CostResources);
-            panelHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].GetCreating().Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].GetCreating().Builders);
+            panelHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].GetCreating().Builders(Player), Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].GetCreating().Builders(Player));
         }
 
         internal void PrepareHintForInhabitantCreatures(PanelHint panelHint)
@@ -1458,12 +1459,16 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cell.DaysProcessed == 0);
             Debug.Assert(cell.PosInQueue == 0);
             Debug.Assert(cell.PurchaseValue is null);
-            Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().Builders);
+            Debug.Assert(usedBuilders == 0);
+            if (!Player.CheatingIgnoreBuilders)
+                Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().Builders(Player));
             Debug.Assert(CellMenuBuildNewConstruction is null);
 
             cell.PurchaseValue = new ListBaseResources(cell.GetCost());
             Player.SpendResource(cell.PurchaseValue);
-            Player.UseFreeBuilder(cell.Descriptor.CreatedEntity.GetCreating().Builders);
+
+            usedBuilders = cell.Descriptor.CreatedEntity.GetCreating().Builders(Player);
+            Player.UseFreeBuilder(usedBuilders);
             ListQueueProcessing.Add(cell);
             //Player.AddEntityToQueueBuilding()
             cell.PosInQueue = ListQueueProcessing.Count;
@@ -1483,7 +1488,8 @@ namespace Fantasy_Kingdoms_Battle
 
             cell.PosInQueue = 0;
             Player.ReturnResource(cell.PurchaseValue);
-            Player.UnuseFreeBuilders(cell.Descriptor.CreatedEntity.GetCreating().Builders);
+            Player.UnuseFreeBuilders(usedBuilders);
+            usedBuilders = 0;
             cell.PurchaseValue = null;
             ListQueueProcessing.Remove(cell);
 
