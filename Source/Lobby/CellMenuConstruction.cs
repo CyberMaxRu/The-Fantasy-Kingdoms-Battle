@@ -53,6 +53,9 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.CreatedEntity is null)
                 return "";
 
+            if (DaysLeft > 0)
+                return "";
+
             int days = Descriptor.CreatedEntity.GetCreating().DaysProcessing;
             if (days > 1)
                 return (days - 1).ToString();
