@@ -345,10 +345,12 @@
           </Construction>
           <Construction>
             <ID>Goldmine</ID>
-            <Visible>true</Visible>
+            <Visible>false</Visible>
             <Own>false</Own>
             <CanOwn>false</CanOwn>
             <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
             <Resources>
               <Gold>2500</Gold>
             </Resources>
