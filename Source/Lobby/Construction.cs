@@ -244,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Build(bool needNotice)
         {
-            if ((!Lobby.InPrepareTurn) && (Lobby.CurrentPlayer != null) && (Lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human))
+            if (!Lobby.InPrepareTurn && (Lobby.CurrentPlayer?.GetTypePlayer() == TypePlayer.Human))
                 Program.formMain.PlayConstructionComplete();
 
             if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
