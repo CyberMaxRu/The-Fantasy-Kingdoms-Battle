@@ -1453,15 +1453,14 @@ namespace Fantasy_Kingdoms_Battle
             return text;
         }
 
-        internal void AddEntityToQueueProcessing(CellMenuConstruction cell)
+        internal void SpendForBuild(CellMenuConstruction cell)
         {
             Debug.Assert(ListQueueProcessing.IndexOf(cell) == -1);
             Debug.Assert(cell.DaysProcessed == 0);
             Debug.Assert(cell.PosInQueue == 0);
             Debug.Assert(cell.PurchaseValue is null);
             Debug.Assert(usedBuilders == 0);
-            if (!Player.CheatingIgnoreBuilders)
-                Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().Builders(Player));
+            Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().Builders(Player));
             Debug.Assert(CellMenuBuildNewConstruction is null);
 
             cell.PurchaseValue = new ListBaseResources(cell.GetCost());
@@ -1469,13 +1468,29 @@ namespace Fantasy_Kingdoms_Battle
 
             usedBuilders = cell.Descriptor.CreatedEntity.GetCreating().Builders(Player);
             Player.UseFreeBuilder(usedBuilders);
-            ListQueueProcessing.Add(cell);
-            //Player.AddEntityToQueueBuilding()
-            cell.PosInQueue = ListQueueProcessing.Count;
+        }
 
-            if (cell is CellMenuConstructionBuild cm)
+        internal void AddEntityToQueueProcessing(CellMenuConstruction cell)
+        {
+            cell.DaysLeft = cell.InstantExecute() ? 1 : cell.Descriptor.CreatedEntity.GetCreating().DaysProcessing;
+            if (cell.DaysLeft > 0)
+                cell.DaysLeft--;
+
+            if ((cell.DaysLeft == 0) || cell.InstantExecute())
             {
-                CellMenuBuildNewConstruction = cm;
+                SpendForBuild(cell);
+                cell.Execute();
+            }
+            else
+            {
+                ListQueueProcessing.Add(cell);
+                //Player.AddEntityToQueueBuilding()
+                cell.PosInQueue = ListQueueProcessing.Count;
+
+                if (cell is CellMenuConstructionBuild cm)
+                {
+                    CellMenuBuildNewConstruction = cm;
+                }
             }
         }
 

@@ -101,14 +101,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     Program.formMain.PlayPushButton();
 
-                    DaysLeft = InstantExecute() ? 1 : Descriptor.CreatedEntity.GetCreating().DaysProcessing;
-                    if (DaysLeft > 0)
-                        DaysLeft--;
-
-                    if ((DaysLeft == 0) || InstantExecute())
-                        Execute();
-                    else
-                        Construction.AddEntityToQueueProcessing(this);
+                    Construction.AddEntityToQueueProcessing(this);
                 }
             }
             else
