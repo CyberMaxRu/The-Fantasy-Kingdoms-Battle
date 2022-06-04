@@ -4122,7 +4122,7 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
+          <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
         <Income>0</Income>
