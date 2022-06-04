@@ -409,6 +409,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemovePerk(DescriptorPerk dp)
         {
+            Debug.Assert(dp != null, $"У {GetName()} ссылка на удаляемый перк пуста");
+
             Perk removedPerk = null;
             foreach (Perk p in Perks)
             {

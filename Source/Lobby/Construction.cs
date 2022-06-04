@@ -259,7 +259,10 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     // Убираем перки от сооружения
                     foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
+                    {
+                        Debug.Assert(dp != null, $"У сооружения {GetName()} уровня {Level} перк ссылается на null");
                         Player.RemovePerkFromConstruction(this, dp);
+                    }
 
                     // Убираем товар посещения
                     if (TypeConstruction.Levels[Level].DescriptorVisit != null)
