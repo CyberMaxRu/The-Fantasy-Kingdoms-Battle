@@ -250,11 +250,15 @@ namespace Fantasy_Kingdoms_Battle
                 // Чтобы при начале хода все были в консистентном состоянии
                 if (TimeOfDay == FormMain.Descriptors.TimesOfDay[0])
                 {
+                    InPrepareTurn = true;
+
                     for (int i = 0; i < Players.Length; i++)
                     {
                         if (Players[i].IsLive)
                             Players[i].PrepareNewDay();
                     }
+
+                    InPrepareTurn = false;
                 }
 
                 // Действие игроков (ход людей и ИИ)
