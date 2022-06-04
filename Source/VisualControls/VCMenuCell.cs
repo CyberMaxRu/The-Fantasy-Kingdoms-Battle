@@ -64,12 +64,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ImageIndex = research.GetImageIndex();
                     Color = research.GetColorText();
+                    Level = research.GetLevel();
 
                     if (research.PosInQueue > 0)
                     {
                         //Level = "";
                         //Text = "";
-                        //Level = research.PosInQueue.ToString();
 
                         //ImageIsEnabled = false;
                         //lblBanner.Visible = true;
@@ -92,7 +92,6 @@ namespace Fantasy_Kingdoms_Battle
                         ImageIsEnabled = true;
                         lblBanner.Visible = false;
                         LowText = research.GetText();
-                        Level = research.GetLevel();
                     }
                     //ImageIsEnabled = research.CheckRequirements();
 

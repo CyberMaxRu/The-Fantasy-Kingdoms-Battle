@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal sealed override string GetLevel()
         {
-            return Program.formMain.Settings.ShowTypeCellMenu && (PosInQueue == 0) ? GetTextForLevel() : "";
+            return Program.formMain.Settings.ShowTypeCellMenu && (DaysLeft == 0) ? GetTextForLevel() : "";
         }
 
         protected virtual string GetTextForLevel() => "";
@@ -117,6 +117,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Program.formMain.PlayPushButton();
                     Construction.RemoveEntityFromQueueProcessing(this);
+                    DaysLeft = 0;
                 }
             }
 
