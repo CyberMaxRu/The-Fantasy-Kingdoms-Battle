@@ -422,9 +422,11 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class CellMenuConstructionEvent : CellMenuConstruction
     {
         private ConstructionEvent cp;
+
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             ConstructionEvent = d.CreatedEntity as DescriptorConstructionEvent;
+            Debug.Assert(ConstructionEvent != null);
         }
 
         internal DescriptorConstructionEvent ConstructionEvent { get; }
@@ -605,22 +607,46 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionTournament : CellMenuConstruction
     {
+        private ConstructionTournament ct;
+
         public CellMenuConstructionTournament(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            //Entity = Config.FindItem(d.NameEntity);
-            Entity = Descriptors.FindProduct(d.IDCreatedEntity);
+            ConstructionTournament = d.CreatedEntity as DescriptorConstructionTournament;
+            Debug.Assert(ConstructionTournament != null);
         }
 
-        internal DescriptorProduct Entity { get; }
+        internal DescriptorConstructionTournament ConstructionTournament { get; }
 
         internal override void Execute()
         {
-            ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
-            Construction.AddProduct(cp);
+            Debug.Assert(Construction.Researches.IndexOf(this) != -1);
+            Debug.Assert(ct is null);
 
-            Program.formMain.SetNeedRedrawFrame();
+            ct = new ConstructionTournament(Construction, ConstructionTournament);
+            Construction.AddTournament(ct);
 
-            Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.TournamentBegin);
+            Construction.Player.AddNoticeForPlayer(ct, TypeNoticeForPlayer.TournamentBegin);
+            //Cooldown = ConstructionEvent.Cooldown;
+        }
+
+        internal override bool CheckRequirements()
+        {
+            return (ct is null) && base.CheckRequirements() && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
+        }
+
+        internal override List<TextRequirement> GetTextRequirements()
+        {
+            List<TextRequirement> list = base.GetTextRequirements();
+            if (Construction.Level > 1)
+                list.Add(new TextRequirement((ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
+                    ? "Турнир можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : $"Осталось подождать дней: {1}"));
+
+            return list;
+        }
+
+        internal override string GetText()
+        {
+            return ct is null ? GetCost().ValueGold().ToString() : "идёт";
         }
 
         internal override ListBaseResources GetCost()
@@ -632,14 +658,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Entity.ImageIndex;
+            return ConstructionTournament.ImageIndex;
         }
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddStep2Descriptor(Entity);
-            panelHint.AddStep5Description(Entity.Description);
-            //panelHint.AddStep6Income(Descriptor.Income);
+            panelHint.AddStep2Descriptor(ConstructionTournament);
+            panelHint.AddStep4Level(Environment.NewLine + $"Перерыв: {ConstructionTournament.Cooldown} дн.");
+            panelHint.AddStep5Description(ConstructionTournament.Description);
+            panelHint.AddStep9Interest(ConstructionTournament.Interest, false);
+            panelHint.AddStep9ListNeeds(ConstructionTournament.ListNeeds, false);
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());

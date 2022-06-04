@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class ConstructionTournament : EntityForConstruction
+    internal class ConstructionTournament : ConstructionVisit
     {
         public ConstructionTournament(Construction construction, DescriptorConstructionTournament ct) : base(construction, ct)
         {

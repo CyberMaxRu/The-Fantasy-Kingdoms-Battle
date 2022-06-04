@@ -24,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorProduct Product { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
+        internal DescriptorConstructionTournament DescriptorConstructionTournament { get; }
         internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Cost { get; }// Стоимость товара

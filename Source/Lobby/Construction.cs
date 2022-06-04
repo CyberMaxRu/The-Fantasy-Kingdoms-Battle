@@ -1269,6 +1269,17 @@ namespace Fantasy_Kingdoms_Battle
             Visits.Add(ce);
         }
 
+        internal void AddTournament(ConstructionTournament ct)
+        {
+            AddEntity(ct);
+
+            Debug.Assert(CurrentMassEvent is null);
+            Debug.Assert(CurrentTournament is null);
+
+            Visits.Add(ct);
+            CurrentTournament = ct;
+        }
+
         internal void AddService(ConstructionService cs)
         {
             AddEntity(cs);

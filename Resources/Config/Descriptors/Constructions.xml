@@ -4552,30 +4552,6 @@
         <Cooldown>5</Cooldown>
         <Interest>10</Interest>
         <AvailableForAll>true</AvailableForAll>
-      </Tournament>
-      <Tournament>
-        <ID>TournamentArcher</ID>
-        <Name>Турнир по стрельбе из лука</Name>
-        <Description>Провести турнир по стрельбе из лука.</Description>
-        <ImageIndex>217</ImageIndex>
-        <Cooldown>5</Cooldown>
-        <Interest>10</Interest>
-        <AvailableForAll>true</AvailableForAll>
-      </Tournament>
-      <Tournament>
-        <ID>TournamentMage</ID>
-        <Name>Магический турнир</Name>
-        <Description>Провести турнир по магическим дисциплинам.</Description>
-        <ImageIndex>218</ImageIndex>
-        <Cooldown>5</Cooldown>
-        <Interest>10</Interest>
-        <AvailableForAll>true</AvailableForAll>
-      </Tournament>    
-    </Tournaments>
-    <Products>
-      <Product>
-        <ID>ProductTournamentHandFight</ID>
-        <Entity>TournamentHandFight</Entity>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4589,10 +4565,15 @@
           <DaysProcessing>5</DaysProcessing>
           <IntervalRefresh>Day</IntervalRefresh>
         </Selling>
-      </Product>
-      <Product>
-        <ID>ProductTournamentArcher</ID>
-        <Entity>TournamentArcher</Entity>
+      </Tournament>
+      <Tournament>
+        <ID>TournamentArcher</ID>
+        <Name>Турнир по стрельбе из лука</Name>
+        <Description>Провести турнир по стрельбе из лука.</Description>
+        <ImageIndex>217</ImageIndex>
+        <Cooldown>5</Cooldown>
+        <Interest>10</Interest>
+        <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4613,10 +4594,15 @@
           <DaysProcessing>5</DaysProcessing>
           <IntervalRefresh>Day</IntervalRefresh>
         </Selling>
-      </Product>
-      <Product>
-        <ID>ProductTournamentMage</ID>
-        <Entity>TournamentMage</Entity>
+      </Tournament>
+      <Tournament>
+        <ID>TournamentMage</ID>
+        <Name>Магический турнир</Name>
+        <Description>Провести турнир по магическим дисциплинам.</Description>
+        <ImageIndex>218</ImageIndex>
+        <Cooldown>5</Cooldown>
+        <Interest>10</Interest>
+        <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -4637,8 +4623,8 @@
           <DaysProcessing>5</DaysProcessing>
           <IntervalRefresh>Day</IntervalRefresh>
         </Selling>
-      </Product>
-    </Products>
+      </Tournament>    
+    </Tournaments>
     <CellsMenu>
       <CellMenu>
         <Pos>1,1</Pos>
@@ -4646,7 +4632,7 @@
       </CellMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Entity>ProductTournamentHandFight</Entity>
+        <Entity>TournamentHandFight</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>1,2</Pos>
@@ -4654,11 +4640,11 @@
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Entity>ProductTournamentArcher</Entity>
+        <Entity>TournamentArcher</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Entity>ProductTournamentMage</Entity>
+        <Entity>TournamentMage</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>
