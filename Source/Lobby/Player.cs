@@ -1484,12 +1484,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UseFreeBuilder(int builders)
         {
-            Debug.Assert(FreeBuilders > 0);
             Debug.Assert(builders >= 0);
 
-            FreeBuilders -= builders;
+            if (builders > 0)
+            {
+                Debug.Assert(FreeBuilders > 0);
 
-            Debug.Assert(FreeBuilders >= 0);
+                FreeBuilders -= builders;
+
+                Debug.Assert(FreeBuilders >= 0);
+            }
         }
 
         internal void UnuseFreeBuilders(int builders)
