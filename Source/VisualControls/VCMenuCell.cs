@@ -12,10 +12,18 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCLabel lblBanner;
         private CellOfMenu research;
+        private VCLabel lblDaysExecuting;
 
         public VCMenuCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
             PlaySoundOnClick = true;
+
+            lblDaysExecuting = new VCLabel(this, 4, 1, Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblDaysExecuting.StringFormat.LineAlignment = StringAlignment.Near;
+            lblDaysExecuting.StringFormat.Alignment = StringAlignment.Near;
+            lblDaysExecuting.Width = Width - 4;
+            lblDaysExecuting.Visible = false;
+            lblDaysExecuting.ManualDraw = true;
 
             lblBanner = new VCLabel(this, 0, 0, Program.formMain.fontBigCaptionC, Color.White, Height, "");
             lblBanner.StringFormat.LineAlignment = StringAlignment.Center;
@@ -124,6 +132,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             base.Draw(g);
+
+            if (Visible && (ImageIndex != -1) && (research != null))
+            {
+                lblDaysExecuting.Text = research.GetDaysExecuting();
+                if (lblDaysExecuting.Text.Length > 0)
+                    lblDaysExecuting.Draw(g);
+            }
+
 
             if (Visible && (ImageIndex != -1))
             {

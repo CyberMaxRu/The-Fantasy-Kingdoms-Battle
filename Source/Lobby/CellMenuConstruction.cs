@@ -42,6 +42,18 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.Settings.ShowTypeCellMenu && (DaysLeft == 0) ? GetTextForLevel() : "";
         }
 
+        internal override string GetDaysExecuting()
+        {
+            if (InstantExecute())
+                return "";
+
+            int days = Descriptor.CreatedEntity.GetCreating().DaysProcessing;
+            if (days > 1)
+                return (days - 1).ToString();
+
+            return "";
+        }
+
         protected virtual string GetTextForLevel() => "";
 
         protected void RemoveSelf()
