@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public SmallEntity(DescriptorSmallEntity descriptor) : base()
         {
-            //Assert(descriptor != null);
+            Assert(descriptor != null);
 
             Descriptor = descriptor;
         }
