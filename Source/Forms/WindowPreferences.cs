@@ -39,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl vcPanelInterface;
         private VCLabel lblCaptionPanelInterface;
         private VCCheckBox chkbShowShortNames;
+        private VCCheckBox chkbShowQuantityDaysForExecuting;
         private VCCheckBox chkbShowTypeCellMenu;
         private VCCheckBox chkbHideFulfilledRequirements;
         private VCCheckBox chkbShowExtraHint;
@@ -100,20 +101,22 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPanelInterface = new VCLabel(vcPanelInterface, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Интерфейс:");
             lblCaptionPanelInterface.StringFormat.Alignment = StringAlignment.Near;
             chkbShowShortNames = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, lblCaptionPanelInterface.NextTop(), "Наименования на иконках умений и предметов");
-            chkbShowShortNames.Width = 400;
-            chkbShowTypeCellMenu = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowShortNames.NextTop(), "Показывать тип объекта в меню");
-            chkbShowTypeCellMenu.Width = 400;
+            chkbShowShortNames.Width = 440;
+            chkbShowQuantityDaysForExecuting = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowShortNames.NextTop(), "Показывать количество дней для выполнения действия в меню");
+            chkbShowQuantityDaysForExecuting.Width = 440;
+            chkbShowTypeCellMenu = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowQuantityDaysForExecuting.NextTop(), "Показывать тип объекта в меню");
+            chkbShowTypeCellMenu.Width = 440;
             chkbHideFulfilledRequirements = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowTypeCellMenu.NextTop(), "Скрывать выполненные требования");
-            chkbHideFulfilledRequirements.Width = 400;
+            chkbHideFulfilledRequirements.Width = 440;
             chkbShowExtraHint = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbHideFulfilledRequirements.NextTop(), "Показывать дополнительную подсказку");
-            chkbShowExtraHint.Width = 400;
+            chkbShowExtraHint.Width = 440;
             chkbAllowCheating = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowExtraHint.NextTop(), "Разрешить читинг");
-            chkbAllowCheating.Width = 400;
+            chkbAllowCheating.Width = 440;
             vcPanelInterface.ApplyMaxSize();
             vcPanelInterface.Height += 8;
             lblCaptionPanelInterface.Width = vcPanelInterface.Width - (FormMain.Config.GridSize * 2);
 
-            btnAccept = new VCButton(ClientControl, 0, vcPanelInterface.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
+            btnAccept = new VCButton(ClientControl, 24, vcPanelInterface.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
             btnAccept.Width = 160;
             btnAccept.Click += BtnAccept_Click;
             btnDefault = new VCButton(ClientControl, btnAccept.NextLeft(), btnAccept.ShiftY, "Базовые");
@@ -126,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
             AcceptButton = btnAccept;
             CancelButton = btnCancel;
 
-            ClientControl.Width = btnCancel.ShiftX + btnCancel.Width + btnCancel.Left;
+            ClientControl.Width = btnCancel.ShiftX + btnCancel.Width + btnCancel.Left + btnAccept.ShiftX;
             ClientControl.Height = btnCancel.NextTop();
             vcPanelGame.Width = ClientControl.Width - (vcPanelGame.ShiftX * 2);
             vcPanelBatttlefield.Width = ClientControl.Width - (vcPanelBatttlefield.ShiftX * 2);
@@ -175,6 +178,7 @@ namespace Fantasy_Kingdoms_Battle
             tbVolumeSound.Position = settings.VolumeSound;
             tbVolumeMusic.Position = settings.VolumeMusic;
             chkbShowShortNames.Checked = settings.ShowShortNames;
+            chkbShowQuantityDaysForExecuting.Checked = settings.ShowQuantityDaysForExecuting;
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
             chkbShowExtraHint.Checked = settings.ShowExtraHint;
@@ -213,6 +217,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.VolumeSound = tbVolumeSound.Position;
             settings.VolumeMusic = tbVolumeMusic.Position;
             settings.ShowShortNames = chkbShowShortNames.Checked;
+            settings.ShowQuantityDaysForExecuting = chkbShowQuantityDaysForExecuting.Checked;
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
             settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
             settings.ShowExtraHint = chkbShowExtraHint.Checked;

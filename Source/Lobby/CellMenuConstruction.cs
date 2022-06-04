@@ -44,6 +44,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetDaysExecuting()
         {
+            if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
+                return "";
+
             if (InstantExecute())
                 return "";
 

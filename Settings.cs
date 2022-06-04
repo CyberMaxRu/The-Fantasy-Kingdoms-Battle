@@ -72,6 +72,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal bool ShowShortNames { get; set; }
+        internal bool ShowQuantityDaysForExecuting { get; set; }
         internal bool ShowTypeCellMenu { get; set; }
         internal bool HideFulfilledRequirements { get; set; }
         internal bool ShowExtraHint { get; set; }
@@ -94,6 +95,7 @@ namespace Fantasy_Kingdoms_Battle
             VolumeSound = 50;
             VolumeMusic = 50;
             ShowShortNames = false;
+            ShowQuantityDaysForExecuting = true;
             ShowTypeCellMenu = true;
             HideFulfilledRequirements = true;
             ShowExtraHint = true;
@@ -129,6 +131,7 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(volumeMusic >= 0);
 
                     ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
+                    ShowQuantityDaysForExecuting = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowQuantityDaysForExecuting", ShowQuantityDaysForExecuting);
                     ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
                     HideFulfilledRequirements = XmlUtils.GetBoolean(doc, "Settings/Interface/HideFulfilledRequirements", HideFulfilledRequirements);
                     ShowExtraHint = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowExtraHint", ShowExtraHint);
@@ -175,6 +178,7 @@ namespace Fantasy_Kingdoms_Battle
 
             textWriter.WriteStartElement("Interface");
             textWriter.WriteElementString("ShowShortNames", ShowShortNames.ToString());
+            textWriter.WriteElementString("ShowQuantityDaysForExecuting", ShowQuantityDaysForExecuting.ToString());
             textWriter.WriteElementString("ShowTypeCellMenu", ShowTypeCellMenu.ToString());
             textWriter.WriteElementString("HideFulfilledRequirements", HideFulfilledRequirements.ToString());
             textWriter.WriteElementString("ShowExtraHint", ShowExtraHint.ToString());

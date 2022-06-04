@@ -18,6 +18,7 @@
   </Sound>
   <Interface>
     <ShowShortNames>False</ShowShortNames>
+    <ShowQuantityDaysForExecuting>True</ShowQuantityDaysForExecuting>
     <ShowTypeCellMenu>True</ShowTypeCellMenu>
     <HideFulfilledRequirements>True</HideFulfilledRequirements>
     <ShowExtraHint>True</ShowExtraHint>
