@@ -65,6 +65,7 @@ namespace Fantasy_Kingdoms_Battle
                     ImageIndex = research.GetImageIndex();
                     Color = research.GetColorText();
                     Level = research.GetLevel();
+                    LowText = research.GetText();
 
                     if (research.PosInQueue > 0)
                     {
@@ -75,8 +76,6 @@ namespace Fantasy_Kingdoms_Battle
                         //lblBanner.Visible = true;
                         if (research.PosInQueue == 1)
                         {
-                            LowText = research.DaysLeft.ToString() + " д.";
-
                             lblBanner.Text = research.DaysLeft.ToString();
                             lblBanner.Color = Color.LimeGreen;
                         }
@@ -91,7 +90,6 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         ImageIsEnabled = true;
                         lblBanner.Visible = false;
-                        LowText = research.GetText();
                     }
                     //ImageIsEnabled = research.CheckRequirements();
 
