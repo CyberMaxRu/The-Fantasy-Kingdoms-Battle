@@ -177,6 +177,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
 
+        internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
+
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
         // 
@@ -1136,13 +1138,15 @@ namespace Fantasy_Kingdoms_Battle
 
             if (NextLocation != null)
                 return NextLocation.GetImageIndex();
+            else if (CellMenuBuildNewConstruction != null)
+                return CellMenuBuildNewConstruction.GetImageIndex();
             else if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
                 return ComponentObjectOfMap.Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
             else
                 return FormMain.Config.Gui48_Battle;
         }
 
-        internal override string GetText() => "";
+        internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
 
         internal override bool GetNormalImage()
         {
@@ -1452,6 +1456,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cell.PosInQueue == 0);
             Debug.Assert(cell.PurchaseValue is null);
             Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().Builders);
+            Debug.Assert(CellMenuBuildNewConstruction is null);
 
             cell.PurchaseValue = new ListBaseResources(cell.GetCost());
             Player.SpendResource(cell.PurchaseValue);
@@ -1459,6 +1464,11 @@ namespace Fantasy_Kingdoms_Battle
             ListQueueProcessing.Add(cell);
             //Player.AddEntityToQueueBuilding()
             cell.PosInQueue = ListQueueProcessing.Count;
+
+            if (cell is CellMenuConstructionBuild cm)
+            {
+                CellMenuBuildNewConstruction = cm;
+            }
         }
 
         internal void RemoveEntityFromQueueProcessing(CellMenuConstruction cell)
@@ -1477,6 +1487,13 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < ListQueueProcessing.Count; i++)
             {
                 ListQueueProcessing[i].PosInQueue = i + 1;
+            }
+
+            if (CellMenuBuildNewConstruction != null)
+            {
+                Debug.Assert(CellMenuBuildNewConstruction == cell);
+
+                CellMenuBuildNewConstruction = null;
             }
         }
 
