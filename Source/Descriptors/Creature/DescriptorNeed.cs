@@ -17,9 +17,11 @@ namespace Fantasy_Kingdoms_Battle
             Index = Descriptors.NeedsCreature.Count;
 
             ReasonOfDeath = Descriptors.FindReasonOfDeath(GetStringNotNull(n, "ReasonOfDeath"));
+            ShowForConstruction = GetBooleanNotNull(n, "ShowForConstruction");
         }
 
         internal int Index { get; }
         internal DescriptorReasonOfDeath ReasonOfDeath { get; }// Причина смерти при неудовлетворении потребности
+        internal bool ShowForConstruction { get; }// Показывать в панели информации о сооружении
     }
 }

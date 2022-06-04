@@ -166,6 +166,7 @@
     <Compile Include="Source\Panels\PanelLocationInfo.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyConstructionSettings.cs" />
     <Compile Include="Source\VisualControls\VCCellSimple.cs" />
+    <Compile Include="Source\VisualControls\VCConstructionSatisfNeed.cs" />
     <Compile Include="Source\VisualControls\VCCreatureInterest.cs" />
     <Compile Include="Source\VisualControls\VCCreatureNeed.cs" />
     <Compile Include="Source\VisualControls\VCCreatureProperty.cs" />

@@ -40,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCTabButton btnInhabitants;
         private readonly VCTabButton btnVisitors;
         private readonly VCIconAndDigitValue lblInterest;
+        private readonly List<VCConstructionSatisfNeed> listControlsNeeds;
 
         public PanelConstructionInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -56,6 +57,18 @@ namespace Fantasy_Kingdoms_Battle
 
             lblInterest = new VCIconAndDigitValue(this, imgIcon.NextLeft(), imgIcon.ShiftY, 16, FormMain.GUI_16_INTEREST_OTHER);
             lblInterest.ShowHint += LblInterest_ShowHint;
+
+            int nextTop = lblInterest.NextTop() - FormMain.Config.GridSizeHalf;
+            listControlsNeeds = new List<VCConstructionSatisfNeed>();
+            foreach (DescriptorNeed dcn in FormMain.Descriptors.NeedsCreature)
+            {
+                if (dcn.ShowForConstruction)
+                {
+                    VCConstructionSatisfNeed idv = new VCConstructionSatisfNeed(this, lblInterest.ShiftX, nextTop, lblInterest.Width, dcn);
+                    nextTop = idv.NextTop() - 4;
+                    listControlsNeeds.Add(idv);
+                }
+            }
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
@@ -151,6 +164,10 @@ namespace Fantasy_Kingdoms_Battle
             tabProducts.Height = pageControl.Height - tabProducts.ShiftY - FormMain.Config.GridSize;
 
             lblInterest.Width = Width - imgIcon.NextLeft() - FormMain.Config.GridSize;
+            foreach (VCConstructionSatisfNeed idv in listControlsNeeds)
+            {
+                idv.Width = lblInterest.Width;
+            }
         }
 
         internal override void Draw(Graphics g)
@@ -212,6 +229,11 @@ namespace Fantasy_Kingdoms_Battle
 
             lblInterest.Image.ImageIsEnabled = Construction.Level > 0;
             lblInterest.Text = Construction.GetInterest() > 0 ? Utils.DecIntegerBy10(Construction.GetInterest(), false) : "";
+
+            foreach (VCConstructionSatisfNeed csf in listControlsNeeds)
+            {
+                csf.Construction = Construction;
+            }
 
             base.Draw(g);
 

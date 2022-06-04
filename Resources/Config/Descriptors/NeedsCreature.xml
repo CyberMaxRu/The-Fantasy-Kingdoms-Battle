@@ -6,6 +6,7 @@
     <Description>Еда - основа жизни героя.</Description>
     <ImageIndex>17</ImageIndex>
     <ReasonOfDeath>HungerFood</ReasonOfDeath>
+    <ShowForConstruction>false</ShowForConstruction>
   </NeedCreature>
   <NeedCreature>
     <ID>Water</ID>
@@ -13,6 +14,7 @@
     <Description>Вода - основа жизни героя.</Description>
     <ImageIndex>32</ImageIndex>
     <ReasonOfDeath>HungerWater</ReasonOfDeath>
+    <ShowForConstruction>false</ShowForConstruction>
   </NeedCreature>
   <NeedCreature>
     <ID>Rest</ID>
@@ -20,6 +22,7 @@
     <Description>Любому герою время от времени надо отдыхать. Чем больше он делает действий, тем больше он тратит сил.</Description>
     <ImageIndex>21</ImageIndex>
     <ReasonOfDeath>Emaciation</ReasonOfDeath>
+    <ShowForConstruction>true</ShowForConstruction>
   </NeedCreature>
   <NeedCreature>
     <ID>Entertainment</ID>
@@ -27,6 +30,7 @@
     <Description>После отдыха, можно и развлечься.</Description>
     <ImageIndex>22</ImageIndex>
     <ReasonOfDeath>Boredom</ReasonOfDeath>
+    <ShowForConstruction>true</ShowForConstruction>
   </NeedCreature>
   <NeedCreature>
     <ID>Money</ID>
@@ -34,6 +38,7 @@
     <Description>На все нужны деньги. Чем их больше, тем меньше о них думаешь.</Description>
     <ImageIndex>20</ImageIndex>
     <ReasonOfDeath>Poverty</ReasonOfDeath>
+    <ShowForConstruction>false</ShowForConstruction>
   </NeedCreature>
   <NeedCreature>
     <ID>ReturnToHome</ID>
@@ -41,5 +46,6 @@
     <Description>Даже самые отъявленные искатели приключений хотят вернуться домой.</Description>
     <ImageIndex>33</ImageIndex>
     <ReasonOfDeath>Homesickness</ReasonOfDeath>
+    <ShowForConstruction>false</ShowForConstruction>
   </NeedCreature>
 </Descriptors>

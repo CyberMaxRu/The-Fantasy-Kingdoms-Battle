@@ -1431,7 +1431,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level > 0);
 
-            if (GetInterest() == 0)
+            if (GetInterest() == 0)// Возможно, это ошибка. Сооружение дает плюс, перк дает минус, в итоге ноль
                 return "";
 
             string text = "Сооружение: " + Utils.DecIntegerBy10(TypeConstruction.Levels[Level].DescriptorVisit.Interest, false);
