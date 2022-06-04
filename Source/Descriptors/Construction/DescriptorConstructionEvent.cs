@@ -9,9 +9,9 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс мероприятий в сооружении
-    internal sealed class DescriptorConstructionEvent : DescriptorEntityForActiveEntity
+    internal sealed class DescriptorConstructionMassEvent : DescriptorEntityForActiveEntity
     {
-        public DescriptorConstructionEvent(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
+        public DescriptorConstructionMassEvent(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
         {
             Duration = XmlUtils.GetIntegerNotNull(n, "Duration");
             Cooldown = XmlUtils.GetIntegerNotNull(n, "Cooldown");

@@ -59,8 +59,8 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionResearch(c, d);
                 if (d.CreatedEntity is DescriptorConstructionLevel)
                     return new CellMenuConstructionLevelUp(c, d);
-                if (d.CreatedEntity is DescriptorConstructionEvent)
-                    return new CellMenuConstructionEvent(c, d);
+                if (d.CreatedEntity is DescriptorConstructionMassEvent)
+                    return new CellMenuConstructionMassEvent(c, d);
                 if (d.CreatedEntity is DescriptorConstructionExtension)
                     return new CellMenuConstructionExtension(c, d);
                 if (d.CreatedEntity is DescriptorConstructionImprovement)
@@ -419,17 +419,17 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyHire;
     }
 
-    internal sealed class CellMenuConstructionEvent : CellMenuConstruction
+    internal sealed class CellMenuConstructionMassEvent : CellMenuConstruction
     {
         private ConstructionEvent cp;
 
-        public CellMenuConstructionEvent(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionMassEvent(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            ConstructionEvent = d.CreatedEntity as DescriptorConstructionEvent;
+            ConstructionEvent = d.CreatedEntity as DescriptorConstructionMassEvent;
             Debug.Assert(ConstructionEvent != null);
         }
 
-        internal DescriptorConstructionEvent ConstructionEvent { get; }
+        internal DescriptorConstructionMassEvent ConstructionEvent { get; }
         internal int Cooldown { get; private set; }
 
         internal override void Execute()

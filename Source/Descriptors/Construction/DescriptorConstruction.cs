@@ -147,7 +147,7 @@ namespace Fantasy_Kingdoms_Battle
             if (nodeEvents != null)
             {
                 foreach (XmlNode l in nodeEvents.SelectNodes("Event"))
-                    new DescriptorConstructionEvent(this, l);
+                    new DescriptorConstructionMassEvent(this, l);
             }
 
             // Загружаем информацию о турнирах

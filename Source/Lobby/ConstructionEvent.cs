@@ -8,12 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class ConstructionEvent : ConstructionVisit
     {
-        public ConstructionEvent(Construction construction, DescriptorConstructionEvent ce) : base(construction, ce)
+        public ConstructionEvent(Construction construction, DescriptorConstructionMassEvent ce) : base(construction, ce)
         {
             DescriptorConstructionEvent = ce;
         }
 
-        internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
+        internal DescriptorConstructionMassEvent DescriptorConstructionEvent { get; }
         internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Cost { get; }// Стоимость товара

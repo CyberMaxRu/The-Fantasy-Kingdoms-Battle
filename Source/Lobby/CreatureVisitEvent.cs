@@ -8,12 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class CreatureVisitEvent : EntityForCreature
     {
-        public CreatureVisitEvent(Creature creature, DescriptorConstructionEvent descriptor) : base(creature)
+        public CreatureVisitEvent(Creature creature, DescriptorConstructionMassEvent descriptor) : base(creature)
         {
             Event = descriptor;
         }
 
-        internal DescriptorConstructionEvent Event { get; }
+        internal DescriptorConstructionMassEvent Event { get; }
 
         internal override int GetImageIndex()
         {
