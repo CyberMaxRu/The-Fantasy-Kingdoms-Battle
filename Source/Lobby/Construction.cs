@@ -1146,6 +1146,17 @@ namespace Fantasy_Kingdoms_Battle
                 return FormMain.Config.Gui48_Battle;
         }
 
+        internal override int GetMenuImageIndex()
+        {
+            if (CellMenuBuildNewConstruction is null)
+                return GetImageIndex();
+            else
+            {
+                Debug.Assert(ComponentObjectOfMap.Visible);
+                return TypeConstruction.ImageIndex;
+            }
+        }
+
         internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
 
         internal override bool GetNormalImage()
