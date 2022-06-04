@@ -28,6 +28,8 @@ namespace Fantasy_Kingdoms_Battle
         internal ProgramState ProgramState { get; private set; } = ProgramState.Started;
         internal bool gameStarted = false;
         private bool needRepaintFrame = false;
+        private bool inMouseClick;
+
 
         // Проигрывание звуков и музыки
         internal readonly PlayerMusic playerMusic;
@@ -954,8 +956,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (e.Button == MouseButtons.Left)
                 {
+                    inMouseClick = true;
                     clickedControl.MouseUp(MousePosToControl(clickedControl));
                     clickedControl = null;
+                    inMouseClick = false;
 
                     // Во время нажатия кнопки мог произойти выход из программы
                     if (ProgramState == ProgramState.NeedQuit)
@@ -1165,7 +1169,10 @@ namespace Fantasy_Kingdoms_Battle
 
             VisualControl.PanelHint.HideHint();
 
-            ShowFrame(false);
+            // Клик в меню вызывает скрытие подсказки, а потом досрочную перерисовку
+            // Поэтому, если сейчас клик мышкой, ничего не делаем - потом все равно перерисуется кадр
+            if (!inMouseClick)
+                ShowFrame(false);
         }
 
         internal void NeedRedrawFrame()
