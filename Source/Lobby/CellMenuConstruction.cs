@@ -37,6 +37,13 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
+        internal sealed override string GetLevel()
+        {
+            return Program.formMain.Settings.ShowTypeCellMenu && (PosInQueue == 0) ? GetTextForLevel() : "";
+        }
+
+        protected virtual string GetTextForLevel() => "";
+
         protected void RemoveSelf()
         {
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
@@ -143,7 +150,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
+        protected override string GetTextForLevel() => "и";
 
         internal override void Execute()
         {
@@ -221,7 +228,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
+        protected override string GetTextForLevel() => "и";
 
         internal override void Execute()
         {
@@ -303,7 +310,7 @@ namespace Fantasy_Kingdoms_Battle
             return TypeConstruction.Levels[1].GetCreating().CostResources;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "с" : "";
+        protected override string GetTextForLevel() => "с";
 
         internal override int GetImageIndex()
         {
@@ -349,10 +356,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.ImageIndex;
         }
 
-        internal override string GetLevel()
-        {
-            return Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
-        }
+        protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
 
         internal override Color GetColorText()
         {
@@ -393,7 +397,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "о" : "";
+        protected override string GetTextForLevel() => "о";
 
         internal override int GetImageIndex()
         {
@@ -471,7 +475,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "м" : "";
+        protected override string GetTextForLevel() => "м";
 
         internal override int GetImageIndex()
         {
@@ -537,7 +541,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "д" : "";
+        protected override string GetTextForLevel() => "д";
 
         internal override int GetImageIndex()
         {
@@ -585,7 +589,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "у" : "";
+        protected override string GetTextForLevel() => "у";
 
         internal override int GetImageIndex()
         {
@@ -654,7 +658,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "т" : "";
+        protected override string GetTextForLevel() => "т";
 
         internal override int GetImageIndex()
         {
@@ -736,7 +740,7 @@ namespace Fantasy_Kingdoms_Battle
             return Counter == 0 ? GetCost().ValueGold().ToString() : Counter.ToString() + " д.";
         }
 
-        internal override string GetLevel() => "+1";
+        protected override string GetTextForLevel() => "+1";
 
         internal override int GetImageIndex()
         {
@@ -794,8 +798,6 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override string GetLevel() => "";
-
         internal override int GetImageIndex()
         {
             return 1;
@@ -833,8 +835,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Construction ForConstruction { get; }
         internal ConstructionSpell Spell { get; }
         internal DescriptorConstructionSpell Entity { get; }
-
-        internal override string GetLevel() => "";
 
         internal override int GetImageIndex()
         {
