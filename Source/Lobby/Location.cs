@@ -203,7 +203,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(percentArea > 0);
 
-            PercentScoutedArea += percentArea;
+            PercentScoutedArea += Math.Min(percentNonScoutedArea, percentArea);
         }
 
         internal void FindScoutedConstructions()
