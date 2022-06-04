@@ -1485,6 +1485,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                SpendForBuild(cell);
                 ListQueueProcessing.Add(cell);
                 //Player.AddEntityToQueueBuilding()
                 cell.PosInQueue = ListQueueProcessing.Count;
