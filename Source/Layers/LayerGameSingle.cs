@@ -308,6 +308,8 @@ namespace Fantasy_Kingdoms_Battle
 
             Adjust2();
 
+            PreferencesChanged();
+
             // Теперь когда известна ширина окна, можно создавать картинку тулбара
             Program.formMain.sizeGamespace = new Size(MainControl.Width, MainControl.ShiftY + MainControl.Height);
             Program.formMain.MinSizeGamespace = Program.formMain.sizeGamespace;
