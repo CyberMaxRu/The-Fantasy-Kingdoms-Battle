@@ -22,6 +22,6 @@
     <ShowTypeCellMenu>True</ShowTypeCellMenu>
     <HideFulfilledRequirements>True</HideFulfilledRequirements>
     <ShowExtraHint>True</ShowExtraHint>
-    <AllowCheating>False</AllowCheating>
+    <AllowCheating>True</AllowCheating>
   </Interface>
 </Settings>

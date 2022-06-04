@@ -37,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Level > 0)
             {
                 AddPerksToPlayer();
+                AddVisit();
                 CreateProducts();
             }
 
@@ -117,6 +118,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Level > 0)
             {
                 AddPerksToPlayer();
+                AddVisit();
                 CreateProducts();
             }
 
@@ -308,10 +310,7 @@ namespace Fantasy_Kingdoms_Battle
             AddPerksToPlayer();
 
             // Добавляем товар посещения
-            Debug.Assert(TypeConstruction.Levels[Level].DescriptorVisit != null);
-            ConstructionVisitSimple cpVisit = new ConstructionVisitSimple(this, TypeConstruction.Levels[Level].DescriptorVisit);
-            CurrentVisit = cpVisit;
-            AddVisit(cpVisit);
+            AddVisit();
 
             // Инициализируем удовлетворяемые потребности
             SatisfactionNeeds = new int[FormMain.Descriptors.NeedsCreature.Count];
@@ -341,6 +340,14 @@ namespace Fantasy_Kingdoms_Battle
             TuneCellMenuBuildOrUpgrade();
 
             usedBuilders = 0;
+        }
+
+        private void AddVisit()
+        {
+            Debug.Assert(TypeConstruction.Levels[Level].DescriptorVisit != null);
+            ConstructionVisitSimple cpVisit = new ConstructionVisitSimple(this, TypeConstruction.Levels[Level].DescriptorVisit);
+            CurrentVisit = cpVisit;
+            AddVisit(cpVisit);
         }
 
         private void CreateProducts()
