@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Entity != null)
                 {
-                    ImageIndex = Entity.GetImageIndex();
+                    ImageIndex = Entity.GetCellImageIndex();
                     ImageIsEnabled = Entity.GetNormalImage();                        
                     Quantity = Entity.GetQuantity();
                     Level = Entity.GetLevel();

@@ -1138,23 +1138,15 @@ namespace Fantasy_Kingdoms_Battle
 
             if (NextLocation != null)
                 return NextLocation.GetImageIndex();
-            else if (CellMenuBuildNewConstruction != null)
-                return CellMenuBuildNewConstruction.GetImageIndex();
             else if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
                 return ComponentObjectOfMap.Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
             else
                 return FormMain.Config.Gui48_Battle;
         }
 
-        internal override int GetMenuImageIndex()
+        internal override int GetCellImageIndex()
         {
-            if (CellMenuBuildNewConstruction is null)
-                return GetImageIndex();
-            else
-            {
-                Debug.Assert(ComponentObjectOfMap.Visible);
-                return TypeConstruction.ImageIndex;
-            }
+            return CellMenuBuildNewConstruction is null ? GetImageIndex() : CellMenuBuildNewConstruction.GetImageIndex();
         }
 
         internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
