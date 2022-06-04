@@ -101,8 +101,8 @@ namespace Fantasy_Kingdoms_Battle
                 percentScoutedArea = value;
                 percentNonScoutedArea = 1000 - percentScoutedArea;
 
-                Debug.Assert(percentScoutedArea <= 1_000);
-                Debug.Assert(percentNonScoutedArea >= 0);
+                Debug.Assert(percentScoutedArea <= 1_000, $"percentNonScoutedArea : {percentNonScoutedArea}");
+                Debug.Assert(percentNonScoutedArea >= 0, $"percentNonScoutedArea : {percentNonScoutedArea}");
             }
         }
         internal int PercentNonScoutedArea { get => percentNonScoutedArea; }// Процент неразведанной части локации
