@@ -667,8 +667,15 @@ namespace Fantasy_Kingdoms_Battle
         internal void RemoveLayer(LayerCustom vl)
         {
             Debug.Assert(Layers.Count > 1);
-            Debug.Assert(Layers[Layers.Count - 1] == vl);
-
+            if (Layers[Layers.Count - 1] != vl)
+            {
+                string layers = "";
+                foreach (LayerCustom l in Layers)
+                {
+                    layers += l.ToString() + "; ";
+                }
+                Debug.Assert(false, $"Последний слой не равен удаляемому (всего слоев {Layers.Count}, слои [{layers}], удаляется {vl})");
+            }
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];
             VisualControl.PanelHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
