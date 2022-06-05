@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirement(Player p)
         {
-            return p.FindConstruction(Construction.ID).ExtensionAvailabled(Extension);
+            return p.CheatingIgnoreRequirements ? true : p.FindConstruction(Construction.ID).ExtensionAvailabled(Extension);
         }
 
         internal override void TuneLinks()

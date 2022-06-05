@@ -934,9 +934,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequirements(List<DescriptorRequirement> list)
         {
-            if (CheatingIgnoreRequirements)
-                return true;
-
             foreach (DescriptorRequirement r in list)
             {
                 if (!r.CheckRequirement(this))

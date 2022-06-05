@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(destroyed > 0);
         }
 
-        internal override bool CheckRequirement(Player p) => p.LairsDestroyed(construction) >= destroyed;
+        internal override bool CheckRequirement(Player p) => p.CheatingIgnoreRequirements ? true : p.LairsDestroyed(construction) >= destroyed;
 
         internal override TextRequirement GetTextRequirement(Player p)
         {

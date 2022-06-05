@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(level <= construction.MaxLevel, $"Требуется сооружение {construction.ID} {level} уровня, но у него максимум {construction.MaxLevel} уровень.");
         }
 
-        internal override bool CheckRequirement(Player p) => p.GetPlayerConstruction(construction).Level >= level;
+        internal override bool CheckRequirement(Player p) => p.CheatingIgnoreRequirements ? true : p.GetPlayerConstruction(construction).Level >= level;
         internal override TextRequirement GetTextRequirement(Player p)
         {
             return new TextRequirement(CheckRequirement(p), p.GetPlayerConstruction(construction).TypeConstruction.Name + (level > 1 ? " " + level + " уровня" : ""));

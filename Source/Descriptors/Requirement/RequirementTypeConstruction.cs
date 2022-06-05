@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirement(Player p)
         {
-            return p.TypeConstructionBuilded(typeConstruction) >= quantity;
+            return p.CheatingIgnoreRequirements ? true : p.TypeConstructionBuilded(typeConstruction) >= quantity;
         }
 
         internal override void TuneLinks()

@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nameGoods.Length > 0);
         }
 
-        internal override bool CheckRequirement(Player p) => p.FindConstruction(construction.ID).GoodsAvailabled(goods);
+        internal override bool CheckRequirement(Player p) => p.CheatingIgnoreRequirements ? true : p.FindConstruction(construction.ID).GoodsAvailabled(goods);
         internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"{goods.Name} ({construction.Name})");
 
         internal override void TuneLinks()
