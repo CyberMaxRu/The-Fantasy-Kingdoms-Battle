@@ -222,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
                                 break;
                             }
                     }
-                    
+
                     if (!needRegenerate)
                         return newSb;
 
@@ -257,7 +257,7 @@ namespace Fantasy_Kingdoms_Battle
             Initialization = false;
         }
 
-        internal void  PrepareNewDay()
+        internal void PrepareNewDay()
         {
             ExtraLevelUp = 0;
             ExtraResearch = 0;
@@ -275,6 +275,11 @@ namespace Fantasy_Kingdoms_Battle
             foreach (Construction pc in lc)// Коллекция меняется при замене объекта
             {
                 pc.PrepareNewDay();
+            }
+
+            if (IsLive == true)
+            {
+                ReceivedResource(new ListBaseResources(Income()));
             }
         }
 
@@ -568,8 +573,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (IsLive == true)
             {
-                ReceivedResource(new ListBaseResources(Income()));
-
                 ValidateHeroes();
 
                 QuantityHeroes = CombatHeroes.Count();
@@ -1207,7 +1210,7 @@ namespace Fantasy_Kingdoms_Battle
             if (gold > 0)
             {
                 if (!CheatingIgnoreBaseResources)
-                {                    
+                {
                     Debug.Assert(ResourceGold.Quantity >= 0);
                     Debug.Assert(ResourceGold.Quantity >= gold);
                     ResourceGold.Quantity -= gold;
@@ -1540,7 +1543,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice)
         {
             if (GetTypePlayer() == TypePlayer.Human)
-            { 
+            {
                 ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeNotice));
             }
         }
