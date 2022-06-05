@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool GetNormalImage()
         {
-            return construction != null ? construction.MiningBaseResources : true;
+            return construction != null ? construction.MiningBaseResources || construction.ProvideBaseResources : true;
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Descriptor.Description);
             panelHint.AddStep4Level($"+{Quantity} в день");
             if (construction != null)
-                if (!construction.MiningBaseResources && (DescriptorBaseResource.ConstructionForMining != null))
+                if (!construction.MiningBaseResources && (DescriptorBaseResource.ConstructionForMining != null) && !construction.ProvideBaseResources)
                     panelHint.AddStep5Description("Постройте {" + DescriptorBaseResource.ConstructionForMining.Name + "} для добычи ресурса");
         }
     }

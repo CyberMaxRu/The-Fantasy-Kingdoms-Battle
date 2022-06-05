@@ -1162,7 +1162,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Iron>50</Iron>
+        </IncomeResources>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
@@ -1189,7 +1191,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Iron>100</Iron>
+        </IncomeResources>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
@@ -1216,7 +1220,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Iron>150</Iron>
+        </IncomeResources>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>

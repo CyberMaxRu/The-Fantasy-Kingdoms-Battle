@@ -276,11 +276,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 pc.PrepareNewDay();
             }
-
-            if (IsLive == true)
-            {
-                ReceivedResource(new ListBaseResources(Income()));
-            }
         }
 
         internal virtual void PrepareTurn(bool beginOfDay)
@@ -367,7 +362,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (Construction pc in lc)// Коллекция меняется при замене объекта
             {
                 // Прибавляем ресурсы
-                if ((pc.Level > 0) && pc.MiningBaseResources)
+                if ((pc.Level > 0) && (pc.MiningBaseResources || pc.ProvideBaseResources))
                 {
                     foreach (ConstructionBaseResource cbs in pc.BaseResources)
                         lbs[cbs.DescriptorBaseResource.Number].Quantity += cbs.Quantity;
@@ -740,18 +735,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Descriptor.TypePlayer == TypePlayer.Human)
                 Lobby.Layer.ListHeroesChanged();
-        }
-
-        internal int Income()
-        {
-            int income = 0;
-
-            foreach (Construction pb in Constructions)
-            {
-                income += pb.Income();
-            }
-
-            return income;
         }
 
         // Поиск слота для предмета

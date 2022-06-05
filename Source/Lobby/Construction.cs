@@ -50,6 +50,7 @@ namespace Fantasy_Kingdoms_Battle
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;
 
+            UpdateCurrentIncomeResources();
             TuneCellMenuBuildOrUpgrade();
             UpdateSelectedColor();
         }
@@ -94,6 +95,7 @@ namespace Fantasy_Kingdoms_Battle
             if (typeNotice != TypeNoticeForPlayer.None)
                 Player.AddNoticeForPlayer(this, typeNotice);
 
+            UpdateCurrentIncomeResources(); 
             TuneCellMenuBuildOrUpgrade();
             UpdateSelectedColor();
         }
@@ -131,8 +133,9 @@ namespace Fantasy_Kingdoms_Battle
             if (ls.Resources != null)
             {
                 InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
-                UpdateCurrentIncomeResources();
             }
+
+            UpdateCurrentIncomeResources();
 
             // Восстановить
             //if (Construction.HasTreasury)
@@ -187,6 +190,7 @@ namespace Fantasy_Kingdoms_Battle
         // 
         internal ListBaseResources InitialQuantityBaseResources { get; }// Исходные значения базовых ресурсов
         internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
+        internal bool ProvideBaseResources { get; private set; }// Сооружение поставляет ресурсы
 
         private void TuneCellMenuBuildOrUpgrade()
         {
@@ -218,7 +222,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Level > 0)
             {
-                BaseResources.Clear();
+                MiningBaseResources = false;
+                ProvideBaseResources = false;
+
+                if (BaseResources.Count == 0)
+                    foreach (DescriptorBaseResource dbr in FormMain.Descriptors.BaseResources)
+                        BaseResources.Add(new ConstructionBaseResource(this, dbr));
+
+                foreach (ConstructionBaseResource cbr in BaseResources)
+                    cbr.Quantity = 0;
 
                 if (InitialQuantityBaseResources != null)
                 {
@@ -231,15 +243,27 @@ namespace Fantasy_Kingdoms_Battle
                             int coefMining = TypeConstruction.Levels[Level].Mining != null ? TypeConstruction.Levels[Level].Mining[i] : 10;
                             int quantity = Convert.ToInt32(InitialQuantityBaseResources[i].Quantity * coefMining / 10);
                             Debug.Assert(quantity > 0);
-                            ConstructionBaseResource cbr = new ConstructionBaseResource(this, InitialQuantityBaseResources[i].Descriptor);
-                            cbr.Quantity = quantity;
-                            BaseResources.Add(cbr);
+                            BaseResources[i].Quantity = quantity;
                         }
                     }
                 }
                 else
                 {
                     Debug.Assert(TypeConstruction.Levels[Level].Mining is null);
+
+                    if (TypeConstruction.Levels[Level].IncomeResources != null)
+                    {
+                        ProvideBaseResources = true;
+                        int q = 0;
+
+                        foreach (BaseResource br in TypeConstruction.Levels[Level].IncomeResources)
+                        {
+                            BaseResources[br.Descriptor.Number].Quantity = br.Quantity;
+                            q += br.Quantity;
+                        }
+
+                        Debug.Assert(q > 0);
+                    }
                 }
             }
         }
@@ -512,7 +536,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Income()
         {
-            return (Level > 0) && (TypeConstruction.Levels[Level].IncomeResources != null) ? TypeConstruction.Levels[Level].IncomeResources.ValueGold() : 0;
+            return (Level > 0) && (BaseResources[FormMain.Descriptors.Gold.Number] != null) ? BaseResources[FormMain.Descriptors.Gold.Number].Quantity : 0;
         }
 
         internal int IncomeForLevel(int level)

@@ -85,6 +85,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(Tax == 0);
             }
+
+            // Нельзя давать ресурсы и одновременно добывать их
+            Debug.Assert(!((Mining != null) && (IncomeResources != null)));
         }
 
         internal int Number { get; }
