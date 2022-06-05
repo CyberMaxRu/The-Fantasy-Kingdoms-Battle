@@ -41,6 +41,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int[] ListProperty { get; }
 
         internal override string GetName() => Descriptor != null ? Descriptor.Name : BigEntity.Descriptor.Name;
+        internal override string GetTypeEntity() => "Особенность";
         internal override int GetImageIndex() => Descriptor != null ? Descriptor.ImageIndex : BigEntity.GetImageIndex();
 
         internal override void PrepareHint(PanelHint panelHint)
