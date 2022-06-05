@@ -255,7 +255,12 @@ namespace Fantasy_Kingdoms_Battle
                     for (int i = 0; i < Players.Length; i++)
                     {
                         if (Players[i].IsLive)
+                        {
                             Players[i].PrepareNewDay();
+
+                            if (Turn > 1)
+                                Players[i].ReceiveResources();
+                        }
                     }
 
                     InPrepareTurn = false;
@@ -301,7 +306,7 @@ namespace Fantasy_Kingdoms_Battle
                 SetPlayerAsCurrent(-1);
 
                 // Расчет результатов хода игроков
-                if (TimeOfDay == FormMain.Descriptors.TimesOfDay[0])
+                if (TimeOfDay == FormMain.Descriptors.TimesOfDay[FormMain.Descriptors.TimesOfDay.Count - 1])
                 {
                     foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
                         p.CalcDay();

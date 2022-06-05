@@ -278,6 +278,25 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void ReceiveResources()
+        {
+            // Получаем ресурсы с добычи
+            ListBaseResources lbs = new ListBaseResources();
+            List<Construction> lc = new List<Construction>();
+            lc.AddRange(Constructions);
+            foreach (Construction pc in lc)// Коллекция меняется при замене объекта
+            {
+                // Прибавляем ресурсы
+                if ((pc.Level > 0) && (pc.MiningBaseResources || pc.ProvideBaseResources))
+                {
+                    foreach (ConstructionBaseResource cbs in pc.BaseResources)
+                        lbs[cbs.DescriptorBaseResource.Number].Quantity += cbs.Quantity;
+                }
+            }
+
+            ReceivedResource(lbs);
+        }
+
         internal virtual void PrepareTurn(bool beginOfDay)
         {
             //
@@ -314,6 +333,7 @@ namespace Fantasy_Kingdoms_Battle
 
             SetTaskForHeroes();
         }
+
         internal override bool ProperName() => true;
         internal override string GetTypeEntity() => Descriptor.GetTypeEntity();
 
@@ -354,22 +374,6 @@ namespace Fantasy_Kingdoms_Battle
                     l.ComponentObjectOfMap.ListHeroesForFlag.Clear();
                 }
             }
-
-            // Получаем ресурсы с добычи
-            ListBaseResources lbs = new ListBaseResources();
-            List<Construction> lc = new List<Construction>();
-            lc.AddRange(Constructions);
-            foreach (Construction pc in lc)// Коллекция меняется при замене объекта
-            {
-                // Прибавляем ресурсы
-                if ((pc.Level > 0) && (pc.MiningBaseResources || pc.ProvideBaseResources))
-                {
-                    foreach (ConstructionBaseResource cbs in pc.BaseResources)
-                        lbs[cbs.DescriptorBaseResource.Number].Quantity += cbs.Quantity;
-                }
-            }
-
-            ReceivedResource(lbs);
         }
 
         //
