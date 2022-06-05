@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
             btnEditorConquest.Click += BtnEditorConquest_Click;*/
 
-            btnExitToWindows = new VCButton(bmpMainMenu, 80, bmpMainMenu.Height - 96, "Выход в Windows");
+            btnExitToWindows = new VCButton(bmpMainMenu, 80, bmpMainMenu.Height - 96, "Выход");
             btnExitToWindows.Width = bmpMainMenu.Width - 80 - 80;
             btnExitToWindows.Click += BtnExitToWindows_Click;
 
