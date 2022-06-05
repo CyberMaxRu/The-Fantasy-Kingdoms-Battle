@@ -512,17 +512,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Income()
         {
-            return 0;// Level > 0 ? TypeConstruction.Levels[Level].Income : 0;
-        }
-
-        internal bool DoIncome()
-        {
-            return false;// TypeConstruction.Levels[1].Income > 0;
+            return (Level > 0) && (TypeConstruction.Levels[Level].IncomeResources != null) ? TypeConstruction.Levels[Level].IncomeResources.ValueGold() : 0;
         }
 
         internal int IncomeForLevel(int level)
         {
-            return 0;// TypeConstruction.Levels[level].Income;
+            return TypeConstruction.Levels[level].IncomeResources != null ? TypeConstruction.Levels[level].IncomeResources.ValueGold() : 0;
         }
 
         internal int DayBuildingForLevel(int level)

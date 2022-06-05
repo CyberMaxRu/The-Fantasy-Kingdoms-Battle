@@ -1728,7 +1728,12 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>0</Builders>
         </Creating>
-        <Income>1000</Income>
+        <IncomeResources>
+          <Gold>1000</Gold>
+          <Wood>50</Wood>
+          <Stone>100</Stone>
+          <Iron>25</Iron>
+        </IncomeResources>
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <BuildersPerDay>3</BuildersPerDay>
@@ -1772,7 +1777,12 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>1500</Income>
+        <IncomeResources>
+          <Gold>1500</Gold>
+          <Wood>50</Wood>
+          <Stone>100</Stone>
+          <Iron>25</Iron>
+        </IncomeResources>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
@@ -1814,7 +1824,12 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>2000</Income>
+        <IncomeResources>
+          <Gold>2000</Gold>
+          <Wood>50</Wood>
+          <Stone>100</Stone>
+          <Iron>25</Iron>
+        </IncomeResources>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>

@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 DescriptorVisit = new DescriptorConstructionVisitSimple(this, nv);
             }
-            else 
+            else
             {
                 DescriptorVisit = new DescriptorConstructionVisitSimple(this);
             }
@@ -65,6 +65,10 @@ namespace Fantasy_Kingdoms_Battle
             if (nm != null)
                 Mining = new ListCoefMining(nm);
 
+            XmlNode nir = n.SelectSingleNode("IncomeResources");
+            if (nir != null)
+                IncomeResources = new ListBaseResources(nir);
+
             Debug.Assert(Number >= 1);
             Debug.Assert(Number <= 5);
             Debug.Assert(MaxInhabitant >= 0);
@@ -85,7 +89,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Number { get; }
         internal int MaxInhabitant { get; }
-        internal int Tax { get;  }// Процент налога с дохода членов гильдии
+        internal int Tax { get; }// Процент налога с дохода членов гильдии
         internal int Capacity { get; }
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
@@ -95,6 +99,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
         internal ListDefaultProperties Properties { get; }// Список характеристик
         internal ListCoefMining Mining { get; }// Коэффициенты добычи ресурса
+        internal ListBaseResources IncomeResources { get; }// Сколько и каких ресурсов приносит сооружение в день
 
 
         protected override string GetName(XmlNode n)
