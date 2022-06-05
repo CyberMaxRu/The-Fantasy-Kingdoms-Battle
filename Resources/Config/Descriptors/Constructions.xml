@@ -18,7 +18,6 @@
       <Level>
         <ID>LevelGuildWarrior1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -32,7 +31,6 @@
       <Level>
         <ID>LevelGuildWarrior2</ID>
         <Number>2</Number>
-        <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -53,7 +51,6 @@
       <Level>
         <ID>LevelGuildWarrior3</ID>
         <Number>3</Number>
-        <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -215,7 +212,6 @@
             <Gold>450</Gold>
           </Cost>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -236,7 +232,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -250,7 +245,6 @@
             <Gold>450</Gold>
           </Cost>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -448,7 +442,6 @@
             <Gold>700</Gold>
           </Cost>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -469,7 +462,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -483,7 +475,6 @@
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -645,7 +636,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -671,7 +661,6 @@
           </Requirements>
         </Creating>
         <Builders>0</Builders>
-        <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -692,7 +681,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -901,7 +889,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -927,7 +914,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -953,7 +939,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1437,7 +1422,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1458,7 +1442,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1472,7 +1455,6 @@
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1523,7 +1505,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1544,7 +1525,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1558,7 +1538,6 @@
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1930,7 +1909,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>50</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
         <Entities>
           <Entity>ResourceWheat</Entity>
           <Entity>FieldOfWheat</Entity>
@@ -1978,7 +1959,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>250</Income>
+        <IncomeResources>
+          <Gold>250</Gold>
+        </IncomeResources>
       </Level>
     </Levels>
   </Construction>
@@ -2012,7 +1995,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>100</Income>
+        <IncomeResources>
+          <Gold>100</Gold>
+        </IncomeResources>
       </Level>
     </Levels>
   </Construction>
@@ -2039,7 +2024,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>175</Income>
+        <IncomeResources>
+          <Gold>175</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelMarket2</ID>
@@ -2058,7 +2045,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>300</Income>
+        <IncomeResources>
+          <Gold>300</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelMarket3</ID>
@@ -2077,7 +2066,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>525</Income>
+        <IncomeResources>
+          <Gold>525</Gold>
+        </IncomeResources>
       </Level>
     </Levels>
     <Events>
@@ -2314,7 +2305,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>50</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelSmithy2</ID>
@@ -2333,7 +2326,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>50</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelSmithy3</ID>
@@ -2342,7 +2337,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <Income>50</Income>
           <DaysProcessing>1</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -2352,6 +2346,9 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <IncomeResources>
+          <Gold>100</Gold>
+        </IncomeResources>
         <Builders>1</Builders>
       </Level>
       <Level>
@@ -2361,7 +2358,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <Income>50</Income>
           <DaysProcessing>1</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -2371,6 +2367,9 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <IncomeResources>
+          <Gold>150</Gold>
+        </IncomeResources>
         <Builders>1</Builders>
       </Level>
     </Levels>
@@ -2825,7 +2824,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>100</Gold>
+        </IncomeResources>
         <Visit>
           <ID>TavernVisit1</ID>
           <Name>Посиделка в таверне (1)</Name>
@@ -2855,7 +2856,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>200</Gold>
+        </IncomeResources>
         <Visit>
           <ID>TavernVisit2</ID>
           <Name>Посиделка в таверне (2)</Name>
@@ -2885,7 +2888,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>300</Gold>
+        </IncomeResources>
         <Visit>
           <ID>TavernVisit3</ID>
           <Name>Посиделка в таверне (3)</Name>
@@ -3084,7 +3089,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>150</Income>
+        <IncomeResources>
+          <Gold>150</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelWorkshop2</ID>
@@ -3103,7 +3110,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>250</Income>
+        <IncomeResources>
+          <Gold>250</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelWorkshop3</ID>
@@ -3122,7 +3131,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>350</Income>
+        <IncomeResources>
+          <Gold>350</Gold>
+        </IncomeResources>
       </Level>
     </Levels>
     <Products>
@@ -3606,7 +3617,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>200</Income>
+        <IncomeResources>
+          <Gold>200</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelAlchemistHut2</ID>
@@ -3618,7 +3631,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>300</Income>
+        <IncomeResources>
+          <Gold>300</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelAlchemistHut3</ID>
@@ -3630,7 +3645,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>500</Income>
+        <IncomeResources>
+          <Gold>500</Gold>
+        </IncomeResources>
       </Level>
     </Levels>
     <Products>
@@ -3904,7 +3921,9 @@
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>25</Gold>
+        </IncomeResources>
         <Visit>
           <ID>ParkVisit1</ID>
           <Name>Прогулка по парку (1)</Name>
@@ -3927,7 +3946,9 @@
           <DaysProcessing>4</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
         <Visit>
           <ID>ParkVisit2</ID>
           <Name>Прогулка по парку (2)</Name>
@@ -3950,7 +3971,9 @@
           <DaysProcessing>6</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>75</Gold>
+        </IncomeResources>
         <Visit>
           <ID>ParkVisit3</ID>
           <Name>Прогулка по парку (3)</Name>
@@ -4146,7 +4169,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <Visit>
@@ -4178,7 +4200,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <Visit>
@@ -4210,7 +4231,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <Visit>
@@ -4401,7 +4421,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
@@ -4415,7 +4434,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
       </Level>
@@ -4454,7 +4472,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
@@ -4468,7 +4485,6 @@
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
       </Level>
@@ -4507,7 +4523,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>25</Gold>
+        </IncomeResources>
         <Visit>
           <ID>ArenaVisit1</ID>
           <Name>Тренировка на арене (1)</Name>
@@ -4529,7 +4547,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
         <Visit>
           <ID>ArenaVisit2</ID>
           <Name>Тренировка на арене (2)</Name>
@@ -4551,7 +4571,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>75</Gold>
+        </IncomeResources>
         <Visit>
           <ID>ArenaVisit3</ID>
           <Name>Тренировка на арене (3)</Name>
@@ -4696,7 +4718,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
       </Level>
       <Level>
         <ID>LevelHospital2</ID>
@@ -4708,7 +4729,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
       </Level>
       <Level>
         <ID>LevelHospital3</ID>
@@ -4720,7 +4740,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
       </Level>
     </Levels>
     <Products>
@@ -4889,7 +4908,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
       <Level>
@@ -4902,7 +4920,6 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
     </Levels>
@@ -4944,7 +4961,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>50</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
         <Visit>
           <ID>GardenVisit1</ID>
           <Name>Прогулка по саду (1)</Name>
@@ -4967,7 +4986,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>100</Income>
+        <IncomeResources>
+          <Gold>100</Gold>
+        </IncomeResources>
         <Visit>
           <ID>GardenVisit2</ID>
           <Name>Прогулка по саду (2)</Name>
@@ -4990,7 +5011,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>150</Income>
+        <IncomeResources>
+          <Gold>150</Gold>
+        </IncomeResources>
         <Visit>
           <ID>GardenVisit3</ID>
           <Name>Прогулка по саду (3)</Name>
@@ -5207,7 +5230,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>25</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelMenagerie2</ID>
@@ -5226,7 +5251,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
       </Level>
       <Level>
         <ID>LevelMenagerie3</ID>
@@ -5250,7 +5277,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
+        <IncomeResources>
+          <Gold>75</Gold>
+        </IncomeResources>
       </Level>
     </Levels>
     <Products>
@@ -5420,7 +5449,9 @@
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>250</Income>
+        <IncomeResources>
+          <Gold>250</Gold>
+        </IncomeResources>
         <Visit>
           <ID>GamblingHallVisit1</ID>
           <Name>Поиграть в азартные игры (1)</Name>
@@ -5450,7 +5481,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>500</Income>
+        <IncomeResources>
+          <Gold>500</Gold>
+        </IncomeResources>
         <Visit>
           <ID>GamblingHallVisit2</ID>
           <Name>Поиграть в азартные игры (2)</Name>
@@ -5480,7 +5513,9 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>750</Income>
+        <IncomeResources>
+          <Gold>750</Gold>
+        </IncomeResources>
         <Visit>
           <ID>GamblingHallVisit3</ID>
           <Name>Поиграть в азартные игры (3)</Name>
@@ -5498,7 +5533,9 @@
       <Product>
         <ID>ProductPlayingLotto</ID>
         <Entity>PlayingLotto</Entity>
-        <Income>50</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -5516,7 +5553,9 @@
       <Product>
         <ID>ProductDice</ID>
         <Entity>Dice</Entity>
-        <Income>100</Income>
+        <IncomeResources>
+          <Gold>50</Gold>
+        </IncomeResources>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -5541,7 +5580,9 @@
       <Product>
         <ID>ProductCider</ID>
         <Entity>Cider</Entity>
-        <Income>100</Income>
+        <IncomeResources>
+          <Gold>100</Gold>
+        </IncomeResources>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -5576,7 +5617,9 @@
             <Gold>1500</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
-          <Income>200</Income>
+          <IncomeResources>
+            <Gold>200</Gold>
+          </IncomeResources>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5660,7 +5703,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -5709,7 +5751,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -5758,7 +5799,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -5807,7 +5847,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -5856,7 +5895,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -5905,7 +5943,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -5954,7 +5991,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -6003,7 +6039,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -6052,7 +6087,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
@@ -6079,7 +6113,6 @@
       <Level>
         <ID>LevelGraveyardZombie1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6111,7 +6144,6 @@
       <Level>
         <ID>LevelGraveyardSkeletons1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6151,7 +6183,6 @@
       <Level>
         <ID>LevelCrypt1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6191,7 +6222,6 @@
       <Level>
         <ID>LevelAncientCrypt1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6223,7 +6253,6 @@
       <Level>
         <ID>LevelWolfsDen1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
         <Properties>
           <Property>
@@ -6275,7 +6304,6 @@
       <Level>
         <ID>LevelSerpentsNest1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6307,7 +6335,6 @@
       <Level>
         <ID>LevelBearsDen1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6347,7 +6374,6 @@
       <Level>
         <ID>LevelBearmansDen1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6379,7 +6405,6 @@
       <Level>
         <ID>LevelPyramideMinotaurs1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6419,7 +6444,6 @@
       <Level>
         <ID>LevelOgreCave1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6451,7 +6475,6 @@
       <Level>
         <ID>LevelHermitHouse1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6483,7 +6506,6 @@
       <Level>
         <ID>LevelDragonCave1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6517,7 +6539,6 @@
       <Level>
         <ID>LevelSewer1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6535,7 +6556,6 @@
       <Level>
         <ID>LevelKingsSewer1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6567,7 +6587,6 @@
       <Level>
         <ID>LevelTreasure1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6588,7 +6607,6 @@
       <Level>
         <ID>LevelThroneLightning1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6620,7 +6638,6 @@
       <Level>
         <ID>LevelThroneFire1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6654,7 +6671,6 @@
       <Level>
         <ID>LevelHolyPlace1</ID>
         <Number>1</Number>
-        <Income>0</Income>
       </Level>
     </Levels>
     <CellsMenu>
@@ -6709,7 +6725,6 @@
       <Level>
         <ID>LevelEmptyPlace1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6731,7 +6746,6 @@
       <Level>
         <ID>LevelCityGraveyard1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6785,7 +6799,6 @@
         <Mining>
           <Wood>1</Wood>
         </Mining>
-        <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6839,7 +6852,6 @@
         <Mining>
           <Stone>1</Stone>
         </Mining>
-        <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6893,7 +6905,6 @@
         <Mining>
           <Iron>1</Iron>
         </Mining>
-        <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6973,7 +6984,6 @@
           <DaysProcessing>3</DaysProcessing>
           <Builders>3</Builders>
         </Creating>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6993,7 +7003,6 @@
       <Level>
         <ID>LevelHill1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7013,7 +7022,6 @@
       <Level>
         <ID>LevelMeadow1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7033,7 +7041,6 @@
       <Level>
         <ID>LevelPlain1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7053,7 +7060,6 @@
       <Level>
         <ID>LevelMountain1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
           <ID>MountainVisit1</ID>
@@ -7084,7 +7090,6 @@
       <Level>
         <ID>LevelMountainSpring1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7104,7 +7109,6 @@
       <Level>
         <ID>LevelMountainLake1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
           <ID>MountainLakeVisit1</ID>
@@ -7138,7 +7142,6 @@
       <Level>
         <ID>LevelFoothills1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7158,7 +7161,6 @@
       <Level>
         <ID>LevelSwamp1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7178,7 +7180,6 @@
       <Level>
         <ID>LevelMarsh1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7198,7 +7199,6 @@
       <Level>
         <ID>LevelSwampyForest1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7218,7 +7218,6 @@
       <Level>
         <ID>LevelForest1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7238,7 +7237,6 @@
       <Level>
         <ID>LevelGlade1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7258,7 +7256,6 @@
       <Level>
         <ID>LevelRiver1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7278,7 +7275,6 @@
       <Level>
         <ID>LevelDesert1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7298,7 +7294,6 @@
       <Level>
         <ID>LevelOasis1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7318,7 +7313,6 @@
       <Level>
         <ID>LevelWasteland1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7338,7 +7332,6 @@
       <Level>
         <ID>LevelCanyon1</ID>
         <Number>1</Number>
-        <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7358,7 +7351,6 @@
       <Level>
         <ID>LevelLake1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7378,7 +7370,6 @@
       <Level>
         <ID>LevelMountainWay1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7405,7 +7396,6 @@
           <DaysProcessing>5</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7432,7 +7422,6 @@
           <DaysProcessing>3</DaysProcessing>
           <Builders>1</Builders>
         </Creating>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7450,7 +7439,6 @@
       <Level>
         <ID>LevelHellPortal1</ID>
         <Number>1</Number>
-        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7494,7 +7482,6 @@
       <Level>
         <ID>PathToLocation1</ID>
         <Number>1</Number>
-        <Income>0</Income>
       </Level>
     </Levels>
   </Construction>
