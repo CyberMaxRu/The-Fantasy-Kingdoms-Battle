@@ -257,7 +257,7 @@ namespace Fantasy_Kingdoms_Battle
             Initialization = false;
         }
 
-        internal void PrepareNewDay()
+        internal void  PrepareNewDay()
         {
             ExtraLevelUp = 0;
             ExtraResearch = 0;
@@ -275,11 +275,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (Construction pc in lc)// Коллекция меняется при замене объекта
             {
                 pc.PrepareNewDay();
-            }
-
-            if (IsLive == true)
-            {
-                ReceivedResource(new ListBaseResources(Income()));
             }
         }
 
@@ -573,6 +568,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (IsLive == true)
             {
+                ReceivedResource(new ListBaseResources(Income()));
+
                 ValidateHeroes();
 
                 QuantityHeroes = CombatHeroes.Count();
