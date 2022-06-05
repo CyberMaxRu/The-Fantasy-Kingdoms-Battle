@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowTypeCellMenu = true;
             HideFulfilledRequirements = true;
             ShowExtraHint = true;
-            AllowCheating = true;
+            AllowCheating = false;
         }
 
         internal void LoadSettings()
