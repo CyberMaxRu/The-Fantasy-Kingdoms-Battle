@@ -54,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
                     VCText text = new VCText(ClientControl, nextLeft2, nextTop, Program.formMain.fontParagraph, Color.MediumTurquoise, 200);
                     text.StringFormat.LineAlignment = StringAlignment.Center;
                     text.Padding = new System.Windows.Forms.Padding(FormMain.Config.GridSize);
+                    text.Color = Color.White;
                     text.Text = list[x].Name;
                     text.PlaySoundOnEnter = true;
                     text.PlaySoundOnClick = true;
