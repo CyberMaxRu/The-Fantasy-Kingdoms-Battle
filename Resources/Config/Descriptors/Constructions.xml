@@ -4658,6 +4658,10 @@
         <Entity>TournamentArcher</Entity>
       </CellMenu>
       <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelArena3</Entity>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,3</Pos>
         <Entity>TournamentMage</Entity>
       </CellMenu>
