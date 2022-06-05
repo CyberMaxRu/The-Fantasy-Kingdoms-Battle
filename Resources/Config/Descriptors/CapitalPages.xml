@@ -5,13 +5,13 @@
     <Name>Гильдии и военные сооружения</Name>
     <ImageIndex>164</ImageIndex>
     <Description>В гильдиях нанимаются герои</Description>
-    <NameTexture>Capital</NameTexture>
+    <NameTexture>Guilds</NameTexture>
   </CapitalPage>
   <CapitalPage>
     <ID>Economic</ID>
     <Name>Экономические строения</Name>
     <ImageIndex>165</ImageIndex>
     <Description>Надежная экономика - залог победы</Description>
-    <NameTexture>Capital</NameTexture>
+    <NameTexture>Economic</NameTexture>
   </CapitalPage>
 </Descriptors>
