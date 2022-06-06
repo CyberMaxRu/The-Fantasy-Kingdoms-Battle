@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle.Source.Mission
             Description = GetStringNotNull(n, "Description");
         }
 
-        internal string ID { get; }// Уникальный идентификатор
+        internal string ID { get; }// Уникальный идентификатор миссии
         internal string Name { get; }
         internal string Description { get; }
     }

@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Mission>
-  <ID></ID>
-  
+  <ID>DemoMission1</ID>
+  <Name>Демонстрационная миссия #1</Name>
+  <Description>Необходимо выжить 3 месяца.</Description>
+  <Messages>
+    <Message>
+      <Turn>1</Turn>
+      <From>Adviser</From>
+      <Text>Ваше Светлость, Король Ардании дал задание - освоить это место как форпост Королевства на восточной границе.//С востока начинаются Мглистые горы - перед ними необходимо построить Форпост.//на юге простираются болота</Text>
+    </Message>
+  </Messages>
 </Mission>
