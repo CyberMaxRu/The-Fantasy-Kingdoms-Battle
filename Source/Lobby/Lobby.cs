@@ -25,15 +25,13 @@ namespace Fantasy_Kingdoms_Battle
             Settings = settings;
             descriptors = d;
             Layer = layer;
+
             StateLobby = StateLobby.Start;
             Turn = 1;
             Day = 1;
             Week = 1;
             Month = 1;
             TimeOfDay = descriptors.TimesOfDay[0];
-
-            // Создаем конфигурацию логов
-            GenerateConfigLairs();
 
             // Создание игроков
             Players = new Player[tl.QuantityPlayers];
@@ -45,67 +43,6 @@ namespace Fantasy_Kingdoms_Battle
 
             SetPlayerAsCurrent(0);
             StateLobby = StateLobby.TurnHuman;
-
-
-            void GenerateConfigLairs()
-            {
-                // Создание рандомных логов монстров согласно настроек типа лобби
-                // Для этого сначала создаем логова по минимальному списку,
-                // а оставшиеся ячейки - из оставшихся по максимуму
-
-                /*TypeLobbyLocationSettings ls;
-                int idx;
-                int restLairs;
-
-                for (int y = 0; y < TypeLobby.MapHeight; y++)
-                    for (int x = 0; x < TypeLobby.MapWidth; x++)
-                {
-                    Lairs[y, x] = new List<DescriptorConstruction>();
-
-                    ls = TypeLobby.Locations[y, x];
-                    restLairs = TypeLobby.LairsHeight * TypeLobby.LairsWidth;
-
-                    // Сначала заполняем минимальными количествами
-                    foreach (TypeLobbyLairSettings l in ls.LairsSettings)
-                    {
-                        for (int i = 0; i < l.MinQuantity; i++)
-                        {
-                            Lairs[y, x].Add(l.TypeLair);
-                            restLairs--;
-                        }
-
-                        Debug.Assert(restLairs >= 0, $"{ls.ID}: restLairs {restLairs}.");
-                    }
-
-                    // Если остались свободные ячейки, генерируем по данным о максимальном количестве
-                    if (restLairs > 0)
-                    {
-                        List<DescriptorConstruction> listTypeLairs = new List<DescriptorConstruction>();
-                        int q;
-                        
-                        // Составляем список из максимального числа доступных типов логов
-                        foreach (TypeLobbyLairSettings l in ls.LairsSettings)
-                        {
-                            q = l.MaxQuantity - l.MinQuantity;
-                            for (int j = 0; j < q; j++)
-                                listTypeLairs.Add(l.TypeLair);
-                        }
-
-                        Debug.Assert(restLairs <= listTypeLairs.Count);
-
-                        // Пока есть места, дергаем случайный тип логова
-                        while (restLairs > 0)
-                        {
-                            idx = Rnd.Next(listTypeLairs.Count);
-
-                            Lairs[y, x].Add(listTypeLairs[idx]);
-
-                            listTypeLairs.RemoveAt(idx);
-                            restLairs--;
-                        }
-                    }
-                }*/
-            }
 
             void GenerateComputerPlayers()
             {
