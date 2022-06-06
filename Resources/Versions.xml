@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.19</ActualVersion>
+  <ActualVersion>0.3.20</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -577,6 +577,13 @@
       <Line>[+] Переделана работа с картой.</Line>
       <Line>[+] Полноэкранный режим с растягиванием контролов.</Line>
       <Line>[*] Много иных улучшений и исправленных ошибок.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.20</Number>
+    <DateBuild>06.06.2022</DateBuild>
+    <Description>
+      <Line>[*] Множество исправленных ошибок и вылетов игры.</Line>
     </Description>
   </Version>
 </Versions>
