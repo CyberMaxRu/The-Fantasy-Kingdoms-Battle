@@ -99,6 +99,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnTournament_Click(object sender, EventArgs e)
         {
+            WindowInfo.ShowInfo("Информация", "Игровой режим \"Война лордов\" временно отключен.");
+            return;
+
             LobbySettings ls = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
             WindowSetupTournament w = new WindowSetupTournament(ls);
             if (w.ShowDialog() == DialogAction.OK)
