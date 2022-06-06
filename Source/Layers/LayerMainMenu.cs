@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCButton btnWarOfLords;
+        private readonly VCButton btnSingleMission;
         private readonly VCButton btnEditorConquest;
         private readonly VCButton btnPlayerPreferences;
         private readonly VCButton btnGamePreferences;
@@ -39,6 +40,10 @@ namespace Fantasy_Kingdoms_Battle
             btnWarOfLords.Width = bmpMainMenu.Width - 80 - 80;
             btnWarOfLords.Click += BtnTournament_Click;
 
+            //btnSingleMission = new VCButton(bmpMainMenu, 80, btnWarOfLords.NextTop(), "Одиночная миссия");
+            //btnSingleMission.Width = bmpMainMenu.Width - 80 - 80;
+            //btnSingleMission.Click += BtnSingleMission_Click;
+
             /*btnEditorConquest = new VCButton(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
             btnEditorConquest.Click += BtnEditorConquest_Click;*/
@@ -58,6 +63,11 @@ namespace Fantasy_Kingdoms_Battle
             btnPlayerPreferences = new VCButton(bmpMainMenu, 80, btnGamePreferences.ShiftY - 40, "Настройки игрока");
             btnPlayerPreferences.Width = bmpMainMenu.Width - 80 - 80;
             btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
+        }
+
+        private void BtnSingleMission_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void BtnEditorConquest_Click(object sender, EventArgs e)

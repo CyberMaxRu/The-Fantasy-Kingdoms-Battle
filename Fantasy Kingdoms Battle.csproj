@@ -163,6 +163,7 @@
     <Compile Include="Source\Lobby\CreatureVisit.cs" />
     <Compile Include="Source\Map\Region.cs" />
     <Compile Include="Source\Map\StrategicMap.cs" />
+    <Compile Include="Source\Mission\Mission.cs" />
     <Compile Include="Source\Panels\PanelLocationInfo.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyConstructionSettings.cs" />
     <Compile Include="Source\VisualControls\VCCellSimple.cs" />
@@ -385,6 +386,7 @@
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Players.xml" />
     <Content Include="Resources\Versions.xml" />
+    <Content Include="SinglePlayer\Missions\DemoMission.xml" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
