@@ -16,16 +16,18 @@ namespace Fantasy_Kingdoms_Battle
     {
         private static int generation = 0;
         private bool stopLobby = false;
+        private Descriptors descriptors;
 
-        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer)
+        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d)
         {
             ID = generation++;
             TypeLobby = tl;
             Settings = settings;
+            descriptors = d;
             Layer = layer;
             StateLobby = StateLobby.Start;
             Turn = 1;
-            TimeOfDay = FormMain.Descriptors.TimesOfDay[0];
+            TimeOfDay = descriptors.TimesOfDay[0];
             Day = 1;
             Week = 1;
             Month = 1;
@@ -110,7 +112,7 @@ namespace Fantasy_Kingdoms_Battle
             {
 
                 List<ComputerPlayer> listCompPlayers = new List<ComputerPlayer>();
-                listCompPlayers.AddRange(FormMain.Descriptors.ComputerPlayers.Where(cp => cp.Active));
+                listCompPlayers.AddRange(descriptors.ComputerPlayers.Where(cp => cp.Active));
                 Debug.Assert(listCompPlayers.Count >= TypeLobby.QuantityPlayers - 1);
 
                 int idx;
@@ -248,7 +250,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Подготавливаем новый день каждого игрока
                 // Чтобы при начале хода все были в консистентном состоянии
-                if (TimeOfDay == FormMain.Descriptors.TimesOfDay[0])
+                if (TimeOfDay == descriptors.TimesOfDay[0])
                 {
                     InPrepareTurn = true;
 
@@ -273,7 +275,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         SetPlayerAsCurrent(i);
                         InPrepareTurn = true;
-                        Players[i].PrepareTurn(TimeOfDay == FormMain.Descriptors.TimesOfDay[0]);
+                        Players[i].PrepareTurn(TimeOfDay == descriptors.TimesOfDay[0]);
                         InPrepareTurn = false;
                         Layer.ShowCurrentPlayerLobby();
 
@@ -306,7 +308,7 @@ namespace Fantasy_Kingdoms_Battle
                 SetPlayerAsCurrent(-1);
 
                 // Расчет результатов хода игроков
-                if (TimeOfDay == FormMain.Descriptors.TimesOfDay[FormMain.Descriptors.TimesOfDay.Count - 1])
+                if (TimeOfDay == descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1])
                 {
                     foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
                         p.CalcDay();
@@ -402,11 +404,11 @@ namespace Fantasy_Kingdoms_Battle
 
             // Делаем начало хода
             Turn++;
-            if (TimeOfDay.Index < FormMain.Descriptors.TimesOfDay.Count - 1)
-                TimeOfDay = FormMain.Descriptors.TimesOfDay[TimeOfDay.Index + 1];
+            if (TimeOfDay.Index < descriptors.TimesOfDay.Count - 1)
+                TimeOfDay = descriptors.TimesOfDay[TimeOfDay.Index + 1];
             else
             {
-                TimeOfDay = FormMain.Descriptors.TimesOfDay[0];
+                TimeOfDay = descriptors.TimesOfDay[0];
 
                 Day++;
                 if (Day == 8)
@@ -565,7 +567,7 @@ namespace Fantasy_Kingdoms_Battle
                 lp.PositionInLobby = pos++;
 
             // Теперь сортируем игроков, вылетевших на прошлом ходу
-            foreach (Player lp in Players.Where(p => p.DayOfEndGame == Turn).OrderBy(p => p.CurrentLoses).OrderByDescending(p => p.GreatnessCollected).OrderByDescending(p => p.BaseResources[FormMain.Descriptors.Gold.Number].Quantity))
+            foreach (Player lp in Players.Where(p => p.DayOfEndGame == Turn).OrderBy(p => p.CurrentLoses).OrderByDescending(p => p.GreatnessCollected).OrderByDescending(p => p.BaseResources[descriptors.Gold.Number].Quantity))
                 lp.PositionInLobby = pos++;
 
             // Проверяем, что нет ошибки в позициях

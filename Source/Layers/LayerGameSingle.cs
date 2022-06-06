@@ -846,7 +846,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby == null);
 
-            lobby = new Lobby(Descriptors.TypeLobbies[0], Program.formMain.CurrentHumanPlayer.TournamentSettings[0], this);
+            lobby = new Lobby(Descriptors.TypeLobbies[0], Program.formMain.CurrentHumanPlayer.TournamentSettings[0], this, FormMain.Descriptors);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
