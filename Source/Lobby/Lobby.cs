@@ -27,13 +27,12 @@ namespace Fantasy_Kingdoms_Battle
             Layer = layer;
             StateLobby = StateLobby.Start;
             Turn = 1;
-            TimeOfDay = descriptors.TimesOfDay[0];
             Day = 1;
             Week = 1;
             Month = 1;
+            TimeOfDay = descriptors.TimesOfDay[0];
 
             // Создаем конфигурацию логов
-            Lairs = new List<DescriptorConstruction>[TypeLobby.MapHeight, TypeLobby.MapWidth];
             GenerateConfigLairs();
 
             // Создание игроков
@@ -140,8 +139,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }
         internal Random Rnd { get; } = new Random();
-        internal List<DescriptorConstruction>[,] Lairs { get; }
-
         internal bool InPrepareTurn { get; private set; }
 
         internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
