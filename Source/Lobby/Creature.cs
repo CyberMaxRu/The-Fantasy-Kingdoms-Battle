@@ -414,12 +414,15 @@ namespace Fantasy_Kingdoms_Battle
             Perk removedPerk = null;
             foreach (Perk p in Perks)
             {
-                Debug.Assert(p.Descriptor != null, $"У {GetName()} для перка {p.GetName()} не указан описатель");
+                //Debug.Assert(p.Descriptor != null, $"У {GetName()} для перка {p.GetName()} не указан описатель");
 
-                if (p.Descriptor.ID == dp.ID)
+                if (p.Descriptor != null)// У своего перка нет описателя
                 {
-                    removedPerk = p;
-                    break;
+                    if (p.Descriptor.ID == dp.ID)
+                    {
+                        removedPerk = p;
+                        break;
+                    }
                 }
             }
 
