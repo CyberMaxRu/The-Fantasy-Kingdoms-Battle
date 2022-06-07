@@ -164,6 +164,9 @@
     <Compile Include="Source\Map\Region.cs" />
     <Compile Include="Source\Map\StrategicMap.cs" />
     <Compile Include="Source\Mission\Mission.cs" />
+    <Compile Include="Source\Mission\MissionMessage.cs" />
+    <Compile Include="Source\Mission\MissionPlayer.cs" />
+    <Compile Include="Source\Mission\MissionQuest.cs" />
     <Compile Include="Source\Panels\PanelLocationInfo.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyConstructionSettings.cs" />
     <Compile Include="Source\VisualControls\VCCellSimple.cs" />
