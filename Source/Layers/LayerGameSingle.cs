@@ -12,6 +12,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class LayerGameSingle : LayerCustom
     {
+        //
+        private Mission mission;
+
         // Главные страницы игры
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageResultTurn;
@@ -842,11 +845,13 @@ namespace Fantasy_Kingdoms_Battle
             ListHeroesChanged();
         }
 
-        internal void StartNewLobby()
+        internal void StartNewLobby(Mission m)
         {
             Debug.Assert(lobby == null);
 
-            lobby = new Lobby(Descriptors.TypeLobbies[0], Program.formMain.CurrentHumanPlayer.TournamentSettings[0], this, FormMain.Descriptors);
+            mission = m;
+
+            lobby = new Lobby(Descriptors.TypeLobbies[0], Program.formMain.CurrentHumanPlayer.TournamentSettings[0], this, FormMain.Descriptors, mission);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
@@ -893,7 +898,7 @@ namespace Fantasy_Kingdoms_Battle
             lobby.ExitFromLobby();
             lobby = null;
 
-            StartNewLobby();
+            StartNewLobby(mission);
         }
 
         internal void EndLobby()

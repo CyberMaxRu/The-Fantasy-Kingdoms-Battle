@@ -68,6 +68,14 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnSingleMission_Click(object sender, EventArgs e)
         {
             Mission m = new Mission(Program.WorkFolder + @"SinglePlayer\Missions\DemoMission1.xml");
+
+            LobbySettings ls = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
+            //WindowSetupTournament w = new WindowSetupTournament(ls);
+            //if (w.ShowDialog() == DialogAction.OK)
+
+            Program.formMain.CurrentHumanPlayer.TournamentSettings[0] = ls;
+            FormMain.Descriptors.SaveHumanPlayers();
+            Program.formMain.StartNewLobby(m);
         }
 
         private void BtnEditorConquest_Click(object sender, EventArgs e)
@@ -102,14 +110,14 @@ namespace Fantasy_Kingdoms_Battle
             WindowInfo.ShowInfo("Информация", "Игровой режим \"Война лордов\" временно отключен.");
             return;
 
-            LobbySettings ls = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
+            /*LobbySettings ls = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
             WindowSetupTournament w = new WindowSetupTournament(ls);
             if (w.ShowDialog() == DialogAction.OK)
             {
                 Program.formMain.CurrentHumanPlayer.TournamentSettings[0] = ls;
                 FormMain.Descriptors.SaveHumanPlayers();
                 Program.formMain.StartNewLobby();
-            }
+            }*/
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool stopLobby = false;
         private Descriptors descriptors;
 
-        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d)
+        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d, Mission m)
         {
             ID = generation++;
             TypeLobby = tl;
