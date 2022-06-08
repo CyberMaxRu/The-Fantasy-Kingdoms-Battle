@@ -10,10 +10,10 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorMissionPlayer
     { 
-        public DescriptorMissionPlayer(XmlNode n)
+        public DescriptorMissionPlayer(XmlNode n, int index)
         {
             ID = GetStringNotNull(n, "ID");
-            Number = GetIntegerNotNull(n, "Number");
+            Index = index;
             Name = GetStringNotNull(n, "Name");
             Title = GetStringNotNull(n, "Title");
             ImageIndex = GetIntegerNotNull(n, "ImageIndex");
@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string ID { get; }
-        internal int Number { get; }
+        internal int Index { get; }
         internal string Name { get; }
         internal string Title { get; }// Титул
         internal int ImageIndex { get;}

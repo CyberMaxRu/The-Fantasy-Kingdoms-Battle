@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode np = n.SelectSingleNode("Players");
             foreach (XmlNode npl in np.SelectNodes("Player"))
             {
-                Players.Add(new DescriptorMissionPlayer(npl));
+                Players.Add(new DescriptorMissionPlayer(npl, Players.Count));
             }
 
             // Загружаем сообщения

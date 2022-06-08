@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
-            if (Descriptor.TypePlayer == TypePlayer.Computer)
+            if (Descriptor.TypePlayer == TypePlayer.Computer)   
                 BaseResources[FormMain.Descriptors.Gold.Number].Quantity = 100_000;
             ResourceGold = BaseResources[FormMain.Descriptors.Gold.Number];
 

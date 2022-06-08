@@ -35,10 +35,26 @@ namespace Fantasy_Kingdoms_Battle
             TimeOfDay = descriptors.TimesOfDay[0];
 
             // Создание игроков
-            Players = new Player[tl.QuantityPlayers];
-            Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
-            // Подбираем компьютерных игроков из пула доступных
-            GenerateComputerPlayers();
+            if (Mission != null)
+            {
+                Players = new Player[m.Players.Count];
+
+                foreach (DescriptorMissionPlayer p in m.Players)
+                {
+                    if (p.TypePlayer == TypePlayer.Human)
+                        Players[p.Index] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, p.Index);
+                    else
+                        Players[p.Index] = new PlayerComputer(this, )
+                }
+            }
+            else
+            {
+                Players = new Player[tl.QuantityPlayers];
+                Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
+
+                // Подбираем компьютерных игроков из пула доступных
+                GenerateComputerPlayers();
+            }
 
             CalcDayNextBattleBetweenPlayers();
 

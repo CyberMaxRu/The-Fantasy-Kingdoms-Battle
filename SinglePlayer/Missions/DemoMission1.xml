@@ -6,7 +6,6 @@
   <Players>
     <Player>
       <ID>Lord1</ID>
-      <Number>1</Number>
       <TypePlayer>Human</TypePlayer>
       <Title>Baron</Title>
       <Name>#Lord1#</Name>
@@ -14,7 +13,6 @@
     </Player>
     <Player>
       <ID>Lord2</ID>
-      <Number>2</Number>
       <TypePlayer>Computer</TypePlayer>
       <Title>Earl</Title>
       <Name>Граф Шекспир</Name>
@@ -22,7 +20,6 @@
     </Player>
     <Player>
       <ID>King</ID>
-      <Number>3</Number>
       <TypePlayer>Computer</TypePlayer>
       <Title>King</Title>
       <Name>Король Ардании</Name>
