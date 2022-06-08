@@ -8,9 +8,9 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class MissionMessage
+    internal sealed class DescriptorMissionMessage
     {
-        public MissionMessage(XmlNode n)
+        public DescriptorMissionMessage(XmlNode n)
         {
             Turn = GetIntegerNotNull(n, "Turn");
             From = GetStringNotNull(n, "From");

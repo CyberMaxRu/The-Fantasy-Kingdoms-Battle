@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class LayerGameSingle : LayerCustom
     {
         //
-        private Mission mission;
+        private DescriptorMission mission;
 
         // Главные страницы игры
         private readonly VCPageControl pageControl;
@@ -845,7 +845,7 @@ namespace Fantasy_Kingdoms_Battle
             ListHeroesChanged();
         }
 
-        internal void StartNewLobby(Mission m)
+        internal void StartNewLobby(DescriptorMission m)
         {
             Debug.Assert(lobby == null);
 

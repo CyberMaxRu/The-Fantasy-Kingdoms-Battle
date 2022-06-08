@@ -10,9 +10,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeQuest { Primary, Secondary };
 
-    internal sealed class MissionQuest
+    internal sealed class DescriptorMissionQuest
     {
-        public MissionQuest(XmlNode n)
+        public DescriptorMissionQuest(XmlNode n)
         {
             ID = GetStringNotNull(n, "ID");
             TypeQuest = (TypeQuest)Enum.Parse(typeof(TypeQuest), GetStringNotNull(n, "TypeQuest"));

@@ -18,11 +18,12 @@ namespace Fantasy_Kingdoms_Battle
         private bool stopLobby = false;
         private Descriptors descriptors;
 
-        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d, Mission m)
+        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d, DescriptorMission m)
         {
             ID = generation++;
             TypeLobby = tl;
             Settings = settings;
+            Mission = m;
             descriptors = d;
             Layer = layer;
 
@@ -64,6 +65,7 @@ namespace Fantasy_Kingdoms_Battle
         internal LayerGameSingle Layer { get; }
         internal int ID { get; }// Уникальный код лобби
         internal TypeLobby TypeLobby { get; }// Тип лобби
+        internal DescriptorMission Mission { get; }// Описатель миссии
         internal LobbySettings Settings { get; }
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }

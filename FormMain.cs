@@ -1429,7 +1429,7 @@ namespace Fantasy_Kingdoms_Battle
             CurrentHumanPlayer = hp;
         }
 
-        internal void StartNewLobby(Mission m)
+        internal void StartNewLobby(DescriptorMission m)
         {
             layerGame.StartNewLobby(m);
             if (layerGame.CurrentLobby != null)
