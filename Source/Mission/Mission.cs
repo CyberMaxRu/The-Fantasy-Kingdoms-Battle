@@ -21,7 +21,26 @@ namespace Fantasy_Kingdoms_Battle
             Name = GetStringNotNull(n, "Name");
             Description = GetStringNotNull(n, "Description");
 
+            // Загружаем игроков
+            XmlNode np = n.SelectSingleNode("Players");
+            foreach (XmlNode npl in np.SelectNodes("Player"))
+            {
+                Players.Add(new MissionPlayer(npl));
+            }
 
+            // Загружаем сообщения
+            XmlNode nm = n.SelectSingleNode("Messages");
+            foreach (XmlNode nml in nm.SelectNodes("Message"))
+            {
+                Messages.Add(new MissionMessage(nml));
+            }
+
+            // Загружаем задания
+            XmlNode nq = n.SelectSingleNode("Quests");
+            foreach (XmlNode nql in nq.SelectNodes("Quest"))
+            {
+                Quests.Add(new MissionQuest(nql));
+            }
         }
 
         internal string ID { get; }// Уникальный идентификатор миссии

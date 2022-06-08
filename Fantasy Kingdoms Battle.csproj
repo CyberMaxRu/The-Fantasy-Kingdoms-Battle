@@ -389,7 +389,7 @@
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Players.xml" />
     <Content Include="Resources\Versions.xml" />
-    <Content Include="SinglePlayer\Missions\DemoMission.xml" />
+    <Content Include="SinglePlayer\Missions\DemoMission1.xml" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
