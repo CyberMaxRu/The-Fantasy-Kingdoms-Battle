@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             btnNewGame.Width = Width - 80 - 80;
             btnNewGame.Click += BtnNewGame_Click;
 
-            btnExitToWindows = new VCButton(bmpMenu, 80, bmpMenu.Height - 96, "Выход");
+            btnExitToWindows = new VCButton(bmpMenu, 80, bmpMenu.Height - 96, "Выход в Windows");
             btnExitToWindows.Width = Width - 80 - 80;
             btnExitToWindows.Click += BtnExitToWindows_Click;
 
