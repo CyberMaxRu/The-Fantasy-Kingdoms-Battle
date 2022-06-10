@@ -43,6 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject = new VCImage128(this, FormMain.Config.GridSize, lblNameMapObject.NextTop());
             imgMapObject.HighlightUnderMouse = true;
             imgMapObject.Click += ImgLair_Click;
+            imgMapObject.BorderWithoutProgressBar = false;
             imgMapObject.ShowHint += ImgLair_ShowHint;
 
             btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_Home);

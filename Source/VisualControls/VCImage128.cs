@@ -31,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Level { get; set; } = "";
         internal string Text { get; set; } = "";
+        internal bool BorderWithoutProgressBar { get; set; }
 
         internal override void ArrangeControls()
         {
@@ -41,7 +42,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PaintBorder(Graphics g)
         {
-            g.DrawImageUnscaled(Program.formMain.bmpBorderBig, Left - 2, Top - 2);
+            if (BorderWithoutProgressBar)
+                g.DrawImageUnscaled(Program.formMain.bmpBorderBig, Left - 2, Top - 2);
+            else 
+                g.DrawImageUnscaled(Program.formMain.bmpBorderBigForProgressBar, Left - 2, Top - 2);
         }
 
         internal override void Draw(Graphics g)

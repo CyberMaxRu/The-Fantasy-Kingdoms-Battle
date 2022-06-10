@@ -154,6 +154,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly BitmapBorder bbSelect;
         internal readonly BitmapBorder bbIcon16;
         internal readonly Bitmap bmpBorderBig;
+        internal readonly Bitmap bmpBorderBigForProgressBar;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
         internal readonly Bitmap bmpToolbar;
@@ -317,6 +318,7 @@ namespace Fantasy_Kingdoms_Battle
             SetStage("Рассматриваем картины");
 
             bmpBorderBig = LoadBitmap("BorderBig.png");
+            bmpBorderBigForProgressBar = LoadBitmap("BorderBigWithPB.png");
             bmpMaskBig = LoadBitmap("MaskBig.png");
             bmpMaskSmall = LoadBitmap("MaskSmall.png");// Нужна ли еще?
 
