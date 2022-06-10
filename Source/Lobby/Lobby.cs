@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
             TimeOfDay = descriptors.TimesOfDay[0];
 
             // Создание игроков
-            if (Mission != null)
+            if ((Mission != null) && false)
             {
                 Players = new Player[m.Players.Count];
 
@@ -43,8 +43,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (p.TypePlayer == TypePlayer.Human)
                         Players[p.Index] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, p.Index);
-                    else
-                        Players[p.Index] = new PlayerComputer(this, )
+                    //else
+                    //    Players[p.Index] = new PlayerComputer(this, )
                 }
             }
             else

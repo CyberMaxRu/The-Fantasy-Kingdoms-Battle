@@ -19,9 +19,9 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorPlayer(XmlNode n, int index) : base(n)
         {
             Index = index;
-            Title = GetStringNotNull(n, "Title");
-            ImageIndex = GetIntegerNotNull(n, "ImageIndex");
-            TypePlayer = (TypePlayer)Enum.Parse(typeof(TypePlayer), GetStringNotNull(n, "TypePlayer"));
+            //Title = GetStringNotNull(n, "Title");
+            //ImageIndex = GetIntegerNotNull(n, "ImageIndex");
+            //TypePlayer = (TypePlayer)Enum.Parse(typeof(TypePlayer), GetStringNotNull(n, "TypePlayer"));
         }
 
         public DescriptorPlayer(string id, string name, string description, int imageIndex, TypePlayer typePlayer) : base(id, name, description, imageIndex)
