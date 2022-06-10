@@ -20,6 +20,8 @@ namespace Fantasy_Kingdoms_Battle
             Height = GetBitmap().Height;
         }
 
+        internal bool TruncateLeft { get; set; }// Если размер меньше минимального, отрезается изображение слева
+
         internal override void ArrangeControls()
         {
             if ((bmpForDraw == null) || (bmpForDraw.Width != Width))
@@ -41,34 +43,44 @@ namespace Fantasy_Kingdoms_Battle
 
         protected Bitmap PrepareBand(Bitmap bmpBand)
         {
-            Debug.Assert(Width >= bmpBand.Width, $"Width={Width}, bmpBand.Width={bmpBand.Width}");
+            Debug.Assert(Width > 0);
+
+            if (!TruncateLeft)
+            {
+                Debug.Assert(Width >= bmpBand.Width, $"Width={Width}, bmpBand.Width={bmpBand.Width}");
+            }
 
             int widthCap = WidthCap();
             int widthBody = bmpBand.Width - widthCap - widthCap;
             Debug.Assert(widthBody > 0);
+            int offsetX = !TruncateLeft || (Width >= bmpBand.Width) ? 0 : Width - bmpBand.Width + 1;
 
             Bitmap bmp = new Bitmap(Width, bmpBand.Height);
             Graphics gb = Graphics.FromImage(bmp);
 
-            gb.DrawImage(bmpBand, 0, 0, new Rectangle(0, 0, widthCap, bmpBand.Height), GraphicsUnit.Pixel);
+            gb.DrawImage(bmpBand, offsetX, 0, new Rectangle(0, 0, widthCap, bmpBand.Height), GraphicsUnit.Pixel);
             gb.DrawImage(bmpBand, bmp.Width - widthCap, 0, new Rectangle(widthBody + widthCap, 0, widthCap, bmpBand.Height), GraphicsUnit.Pixel);
 
-            Bitmap bmpBody = new Bitmap(widthBody, bmpBand.Height);
-            Graphics gBody = Graphics.FromImage(bmpBody);
-            gBody.DrawImage(bmpBand, 0, 0, new Rectangle(widthCap, 0, widthBody, bmpBand.Height), GraphicsUnit.Pixel);
-            int widthForBand = bmp.Width - widthCap - widthCap;
-            int repeats = widthForBand / widthBody;
-            int restBorder = widthForBand - (widthBody * repeats);
-            for (int i = 0; i < repeats; i++)
+            if (offsetX == 0)
             {
-                gb.DrawImageUnscaled(bmpBody, widthCap + (widthBody * i), 0);
+                Bitmap bmpBody = new Bitmap(widthBody, bmpBand.Height);
+                Graphics gBody = Graphics.FromImage(bmpBody);
+                gBody.DrawImage(bmpBand, 0, 0, new Rectangle(widthCap, 0, widthBody, bmpBand.Height), GraphicsUnit.Pixel);
+                int widthForBand = bmp.Width - widthCap - widthCap;
+                int repeats = widthForBand / widthBody;
+                int restBorder = widthForBand - (widthBody * repeats);
+                for (int i = 0; i < repeats; i++)
+                {
+                    gb.DrawImageUnscaled(bmpBody, offsetX + widthCap + (widthBody * i), 0);
+                }
+
+                if (restBorder > 0)
+                    gb.DrawImageUnscaledAndClipped(bmpBody, new Rectangle(offsetX + widthCap + (widthBody * repeats), 0, restBorder, bmpBody.Height));
+
+                gBody.Dispose();
+                bmpBody.Dispose();
             }
 
-            if (restBorder > 0)
-                gb.DrawImageUnscaledAndClipped(bmpBody, new Rectangle(widthCap + (widthBody * repeats), 0, restBorder, bmpBody.Height));
-
-            gBody.Dispose();
-            bmpBody.Dispose();
             gb.Dispose();
 
             return bmp;

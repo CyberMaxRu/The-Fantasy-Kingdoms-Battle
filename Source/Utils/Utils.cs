@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -133,6 +136,32 @@ namespace Fantasy_Kingdoms_Battle
                 bmp.SetResolution(dpiX, dpiY);
 
             return bmp;
+        }
+
+        internal static void LackBitmap(Bitmap bmp, Color color)
+        {
+            if (color != Color.Transparent)
+            {
+                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, bmp.PixelFormat);
+                IntPtr ptr = bmpData.Scan0;
+                int bytes = Math.Abs(bmpData.Stride) * bmp.Height;
+                byte[] rgbValues = new byte[bytes];
+                Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+                for (int counter = 0; counter < rgbValues.Length; counter += 4)
+                {
+                    if (rgbValues[counter + 3] > 0)
+                    {
+                        rgbValues[counter + 0] = Convert.ToByte(rgbValues[counter + 0] * color.B / 255);
+                        rgbValues[counter + 1] = Convert.ToByte(rgbValues[counter + 1] * color.G / 255);
+                        rgbValues[counter + 2] = Convert.ToByte(rgbValues[counter + 2] * color.R / 255);
+                    }
+                }
+
+                Marshal.Copy(rgbValues, 0, ptr, bytes);
+                bmp.UnlockBits(bmpData);
+            }
         }
     }
 }
