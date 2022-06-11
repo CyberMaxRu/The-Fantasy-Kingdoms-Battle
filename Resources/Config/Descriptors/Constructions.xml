@@ -18,6 +18,7 @@
       <Level>
         <ID>LevelGuildWarrior1</ID>
         <Number>1</Number>
+        <Durability>400</Durability>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -31,6 +32,7 @@
       <Level>
         <ID>LevelGuildWarrior2</ID>
         <Number>2</Number>
+        <Durability>500</Durability>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -51,6 +53,7 @@
       <Level>
         <ID>LevelGuildWarrior3</ID>
         <Number>3</Number>
+        <Durability>600</Durability>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -205,6 +208,7 @@
       <Level>
         <ID>LevelGuildHunter1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
@@ -218,6 +222,7 @@
       <Level>
         <ID>LevelGuildHunter2</ID>
         <Number>2</Number>
+        <Durability>350</Durability>
         <Creating>
           <DaysProcessing>2</DaysProcessing>
           <Builders>1</Builders>
@@ -238,6 +243,7 @@
       <Level>
         <ID>LevelGuildHunter3</ID>
         <Number>3</Number>
+        <Durability>400</Durability>
         <Creating>
           <DaysProcessing>1</DaysProcessing>
           <Builders>3</Builders>
@@ -435,6 +441,7 @@
       <Level>
         <ID>LevelGuildCleric1</ID>
         <Number>1</Number>
+        <Durability>400</Durability>
         <Creating>
           <DaysProcessing>1</DaysProcessing>
           <Builders>1</Builders>
@@ -448,6 +455,7 @@
       <Level>
         <ID>LevelGuildCleric2</ID>
         <Number>2</Number>
+        <Durability>450</Durability>
         <Creating>
           <Cost>
             <Gold>700</Gold>
@@ -468,6 +476,7 @@
       <Level>
         <ID>LevelGuildCleric3</ID>
         <Number>3</Number>
+        <Durability>700</Durability>
         <Creating>
           <Cost>
             <Gold>700</Gold>
@@ -622,6 +631,7 @@
       <Level>
         <ID>LevelGuildMage1</ID>
         <Number>1</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -642,6 +652,7 @@
       <Level>
         <ID>LevelGuildMage2</ID>
         <Number>2</Number>
+        <Durability>450</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -667,6 +678,7 @@
       <Level>
         <ID>LevelGuildMage3</ID>
         <Number>3</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -874,6 +886,7 @@
     <Levels>
       <Level>
         <ID>LevelGuildElf1</ID>
+        <Durability>800</Durability>
         <Number>1</Number>
         <Creating>
           <Cost>
@@ -895,6 +908,7 @@
       <Level>
         <ID>LevelGuildElf2</ID>
         <Number>2</Number>
+        <Durability>1000</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -920,6 +934,7 @@
       <Level>
         <ID>LevelGuildElf3</ID>
         <Number>3</Number>
+        <Durability>1200</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -1133,6 +1148,7 @@
       <Level>
         <ID>LevelGuildDwarf1</ID>
         <Number>1</Number>
+        <Durability>1200</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -1157,6 +1173,7 @@
       <Level>
         <ID>LevelGuildDwarf2</ID>
         <Number>2</Number>
+        <Durability>1400</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -1186,6 +1203,7 @@
       <Level>
         <ID>LevelGuildDwarf3</ID>
         <Number>3</Number>
+        <Durability>1600</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -1415,6 +1433,7 @@
       <Level>
         <ID>LevelGuardBarrack1</ID>
         <Number>1</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>450</Gold>
@@ -1428,6 +1447,7 @@
       <Level>
         <ID>LevelGuardBarrack2</ID>
         <Number>2</Number>
+        <Durability>600</Durability>
         <Creating>
           <Cost>
             <Gold>450</Gold>
@@ -1448,6 +1468,7 @@
       <Level>
         <ID>LevelGuardBarrack3</ID>
         <Number>3</Number>
+        <Durability>700</Durability>
         <Creating>
           <Cost>
             <Gold>450</Gold>
@@ -1491,6 +1512,7 @@
       <Level>
         <ID>LevelGuildRogue1</ID>
         <Number>1</Number>
+        <Durability>250</Durability>
         <Creating>
           <Cost>
             <Gold>450</Gold>
@@ -1511,6 +1533,7 @@
       <Level>
         <ID>LevelGuildRogue2</ID>
         <Number>2</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>450</Gold>
@@ -1531,6 +1554,7 @@
       <Level>
         <ID>LevelGuildRogue3</ID>
         <Number>3</Number>
+        <Durability>350</Durability>
         <Creating>
           <Cost>
             <Gold>450</Gold>
@@ -1705,6 +1729,7 @@
     <Levels>
       <Level>
         <ID>LevelCastle1</ID>
+        <Durability>2000</Durability>
         <Number>1</Number>
         <Creating>
           <Cost>
@@ -1730,6 +1755,7 @@
       <Level>
         <ID>LevelCastle2</ID>
         <Number>2</Number>
+        <Durability>3000</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -1779,6 +1805,7 @@
       <Level>
         <ID>LevelCastle3</ID>
         <Number>3</Number>
+        <Durability>4000</Durability>
         <Creating>
           <Cost>
             <Gold>4000</Gold>
@@ -1895,6 +1922,7 @@
       <Level>
         <ID>levelPeasantHouse1</ID>
         <Number>1</Number>
+        <Durability>100</Durability>
         <Creating>
           <Cost>
             <Gold>0</Gold>
@@ -1945,6 +1973,7 @@
       <Level>
         <ID>levelMill1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>0</Gold>
@@ -1981,6 +2010,7 @@
       <Level>
         <ID>LevelTradePost1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2017,6 +2047,7 @@
       <Level>
         <ID>LevelMarket1</ID>
         <Number>1</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2031,6 +2062,7 @@
       <Level>
         <ID>LevelMarket2</ID>
         <Number>2</Number>
+        <Durability>700</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -2052,6 +2084,7 @@
       <Level>
         <ID>LevelMarket3</ID>
         <Number>3</Number>
+        <Durability>900</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2298,6 +2331,7 @@
       <Level>
         <ID>LevelSmithy1</ID>
         <Number>1</Number>
+        <Durability>800</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -2312,6 +2346,7 @@
       <Level>
         <ID>LevelSmithy2</ID>
         <Number>2</Number>
+        <Durability>1000</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2333,6 +2368,7 @@
       <Level>
         <ID>LevelSmithy3</ID>
         <Number>3</Number>
+        <Durability>1250</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -2354,6 +2390,7 @@
       <Level>
         <ID>LevelSmithy4</ID>
         <Number>4</Number>
+        <Durability>1500</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -2817,6 +2854,7 @@
       <Level>
         <ID>LevelTavern1</ID>
         <Number>1</Number>
+        <Durability>250</Durability>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -2842,6 +2880,7 @@
       <Level>
         <Number>2</Number>
         <ID>LevelTavern2</ID>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -2874,6 +2913,7 @@
       <Level>
         <ID>LevelTavern3</ID>
         <Number>3</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -3075,6 +3115,7 @@
       <Level>
         <ID>LevelWorkshop1</ID>
         <Number>1</Number>
+        <Durability>800</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -3096,6 +3137,7 @@
       <Level>
         <ID>LevelWorkshop2</ID>
         <Number>2</Number>
+        <Durability>900</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -3117,6 +3159,7 @@
       <Level>
         <ID>LevelWorkshop3</ID>
         <Number>3</Number>
+        <Durability>1000</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -3610,6 +3653,7 @@
       <Level>
         <ID>LevelAlchemistHut1</ID>
         <Number>1</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -3624,6 +3668,7 @@
       <Level>
         <ID>LevelAlchemistHut2</ID>
         <Number>2</Number>
+        <Durability>550</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3638,6 +3683,7 @@
       <Level>
         <ID>LevelAlchemistHut3</ID>
         <Number>3</Number>
+        <Durability>600</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -3914,6 +3960,7 @@
       <Level>
         <ID>LevelPark1</ID>
         <Number>1</Number>
+        <Durability>200</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -3939,6 +3986,7 @@
       <Level>
         <ID>LevelPark2</ID>
         <Number>2</Number>
+        <Durability>250</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -3964,6 +4012,7 @@
       <Level>
         <ID>LevelPark3</ID>
         <Number>3</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -4162,6 +4211,7 @@
       <Level>
         <ID>LevelTownSquare1</ID>
         <Number>1</Number>
+        <Durability>200</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4186,6 +4236,7 @@
       <Level>
         <ID>LevelTownSquare2</ID>
         <Number>2</Number>
+        <Durability>250</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4217,6 +4268,7 @@
       <Level>
         <ID>LevelTownSquare3</ID>
         <Number>3</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -4414,6 +4466,7 @@
       <Level>
         <ID>LevelTreasureDepartment1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4427,6 +4480,7 @@
       <Level>
         <ID>LevelTreasureDepartment2</ID>
         <Number>2</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4465,6 +4519,7 @@
       <Level>
         <ID>LevelMunicipality1</ID>
         <Number>1</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4478,6 +4533,7 @@
       <Level>
         <ID>LevelMunicipality2</ID>
         <Number>2</Number>
+        <Durability>600</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4516,6 +4572,7 @@
       <Level>
         <ID>LevelArena1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4540,6 +4597,7 @@
       <Level>
         <ID>LevelArena2</ID>
         <Number>2</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -4564,6 +4622,7 @@
       <Level>
         <ID>LevelArena3</ID>
         <Number>3</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -4711,6 +4770,7 @@
       <Level>
         <ID>LevelHospital1</ID>
         <Number>1</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -4722,6 +4782,7 @@
       <Level>
         <ID>LevelHospital2</ID>
         <Number>2</Number>
+        <Durability>450</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -4733,6 +4794,7 @@
       <Level>
         <ID>LevelHospital3</ID>
         <Number>3</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>5000</Gold>
@@ -4901,6 +4963,7 @@
       <Level>
         <ID>LevelDungeon1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -4913,6 +4976,7 @@
       <Level>
         <ID>LevelDungeon2</ID>
         <Number>2</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -4954,6 +5018,7 @@
       <Level>
         <ID>LevelGarden1</ID>
         <Number>1</Number>
+        <Durability>100</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -4979,6 +5044,7 @@
       <Level>
         <ID>LevelGarden2</ID>
         <Number>2</Number>
+        <Durability>150</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -5004,6 +5070,7 @@
       <Level>
         <ID>LevelGarden3</ID>
         <Number>3</Number>
+        <Durability>200</Durability>
         <Creating>
           <Cost>          
             <Gold>500</Gold>
@@ -5223,6 +5290,7 @@
       <Level>
         <ID>LevelMenagerie1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>250</Gold>
@@ -5237,6 +5305,7 @@
       <Level>
         <ID>LevelMenagerie2</ID>
         <Number>2</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -5258,6 +5327,7 @@
       <Level>
         <ID>LevelMenagerie3</ID>
         <Number>3</Number>
+        <Durability>500</Durability>
         <Creating>
           <Cost>
             <Gold>1500</Gold>
@@ -5442,6 +5512,7 @@
       <Level>
         <ID>LevelGamblingHall1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -5467,6 +5538,7 @@
       <Level>
         <ID>LevelGamblingHall2</ID>
         <Number>2</Number>
+        <Durability>350</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -5499,6 +5571,7 @@
       <Level>
         <ID>LevelGamblingHall3</ID>
         <Number>3</Number>
+        <Durability>400</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -5684,6 +5757,7 @@
       <Level>
         <ID>LevelGuildDarkPriest1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -5732,6 +5806,7 @@
       <Level>
         <ID>LevelGuildPriest1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -5780,6 +5855,7 @@
       <Level>
         <ID>LevelGuildPaladin1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -5828,6 +5904,7 @@
       <Level>
         <ID>LevelGuildBlademaster1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -5876,6 +5953,7 @@
       <Level>
         <ID>LevelGuildBeastmaster1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -5924,6 +6002,7 @@
       <Level>
         <ID>LevelGuildMarksman1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -5972,6 +6051,7 @@
       <Level>
         <ID>LevelGuildIceMage1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -6020,6 +6100,7 @@
       <Level>
         <ID>LevelGuildDeathKnight1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -6068,6 +6149,7 @@
       <Level>
         <ID>LevelGuildFireMage1</ID>
         <Number>1</Number>
+        <Durability>5000</Durability>
         <Creating>
           <Cost>
             <Gold>3000</Gold>
@@ -6113,6 +6195,7 @@
       <Level>
         <ID>LevelGraveyardZombie1</ID>
         <Number>1</Number>
+        <Durability>500</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6144,6 +6227,7 @@
       <Level>
         <ID>LevelGraveyardSkeletons1</ID>
         <Number>1</Number>
+        <Durability>750</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6183,6 +6267,7 @@
       <Level>
         <ID>LevelCrypt1</ID>
         <Number>1</Number>
+        <Durability>1500</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6222,6 +6307,7 @@
       <Level>
         <ID>LevelAncientCrypt1</ID>
         <Number>1</Number>
+        <Durability>2000</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6253,6 +6339,7 @@
       <Level>
         <ID>LevelWolfsDen1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <MaxInhabitant>100</MaxInhabitant>
         <Properties>
           <Property>
@@ -6304,6 +6391,7 @@
       <Level>
         <ID>LevelSerpentsNest1</ID>
         <Number>1</Number>
+        <Durability>500</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6335,6 +6423,7 @@
       <Level>
         <ID>LevelBearsDen1</ID>
         <Number>1</Number>
+        <Durability>1000</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6374,6 +6463,7 @@
       <Level>
         <ID>LevelBearmansDen1</ID>
         <Number>1</Number>
+        <Durability>1500</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6405,6 +6495,7 @@
       <Level>
         <ID>LevelPyramideMinotaurs1</ID>
         <Number>1</Number>
+        <Durability>2500</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6444,6 +6535,7 @@
       <Level>
         <ID>LevelOgreCave1</ID>
         <Number>1</Number>
+        <Durability>300</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6475,6 +6567,7 @@
       <Level>
         <ID>LevelHermitHouse1</ID>
         <Number>1</Number>
+        <Durability>400</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6506,6 +6599,7 @@
       <Level>
         <ID>LevelDragonCave1</ID>
         <Number>1</Number>
+        <Durability>10000</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6539,6 +6633,7 @@
       <Level>
         <ID>LevelSewer1</ID>
         <Number>1</Number>
+        <Durability>100</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6556,6 +6651,7 @@
       <Level>
         <ID>LevelKingsSewer1</ID>
         <Number>1</Number>
+        <Durability>200</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6587,6 +6683,7 @@
       <Level>
         <ID>LevelTreasure1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6607,6 +6704,7 @@
       <Level>
         <ID>LevelThroneLightning1</ID>
         <Number>1</Number>
+        <Durability>3500</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6638,6 +6736,7 @@
       <Level>
         <ID>LevelThroneFire1</ID>
         <Number>1</Number>
+        <Durability>4000</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6671,6 +6770,7 @@
       <Level>
         <ID>LevelHolyPlace1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
       </Level>
     </Levels>
     <CellsMenu>
@@ -6725,6 +6825,7 @@
       <Level>
         <ID>LevelEmptyPlace1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6746,6 +6847,7 @@
       <Level>
         <ID>LevelCityGraveyard1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -6765,6 +6867,7 @@
       <Level>
         <ID>FellingArea1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
       </Level>
     </Levels>
     <CellsMenu>
@@ -6789,6 +6892,7 @@
       <Level>
         <ID>LevelLumberjack1</ID>
         <Number>1</Number>
+        <Durability>100</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -6818,6 +6922,7 @@
       <Level>
         <ID>Stones1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
       </Level>
     </Levels>
     <CellsMenu>
@@ -6842,6 +6947,7 @@
       <Level>
         <ID>LevelStoneQuarry1</ID>
         <Number>1</Number>
+        <Durability>250</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -6871,6 +6977,7 @@
       <Level>
         <ID>Ore1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
       </Level>
     </Levels>
     <CellsMenu>
@@ -6895,6 +7002,7 @@
       <Level>
         <ID>LevelOreMine1</ID>
         <Number>1</Number>
+        <Durability>200</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -6924,6 +7032,7 @@
       <Level>
         <ID>Goldmine1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
       </Level>
     </Levels>
     <CellsMenu>
@@ -6948,6 +7057,7 @@
       <Level>
         <ID>LevelGoldenMine1</ID>
         <Number>1</Number>
+        <Durability>200</Durability>
         <Creating>
           <Cost>
             <Gold>1000</Gold>
@@ -6977,6 +7087,7 @@
       <Level>
         <ID>LevelFrontierPost1</ID>
         <Number>1</Number>
+        <Durability>1000</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -7003,6 +7114,7 @@
       <Level>
         <ID>LevelHill1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7022,6 +7134,7 @@
       <Level>
         <ID>LevelMeadow1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7041,6 +7154,7 @@
       <Level>
         <ID>LevelPlain1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7060,6 +7174,7 @@
       <Level>
         <ID>LevelMountain1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
           <ID>MountainVisit1</ID>
@@ -7090,6 +7205,7 @@
       <Level>
         <ID>LevelMountainSpring1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7109,6 +7225,7 @@
       <Level>
         <ID>LevelMountainLake1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
           <ID>MountainLakeVisit1</ID>
@@ -7142,6 +7259,7 @@
       <Level>
         <ID>LevelFoothills1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7161,6 +7279,7 @@
       <Level>
         <ID>LevelSwamp1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7180,6 +7299,7 @@
       <Level>
         <ID>LevelMarsh1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7199,6 +7319,7 @@
       <Level>
         <ID>LevelSwampyForest1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7218,6 +7339,7 @@
       <Level>
         <ID>LevelForest1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7237,6 +7359,7 @@
       <Level>
         <ID>LevelGlade1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7256,6 +7379,7 @@
       <Level>
         <ID>LevelRiver1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7275,6 +7399,7 @@
       <Level>
         <ID>LevelDesert1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7294,6 +7419,7 @@
       <Level>
         <ID>LevelOasis1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7313,6 +7439,7 @@
       <Level>
         <ID>LevelWasteland1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7332,6 +7459,7 @@
       <Level>
         <ID>LevelCanyon1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7351,6 +7479,7 @@
       <Level>
         <ID>LevelLake1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7370,6 +7499,7 @@
       <Level>
         <ID>LevelMountainWay1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7389,6 +7519,7 @@
       <Level>
         <ID>LevelNorthFort1</ID>
         <Number>1</Number>
+        <Durability>2000</Durability>
         <Creating>
           <Cost>
             <Gold>2500</Gold>
@@ -7415,6 +7546,7 @@
       <Level>
         <ID>LevelHotel1</ID>
         <Number>1</Number>
+        <Durability>200</Durability>
         <Creating>
           <Cost>
             <Gold>2000</Gold>
@@ -7439,6 +7571,7 @@
       <Level>
         <ID>LevelHellPortal1</ID>
         <Number>1</Number>
+        <Durability>500</Durability>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
@@ -7482,6 +7615,7 @@
       <Level>
         <ID>PathToLocation1</ID>
         <Number>1</Number>
+        <Durability>0</Durability>
       </Level>
     </Levels>
   </Construction>

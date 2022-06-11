@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(Creating != null);// Для логов не надо
 
             Number = GetIntegerNotNull(n, "Number");
+            Durability = GetIntegerNotNull(n, "Durability");
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
             Tax = GetInteger(n, "Tax");
             Capacity = GetInteger(n, "Capacity");
@@ -91,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Number { get; }
+        internal int Durability { get; }// Прочность сооружения
         internal int MaxInhabitant { get; }
         internal int Tax { get; }// Процент налога с дохода членов гильдии
         internal int Capacity { get; }
