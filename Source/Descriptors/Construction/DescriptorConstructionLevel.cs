@@ -16,8 +16,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             //Debug.Assert(Creating != null);// Для логов не надо
 
-            Number = GetIntegerNotNull(n, "Number");
-            Durability = GetIntegerNotNull(n, "Durability");
+            Number = GetIntegerNotNull(n, "Number", ID, 1, 5);
+            Durability = GetIntegerNotNull(n, "Durability", ID, 0, 1_000_000);
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
             Tax = GetInteger(n, "Tax");
             Capacity = GetInteger(n, "Capacity");
@@ -70,8 +70,6 @@ namespace Fantasy_Kingdoms_Battle
             if (nir != null)
                 IncomeResources = new ListBaseResources(nir);
 
-            Debug.Assert(Number >= 1);
-            Debug.Assert(Number <= 5);
             Debug.Assert(MaxInhabitant >= 0);
             Debug.Assert(MaxInhabitant <= 100);
             Debug.Assert(Tax >= 0);
