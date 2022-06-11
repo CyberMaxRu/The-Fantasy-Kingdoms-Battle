@@ -734,6 +734,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (selectedPlayerObject != null)
                 {
                     cellObjectMenu.ImageIndex = selectedPlayerObject.GetImageIndex();
+                    cellObjectMenu.ImageIsEnabled = selectedPlayerObject.GetNormalImage();
                     cellObjectMenu.Visible = true;
                 }
                 else
