@@ -733,8 +733,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (selectedPlayerObject != null)
                 {
-                    cellObjectMenu.ImageIndex = selectedPlayerObject.GetImageIndex();
-                    cellObjectMenu.ImageIsEnabled = selectedPlayerObject.GetNormalImage();
                     cellObjectMenu.Visible = true;
                 }
                 else
@@ -793,6 +791,12 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateMenu()
         {
             ClearMenu();
+
+            if (selectedPlayerObject != null)
+            {
+                cellObjectMenu.ImageIndex = selectedPlayerObject.GetImageIndex();
+                cellObjectMenu.ImageIsEnabled = selectedPlayerObject.GetNormalImage();
+            }
 
             if (selectedPlayerObject != null)
                 selectedPlayerObject.MakeMenu(CellsMenu);
