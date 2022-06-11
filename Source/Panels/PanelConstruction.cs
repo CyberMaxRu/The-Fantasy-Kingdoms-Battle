@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
         private readonly VCLabel lblNameMapObject;
         private readonly VCImage128 imgMapObject;
+        private readonly VCProgressBar pbDurability;
         private readonly VCIconButton48 btnHeroes;
         private readonly VCIconButton48 btnBuildOrUpgrade;
         private readonly VCIconButton48 btnQueue;
@@ -45,6 +46,10 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.BorderWithoutProgressBar = false;
             imgMapObject.ShowHint += ImgLair_ShowHint;
+
+            pbDurability = new VCProgressBar(this, imgMapObject.ShiftX - 2, imgMapObject.NextTop() - 4);
+            pbDurability.Width = imgMapObject.Width + 4;
+            pbDurability.Max = 100;
 
             btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnHeroes.Click += BtnHeroes_Click;
@@ -172,6 +177,7 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Construction.GetName();
             lblNameMapObject.Color = Construction.GetColorCaption();
 
+            pbDurability.Visible = false;
             btnHeroes.Visible = false;
 
             if (Construction.ListQueueProcessing.Count > 0)
@@ -189,6 +195,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 lblRewardGold.Visible = false;
                 lblRewardGreatness.Visible = false;
+
+                pbDurability.Visible = true;
 
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
                 if (income > 0)
@@ -334,6 +342,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             btnBuildOrUpgrade.Visible = false;
+            lblIncome.Visible = false;            
 
             base.Draw(g);
 
