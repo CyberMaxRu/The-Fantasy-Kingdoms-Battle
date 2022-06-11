@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Position { get; set; }
         internal int PositionPotential { get; set; }
         internal Color Color { get; set; }
-        internal bool ShowProgress { get; set; } = true;
+        internal string Text { get; set; } = "";
         protected override int WidthCap() => 17;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBar;
 
@@ -116,9 +116,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.PaintForeground(g);
 
-            if (ShowProgress)
+            if (Text.Length > 0)
             {
-                lblText.Text = Position.ToString() + "/" + Max.ToString();
+                lblText.Text = Text;
                 lblText.Draw(g);
             }
         }
