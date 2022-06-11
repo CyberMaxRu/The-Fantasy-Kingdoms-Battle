@@ -909,11 +909,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity() => TypeConstruction.TypeConstruction.Name;
 
-        internal bool ImageEnabled()
-        {
-            return (Level > 0) || (TypeConstruction.MaxLevel == 0);
-        }
-
         internal Color GetColorCaption()
         {
             return ComponentObjectOfMap.Visible ? Color.MediumAquamarine : FormMain.Config.ColorMapObjectCaption(false);

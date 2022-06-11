@@ -171,7 +171,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             imgMapObject.ImageIndex = Construction.GetImageIndex();
-            imgMapObject.ImageIsEnabled = Construction.ImageEnabled();
+            imgMapObject.ImageIsEnabled = Construction.GetNormalImage();
             imgMapObject.Level = Construction.GetLevel();
 
             lblNameMapObject.Text = Construction.GetName();

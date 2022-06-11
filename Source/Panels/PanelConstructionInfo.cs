@@ -174,7 +174,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             lblTypeConstruction.Text = Construction.TypeConstruction.TypeConstruction.Name;
             imgIcon.Level = Construction.GetLevel();
-            imgIcon.ImageIsEnabled = Construction.ImageEnabled();
+            imgIcon.ImageIsEnabled = Construction.GetNormalImage();
 
             if (Construction.TypeConstruction.HasTreasury)
             {
