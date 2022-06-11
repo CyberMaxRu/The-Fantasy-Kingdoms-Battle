@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Diagnostics;
 using System.Drawing;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -16,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             return nn is null ? 0 : string.IsNullOrEmpty(nn.InnerText) ? 0 : Convert.ToInt32(nn.InnerText);
         }
 
+        // Этот метод устаревший, удалить
         internal static int GetIntegerNotNull(XmlNode n, string name, string forEntity = "")
         {
             XmlNode nn = n.SelectSingleNode(name);
@@ -23,6 +25,26 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nn.InnerText != null, $"У поля {(forEntity.Length > 0 ? forEntity : " ")}{name} нет значения.");
 
             return Convert.ToInt32(nn.InnerText);
+        }
+
+        internal static int GetIntegerNotNull(XmlNode n, string name, string idEntity, int minValue, int maxValue)
+        {
+            Assert(name.Length > 0);
+            Assert(idEntity.Length > 0);
+            Assert(maxValue >= minValue, $"MinValue: {minValue}, MaxValue: {maxValue}");
+
+            XmlNode nn = n.SelectSingleNode(name);
+            Assert(nn != null, $"{idEntity}.{name}: поле отсутствует.");
+            Assert(nn.InnerText != null, $"{idEntity}.{name}: нет значения.");
+
+            int val;
+            if (!int.TryParse(nn.InnerText, out val))
+                DoException($"{idEntity}.{name}: содержит не int ({nn.InnerText})");
+
+            Assert(val >= minValue, $"{idEntity}.{name}: значение {val} меньше минимального ({minValue})");
+            Assert(val <= maxValue, $"{idEntity}.{name}: значение {val} больше максимального ({maxValue})");
+
+            return val;
         }
 
         internal static int GetPercent(XmlNode n, string name, string forEntity = "")
