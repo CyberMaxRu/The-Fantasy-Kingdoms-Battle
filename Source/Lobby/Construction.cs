@@ -1183,10 +1183,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
 
-        internal override bool GetNormalImage()
-        {
-            return true;
-        }
+        internal override bool GetNormalImage() => (Level > 0) || (TypeConstruction.MaxLevel == 0);
 
         internal override string GetLevel()
         {
