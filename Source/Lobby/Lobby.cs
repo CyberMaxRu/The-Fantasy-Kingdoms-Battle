@@ -30,8 +30,8 @@ namespace Fantasy_Kingdoms_Battle
             //Entities.un
 
             StateLobby = StateLobby.Start;
-            Turn = 1;
-            Day = 1;
+            Turn = 0;
+            Day = 0;
             Week = 1;
             Month = 1;
             TimeOfDay = descriptors.TimesOfDay[0];
@@ -62,6 +62,8 @@ namespace Fantasy_Kingdoms_Battle
 
             SetPlayerAsCurrent(0);
             StateLobby = StateLobby.TurnHuman;
+            Turn = 1;
+            Day = 1;
 
             void GenerateComputerPlayers()
             {
