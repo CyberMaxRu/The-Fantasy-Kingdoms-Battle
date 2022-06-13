@@ -346,7 +346,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            btnBuildOrUpgrade.Visible = false;
             lblIncome.Visible = false;            
 
             base.Draw(g);
