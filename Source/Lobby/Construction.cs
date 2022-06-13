@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private int gold;
         private int usedBuilders;
 
-        // Конструктор для городских сооружений
+        // Конструктор для городских сооружений, которые создаются в начале миссии
         public Construction(Player p, DescriptorConstruction b) : base(b, p.Lobby)
         {
             Assert(b.IsInternalConstruction);
@@ -45,6 +45,38 @@ namespace Fantasy_Kingdoms_Battle
             // Восстановить
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;
+
+            UpdateCurrentIncomeResources();
+            TuneCellMenuBuildOrUpgrade();
+            UpdateSelectedColor();
+        }
+
+        // Конструктор для сооружений, которые создаются для локации в начале миссии
+        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeLair, l.Lobby)
+        {
+            Player = l.Player;
+            TypeConstruction = ls.TypeLair;
+            Location = l;
+            DaysConstructLeft = 0;
+            PlayerIsOwner = ls.Own;
+            PlayerCanOwn = ls.CanOwn;
+            IsEnemy = ls.IsEnemy;
+            ComponentObjectOfMap = new ComponentObjectOfMap(this, ls.Visible);
+            IDPathToLocation = ls.PathToLocation;
+
+            TuneConstructionByCreate();
+
+            Level = TypeConstruction.DefaultLevel;
+            if (Level > 0)
+            {
+                InitBuild();
+                AddPerksToPlayer();
+                AddVisit();
+                CreateProducts();
+            }
+
+            if (ls.Resources != null)
+                InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
 
             UpdateCurrentIncomeResources();
             TuneCellMenuBuildOrUpgrade();
@@ -88,39 +120,6 @@ namespace Fantasy_Kingdoms_Battle
             UpdateSelectedColor();
         }
 
-        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeLair, l.Lobby)
-        {
-            Player = l.Player;
-            TypeConstruction = ls.TypeLair;
-            Location = l;
-            DaysConstructLeft = 0;
-            PlayerIsOwner = ls.Own;
-            PlayerCanOwn = ls.CanOwn;
-            IsEnemy = ls.IsEnemy;
-            ComponentObjectOfMap = new ComponentObjectOfMap(this, ls.Visible);
-            IDPathToLocation = ls.PathToLocation;
-
-            TuneConstructionByCreate();
-
-            Level = ls.TypeLair.DefaultLevel;
-            if (Level > 0)
-            {
-                InitBuild();
-                AddPerksToPlayer();
-                AddVisit();
-                CreateProducts();
-            }
-            
-            if (ls.Resources != null)
-            {
-                InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
-            }
-
-            UpdateCurrentIncomeResources();
-            TuneCellMenuBuildOrUpgrade();
-            UpdateSelectedColor();
-        }
-
         internal DescriptorConstruction TypeConstruction { get; }
         internal bool PlayerIsOwner { get; private set; }// Игрок - владелец сооружения
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
@@ -131,7 +130,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListBaseResources SpendResourcesForConstruct { get; set; }// Расход ресурсов на строительство
         internal int AddConstructionPointByDay { get; set; }// Сколько очков строительства будет добавлено в текущем дне
         internal int DaysConstructLeft { get; set; }// Сколько еще дней будет строиться сооружение
-        internal int DayOfConstruction { get; private set; } = -1;// На каком ходу построено
+        internal int DayOfConstruction { get; private set; } = -1;// На каком ходу построено. -1: не построено, 0: до начала игры
 
         // Прочность
         internal int CurrentDurability { get; private set; }// Текущая прочность сооружения
