@@ -348,6 +348,10 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = d.CreatedEntity as DescriptorConstructionLevel;
         }
 
+        internal int DaysForConstructed { get; set; }// Дней на завершение строительства
+
+        internal override string GetDaysExecuting() => DaysForConstructed == 0 ? "" : DaysForConstructed.ToString();
+
         internal override void Execute()
         {
             Construction.Build(true);

@@ -1586,6 +1586,22 @@ namespace Fantasy_Kingdoms_Battle
             Player.AddConstruction(this);
         }
 
+        internal void UpdateDaysConstruction()
+        {
+            AssertNotDestroyed();
+
+            foreach (CellMenuConstruction cm in Researches)
+            {
+                if (cm is CellMenuConstructionLevelUp cml)
+                {
+                    Debug.Assert(cml.Descriptor.Number > Level);// Не должно быть действия на постройку уже построенного уровня
+
+                    // Учитываем, что следующий уровень может быть построен
+                    cml.DaysForConstructed = Player.CalcDaysForEndConstruction(cml.Descriptor.Number == Level + 1 ? CurrentDurability : 0, cml.Descriptor.Durability);
+                }
+            }
+        }
+
         // Подготовка строительства сооружения
         // Вызывается у городских сооружений сразу
         internal void PrepareBuilding()

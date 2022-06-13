@@ -279,6 +279,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 pc.PrepareNewDay();
             }
+
+            UpdateDaysConstructionForConstructions();
         }
 
         internal void ReceiveResources()
@@ -1670,7 +1672,21 @@ namespace Fantasy_Kingdoms_Battle
         // Обновление количества дней постройки у сооружений
         internal void UpdateDaysConstructionForConstructions()
         {
+            foreach (Construction c in Constructions)
+            {
+                c.UpdateDaysConstruction();
+            }
+        }
+        
+        internal int CalcDaysForEndConstruction(int currentDurability, int maxDurability)
+        {
+            Assert(currentDurability >= 0);
+            Assert(maxDurability > 0);
+            Assert(currentDurability < maxDurability);
 
+            int val = (maxDurability - currentDurability) / ConstructionPoints + 1;
+            Assert(val > 0);
+            return val;
         }
 
         internal override int GetNextNumber() => ++sequenceNumber;
