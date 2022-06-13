@@ -1591,14 +1591,14 @@ namespace Fantasy_Kingdoms_Battle
             //Assert(c.SpendResourcesForConstruct is null);
 
             queueBuilding.Add(c);
-            c.InConstructOrRepair = true;
+            c.InConstructingOrRepair = true;
 
             RebuildQueueBuilding();
         }
 
         internal void RemoveFromQueueBuilding(Construction c, bool constructed)
         {
-            Assert(c.InConstructOrRepair);
+            Assert(c.InConstructingOrRepair);
             Assert(c.MaxDurability > 0);
             Assert(c.DaysConstructLeft > 0);
 
@@ -1613,7 +1613,7 @@ namespace Fantasy_Kingdoms_Battle
                     // Освобождаем потраченные ресурсы
                     ReturnResource(c.SpendResourcesForConstruct);
                     c.SpendResourcesForConstruct = null;
-                    c.InConstructOrRepair = false;
+                    c.InConstructingOrRepair = false;
                 }
 
                 c.DaysConstructLeft = 0;

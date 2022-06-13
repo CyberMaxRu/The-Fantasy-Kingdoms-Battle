@@ -111,7 +111,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int AddConstructionPointByDay { get; set; }// Сколько очков строительства будет добавлено в текущем дне
         internal int DaysConstructLeft { get; set; }// Сколько еще дней будет строиться сооружение
         internal int DayOfConstruction { get; private set; } = -1;// На каком ходу построено. -1: не построено, 0: до начала игры
-        internal bool InConstructOrRepair { get; set; }// Сооружение строится или ремонтируется
+        internal bool InConstructingOrRepair { get; set; }// Сооружение строится или ремонтируется
 
         // Прочность
         internal int CurrentDurability { get; private set; }// Текущая прочность сооружения
@@ -270,7 +270,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Level++;
             DayOfConstruction = Player.Lobby.CounterDay;
-            InConstructOrRepair = false;
+            InConstructingOrRepair = false;
 
             if (Level == 1)
             {
@@ -776,7 +776,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (InConstructOrRepair && (AddConstructionPointByDay > 0))
+            if (InConstructingOrRepair && (AddConstructionPointByDay > 0))
             {
                 CurrentDurability += AddConstructionPointByDay;
                 if (CurrentDurability == MaxDurability)
