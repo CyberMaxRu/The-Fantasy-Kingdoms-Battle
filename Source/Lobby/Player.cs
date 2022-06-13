@@ -141,11 +141,11 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            // Инициализация зданий
+            // Инициализация сооружений города
             foreach (DescriptorConstruction tck in FormMain.Descriptors.Constructions)
             {
                 if (tck.IsInternalConstruction)
-                    new Construction(this, tck, null, true, true, true, false, null);
+                    new Construction(this, tck);
             }
 
             foreach (TypeLobbyLocationSettings tll in lobby.TypeLobby.Locations)
@@ -265,8 +265,8 @@ namespace Fantasy_Kingdoms_Battle
             ExtraLevelUp = 0;
             ExtraResearch = 0;
 
-            Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
-            FreeBuilders = Builders;
+            ConstructionPoints = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
+            RestConstructionPoints = ConstructionPoints;
 
             // Начало хода у локации
             foreach (Location l in Locations)
@@ -634,8 +634,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int SkippedBattles { get; set; }// Сколько битв было пропущено (про причине нечетного количества игроков)
         internal bool SkipBattle { get; set; }// Битва на этому ходу будет пропущена
 
-        internal int Builders { get; private set; }
-        internal int FreeBuilders { get; private set; }
+        internal int ConstructionPoints { get; private set; }// Очков строительства на этот ход
+        internal int RestConstructionPoints { get; private set; }// Остаток неизрасходованных очков строительства
         internal List<Entity> QueueBuilding { get; } = new List<Entity>();// Очередь строительства
 
         internal List<DescriptorPersistentBonus>[] VariantPersistentBonus { get; }
@@ -922,7 +922,7 @@ namespace Fantasy_Kingdoms_Battle
             if (CheatingIgnoreBuilders)
                 return true;
 
-            return FreeBuilders >= needBuilders;
+            return RestConstructionPoints >= needBuilders;
         }
 
         internal bool CheckRequirements(List<DescriptorRequirement> list)
@@ -1127,8 +1127,8 @@ namespace Fantasy_Kingdoms_Battle
                     AddNoticeForPlayer(br, TypeNoticeForPlayer.ReceivedBaseResource);
             }
 
-            Builders += sb.Builders;
-            FreeBuilders += sb.Builders;
+            ConstructionPoints += sb.Builders;
+            RestConstructionPoints += sb.Builders;
             CreateExternalConstructions(FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse, TypeNoticeForPlayer.Build);
             DescriptorConstruction holyPlace = FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace, TypeNoticeForPlayer.Explore);
@@ -1324,7 +1324,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if (type.Levels[1].GetCreating().ConstructionPoints(this) > FreeBuilders)
+            if (type.Levels[1].GetCreating().ConstructionPoints(this) > RestConstructionPoints)
                 return false;
 
             // Проверяем требования к зданиям
@@ -1350,7 +1350,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
             panelHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);
-            panelHint.AddStep13Builders(type.Levels[1].GetCreating().ConstructionPoints(this), FreeBuilders >= type.Levels[1].GetCreating().ConstructionPoints(this));
+            panelHint.AddStep13Builders(type.Levels[1].GetCreating().ConstructionPoints(this), RestConstructionPoints >= type.Levels[1].GetCreating().ConstructionPoints(this));
         }
 
         //
@@ -1456,7 +1456,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddFreeBuilder()
         {
-            FreeBuilders++;
+            RestConstructionPoints++;
         }
 
         internal void UseFreeBuilder(int builders)
@@ -1465,11 +1465,11 @@ namespace Fantasy_Kingdoms_Battle
 
             if (builders > 0)
             {
-                Debug.Assert(FreeBuilders > 0);
+                Debug.Assert(RestConstructionPoints > 0);
 
-                FreeBuilders -= builders;
+                RestConstructionPoints -= builders;
 
-                Debug.Assert(FreeBuilders >= 0);
+                Debug.Assert(RestConstructionPoints >= 0);
             }
         }
 
@@ -1477,9 +1477,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(builders >= 0);
 
-            FreeBuilders += builders;
+            RestConstructionPoints += builders;
 
-            Debug.Assert(FreeBuilders >= 0);
+            Debug.Assert(RestConstructionPoints >= 0);
         }
 
         internal void AddExtraLevelUp()
@@ -1579,18 +1579,85 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddToQueueBuilding(Construction c)
         {
+            Assert(queueBuilding.IndexOf(c) == -1);
+            Assert(c.MaxDurability > 0);
+            Assert(c.CurrentDurability < c.MaxDurability);
+            Assert(c.DaysConstructLeft == 0);
+            Assert(c.AddConstructionPointByDay == 0);
+            Assert(c.SpendResourcesForConstruct is null);
+
             queueBuilding.Add(c);
+
+            RebuildQueueBuilding();
         }
 
         internal void RemoveFromQueueBuilding(Construction c)
         {
             if (!queueBuilding.Remove(c))
-                DoException($"Не удалось удалить {c.IDEntity} из очереди строительства");
+                DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
+
+            // Освобождаем потраченные ресурсы
+            ReturnResource(c.SpendResourcesForConstruct);
+            c.AddConstructionPointByDay = 0;
+            c.DaysConstructLeft = 0;
+
+            RebuildQueueBuilding();
         }
         
+        // Перестройка очереди строительства
         private void RebuildQueueBuilding()
         {
+            // Получаем все очки строительства и начинаем их распределять
+            int restCP = ConstructionPoints;
+            int expenseCP;
 
+            foreach (Construction c in queueBuilding)
+            {
+                c.AssertNotDestroyed();
+
+                if (restCP > 0)
+                {
+                    // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
+                    if (c.SpendResourcesForConstruct is null)
+                    {
+                        if (CheckRequiredResources(c.CostBuyOrUpgrade()))
+                        {
+                            c.SpendResourcesForConstruct = c.CostBuyOrUpgrade();
+                            SpendResource(c.SpendResourcesForConstruct);
+                        }
+                    }
+
+                    // Если ресурсы были потрачены, то тратим очки строительства
+                    if (c.SpendResourcesForConstruct != null)
+                    {
+                        expenseCP = Math.Min(restCP, c.MaxDurability - c.CurrentDurability);
+                        Debug.Assert(expenseCP > 0);
+
+                        c.AddConstructionPointByDay = expenseCP;
+
+                        restCP -= expenseCP;
+
+                        // Вычисляем, сколько еще дней будет строиться сооружение
+                        int restCPAfterDay = c.MaxDurability - c.CurrentDurability - c.AddConstructionPointByDay;
+                        if (restCPAfterDay == 0)
+                            c.DaysConstructLeft = 1;
+                        else
+                            c.DaysConstructLeft = restCPAfterDay / ConstructionPoints + 1;
+                    }
+                }
+                else
+                {
+                    // Очки строительства закончились
+                    // Если были потрачены ресурсы, возвращаем их
+                    if (c.SpendResourcesForConstruct != null)
+                        ReturnResource(c.SpendResourcesForConstruct);
+
+                    c.AddConstructionPointByDay = 0;
+                    c.DaysConstructLeft = -1;
+                }
+            }
+
+            RestConstructionPoints = restCP;
         }
 
         internal override int GetNextNumber() => ++sequenceNumber;

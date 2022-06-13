@@ -379,6 +379,11 @@ namespace Fantasy_Kingdoms_Battle
             return GetImageIsEnabled() ? DaysLeft == 0 ? Color.LimeGreen : FormMain.Config.CommonCost : Color.Gray;
         }
 
+        internal override void Click()
+        {
+            Construction.StartBuilding();
+        }
+
         internal override void PrepareHint(PanelHint panelHint)
         {
             Construction.PrepareHintForBuildOrUpgrade(panelHint, Descriptor.Number);
