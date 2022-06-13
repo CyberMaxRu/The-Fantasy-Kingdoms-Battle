@@ -49,10 +49,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneDeferredLinks()
         {
-            TypeConstruction = FormMain.Descriptors.FindConstruction(NameTypeLair);
+            DescriptorConstruction = FormMain.Descriptors.FindConstruction(NameTypeLair);
             NameTypeLair = "";
 
-            if (TypeConstruction.Category != CategoryConstruction.Path)
+            if (DescriptorConstruction.Category != CategoryConstruction.Path)
             {
                 Debug.Assert(PathToLocation.Length == 0);
             }
@@ -63,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string NameTypeLair { get; private set; }
-        internal DescriptorConstruction TypeConstruction { get; private set; }
+        internal DescriptorConstruction DescriptorConstruction { get; private set; }
         internal bool Visible { get; }
         internal bool Own { get; }
         internal bool CanOwn { get; }

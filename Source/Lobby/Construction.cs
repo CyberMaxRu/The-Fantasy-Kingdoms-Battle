@@ -17,12 +17,12 @@ namespace Fantasy_Kingdoms_Battle
         private int usedBuilders;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
-        public Construction(Player p, DescriptorConstruction b) : base(b, p.Lobby)
+        public Construction(Player p, DescriptorConstruction dc) : base(dc, p.Lobby)
         {
-            Assert(b.IsInternalConstruction);
+            Assert(dc.IsInternalConstruction);
 
             Player = p;
-            Descriptor = b;
+            Descriptor = dc;
             DaysConstructLeft = 0;
             PlayerIsOwner = true;
             PlayerCanOwn = true;
@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             TuneConstructionByCreate();
             PrepareBuilding();
 
-            Level = b.DefaultLevel;
+            Level = dc.DefaultLevel;
             if (Level > 0)
             {
                 InitBuild();
@@ -50,12 +50,12 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются для локации в начале миссии
-        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeConstruction, l.Lobby)
+        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.DescriptorConstruction, l.Lobby)
         {
-            Assert(!ls.TypeConstruction.IsInternalConstruction);
+            Assert(!ls.DescriptorConstruction.IsInternalConstruction);
 
             Player = l.Player;
-            Descriptor = ls.TypeConstruction;
+            Descriptor = ls.DescriptorConstruction;
             DaysConstructLeft = 0;
             PlayerIsOwner = ls.Own;
             PlayerCanOwn = ls.CanOwn;
@@ -82,12 +82,12 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются в процессе игры
-        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(l, p.Lobby)
+        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(dc, p.Lobby)
         {
-            Assert(!l.IsInternalConstruction);
+            Assert(!dc.IsInternalConstruction);
 
             Player = p;
-            Descriptor = l;
+            Descriptor = dc;
             X = x;
             Y = y;
             Location = location;
