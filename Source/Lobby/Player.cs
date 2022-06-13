@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
+        private List<CellMenuConstructionLevelUp> queueBuilding = new List<CellMenuConstructionLevelUp>();// Очередь строительства
         private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby)
@@ -1321,7 +1322,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if (type.Levels[1].GetCreating().Builders(this) > FreeBuilders)
+            if (type.Levels[1].GetCreating().ConstructionPoints(this) > FreeBuilders)
                 return false;
 
             // Проверяем требования к зданиям
@@ -1347,7 +1348,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
             panelHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);
-            panelHint.AddStep13Builders(type.Levels[1].GetCreating().Builders(this), FreeBuilders >= type.Levels[1].GetCreating().Builders(this));
+            panelHint.AddStep13Builders(type.Levels[1].GetCreating().ConstructionPoints(this), FreeBuilders >= type.Levels[1].GetCreating().ConstructionPoints(this));
         }
 
         //
@@ -1573,6 +1574,16 @@ namespace Fantasy_Kingdoms_Battle
                 FreeHeroes.Add(c);
             }
         }
+
+        internal void AddToQueueBuilding(CellMenuConstructionLevelUp cell)
+        {
+
+        }
+
+        internal void RemoveFromQueueBuilding(CellMenuConstructionLevelUp cell)
+        {
+
+        }           
     }
 
     internal sealed class UnitOfQueueForBuy

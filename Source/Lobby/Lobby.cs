@@ -90,6 +90,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Day { get; private set; }// День
         internal int Week { get; private set; }// Неделя
         internal int Month { get; private set; }// Месяц
+        internal int CounterDay { get => Turn; }// Текущий день с начала игры
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }

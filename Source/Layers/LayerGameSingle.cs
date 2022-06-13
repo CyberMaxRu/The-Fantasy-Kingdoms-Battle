@@ -131,7 +131,7 @@ namespace Fantasy_Kingdoms_Battle
 
             labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
             labelBuilders.ShowHint += LabelBuilders_ShowHint;
-            labelBuilders.Width = 64;
+            labelBuilders.Width = 112;
             labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
             labelHeroes.ShowHint += LabelHeroes_ShowHint;
             labelHeroes.Width = 80;

@@ -11,7 +11,6 @@
     <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxLevel>3</MaxLevel>
     <GoldByConstruction>500</GoldByConstruction>
     <SoundSelect>guild_warrior_select.wav</SoundSelect>
     <Levels>
@@ -22,8 +21,6 @@
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
-          <Builders>1</Builders>
-          <DaysProcessing>1</DaysProcessing>
           <Cost>
             <Gold>550</Gold>
           </Cost>
@@ -36,8 +33,6 @@
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
-          <Builders>1</Builders>
-          <DaysProcessing>2</DaysProcessing>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -57,8 +52,6 @@
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
-          <Builders>1</Builders>
-          <DaysProcessing>3</DaysProcessing>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -210,8 +203,6 @@
         <Number>1</Number>
         <Durability>300</Durability>
         <Creating>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -224,8 +215,6 @@
         <Number>2</Number>
         <Durability>350</Durability>
         <Creating>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -245,8 +234,6 @@
         <Number>3</Number>
         <Durability>400</Durability>
         <Creating>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>3</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -443,8 +430,6 @@
         <Number>1</Number>
         <Durability>400</Durability>
         <Creating>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -460,8 +445,6 @@
           <Cost>
             <Gold>700</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -481,8 +464,6 @@
           <Cost>
             <Gold>700</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
@@ -636,8 +617,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>0</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -671,7 +650,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <Builders>0</Builders>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -683,8 +661,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>          
-          <Builders>0</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -892,8 +868,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -913,8 +887,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -939,8 +911,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1153,8 +1123,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1166,7 +1134,7 @@
         <IncomeResources>
           <Iron>50</Iron>
         </IncomeResources>
-        <BuildersPerDay>1</BuildersPerDay>
+        <BuildersPerDay>150</BuildersPerDay>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1178,8 +1146,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1196,7 +1162,7 @@
         <IncomeResources>
           <Iron>100</Iron>
         </IncomeResources>
-        <BuildersPerDay>1</BuildersPerDay>
+        <BuildersPerDay>200</BuildersPerDay>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1208,8 +1174,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>4</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1226,7 +1190,7 @@
         <IncomeResources>
           <Iron>150</Iron>
         </IncomeResources>
-        <BuildersPerDay>1</BuildersPerDay>
+        <BuildersPerDay>250</BuildersPerDay>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1438,8 +1402,6 @@
           <Cost>
             <Gold>450</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
@@ -1452,8 +1414,6 @@
           <Cost>
             <Gold>450</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1473,8 +1433,6 @@
           <Cost>
             <Gold>450</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
@@ -1517,8 +1475,6 @@
           <Cost>
             <Gold>450</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1538,8 +1494,6 @@
           <Cost>
             <Gold>450</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1559,8 +1513,6 @@
           <Cost>
             <Gold>450</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
@@ -1735,8 +1687,6 @@
           <Cost>
             <Gold>0</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>0</Builders>
         </Creating>
         <IncomeResources>
           <Gold>1000</Gold>
@@ -1746,7 +1696,7 @@
         </IncomeResources>
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <BuildersPerDay>3</BuildersPerDay>
+        <BuildersPerDay>500</BuildersPerDay>
         <MaxInhabitant>15</MaxInhabitant>
         <Perks>
           <Perk>PerkSubject1</Perk>
@@ -1763,8 +1713,6 @@
             <Iron>100</Iron>
             <Stone>500</Stone>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>2</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
@@ -1796,7 +1744,7 @@
         </IncomeResources>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
-        <BuildersPerDay>4</BuildersPerDay>
+        <BuildersPerDay>500</BuildersPerDay>
         <MaxInhabitant>25</MaxInhabitant>
         <Perks>
           <Perk>PerkSubject2</Perk>
@@ -1811,8 +1759,6 @@
             <Gold>4000</Gold>
             <Stone>1000</Stone>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
@@ -1844,7 +1790,7 @@
         </IncomeResources>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
-        <BuildersPerDay>4</BuildersPerDay>
+        <BuildersPerDay>750</BuildersPerDay>
         <MaxInhabitant>30</MaxInhabitant>
         <Perks>
           <Perk>PerkSubject3</Perk>
@@ -1927,8 +1873,6 @@
           <Cost>
             <Gold>0</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>0</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1978,8 +1922,6 @@
           <Cost>
             <Gold>0</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2015,8 +1957,6 @@
           <Cost>
             <Gold>250</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2052,8 +1992,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>175</Gold>
@@ -2067,8 +2005,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2089,8 +2025,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2336,8 +2270,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -2351,8 +2283,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2373,7 +2303,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2385,7 +2314,6 @@
         <IncomeResources>
           <Gold>100</Gold>
         </IncomeResources>
-        <Builders>1</Builders>
       </Level>
       <Level>
         <ID>LevelSmithy4</ID>
@@ -2395,7 +2323,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2407,7 +2334,6 @@
         <IncomeResources>
           <Gold>150</Gold>
         </IncomeResources>
-        <Builders>1</Builders>
       </Level>
     </Levels>
     <Improvements>
@@ -2859,8 +2785,6 @@
           <Cost>
             <Gold>250</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>100</Gold>
@@ -2885,8 +2809,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2918,8 +2840,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3120,8 +3040,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>0</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3142,8 +3060,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3164,8 +3080,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3658,8 +3572,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>200</Gold>
@@ -3673,8 +3585,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>300</Gold>
@@ -3688,8 +3598,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>500</Gold>
@@ -3965,8 +3873,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>25</Gold>
@@ -3991,8 +3897,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>4</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -4017,8 +3921,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>6</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>75</Gold>
@@ -4216,8 +4118,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4241,8 +4141,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4273,8 +4171,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4471,8 +4367,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4485,8 +4379,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4524,8 +4416,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4538,8 +4428,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4577,8 +4465,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>25</Gold>
@@ -4602,8 +4488,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -4627,8 +4511,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>75</Gold>
@@ -4775,8 +4657,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
       </Level>
       <Level>
@@ -4787,8 +4667,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
       </Level>
       <Level>
@@ -4799,8 +4677,6 @@
           <Cost>
             <Gold>5000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
       </Level>
     </Levels>
@@ -4968,8 +4844,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
@@ -4981,8 +4855,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
@@ -5023,8 +4895,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -5049,8 +4919,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>100</Gold>
@@ -5075,8 +4943,6 @@
           <Cost>          
             <Gold>500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>150</Gold>
@@ -5295,8 +5161,6 @@
           <Cost>
             <Gold>250</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>25</Gold>
@@ -5310,8 +5174,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5332,8 +5194,6 @@
           <Cost>
             <Gold>1500</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5517,8 +5377,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <IncomeResources>
           <Gold>250</Gold>
@@ -5543,8 +5401,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5576,8 +5432,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>GoodsInConstruction</TypeRequirement>
@@ -5762,8 +5616,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5811,8 +5663,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5860,8 +5710,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5909,8 +5757,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5958,8 +5804,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -6007,8 +5851,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -6056,8 +5898,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -6105,8 +5945,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -6154,8 +5992,6 @@
           <Cost>
             <Gold>3000</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>3</Builders>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -6897,8 +6733,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>2</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <Mining>
           <Wood>1</Wood>
@@ -6952,8 +6786,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <Mining>
           <Stone>1</Stone>
@@ -7007,8 +6839,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>4</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <Mining>
           <Iron>1</Iron>
@@ -7062,8 +6892,6 @@
           <Cost>
             <Gold>1000</Gold>
           </Cost>
-          <DaysProcessing>1</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <Mining>
           <Gold>1</Gold>
@@ -7092,8 +6920,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>3</Builders>
         </Creating>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -7524,8 +7350,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <DaysProcessing>5</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -7551,8 +7375,6 @@
           <Cost>
             <Gold>2000</Gold>
           </Cost>
-          <DaysProcessing>3</DaysProcessing>
-          <Builders>1</Builders>
         </Creating>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>

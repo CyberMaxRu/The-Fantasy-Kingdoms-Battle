@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             Player = p;
             TypeConstruction = b;
             Location = location;
-            DaysBuilded = 0;
+            ConstructedDay = 0;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
             IsEnemy = isEnemy;
@@ -36,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             Level = b.DefaultLevel;
             if (Level > 0)
             {
+                InitBuild();
                 AddPerksToPlayer();
                 AddVisit();
                 CreateProducts();
@@ -63,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             Location = location;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
-            DaysBuilded = 0;
+            ConstructedDay = 0;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
             IsEnemy = isEnemy;
@@ -77,9 +78,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Build(false);
                 if (TypeConstruction.Levels[1].GetCreating() != null)
-                    DaysBuilded = TypeConstruction.Levels[1].GetCreating().DaysProcessing;
+                    ConstructedDay = TypeConstruction.Levels[1].GetCreating().DaysProcessing;
                 else
-                    DaysBuilded = 0;
+                    ConstructedDay = 0;
             }
 
             // Настраиваем исследования 
@@ -105,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             Player = l.Player;
             TypeConstruction = ls.TypeLair;
             Location = l;
-            DaysBuilded = 0;
+            ConstructedDay = 0;
             PlayerIsOwner = ls.Own;
             PlayerCanOwn = ls.CanOwn;
             IsEnemy = ls.IsEnemy;
@@ -119,6 +120,7 @@ namespace Fantasy_Kingdoms_Battle
             Level = ls.TypeLair.DefaultLevel;
             if (Level > 0)
             {
+                InitBuild();
                 AddPerksToPlayer();
                 AddVisit();
                 CreateProducts();
@@ -150,7 +152,15 @@ namespace Fantasy_Kingdoms_Battle
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
         internal bool IsEnemy { get; private set; }// Это сооружение враждебно
         internal int Level { get; private set; }
-        internal int DaysBuilded { get; private set; }// Сколько дней строится сооружение
+
+        // Постройка
+        internal int CurrentDurability { get; private set; }// Текущая прочность сооружения
+        internal int MaxDurability { get; private set; }// Максимальная прочность сооружения
+        internal int DayConstructed { get; private set; } = -1;// На каком ходу построено
+        internal int ConstructedDay { get; private set; }// Сколько дней строится сооружение
+        internal int ConstructionPointAppled { get; set; }// Сколько очков строительства применено на этом ходу
+
+        //
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }// Казна гильдии
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal Player Player { get; }
@@ -268,6 +278,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        private void InitBuild()
+        {
+            MaxDurability = TypeConstruction.Levels[Level].Durability;
+            CurrentDurability = TypeConstruction.Levels[Level].Durability;
+            ConstructedDay = Lobby.CounterDay;
+        }
+
         internal void Build(bool needNotice)
         {
             if (!Lobby.InPrepareTurn && (Lobby.CurrentPlayer?.GetTypePlayer() == TypePlayer.Human))
@@ -307,6 +324,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //
+            InitBuild();
             CreateProducts();
 
             if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
@@ -506,7 +524,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].GetCreating().Builders(Player)))
+            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].GetCreating().ConstructionPoints(Player)))
                 return false;
 
             // Проверяем, что нет события или турнира
@@ -1136,7 +1154,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep10DaysBuilding(-1, DayBuildingForLevel(requiredLevel));
             panelHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             panelHint.AddStep12Gold(Player.BaseResources, TypeConstruction.Levels[requiredLevel].GetCreating().CostResources);
-            panelHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].GetCreating().Builders(Player), Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].GetCreating().Builders(Player));
+            panelHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
 
         internal void PrepareHintForInhabitantCreatures(PanelHint panelHint)
@@ -1483,13 +1501,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cell.PosInQueue == 0);
             Debug.Assert(cell.PurchaseValue is null);
             Debug.Assert(usedBuilders == 0);
-            Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().Builders(Player));
+            Debug.Assert(Player.FreeBuilders >= cell.Descriptor.CreatedEntity.GetCreating().ConstructionPoints(Player));
             Debug.Assert(CellMenuBuildNewConstruction is null);
 
             cell.PurchaseValue = new ListBaseResources(cell.GetCost());
             Player.SpendResource(cell.PurchaseValue);
 
-            usedBuilders = cell.Descriptor.CreatedEntity.GetCreating().Builders(Player);
+            usedBuilders = cell.Descriptor.CreatedEntity.GetCreating().ConstructionPoints(Player);
             Player.UseFreeBuilder(usedBuilders);
         }
 
