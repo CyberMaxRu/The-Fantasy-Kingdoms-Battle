@@ -198,9 +198,9 @@ namespace Fantasy_Kingdoms_Battle
 
                     int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
                     if (percent >= 60)
-                        pbDurability.Color = Color.Green;
+                        pbDurability.Color = Color.Lime;
                     else if (percent >= 50)
-                        pbDurability.Color = Color.Yellow;
+                        pbDurability.Color = Color.LightYellow;
                     else
                         pbDurability.Color = Color.Red;
 
