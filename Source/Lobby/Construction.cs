@@ -781,7 +781,7 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentDurability += AddConstructionPointByDay;
                 if (CurrentDurability == MaxDurability)
                 {
-                    Player.RemoveFromQueueBuilding(this, false);
+                    Player.RemoveFromQueueBuilding(this, true);
                     Build(true);
                 }
             }
@@ -1627,7 +1627,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CancelBuilding()
         {
-            Player.RemoveFromQueueBuilding(this, true);
+            Player.RemoveFromQueueBuilding(this, false);
             Player.RebuildQueueBuilding();
         }
 

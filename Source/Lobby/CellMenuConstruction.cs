@@ -371,7 +371,20 @@ namespace Fantasy_Kingdoms_Battle
             return Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
         }
 
-        internal override string GetText() => Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number) ? "Отм." : base.GetText();
+        internal override string GetText()
+        {
+            if (Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number))
+            {
+                if (Construction.CurrentDurability == 0)
+                    return "Отм.";
+                if (Construction.DaysConstructLeft > 0)
+                    return "Ост.";
+                
+                return "Прод.";
+            }
+            else
+                return base.GetText();
+        }
 
         internal override ListBaseResources GetCost()
         {
@@ -401,7 +414,12 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Click()
         {
             if (Construction.InConstructOrRepair)
-                Construction.CancelBuilding();
+            {
+                if (Construction.DaysConstructLeft == 0)
+                    Construction.StartBuilding();
+                else
+                    Construction.CancelBuilding();
+            }
             else
                 Construction.StartBuilding();
         }

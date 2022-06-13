@@ -1587,8 +1587,8 @@ namespace Fantasy_Kingdoms_Battle
             Assert(c.CurrentDurability < c.MaxDurability);
             Assert(c.DaysConstructLeft == 0);
             Assert(c.AddConstructionPointByDay == 0);
-            Assert(!c.InConstructOrRepair);
-            Assert(c.SpendResourcesForConstruct is null);
+            //Assert(!c.InConstructOrRepair);
+            //Assert(c.SpendResourcesForConstruct is null);
 
             queueBuilding.Add(c);
             c.InConstructOrRepair = true;
@@ -1596,7 +1596,7 @@ namespace Fantasy_Kingdoms_Battle
             RebuildQueueBuilding();
         }
 
-        internal void RemoveFromQueueBuilding(Construction c, bool cancel)
+        internal void RemoveFromQueueBuilding(Construction c, bool constructed)
         {
             Assert(c.InConstructOrRepair);
             Assert(c.MaxDurability > 0);
@@ -1605,16 +1605,21 @@ namespace Fantasy_Kingdoms_Battle
             if (!queueBuilding.Remove(c))
                 DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
 
-            if (cancel)
+            if (!constructed)
             {
-                // Освобождаем потраченные ресурсы
-                ReturnResource(c.SpendResourcesForConstruct);
-                c.SpendResourcesForConstruct = null;
+                // Если сооружение еще не начинали строить, только возвращаем ресурсы
+                if (c.CurrentDurability == 0)
+                {
+                    // Освобождаем потраченные ресурсы
+                    ReturnResource(c.SpendResourcesForConstruct);
+                    c.SpendResourcesForConstruct = null;
+                    c.InConstructOrRepair = false;
+                }
+
+                c.DaysConstructLeft = 0;
             }
 
             c.AddConstructionPointByDay = 0;
-            c.DaysConstructLeft = 0;
-            c.InConstructOrRepair = false;
         }
         
         // Перестройка очереди строительства
