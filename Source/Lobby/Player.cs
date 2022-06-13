@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        private List<CellMenuConstructionLevelUp> queueBuilding = new List<CellMenuConstructionLevelUp>();// Очередь строительства
+        private List<Construction> queueBuilding = new List<Construction>();// Очередь строительства
         private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby)
@@ -1575,15 +1575,21 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddToQueueBuilding(CellMenuConstructionLevelUp cell)
+        internal void AddToQueueBuilding(Construction c)
+        {
+            queueBuilding.Add(c);
+        }
+
+        internal void RemoveFromQueueBuilding(Construction c)
+        {
+            if (!queueBuilding.Remove(c))
+                DoException($"Не удалось удалить {c.ID} из очереди строительства");
+        }
+        
+        private void RebuildQueueBuilding()
         {
 
         }
-
-        internal void RemoveFromQueueBuilding(CellMenuConstructionLevelUp cell)
-        {
-
-        }           
     }
 
     internal sealed class UnitOfQueueForBuy
