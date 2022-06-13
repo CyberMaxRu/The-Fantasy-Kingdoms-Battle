@@ -1596,7 +1596,7 @@ namespace Fantasy_Kingdoms_Battle
             RebuildQueueBuilding();
         }
 
-        internal void RemoveFromQueueBuilding(Construction c)
+        internal void RemoveFromQueueBuilding(Construction c, bool cancel)
         {
             Assert(c.InConstructOrRepair);
             Assert(c.MaxDurability > 0);
@@ -1605,18 +1605,20 @@ namespace Fantasy_Kingdoms_Battle
             if (!queueBuilding.Remove(c))
                 DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
 
-            // Освобождаем потраченные ресурсы
-            ReturnResource(c.SpendResourcesForConstruct);
-            c.SpendResourcesForConstruct = null;
+            if (cancel)
+            {
+                // Освобождаем потраченные ресурсы
+                ReturnResource(c.SpendResourcesForConstruct);
+                c.SpendResourcesForConstruct = null;
+            }
+
             c.AddConstructionPointByDay = 0;
             c.DaysConstructLeft = 0;
             c.InConstructOrRepair = false;
-
-            RebuildQueueBuilding();
         }
         
         // Перестройка очереди строительства
-        private void RebuildQueueBuilding()
+        internal void RebuildQueueBuilding()
         {
             // Получаем все очки строительства и начинаем их распределять
             int restCP = ConstructionPoints;

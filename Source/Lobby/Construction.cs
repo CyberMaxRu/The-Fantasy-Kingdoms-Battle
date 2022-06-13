@@ -785,8 +785,8 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentDurability += AddConstructionPointByDay;
                 if (CurrentDurability == MaxDurability)
                 {
+                    Player.RemoveFromQueueBuilding(this, false);
                     Build(true);
-                    RemoveEntityFromQueueProcessing(CellMenuBuildOrLevelUp);
                 }
             }
         }
@@ -1628,7 +1628,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CancelBuilding()
         {
-            Player.RemoveFromQueueBuilding(this);
+            Player.RemoveFromQueueBuilding(this, true);
+            Player.RebuildQueueBuilding();
         }
 
         internal void TuneConstructAfterCreate()
