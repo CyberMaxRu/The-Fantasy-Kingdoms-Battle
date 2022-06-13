@@ -42,25 +42,25 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.Settings.ShowTypeCellMenu && (DaysLeft == 0) ? GetTextForLevel() : "";
         }
 
-        internal override string GetDaysExecuting()
+        internal override int GetDaysExecuting()
         {
             if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
-                return "";
+                return 0;
 
             if (InstantExecute())
-                return "";
+                return 0;
 
             if (Descriptor.CreatedEntity is null)
-                return "";
+                return 0;
 
             if (DaysLeft > 0)
-                return "";
+                return 0;
 
             //int days = Descriptor.CreatedEntity.GetCreating().DaysProcessing;
             //if (days > 1)
             //    return (days - 1).ToString();
 
-            return "";
+            return 0;
         }
 
         protected virtual string GetTextForLevel() => "";
@@ -350,7 +350,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForConstructed { get; set; }// Дней на завершение строительства
 
-        internal override string GetDaysExecuting() => DaysForConstructed == 0 ? "" : DaysForConstructed.ToString();
+        internal override int GetDaysExecuting() => DaysForConstructed;
 
         internal override void Execute()
         {
