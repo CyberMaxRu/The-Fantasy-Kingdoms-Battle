@@ -83,6 +83,7 @@ namespace Fantasy_Kingdoms_Battle
             UpdateSelectedColor();
         }
 
+        // Конструктор для сооружений, которые создаются в процессе игры
         public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(l, p.Lobby)
         {
             Player = p;
