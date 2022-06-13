@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool CheckRequirements()
         {
             // Сначала проверяем, построено ли здание
-            if (Construction.TypeConstruction.IsInternalConstruction)
+            if (Construction.Descriptor.IsInternalConstruction)
                 if (ConstructionMustMeConstructed())
                     if (Construction.Level == 0)
                         return false;

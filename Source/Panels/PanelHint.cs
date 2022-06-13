@@ -791,7 +791,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (owner is Item i)
                     source = i.Descriptor.Name;
                 else if (owner is Construction c)
-                    source = c.TypeConstruction.Name + (c.TypeConstruction.MaxLevel > 1 ? $" ({c.Level} ур.)" : "");
+                    source = c.Descriptor.Name + (c.Descriptor.MaxLevel > 1 ? $" ({c.Level} ур.)" : "");
                 else if (owner is Creature crt)
                     source = crt.TypeCreature.Name;
                 Debug.Assert(source != null);

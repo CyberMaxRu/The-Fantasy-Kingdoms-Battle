@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(b.IsInternalConstruction);
 
             Player = p;
-            TypeConstruction = b;
+            Descriptor = b;
             DaysConstructLeft = 0;
             PlayerIsOwner = true;
             PlayerCanOwn = true;
@@ -55,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
         public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeConstruction, l.Lobby)
         {
             Player = l.Player;
-            TypeConstruction = ls.TypeConstruction;
+            Descriptor = ls.TypeConstruction;
             Location = l;
             DaysConstructLeft = 0;
             PlayerIsOwner = ls.Own;
@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
 
             TuneConstructionByCreate();
 
-            Level = TypeConstruction.DefaultLevel;
+            Level = Descriptor.DefaultLevel;
             if (Level > 0)
             {
                 InitBuild();
@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
         public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(l, p.Lobby)
         {
             Player = p;
-            TypeConstruction = l;
+            Descriptor = l;
             X = x;
             Y = y;
             Location = location;
@@ -97,14 +97,14 @@ namespace Fantasy_Kingdoms_Battle
             InitialQuantityBaseResources = initQ;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
-            Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External) || (TypeConstruction.Category == CategoryConstruction.Temple)
-                || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
+            Debug.Assert((Descriptor.Category == CategoryConstruction.Lair) || (Descriptor.Category == CategoryConstruction.External) || (Descriptor.Category == CategoryConstruction.Temple)
+                || (Descriptor.Category == CategoryConstruction.Place) || (Descriptor.Category == CategoryConstruction.BasePlace) || (Descriptor.Category == CategoryConstruction.ElementLandscape));
 
             Debug.Assert(level <= 1);
             if (level == 1)
             {
                 Build(false);
-                if (TypeConstruction.Levels[1].GetCreating() != null)
+                if (Descriptor.Levels[1].GetCreating() != null)
                     DaysConstructLeft = 0;// TypeConstruction.Levels[1].GetCreating().DaysProcessing;
                 else
                     DaysConstructLeft = 0;
@@ -120,7 +120,7 @@ namespace Fantasy_Kingdoms_Battle
             UpdateSelectedColor();
         }
 
-        internal DescriptorConstruction TypeConstruction { get; }
+        internal new DescriptorConstruction Descriptor { get; }// Описатель сооружения
         internal bool PlayerIsOwner { get; private set; }// Игрок - владелец сооружения
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
         internal bool IsEnemy { get; private set; }// Это сооружение враждебно
@@ -137,7 +137,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxDurability { get; private set; }// Максимальная прочность сооружения
 
         //
-        internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }// Казна гильдии
+        internal int Gold { get => gold; set { Debug.Assert(Descriptor.HasTreasury); gold = value; } }// Казна гильдии
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal Player Player { get; }
 
@@ -220,13 +220,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (InitialQuantityBaseResources != null)
                 {
-                    MiningBaseResources = TypeConstruction.Levels[Level].Mining != null;
+                    MiningBaseResources = Descriptor.Levels[Level].Mining != null;
 
                     for (int i = 0; i < InitialQuantityBaseResources.Count; i++)
                     {
                         if (InitialQuantityBaseResources[i].Quantity > 0)
                         {
-                            int coefMining = TypeConstruction.Levels[Level].Mining != null ? TypeConstruction.Levels[Level].Mining[i] : 10;
+                            int coefMining = Descriptor.Levels[Level].Mining != null ? Descriptor.Levels[Level].Mining[i] : 10;
                             int quantity = Convert.ToInt32(InitialQuantityBaseResources[i].Quantity * coefMining / 10);
                             Debug.Assert(quantity > 0);
                             BaseResources[i].Quantity = quantity;
@@ -235,14 +235,14 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    Debug.Assert(TypeConstruction.Levels[Level].Mining is null);
+                    Debug.Assert(Descriptor.Levels[Level].Mining is null);
 
-                    if (TypeConstruction.Levels[Level].IncomeResources != null)
+                    if (Descriptor.Levels[Level].IncomeResources != null)
                     {
                         ProvideBaseResources = true;
                         int q = 0;
 
-                        foreach (BaseResource br in TypeConstruction.Levels[Level].IncomeResources)
+                        foreach (BaseResource br in Descriptor.Levels[Level].IncomeResources)
                         {
                             BaseResources[br.Descriptor.Number].Quantity = br.Quantity;
                             q += br.Quantity;
@@ -256,8 +256,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void InitBuild()
         {
-            MaxDurability = TypeConstruction.Levels[Level].Durability;
-            CurrentDurability = TypeConstruction.Levels[Level].Durability;
+            MaxDurability = Descriptor.Levels[Level].Durability;
+            CurrentDurability = Descriptor.Levels[Level].Durability;
             //DaysConstructLeft = Lobby.CounterDay;
         }
 
@@ -266,27 +266,27 @@ namespace Fantasy_Kingdoms_Battle
             if (!Lobby.InPrepareTurn && (Lobby.CurrentPlayer?.GetTypePlayer() == TypePlayer.Human))
                 Program.formMain.PlayConstructionComplete();
 
-            if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
+            if ((Descriptor.Category != CategoryConstruction.Lair) && (Descriptor.Category != CategoryConstruction.ElementLandscape))
             {
-                Debug.Assert(Level < TypeConstruction.MaxLevel);
+                Debug.Assert(Level < Descriptor.MaxLevel);
                 //Debug.Assert(CheckRequirements());
                 //Debug.Assert(Player.BaseResources.ResourcesEnough(CostBuyOrUpgrade()));
 
-                Player.AddGreatness(TypeConstruction.Levels[Level + 1].GreatnessByConstruction);
+                Player.AddGreatness(Descriptor.Levels[Level + 1].GreatnessByConstruction);
 
                 if (Level > 0)
                 {
                     // Убираем перки от сооружения
-                    foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
+                    foreach (DescriptorPerk dp in Descriptor.Levels[Level].ListPerks)
                     {
                         Debug.Assert(dp != null, $"У сооружения {GetName()} уровня {Level} перк ссылается на null");
                         Player.RemovePerkFromConstruction(this, dp);
                     }
 
                     // Убираем товар посещения
-                    if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+                    if (Descriptor.Levels[Level].DescriptorVisit != null)
                     {
-                        RemoveProduct(TypeConstruction.Levels[Level].DescriptorVisit);
+                        RemoveProduct(Descriptor.Levels[Level].DescriptorVisit);
                     }
                 }
             }
@@ -303,7 +303,7 @@ namespace Fantasy_Kingdoms_Battle
             InitBuild();
             CreateProducts();
 
-            if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
+            if ((Descriptor.Category != CategoryConstruction.Lair) && (Descriptor.Category != CategoryConstruction.ElementLandscape))
             {
                 // Убираем операцию постройки из меню
                 CellMenuConstruction cmBuild = null;
@@ -332,19 +332,19 @@ namespace Fantasy_Kingdoms_Battle
 
             // Инициализируем удовлетворяемые потребности
             SatisfactionNeeds = new int[FormMain.Descriptors.NeedsCreature.Count];
-            if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+            if (Descriptor.Levels[Level].DescriptorVisit != null)
             {
-                foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].DescriptorVisit.ListNeeds)
+                foreach ((DescriptorNeed, int) need in Descriptor.Levels[Level].DescriptorVisit.ListNeeds)
                 {
                     SatisfactionNeeds[need.Item1.Index] = need.Item2;
                 }
             }
 
             //
-            Properties = new EntityProperties(this, TypeConstruction.Levels[Level].Properties);
-            if (TypeConstruction.Levels[Level].Properties != null)
+            Properties = new EntityProperties(this, Descriptor.Levels[Level].Properties);
+            if (Descriptor.Levels[Level].Properties != null)
             {
-                MainPerk = new Perk(this, TypeConstruction.Levels[Level].Properties);
+                MainPerk = new Perk(this, Descriptor.Levels[Level].Properties);
                 Perks.Add(MainPerk);
             }
             
@@ -362,15 +362,15 @@ namespace Fantasy_Kingdoms_Battle
 
         private void AddVisit()
         {
-            Debug.Assert(TypeConstruction.Levels[Level].DescriptorVisit != null);
-            ConstructionVisitSimple cpVisit = new ConstructionVisitSimple(this, TypeConstruction.Levels[Level].DescriptorVisit);
+            Debug.Assert(Descriptor.Levels[Level].DescriptorVisit != null);
+            ConstructionVisitSimple cpVisit = new ConstructionVisitSimple(this, Descriptor.Levels[Level].DescriptorVisit);
             CurrentVisit = cpVisit;
             AddVisit(cpVisit);
         }
 
         private void CreateProducts()
         {
-            foreach (DescriptorSmallEntity se in TypeConstruction.Levels[Level].Extensions)
+            foreach (DescriptorSmallEntity se in Descriptor.Levels[Level].Extensions)
             {
                 if (se is DescriptorConstructionExtension dce)
                     AddExtension(new ConstructionExtension(this, dce));
@@ -390,7 +390,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddPerksToPlayer()
         {
-            foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
+            foreach (DescriptorPerk dp in Descriptor.Levels[Level].ListPerks)
                 Player.AddPerkFromConstruction(this, dp);
 
             Player.RecalcPerksHeroes();
@@ -416,7 +416,7 @@ namespace Fantasy_Kingdoms_Battle
             // Рисуем содержимое ячеек
             if (ComponentObjectOfMap.Visible)
             {
-                Debug.Assert(TypeConstruction != null);
+                Debug.Assert(Descriptor != null);
 
                 ValidateResearches();
                 FillResearches(menu);
@@ -481,26 +481,26 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CanLevelUp()
         {
-            return Level < TypeConstruction.MaxLevel;
+            return Level < Descriptor.MaxLevel;
         }
 
         internal ListBaseResources CostBuyOrUpgrade()
         {
-            return CanLevelUp() == true ? TypeConstruction.Levels[Level + 1].GetCreating().CostResources : null;
+            return CanLevelUp() == true ? Descriptor.Levels[Level + 1].GetCreating().CostResources : null;
         }
 
         internal bool CheckLevelRequirements(int level)
         {
             // При постройке храма из меню Святой земли, сюда прилетает 2 уровень
-            if (TypeConstruction.MaxLevel < level)
+            if (Descriptor.MaxLevel < level)
                 return false;
 
             // Сначала проверяем наличие золота
-            if (!Player.CheckRequiredResources(TypeConstruction.Levels[level].GetCreating().CostResources))
+            if (!Player.CheckRequiredResources(Descriptor.Levels[level].GetCreating().CostResources))
                 return false;
 
             // Проверяем наличие очков строительства
-            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[level].GetCreating().ConstructionPoints(Player)))
+            if (!Player.CheckRequireBuilders(Descriptor.Levels[level].GetCreating().ConstructionPoints(Player)))
                 return false;
 
             // Проверяем, что нет события или турнира
@@ -510,14 +510,14 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем требования к зданиям
-            return Player.CheckRequirements(TypeConstruction.Levels[level].GetCreating().Requirements);
+            return Player.CheckRequirements(Descriptor.Levels[level].GetCreating().Requirements);
         }
 
         internal List<TextRequirement> GetTextRequirements(int level)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            Player.TextRequirements(TypeConstruction.Levels[level].GetCreating().Requirements, list);
+            Player.TextRequirements(Descriptor.Levels[level].GetCreating().Requirements, list);
 
             if (CurrentMassEvent != null)
                 list.Add(new TextRequirement(false, "В сооружении идет мероприятие"));
@@ -535,57 +535,57 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int IncomeForLevel(int level)
         {
-            return TypeConstruction.Levels[level].IncomeResources != null ? TypeConstruction.Levels[level].IncomeResources.ValueGold() : 0;
+            return Descriptor.Levels[level].IncomeResources != null ? Descriptor.Levels[level].IncomeResources.ValueGold() : 0;
         }
 
         internal int DayBuildingForLevel(int level)
         {
-            return TypeConstruction.Levels[level].GetCreating().DaysProcessing;
+            return Descriptor.Levels[level].GetCreating().DaysProcessing;
         }
 
         internal int GreatnesAddForLevel(int level)
         {
-            return TypeConstruction.Levels[level].GreatnessByConstruction;
+            return Descriptor.Levels[level].GreatnessByConstruction;
         }
 
         internal int GreatnesPerDayForLevel(int level)
         {
-            return TypeConstruction.Levels[level].GreatnessPerDay;
+            return Descriptor.Levels[level].GreatnessPerDay;
         }
 
         internal int BuildersPerDayForLevel(int level)
         {
-            return TypeConstruction.Levels[level].BuildersPerDay;
+            return Descriptor.Levels[level].BuildersPerDay;
         }
 
         internal int IncomeNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? IncomeForLevel(Level + 1) : 0;
+            return Level < Descriptor.MaxLevel ? IncomeForLevel(Level + 1) : 0;
         }
 
         internal int GreatnessPerDay()
         {
-            return Level > 0 ? TypeConstruction.Levels[Level].GreatnessPerDay : 0;
+            return Level > 0 ? Descriptor.Levels[Level].GreatnessPerDay : 0;
         }
 
         internal int BuildersPerDay()
         {
-            return Level > 0 ? TypeConstruction.Levels[Level].BuildersPerDay : 0;
+            return Level > 0 ? Descriptor.Levels[Level].BuildersPerDay : 0;
         }
 
         internal int GreatnessAddNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? GreatnesAddForLevel(Level + 1) : 0;
+            return Level < Descriptor.MaxLevel ? GreatnesAddForLevel(Level + 1) : 0;
         }
 
         internal int GreatnessPerDayNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? GreatnesPerDayForLevel(Level + 1) : 0;
+            return Level < Descriptor.MaxLevel ? GreatnesPerDayForLevel(Level + 1) : 0;
         }
 
         internal int BuildersPerDayNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? BuildersPerDayForLevel(Level + 1) : 0;
+            return Level < Descriptor.MaxLevel ? BuildersPerDayForLevel(Level + 1) : 0;
         }
 
         internal bool AllowHire()
@@ -608,10 +608,10 @@ namespace Fantasy_Kingdoms_Battle
             List<TextRequirement> list = new List<TextRequirement>();
 
             if (Level == 0)
-                list.Add(new TextRequirement(false, TypeConstruction.GetTextConstructionNotBuilded()));
+                list.Add(new TextRequirement(false, Descriptor.GetTextConstructionNotBuilded()));
 
             if ((Level > 0) && (Heroes.Count == MaxHeroes()))
-                list.Add(new TextRequirement(false, TypeConstruction.GetTextConstructionIsFull()));
+                list.Add(new TextRequirement(false, Descriptor.GetTextConstructionIsFull()));
 
             if (MaxHeroesAtPlayer())
                 list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев в королевстве"));
@@ -658,7 +658,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int MaxHeroes()
         {
-            return Level > 0 ? TypeConstruction.Levels[Level].MaxInhabitant : 0;
+            return Level > 0 ? Descriptor.Levels[Level].MaxInhabitant : 0;
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -668,12 +668,12 @@ namespace Fantasy_Kingdoms_Battle
             if (Player == Player.Lobby.CurrentPlayer)
             {
 
-                if (TypeConstruction.IsOurConstruction)
+                if (Descriptor.IsOurConstruction)
                 {
                     panelHint.AddStep2Entity(this);
-                    if (!((Level == 1) && (TypeConstruction.MaxLevel == 1)))
+                    if (!((Level == 1) && (Descriptor.MaxLevel == 1)))
                         panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
-                    panelHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
+                    panelHint.AddStep5Description(Descriptor.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     panelHint.AddStep6Income(Income());
                     panelHint.AddStep8Greatness(0, GreatnessPerDay());
@@ -692,12 +692,12 @@ namespace Fantasy_Kingdoms_Battle
                     else
                     {
                         panelHint.AddStep2Entity(this);
-                        panelHint.AddStep5Description(TypeConstruction.Description);
+                        panelHint.AddStep5Description(Descriptor.Description);
 
-                        if (TypeConstruction.Reward != null)
+                        if (Descriptor.Reward != null)
                         {
-                            panelHint.AddStep7Reward(TypeConstruction.Reward.Cost.ValueGold());
-                            panelHint.AddStep8Greatness(TypeConstruction.Reward.Greatness, 0);
+                            panelHint.AddStep7Reward(Descriptor.Reward.Cost.ValueGold());
+                            panelHint.AddStep8Greatness(Descriptor.Reward.Greatness, 0);
                         }
                     }
                 }
@@ -720,7 +720,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Destroyed);
 
-            if (TypeConstruction.IsOurConstruction)
+            if (Descriptor.IsOurConstruction)
             {
                 Lobby.Layer.panelConstructionInfo.Visible = true;
                 Lobby.Layer.panelConstructionInfo.Entity = this;
@@ -745,7 +745,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Lobby.Turn > 1)
                 {
-                    if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
+                    if (Descriptor.Levels[Level].GreatnessPerDay > 0)
                         Player.AddGreatness(GreatnessPerDay());
                 }
 
@@ -774,7 +774,7 @@ namespace Fantasy_Kingdoms_Battle
                     cm.PrepareNewDay();
                 }
 
-                if (TypeConstruction.ID != FormMain.Config.IDCityGraveyard)
+                if (Descriptor.ID != FormMain.Config.IDCityGraveyard)
                 {
                     foreach (Hero h in Heroes)
                     {
@@ -815,7 +815,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            if (TypeConstruction.IsInternalConstruction)
+            if (Descriptor.IsInternalConstruction)
             {
                 // Если нет требований, то по умолчанию остается только одно - сооружение должно быть построено
                 // Если есть, то не надо писать, что сооружение не построено - иначе не видно, какие там требования
@@ -839,7 +839,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(TypeLair.Monsters.Count > 0);
 
             Monster lm;
-            foreach (DescriptorConstructionLevelLair mll in TypeConstruction.Monsters)
+            foreach (DescriptorConstructionLevelLair mll in Descriptor.Monsters)
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
@@ -862,7 +862,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void AssertNotHidden()
         {
-            Debug.Assert(ComponentObjectOfMap.Visible, $"Логово {TypeConstruction.ID} игрока {Player.GetName()} скрыто.");
+            Debug.Assert(ComponentObjectOfMap.Visible, $"Логово {Descriptor.ID} игрока {Player.GetName()} скрыто.");
         }
 
         internal ListBaseResources CostAttack()
@@ -893,7 +893,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ComponentObjectOfMap.Visible)
             {
                 if (NextLocation is null)
-                    return TypeConstruction.Name;
+                    return Descriptor.Name;
                 else
                     return "Путь в " + NextLocation.Settings.Name;
             }
@@ -901,7 +901,7 @@ namespace Fantasy_Kingdoms_Battle
                 return "Неизвестное место";
         }
 
-        internal override string GetTypeEntity() => TypeConstruction.TypeConstruction.Name;
+        internal override string GetTypeEntity() => Descriptor.TypeConstruction.Name;
 
         internal Color GetColorCaption()
         {
@@ -952,18 +952,18 @@ namespace Fantasy_Kingdoms_Battle
 
             if (!ComponentObjectOfMap.Visible)
                 return TypeFlag.Scout;
-            if (TypeConstruction.Category == CategoryConstruction.Lair)
+            if (Descriptor.Category == CategoryConstruction.Lair)
                 return TypeFlag.Attack;
-            if (TypeConstruction.Category == CategoryConstruction.External)
+            if (Descriptor.Category == CategoryConstruction.External)
                 return TypeFlag.Defense;
-            if (TypeConstruction.ID == FormMain.Config.IDConstructionCastle)
+            if (Descriptor.ID == FormMain.Config.IDConstructionCastle)
                 return TypeFlag.Battle;
             return TypeFlag.None;
         }
 
         internal void AttackToCastle()
         {
-            Debug.Assert(TypeConstruction.ID == FormMain.Config.IDConstructionCastle);
+            Debug.Assert(Descriptor.ID == FormMain.Config.IDConstructionCastle);
             ComponentObjectOfMap.TypeFlag = TypeFlag.Battle;
         }
 
@@ -978,10 +978,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Unhide(bool needNotice)
         {
-            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Guild);
-            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Economic);
-            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Temple);
-            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Military);
+            Debug.Assert(Descriptor.Category != CategoryConstruction.Guild);
+            Debug.Assert(Descriptor.Category != CategoryConstruction.Economic);
+            Debug.Assert(Descriptor.Category != CategoryConstruction.Temple);
+            Debug.Assert(Descriptor.Category != CategoryConstruction.Military);
             //Debug.Assert(TypeConstruction.Category != CategoryConstruction.External);
             Debug.Assert(!ComponentObjectOfMap.Visible);
             Debug.Assert(ComponentObjectOfMap.TypeFlag == TypeFlag.None);
@@ -1029,9 +1029,9 @@ namespace Fantasy_Kingdoms_Battle
             Destroy();
 
             // Ставим тип места, который должен быть после зачистки
-            Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
+            Debug.Assert(!(Descriptor.TypePlaceForConstruct is null));
 
-            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location, true, true, true, false, TypeNoticeForPlayer.None);
+            Construction pl = new Construction(Player, Descriptor.TypePlaceForConstruct, Descriptor.DefaultLevel, X, Y, Location, true, true, true, false, TypeNoticeForPlayer.None);
             pl.ComponentObjectOfMap.Visible = true;
             Location.Lairs.Add(pl);
         }
@@ -1111,26 +1111,26 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForBuildOrUpgrade(PanelHint panelHint, int requiredLevel)
         {
-            if (requiredLevel > TypeConstruction.MaxLevel)
+            if (requiredLevel > Descriptor.MaxLevel)
                 return;// Убрать это
             Debug.Assert(requiredLevel > 0);
-            Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
+            Debug.Assert(requiredLevel <= Descriptor.MaxLevel);
 
             panelHint.AddStep2Entity(this);
             panelHint.AddStep4Level(requiredLevel == 1 ? "Уровень 1" : $"Улучшить строение ({requiredLevel} ур.)");
-            panelHint.AddStep5Description(requiredLevel == 1 ? TypeConstruction.Description : "");
+            panelHint.AddStep5Description(requiredLevel == 1 ? Descriptor.Description : "");
             panelHint.AddStep6Income(IncomeForLevel(requiredLevel));
             panelHint.AddStep8Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
             panelHint.AddStep9PlusBuilders(BuildersPerDayForLevel(requiredLevel));
-            if (TypeConstruction.Levels[requiredLevel].DescriptorVisit != null)
+            if (Descriptor.Levels[requiredLevel].DescriptorVisit != null)
             {
-                panelHint.AddStep9Interest(TypeConstruction.Levels[requiredLevel].DescriptorVisit.Interest, false);
-                panelHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].DescriptorVisit.ListNeeds, false);
+                panelHint.AddStep9Interest(Descriptor.Levels[requiredLevel].DescriptorVisit.Interest, false);
+                panelHint.AddStep9ListNeeds(Descriptor.Levels[requiredLevel].DescriptorVisit.ListNeeds, false);
             }
             panelHint.AddStep10DaysBuilding(-1, DayBuildingForLevel(requiredLevel));
             panelHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
-            panelHint.AddStep12Gold(Player.BaseResources, TypeConstruction.Levels[requiredLevel].GetCreating().CostResources);
-            panelHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= TypeConstruction.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
+            panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
+            panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
 
         internal void PrepareHintForInhabitantCreatures(PanelHint panelHint)
@@ -1146,7 +1146,7 @@ namespace Fantasy_Kingdoms_Battle
                     pos++;
                 }
 
-                panelHint.AddStep2Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа");
+                panelHint.AddStep2Header(Descriptor.IsOurConstruction ? "Жители" : "Существа");
                 panelHint.AddStep5Description(list);
             }
             else
@@ -1160,7 +1160,7 @@ namespace Fantasy_Kingdoms_Battle
             if (NextLocation != null)
                 return NextLocation.GetImageIndex();
             else if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
-                return ComponentObjectOfMap.Visible ? TypeConstruction.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
+                return ComponentObjectOfMap.Visible ? Descriptor.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
             else
                 return FormMain.Config.Gui48_Battle;
         }
@@ -1172,13 +1172,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
 
-        internal override bool GetNormalImage() => (Level > 0) || (TypeConstruction.MaxLevel == 0);
+        internal override bool GetNormalImage() => (Level > 0) || (Descriptor.MaxLevel == 0);
 
         internal override string GetLevel()
         {
             AssertNotDestroyed();
 
-            return !ComponentObjectOfMap.Visible ? "" : Level == 0 ? "" : (Level == 1) && (TypeConstruction.MaxLevel == 1) ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
+            return !ComponentObjectOfMap.Visible ? "" : Level == 0 ? "" : (Level == 1) && (Descriptor.MaxLevel == 1) ? "" : Level < Descriptor.MaxLevel ? $"{Level}/{Descriptor.MaxLevel}" : Level.ToString();
         }
 
         internal override void Click(VCCell pe)
@@ -1199,7 +1199,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndexAvatar()
         {
-            return TypeConstruction.ImageIndex;
+            return Descriptor.ImageIndex;
         }
 
         internal List<ConstructionProduct> GetProducts(DescriptorCreature dc)
@@ -1351,17 +1351,17 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(entity != null);
 
             if (!ListEntities.Remove(entity))
-                Debug.Fail($"Не смог удалить сущность {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+                Debug.Fail($"Не смог удалить сущность {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
 
             if (entity is ConstructionExtension ce)
             {
                 if (!Extensions.Remove(ce))
-                    Debug.Fail($"Не смог удалить доп. сооружение {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+                    Debug.Fail($"Не смог удалить доп. сооружение {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
             }
             else if (entity is ConstructionResource cr)
             {
                 if (!Resources.Remove(cr))
-                    Debug.Fail($"Не смог удалить ресурс {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+                    Debug.Fail($"Не смог удалить ресурс {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
             }
             else if (entity is ConstructionEvent cev)
             {
@@ -1378,12 +1378,12 @@ namespace Fantasy_Kingdoms_Battle
             else if (entity is ConstructionAbility ca)
             {
                 if (!Abilities.Remove(ca))
-                    Debug.Fail($"Не смог удалить умение {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+                    Debug.Fail($"Не смог удалить умение {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
             }
             else if (entity is ConstructionSpell csp)
             {
                 if (!Spells.Remove(csp))
-                    Debug.Fail($"Не смог удалить заклинание {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+                    Debug.Fail($"Не смог удалить заклинание {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
 
                 if (!Player.ConstructionSpells.Remove(csp))
                     Debug.Fail($"Не смог удалить заклинание {entity.Descriptor.ID} у игрока");
@@ -1391,7 +1391,7 @@ namespace Fantasy_Kingdoms_Battle
             else if (entity is ConstructionService cs)
             {
                 if (!Services.Remove(cs))
-                    Debug.Fail($"Не смог удалить услугу {entity.Descriptor.ID} из сооружения {TypeConstruction.ID}");
+                    Debug.Fail($"Не смог удалить услугу {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
             }
             else if (entity is ConstructionProduct cp)
             {
@@ -1459,7 +1459,7 @@ namespace Fantasy_Kingdoms_Battle
             if (GetInterest() == 0)// Возможно, это ошибка. Сооружение дает плюс, перк дает минус, в итоге ноль
                 return "";
 
-            string text = "Сооружение: " + Utils.DecIntegerBy10(TypeConstruction.Levels[Level].DescriptorVisit.Interest, false);
+            string text = "Сооружение: " + Utils.DecIntegerBy10(Descriptor.Levels[Level].DescriptorVisit.Interest, false);
 
             foreach (ConstructionExtension cp in Extensions)
             {
@@ -1563,7 +1563,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(gold > 0);
             Debug.Assert(Level > 0);
 
-            return gold * TypeConstruction.Levels[Level].Tax / 100;
+            return gold * Descriptor.Levels[Level].Tax / 100;
         }
 
         internal void TuneLinks()
@@ -1598,10 +1598,10 @@ namespace Fantasy_Kingdoms_Battle
         // Настройка сооружения при создании
         private void TuneConstructionByCreate()
         {
-            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
+            foreach (DescriptorCellMenu d in Descriptor.CellsMenu)
                 Researches.Add(CellMenuConstruction.Create(this, d));
 
-            if (TypeConstruction.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
+            if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
                 CreateMonsters();
 
             Player.AddConstruction(this);
@@ -1611,7 +1611,7 @@ namespace Fantasy_Kingdoms_Battle
         // Вызывается у городских сооружений сразу
         internal void PrepareBuilding()
         {
-            MaxDurability = TypeConstruction.Levels[Level + 1].Durability;
+            MaxDurability = Descriptor.Levels[Level + 1].Durability;
         }
 
         internal void StartBuilding()

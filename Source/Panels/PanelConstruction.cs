@@ -172,7 +172,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnQueue.Visible = false;
 
-            if (Construction.ComponentObjectOfMap.Visible && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
+            if (Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
             {
                 lblRewardGold.Visible = false;
                 lblRewardGreatness.Visible = false;
@@ -181,7 +181,7 @@ namespace Fantasy_Kingdoms_Battle
                 pbDurability.Max = Construction.MaxDurability;
                 pbDurability.Position = Construction.CurrentDurability;
                 if (Construction.Level == 0)
-                    pbDurability.Text = Construction.TypeConstruction.Levels[1].Durability.ToString();
+                    pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
                 else if (Construction.CurrentDurability == Construction.MaxDurability)
                     pbDurability.Text = Construction.CurrentDurability.ToString();
                 else
@@ -233,7 +233,7 @@ namespace Fantasy_Kingdoms_Battle
                     lblGreatness.Image.ImageIsEnabled = Construction.Level > 0;
                 }
 
-                if (Construction.TypeConstruction.PlayerCanBuild)
+                if (Construction.Descriptor.PlayerCanBuild)
                 {
                     if (Construction.ListQueueProcessing.Count > 0)
                     {
@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         if (Construction.CanLevelUp())
                         {
-                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для улучшения.");
+                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
                             btnBuildOrUpgrade.Visible = true;
                             btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
@@ -254,7 +254,7 @@ namespace Fantasy_Kingdoms_Battle
                         }
                         else
                         {
-                            if (Construction.TypeConstruction.ID == FormMain.Config.IDHolyPlace)
+                            if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
                             {
                                 btnBuildOrUpgrade.Visible = true;
                                 btnBuildOrUpgrade.LowText = "";
@@ -270,7 +270,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         if (Construction.CellMenuBuildOrLevelUp != null)
                         {
-                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для постройки.");
+                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
                             btnBuildOrUpgrade.Visible = true;
                             btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
@@ -290,7 +290,7 @@ namespace Fantasy_Kingdoms_Battle
                 lblGreatness.Visible = false;
                 btnHeroes.Visible = false;
 
-                btnAction.Visible = !Construction.ComponentObjectOfMap.Visible || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
+                btnAction.Visible = !Construction.ComponentObjectOfMap.Visible || (Construction.Descriptor.Category == CategoryConstruction.Lair);
                 if (btnAction.Visible)
                 {
                     btnAction.ImageIsEnabled = true;// Construction.Player.ExistsFreeFlag();
@@ -333,16 +333,16 @@ namespace Fantasy_Kingdoms_Battle
                 if (btnAttackHeroes.Visible)
                     btnAttackHeroes.LowText = $"{Construction.ComponentObjectOfMap.ListHeroesForFlag.Count}/{Construction.ComponentObjectOfMap.MaxHeroesForFlag()}";
 
-                lblRewardGold.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Cost.ValueGold() > 0);
+                lblRewardGold.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Cost.ValueGold() > 0);
                 if (lblRewardGold.Visible)
                 {
-                    lblRewardGold.Text = Construction.TypeConstruction.Reward.Cost.ValueGold().ToString();
+                    lblRewardGold.Text = Construction.Descriptor.Reward.Cost.ValueGold().ToString();
                 }
 
-                lblRewardGreatness.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Greatness > 0);
+                lblRewardGreatness.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Greatness > 0);
                 if (lblRewardGreatness.Visible)
                 {
-                    lblRewardGreatness.Text = Construction.TypeConstruction.Reward.Greatness.ToString();
+                    lblRewardGreatness.Text = Construction.Descriptor.Reward.Greatness.ToString();
                 }
             }
 
@@ -385,7 +385,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             SelectThisConstruction(false);
 
-            if (Construction.TypeConstruction.ID == FormMain.Config.IDHolyPlace)
+            if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
                 return;
 
             Construction.CellMenuBuildOrLevelUp.Click();
@@ -404,8 +404,8 @@ namespace Fantasy_Kingdoms_Battle
             Visible = Construction != null;
             if (Visible)
             {
-                VisibleOur(Construction.TypeConstruction.IsOurConstruction);
-                VisibleEnemy(!Construction.TypeConstruction.IsOurConstruction);
+                VisibleOur(Construction.Descriptor.IsOurConstruction);
+                VisibleEnemy(!Construction.Descriptor.IsOurConstruction);
             }
 
             void VisibleOur(bool visible)

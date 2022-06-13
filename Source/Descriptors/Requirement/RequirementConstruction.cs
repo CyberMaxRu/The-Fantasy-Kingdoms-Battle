@@ -61,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override TextRequirement GetTextRequirement(Player p)
         {
-            return new TextRequirement(CheckRequirement(p), p.GetPlayerConstruction(construction).TypeConstruction.Name + (level > 1 ? " " + level + " уровня" : ""));
+            return new TextRequirement(CheckRequirement(p), p.GetPlayerConstruction(construction).Descriptor.Name + (level > 1 ? " " + level + " уровня" : ""));
         }
     }
 

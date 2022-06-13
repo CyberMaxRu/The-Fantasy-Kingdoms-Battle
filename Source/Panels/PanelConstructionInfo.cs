@@ -149,7 +149,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LblGold_ShowHint(object sender, EventArgs e)
         {
-            if (Construction.TypeConstruction.IsOurConstruction)
+            if (Construction.Descriptor.IsOurConstruction)
                 PanelHint.AddSimpleHint(Construction.Gold > 0 ? $"Золота в казне: {Construction.Gold}" : "Казна пуста");
             //Program.formMain.formHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
         }
@@ -172,11 +172,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            lblTypeConstruction.Text = Construction.TypeConstruction.TypeConstruction.Name;
+            lblTypeConstruction.Text = Construction.Descriptor.TypeConstruction.Name;
             imgIcon.Level = Construction.GetLevel();
             imgIcon.ImageIsEnabled = Construction.GetNormalImage();
 
-            if (Construction.TypeConstruction.HasTreasury)
+            if (Construction.Descriptor.HasTreasury)
             {
                 lblGold.Visible = true;
                 lblGold.Text = Construction.Gold.ToString();
@@ -205,7 +205,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawList(lblSectionAbilities, panelAbilities, Construction.Abilities);
             tabProducts.ArrangeControls();
 
-            if (Construction.TypeConstruction.Category != CategoryConstruction.Lair)
+            if (Construction.Descriptor.Category != CategoryConstruction.Lair)
             {
                 panelInhabitants.ApplyList(Construction.Heroes);
 

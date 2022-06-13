@@ -265,7 +265,7 @@ namespace Fantasy_Kingdoms_Battle
             ExtraLevelUp = 0;
             ExtraResearch = 0;
 
-            ConstructionPoints = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
+            ConstructionPoints = Castle.Descriptor.Levels[Castle.Level].BuildersPerDay;
             RestConstructionPoints = ConstructionPoints;
 
             // Начало хода у локации
@@ -521,8 +521,8 @@ namespace Fantasy_Kingdoms_Battle
                             // Победил игрок
                             pl.DoCapture();
 
-                            if (!pl.TypeConstruction.IsOurConstruction)
-                                LairCaptured(pl.TypeConstruction);
+                            if (!pl.Descriptor.IsOurConstruction)
+                                LairCaptured(pl.Descriptor);
                         }
                         else
                         {
@@ -537,7 +537,7 @@ namespace Fantasy_Kingdoms_Battle
                         throw new Exception("Неизвестный флаг: " + pl.ComponentObjectOfMap.TypeFlag.ToString());
 
                     if (this is PlayerHuman h)
-                        h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeConstruction, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
+                        h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.Descriptor, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
                 }
             }
         }
@@ -564,7 +564,7 @@ namespace Fantasy_Kingdoms_Battle
             int builded = 0;
             foreach (Construction c in Constructions)
             {
-                if ((c.TypeConstruction.TypeConstruction == typeConstruction) && c.ComponentObjectOfMap.Visible && (c.Level > 0))
+                if ((c.Descriptor.TypeConstruction == typeConstruction) && c.ComponentObjectOfMap.Visible && (c.Level > 0))
                     builded++;
             }
 
@@ -707,7 +707,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Construction pb in Constructions)
             {
-                if (pb.TypeConstruction == b)
+                if (pb.Descriptor == b)
                     return pb;
             }
 
@@ -715,7 +715,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (Construction c in l.Lairs)
                 {
-                    if (c.TypeConstruction == b)
+                    if (c.Descriptor == b)
                         return c;
                 }
             }
@@ -1105,16 +1105,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ApplyReward(Construction l)
         {
-            if (l.TypeConstruction.Reward != null)
+            if (l.Descriptor.Reward != null)
             {
-                ReceivedResource(l.TypeConstruction.Reward.Cost);
-                AddGreatness(l.TypeConstruction.Reward.Greatness);
+                ReceivedResource(l.Descriptor.Reward.Cost);
+                AddGreatness(l.Descriptor.Reward.Greatness);
             }
 
-            if (l.TypeConstruction.HiddenReward != null)
+            if (l.Descriptor.HiddenReward != null)
             {
-                ReceivedResource(l.TypeConstruction.HiddenReward.Cost);
-                AddGreatness(l.TypeConstruction.HiddenReward.Greatness);
+                ReceivedResource(l.Descriptor.HiddenReward.Cost);
+                AddGreatness(l.Descriptor.HiddenReward.Greatness);
             }
         }
 
@@ -1389,7 +1389,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (Construction c in Constructions)
             {
-                if (c.TypeConstruction.ID == ID)
+                if (c.Descriptor.ID == ID)
                     return c;
             }
 
@@ -1426,7 +1426,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(c.Level > 0);
 
             if (!listPerksFromConstruction.Remove((c, dp)))
-                throw new Exception($"Перк {dp.ID} сооружения {c.TypeConstruction.ID} не был в списке.");
+                throw new Exception($"Перк {dp.ID} сооружения {c.Descriptor.ID} не был в списке.");
 
             foreach (Hero h in CombatHeroes)
             {

@@ -768,9 +768,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SelectConstruction(Construction construction, int selectPage = -1)
         {
-            if (construction.TypeConstruction.Page != null)
+            if (construction.Descriptor.Page != null)
             {
-                pageControl.ActivatePage(pagesCapital[construction.TypeConstruction.Page.Index]);
+                pageControl.ActivatePage(pagesCapital[construction.Descriptor.Page.Index]);
             }
             else
             {
@@ -831,8 +831,8 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем сооружения
             foreach (Construction pb in lobby.CurrentPlayer.Constructions)
             {
-                if (pb.TypeConstruction.IsInternalConstruction && (pb.TypeConstruction.Category != CategoryConstruction.Temple))
-                    pb.TypeConstruction.Panel.Entity = pb;
+                if (pb.Descriptor.IsInternalConstruction && (pb.Descriptor.Category != CategoryConstruction.Temple))
+                    pb.Descriptor.Panel.Entity = pb;
             }
 
             // Показываем логова
