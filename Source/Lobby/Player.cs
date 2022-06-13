@@ -280,6 +280,7 @@ namespace Fantasy_Kingdoms_Battle
                 pc.PrepareNewDay();
             }
 
+            RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
             UpdateDaysConstructionForConstructions();
         }
 
@@ -1648,11 +1649,7 @@ namespace Fantasy_Kingdoms_Battle
                         restCP -= expenseCP;
 
                         // Вычисляем, сколько еще дней будет строиться сооружение
-                        int restCPAfterDay = c.MaxDurability - c.CurrentDurability - c.AddConstructionPointByDay;
-                        if (restCPAfterDay == 0)
-                            c.DaysConstructLeft = 1;
-                        else
-                            c.DaysConstructLeft = restCPAfterDay / ConstructionPoints + 1;
+                        c.DaysConstructLeft = CalcDaysForEndConstruction(c.CurrentDurability, c.MaxDurability);
                     }
                 }
                 else

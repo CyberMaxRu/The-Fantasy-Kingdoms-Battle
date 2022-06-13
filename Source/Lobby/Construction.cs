@@ -274,6 +274,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Level++;
             DayOfConstruction = Player.Lobby.CounterDay;
+            InConstructOrRepair = false;
 
             if (Level == 1)
             {
@@ -776,6 +777,16 @@ namespace Fantasy_Kingdoms_Battle
                     cm.Execute();
 
                     RemoveEntityFromQueueProcessing(cm);
+                }
+            }
+
+            if (InConstructOrRepair && (AddConstructionPointByDay > 0))
+            {
+                CurrentDurability += AddConstructionPointByDay;
+                if (CurrentDurability == MaxDurability)
+                {
+                    Build(true);
+                    RemoveEntityFromQueueProcessing(CellMenuBuildOrLevelUp);
                 }
             }
         }
