@@ -33,14 +33,8 @@ namespace Fantasy_Kingdoms_Battle
             TuneConstructionByCreate();
             PrepareBuilding();
 
-            Level = dc.DefaultLevel;
-            if (Level > 0)
-            {
-                InitBuild();
-                AddPerksToPlayer();
-                AddVisit();
-                CreateProducts();
-            }
+            if (dc.DefaultLevel == 1)
+                Build(false);
 
             // Восстановить
             //if (Construction.HasTreasury)
@@ -69,14 +63,8 @@ namespace Fantasy_Kingdoms_Battle
             if (ls.Resources != null)
                 InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
 
-            Level = Descriptor.DefaultLevel;
-            if (Level > 0)
-            {
-                InitBuild();
-                AddPerksToPlayer();
-                AddVisit();
-                CreateProducts();
-            }
+            if (Descriptor.DefaultLevel == 1)
+                Build(false);
 
             TuneConstructAfterCreate();
         }
@@ -85,6 +73,9 @@ namespace Fantasy_Kingdoms_Battle
         public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(dc, p.Lobby)
         {
             Assert(!dc.IsInternalConstruction);
+            Assert((dc.Category == CategoryConstruction.Lair) || (dc.Category == CategoryConstruction.External) || (dc.Category == CategoryConstruction.Temple)
+                || (dc.Category == CategoryConstruction.Place) || (dc.Category == CategoryConstruction.BasePlace) || (dc.Category == CategoryConstruction.ElementLandscape));
+            Assert(level <= 1);
 
             Player = p;
             Descriptor = dc;
@@ -100,18 +91,8 @@ namespace Fantasy_Kingdoms_Battle
 
             TuneConstructionByCreate();
 
-            Debug.Assert((Descriptor.Category == CategoryConstruction.Lair) || (Descriptor.Category == CategoryConstruction.External) || (Descriptor.Category == CategoryConstruction.Temple)
-                || (Descriptor.Category == CategoryConstruction.Place) || (Descriptor.Category == CategoryConstruction.BasePlace) || (Descriptor.Category == CategoryConstruction.ElementLandscape));
-
-            Debug.Assert(level <= 1);
             if (level == 1)
-            {
                 Build(false);
-                if (Descriptor.Levels[1].GetCreating() != null)
-                    DaysConstructLeft = 0;// TypeConstruction.Levels[1].GetCreating().DaysProcessing;
-                else
-                    DaysConstructLeft = 0;
-            }
 
             if (typeNotice != TypeNoticeForPlayer.None)
                 Player.AddNoticeForPlayer(this, typeNotice);
@@ -347,8 +328,6 @@ namespace Fantasy_Kingdoms_Battle
                 Perks.Add(MainPerk);
             }
             
-            UpdateCurrentIncomeResources();// Настраиваем добычу базовых ресурсов
-
             Initialize();
 
             if (needNotice)

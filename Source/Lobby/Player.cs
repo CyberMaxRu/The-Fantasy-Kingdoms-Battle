@@ -1667,6 +1667,12 @@ namespace Fantasy_Kingdoms_Battle
             Constructions.Add(c);
         }
 
+        // Обновление количества дней постройки у сооружений
+        internal void UpdateDaysConstructionForConstructions()
+        {
+
+        }
+
         internal override int GetNextNumber() => ++sequenceNumber;
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
     }
