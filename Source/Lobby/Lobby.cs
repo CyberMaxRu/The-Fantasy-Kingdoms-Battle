@@ -363,6 +363,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Делаем начало хода
             Turn++;
+            TimeOfDay = descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1];
             if (TimeOfDay.Index < descriptors.TimesOfDay.Count - 1)
                 TimeOfDay = descriptors.TimesOfDay[TimeOfDay.Index + 1];
             else
