@@ -197,6 +197,34 @@ namespace Fantasy_Kingdoms_Battle
                 lblRewardGreatness.Visible = false;
 
                 pbDurability.Visible = true;
+                pbDurability.Max = Construction.MaxDurability;
+                pbDurability.Position = Construction.CurrentDurability;
+                if (Construction.Level == 0)
+                    pbDurability.Text = Construction.TypeConstruction.Levels[1].Durability.ToString();
+                else if (Construction.CurrentDurability == Construction.MaxDurability)
+                    pbDurability.Text = Construction.CurrentDurability.ToString();
+                else
+                    pbDurability.Text = Construction.CurrentDurability.ToString() + "/" + Construction.MaxDurability.ToString();
+
+                if (Construction.DayConstructed == -1)
+                {
+                    pbDurability.Color = Color.PaleTurquoise;
+                    pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ConstructionPointAppled;
+                }
+                else
+                {
+                    Debug.Assert(Construction.MaxDurability > 0);
+
+                    int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
+                    if (percent >= 60)
+                        pbDurability.Color = Color.Green;
+                    else if (percent >= 50)
+                        pbDurability.Color = Color.Yellow;
+                    else
+                        pbDurability.Color = Color.Red;
+
+                    pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ConstructionPointAppled;
+                }
 
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
                 if (income > 0)
