@@ -1660,6 +1660,13 @@ namespace Fantasy_Kingdoms_Battle
             RestConstructionPoints = restCP;
         }
 
+        internal void AddConstruction(Construction c)
+        {
+            Assert(Constructions.IndexOf(c) == -1);
+
+            Constructions.Add(c);
+        }
+
         internal override int GetNextNumber() => ++sequenceNumber;
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
     }

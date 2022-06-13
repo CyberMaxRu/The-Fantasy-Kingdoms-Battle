@@ -27,13 +27,9 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIsOwner = true;
             PlayerCanOwn = true;
             IsEnemy = false;
-            IDPathToLocation = "";
-
-            // Настраиваем исследования 
-            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
-                Researches.Add(CellMenuConstruction.Create(this, d));
-
             ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
+
+            TuneConstructionByCreate();
 
             Level = b.DefaultLevel;
             if (Level > 0)
@@ -43,17 +39,12 @@ namespace Fantasy_Kingdoms_Battle
                 AddVisit();
                 CreateProducts();
             }
+            else
+                PrepareBuilding();
 
-            // Убрать эту проверку после настройки всех логов
-            if (TypeConstruction.Monsters.Count > 0)
-                CreateMonsters();
-
-            p.Constructions.Add(this);
             // Восстановить
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;
-
-            PrepareBuilding();
 
             UpdateCurrentIncomeResources();
             TuneCellMenuBuildOrUpgrade();
@@ -67,12 +58,12 @@ namespace Fantasy_Kingdoms_Battle
             X = x;
             Y = y;
             Location = location;
-            ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
             DaysConstructLeft = 0;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
             IsEnemy = isEnemy;
             InitialQuantityBaseResources = initQ;
+            ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External) || (TypeConstruction.Category == CategoryConstruction.Temple)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
@@ -87,15 +78,7 @@ namespace Fantasy_Kingdoms_Battle
                     DaysConstructLeft = 0;
             }
 
-            // Настраиваем исследования 
-            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
-                Researches.Add(CellMenuConstruction.Create(this, d));
-
-            // Убрать эту проверку после настройки всех логов
-            if (TypeConstruction.Monsters.Count > 0)
-                CreateMonsters();
-
-            p.Constructions.Add(this);
+            TuneConstructionByCreate();
 
             if (typeNotice != TypeNoticeForPlayer.None)
                 Player.AddNoticeForPlayer(this, typeNotice);
@@ -117,9 +100,7 @@ namespace Fantasy_Kingdoms_Battle
             ComponentObjectOfMap = new ComponentObjectOfMap(this, ls.Visible);
             IDPathToLocation = ls.PathToLocation;
 
-            // Настраиваем исследования 
-            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
-                Researches.Add(CellMenuConstruction.Create(this, d));
+            TuneConstructionByCreate();
 
             Level = ls.TypeLair.DefaultLevel;
             if (Level > 0)
@@ -129,24 +110,13 @@ namespace Fantasy_Kingdoms_Battle
                 AddVisit();
                 CreateProducts();
             }
-
-            // Убрать эту проверку после настройки всех логов
-            if (TypeConstruction.Monsters.Count > 0)
-                CreateMonsters();
-
-            Player.Constructions.Add(this);
-
+            
             if (ls.Resources != null)
             {
                 InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
             }
 
             UpdateCurrentIncomeResources();
-
-            // Восстановить
-            //if (Construction.HasTreasury)
-            //    Gold = Construction.GoldByConstruction;
-
             TuneCellMenuBuildOrUpgrade();
             UpdateSelectedColor();
         }
@@ -1626,6 +1596,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetNextNumber() => ++sequenceNumber;
 
+        // Настройка сооружения при создании
+        private void TuneConstructionByCreate()
+        {
+            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
+                Researches.Add(CellMenuConstruction.Create(this, d));
+
+            if (TypeConstruction.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
+                CreateMonsters();
+
+            Player.AddConstruction(this);
+        }
+
+        // Подготовка строительства сооружения
+        // Вызывается у городских сооружений сразу
         internal void PrepareBuilding()
         {
             MaxDurability = TypeConstruction.Levels[Level + 1].Durability;
@@ -1634,6 +1618,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void StartBuilding()
         {
             Player.AddToQueueBuilding(this);
+
+        }
+        private void ApplyLevel()
+        {
+
         }
     }
 }
