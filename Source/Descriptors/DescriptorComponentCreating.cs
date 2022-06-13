@@ -1,4 +1,5 @@
 ﻿using System.Xml;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -9,13 +10,12 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorComponentCreating(DescriptorWithID entity, XmlNode n) : base()
         {
+            Entity = entity;
             CostResources = new ListBaseResources(n.SelectSingleNode("Cost"));
             Requirements = new ListDescriptorRequirements(entity, n.SelectSingleNode("Requirements"));
-
-            if (entity is DescriptorConstructionLevel dcl)
-                constructionPoints = dcl.Durability;
         }
 
+        internal DescriptorWithID Entity { get; }
         internal int ConstructionPoints(Player p) => p.CheatingIgnoreBuilders ? 0 : constructionPoints;// Количество требуемых очков строительства
         internal ListBaseResources CostResources { get; }// Стоимость (в базовых ресурсах)
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
@@ -24,6 +24,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override void TuneLinks()
         {
             base.TuneLinks();
+
+            if (Entity is DescriptorConstructionLevel dcl)
+            {
+                constructionPoints = dcl.Durability;
+            }
 
             Requirements.TuneLinks();
         }
