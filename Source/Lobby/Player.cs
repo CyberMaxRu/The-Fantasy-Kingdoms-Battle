@@ -1586,15 +1586,21 @@ namespace Fantasy_Kingdoms_Battle
             Assert(c.CurrentDurability < c.MaxDurability);
             Assert(c.DaysConstructLeft == 0);
             Assert(c.AddConstructionPointByDay == 0);
+            Assert(!c.InConstructOrRepair);
             Assert(c.SpendResourcesForConstruct is null);
 
             queueBuilding.Add(c);
+            c.InConstructOrRepair = true;
 
             RebuildQueueBuilding();
         }
 
         internal void RemoveFromQueueBuilding(Construction c)
         {
+            Assert(c.InConstructOrRepair);
+            Assert(c.MaxDurability > 0);
+            Assert(c.DaysConstructLeft > 0);
+
             if (!queueBuilding.Remove(c))
                 DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
 
@@ -1602,6 +1608,7 @@ namespace Fantasy_Kingdoms_Battle
             ReturnResource(c.SpendResourcesForConstruct);
             c.AddConstructionPointByDay = 0;
             c.DaysConstructLeft = 0;
+            c.InConstructOrRepair = false;
 
             RebuildQueueBuilding();
         }

@@ -246,7 +246,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
+                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetText();
                             btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUp.GetDaysExecuting();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
@@ -274,7 +274,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
+                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetText();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                             btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUp.GetDaysExecuting();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();

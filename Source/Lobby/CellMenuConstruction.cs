@@ -366,6 +366,13 @@ namespace Fantasy_Kingdoms_Battle
             return Construction.CheckLevelRequirements(Descriptor.Number);
         }
 
+        internal override bool GetImageIsEnabled()
+        {
+            return Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
+        }
+
+        internal override string GetText() => Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number) ? "Отм." : base.GetText();
+
         internal override ListBaseResources GetCost()
         {
             return Descriptor.GetCreating().CostResources;
@@ -380,7 +387,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override Color GetColorText()
         {
-            return GetImageIsEnabled() ? DaysLeft == 0 ? Color.LimeGreen : FormMain.Config.CommonCost : Color.Gray;
+            if (GetImageIsEnabled())
+            {
+                if (Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number))
+                    return FormMain.Config.CommonCost;
+                else
+                    return Color.LimeGreen;
+            }
+            else
+                return Color.Gray;
         }
 
         internal override void Click()
