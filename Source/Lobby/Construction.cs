@@ -52,10 +52,10 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются для локации в начале миссии
-        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeLair, l.Lobby)
+        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeConstruction, l.Lobby)
         {
             Player = l.Player;
-            TypeConstruction = ls.TypeLair;
+            TypeConstruction = ls.TypeConstruction;
             Location = l;
             DaysConstructLeft = 0;
             PlayerIsOwner = ls.Own;
