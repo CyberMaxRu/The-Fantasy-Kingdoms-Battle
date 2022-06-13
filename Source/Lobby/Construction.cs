@@ -272,6 +272,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Level++;
+            DayOfConstruction = Player.Lobby.CounterDay;
 
             if (Level == 1)
             {
