@@ -95,7 +95,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Уровень
                 if (Level.Length > 0)
                 {
-                    labelLevel.Text = Level.ToString();
+                    labelLevel.Text = Level;
                     labelLevel.Draw(g);
                 }
 
