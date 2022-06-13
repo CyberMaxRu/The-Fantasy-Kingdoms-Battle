@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIsOwner = true;
             PlayerCanOwn = true;
             IsEnemy = false;
+            Location = null;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
 
             TuneConstructionByCreate();
@@ -54,13 +55,15 @@ namespace Fantasy_Kingdoms_Battle
         // Конструктор для сооружений, которые создаются для локации в начале миссии
         public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.TypeConstruction, l.Lobby)
         {
+            Assert(!ls.TypeConstruction.IsInternalConstruction);
+
             Player = l.Player;
             Descriptor = ls.TypeConstruction;
-            Location = l;
             DaysConstructLeft = 0;
             PlayerIsOwner = ls.Own;
             PlayerCanOwn = ls.CanOwn;
             IsEnemy = ls.IsEnemy;
+            Location = l;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, ls.Visible);
             IDPathToLocation = ls.PathToLocation;
 
@@ -86,6 +89,8 @@ namespace Fantasy_Kingdoms_Battle
         // Конструктор для сооружений, которые создаются в процессе игры
         public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(l, p.Lobby)
         {
+            Assert(!l.IsInternalConstruction);
+
             Player = p;
             Descriptor = l;
             X = x;
