@@ -1613,7 +1613,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void StartBuilding()
         {
             Player.AddToQueueBuilding(this);
+        }
 
+        internal void CancelBuilding()
+        {
+            Player.RemoveFromQueueBuilding(this);
         }
 
         internal void TuneConstructAfterCreate()

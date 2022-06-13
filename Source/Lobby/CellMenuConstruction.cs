@@ -371,7 +371,7 @@ namespace Fantasy_Kingdoms_Battle
             return Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
         }
 
-        internal override string GetText() => Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number) ? "Отм." : base.GetText();
+        internal override string GetText() =>  Construction.InConstructOrRepair && (Construction.Level + 1 == Descriptor.Number) ? "Отм." : base.GetText();
 
         internal override ListBaseResources GetCost()
         {
@@ -400,7 +400,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
-            Construction.StartBuilding();
+            if (Construction.InConstructOrRepair)
+                Construction.CancelBuilding();
+            else
+                Construction.StartBuilding();
         }
 
         internal override void PrepareHint(PanelHint panelHint)

@@ -1606,6 +1606,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Освобождаем потраченные ресурсы
             ReturnResource(c.SpendResourcesForConstruct);
+            c.SpendResourcesForConstruct = null;
             c.AddConstructionPointByDay = 0;
             c.DaysConstructLeft = 0;
             c.InConstructOrRepair = false;
