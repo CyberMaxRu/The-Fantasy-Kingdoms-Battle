@@ -295,7 +295,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Прибавляем ресурсы
                 if ((pc.Level > 0) && (pc.MiningBaseResources || pc.ProvideBaseResources))
                 {
-                    foreach (ConstructionBaseResource cbs in pc.BaseResources)
+                    foreach (ConstructionBaseResource cbs in pc.IncomeBaseResources)
                         lbs[cbs.DescriptorBaseResource.Number].Quantity += cbs.Quantity;
                 }
             }

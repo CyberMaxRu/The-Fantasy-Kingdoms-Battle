@@ -197,7 +197,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawList(lblSectionExtensions, panelExtensions, Construction.Extensions);
             DrawList(lblSectionImprovements, panelImprovements, Construction.Improvements);
             List<ConstructionBaseResource> lbr = new List<ConstructionBaseResource>();
-            lbr.AddRange(Construction.BaseResources.Where(br => br.Quantity != 0));
+            lbr.AddRange(Construction.IncomeBaseResources.Where(br => br.Quantity != 0));
             DrawList(lblSectionBaseResources, panelBaseResources, lbr);
             DrawList(lblSectionResources, panelResources, Construction.Resources);
             DrawList(lblSectionServices, panelServices, Construction.Services);

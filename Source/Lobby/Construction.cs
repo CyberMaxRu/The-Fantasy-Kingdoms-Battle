@@ -140,7 +140,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionVisit> Visits { get; } = new List<ConstructionVisit>();//
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
         internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
-        internal List<ConstructionBaseResource> BaseResources { get; } = new List<ConstructionBaseResource>();// Базовые ресурсы
+        internal List<ConstructionBaseResource> IncomeBaseResources { get; } = new List<ConstructionBaseResource>();// Поступление базовых ресурсов
         internal List<ConstructionResource> Resources { get; } = new List<ConstructionResource>();// Ресурсы
         internal List<ConstructionService> Services { get; } = new List<ConstructionService>();// Услуги, доступные в строении
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
@@ -192,11 +192,11 @@ namespace Fantasy_Kingdoms_Battle
                 MiningBaseResources = false;
                 ProvideBaseResources = false;
 
-                if (BaseResources.Count == 0)
+                if (IncomeBaseResources.Count == 0)
                     foreach (DescriptorBaseResource dbr in FormMain.Descriptors.BaseResources)
-                        BaseResources.Add(new ConstructionBaseResource(this, dbr));
+                        IncomeBaseResources.Add(new ConstructionBaseResource(this, dbr));
 
-                foreach (ConstructionBaseResource cbr in BaseResources)
+                foreach (ConstructionBaseResource cbr in IncomeBaseResources)
                     cbr.Quantity = 0;
 
                 if (InitialQuantityBaseResources != null)
@@ -210,7 +210,7 @@ namespace Fantasy_Kingdoms_Battle
                             int coefMining = Descriptor.Levels[Level].Mining != null ? Descriptor.Levels[Level].Mining[i] : 10;
                             int quantity = Convert.ToInt32(InitialQuantityBaseResources[i].Quantity * coefMining / 10);
                             Debug.Assert(quantity > 0);
-                            BaseResources[i].Quantity = quantity;
+                            IncomeBaseResources[i].Quantity = quantity;
                         }
                     }
                 }
@@ -225,7 +225,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         foreach (BaseResource br in Descriptor.Levels[Level].IncomeResources)
                         {
-                            BaseResources[br.Descriptor.Number].Quantity = br.Quantity;
+                            IncomeBaseResources[br.Descriptor.Number].Quantity = br.Quantity;
                             q += br.Quantity;
                         }
 
@@ -511,7 +511,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Income()
         {
-            return (Level > 0) && (BaseResources[FormMain.Descriptors.Gold.Number] != null) ? BaseResources[FormMain.Descriptors.Gold.Number].Quantity : 0;
+            return (Level > 0) && (IncomeBaseResources[FormMain.Descriptors.Gold.Number] != null) ? IncomeBaseResources[FormMain.Descriptors.Gold.Number].Quantity : 0;
         }
 
         internal int IncomeForLevel(int level)
@@ -683,7 +683,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                panelHint.AddStep21BaseResources(BaseResources, MiningBaseResources);
+                panelHint.AddStep21BaseResources(IncomeBaseResources, MiningBaseResources);
             }
         }
 
