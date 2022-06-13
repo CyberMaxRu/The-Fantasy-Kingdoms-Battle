@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс настройки локации типа лобби
-    internal sealed class TypeLobbyLocationSettings : DescriptorWithID
+    internal sealed class TypeLobbyLocationSettings : DescriptorEntity
     {
         private string nameTypeLandscape;
 
@@ -70,6 +70,10 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Visible { get; }
         internal int PercentScoutedArea { get; }// Процент разведанной части локации
         internal int PercentScoutAreaByUnit { get; }// Процент разведки локации за единицу разведки
+
+        internal override int GetImageIndex(XmlNode n) => 0;
+
+        internal override string GetTypeEntity() => "Локация";
 
         internal override void TuneLinks()
         {

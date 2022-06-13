@@ -22,8 +22,14 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = descriptor;
             Lobby = lobby;
             Player = player;
+
+            Number = GetNextNumber();
+            IDEntity = GetIDEntity(Descriptor);
+            lobby.AddEntity(this);
         }
 
+        internal int Number { get; }// Последовательный номер сущностиы
+        internal string IDEntity { get; }// Уникальное имя сущности в пределах миссии
         internal DescriptorEntity Descriptor { get; }
         internal Player Player { get; }
         internal Lobby Lobby { get; }
@@ -34,6 +40,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Perk> Perks { get; } = new List<Perk>();// Перки
         internal EntityProperties Properties { get; set; }// Характеристики
         internal ComponentObjectOfMap ComponentObjectOfMap { get; set; }
+
+        internal virtual string GetIDEntity(DescriptorEntity descriptor) => Descriptor.ID + Number.ToString();
+        internal abstract int GetNextNumber();// Возвращает номер следующей сущности
 
         internal abstract void ShowInfo(int selectPage = -1);
 

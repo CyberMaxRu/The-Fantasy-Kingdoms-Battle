@@ -12,13 +12,12 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс существа
     internal abstract class Creature : BigEntity
     {
-        private static int sequenceID = 0;// Генератор уникального кода героя
+        private static int sequenceNumber;
 
         public Creature(DescriptorCreature tc, BattleParticipant bp) : base(tc, bp.Lobby, bp as Player)
         {
             TypeCreature = tc;
             BattleParticipant = bp;
-            IDCreature = ++sequenceID;
 
             StateCreature = TypeCreature.PersistentStateHeroAtMap;
 
@@ -100,7 +99,8 @@ namespace Fantasy_Kingdoms_Battle
             //
             Initialize();
         }
-        internal int IDCreature { get; }// Уникальный код существа
+
+        internal int Number { get; }
         internal DescriptorCreature TypeCreature { get; }
         internal BattleParticipant BattleParticipant { get; }
         internal int Level { get; private set; }// Уровень существа
@@ -511,5 +511,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override string GetTypeEntity() => TypeCreature.Name;
+        internal override int GetNextNumber() => ++sequenceNumber;
     }
 }

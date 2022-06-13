@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс сооружения у игрока
     internal sealed class Construction : BattleParticipant
     {
+        private static int sequenceNumber;
         private int gold;
         private int usedBuilders;
 
@@ -1616,5 +1617,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Program.formMain.PlayPushButton();
         }
+
+        internal override int GetNextNumber() => ++sequenceNumber;
     }
 }

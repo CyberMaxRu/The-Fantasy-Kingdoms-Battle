@@ -27,6 +27,8 @@ namespace Fantasy_Kingdoms_Battle
             descriptors = d;
             Layer = layer;
 
+            //Entities.un
+
             StateLobby = StateLobby.Start;
             Turn = 1;
             Day = 1;
@@ -96,6 +98,8 @@ namespace Fantasy_Kingdoms_Battle
         internal StateLobby StateLobby { get; set; }
         internal Random Rnd { get; } = new Random();
         internal bool InPrepareTurn { get; private set; }
+
+        internal Dictionary<string, BigEntity> Entities { get; } = new Dictionary<string, BigEntity>();// Все сущности
 
         internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
         internal int DaysLeftForBattle { get; private set; }// Осталось дней до следующей битвы между игроками
@@ -590,6 +594,14 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsDayForBattleBetweenPlayers()
         {
             return Turn == DayNextBattleBetweenPlayers;
+        }
+
+        internal void AddEntity(BigEntity e)
+        {
+            Debug.Assert(e.IDEntity.Length > 0);
+            Debug.Assert(e != null);
+
+            Entities.Add(e.IDEntity, e);
         }
     }
 }

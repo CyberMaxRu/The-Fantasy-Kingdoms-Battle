@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private static int ComparePlaceCreature(Creature c1, Creature c2)
         {
-            return c1.IDCreature - c2.IDCreature;
+            return c1.Number - c2.Number;
         }
 
         public BattleParticipant(DescriptorEntity descriptor, Lobby lobby) : base(descriptor, lobby, null)
