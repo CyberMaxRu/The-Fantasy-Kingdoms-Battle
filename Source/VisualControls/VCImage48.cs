@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCLabel labelHighText;
         private VCLabel labelLowText;
+        private VCLabel lblDaysExecuting;
         private VCLabel labelLevel;
         protected VCLabel labelQuantity;
 
@@ -29,6 +30,13 @@ namespace Fantasy_Kingdoms_Battle
             labelLowText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
             labelLowText.ManualDraw = true;
             labelLowText.Width = Width;
+
+            lblDaysExecuting = new VCLabel(this, 4, 1, Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblDaysExecuting.StringFormat.LineAlignment = StringAlignment.Near;
+            lblDaysExecuting.StringFormat.Alignment = StringAlignment.Near;
+            lblDaysExecuting.Width = Width - 4;
+            lblDaysExecuting.Visible = false;
+            lblDaysExecuting.ManualDraw = true;
 
             labelLevel = new VCLabel(this, 0, 1, Program.formMain.fontSmallC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
@@ -48,6 +56,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string HighText { get; set; } = "";
         internal string LowText { get; set; } = "";
         internal Color Color { get; set; } = FormMain.Config.CommonCost;
+        internal string DaysExecuting { get; set; } = "";
         internal string Level { get; set; } = "";
         internal int Quantity { get; set; }
         internal override void Draw(Graphics g)
@@ -74,6 +83,13 @@ namespace Fantasy_Kingdoms_Battle
                     labelLowText.Text = LowText;
                     labelLowText.Color = Color;
                     labelLowText.Draw(g);
+                }
+
+                // Дней выполнения
+                if (DaysExecuting.Length > 0)
+                {
+                    lblDaysExecuting.Text = DaysExecuting;
+                    lblDaysExecuting.Draw(g);
                 }
 
                 // Уровень
