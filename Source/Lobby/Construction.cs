@@ -31,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
 
             TuneConstructionByCreate();
+            PrepareBuilding();
 
             Level = b.DefaultLevel;
             if (Level > 0)
@@ -40,16 +41,12 @@ namespace Fantasy_Kingdoms_Battle
                 AddVisit();
                 CreateProducts();
             }
-            else
-                PrepareBuilding();
 
             // Восстановить
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;
 
-            UpdateCurrentIncomeResources();
-            TuneCellMenuBuildOrUpgrade();
-            UpdateSelectedColor();
+            TuneConstructAfterCreate();
         }
 
         // Конструктор для сооружений, которые создаются для локации в начале миссии
@@ -69,6 +66,9 @@ namespace Fantasy_Kingdoms_Battle
 
             TuneConstructionByCreate();
 
+            if (ls.Resources != null)
+                InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
+
             Level = Descriptor.DefaultLevel;
             if (Level > 0)
             {
@@ -78,12 +78,7 @@ namespace Fantasy_Kingdoms_Battle
                 CreateProducts();
             }
 
-            if (ls.Resources != null)
-                InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
-
-            UpdateCurrentIncomeResources();
-            TuneCellMenuBuildOrUpgrade();
-            UpdateSelectedColor();
+            TuneConstructAfterCreate();
         }
 
         // Конструктор для сооружений, которые создаются в процессе игры
@@ -103,6 +98,8 @@ namespace Fantasy_Kingdoms_Battle
             InitialQuantityBaseResources = initQ;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
+            TuneConstructionByCreate();
+
             Debug.Assert((Descriptor.Category == CategoryConstruction.Lair) || (Descriptor.Category == CategoryConstruction.External) || (Descriptor.Category == CategoryConstruction.Temple)
                 || (Descriptor.Category == CategoryConstruction.Place) || (Descriptor.Category == CategoryConstruction.BasePlace) || (Descriptor.Category == CategoryConstruction.ElementLandscape));
 
@@ -116,14 +113,10 @@ namespace Fantasy_Kingdoms_Battle
                     DaysConstructLeft = 0;
             }
 
-            TuneConstructionByCreate();
-
             if (typeNotice != TypeNoticeForPlayer.None)
                 Player.AddNoticeForPlayer(this, typeNotice);
 
-            UpdateCurrentIncomeResources(); 
-            TuneCellMenuBuildOrUpgrade();
-            UpdateSelectedColor();
+            TuneConstructAfterCreate();
         }
 
         internal new DescriptorConstruction Descriptor { get; }// Описатель сооружения
@@ -1625,6 +1618,14 @@ namespace Fantasy_Kingdoms_Battle
             Player.AddToQueueBuilding(this);
 
         }
+
+        internal void TuneConstructAfterCreate()
+        {
+            UpdateCurrentIncomeResources();
+            TuneCellMenuBuildOrUpgrade();
+            UpdateSelectedColor();
+        }
+
         private void ApplyLevel()
         {
 
