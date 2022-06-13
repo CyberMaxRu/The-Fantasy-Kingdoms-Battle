@@ -192,10 +192,6 @@ namespace Fantasy_Kingdoms_Battle
                 MiningBaseResources = false;
                 ProvideBaseResources = false;
 
-                if (IncomeBaseResources.Count == 0)
-                    foreach (DescriptorBaseResource dbr in FormMain.Descriptors.BaseResources)
-                        IncomeBaseResources.Add(new ConstructionBaseResource(this, dbr));
-
                 foreach (ConstructionBaseResource cbr in IncomeBaseResources)
                     cbr.Quantity = 0;
 
@@ -1594,6 +1590,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
                 CreateMonsters();
+
+            foreach (DescriptorBaseResource dbr in FormMain.Descriptors.BaseResources)
+                IncomeBaseResources.Add(new ConstructionBaseResource(this, dbr));
 
             Player.AddConstruction(this);
         }
