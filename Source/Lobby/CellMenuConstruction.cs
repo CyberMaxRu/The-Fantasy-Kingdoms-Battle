@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (Construction.Level == 0)
                         return false;
 
-            // Потом проверяем наличие золота
+            // Потом проверяем наличие требуемых ресурсов
             if (!Construction.Player.CheckRequiredResources(GetCost()))
                 return false;
 
