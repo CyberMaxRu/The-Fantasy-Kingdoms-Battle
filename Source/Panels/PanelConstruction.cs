@@ -247,6 +247,7 @@ namespace Fantasy_Kingdoms_Battle
 
                             btnBuildOrUpgrade.Visible = true;
                             btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
+                            btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUp.GetDaysExecuting();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
@@ -275,6 +276,7 @@ namespace Fantasy_Kingdoms_Battle
                             btnBuildOrUpgrade.Visible = true;
                             btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
+                            btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUp.GetDaysExecuting();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
                             btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
