@@ -337,6 +337,7 @@ namespace Fantasy_Kingdoms_Battle
                 Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);
 
             TuneCellMenuBuildOrUpgrade();
+            UpdateState();
 
             usedBuilders = 0;
         }
@@ -789,6 +790,8 @@ namespace Fantasy_Kingdoms_Battle
                     Player.RemoveFromQueueBuilding(this, true);
                     Build(true);
                 }
+                else
+                    UpdateState();
             }
         }
 
@@ -1657,11 +1660,6 @@ namespace Fantasy_Kingdoms_Battle
             TuneCellMenuBuildOrUpgrade();
             UpdateSelectedColor();
             UpdateState();
-        }
-
-        private void ApplyLevel()
-        {
-
         }
 
         private void UpdateState()
