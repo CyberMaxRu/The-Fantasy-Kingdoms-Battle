@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     internal class VCText : VisualControl
     {
         private string text;
+        private Color color;
         private Padding padding;
         private string preparedText;
         private Padding preparedPadding;
@@ -77,8 +78,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Text.Length > 0)
             {
-                if ((preparedText != Text) || !preparedPadding.Equals(Padding))
+                if ((preparedText != Text) || !preparedPadding.Equals(Padding) || (color != Color))
                 {
+                    color = Color;
                     TextToLines(Text);
                     DrawText();
                 }
