@@ -181,6 +181,7 @@ namespace Fantasy_Kingdoms_Battle
             //
             Castle = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
+            Castle.DoDamage(1000);
             Graveyard = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDCityGraveyard));
 
             LevelGreatness = 1;
@@ -1587,7 +1588,14 @@ namespace Fantasy_Kingdoms_Battle
             Assert(c.CurrentDurability < c.MaxDurability);
             Assert(c.DaysConstructLeft == 0);
             Assert(c.AddConstructionPointByDay == 0);
-            Assert(c.DayLevelConstructed[c.Level] == -1);
+            if (c.State == StateConstruction.NeedRepair)
+            {
+                Assert(c.DayLevelConstructed[c.Level] != -1);
+            }
+            else
+            {
+                Assert(c.DayLevelConstructed[c.Level + 1] == -1);
+            }
             //Assert(!c.InConstructOrRepair);
             //Assert(c.SpendResourcesForConstruct is null);
 
