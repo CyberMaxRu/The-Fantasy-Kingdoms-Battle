@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum StateConstruction { None, NotBuild, PreparedBuild, Build, PauseBuild, Work, NeedRepair, Repair, Destroyed };
+    internal enum StateConstruction { None, Work, NotBuild, PreparedBuild, Build, InQueueBuild, PauseBuild, NeedRepair, Repair, Destroyed };
 
     // Класс сооружения у игрока
     internal sealed class Construction : BattleParticipant
@@ -654,6 +654,7 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep2Entity(this);
                     if (!((Level == 1) && (Descriptor.MaxLevel == 1)))
                         panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
+                    panelHint.AddStep45State(GetDataState());
                     panelHint.AddStep5Description(Descriptor.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     panelHint.AddStep6Income(Income());
@@ -1676,7 +1677,12 @@ namespace Fantasy_Kingdoms_Battle
                     if (CurrentDurability == 0)
                         State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
                     else
-                        State = StateConstruction.Build;// Стройка идет
+                    {
+                        if (AddConstructionPointByDay > 0)
+                            State = StateConstruction.Build;// Стройка идет
+                        else
+                            State = StateConstruction.InQueueBuild;// В очереди на строительство
+                    }
                 }
                 else
                     State = StateConstruction.PauseBuild;// Стройка приостановлена
@@ -1707,5 +1713,35 @@ namespace Fantasy_Kingdoms_Battle
                 UpdateState();
             }
         }
+
+        internal (string, Color) GetDataState()
+        {
+            switch (State)
+            {
+                case StateConstruction.None:
+                    return ("", Color.White);
+                case StateConstruction.Work:
+                    return ("Работает", Color.LightGreen);
+                case StateConstruction.NotBuild:
+                    return ("Не построено", Color.Gray);
+                case StateConstruction.PreparedBuild:
+                    return ("Подготовлено к строительству", Color.White);
+                case StateConstruction.Build:
+                    return ("Строится", Color.White);
+                case StateConstruction.InQueueBuild:
+                    return ("В очереди на строительство", Color.White);
+                case StateConstruction.PauseBuild:
+                    return ("Строительство приостановлено", Color.Gray);
+                case StateConstruction.NeedRepair:
+                    return ("Требуется ремонт", Color.Red);
+                case StateConstruction.Repair:
+                    return ("Ремонтируется", Color.Yellow);
+                case StateConstruction.Destroyed:
+                    throw new Exception("Сооружение уничтожено");
+                default:
+                    throw new Exception("Неизвестное состояние");
+            }
+        }
+        //internal enum StateConstruction { None, NotBuild, PreparedBuild, Build, PauseBuild, Work, NeedRepair, Repair, Destroyed };
     }
 }
