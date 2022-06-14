@@ -1689,6 +1689,18 @@ namespace Fantasy_Kingdoms_Battle
             else
                 DoException("Неопределенное состояние сооружения");
         }
-        //internal enum StateConstruction { Work, NeedRepair, Repair, NotWork };
+
+        internal void DoDamage(int damage)
+        {
+            Assert(damage >= 0);
+            Assert(damage < CurrentDurability);
+
+            if (damage > 0)
+            {
+                CurrentDurability -= damage;
+
+                UpdateState();
+            }
+        }
     }
 }
