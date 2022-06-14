@@ -1611,7 +1611,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (c.CurrentDurability == 0)
                 {
                     // Освобождаем потраченные ресурсы
-                    ReturnResource(c.SpendResourcesForConstruct);
+                    if (c.SpendResourcesForConstruct != null)
+                        ReturnResource(c.SpendResourcesForConstruct);
                     c.SpendResourcesForConstruct = null;
                     c.InConstructingOrRepair = false;
                 }
@@ -1628,6 +1629,8 @@ namespace Fantasy_Kingdoms_Battle
             // Получаем все очки строительства и начинаем их распределять
             int restCP = ConstructionPoints;
             int expenseCP;
+            int curDay = 1;
+            int usedCP = 0;
 
             foreach (Construction c in queueBuilding)
             {
@@ -1648,6 +1651,7 @@ namespace Fantasy_Kingdoms_Battle
                     // Если ресурсы были потрачены, то тратим очки строительства
                     if (c.SpendResourcesForConstruct != null)
                     {
+                        usedCP += c.MaxDurability - c.CurrentDurability;
                         expenseCP = Math.Min(restCP, c.MaxDurability - c.CurrentDurability);
                         Debug.Assert(expenseCP > 0);
 
@@ -1656,7 +1660,7 @@ namespace Fantasy_Kingdoms_Battle
                         restCP -= expenseCP;
 
                         // Вычисляем, сколько еще дней будет строиться сооружение
-                        c.DaysConstructLeft = CalcDaysForEndConstruction(c.CurrentDurability, c.MaxDurability);
+                        c.DaysConstructLeft = usedCP / ConstructionPoints + (usedCP % ConstructionPoints == 0 ? 0 : 1);
                     }
                 }
                 else
@@ -1666,8 +1670,10 @@ namespace Fantasy_Kingdoms_Battle
                     if (c.SpendResourcesForConstruct != null)
                         ReturnResource(c.SpendResourcesForConstruct);
 
+                    usedCP += c.MaxDurability - c.CurrentDurability;
+
                     c.AddConstructionPointByDay = 0;
-                    c.DaysConstructLeft = -1;
+                    c.DaysConstructLeft = usedCP / ConstructionPoints + (usedCP % ConstructionPoints == 0 ? 0 : 1);
                 }
             }
 
@@ -1696,7 +1702,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(maxDurability > 0);
             Assert(currentDurability < maxDurability);
 
-            int val = (maxDurability - currentDurability) / ConstructionPoints + 1;
+            int val = (maxDurability - currentDurability) / ConstructionPoints + ((maxDurability - currentDurability) % ConstructionPoints == 0 ? 0 : 1);
             Assert(val > 0);
             return val;
         }

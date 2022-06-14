@@ -86,9 +86,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Дней выполнения
-                if (DaysExecuting > 0)
+                if (DaysExecuting != 0)
                 {
-                    lblDaysExecuting.Text = DaysExecuting.ToString();
+                    lblDaysExecuting.Text = DaysExecuting != -1 ? DaysExecuting.ToString() : "-";
                     lblDaysExecuting.Draw(g);
                 }
 

@@ -350,7 +350,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForConstructed { get; set; }// Дней на завершение строительства
 
-        internal override int GetDaysExecuting() => DaysForConstructed;
+        internal override int GetDaysExecuting()
+        {
+            if (Construction.InConstructingOrRepair)
+            {
+                if (Construction.DaysConstructLeft == 0)
+                    return -1;
+                else
+                    return Construction.DaysConstructLeft;
+            }
+            else
+                return DaysForConstructed;
+        }
 
         internal override void Execute()
         {
