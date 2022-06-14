@@ -9,6 +9,8 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum StateConstruction { None, NotBuild, PreparedBuild, Build, PauseBuild, Work, NeedRepair, Repair, Destroyed };
+
     // Класс сооружения у игрока
     internal sealed class Construction : BattleParticipant
     {
@@ -105,12 +107,13 @@ namespace Fantasy_Kingdoms_Battle
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
         internal bool IsEnemy { get; private set; }// Это сооружение враждебно
         internal int Level { get; private set; }
+        internal StateConstruction State { get; private set; }// Состояние сооружения
 
         // Постройка/ремонт
         internal ListBaseResources SpendResourcesForConstruct { get; set; }// Расход ресурсов на строительство
         internal int AddConstructionPointByDay { get; set; }// Сколько очков строительства будет добавлено в текущем дне
         internal int DaysConstructLeft { get; set; }// Сколько еще дней будет строиться сооружение
-        internal int DayOfConstruction { get; private set; } = -1;// На каком ходу построено. -1: не построено, 0: до начала игры
+        internal int[] DayLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
         internal bool InConstructingOrRepair { get; set; }// Сооружение строится или ремонтируется
 
         // Прочность
@@ -269,7 +272,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Level++;
-            DayOfConstruction = Player.Lobby.CounterDay;
+            DayLevelConstructed[Level] = Player.Lobby.CounterDay;
             InConstructingOrRepair = false;
 
             if (Level == 1)
@@ -1594,6 +1597,10 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorBaseResource dbr in FormMain.Descriptors.BaseResources)
                 IncomeBaseResources.Add(new ConstructionBaseResource(this, dbr));
 
+            DayLevelConstructed = new int[Descriptor.Levels.Length + 1];
+            for (int i = 1; i < DayLevelConstructed.Length; i++)
+                DayLevelConstructed[i] = -1;
+
             Player.AddConstruction(this);
         }
 
@@ -1623,7 +1630,9 @@ namespace Fantasy_Kingdoms_Battle
         internal void StartBuilding()
         {
             if (Level > 0)
+            {
                 PrepareBuilding();
+            }
 
             Player.AddToQueueBuilding(this);
         }
@@ -1642,11 +1651,41 @@ namespace Fantasy_Kingdoms_Battle
             UpdateCurrentIncomeResources();
             TuneCellMenuBuildOrUpgrade();
             UpdateSelectedColor();
+            UpdateState();
         }
 
         private void ApplyLevel()
         {
 
         }
+
+        private void UpdateState()
+        {
+            if (Destroyed)
+                State = StateConstruction.Destroyed;
+            else if ((Level == 1) && (MaxDurability == 0))
+                State = StateConstruction.None;// Если сооружение построено, и у него нет прочности, это элемент ландшафта. У него нет состояния.
+            else if (InConstructingOrRepair)
+            {
+                if (DaysConstructLeft > 0)
+                {
+                    if (CurrentDurability == 0)
+                        State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
+                    else
+                        State = StateConstruction.Build;// Стройка идет
+                }
+                else
+                    State = StateConstruction.PauseBuild;// Стройка приостановлена
+            }
+            else if (Level == 0)
+                State = StateConstruction.NotBuild;// Сооружение не построено
+            else if (CurrentDurability == MaxDurability)
+                State = StateConstruction.Work;// Прочность равна дефолтной, сооружение работает
+            else if (CurrentDurability < MaxDurability)
+                State = StateConstruction.NeedRepair;// Сооружение повреждено, требуется ремонт
+            else
+                DoException("Неопределенное состояние сооружения");
+        }
+        //internal enum StateConstruction { Work, NeedRepair, Repair, NotWork };
     }
 }

@@ -1587,6 +1587,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(c.CurrentDurability < c.MaxDurability);
             Assert(c.DaysConstructLeft == 0);
             Assert(c.AddConstructionPointByDay == 0);
+            Assert(c.DayOfConstruction == -1);
             //Assert(!c.InConstructOrRepair);
             //Assert(c.SpendResourcesForConstruct is null);
 
