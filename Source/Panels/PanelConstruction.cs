@@ -180,14 +180,14 @@ namespace Fantasy_Kingdoms_Battle
                 pbDurability.Visible = true;
                 pbDurability.Max = Construction.MaxDurability;
                 pbDurability.Position = Construction.CurrentDurability;
-                if ((Construction.Level == 0) || !Construction.InConstructingOrRepair)
+                if ((Construction.Level == 0) || !Construction.InConstructing)
                     pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
                 else if (Construction.CurrentDurability == Construction.MaxDurability)
                     pbDurability.Text = Construction.CurrentDurability.ToString();
                 else
                     pbDurability.Text = Construction.CurrentDurability.ToString() + "/" + Construction.MaxDurability.ToString();
 
-                if (Construction.DayOfConstruction == -1)
+                if (Construction.DayLevelConstructed[Construction.Level] == -1)
                 {
                     pbDurability.Color = Color.PaleTurquoise;
                     pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;

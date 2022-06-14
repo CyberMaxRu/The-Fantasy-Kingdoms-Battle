@@ -352,7 +352,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetDaysExecuting()
         {
-            if (Construction.InConstructingOrRepair)
+            if (Construction.InConstructing)
             {
                 if (Construction.DaysConstructLeft == 0)
                     return -1;
@@ -379,12 +379,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool GetImageIsEnabled()
         {
-            return Construction.InConstructingOrRepair && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
+            return Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
         }
 
         internal override string GetText()
         {
-            if (Construction.InConstructingOrRepair && (Construction.Level + 1 == Descriptor.Number))
+            if (Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number))
             {
                 if (Construction.CurrentDurability == 0)
                     return "Отм.";
@@ -413,7 +413,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (GetImageIsEnabled())
             {
-                if (Construction.InConstructingOrRepair && (Construction.Level + 1 == Descriptor.Number))
+                if (Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number))
                     return FormMain.Config.CommonCost;
                 else
                     return Color.LimeGreen;
@@ -424,7 +424,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
-            if (Construction.InConstructingOrRepair)
+            if (Construction.InConstructing)
             {
                 if (Construction.DaysConstructLeft == 0)
                     Construction.StartBuilding();

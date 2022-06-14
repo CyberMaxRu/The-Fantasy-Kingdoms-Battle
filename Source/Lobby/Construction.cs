@@ -114,7 +114,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int AddConstructionPointByDay { get; set; }// Сколько очков строительства будет добавлено в текущем дне
         internal int DaysConstructLeft { get; set; }// Сколько еще дней будет строиться сооружение
         internal int[] DayLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
-        internal bool InConstructingOrRepair { get; set; }// Сооружение строится или ремонтируется
+        internal bool InConstructing { get; set; }// Сооружение строится
+        internal bool InRepair { get; set; }// Сооружение ремонтируется
 
         // Прочность
         internal int CurrentDurability { get; private set; }// Текущая прочность сооружения
@@ -273,7 +274,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Level++;
             DayLevelConstructed[Level] = Player.Lobby.CounterDay;
-            InConstructingOrRepair = false;
+            InConstructing = false;
 
             if (Level == 1)
             {
@@ -779,7 +780,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (InConstructingOrRepair && (AddConstructionPointByDay > 0))
+            if (InConstructing && (AddConstructionPointByDay > 0))
             {
                 CurrentDurability += AddConstructionPointByDay;
                 if (CurrentDurability == MaxDurability)
@@ -1665,7 +1666,7 @@ namespace Fantasy_Kingdoms_Battle
                 State = StateConstruction.Destroyed;
             else if ((Level == 1) && (MaxDurability == 0))
                 State = StateConstruction.None;// Если сооружение построено, и у него нет прочности, это элемент ландшафта. У него нет состояния.
-            else if (InConstructingOrRepair)
+            else if (InConstructing)
             {
                 if (DaysConstructLeft > 0)
                 {
@@ -1677,6 +1678,8 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     State = StateConstruction.PauseBuild;// Стройка приостановлена
             }
+            else if (InRepair)
+                State = StateConstruction.Repair;// Идет ремонт
             else if (Level == 0)
                 State = StateConstruction.NotBuild;// Сооружение не построено
             else if (CurrentDurability == MaxDurability)
