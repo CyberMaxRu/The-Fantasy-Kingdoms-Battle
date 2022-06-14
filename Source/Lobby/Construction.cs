@@ -1622,11 +1622,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void StartBuilding()
         {
+            if (Level > 0)
+                PrepareBuilding();
+
             Player.AddToQueueBuilding(this);
         }
 
         internal void CancelBuilding()
         {
+            if (Level > 0)
+                MaxDurability = Descriptor.Levels[Level].Durability;
+
             Player.RemoveFromQueueBuilding(this, false);
             Player.RebuildQueueBuilding();
         }

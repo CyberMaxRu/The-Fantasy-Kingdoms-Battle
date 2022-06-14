@@ -1616,10 +1616,9 @@ namespace Fantasy_Kingdoms_Battle
                     c.SpendResourcesForConstruct = null;
                     c.InConstructingOrRepair = false;
                 }
-
-                c.DaysConstructLeft = 0;
             }
 
+            c.DaysConstructLeft = 0;
             c.AddConstructionPointByDay = 0;
         }
         
@@ -1629,7 +1628,6 @@ namespace Fantasy_Kingdoms_Battle
             // Получаем все очки строительства и начинаем их распределять
             int restCP = ConstructionPoints;
             int expenseCP;
-            int curDay = 1;
             int usedCP = 0;
 
             foreach (Construction c in queueBuilding)
