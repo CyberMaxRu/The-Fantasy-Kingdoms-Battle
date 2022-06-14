@@ -1626,6 +1626,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void PrepareBuilding()
         {
             MaxDurability = Descriptor.Levels[Level + 1].Durability;
+            UpdateState();
         }
 
         internal void StartBuilding()
@@ -1636,6 +1637,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Player.AddToQueueBuilding(this);
+            UpdateState();
         }
 
         internal void CancelBuilding()
@@ -1645,6 +1647,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Player.RemoveFromQueueBuilding(this, false);
             Player.RebuildQueueBuilding();
+            UpdateState();
         }
 
         internal void TuneConstructAfterCreate()
@@ -1694,6 +1697,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(damage >= 0);
             Assert(damage < CurrentDurability);
+            Assert((State == StateConstruction.Build) || (State == StateConstruction.PauseBuild) || (State == StateConstruction.Repair)
+                || (State == StateConstruction.NeedRepair) || (State == StateConstruction.Work));
 
             if (damage > 0)
             {
