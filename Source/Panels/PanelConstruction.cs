@@ -180,31 +180,56 @@ namespace Fantasy_Kingdoms_Battle
                 pbDurability.Visible = true;
                 pbDurability.Max = Construction.MaxDurability;
                 pbDurability.Position = Construction.CurrentDurability;
-                if ((Construction.Level == 0) || !Construction.InConstructing)
-                    pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
-                else if (Construction.CurrentDurability == Construction.MaxDurability)
-                    pbDurability.Text = Construction.CurrentDurability.ToString();
-                else
-                    pbDurability.Text = Construction.CurrentDurability.ToString() + "/" + Construction.MaxDurability.ToString();
-
-                if (Construction.DayLevelConstructed[Construction.Level] == -1)
+                switch (Construction.State)
                 {
-                    pbDurability.Color = Color.PaleTurquoise;
-                    pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
+                    case StateConstruction.Work:
+                        pbDurability.Text = Construction.CurrentDurability.ToString();
+                        break;
+                    case StateConstruction.NotBuild:
+                        pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
+                        break;
+                    case StateConstruction.PreparedBuild:
+                    case StateConstruction.Build:
+                    case StateConstruction.PauseBuild:
+                    case StateConstruction.InQueueBuild:
+                    case StateConstruction.NeedRepair:
+                    case StateConstruction.Repair:
+                        pbDurability.Text = Construction.CurrentDurability.ToString() + "/" + Construction.MaxDurability.ToString();
+                        break;
+                    default:
+                        throw new Exception($"Неизвестное состояние {Construction.State}");
                 }
-                else
+
+                pbDurability.PositionPotential = 0;
+                switch (Construction.State)
                 {
-                    Debug.Assert(Construction.MaxDurability > 0);
-
-                    int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
-                    if (percent >= 60)
+                    case StateConstruction.Work:
                         pbDurability.Color = Color.Lime;
-                    else if (percent >= 50)
-                        pbDurability.Color = Color.LightYellow;
-                    else
-                        pbDurability.Color = Color.Red;
+                        break;
+                    case StateConstruction.NotBuild:
+                        break;
+                    case StateConstruction.PreparedBuild:
+                    case StateConstruction.Build:
+                    case StateConstruction.PauseBuild:
+                    case StateConstruction.InQueueBuild:
+                        pbDurability.Color = Color.PaleTurquoise;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
+                        break;
+                    case StateConstruction.NeedRepair:
+                    case StateConstruction.Repair:
+                        int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
+                        if (percent >= 60)
+                            pbDurability.Color = Color.Lime;
+                        else if (percent >= 50)
+                            pbDurability.Color = Color.Yellow;
+                        else
+                            pbDurability.Color = Color.Red;
 
-                    pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
+                        break;
+                    default:
+                        throw new Exception($"Неизвестное состояние {Construction.State}");
                 }
 
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
