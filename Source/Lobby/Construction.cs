@@ -1608,7 +1608,7 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(cml.Descriptor.Number > Level);// Не должно быть действия на постройку уже построенного уровня
 
                     // Учитываем, что следующий уровень может быть построен
-                    cml.DaysForConstructed = Player.CalcDaysForEndConstruction(cml.Descriptor.Number == Level + 1 ? CurrentDurability : 0, cml.Descriptor.Durability);
+                    cml.DaysForConstructed = Player.CalcDaysForEndConstruction(cml.Descriptor.Number == 1 ? 0 : Descriptor.Levels[cml.Descriptor.Number - 1].Durability, cml.Descriptor.Durability);
                 }
             }
         }
