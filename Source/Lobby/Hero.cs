@@ -295,6 +295,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 panelHint.AddStep2Entity(this);
                 panelHint.AddStep4Level($"Уровень {Level}");
+                panelHint.AddStep45State((StateCreature.Name, Color.SkyBlue));
                 panelHint.AddStep5Description(TypeCreature.Description);
             }
             else
