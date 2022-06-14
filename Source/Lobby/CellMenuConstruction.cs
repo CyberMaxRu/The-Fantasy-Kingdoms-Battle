@@ -443,6 +443,88 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
+    internal sealed class CellMenuConstructionRepair : CellMenuConstruction
+    {
+        public CellMenuConstructionRepair(Construction c, DescriptorCellMenu d) : base(c, d)
+        {
+        }
+
+        internal int DaysForRepair { get; set; }// Дней на завершение ремонта
+
+        internal override int GetDaysExecuting()
+        {
+            if (Construction.InConstructing)
+            {
+                if (Construction.DaysConstructLeft == 0)
+                    return -1;
+                else
+                    return Construction.DaysConstructLeft;
+            }
+            else
+                return DaysForRepair;
+        }
+
+        internal override void Execute()
+        {
+        }
+
+        protected override bool ConstructionMustMeConstructed() => true;
+
+        internal override bool CheckRequirements() => true;
+
+        internal override bool GetImageIsEnabled()
+        {
+            return base.GetImageIsEnabled();
+        }
+
+        internal override string GetText()
+        {
+            if (Construction.State == StateConstruction.Repair)
+                return "Отм.";
+            else
+                return base.GetText();
+        }
+
+        internal override ListBaseResources GetCost()
+        {
+            return Construction.SpendResourcesForConstruct;
+        }
+
+        internal override int GetImageIndex() => Config.Gui48_Build;
+        
+        protected override string GetTextForLevel() => "";
+
+        internal override Color GetColorText()
+        {
+            if (GetImageIsEnabled())
+            {
+                if (true)
+                    return FormMain.Config.CommonCost;
+                else
+                    return Color.LimeGreen;
+            }
+            else
+                return Color.Gray;
+        }
+
+        internal override void Click()
+        {
+            if (Construction.State == StateConstruction.NeedRepair)
+                Construction.StartRepair();
+            else if (Construction.State == StateConstruction.Repair)
+                Construction.CancelRepair();
+            else
+                DoException($"Неправильное состояние: {Construction.State}");
+        }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            //Construction.PrepareHintForBuildOrUpgrade(panelHint, Descriptor.Number);
+        }
+
+        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
+    }
+
     internal sealed class CellMenuConstructionHireCreature : CellMenuConstruction
     {
         public CellMenuConstructionHireCreature(Construction c, DescriptorCellMenu d) : base(c, d)

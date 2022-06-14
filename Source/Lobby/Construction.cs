@@ -150,7 +150,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
-        internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUpOrRepair { get; private set; }// Действие для постройки/улучшения/ремонта сооружения
+        internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
+        internal CellMenuConstructionRepair CellMenuRepair { get; private set; }// Действие для ремонта сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
 
@@ -165,7 +166,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void TuneCellMenuBuildOrUpgrade()
         {
-            CellMenuBuildOrLevelUpOrRepair = null;
+            CellMenuBuildOrLevelUp = null;
 
             // Сооружение не построено, ищем действие для постройки
             List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
@@ -178,8 +179,8 @@ namespace Fantasy_Kingdoms_Battle
                         listForDelete.Add(cm);
                     else if (cml.Descriptor.Number == Level + 1)
                     {
-                        Debug.Assert(CellMenuBuildOrLevelUpOrRepair is null);
-                        CellMenuBuildOrLevelUpOrRepair = cml;
+                        Debug.Assert(CellMenuBuildOrLevelUp is null);
+                        CellMenuBuildOrLevelUp = cml;
                     }
                 }
             }
@@ -1622,6 +1623,9 @@ namespace Fantasy_Kingdoms_Battle
                     // Учитываем, что следующий уровень может быть построен
                     cml.DaysForConstructed = Player.CalcDaysForEndConstruction(cml.Descriptor.Number == 1 ? 0 : Descriptor.Levels[cml.Descriptor.Number - 1].Durability, cml.Descriptor.Durability);
                 }
+
+                if (CellMenuRepair != null)
+                    CellMenuRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
             }
         }
 
@@ -1641,6 +1645,19 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Player.AddToQueueBuilding(this);
+            UpdateState();
+        }
+
+        internal void StartRepair()
+        {
+            Player.AddToQueueBuilding(this);
+            UpdateState();
+        }
+
+        internal void CancelRepair()
+        {
+            Player.RemoveFromQueueBuilding(this, false);
+            Player.RebuildQueueBuilding();
             UpdateState();
         }
 
@@ -1670,6 +1687,8 @@ namespace Fantasy_Kingdoms_Battle
                 State = StateConstruction.None;// Если сооружение построено, и у него нет прочности, это элемент ландшафта. У него нет состояния.
             else if (InConstructing)
             {
+                Assert(!InRepair);
+
                 if (DaysConstructLeft > 0)
                 {
                     if (CurrentDurability == 0)
@@ -1692,7 +1711,10 @@ namespace Fantasy_Kingdoms_Battle
             else if (CurrentDurability == MaxDurability)
                 State = StateConstruction.Work;// Прочность равна дефолтной, сооружение работает
             else if (CurrentDurability < MaxDurability)
+            {
                 State = StateConstruction.NeedRepair;// Сооружение повреждено, требуется ремонт
+                //CellMenuRepair.PurchaseValue = CompCostRepair(Math.Min(Player.RestConstructionPoints, restCP, c.MaxDurability - c.CurrentDurability))            
+                    }
             else
                 DoException("Неопределенное состояние сооружения");
         }
@@ -1708,8 +1730,21 @@ namespace Fantasy_Kingdoms_Battle
             {
                 CurrentDurability -= damage;
 
+                if (CellMenuRepair is null)
+                {
+                    CellMenuRepair = new CellMenuConstructionRepair(this, new DescriptorCellMenu(new Point(0, 0)));
+                    CellMenuRepair.PurchaseValue = new ListBaseResources(MaxDurability - CurrentDurability);
+
+                    Researches.Add(CellMenuRepair);
+                }
+
                 UpdateState();
             }
+        }
+
+        internal ListBaseResources CompCostRepair(int durability)
+        {
+            return new ListBaseResources(durability);
         }
 
         internal (string, Color) GetDataState()

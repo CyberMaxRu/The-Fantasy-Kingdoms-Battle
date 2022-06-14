@@ -1588,9 +1588,12 @@ namespace Fantasy_Kingdoms_Battle
             Assert(c.CurrentDurability < c.MaxDurability);
             Assert(c.DaysConstructLeft == 0);
             Assert(c.AddConstructionPointByDay == 0);
+            Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild) || (c.State == StateConstruction.PauseBuild)
+                || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
+
             if (c.State == StateConstruction.NeedRepair)
             {
-                Assert(c.DayLevelConstructed[c.Level] != -1);
+                Assert(c.DayLevelConstructed[c.Level] == -1);
             }
             else
             {
@@ -1600,7 +1603,10 @@ namespace Fantasy_Kingdoms_Battle
             //Assert(c.SpendResourcesForConstruct is null);
 
             queueBuilding.Add(c);
-            c.InConstructing = true;
+            if (c.State == StateConstruction.NeedRepair)
+                c.InRepair = true;
+            else
+                c.InConstructing = true;
 
             RebuildQueueBuilding();
         }
@@ -1617,13 +1623,21 @@ namespace Fantasy_Kingdoms_Battle
             if (!constructed)
             {
                 // Если сооружение еще не начинали строить, только возвращаем ресурсы
-                if (c.CurrentDurability == 0)
+                if (c.State == StateConstruction.PreparedBuild)
                 {
                     // Освобождаем потраченные ресурсы
                     if (c.SpendResourcesForConstruct != null)
                         ReturnResource(c.SpendResourcesForConstruct);
                     c.SpendResourcesForConstruct = null;
                     c.InConstructing = false;
+                }
+                else if (c.State == StateConstruction.Repair)
+                {
+                    // Освобождаем потраченные ресурсы
+                    Assert(c.SpendResourcesForConstruct != null);
+                    ReturnResource(c.SpendResourcesForConstruct);
+                    c.SpendResourcesForConstruct = null;
+                    c.InRepair = false;
                 }
             }
 
@@ -1648,10 +1662,21 @@ namespace Fantasy_Kingdoms_Battle
                     // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
                     if (c.SpendResourcesForConstruct is null)
                     {
-                        if (CheckRequiredResources(c.CostBuyOrUpgrade()))
+                        if (c.InConstructing)
                         {
-                            c.SpendResourcesForConstruct = c.CostBuyOrUpgrade();
-                            SpendResource(c.SpendResourcesForConstruct);
+                            if (CheckRequiredResources(c.CostBuyOrUpgrade()))
+                            {
+                                c.SpendResourcesForConstruct = c.CostBuyOrUpgrade();
+                                SpendResource(c.SpendResourcesForConstruct);
+                            }
+                        }
+                        else
+                        {
+                            if (CheckRequiredResources());
+                            {
+                                c.SpendResourcesForConstruct = c.CompCostRepair(Math.Min(restCP, c.MaxDurability - c.CurrentDurability));
+                                SpendResource(c.SpendResourcesForConstruct);
+                            }
                         }
                     }
 
