@@ -29,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCCellSimple imgCell;
         internal readonly VCText lblType;
         internal readonly VCText lblAction;
+        internal readonly VCText lblState;
         internal readonly VCText lblDescription;
         internal readonly VCSeparator lblSeparateRequirement;
         internal readonly VCLabel lblTextForRequirement;
@@ -90,7 +91,11 @@ namespace Fantasy_Kingdoms_Battle
             lblAction.StringFormat.Alignment = StringAlignment.Near;
             lblAction.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblDescription = new VCText(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, widthControl);
+            lblState = new VCText(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
+            lblState.StringFormat.Alignment = StringAlignment.Near;
+            lblState.StringFormat.LineAlignment = StringAlignment.Near;
+
+            lblDescription = new VCText(this, FormMain.Config.GridSize, lblState.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, widthControl);
             lblDescription.StringFormat.Alignment = StringAlignment.Near;
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
@@ -255,6 +260,7 @@ namespace Fantasy_Kingdoms_Battle
             imgCell.Visible = false;
             lblType.Visible = false;
             lblAction.Visible = false;
+            lblState.Visible = false;
             lblDescription.Visible = false;
             lblIncome.Visible = false;
             lblSalary.Visible = false;
@@ -403,6 +409,20 @@ namespace Fantasy_Kingdoms_Battle
                 lblAction.Visible = true;
 
                 nextTop = lblAction.NextTop();
+            }
+        }
+
+        internal void AddStep45State((string, Color) data)
+        {
+            if (data.Item1.Length > 0)
+            {
+                lblState.ShiftY = nextTop;
+                lblState.Text = data.Item1;
+                lblState.Color = data.Item2;
+                lblState.Height = lblState.MinHeigth();
+                lblState.Visible = true;
+
+                nextTop = lblState.NextTop();
             }
         }
 
