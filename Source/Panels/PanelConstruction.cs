@@ -268,15 +268,15 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         if (Construction.CanLevelUp())
                         {
-                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
+                            Debug.Assert(Construction.CellMenuBuildOrLevelUpOrRepair != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetText();
-                            btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUp.GetDaysExecuting();
-                            btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
-                            btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
-                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
-                            btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
+                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUpOrRepair.GetText();
+                            btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUpOrRepair.GetDaysExecuting();
+                            btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUpOrRepair.GetLevel().ToString();
+                            btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUpOrRepair.GetImageIndex();
+                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUpOrRepair.GetImageIsEnabled();
+                            btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUpOrRepair.GetColorText();
                         }
                         else
                         {
@@ -294,17 +294,17 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        if (Construction.CellMenuBuildOrLevelUp != null)
+                        if (Construction.CellMenuBuildOrLevelUpOrRepair != null)
                         {
-                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
+                            Debug.Assert(Construction.CellMenuBuildOrLevelUpOrRepair != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUp.GetText();
-                            btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
-                            btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUp.GetDaysExecuting();
-                            btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
-                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
-                            btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
+                            btnBuildOrUpgrade.LowText = Construction.CellMenuBuildOrLevelUpOrRepair.GetText();
+                            btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUpOrRepair.GetLevel().ToString();
+                            btnBuildOrUpgrade.DaysExecuting = Construction.CellMenuBuildOrLevelUpOrRepair.GetDaysExecuting();
+                            btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUpOrRepair.GetImageIndex();
+                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUpOrRepair.GetImageIsEnabled();
+                            btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUpOrRepair.GetColorText();
                         }
                     }
                 }
@@ -415,7 +415,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
                 return;
 
-            Construction.CellMenuBuildOrLevelUp.Click();
+            Construction.CellMenuBuildOrLevelUpOrRepair.Click();
         }
 
         protected override void SetEntity(Entity po)

@@ -150,7 +150,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
-        internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
+        internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUpOrRepair { get; private set; }// Действие для постройки/улучшения/ремонта сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
 
@@ -165,7 +165,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void TuneCellMenuBuildOrUpgrade()
         {
-            CellMenuBuildOrLevelUp = null;
+            CellMenuBuildOrLevelUpOrRepair = null;
 
             // Сооружение не построено, ищем действие для постройки
             List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
@@ -178,8 +178,8 @@ namespace Fantasy_Kingdoms_Battle
                         listForDelete.Add(cm);
                     else if (cml.Descriptor.Number == Level + 1)
                     {
-                        Debug.Assert(CellMenuBuildOrLevelUp is null);
-                        CellMenuBuildOrLevelUp = cml;
+                        Debug.Assert(CellMenuBuildOrLevelUpOrRepair is null);
+                        CellMenuBuildOrLevelUpOrRepair = cml;
                     }
                 }
             }
