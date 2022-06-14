@@ -1725,9 +1725,9 @@ namespace Fantasy_Kingdoms_Battle
                 case StateConstruction.NotBuild:
                     return ("Не построено", Color.Gray);
                 case StateConstruction.PreparedBuild:
-                    return ("Подготовлено к строительству", Color.White);
+                    return ("Подготовлено к строительству", Color.SkyBlue);
                 case StateConstruction.Build:
-                    return ("Строится", Color.White);
+                    return ("Строится", Color.SkyBlue);
                 case StateConstruction.InQueueBuild:
                     return ("В очереди на строительство", Color.White);
                 case StateConstruction.PauseBuild:
