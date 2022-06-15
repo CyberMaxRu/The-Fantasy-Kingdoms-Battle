@@ -194,7 +194,8 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.InQueueBuild:
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
-                        pbDurability.Text = Construction.CurrentDurability.ToString() + "/" + Construction.MaxDurability.ToString();
+                        pbDurability.Text = $"{Construction.CurrentDurability}" +
+                            $"{(Construction.AddConstructionPointByDay > 0 ? $"+{Construction.AddConstructionPointByDay}" : "")}/{Construction.MaxDurability}";
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
