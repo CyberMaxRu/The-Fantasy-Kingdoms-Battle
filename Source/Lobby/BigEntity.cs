@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         private List<Creature> listCreature;
         private EventHandler creatureEventHandler;
         private ModeTextForCreature modeTextForCreature;
-        private static Dictionary<string, int> dictNextNumber = new Dictionary<string, int>();
+        private static Dictionary<string, int> dictNextNumber;
 
         protected CellMenuCreaturePage cmPageCreatures;
 
@@ -205,6 +205,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void EntityDoException(string text)
         {
             Utils.DoException($"{IDEntity}.{Environment.NewLine}{text}");
+        }
+
+        internal static void ResetNumerate()
+        {
+            dictNextNumber = new Dictionary<string, int>();
         }
     }
 }

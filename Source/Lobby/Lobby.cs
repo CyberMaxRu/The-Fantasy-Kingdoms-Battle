@@ -20,6 +20,8 @@ namespace Fantasy_Kingdoms_Battle
 
         public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d, DescriptorMission m)
         {
+            BigEntity.ResetNumerate();
+
             ID = generation++;
             TypeLobby = tl;
             Settings = settings;
