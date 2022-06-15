@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         private List<Creature> listCreature;
         private EventHandler creatureEventHandler;
         private ModeTextForCreature modeTextForCreature;
+        private static Dictionary<string, int> dictNextNumber = new Dictionary<string, int>();
 
         protected CellMenuCreaturePage cmPageCreatures;
 
@@ -23,7 +24,10 @@ namespace Fantasy_Kingdoms_Battle
             Lobby = lobby;
             Player = player;
 
-            Number = GetNextNumber();
+            if (!dictNextNumber.ContainsKey(descriptor.ID))
+                dictNextNumber.Add(descriptor.ID, 0);
+
+            Number = ++dictNextNumber[descriptor.ID];
             IDEntity = GetIDEntity(Descriptor);
             lobby.AddEntity(this);
         }
@@ -42,7 +46,6 @@ namespace Fantasy_Kingdoms_Battle
         internal ComponentObjectOfMap ComponentObjectOfMap { get; set; }
 
         internal virtual string GetIDEntity(DescriptorEntity descriptor) => Descriptor.ID + Number.ToString();
-        internal abstract int GetNextNumber();// Возвращает номер следующей сущности
 
         internal abstract void ShowInfo(int selectPage = -1);
 

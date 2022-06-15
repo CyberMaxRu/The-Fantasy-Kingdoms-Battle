@@ -12,8 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс существа
     internal abstract class Creature : BigEntity
     {
-        private static int sequenceNumber;
-
         public Creature(DescriptorCreature tc, BattleParticipant bp) : base(tc, bp.Lobby, bp as Player)
         {
             TypeCreature = tc;
@@ -511,6 +509,5 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override string GetTypeEntity() => TypeCreature.Name;
-        internal override int GetNextNumber() => ++sequenceNumber;
     }
 }

@@ -11,7 +11,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс локации
     internal sealed class Location : BigEntity
     {
-        private static int sequenceNumber;
         private int percentScoutedArea;
         private int percentNonScoutedArea;
 
@@ -274,7 +273,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override int GetNextNumber() => ++sequenceNumber;
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as TypeLobbyLocationSettings).ID + Number.ToString();// Убрать Number.ToString(), когда будет 1 игрок;
     }
 }

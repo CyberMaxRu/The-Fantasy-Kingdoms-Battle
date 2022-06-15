@@ -26,8 +26,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс игрока лобби
     internal abstract class Player : BattleParticipant
     {
-        private static int sequenceNumber;
-
         private Construction Castle;
 
         private bool startBonusApplied = false;
@@ -1747,7 +1745,6 @@ namespace Fantasy_Kingdoms_Battle
             return val;
         }
 
-        internal override int GetNextNumber() => ++sequenceNumber;
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
     }
 
