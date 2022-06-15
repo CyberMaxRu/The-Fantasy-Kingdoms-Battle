@@ -1627,7 +1627,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (CurrentDurability == MaxDurability)
                 {
                     if (!Researches.Remove(CellMenuRepair))
-                        DoException("Не смог убрать кнопку окончания ремонта");
+                        EntityDoException("Не смог убрать кнопку окончания ремонта");
 
                     CellMenuRepair = null;
                 }
