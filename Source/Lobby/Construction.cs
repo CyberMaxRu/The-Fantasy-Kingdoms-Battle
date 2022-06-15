@@ -794,7 +794,10 @@ namespace Fantasy_Kingdoms_Battle
                     if (InConstructing)
                         Build(true);
                     else
+                    {
+                        InRepair = false;
                         UpdateState();
+                    }
                 }
                 else
                     UpdateState();
@@ -1619,6 +1622,19 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
+            if (CellMenuRepair != null)
+            {
+                if (CurrentDurability == MaxDurability)
+                {
+                    if (!Researches.Remove(CellMenuRepair))
+                        DoException("Не смог убрать кнопку окончания ремонта");
+
+                    CellMenuRepair = null;
+                }
+                else
+                    CellMenuRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
+            }
+
             foreach (CellMenuConstruction cm in Researches)
             {
                 if (cm is CellMenuConstructionLevelUp cml)
@@ -1628,9 +1644,6 @@ namespace Fantasy_Kingdoms_Battle
                     // Учитываем, что следующий уровень может быть построен
                     cml.DaysForConstructed = Player.CalcDaysForEndConstruction(cml.Descriptor.Number == 1 ? 0 : Descriptor.Levels[cml.Descriptor.Number - 1].Durability, cml.Descriptor.Durability);
                 }
-
-                if (CellMenuRepair != null)
-                    CellMenuRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
             }
         }
 
