@@ -60,7 +60,6 @@ namespace Fantasy_Kingdoms_Battle
 
             btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
-            btnBuildOrUpgrade.ShowHint += BtnBuildOrUpgrade_ShowHint;
 
             lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
             lblIncome.Width = imgMapObject.Width;
@@ -158,6 +157,7 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Construction.GetName();
             lblNameMapObject.Color = Construction.GetColorCaption();
 
+            btnBuildOrUpgrade.MenuCell = null;
             pbDurability.Visible = false;
             btnHeroes.Visible = false;
 
@@ -272,12 +272,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(Construction.MainCellMenu != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.LowText = Construction.MainCellMenu.GetText();
-                            btnBuildOrUpgrade.DaysExecuting = Construction.MainCellMenu.GetDaysExecuting();
-                            btnBuildOrUpgrade.Level = Construction.MainCellMenu.GetLevel().ToString();
-                            btnBuildOrUpgrade.ImageIndex = Construction.MainCellMenu.GetImageIndex();
-                            btnBuildOrUpgrade.ImageIsEnabled = Construction.MainCellMenu.GetImageIsEnabled();
-                            btnBuildOrUpgrade.Color = Construction.MainCellMenu.GetColorText();
+                            btnBuildOrUpgrade.MenuCell = Construction.MainCellMenu;
                         }
                         else
                         {
@@ -300,12 +295,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(Construction.MainCellMenu != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.LowText = Construction.MainCellMenu.GetText();
-                            btnBuildOrUpgrade.Level = Construction.MainCellMenu.GetLevel().ToString();
-                            btnBuildOrUpgrade.DaysExecuting = Construction.MainCellMenu.GetDaysExecuting();
-                            btnBuildOrUpgrade.ImageIndex = Construction.MainCellMenu.GetImageIndex();
-                            btnBuildOrUpgrade.ImageIsEnabled = Construction.MainCellMenu.GetImageIsEnabled();
-                            btnBuildOrUpgrade.Color = Construction.MainCellMenu.GetColorText();
+                            btnBuildOrUpgrade.MenuCell = Construction.MainCellMenu;
                         }
                     }
                 }
@@ -402,11 +392,6 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnHeroes_ShowHint(object sender, EventArgs e)
         {
             Construction.PrepareHintForInhabitantCreatures(PanelHint);
-        }
-
-        private void BtnBuildOrUpgrade_ShowHint(object sender, EventArgs e)
-        {
-            Construction.PrepareHintForBuildOrUpgrade(PanelHint, Construction.Level + 1);
         }
 
         private void BtnBuildOrUpgrade_Click(object sender, EventArgs e)
