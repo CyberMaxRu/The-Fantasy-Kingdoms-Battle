@@ -193,5 +193,15 @@ namespace Fantasy_Kingdoms_Battle
             menu[cmPageCreatures.Descriptor.Coord.Y, cmPageCreatures.Descriptor.Coord.X].Research = cmPageCreatures;
             menu[cmPageCreatures.Descriptor.Coord.Y, cmPageCreatures.Descriptor.Coord.X].Used = true;
         }
+
+        internal void EntityAssert(bool condition, string text)
+        {
+            Utils.Assert(condition, $"{IDEntity}.{Environment.NewLine}{text}");
+        }
+
+        internal void EntityDoException(string text)
+        {
+            Utils.DoException($"{IDEntity}.{Environment.NewLine}{text}");
+        }
     }
 }
