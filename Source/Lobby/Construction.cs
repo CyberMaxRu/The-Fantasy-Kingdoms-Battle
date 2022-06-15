@@ -808,6 +808,7 @@ namespace Fantasy_Kingdoms_Battle
                     else
                     {
                         InRepair = false;
+                        Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionRepaired);
                         UpdateState();
                     }
                 }
@@ -1768,6 +1769,7 @@ namespace Fantasy_Kingdoms_Battle
                     Researches.Add(CellMenuRepair);
                 }
 
+                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionDamaged);
                 UpdateState();
                 TuneCellMenuBuildOrUpgrade();
             }
