@@ -487,7 +487,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Construction.SpendResourcesForConstruct;
+            // Если цены ремонта нет, значит, оно не в очереди. Пытаемся подсчитать, сколько это будет стоить
+            if (Construction.SpendResourcesForConstruct is null)
+            {
+                int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability - Construction.CurrentDurability));
+                PurchaseValue = Construction.CompCostRepair(expenseCP);
+
+                return PurchaseValue;
+            }
+            else
+            {
+                PurchaseValue = null;
+                return Construction.SpendResourcesForConstruct;
+            }
         }
 
         internal override int GetImageIndex() => Config.Gui48_Build;

@@ -1593,7 +1593,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (c.State == StateConstruction.NeedRepair)
             {
-                Assert(c.DayLevelConstructed[c.Level] == -1);
+                Assert(c.DayLevelConstructed[c.Level] != -1);
             }
             else
             {
@@ -1613,7 +1613,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemoveFromQueueBuilding(Construction c, bool constructed)
         {
-            Assert(c.InConstructing);
+            Assert(c.InConstructing || c.InRepair);
             Assert(c.MaxDurability > 0);
             Assert(c.DaysConstructLeft > 0);
 
@@ -1660,9 +1660,9 @@ namespace Fantasy_Kingdoms_Battle
                 if (restCP > 0)
                 {
                     // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
-                    if (c.SpendResourcesForConstruct is null)
+                    if (c.InConstructing)
                     {
-                        if (c.InConstructing)
+                        if (c.SpendResourcesForConstruct is null)
                         {
                             if (CheckRequiredResources(c.CostBuyOrUpgrade()))
                             {
@@ -1670,22 +1670,30 @@ namespace Fantasy_Kingdoms_Battle
                                 SpendResource(c.SpendResourcesForConstruct);
                             }
                         }
-                        else
-                        {
-                            if (CheckRequiredResources());
-                            {
-                                c.SpendResourcesForConstruct = c.CompCostRepair(Math.Min(restCP, c.MaxDurability - c.CurrentDurability));
-                                SpendResource(c.SpendResourcesForConstruct);
-                            }
-                        }
+
+                        expenseCP = Math.Min(restCP, c.MaxDurability - c.CurrentDurability);
+                        Debug.Assert(expenseCP > 0);
+                    }
+                    else
+                    {
+                        Assert(c.InRepair);
+
+                        // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
+                        // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
+                        // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
+                        if (c.SpendResourcesForConstruct != null)
+                            ReturnResource(c.SpendResourcesForConstruct);
+
+                        // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
+                        expenseCP = Math.Min(Gold, Math.Min(restCP, c.MaxDurability - c.CurrentDurability));
+                        c.SpendResourcesForConstruct = c.CompCostRepair(expenseCP);
+                        SpendResource(c.SpendResourcesForConstruct);
                     }
 
                     // Если ресурсы были потрачены, то тратим очки строительства
                     if (c.SpendResourcesForConstruct != null)
                     {
                         usedCP += c.MaxDurability - c.CurrentDurability;
-                        expenseCP = Math.Min(restCP, c.MaxDurability - c.CurrentDurability);
-                        Debug.Assert(expenseCP > 0);
 
                         c.AddConstructionPointByDay = expenseCP;
 
