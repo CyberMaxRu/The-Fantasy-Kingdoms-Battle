@@ -150,8 +150,13 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
-        internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
-        internal CellMenuConstructionRepair CellMenuRepair { get; private set; }// Действие для ремонта сооружения
+
+        // Меню
+        private CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
+        private CellMenuConstructionRepair CellMenuRepair { get; set; }// Действие для ремонта сооружения
+        internal CellMenuConstruction MainCellMenu { get; private set; }//
+
+
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
 
@@ -188,6 +193,13 @@ namespace Fantasy_Kingdoms_Battle
             // Удаляем все ячейки, если они относятся к уже построенным уровням
             foreach (CellMenuConstruction cmd in listForDelete)
                 Researches.Remove(cmd);
+
+            if (CellMenuRepair != null)
+                MainCellMenu = CellMenuRepair;
+            else if (CellMenuBuildOrLevelUp != null)
+                MainCellMenu = CellMenuBuildOrLevelUp;
+            else
+                MainCellMenu = null;
         }
 
         private void UpdateCurrentIncomeResources()
@@ -1732,7 +1744,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 State = StateConstruction.NeedRepair;// Сооружение повреждено, требуется ремонт
                 //CellMenuRepair.PurchaseValue = CompCostRepair(Math.Min(Player.RestConstructionPoints, restCP, c.MaxDurability - c.CurrentDurability))            
-                    }
+            }
             else
                 DoException("Неопределенное состояние сооружения");
         }
@@ -1757,6 +1769,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 UpdateState();
+                TuneCellMenuBuildOrUpgrade();
             }
         }
 
