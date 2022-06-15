@@ -783,13 +783,18 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (InConstructing && (AddConstructionPointByDay > 0))
+            if ((InConstructing || InRepair) && (AddConstructionPointByDay > 0))
             {
                 CurrentDurability += AddConstructionPointByDay;
+                Assert(CurrentDurability <= MaxDurability);
+
                 if (CurrentDurability == MaxDurability)
                 {
                     Player.RemoveFromQueueBuilding(this, true);
-                    Build(true);
+                    if (InConstructing)
+                        Build(true);
+                    else
+                        UpdateState();
                 }
                 else
                     UpdateState();
