@@ -515,7 +515,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (GetImageIsEnabled())
             {
-                if (true)
+                if (Construction.InRepair)
                     return FormMain.Config.CommonCost;
                 else
                     return Color.LimeGreen;
