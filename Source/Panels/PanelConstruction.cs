@@ -297,6 +297,8 @@ namespace Fantasy_Kingdoms_Battle
                             btnBuildOrUpgrade.Visible = true;
                             btnBuildOrUpgrade.MenuCell = Construction.MainCellMenu;
                         }
+                        else
+                            btnBuildOrUpgrade.Visible = false;
                     }
                 }
                 else
