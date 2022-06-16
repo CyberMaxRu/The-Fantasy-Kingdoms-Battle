@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract string GetName();
         internal virtual bool ProperName() => false;// Имя собственное
         internal abstract int GetImageIndex();
+        internal virtual int GetImageIndex24() => -1;
         internal virtual int GetCellImageIndex() => GetImageIndex();
         internal virtual bool GetNormalImage() => true;
         internal abstract string GetTypeEntity();

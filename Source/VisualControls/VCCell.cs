@@ -6,6 +6,8 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - ячейка
     internal class VCCell : VCImage48
     {
+        private VCImage img24;
+
         public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
             HighlightUnderMouse = true;
@@ -14,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal bool DrawState { get; set; }
+        internal int ImageIndex24 { get; set; }
         internal string HintForEmpty { get; set; }
 
         internal override bool PrepareHint()
@@ -65,7 +68,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (Entity != null)
                 {
                     ImageIndex = Entity.GetCellImageIndex();
-                    ImageIsEnabled = Entity.GetNormalImage();                        
+                    ImageIsEnabled = Entity.GetNormalImage();
+                    ImageIndex24 = Entity.GetImageIndex24();
                     Quantity = Entity.GetQuantity();
                     Level = Entity.GetLevel();
                     LowText = Entity.GetText();
@@ -82,6 +86,21 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
 
+            if (Visible && !ManualDraw)
+            {
+                if (ImageIndex24 != -1)
+                {
+                    if (img24 is null)
+                    {
+                        img24 = new VCImage(this, (Width - Program.formMain.ilGui24.Size.Width) / 2, (Height - Program.formMain.ilGui24.Size.Height) / 2, Program.formMain.ilGui24, ImageIndex24);
+                        img24.IsActiveControl = false;
+                        ArrangeControl(img24);
+                    }
+
+                    img24.ImageIndex = ImageIndex24;
+                    img24.Draw(g);
+                }
+            }
         }
 
         internal override void PaintBorder(Graphics g)

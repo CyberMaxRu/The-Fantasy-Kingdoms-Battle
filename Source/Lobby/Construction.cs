@@ -1187,9 +1187,11 @@ namespace Fantasy_Kingdoms_Battle
             return CellMenuBuildNewConstruction is null ? GetImageIndex() : CellMenuBuildNewConstruction.GetImageIndex();
         }
 
+        internal override int GetImageIndex24() => State == StateConstruction.NeedRepair ? FormMain.GUI_24_BROKEN_HOUSE : State == StateConstruction.Repair ? FormMain.GUI_24_HAMMER : -1;
+
         internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
 
-        internal override bool GetNormalImage() => (Level > 0) || (Descriptor.MaxLevel == 0);
+        internal override bool GetNormalImage() => (CurrentDurability == MaxDurability) && ((Level > 0) || (Descriptor.MaxLevel == 0));
 
         internal override string GetLevel()
         {
