@@ -424,6 +424,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
+            if (Construction.Level > 0)
+            {
+                Assert(Construction.CurrentDurability == Construction.MaxDurability);
+            }
+
             if (Construction.InConstructing)
             {
                 if (Construction.DaysConstructLeft == 0)
