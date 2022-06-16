@@ -813,7 +813,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     UpdateState();
-                    UpdateState();
             }
         }
 
@@ -1658,6 +1657,8 @@ namespace Fantasy_Kingdoms_Battle
                     cml.DaysForConstructed = Player.CalcDaysForEndConstruction(cml.Descriptor.Number == 1 ? 0 : Descriptor.Levels[cml.Descriptor.Number - 1].Durability, cml.Descriptor.Durability);
                 }
             }
+
+            TuneCellMenuBuildOrUpgrade();// Если кнорка ремонта была удалена, надо обновить действия
         }
 
         // Подготовка строительства сооружения
