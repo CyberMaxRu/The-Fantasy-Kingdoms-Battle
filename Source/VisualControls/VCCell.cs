@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal bool DrawState { get; set; }
-        internal int ImageIndex24 { get; set; }
+        internal int ImageIndex24 { get; set; } = -1;
         internal string HintForEmpty { get; set; }
 
         internal override bool PrepareHint()
