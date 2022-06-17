@@ -21,6 +21,13 @@ namespace Fantasy_Kingdoms_Battle
             Name = GetStringNotNull(n, "Name");
             Description = GetStringNotNull(n, "Description");
 
+            // Загружаем участников
+            XmlNode nmb = n.SelectSingleNode("Members");
+            foreach (XmlNode npmb in nmb.SelectNodes("Member"))
+            {
+                Members.Add(new DescriptorMissionMember(npmb));
+            }
+
             // Загружаем игроков
             XmlNode np = n.SelectSingleNode("Players");
             foreach (XmlNode npl in np.SelectNodes("Player"))
@@ -32,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nm = n.SelectSingleNode("Messages");
             foreach (XmlNode nml in nm.SelectNodes("Message"))
             {
-                Messages.Add(new DescriptorMissionMessage(nml));
+                Messages.Add(new DescriptorMissionMessage(nml, this));
             }
 
             // Загружаем задания
@@ -48,7 +55,19 @@ namespace Fantasy_Kingdoms_Battle
         internal string Description { get; }
 
         internal List<DescriptorMissionPlayer> Players { get; } = new List<DescriptorMissionPlayer>();
+        internal List<DescriptorMissionMember> Members { get; } = new List<DescriptorMissionMember>();
         internal List<DescriptorMissionMessage> Messages { get; } = new List<DescriptorMissionMessage>();
         internal List<DescriptorMissionQuest> Quests { get; } = new List<DescriptorMissionQuest>();
+
+        internal DescriptorMissionMember FindMember(string id)
+        {
+            foreach (DescriptorMissionMember m in Members)
+            {
+                if (m.ID == id)
+                    return m;
+            }
+
+            throw new Exception($"Участник миссии {id} не найден.");
+        }
     }
 }

@@ -90,6 +90,22 @@ namespace Fantasy_Kingdoms_Battle
                 return;
             }
 
+            // Показываем сообщения
+            WindowMessage wm = null;
+            foreach (DescriptorMissionMessage m in Lobby.Mission.Messages)
+            {
+                if (m.Turn == Lobby.Turn)
+                {
+                    if (wm is null)
+                        wm = new WindowMessage();
+
+                    wm.SetMessage(m);
+                    wm.ShowDialog();
+                }
+
+                wm?.Dispose();
+            }
+
             frame.Continue = true;
             //Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(ExitFrame), frame);
             Dispatcher.PushFrame(frame);

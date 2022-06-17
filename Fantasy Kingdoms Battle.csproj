@@ -165,6 +165,7 @@
     <Compile Include="Source\Map\Region.cs" />
     <Compile Include="Source\Map\StrategicMap.cs" />
     <Compile Include="Source\Mission\DescriptorMission.cs" />
+    <Compile Include="Source\Mission\DescriptorMissionMember.cs" />
     <Compile Include="Source\Mission\DescriptorMissionMessage.cs" />
     <Compile Include="Source\Mission\DescriptorMissionPlayer.cs" />
     <Compile Include="Source\Mission\DescriptorMissionQuest.cs" />
