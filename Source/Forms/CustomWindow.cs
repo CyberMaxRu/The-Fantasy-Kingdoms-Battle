@@ -13,10 +13,46 @@ namespace Fantasy_Kingdoms_Battle
     {
         private DispatcherFrame frame;
         private DialogAction dialogResult;
+        private bool showButtonClose;
+        private VCImage imgClose;
 
         public CustomWindow()
         {
             Program.formMain.AddLayer(this, ToString());
+        }
+
+        internal bool ShowButtonClose// Показывать крестик в правом верхнем углу
+        {   
+            get => showButtonClose;
+            set
+            {
+                showButtonClose = value;
+                if (showButtonClose && (imgClose is null))
+                {
+                    imgClose = new VCImage(this, 0, 0, Program.formMain.ilGui32, FormMain.GUI_32_CLOSE);
+                    imgClose.HighlightUnderMouse = true;
+                    imgClose.Click += ImgClose_Click;
+                }
+                else if (!showButtonClose && (imgClose != null))
+                { 
+                    imgClose.Dispose();
+                    imgClose = null;
+                }
+
+            }
+        }
+
+        private void ImgClose_Click(object sender, EventArgs e)
+        {
+            CloseForm(DialogAction.None);
+        }
+
+        internal override void ArrangeControls()
+        {
+            if (imgClose != null)
+                imgClose.ShiftX = Width - imgClose.Width;
+
+            base.ArrangeControls();
         }
 
         protected VCButton AcceptButton { get; set; }
@@ -30,6 +66,11 @@ namespace Fantasy_Kingdoms_Battle
                 AcceptButton.DoClick();
             if ((e.KeyCode == Keys.Escape) && (CancelButton != null))
                 CancelButton.DoClick();
+        }
+
+        internal override void Draw(Graphics g)
+        {            
+            base.Draw(g);
         }
 
         internal virtual void AdjustSize()
