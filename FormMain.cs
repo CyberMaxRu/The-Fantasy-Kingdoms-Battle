@@ -43,6 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         internal BitmapList imListObjects48 { get; }
         internal readonly BitmapList ilGui16;
         internal readonly BitmapList ilGui24;
+        internal readonly BitmapList ilGui32;
         internal readonly BitmapList ilParameters;
         internal readonly BitmapList ilStateHero;
         internal readonly BitmapList ilMenuCellFilters;
@@ -132,6 +133,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_24_TRANSP_WIN = 9;
         internal const int GUI_24_BROKEN_HOUSE = 10;
         internal const int GUI_24_HAMMER = 11;
+
+        internal const int GUI_32_CLOSE = 0;
 
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
@@ -338,6 +341,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), new Size(16, 16), true, false);
             ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), new Size(24, 24), true, true);
+            ilGui32 = new BitmapList(LoadBitmap("Gui32.png"), new Size(32, 32), true, true);
             ilParameters = new BitmapList(LoadBitmap("Parameters.png"), new Size(24, 24), true, false);
             ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), new Size(24, 24), true, false);
             ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), new Size(48, 48), true, false);

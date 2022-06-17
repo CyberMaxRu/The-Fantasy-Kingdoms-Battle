@@ -63,6 +63,7 @@
     <Compile Include="CacheBackgroundImage.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionSpell.cs" />
     <Compile Include="Source\Descriptors\DescriptorTimeOfDay.cs" />
+    <Compile Include="Source\Forms\WindowMessage.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />
     <Compile Include="Source\Forms\WindowSetupTournament.cs" />
     <Compile Include="Source\Lobby\ComponentObjectOfMap.cs" />
