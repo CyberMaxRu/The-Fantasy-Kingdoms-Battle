@@ -64,8 +64,13 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((e.KeyCode == Keys.Enter) && (AcceptButton != null))
                 AcceptButton.DoClick();
-            if ((e.KeyCode == Keys.Escape) && (CancelButton != null))
-                CancelButton.DoClick();
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (CancelButton != null)
+                    CancelButton.DoClick();
+                if (showButtonClose)
+                    CloseForm(DialogAction.None);
+            }
         }
 
         internal override void Draw(Graphics g)
@@ -118,8 +123,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 System.Threading.Thread.Sleep(1);
                 Application.DoEvents();
-            }
-            
+            }            
 
             return dialogResult;
         }
