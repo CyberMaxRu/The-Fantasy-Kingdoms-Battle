@@ -1532,11 +1532,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice)
+        internal void AddNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam = 0)
         {
             if (GetTypePlayer() == TypePlayer.Human)
             {
-                ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeNotice));
+                ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeNotice, addParam));
             }
         }
 

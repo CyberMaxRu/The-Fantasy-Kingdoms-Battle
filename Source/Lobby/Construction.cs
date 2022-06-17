@@ -1770,7 +1770,7 @@ namespace Fantasy_Kingdoms_Battle
                     Researches.Add(CellMenuRepair);
                 }
 
-                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionDamaged);
+                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionDamaged, damage);
                 UpdateState();
                 TuneCellMenuBuildOrUpgrade();
             }

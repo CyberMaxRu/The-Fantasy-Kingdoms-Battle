@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
-        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice) : base(52 + 399)
+        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam) : base(52 + 399)
         {
             Debug.Assert(entity != null);
             Debug.Assert(typeNotice != TypeNoticeForPlayer.None);
@@ -119,7 +119,8 @@ namespace Fantasy_Kingdoms_Battle
                     colorNameEntity = Color.SteelBlue;
                     break;
                 case TypeNoticeForPlayer.ConstructionDamaged:
-                    nameNotice = "Сооружение повреждено:";
+                    Debug.Assert(addParam > 0);
+                    nameNotice = $"Сооружение повреждено ({-addParam}):";
                     nameText = (Entity as Construction).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
