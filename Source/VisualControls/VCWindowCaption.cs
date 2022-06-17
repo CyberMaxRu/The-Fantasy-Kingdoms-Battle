@@ -15,13 +15,14 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCWindowCaption(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            labelCaption = new VCLabel(this, WidthCap(), 3, Program.formMain.fontMedCaptionC, Color.MediumAquamarine, Program.formMain.fontMedCaptionC.MaxHeightSymbol, "");
+            labelCaption = new VCLabel(this, WidthCap(), 3, Program.formMain.fontMedCaptionC, Color, Program.formMain.fontMedCaptionC.MaxHeightSymbol, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Near;
             labelCaption.ManualDraw = true;
         }
 
         internal string Caption { get; set; }
+        internal Color Color { get; set; } = Color.MediumAquamarine;
         protected override int WidthCap() => 12;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandWindowCaption;
 
@@ -38,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             labelCaption.Text = Caption;
+            labelCaption.Color = Color;
             labelCaption.Draw(g);
         }
     }
