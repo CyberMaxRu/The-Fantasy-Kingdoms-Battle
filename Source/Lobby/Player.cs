@@ -1772,10 +1772,14 @@ namespace Fantasy_Kingdoms_Battle
             return v;
         }
 
-        internal BigEntity FindEntityInSelfAndLob(string id)
+        internal BigEntity FindEntityInSelfAndLobby(string id)
         {
-            Entities.TryGetValue(id, out BigEntity v);
-            return v;
+            Entities.TryGetValue(id, out BigEntity e);
+            if (e is null)
+                e = Lobby.FindEntity(id);
+
+            EntityAssert(e != null, $"id не найден.");
+            return e;
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;

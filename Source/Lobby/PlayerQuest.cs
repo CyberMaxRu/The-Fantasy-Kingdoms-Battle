@@ -12,6 +12,9 @@ namespace Fantasy_Kingdoms_Battle
     // Класс квеста игрока
     internal sealed class PlayerQuest : Entity
     {
+        private string name;
+        private string description;
+
         public PlayerQuest(Player p, DescriptorMissionQuest quest) : base()
         {
             Player = p;
@@ -20,10 +23,10 @@ namespace Fantasy_Kingdoms_Battle
             State = StateQuest.InProgress;
 
             // Определяем, от кого поступил квест
-            FromEntity = Player.Lobby.FindEntity(quest.From);
-            if (FromEntity is null) 
-                FromEntity = Player.FindEntity(quest.From);
-            Assert(FromEntity != null);
+            FromEntity = Player.FindEntityInSelfAndLobby(quest.From);
+            name = quest.Name;
+            description = quest.Description;
+            // Заменяем 
             //if ()
         }
 
@@ -38,7 +41,8 @@ namespace Fantasy_Kingdoms_Battle
             return FormMain.Config.Gui48_Quest;
         }
 
-        internal override string GetName() => Quest.Name;
+        internal override string GetName() => name;
+        internal string Description => description;
 
         internal override string GetTypeEntity() => "Задание";
 

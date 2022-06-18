@@ -83,10 +83,7 @@ namespace Fantasy_Kingdoms_Battle
             btnPrior.Enabled = part > 0;
             btnNext.Caption = part < message.Parts.Count - 1 ? "Далее" : "Закрыть";
 
-            BigEntity be = player.Lobby.FindEntity(message.Parts[currPart].From);
-            if (be is null)
-                be = player.FindEntity(message.Parts[currPart].From);
-            Assert(be != null);
+            BigEntity be = player.FindEntityInSelfAndLobby(message.Parts[currPart].From);
             windowCaption.Caption = be.GetName();
             imgAvatar.ImageIndex = be.GetImageIndex();
             txtMain.Text = message.Parts[currPart].Text;
