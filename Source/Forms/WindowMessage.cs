@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Width = 560;
             ClientControl.Height = 280;
 
-            btnNext = new VCButton(ClientControl, 0, 0, "Дальше");
+            btnNext = new VCButton(ClientControl, 0, 0, "Далее");
             btnNext.Click += BtnNext_Click;
 
             AcceptButton = btnNext;
