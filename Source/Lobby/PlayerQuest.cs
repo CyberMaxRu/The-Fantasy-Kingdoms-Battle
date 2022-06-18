@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс квеста игрока
     internal sealed class PlayerQuest : Entity
     {
-        public PlayerQuest(Player p, DescriptorMissionQuest quest)
+        public PlayerQuest(Player p, DescriptorMissionQuest quest) : base()
         {
             Player = p;
             Quest = quest;
