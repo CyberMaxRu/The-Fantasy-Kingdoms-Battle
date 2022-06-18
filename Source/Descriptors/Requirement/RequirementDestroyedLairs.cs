@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameConstruction;
         private int destroyed;
 
-        public RequirementDestroyedLairs(DescriptorWithID forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementDestroyedLairs(Descriptor forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             destroyed = XmlUtils.GetInteger(n, "Destroyed");

@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     internal class ListDescriptorRequirements : List<DescriptorRequirement>
     {
         private bool linksTuned;
-        public ListDescriptorRequirements(DescriptorWithID forEntity, XmlNode n)
+        public ListDescriptorRequirements(Descriptor forEntity, XmlNode n)
         {
             if (n != null)
             {

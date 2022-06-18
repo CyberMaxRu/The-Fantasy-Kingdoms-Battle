@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstruction construction;
         private DescriptorProduct goods;
 
-        public RequirementGoods(DescriptorWithID forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementGoods(Descriptor forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameGoods = XmlUtils.GetStringNotNull(n, "Goods");
