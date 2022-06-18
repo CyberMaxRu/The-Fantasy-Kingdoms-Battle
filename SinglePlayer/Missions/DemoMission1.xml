@@ -71,8 +71,13 @@
     </Message>
     <Message>
       <Turn>1</Turn>
-      <StartCondition>
-      </StartCondition>
+      <StartRequirements>
+        <Requirement>
+          <TypeRequirement>BuildedConstruction</TypeRequirement>
+          <Construction>GuildWarrior</Construction>
+          <Level>1</Level>
+        </Requirement>
+      </StartRequirements>
       <Part>
         <From>GuildWarrior1</From>
         <Text>Ваше сиятельство, воины Гильдии хотят быть более эффективными в бою. Для этого просим вас исследовать {Сокрушительный удар} в нашей гильдии.</Text>

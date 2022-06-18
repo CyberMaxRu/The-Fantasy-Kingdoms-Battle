@@ -11,15 +11,16 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeActionMessage { None, AddQuest };
 
-    internal sealed class DescriptorMissionMessage
+    internal sealed class DescriptorMissionMessage : Descriptor
     {
         private TypeActionMessage typeAction = TypeActionMessage.None;
         private string idEntityAction = "";
 
-        public DescriptorMissionMessage(XmlNode n, DescriptorMission dm)
+        public DescriptorMissionMessage(XmlNode n, DescriptorMission dm) : base()
         {
             Mission = dm;
             Turn = GetIntegerNotNull(n, "Turn");
+            StartRequirements = new ListDescriptorRequirements(this, n.SelectSingleNode("StartRequirements"));
 
             // Загружаем части сообщения
             foreach (XmlNode np in n.SelectNodes("Part"))
@@ -38,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Showed { get; set; }// Флаг  - сообщение показано игроку
         internal DescriptorMission Mission { get; }
         internal int Turn { get; }
+        internal ListDescriptorRequirements StartRequirements { get; }// Требования для выдачи квеста
         internal List<DescriptorMissionMessagePart> Parts { get; } = new List<DescriptorMissionMessagePart>();
         internal void DoAction(Player p)
         {
