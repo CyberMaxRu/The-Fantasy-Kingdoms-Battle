@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Width = 560;
             ClientControl.Height = 280;
 
-            btnNext = new VCButton(ClientControl, 0, 0, "Далее");
+            btnNext = new VCButton(ClientControl, 0, 0, "");
             btnNext.Click += BtnNext_Click;
 
             AcceptButton = btnNext;
@@ -63,6 +63,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             currPart = part;
 
+            btnNext.Caption = part < m.Parts.Count - 1 ? "Далее" : "Закрыть";
             windowCaption.Caption = m.Parts[currPart].From.Name;
             imgAvatar.ImageIndex = m.Parts[currPart].From.ImageIndex;
             txtMain.Text = m.Parts[currPart].Text;
