@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum StateQuest { InProgress, Executed, Failed };
+
     // Класс квеста игрока
     internal sealed class PlayerQuest : Entity
     {
@@ -14,11 +16,13 @@ namespace Fantasy_Kingdoms_Battle
             Player = p;
             Quest = quest;
             TurnActivate = p.Lobby.Turn;
+            State = StateQuest.InProgress;
         }
 
         internal Player Player { get; }
         internal DescriptorMissionQuest Quest { get; }
         internal int TurnActivate { get; }// Ход, на котором квест был активирован
+        internal StateQuest State { get; private set; }// Состояние квеста
 
         internal override int GetImageIndex()
         {
