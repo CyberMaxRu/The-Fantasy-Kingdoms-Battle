@@ -50,6 +50,11 @@ namespace Fantasy_Kingdoms_Battle
                     //else
                     //    Players[p.Index] = new PlayerComputer(this, )
                 }
+
+                foreach (DescriptorMissionMember dm in m.Members)
+                {
+                    Members.Add(new MissionMember(this, dm));
+                }
             }
             else
             {
@@ -58,8 +63,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Подбираем компьютерных игроков из пула доступных
                 GenerateComputerPlayers();
-            }
 
+                foreach (DescriptorMissionMember dm in m.Members)
+                {
+                    Members.Add(new MissionMember(this, dm));
+                }
+            }
             CalcDayNextBattleBetweenPlayers();
 
             SetPlayerAsCurrent(0);
@@ -91,6 +100,7 @@ namespace Fantasy_Kingdoms_Battle
         internal LobbySettings Settings { get; }
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
+        internal List<MissionMember> Members { get; } = new List<MissionMember>();
         internal int Turn { get; private set; }// Текущий ход лобби
         internal DescriptorTimeOfDay TimeOfDay { get; private set; }// Время суток
         internal int Day { get; private set; }// День
@@ -607,6 +617,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(e != null);
 
             Entities.Add(e.IDEntity, e);
+        }
+
+        internal BigEntity FindEntity(string id)
+        {
+            Entities.TryGetValue(id, out BigEntity v);
+            return v;
         }
     }
 }

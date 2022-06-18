@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс участника миссии
     internal sealed class MissionMember : BigEntity
     {
-        public MissionMember(Player p, DescriptorMissionMember d) : base(d, p.Lobby, p)
+        public MissionMember(Lobby l, DescriptorMissionMember d) : base(d, l, null)
         {
             Descriptor = d;
         }
@@ -21,6 +21,8 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetName() => Descriptor.Name;
 
         internal override string GetTypeEntity() => Descriptor.GetTypeEntity();
+
+        internal override string GetIDEntity(DescriptorEntity descriptor) => descriptor.ID;
 
         internal override void PrepareHint(PanelHint panelHint)
         {
