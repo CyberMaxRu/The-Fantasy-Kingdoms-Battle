@@ -244,6 +244,7 @@
     <Compile Include="Source\VisualControls\VCImageLose.cs" />
     <Compile Include="Source\VisualControls\VCPageControl.cs" />
     <Compile Include="Source\VisualControls\VCProgressBar.cs" />
+    <Compile Include="Source\VisualControls\VCQuest.cs" />
     <Compile Include="Source\VisualControls\VCResultRound.cs" />
     <Compile Include="Source\VisualControls\VCNoticeForPlayer.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
