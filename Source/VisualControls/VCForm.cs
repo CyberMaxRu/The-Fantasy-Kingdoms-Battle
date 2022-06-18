@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
             windowCaption = new VCWindowCaption(this, 0, 0);
             windowCaption.Width = 410;// Такая ширина заголовка в Majesty 2
+            windowCaption.IsActiveControl = false;
         }
 
         internal override void AdjustSize()
