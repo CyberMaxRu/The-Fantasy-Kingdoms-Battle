@@ -15,7 +15,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class Construction : BattleParticipant
     {
         private int gold;
-        private int usedBuilders;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
         public Construction(Player p, DescriptorConstruction dc) : base(dc, p.Lobby, p)
@@ -353,8 +352,6 @@ namespace Fantasy_Kingdoms_Battle
 
             TuneCellMenuBuildOrUpgrade();
             UpdateState();
-
-            usedBuilders = 0;
         }
 
         private void AddVisit()
@@ -1491,23 +1488,6 @@ namespace Fantasy_Kingdoms_Battle
             return text;
         }
 
-        internal void SpendForBuild(CellMenuConstruction cell)
-        {
-            Debug.Assert(ListQueueProcessing.IndexOf(cell) == -1);
-            Debug.Assert(cell.DaysProcessed == 0);
-            Debug.Assert(cell.PosInQueue == 0);
-            Debug.Assert(cell.PurchaseValue is null);
-            Debug.Assert(usedBuilders == 0);
-            Debug.Assert(Player.RestConstructionPoints >= cell.Descriptor.CreatedEntity.GetCreating().ConstructionPoints(Player));
-            Debug.Assert(CellMenuBuildNewConstruction is null);
-
-            cell.PurchaseValue = new ListBaseResources(cell.GetCost());
-            Player.SpendResource(cell.PurchaseValue);
-
-            usedBuilders = cell.Descriptor.CreatedEntity.GetCreating().ConstructionPoints(Player);
-            Player.UseFreeBuilder(usedBuilders);
-        }
-
         internal void AddEntityToQueueProcessing(CellMenuConstruction cell)
         {
             cell.DaysLeft = cell.InstantExecute() ? 1 : cell.Descriptor.CreatedEntity.GetCreating().DaysProcessing;
@@ -1516,12 +1496,12 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((cell.DaysLeft == 0) || cell.InstantExecute())
             {
-                SpendForBuild(cell);
+                //SpendForBuild(cell);
                 cell.Execute();
             }
             else
             {
-                SpendForBuild(cell);
+                //SpendForBuild(cell);
                 ListQueueProcessing.Add(cell);
                 //Player.AddEntityToQueueBuilding()
                 cell.PosInQueue = ListQueueProcessing.Count;
@@ -1542,8 +1522,7 @@ namespace Fantasy_Kingdoms_Battle
 
             cell.PosInQueue = 0;
             Player.ReturnResource(cell.PurchaseValue);
-            Player.UnuseFreeBuilders(usedBuilders);
-            usedBuilders = 0;
+            //Player.UnuseFreeBuilders(usedBuilders);
             cell.PurchaseValue = null;
             ListQueueProcessing.Remove(cell);
 
