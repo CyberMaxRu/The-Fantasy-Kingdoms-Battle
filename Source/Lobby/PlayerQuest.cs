@@ -23,11 +23,9 @@ namespace Fantasy_Kingdoms_Battle
             State = StateQuest.InProgress;
 
             // Определяем, от кого поступил квест
-            FromEntity = Player.FindEntityInSelfAndLobby(quest.From);
-            name = quest.Name;
-            description = quest.Description;
-            // Заменяем 
-            //if ()
+            FromEntity = Player.FindBigEntityInSelfAndLobby(quest.From);
+            name = Player.ReplaceIDEntityToName(quest.Name);
+            description = Player.ReplaceIDEntityToName(quest.Description);
         }
 
         internal Player Player { get; }

@@ -126,8 +126,8 @@
       <ID>QuestGuildWarrior</ID>
       <TypeQuest>Secondary</TypeQuest>
       <From>GuildWarrior</From>
-      <Name>Исследовать {Сокрушительный удар} в {Гильдия воинов}</Name>
-      <Description>Гильдия воинов хочет получить доступ к {Сокрушительный удар} для обучения своих воинов.</Description>
+      <Name>Исследовать {Сокрушительный удар} в #GuildWarrior#</Name>
+      <Description>#GuildWarrior# хочет получить доступ к {Сокрушительный удар} для обучения своих героев.</Description>
       <Turn>1</Turn>
     </Quest>
   </Quests>
