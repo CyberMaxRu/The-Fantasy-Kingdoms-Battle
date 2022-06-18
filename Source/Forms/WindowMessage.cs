@@ -11,10 +11,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCImage128 imgAvatar;
         private readonly VCText txtMain;
+        private readonly VCButton btnPrior;
         private readonly VCButton btnNext;
 
         private DescriptorMissionMessage m;
-        private int currPart;
+        private int currPart = -1;
 
         public WindowMessage()
         {
@@ -28,16 +29,22 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Width = 560;
             ClientControl.Height = 280;
 
+            btnPrior = new VCButton(ClientControl, 0, 0, "Назад");
+            btnPrior.Click += BtnPrior_Click;
             btnNext = new VCButton(ClientControl, 0, 0, "");
             btnNext.Click += BtnNext_Click;
 
             AcceptButton = btnNext;
         }
 
+        private void BtnPrior_Click(object sender, EventArgs e)
+        {
+            ApplyPart(--currPart);
+        }
+
         internal void SetMessage(DescriptorMissionMessage message)
         {
             m = message;
-            ApplyPart(0);
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
@@ -54,20 +61,27 @@ namespace Fantasy_Kingdoms_Battle
 
             base.AdjustSize();
 
+            btnPrior.ShiftX = (ClientControl.Width - btnPrior.Width - btnNext.Width - FormMain.Config.GridSize) / 2;
+            btnNext.ShiftX = btnPrior.NextLeft();
+            btnPrior.ShiftY = ClientControl.Height - btnPrior.Height;
+            btnNext.ShiftY = btnPrior.ShiftY;
+
             txtMain.Width = ClientControl.Width - txtMain.ShiftX;
-            btnNext.ShiftX = (ClientControl.Width - btnNext.Width) / 2;
-            btnNext.ShiftY = ClientControl.Height - btnNext.Height;
+            txtMain.Height = btnNext.ShiftY - FormMain.Config.GridSize;
+
+            if (currPart == -1)
+                ApplyPart(0);
         }
 
         private void ApplyPart(int part)
         {
             currPart = part;
 
+            btnPrior.Enabled = part > 0;
             btnNext.Caption = part < m.Parts.Count - 1 ? "Далее" : "Закрыть";
             windowCaption.Caption = m.Parts[currPart].From.Name;
             imgAvatar.ImageIndex = m.Parts[currPart].From.ImageIndex;
             txtMain.Text = m.Parts[currPart].Text;
-            txtMain.Height = txtMain.MinHeigth();
 
             Program.formMain.SetNeedRedrawFrame();
         }
