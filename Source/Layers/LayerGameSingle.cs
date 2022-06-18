@@ -1207,6 +1207,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((lobby != null) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
+                pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelBuilders.Text = $"{curAppliedPlayer.RestConstructionPoints}/{curAppliedPlayer.ConstructionPoints}";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
