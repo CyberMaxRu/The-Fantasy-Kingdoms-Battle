@@ -10,22 +10,18 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeQuest { Primary, Secondary };
 
-    internal sealed class DescriptorMissionQuest
+    internal sealed class DescriptorMissionQuest : DescriptorWithID
     {
-        public DescriptorMissionQuest(XmlNode n)
+        public DescriptorMissionQuest(XmlNode n) : base(n)
         {
-            ID = GetStringNotNull(n, "ID");
             TypeQuest = (TypeQuest)Enum.Parse(typeof(TypeQuest), GetStringNotNull(n, "TypeQuest"));
             From = GetStringNotNull(n, "From");
-            Name = GetStringNotNull(n, "Name");
             Description = GetStringNotNull(n, "Description");
             Turn = GetIntegerNotNull(n, "Turn");
         }
         
-        internal string ID { get; }
         internal TypeQuest TypeQuest { get; }
         internal string From { get; }// От кого поступил квест
-        internal string Name { get; }
         internal string Description { get; }
         internal int Turn { get; }// Ход, на котором выдается квест
     }
