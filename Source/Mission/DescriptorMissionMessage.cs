@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal bool Showed { get; set; }// Флаг  - сообщение показано игроку
         internal DescriptorMission Mission { get; }
         internal int Turn { get; }
         internal List<DescriptorMissionMessagePart> Parts { get; } = new List<DescriptorMissionMessagePart>();

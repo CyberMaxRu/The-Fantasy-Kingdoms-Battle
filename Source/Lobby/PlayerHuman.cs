@@ -93,12 +93,13 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем сообщения
             foreach (DescriptorMissionMessage m in Lobby.Mission.Messages)
             {
-                if (m.Turn == Lobby.Turn)
+                if ((m.Turn <= Lobby.Turn) && !m.Showed)
                 {
                     WindowMessage wm = new WindowMessage();
                     wm.SetMessage(this, m);
                     wm.ShowDialog();
                     m.DoAction(this);
+                    m.Showed = true;
                 }
             }
 
