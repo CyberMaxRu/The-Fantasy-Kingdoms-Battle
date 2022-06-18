@@ -20,7 +20,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnBuildOrUpgrade;
         private readonly VCIconButton48 btnQueue;
         private readonly VCLabelValue lblIncome;
-        private readonly VCLabelValue lblGreatness;
 
         private readonly VCIconButton48 btnAction;
         private readonly VCIconButton48 btnInhabitants;
@@ -61,18 +60,11 @@ namespace Fantasy_Kingdoms_Battle
             btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
 
-            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
+            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, pbDurability.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
             lblIncome.Width = imgMapObject.Width;
             lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
-
-            lblGreatness = new VCLabelValue(this, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
-            lblGreatness.Width = lblIncome.Width;
-            lblGreatness.Image.ImageIndex = FormMain.GUI_16_GREATNESS;
-            lblGreatness.StringFormat.Alignment = StringAlignment.Near;
-            lblGreatness.Color = FormMain.Config.HintIncome;
-            lblGreatness.Hint = "Прибавление величия при строительстве и в день";
 
             btnAction = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Battle);
             btnAction.Click += BtnAction_Click;
@@ -247,17 +239,6 @@ namespace Fantasy_Kingdoms_Battle
                 bool needShowGreatness = Construction.Level > 0
                         ? Construction.GreatnessPerDay() > 0
                         : (Construction.GreatnessPerDayNextLevel() > 0) || (Construction.GreatnessAddNextLevel() > 0);
-                lblGreatness.Visible = needShowGreatness;
-                if (lblGreatness.Visible)
-                {
-                    if (Construction.Level == 0)
-                        lblGreatness.Text = Utils.FormatGreatness(Construction.GreatnessAddNextLevel(), Construction.GreatnessPerDayNextLevel());
-                    else
-                        lblGreatness.Text = Utils.FormatGreatness(0, Construction.GreatnessPerDay());
-
-                    lblGreatness.Color = FormMain.Config.ColorGreatness(Construction.Level > 0);
-                    lblGreatness.Image.ImageIsEnabled = Construction.Level > 0;
-                }
 
                 if (Construction.Descriptor.PlayerCanBuild)
                 {
@@ -307,7 +288,6 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 lblIncome.Visible = false;
-                lblGreatness.Visible = false;
                 btnHeroes.Visible = false;
 
                 btnAction.Visible = !Construction.ComponentObjectOfMap.Visible || (Construction.Descriptor.Category == CategoryConstruction.Lair);
@@ -365,8 +345,6 @@ namespace Fantasy_Kingdoms_Battle
                     lblRewardGreatness.Text = Construction.Descriptor.Reward.Greatness.ToString();
                 }
             }
-
-            lblIncome.Visible = false;            
 
             base.Draw(g);
         }
@@ -428,7 +406,6 @@ namespace Fantasy_Kingdoms_Battle
                 btnHeroes.Visible = visible;
                 btnBuildOrUpgrade.Visible = visible;
                 lblIncome.Visible = visible;
-                lblGreatness.Visible = visible;
 
             }
 
