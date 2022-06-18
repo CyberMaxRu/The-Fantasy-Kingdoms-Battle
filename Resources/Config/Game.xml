@@ -130,7 +130,7 @@
     <FlagDefense>188</FlagDefense>
     <Map>189</Map>
     <Background>190</Background>
-    <ResultDay>191</ResultDay>
+    <Mail>294</Mail>
     <Win>192</Win>
     <Draw>193</Draw>
     <Defeat>194</Defeat>
@@ -144,6 +144,5 @@
     <ComputerPlayer>288</ComputerPlayer>
     <HumanPlayer>289</HumanPlayer>
     <Quest>191</Quest>
-  
 </Gui48>
 </Game>

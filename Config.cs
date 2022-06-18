@@ -258,7 +258,7 @@ namespace Fantasy_Kingdoms_Battle
             Gui48_FlagDefense = GetGui48ImageIndex("FlagDefense");
             Gui48_Map = GetGui48ImageIndex("Map");
             Gui48_Background = GetGui48ImageIndex("Background");
-            Gui48_ResultDay = GetGui48ImageIndex("ResultDay");
+            Gui48_Mail = GetGui48ImageIndex("Mail");
             Gui48_Win = GetGui48ImageIndex("Win");
             Gui48_Draw = GetGui48ImageIndex("Draw");
             Gui48_Defeat = GetGui48ImageIndex("Defeat");
@@ -426,7 +426,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gui48_FlagDefense { get; }
         internal int Gui48_Map { get; }
         internal int Gui48_Background { get; }
-        internal int Gui48_ResultDay { get; }
+        internal int Gui48_Mail { get; }
         internal int Gui48_Win { get; }
         internal int Gui48_Draw { get; }
         internal int Gui48_Defeat { get; }

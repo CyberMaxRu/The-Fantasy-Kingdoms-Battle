@@ -245,7 +245,7 @@ namespace Fantasy_Kingdoms_Battle
             // Страницы игры
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
-            pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Итоги хода", "Сводка", null);
+            pageResultTurn = pageControl.AddPage(Config.Gui48_Mail, "Итоги хода", "Сводка", null);
             pageResultTurn.Hint = "Итоги хода";
             //pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", null);
             //pageFinance.Hint = "Финансовая информация";
