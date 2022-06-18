@@ -214,10 +214,10 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (byte b in text1251)
             {
-                width += symbols[b - 32].Width;
+                width += symbols[b - 32].Width - 1;
             }
 
-            return width;
+            return width + 1;
         }
     }
 }
