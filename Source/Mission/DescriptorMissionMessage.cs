@@ -9,10 +9,16 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum TypeActionMessage { None, AddQuest };
+
     internal sealed class DescriptorMissionMessage
     {
+        private TypeActionMessage typeAction = TypeActionMessage.None;
+        private string idEntityAction = "";
+
         public DescriptorMissionMessage(XmlNode n, DescriptorMission dm)
         {
+            Mission = dm;
             Turn = GetIntegerNotNull(n, "Turn");
 
             // Загружаем части сообщения
@@ -20,10 +26,32 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Parts.Add(new DescriptorMissionMessagePart(np, dm));
             }
+
+            XmlNode na = n.SelectSingleNode("Action");
+            if (na != null)
+            {
+                typeAction = (TypeActionMessage)Enum.Parse(typeof(TypeActionMessage), GetStringNotNull(na, "Type"));
+                idEntityAction = GetStringNotNull(na, "ID");
+            }
         }
 
+        internal DescriptorMission Mission { get; }
         internal int Turn { get; }
         internal List<DescriptorMissionMessagePart> Parts { get; } = new List<DescriptorMissionMessagePart>();
+        internal void DoAction(Player p)
+        {
+            if (typeAction == TypeActionMessage.None)
+                return;
+
+            switch (typeAction)
+            {
+                case TypeActionMessage.AddQuest:
+                    p.AddQuest(Mission.FindQuest(idEntityAction));
+                    break;
+                default:
+                    throw new Exception("Неизвестный тип действия");
+            }
+        }
     }
 
     internal sealed class DescriptorMissionMessagePart

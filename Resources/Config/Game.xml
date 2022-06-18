@@ -143,5 +143,7 @@
     <ManualSelect>287</ManualSelect>
     <ComputerPlayer>288</ComputerPlayer>
     <HumanPlayer>289</HumanPlayer>
-  </Gui48>
+    <Quest>191</Quest>
+  
+</Gui48>
 </Game>

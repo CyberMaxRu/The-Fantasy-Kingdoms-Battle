@@ -101,6 +101,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     wm.SetMessage(m);
                     wm.ShowDialog();
+                    m.DoAction(this);
                 }
 
                 wm?.Dispose();

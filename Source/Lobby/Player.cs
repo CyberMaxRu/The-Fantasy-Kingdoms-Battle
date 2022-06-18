@@ -1746,6 +1746,17 @@ namespace Fantasy_Kingdoms_Battle
             return val;
         }
 
+        internal void AddQuest(DescriptorMissionQuest quest)
+        {
+            PlayerQuest q = new PlayerQuest(this, quest);
+            AddNoticeForPlayer(q, TypeNoticeForPlayer.AddQuest);
+
+            Program.formMain.layerGame.ShowPlayerNotices();
+            Program.formMain.ShowFrame(true);// SetNeedRedraw не работает
+
+            Quests.Add(q);
+        }
+
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
     }
 

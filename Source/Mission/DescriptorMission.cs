@@ -69,5 +69,16 @@ namespace Fantasy_Kingdoms_Battle
 
             throw new Exception($"Участник миссии {id} не найден.");
         }
+
+        internal DescriptorMissionQuest FindQuest(string id)
+        {
+            foreach (DescriptorMissionQuest q in Quests)
+            {
+                if (q.ID == id)
+                    return q;
+            }
+
+            throw new Exception($"Квест {id} не найден.");
+        }
     }
 }

@@ -271,6 +271,7 @@ namespace Fantasy_Kingdoms_Battle
             Gui48_ManualSelect = GetGui48ImageIndex("ManualSelect");
             Gui48_ComputerPlayer = GetGui48ImageIndex("ComputerPlayer");
             Gui48_HumanPlayer = GetGui48ImageIndex("HumanPlayer");
+            Gui48_Quest = GetGui48ImageIndex("Quest");
 
             int GetGui48ImageIndex(string name)
             {
@@ -438,6 +439,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gui48_ManualSelect { get; }
         internal int Gui48_ComputerPlayer { get; }
         internal int Gui48_HumanPlayer { get; }
+        internal int Gui48_Quest { get; }
 
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);

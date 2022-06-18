@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, Improvement, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
-        ReceivedBaseResource, Explore, HeroIsDead, FoundLocation, ConstructionDamaged, ConstructionRepaired };
+        ReceivedBaseResource, Explore, HeroIsDead, FoundLocation, ConstructionDamaged, ConstructionRepaired, AddQuest };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
@@ -127,6 +127,11 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeNoticeForPlayer.ConstructionRepaired:
                     nameNotice = "Сооружение отремонтировано:";
                     nameText = (Entity as Construction).GetName();
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
+                case TypeNoticeForPlayer.AddQuest:
+                    nameNotice = "Получено новое задание:";
+                    nameText = (Entity as PlayerQuest).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 default:

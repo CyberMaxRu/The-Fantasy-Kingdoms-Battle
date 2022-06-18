@@ -57,6 +57,10 @@
         <From>Lord2</From>
         <Text>Барон #Lord1#, рад видеть вас по соседству! У нас сейчас трудные времена - засухи, постоянные нападения диких зверей из леса и болот, доставляют хлопот. Но чем смогу, помогу на первое время.</Text>
       </Part>
+      <Action>
+        <Type>AddQuest</Type>
+        <ID>Quest1</ID>
+      </Action>
     </Message>
     <Message>
       <Turn>3</Turn>
@@ -65,10 +69,6 @@
         <Text>Барон #Lord1#, я смогу немного помочь вам. Три следующих дня мои строители будут в вашем городе. Найдите им работу.</Text>
       </Part>
     </Message>
-    <Action>
-      <Type>Quest</Type>
-      <ID>Quest1</ID>
-    </Action>
   </Messages>
   <Quests>
     <Quest>
