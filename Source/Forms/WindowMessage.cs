@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorMissionMessage message;
         private int currPart = -1;
 
-        public WindowMessage()
+        public WindowMessage() : base()
         {
             ClientControl.Width = 560;
             ClientControl.Height = 280;
