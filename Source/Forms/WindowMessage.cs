@@ -19,20 +19,30 @@ namespace Fantasy_Kingdoms_Battle
 
         public WindowMessage()
         {
+            ClientControl.Width = 560;
+            ClientControl.Height = 280;
+
             windowCaption.Color = Color.Orange;
+            windowCaption.Width = ClientControl.Width;// - (FormMain.Config.GridSize * 2);
+
             ShowButtonClose = true;
 
             imgAvatar = new VCImage128(ClientControl, 0, 0);
             txtMain = new VCText(ClientControl, imgAvatar.NextLeft(), 0, Program.formMain.fontMedCaption, Color.White, 120);
             txtMain.StringFormat.Alignment = StringAlignment.Near;
 
-            ClientControl.Width = 560;
-            ClientControl.Height = 280;
-
             btnPrior = new VCButton(ClientControl, 0, 0, "Назад");
             btnPrior.Click += BtnPrior_Click;
             btnNext = new VCButton(ClientControl, 0, 0, "");
             btnNext.Click += BtnNext_Click;
+
+            btnPrior.ShiftX = (ClientControl.Width - btnPrior.Width - btnNext.Width - FormMain.Config.GridSize) / 2;
+            btnNext.ShiftX = btnPrior.NextLeft();
+            btnPrior.ShiftY = ClientControl.Height - btnPrior.Height;
+            btnNext.ShiftY = btnPrior.ShiftY;
+
+            txtMain.Width = ClientControl.Width - txtMain.ShiftX;
+            txtMain.Height = btnNext.ShiftY - FormMain.Config.GridSize;
 
             AcceptButton = btnNext;
         }
@@ -45,6 +55,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void SetMessage(DescriptorMissionMessage message)
         {
             m = message;
+            ApplyPart(0);
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
@@ -53,24 +64,6 @@ namespace Fantasy_Kingdoms_Battle
                 CloseForm(DialogAction.None);
             else
                 ApplyPart(++currPart);
-        }
-
-        internal override void AdjustSize()
-        {
-            windowCaption.Width = ClientControl.Width;// - (FormMain.Config.GridSize * 2);
-
-            base.AdjustSize();
-
-            btnPrior.ShiftX = (ClientControl.Width - btnPrior.Width - btnNext.Width - FormMain.Config.GridSize) / 2;
-            btnNext.ShiftX = btnPrior.NextLeft();
-            btnPrior.ShiftY = ClientControl.Height - btnPrior.Height;
-            btnNext.ShiftY = btnPrior.ShiftY;
-
-            txtMain.Width = ClientControl.Width - txtMain.ShiftX;
-            txtMain.Height = btnNext.ShiftY - FormMain.Config.GridSize;
-
-            if (currPart == -1)
-                ApplyPart(0);
         }
 
         private void ApplyPart(int part)
