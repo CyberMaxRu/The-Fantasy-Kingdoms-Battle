@@ -21,7 +21,7 @@
     <Descriptions>Используется для строительства городских сооружений</Descriptions>
     <ImageIndex>294</ImageIndex>
     <ImageIndex16>44</ImageIndex16>
-    <ConstructionForMining>Lumberjack</ConstructionForMining>
+    <ConstructionForMining>BrickKiln</ConstructionForMining>
   </BaseResource>
   <BaseResource>
     <ID>Iron</ID>

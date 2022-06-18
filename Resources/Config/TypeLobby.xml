@@ -157,6 +157,16 @@
             </Resources>
           </Construction>
           <Construction>
+            <ID>Clay</ID>
+            <Visible>true</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <Resources>
+              <Brick>200</Brick>
+            </Resources>>
+          </Construction>
+          <Construction>
             <ID>Stones</ID>
             <Visible>true</Visible>
             <Own>false</Own>

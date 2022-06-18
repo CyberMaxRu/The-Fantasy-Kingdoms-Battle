@@ -6742,6 +6742,59 @@
     </Levels>
   </Construction>
   <Construction>
+    <ID>Clay</ID>
+    <Name>Глина</Name>
+    <Description>Здесь можно добывать глину и делать из нее кирпичи.</Description>
+    <ImageIndex>191</ImageIndex>
+    <TypeConstruction>ResourceSource</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>clay_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>Clay1</ID>
+        <Number>1</Number>
+        <Durability>0</Durability>
+      </Level>
+    </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>BrickKiln</Entity>
+      </CellMenu>
+    </CellsMenu>
+  </Construction>
+  <Construction>
+    <ID>BrickKiln</ID>
+    <Name>Печь для обжига глины</Name>
+    <Description>Здесь обжигают кирпичи из глины.</Description>
+    <ImageIndex>192</ImageIndex>
+    <TypeConstruction>ResourceExtraction</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>brickkiln_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <ID>BrickKiln1</ID>
+        <Number>1</Number>
+        <Durability>100</Durability>
+        <Creating>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
+        </Creating>
+        <Mining>
+          <Brick>1</Brick>
+        </Mining>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
     <ID>Stones</ID>
     <Name>Камни</Name>
     <Description>Здесь можно добывать камень</Description>
@@ -6797,7 +6850,7 @@
   <Construction>
     <ID>Ore</ID>
     <Name>Руда</Name>
-    <Description>Здесь можно добывать руду и переправлять в железо.</Description>
+    <Description>Здесь можно добывать руду и переплавлять в железо.</Description>
     <ImageIndex>174</ImageIndex>
     <TypeConstruction>ResourceSource</TypeConstruction>
     <Category>External</Category>
