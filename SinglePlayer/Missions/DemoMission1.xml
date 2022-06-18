@@ -74,6 +74,7 @@
     <Quest>
       <ID>Quest1</ID>
       <TypeQuest>Primary</TypeQuest>
+      <From>King</From>
       <Name>Обустроиться в новом владении</Name>
       <Description>Необходимо построить Дворец Лорда 2-го уровня</Description>
       <Turn>1</Turn>
@@ -81,6 +82,7 @@
     <Quest>
       <ID>Quest2</ID>
       <TypeQuest>Primary</TypeQuest>
+      <From>King</From>
       <Name>Построить в Мглистых горах 2 форпоста до 4.1.1 (1)</Name>
       <Description>Необходимо построить в Мглистых горах 2 форпоста до 4.1.1</Description>
       <Turn>1</Turn>
@@ -88,6 +90,7 @@
     <Quest>
       <ID>Quest3</ID>
       <TypeQuest>Primary</TypeQuest>
+      <From>King</From>
       <Name>Построить в Удушливых болотах 3 форпоста до 4.1.1 (2)</Name>
       <Description>Необходимо Построить в Удушливых болотах 3 форпоста до 4.1.1</Description>
       <Turn>1</Turn>
@@ -95,6 +98,7 @@
     <Quest>
       <ID>Quest4</ID>
       <TypeQuest>Primary</TypeQuest>
+      <From>King</From>
       <Name>Построить в Пограничной равнине 1 форпост до 4.1.1 (3)</Name>
       <Description>Необходимо построить в Пограничной равнине 1 форпост до 4.1.1</Description>
       <Turn>1</Turn>
