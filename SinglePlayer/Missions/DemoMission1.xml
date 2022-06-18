@@ -79,7 +79,7 @@
         </Requirement>
       </StartRequirements>
       <Part>
-        <From>GuildWarrior1</From>
+        <From>GuildWarrior</From>
         <Text>Ваше сиятельство, воины Гильдии хотят быть более эффективными в бою. Для этого просим вас исследовать {Сокрушительный удар} в нашей гильдии.</Text>
       </Part>
       <Action>
@@ -124,7 +124,7 @@
     <Quest>
       <ID>QuestGuildWarrior</ID>
       <TypeQuest>Secondary</TypeQuest>
-      <From>GuildWarrior1</From>
+      <From>GuildWarrior</From>
       <Name>Исследовать {Сокрушительный удар} в {Гильдия воинов}</Name>
       <Description>Гильдия воинов хочет получить доступ к {Сокрушительный удар} для обучения своих воинов.</Description>
       <Turn>1</Turn>

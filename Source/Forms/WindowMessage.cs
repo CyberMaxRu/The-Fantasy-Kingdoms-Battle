@@ -84,6 +84,8 @@ namespace Fantasy_Kingdoms_Battle
             btnNext.Caption = part < message.Parts.Count - 1 ? "Далее" : "Закрыть";
 
             BigEntity be = player.Lobby.FindEntity(message.Parts[currPart].From);
+            if (be is null)
+                be = player.FindEntity(message.Parts[currPart].From);
             Assert(be != null);
             windowCaption.Caption = be.GetName();
             imgAvatar.ImageIndex = be.GetImageIndex();

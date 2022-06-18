@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         private int usedBuilders;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
-        public Construction(Player p, DescriptorConstruction dc) : base(dc, p.Lobby)
+        public Construction(Player p, DescriptorConstruction dc) : base(dc, p.Lobby, p)
         {
             Assert(dc.IsInternalConstruction);
 
@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются для локации в начале миссии
-        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.DescriptorConstruction, l.Lobby)
+        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.DescriptorConstruction, l.Lobby, l.Player)
         {
             Assert(!ls.DescriptorConstruction.IsInternalConstruction);
 
@@ -71,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются в процессе игры
-        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(dc, p.Lobby)
+        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(dc, p.Lobby, p)
         {
             Assert(!dc.IsInternalConstruction);
             Assert((dc.Category == CategoryConstruction.Lair) || (dc.Category == CategoryConstruction.External) || (dc.Category == CategoryConstruction.Temple)
@@ -168,6 +168,13 @@ namespace Fantasy_Kingdoms_Battle
         internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
         internal bool ProvideBaseResources { get; private set; }// Сооружение поставляет ресурсы
 
+        internal override string GetIDEntity(DescriptorEntity descriptor)
+        {
+            if (((DescriptorConstruction)descriptor).IsInternalConstruction)
+                return descriptor.ID;
+            else
+                return base.GetIDEntity(descriptor);
+        }
         private void TuneCellMenuBuildOrUpgrade()
         {
             CellMenuBuildOrLevelUp = null;

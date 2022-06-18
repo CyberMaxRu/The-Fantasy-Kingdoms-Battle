@@ -21,6 +21,8 @@ namespace Fantasy_Kingdoms_Battle
 
             // Определяем, от кого поступил квест
             FromEntity = Player.Lobby.FindEntity(quest.From);
+            if (FromEntity is null) 
+                FromEntity = Player.FindEntity(quest.From);
             Assert(FromEntity != null);
             //if ()
         }

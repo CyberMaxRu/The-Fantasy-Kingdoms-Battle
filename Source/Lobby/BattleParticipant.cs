@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             return c1.Number - c2.Number;
         }
 
-        public BattleParticipant(DescriptorEntity descriptor, Lobby lobby) : base(descriptor, lobby, null)
+        public BattleParticipant(DescriptorEntity descriptor, Lobby lobby, Player player) : base(descriptor, lobby, player)
         {
         }
 

@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         private List<Construction> queueBuilding = new List<Construction>();// Очередь строительства
         private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
-        public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby)
+        public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby, null)
         {
             Descriptor = player;
             PlayerIndex = playerIndex;
@@ -601,6 +601,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
         internal List<Creature> FreeHeroes { get; } = new List<Creature>();
+        internal Dictionary<string, BigEntity> Entities { get; } = new Dictionary<string, BigEntity>();// Все сущности игрока
 
         internal DescriptorLevelTax CurrentLevelTax { get; set; }// Текущий уровень налогов
         internal int Gold { get => BaseResources[FormMain.Descriptors.Gold.Number].Quantity; }// Текущее количество золота
@@ -1755,6 +1756,20 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.ShowFrame(true);// SetNeedRedraw не работает
 
             Quests.Add(q);
+        }
+
+        internal void AddEntity(BigEntity e)
+        {
+            Debug.Assert(e.IDEntity.Length > 0);
+            Debug.Assert(e != null);
+
+            Entities.Add(e.IDEntity, e);
+        }
+
+        internal BigEntity FindEntity(string id)
+        {
+            Entities.TryGetValue(id, out BigEntity v);
+            return v;
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;

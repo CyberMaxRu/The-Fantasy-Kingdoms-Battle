@@ -29,7 +29,11 @@ namespace Fantasy_Kingdoms_Battle
 
             Number = ++dictNextNumber[descriptor.ID];
             IDEntity = GetIDEntity(Descriptor);
-            lobby.AddEntity(this);
+
+            if (player != null)
+                player.AddEntity(this);
+            else
+                lobby.AddEntity(this);
         }
 
         internal int Number { get; }// Последовательный номер сущностиы
