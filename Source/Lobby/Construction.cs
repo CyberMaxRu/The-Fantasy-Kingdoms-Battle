@@ -22,7 +22,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(dc.IsInternalConstruction);
 
-            Player = p;
             Descriptor = dc;
             DaysConstructLeft = 0;
             PlayerIsOwner = true;
@@ -49,7 +48,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(!ls.DescriptorConstruction.IsInternalConstruction);
 
-            Player = l.Player;
             Descriptor = ls.DescriptorConstruction;
             DaysConstructLeft = 0;
             PlayerIsOwner = ls.Own;
@@ -78,7 +76,6 @@ namespace Fantasy_Kingdoms_Battle
                 || (dc.Category == CategoryConstruction.Place) || (dc.Category == CategoryConstruction.BasePlace) || (dc.Category == CategoryConstruction.ElementLandscape));
             Assert(level <= 1);
 
-            Player = p;
             Descriptor = dc;
             X = x;
             Y = y;
@@ -123,7 +120,6 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal int Gold { get => gold; set { Debug.Assert(Descriptor.HasTreasury); gold = value; } }// Казна гильдии
         internal List<Hero> Heroes { get; } = new List<Hero>();
-        internal Player Player { get; }
 
         // Свойства для внешних сооружений
         internal Location Location { get; set; }// Локация, на которой находится сооружение
