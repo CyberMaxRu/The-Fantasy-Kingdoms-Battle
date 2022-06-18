@@ -17,9 +17,14 @@ namespace Fantasy_Kingdoms_Battle
             Quest = quest;
             TurnActivate = p.Lobby.Turn;
             State = StateQuest.InProgress;
+
+            // Определяем, от кого поступил квест
+            //FromEntity = Player.Lobby.Mission.FindMember(quest.From);
+            //if ()
         }
 
         internal Player Player { get; }
+        internal Entity FromEntity { get; }// От какой сущности поступил квест
         internal DescriptorMissionQuest Quest { get; }
         internal int TurnActivate { get; }// Ход, на котором квест был активирован
         internal StateQuest State { get; private set; }// Состояние квеста

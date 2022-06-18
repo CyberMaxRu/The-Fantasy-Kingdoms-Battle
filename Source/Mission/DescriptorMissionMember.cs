@@ -9,15 +9,11 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Участники миссии
-    internal sealed class DescriptorMissionMember
+    internal sealed class DescriptorMissionMember : DescriptorEntity
     {
-        public DescriptorMissionMember(XmlNode n)
+        public DescriptorMissionMember(XmlNode n) : base(n)
         {
-            ID = GetStringNotNull(n, "ID");
-            Name = GetStringNotNull(n, "Name");
             Title = GetStringNotNull(n, "Title");
-            ImageIndex = GetIntegerNotNull(n, "ImageIndex");
-
 
             if (Name == "#Lord1#")
                 Name = FormMain.Descriptors.HumanPlayers[0].Name;
@@ -26,9 +22,8 @@ namespace Fantasy_Kingdoms_Battle
                 ImageIndex = FormMain.Descriptors.HumanPlayers[0].ImageIndex;
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
         internal string Title { get; }// Титул
-        internal int ImageIndex { get; }
+
+        internal override string GetTypeEntity() => "Участник";
     }
 }

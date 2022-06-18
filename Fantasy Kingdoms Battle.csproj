@@ -149,6 +149,7 @@
     <Compile Include="Source\Lobby\LobbySettingsPlayer.cs" />
     <Compile Include="Source\Lobby\Location.cs" />
     <Compile Include="Source\Lobby\Location\CellMenuLocation.cs" />
+    <Compile Include="Source\Lobby\MissionMember.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />
     <Compile Include="Source\Lobby\ListBaseResources.cs" />
     <Compile Include="Source\Descriptors\DescriptorProduct.cs" />

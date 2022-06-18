@@ -5,28 +5,28 @@
   <Description>Необходимо выполнить все задания (5) Короля.</Description>
   <Members>
     <Member>
-      <ID>Lord1</ID>
+      <ID>MemberLord1</ID>
       <Title>Baron</Title>
       <Name>#Lord1#</Name>
       <ImageIndex>-100</ImageIndex>
     </Member>
     <Member>
-      <ID>Lord2</ID>
+      <ID>MemberLord2</ID>
       <Title>Earl</Title>
       <Name>Граф Ланселот</Name>
+      <ImageIndex>189</ImageIndex>
+    </Member>
+    <Member>
+      <ID>MemberKing</ID>
+      <Title>King</Title>
+      <Name>Король Ардании</Name>
       <ImageIndex>188</ImageIndex>
     </Member>
     <Member>
-      <ID>King</ID>
-      <Title>King</Title>
-      <Name>Король Ардании</Name>
-      <ImageIndex>187</ImageIndex>
-    </Member>
-    <Member>
-      <ID>Adviser</ID>
+      <ID>MemberAdviser</ID>
       <Title>Adviser</Title>
       <Name>Советник</Name>
-      <ImageIndex>189</ImageIndex>
+      <ImageIndex>190</ImageIndex>
     </Member>
   </Members>
   <Players>
@@ -42,19 +42,19 @@
     <Message>
       <Turn>1</Turn>
       <Part>
-        <From>King</From>
+        <From>MemberKing</From>
         <Text>Барон #Lord1#, вам поручается очень важное задание - закрепиться и освоиться на восточных рубежах Королевства. Срок на это - три месяца. За это время надо построить защитные форты на окружающей территории.//К сожалению, основные наши силы связаны с обороной от гоблинов, поэтому помочь смогу не скоро.// Но рядом есть граф Ланселот - вы всегда можете обратиться к нему за помощью, но и ему не отказывайте.</Text>
       </Part>
       <Part>
-        <From>Lord1</From>
+        <From>MemberLord1</From>
         <Text>Ваше Величество, я благодарен за оказанную честь! Ваше задание будет исполнено!</Text>
       </Part>
       <Part>
-        <From>Adviser</From>
+        <From>MemberAdviser</From>
         <Text>Ваша Светлость, я ваш новый (или старый, смотря как посмотреть), Советник. Позвольте я вкратце опишу местность. В середине находится лес, через который идет Холодная река, приходящая с гор. На востоке начинаются Мглистые горы - перед ними необходимо построить 2 Форпоста.//на севере простираются Удушливые болота - перед ними надо построить 3 Форпоста. На юге Пограничная равнина - там достаточно 1 Форта.</Text>
       </Part>
       <Part>
-        <From>Lord2</From>
+        <From>MemberLord2</From>
         <Text>Барон #Lord1#, рад видеть вас по соседству! У нас сейчас трудные времена - засухи, постоянные нападения диких зверей из леса и болот, доставляют хлопот. Но чем смогу, помогу на первое время.</Text>
       </Part>
       <Action>
@@ -65,7 +65,7 @@
     <Message>
       <Turn>3</Turn>
       <Part>
-        <From>Lord2</From>
+        <From>MemberLord2</From>
         <Text>Барон #Lord1#, я смогу немного помочь вам. Три следующих дня мои строители будут в вашем городе. Найдите им работу.</Text>
       </Part>
     </Message>
@@ -74,7 +74,7 @@
     <Quest>
       <ID>Quest1</ID>
       <TypeQuest>Primary</TypeQuest>
-      <From>King</From>
+      <From>MemberKing</From>
       <Name>Обустроиться в новом владении</Name>
       <Description>Необходимо построить Дворец Лорда 2-го уровня</Description>
       <Turn>1</Turn>
@@ -82,7 +82,7 @@
     <Quest>
       <ID>Quest2</ID>
       <TypeQuest>Primary</TypeQuest>
-      <From>King</From>
+      <From>MemberKing</From>
       <Name>Построить в Мглистых горах 2 форпоста до 4.1.1 (1)</Name>
       <Description>Необходимо построить в Мглистых горах 2 форпоста до 4.1.1</Description>
       <Turn>1</Turn>
@@ -90,7 +90,7 @@
     <Quest>
       <ID>Quest3</ID>
       <TypeQuest>Primary</TypeQuest>
-      <From>King</From>
+      <From>MemberKing</From>
       <Name>Построить в Удушливых болотах 3 форпоста до 4.1.1 (2)</Name>
       <Description>Необходимо Построить в Удушливых болотах 3 форпоста до 4.1.1</Description>
       <Turn>1</Turn>
@@ -98,7 +98,7 @@
     <Quest>
       <ID>Quest4</ID>
       <TypeQuest>Primary</TypeQuest>
-      <From>King</From>
+      <From>MemberKing</From>
       <Name>Построить в Пограничной равнине 1 форпост до 4.1.1 (3)</Name>
       <Description>Необходимо построить в Пограничной равнине 1 форпост до 4.1.1</Description>
       <Turn>1</Turn>
