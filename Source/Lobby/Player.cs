@@ -1772,6 +1772,12 @@ namespace Fantasy_Kingdoms_Battle
             return v;
         }
 
+        internal BigEntity FindEntityInSelfAndLob(string id)
+        {
+            Entities.TryGetValue(id, out BigEntity v);
+            return v;
+        }
+
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
     }
 

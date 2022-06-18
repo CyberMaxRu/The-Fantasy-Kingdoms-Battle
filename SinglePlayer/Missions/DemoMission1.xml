@@ -76,6 +76,7 @@
           <TypeRequirement>BuildedConstruction</TypeRequirement>
           <Construction>GuildWarrior</Construction>
           <Level>1</Level>
+          <SkipTurnsFromBuild>1</SkipTurnsFromBuild>
         </Requirement>
       </StartRequirements>
       <Part>

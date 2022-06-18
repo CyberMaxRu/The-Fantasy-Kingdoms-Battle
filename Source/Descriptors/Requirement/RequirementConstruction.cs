@@ -14,14 +14,17 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstruction construction;
         private string nameConstruction;
         private int level;
+        private int skipTurnsFromBuild;
 
         public RequirementConstruction(Descriptor forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             level = XmlUtils.GetInteger(n, "Level");
+            skipTurnsFromBuild = GetInteger(n, "SkipTurnsFromBuild");
 
             Debug.Assert(nameConstruction.Length > 0);
             Debug.Assert(level >= 0);
+            Debug.Assert(skipTurnsFromBuild >= 0);
         }
 
         public RequirementConstruction(Descriptor forCellMenu, string requiredConstruction, int requiredLevel) : base(forCellMenu)
@@ -46,17 +49,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirement(Player p)
         {
+            Construction cReq = p.GetPlayerConstruction(construction);
+
             if (ForEntity is DescriptorConstructionLevel dcl)
             {               
                 Construction cOwner = p.GetPlayerConstruction(dcl.ActiveEntity as DescriptorConstruction);
-                Construction cReq = p.GetPlayerConstruction(construction);
                 if (cOwner == cReq)
-                    return cReq.Level >= level;
+                    return (cReq.Level >= level) && (p.Lobby.Turn - cReq.DayLevelConstructed[level] >= skipTurnsFromBuild);
                 else
-                    return p.CheatingIgnoreRequirements ? true : cReq.Level >= level;
+                    return p.CheatingIgnoreRequirements ? true : (cReq.Level >= level) && (p.Lobby.Turn - cReq.DayLevelConstructed[level] >= skipTurnsFromBuild);
             }
             else
-                return p.CheatingIgnoreRequirements ? true : p.GetPlayerConstruction(construction).Level >= level;
+                return p.CheatingIgnoreRequirements ? true : (cReq.Level >= level) && (p.Lobby.Turn - cReq.DayLevelConstructed[level] >= skipTurnsFromBuild);
         }
 
         internal override TextRequirement GetTextRequirement(Player p)

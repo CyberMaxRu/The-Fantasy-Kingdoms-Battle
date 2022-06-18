@@ -98,6 +98,7 @@ namespace Fantasy_Kingdoms_Battle
                     WindowMessage wm = new WindowMessage();
                     wm.SetMessage(this, m);
                     wm.ShowDialog();
+                    wm.Dispose();
                     m.DoAction(this);
                     m.Showed = true;
                 }
