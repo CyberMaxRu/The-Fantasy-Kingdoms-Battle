@@ -7,14 +7,16 @@
     <BaseResources>
       <Gold>8000</Gold>
       <Wood>200</Wood>
-      <Iron>100</Iron>
+      <Brick>250</Brick>
       <Stone>500</Stone>
+      <Iron>100</Iron>
     </BaseResources>
     <MaxBaseResources>
       <Gold>1000000</Gold>
       <Wood>10000</Wood>
-      <Iron>5000</Iron>
+      <Brick>10000</Brick>
       <Stone>50000</Stone>
+      <Iron>5000</Iron>
     </MaxBaseResources>
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>

@@ -10,9 +10,17 @@
   <BaseResource>
     <ID>Wood</ID>
     <Name>Дерево</Name>
-    <Descriptions>Используется для строительства сооружений, оружия</Descriptions>
+    <Descriptions>Используется для строительства деревенских сооружений</Descriptions>
     <ImageIndex>262</ImageIndex>
     <ImageIndex16>26</ImageIndex16>
+    <ConstructionForMining>Lumberjack</ConstructionForMining>
+  </BaseResource>
+  <BaseResource>
+    <ID>Brick</ID>
+    <Name>Кирпич</Name>
+    <Descriptions>Используется для строительства городских сооружений</Descriptions>
+    <ImageIndex>294</ImageIndex>
+    <ImageIndex16>44</ImageIndex16>
     <ConstructionForMining>Lumberjack</ConstructionForMining>
   </BaseResource>
   <BaseResource>
