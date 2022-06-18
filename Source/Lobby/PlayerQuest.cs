@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -19,12 +20,13 @@ namespace Fantasy_Kingdoms_Battle
             State = StateQuest.InProgress;
 
             // Определяем, от кого поступил квест
-            //FromEntity = Player.Lobby.Mission.FindMember(quest.From);
+            FromEntity = Player.Lobby.FindEntity(quest.From);
+            Assert(FromEntity != null);
             //if ()
         }
 
         internal Player Player { get; }
-        internal Entity FromEntity { get; }// От какой сущности поступил квест
+        internal BigEntity FromEntity { get; }// От какой сущности поступил квест
         internal DescriptorMissionQuest Quest { get; }
         internal int TurnActivate { get; }// Ход, на котором квест был активирован
         internal StateQuest State { get; private set; }// Состояние квеста
