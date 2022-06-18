@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageFinance;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
+        private readonly VCPageButton pageQuest;
         private readonly List<VCPageButton> pagesCapital;
         private readonly VCPageButton pageRealMap;
         private readonly VCPageButton pageMap;
@@ -251,6 +252,7 @@ namespace Fantasy_Kingdoms_Battle
             //pageFinance.Hint = "Финансовая информация";
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
+            pageQuest = pageControl.AddPage(Config.Gui48_Quest, "Задания", "Здесь квесты", PageQuest_ShowHint);
             //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
             //pageRealMap.Hint = "Карта Ардании";
             pageControl.Separate();
@@ -351,6 +353,7 @@ namespace Fantasy_Kingdoms_Battle
             //pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
+            pageQuest.PageImage = MainControlbackground("Quest");
             pageMap.PageImage = MainControlbackground("Map");
 
             for (int i = 0; i < Descriptors.CapitalPages.Count; i++)
@@ -1176,6 +1179,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             PanelHint.AddStep2Header("Герои");
             PanelHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
+        }
+
+        private void PageQuest_ShowHint(object sender, EventArgs e)
+        {
+            PanelHint.AddSimpleHint("Задания");
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
