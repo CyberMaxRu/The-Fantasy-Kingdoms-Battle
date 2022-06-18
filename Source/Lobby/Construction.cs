@@ -351,6 +351,7 @@ namespace Fantasy_Kingdoms_Battle
                 Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);
 
             TuneCellMenuBuildOrUpgrade();
+            UpdateCurrentIncomeResources();
             UpdateState();
         }
 
