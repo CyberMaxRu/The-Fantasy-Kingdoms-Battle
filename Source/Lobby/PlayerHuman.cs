@@ -91,20 +91,15 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Показываем сообщения
-            WindowMessage wm = null;
             foreach (DescriptorMissionMessage m in Lobby.Mission.Messages)
             {
                 if (m.Turn == Lobby.Turn)
                 {
-                    if (wm is null)
-                        wm = new WindowMessage();
-
-                    wm.SetMessage(m);
+                    WindowMessage wm = new WindowMessage();
+                    wm.SetMessage(this, m);
                     wm.ShowDialog();
                     m.DoAction(this);
                 }
-
-                wm?.Dispose();
             }
 
             frame.Continue = true;
