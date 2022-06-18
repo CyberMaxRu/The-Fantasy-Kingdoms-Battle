@@ -59,6 +59,13 @@ namespace Fantasy_Kingdoms_Battle
             player = p;
             message = m;
             ApplyPart(0);
+
+            if (m.Parts.Count == 1)
+            {
+                btnPrior.Visible = false;
+                btnNext.ShiftX = (ClientControl.Width - btnNext.Width) / 2;
+                ClientControl.ArrangeControl(btnNext);
+            }
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
