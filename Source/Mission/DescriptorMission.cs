@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс одиночной миссии
-    sealed internal class DescriptorMission
+    sealed internal class DescriptorMission : Descriptor
     {
         public DescriptorMission(string filename)
         {
@@ -58,6 +58,14 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorMissionMember> Members { get; } = new List<DescriptorMissionMember>();
         internal List<DescriptorMissionMessage> Messages { get; } = new List<DescriptorMissionMessage>();
         internal List<DescriptorMissionQuest> Quests { get; } = new List<DescriptorMissionQuest>();
+
+        internal override void TuneLinks()
+        {
+            base.TuneLinks();
+
+            foreach (DescriptorMissionMessage m in Messages)
+                m.TuneLinks();
+        }
 
         internal DescriptorMissionMember FindMember(string id)
         {

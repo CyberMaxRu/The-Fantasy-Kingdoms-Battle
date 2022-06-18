@@ -68,6 +68,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnSingleMission_Click(object sender, EventArgs e)
         {
             DescriptorMission m = new DescriptorMission(Program.WorkFolder + @"SinglePlayer\Missions\DemoMission1.xml");
+            m.TuneLinks();
 
             LobbySettings ls = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
             //WindowSetupTournament w = new WindowSetupTournament(ls);

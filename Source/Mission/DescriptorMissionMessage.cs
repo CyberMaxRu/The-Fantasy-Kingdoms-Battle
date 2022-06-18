@@ -55,6 +55,13 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Неизвестный тип действия");
             }
         }
+
+        internal override void TuneLinks()
+        {
+            base.TuneLinks();
+
+            StartRequirements.TuneLinks();
+        }
     }
 
     internal sealed class DescriptorMissionMessagePart
