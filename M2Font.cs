@@ -121,6 +121,21 @@ namespace Fantasy_Kingdoms_Battle
 
             bool defaultColor = true;
             Graphics gRaw = Graphics.FromImage(bmpRaw);
+
+            // Сначала проходим по тексту в поисках "}"
+            // Если нет открывающей скобки, значит, 99%, она была на предыдущей строке
+            // Поэтому сразу окрашивает в другой цвет
+            foreach (byte b in text1251)
+            {
+                if (b == '{')
+                    break;
+                else if (b == '}')
+                {
+                    defaultColor = false;
+                    break;
+                }
+            }
+
             foreach (byte b in text1251)
             {
                 if (b == '{')
