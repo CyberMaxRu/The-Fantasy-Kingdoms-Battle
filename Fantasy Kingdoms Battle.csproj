@@ -152,6 +152,7 @@
     <Compile Include="Source\Lobby\Perk.cs" />
     <Compile Include="Source\Lobby\ListBaseResources.cs" />
     <Compile Include="Source\Descriptors\DescriptorProduct.cs" />
+    <Compile Include="Source\Lobby\PlayerQuest.cs" />
     <Compile Include="Source\Lobby\SecondarySkill.cs" />
     <Compile Include="Source\Lobby\SmallEntity.cs" />
     <Compile Include="Source\Lobby\Specialization.cs" />

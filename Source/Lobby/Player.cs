@@ -615,6 +615,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature SelectedBonusTempleHero { get; set; }
 
         //
+        internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока
         internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий в графстве
 
         // Локации
