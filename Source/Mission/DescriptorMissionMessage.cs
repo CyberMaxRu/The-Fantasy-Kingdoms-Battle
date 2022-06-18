@@ -58,13 +58,13 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorMissionMessagePart(XmlNode n, DescriptorMission dm)
         {
-            From = dm.FindMember(GetStringNotNull(n, "From"));
+            From = GetStringNotNull(n, "From");
             Text = GetDescription(n, "Text");
             foreach (DescriptorMissionPlayer dmp in dm.Players)
                 Text = Text.Replace($"#{dmp.ID}#", FormMain.Descriptors.HumanPlayers[0].Name);
         }
 
-        internal DescriptorMissionMember From { get; }
+        internal string From { get; }
         internal string Text { get; }
     }
 }

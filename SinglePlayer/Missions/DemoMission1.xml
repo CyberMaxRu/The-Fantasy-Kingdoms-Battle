@@ -69,6 +69,19 @@
         <Text>Барон #Lord1#, я смогу немного помочь вам. Три следующих дня мои строители будут в вашем городе. Найдите им работу.</Text>
       </Part>
     </Message>
+    <Message>
+      <Turn>1</Turn>
+      <StartCondition>        
+      </StartCondition>
+      <Part>
+        <From>GuildWarrior1</From>
+        <Text>Ваше сиятельство, воины Гильдии хотят быть более эффективными в бою. Для этого просим вас дать разрешение на исследование {Сокрушительный удар} в нашей гильдии.</Text>
+      </Part>
+      <Action>
+        <Type>AddQuest</Type>
+        <ID>QuestGuildWarrior</ID>
+      </Action>
+    </Message>
   </Messages>
   <Quests>
     <Quest>
@@ -101,6 +114,14 @@
       <From>MemberKing</From>
       <Name>Построить в Пограничной равнине 1 форпост до 4.1.1 (3)</Name>
       <Description>Необходимо построить в Пограничной равнине 1 форпост до 4.1.1</Description>
+      <Turn>1</Turn>
+    </Quest>
+    <Quest>
+      <ID>QuestGuildWarrior</ID>
+      <TypeQuest>Secondary</TypeQuest>
+      <From>GuildWarrior1</From>
+      <Name>Исследовать {Сокрушительный удар} в {Гильдия воинов}</Name>
+      <Description>Гильдия воинов хочет получить доступ к {Сокрушительный удар} для обучения своих воинов.</Description>
       <Turn>1</Turn>
     </Quest>
   </Quests>

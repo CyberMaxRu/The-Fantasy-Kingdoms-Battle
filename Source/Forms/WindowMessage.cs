@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -14,7 +15,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnPrior;
         private readonly VCButton btnNext;
 
-        private DescriptorMissionMessage m;
+        private Player player;
+        private DescriptorMissionMessage message;
         private int currPart = -1;
 
         public WindowMessage()
@@ -52,15 +54,16 @@ namespace Fantasy_Kingdoms_Battle
             ApplyPart(--currPart);
         }
 
-        internal void SetMessage(DescriptorMissionMessage message)
+        internal void SetMessage(Player p, DescriptorMissionMessage m)
         {
-            m = message;
+            player = p;
+            message = m;
             ApplyPart(0);
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
-            if (currPart == m.Parts.Count - 1)
+            if (currPart == message.Parts.Count - 1)
                 CloseForm(DialogAction.None);
             else
                 ApplyPart(++currPart);
@@ -71,10 +74,13 @@ namespace Fantasy_Kingdoms_Battle
             currPart = part;
 
             btnPrior.Enabled = part > 0;
-            btnNext.Caption = part < m.Parts.Count - 1 ? "Далее" : "Закрыть";
-            windowCaption.Caption = m.Parts[currPart].From.Name;
-            imgAvatar.ImageIndex = m.Parts[currPart].From.ImageIndex;
-            txtMain.Text = m.Parts[currPart].Text;
+            btnNext.Caption = part < message.Parts.Count - 1 ? "Далее" : "Закрыть";
+
+            BigEntity be = player.Lobby.FindEntity(message.Parts[currPart].From);
+            Assert(be != null);
+            windowCaption.Caption = be.GetName();
+            imgAvatar.ImageIndex = be.GetImageIndex();
+            txtMain.Text = message.Parts[currPart].Text;
 
             Program.formMain.SetNeedRedrawFrame();
         }
