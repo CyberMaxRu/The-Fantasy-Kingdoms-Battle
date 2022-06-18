@@ -39,8 +39,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < count; i++)
             {
                 line = conf[i + 3];
-                left = GetValue();// Делаем смещение влево на 1, т.к. у некоторых букв начало смещено на 1 пиксел влево
-                top = GetValue();
+                left = GetValue() - 1;// Делаем смещение влево на 1, т.к. отсчет в файле с 1
+                top = GetValue() - 1;
                 leftAndWidth = GetValue();
                 topAndHeight = GetValue();
                 //if (i == 18)
@@ -63,8 +63,8 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                     }*/
 
-                width = leftAndWidth - left + 0;
-                height = topAndHeight - top + 1;
+                width = leftAndWidth - left;
+                height = topAndHeight - top;
 
                 maxWidthSymbol = Math.Max(maxWidthSymbol, width);
                 MaxHeightSymbol = Math.Max(MaxHeightSymbol, height);
@@ -153,7 +153,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 bmpSymbol = symbols[b - 32];
                 DrawSymbol(gRaw, bmpSymbol, left, defaultColor ? color : Color.Yellow);
-                left += bmpSymbol.Width;
+                left += bmpSymbol.Width - 1;// В M2 символы рисуются со смещением в 1 влево, чтобы пустая вертикальная черта с альфа-каналом накладывалась на символ слева
             }
             Debug.Assert(left <= bmpRaw.Width);
             gRaw.Dispose();
@@ -161,7 +161,7 @@ namespace Fantasy_Kingdoms_Battle
             //    bmpRaw.Save(@"f:\symbols\_ico.png", System.Drawing.Imaging.ImageFormat.Png);
 
             // Зная фактический размер текста, переносим его на новую картинку с правильным размером
-            Bitmap bmpResult = new Bitmap(left, MaxHeightSymbol);
+            Bitmap bmpResult = new Bitmap(left + 1, MaxHeightSymbol);
             Graphics gResult = Graphics.FromImage(bmpResult);
             gResult.DrawImageUnscaled(bmpRaw, 0, 0);
             gResult.Dispose();
