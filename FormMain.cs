@@ -686,9 +686,14 @@ namespace Fantasy_Kingdoms_Battle
                 string layers = "";
                 foreach (LayerCustom l in Layers)
                 {
-                    layers += l.ToString() + "; ";
+                    if (l is VCForm lv)
+                        layers += $"{lv.GetCaption()}; ";
+                    else
+                        layers += $"{l}; ";
                 }
-                Debug.Assert(false, $"Последний слой не равен удаляемому (всего слоев {Layers.Count}, слои [{layers}], удаляется {vl})");
+
+                string nameLayer = vl is VCForm vlf ? vlf.GetCaption() : vl.ToString();
+                Debug.Assert(false, $"Последний слой не равен удаляемому (всего слоев {Layers.Count}, слои [{layers}], удаляется {nameLayer})");
             }
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];

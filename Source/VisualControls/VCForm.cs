@@ -61,5 +61,7 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
         }
+
+        internal string GetCaption() => windowCaption.Caption;
     }
 }
