@@ -17,12 +17,10 @@ namespace Fantasy_Kingdoms_Battle
             TypeQuest = (TypeQuest)Enum.Parse(typeof(TypeQuest), GetStringNotNull(n, "TypeQuest"));
             From = GetStringNotNull(n, "From");
             Description = GetStringNotNull(n, "Description");
-            Turn = GetIntegerNotNull(n, "Turn");
         }
         
         internal TypeQuest TypeQuest { get; }
         internal string From { get; }// От кого поступил квест
         internal string Description { get; }
-        internal int Turn { get; }// Ход, на котором выдается квест
     }
 }

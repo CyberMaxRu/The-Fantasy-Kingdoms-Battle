@@ -96,7 +96,6 @@
       <From>MemberKing</From>
       <Name>Обустроиться в новом владении</Name>
       <Description>Необходимо построить Дворец Лорда 2-го уровня</Description>
-      <Turn>1</Turn>
     </Quest>
     <Quest>
       <ID>Quest2</ID>
@@ -104,7 +103,6 @@
       <From>MemberKing</From>
       <Name>Построить в Мглистых горах 2 форпоста до 4.1.1 (1)</Name>
       <Description>Необходимо построить в Мглистых горах 2 форпоста до 4.1.1</Description>
-      <Turn>1</Turn>
     </Quest>
     <Quest>
       <ID>Quest3</ID>
@@ -112,7 +110,6 @@
       <From>MemberKing</From>
       <Name>Построить в Удушливых болотах 3 форпоста до 4.1.1 (2)</Name>
       <Description>Необходимо Построить в Удушливых болотах 3 форпоста до 4.1.1</Description>
-      <Turn>1</Turn>
     </Quest>
     <Quest>
       <ID>Quest4</ID>
@@ -128,7 +125,6 @@
       <From>GuildWarrior</From>
       <Name>Исследовать {Сокрушительный удар} в #GuildWarrior#</Name>
       <Description>#GuildWarrior# хочет получить доступ к {Сокрушительный удар} для обучения своих героев.</Description>
-      <Turn>1</Turn>
     </Quest>
   </Quests>
 </Mission>
