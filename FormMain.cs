@@ -640,6 +640,7 @@ namespace Fantasy_Kingdoms_Battle
             w.ApplySettings(Settings);
             if (w.ShowDialog() == DialogAction.OK)
             {
+                playerMusic.RefreshPlayList();
                 /*if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
                 {
                     lobby.CurrentPlayer.Name = Settings.NamePlayer;

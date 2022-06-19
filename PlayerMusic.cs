@@ -16,6 +16,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly MediaPlayer mpMusic;
         private readonly MediaPlayer mpTheme;
+        private bool musicFromMajesty1;
+        private bool musicFromMajesty2;
         private readonly List<string> playlistCurrent = new List<string>();
         private readonly List<string> playlistFull = new List<string>();
         private readonly Random rnd = new Random();
@@ -34,10 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             fileWinLobbyTheme = new Uri(Program.FolderResources + @"Music\Themes\won_music.mp3");
             fileLossLobbyTheme = new Uri(Program.FolderResources + @"Music\Themes\loose_music.mp3");
 
-            playlistFull.AddRange(Directory.GetFiles(Program.FolderResources + @"Music\Music"));
-
-            Debug.Assert(playlistFull.Count > 0);
-
+            RefreshPlayList();
             UpdateVolumeSound();
         }
 
@@ -99,22 +98,45 @@ namespace Fantasy_Kingdoms_Battle
             mpMusic.Stop();
         }
 
-        internal void RefreshPlaylist()
+        internal void RefreshPlayList()
+        {
+            if ((musicFromMajesty1 != Settings.MusicFromMajesty1) || (musicFromMajesty2 != Settings.MusicFromMajesty2))
+            {
+                musicFromMajesty1 = Settings.MusicFromMajesty1;
+                musicFromMajesty2 = Settings.MusicFromMajesty2;
+
+                playlistFull.Clear();
+                if (musicFromMajesty1)
+                    playlistFull.AddRange(Directory.GetFiles(Program.FolderResources + @"Music\Music\M1"));
+                if (musicFromMajesty2)
+                    playlistFull.AddRange(Directory.GetFiles(Program.FolderResources + @"Music\Music\M2"));
+
+                RestartPlaylist();
+                if (Mode == PlayMusicMode.InGameMusic)
+                    PlayNextMusic();
+            }
+        }
+
+        internal void RestartPlaylist()
         {
             playlistCurrent.Clear();
             playlistCurrent.AddRange(playlistFull);
-            Debug.Assert(playlistCurrent.Count > 0);
         }
 
         internal void PlayNextMusic()
         {
-            if (playlistCurrent.Count == 0)
-                RefreshPlaylist();
+            if (playlistFull.Count > 0)
+            {
+                if (playlistCurrent.Count == 0)
+                    RestartPlaylist();
 
-            int i = rnd.Next(playlistCurrent.Count);
-            mpMusic.Open(new Uri(playlistCurrent[i]));
-            mpMusic.Play();
-            playlistCurrent.RemoveAt(i);
+                int i = rnd.Next(playlistCurrent.Count);
+                mpMusic.Open(new Uri(playlistCurrent[i]));
+                mpMusic.Play();
+                playlistCurrent.RemoveAt(i);
+            }
+            else
+                mpMusic.Stop();
         }
 
         internal void TogglePlayMusic()

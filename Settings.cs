@@ -71,6 +71,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal bool MusicFromMajesty1 { get; set; }
+        internal bool MusicFromMajesty2 { get; set; }
+
         internal bool ShowShortNames { get; set; }
         internal bool ShowQuantityDaysForExecuting { get; set; }
         internal bool ShowTypeCellMenu { get; set; }
@@ -92,6 +95,8 @@ namespace Fantasy_Kingdoms_Battle
             BattlefieldShowGrid = false;
             PlaySound = true;
             PlayMusic = true;
+            MusicFromMajesty1 = false;
+            MusicFromMajesty2 = true;
             VolumeSound = 50;
             VolumeMusic = 50;
             ShowShortNames = false;
@@ -129,6 +134,8 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(volumeSound <= 100);
                     Debug.Assert(volumeMusic >= 0);
                     Debug.Assert(volumeMusic >= 0);
+                    MusicFromMajesty1 = XmlUtils.GetBoolean(doc, "Settings/Sound/MusicFromMajesty1", MusicFromMajesty1);
+                    MusicFromMajesty2 = XmlUtils.GetBoolean(doc, "Settings/Sound/MusicFromMajesty2", MusicFromMajesty2);
 
                     ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
                     ShowQuantityDaysForExecuting = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowQuantityDaysForExecuting", ShowQuantityDaysForExecuting);
@@ -174,6 +181,8 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteElementString("PlayMusic", PlayMusic.ToString());
             textWriter.WriteElementString("VolumeSound", VolumeSound.ToString());
             textWriter.WriteElementString("VolumeMusic", VolumeMusic.ToString());
+            textWriter.WriteElementString("MusicFromMajesty1", MusicFromMajesty1.ToString());
+            textWriter.WriteElementString("MusicFromMajesty2", MusicFromMajesty2.ToString());
             textWriter.WriteEndElement();
 
             textWriter.WriteStartElement("Interface");

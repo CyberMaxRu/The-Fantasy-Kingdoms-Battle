@@ -35,6 +35,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblVolumeMusic;
         private readonly VCHorizTrackBar tbVolumeSound;
         private readonly VCHorizTrackBar tbVolumeMusic;
+        private VCCheckBox chkbMusicFromMajesty1;
+        private VCCheckBox chkbMusicFromMajesty2;
 
         private VisualControl vcPanelInterface;
         private VCLabel lblCaptionPanelInterface;
@@ -93,6 +95,10 @@ namespace Fantasy_Kingdoms_Battle
             tbVolumeSound.OnPositionChanged += TbVolumeSound_OnPositionChanged;
             tbVolumeMusic = new VCHorizTrackBar(vcPanelSound, lblVolumeSound.NextLeft(), chkbPlayMusic.ShiftY);
             tbVolumeMusic.OnPositionChanged += TbVolumeMusic_OnPositionChanged;
+            chkbMusicFromMajesty1 = new VCCheckBox(vcPanelSound, FormMain.Config.GridSize * 5, chkbPlayMusic.NextTop(), "Музыка из Majesty 1");
+            chkbMusicFromMajesty1.Width = 200;
+            chkbMusicFromMajesty2 = new VCCheckBox(vcPanelSound, chkbMusicFromMajesty1.NextLeft(), chkbMusicFromMajesty1.ShiftY, "Музыка из Majesty 2");
+            chkbMusicFromMajesty2.Width = 104;
             vcPanelSound.ApplyMaxSize();
             vcPanelSound.Height += 8;
 
@@ -175,6 +181,8 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
             chkbPlaySound.Checked = settings.PlaySound;
             chkbPlayMusic.Checked = settings.PlayMusic;
+            chkbMusicFromMajesty1.Checked = settings.MusicFromMajesty1;
+            chkbMusicFromMajesty2.Checked = settings.MusicFromMajesty2;
             tbVolumeSound.Position = settings.VolumeSound;
             tbVolumeMusic.Position = settings.VolumeMusic;
             chkbShowShortNames.Checked = settings.ShowShortNames;
@@ -183,11 +191,6 @@ namespace Fantasy_Kingdoms_Battle
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
             chkbShowExtraHint.Checked = settings.ShowExtraHint;
             chkbAllowCheating.Checked = settings.AllowCheating;
-
-            /*            
-                        filenameAvatar = settings.FileNameAvatar;
-                        directoryAvatar = settings.DirectoryAvatar;
-                        ShowAvatar();*/
         }
 
         private void BtnDefault_Click(object sender, EventArgs e)
@@ -216,6 +219,8 @@ namespace Fantasy_Kingdoms_Battle
             settings.PlayMusic = chkbPlayMusic.Checked;
             settings.VolumeSound = tbVolumeSound.Position;
             settings.VolumeMusic = tbVolumeMusic.Position;
+            settings.MusicFromMajesty1 = chkbMusicFromMajesty1.Checked;
+            settings.MusicFromMajesty2 = chkbMusicFromMajesty2.Checked;
             settings.ShowShortNames = chkbShowShortNames.Checked;
             settings.ShowQuantityDaysForExecuting = chkbShowQuantityDaysForExecuting.Checked;
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;

@@ -12,9 +12,11 @@
   </Battlefield>
   <Sound>
     <PlaySound>True</PlaySound>
-    <PlayMusic>False</PlayMusic>
+    <PlayMusic>True</PlayMusic>
     <VolumeSound>26</VolumeSound>
     <VolumeMusic>50</VolumeMusic>
+    <MusicFromMajesty1>False</MusicFromMajesty1>
+    <MusicFromMajesty2>False</MusicFromMajesty2>
   </Sound>
   <Interface>
     <ShowShortNames>False</ShowShortNames>
