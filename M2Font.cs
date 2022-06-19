@@ -43,8 +43,6 @@ namespace Fantasy_Kingdoms_Battle
                 top = GetValue() - 1;
                 leftAndWidth = GetValue();
                 topAndHeight = GetValue();
-                //if (i == 18)
-                //{}
 
                 // Если есть изображение слева или справа от меток, учитываем его
                 /*for (int j = top; j < topAndHeight; j++)
@@ -74,6 +72,22 @@ namespace Fantasy_Kingdoms_Battle
                 g = Graphics.FromImage(sym);
                 g.DrawImage(bmpFonts, 0, 0, new Rectangle(left, top, width, height), GraphicsUnit.Pixel);
                 g.Dispose();
+
+                // Это проверка, что не отрезается правая часть символа
+                /*
+                for (int j = top; j < topAndHeight; j++)
+                {
+                    if (bmpFonts.GetPixel(leftAndWidth, j).A == 255)
+                    {
+                        if (!System.IO.Directory.Exists(@"f:\symbols\" + filename + "\\"))
+                            System.IO.Directory.CreateDirectory(@"f:\symbols\" + filename + "\\");
+                        sym.Save(@"f:\symbols\" + filename + "\\" + i.ToString() + " error.png");
+
+                        //throw new Exception($"{i} R: {bmpFonts.GetPixel(leftAndWidth, j).R} G: {bmpFonts.GetPixel(leftAndWidth, j).G} B: {bmpFonts.GetPixel(leftAndWidth, j).B} A: {bmpFonts.GetPixel(leftAndWidth, j).A}"
+                        //    + $" X = {leftAndWidth} Y = {j}");
+                    }
+                }*/
+
                 /*if (filename == "small_c")
                 {
                     sym.Save(@"f:\symbols\" + i.ToString() + ".png");
