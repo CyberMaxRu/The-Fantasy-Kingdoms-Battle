@@ -946,14 +946,17 @@ namespace Fantasy_Kingdoms_Battle
                 VCCellSimple cell;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    cell = GetCell(i);
-                    cell.Visible = true;
-                    cell.ImageIsEnabled = canMining;
-                    cell.LowText = list[i].Quantity.ToString();
-                    cell.ImageIndex = list[i].Descriptor.ImageIndex;
-                    cell.ShiftY = nextTop;
+                    if (list[i].Quantity != 0)
+                    {
+                        cell = GetCell(i);
+                        cell.Visible = true;
+                        cell.ImageIsEnabled = canMining;
+                        cell.LowText = list[i].Quantity.ToString();
+                        cell.ImageIndex = list[i].Descriptor.ImageIndex;
+                        cell.ShiftY = nextTop;
 
-                    nextTop = cell.NextTop();
+                        nextTop = cell.NextTop();
+                    }
                 }
 
                 VCCellSimple GetCell(int index)
