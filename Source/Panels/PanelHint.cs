@@ -943,21 +943,26 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (list.Count > 0)
             {
-                VCCellSimple cell;
+                VCCellSimple cell = null;
+                VCCellSimple priorCell = null;
+
                 for (int i = 0; i < list.Count; i++)
                 {
                     if (list[i].Quantity != 0)
                     {
                         cell = GetCell(i);
+                        AdjustCell(cell, priorCell, FormMain.Config.GridSize, nextTop);
                         cell.Visible = true;
                         cell.ImageIsEnabled = canMining;
                         cell.LowText = list[i].Quantity.ToString();
                         cell.ImageIndex = list[i].Descriptor.ImageIndex;
-                        cell.ShiftY = nextTop;
 
-                        nextTop = cell.NextTop();
+                        priorCell = cell;
                     }
                 }
+
+                if (cell != null)
+                    nextTop = cell.NextTop();
 
                 VCCellSimple GetCell(int index)
                 {
@@ -1088,6 +1093,29 @@ namespace Fantasy_Kingdoms_Battle
         private Color ColorRequirements(bool met)
         {
             return met ? FormMain.Config.HintRequirementsMet : FormMain.Config.HintRequirementsNotMet;
+        }
+
+        private void AdjustCell(VCCellSimple cell, VCCellSimple priorCell, int left, int top)
+        {
+            if (priorCell is null)
+            {
+                cell.ShiftX = left;
+                cell.ShiftY = top;
+            }
+            else
+            {
+                int nextLeft = priorCell.NextLeft();
+                if (nextLeft + cell.Width + FormMain.Config.GridSize <= Width)
+                {
+                    cell.ShiftX = nextLeft;
+                    cell.ShiftY = priorCell.ShiftY;
+                }
+                else
+                {
+                    cell.ShiftX = left;
+                    cell.ShiftY = priorCell.NextTop();
+                }
+            }
         }
     }
 }
