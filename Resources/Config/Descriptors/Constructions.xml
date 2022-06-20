@@ -1691,6 +1691,7 @@
         <IncomeResources>
           <Gold>1000</Gold>
           <Wood>50</Wood>
+          <Brick>75</Brick>
           <Stone>100</Stone>
           <Iron>25</Iron>
         </IncomeResources>
