@@ -698,7 +698,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                panelHint.AddStep21BaseResources(IncomeBaseResources, MiningBaseResources);
+                panelHint.AddStep21BaseResources(IncomeBaseResources, MiningBaseResources || ProvideBaseResources);
             }
         }
 
