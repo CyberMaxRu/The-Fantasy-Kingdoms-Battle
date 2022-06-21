@@ -79,6 +79,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        internal override int GetQuantity() => Location.Player.FreeHeroes.Count;
         internal override string GetText() => "";
 
         internal override void Click()
