@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
 
             imgTypeLocation = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            imgTypeLocation.ShowHint += ImgTypeLocation_ShowHint;
             imgTypeLocation.Click += ImgTypeLocation_Click;
             imgTypeLocation.PlaySoundOnClick = true;
             nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
@@ -46,6 +47,11 @@ namespace Fantasy_Kingdoms_Battle
         private void PbScout_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddSimpleHint("Разведано");
+        }
+
+        private void ImgTypeLocation_ShowHint(object sender, EventArgs e)
+        {
+            PanelHint.AddStep2Entity(location);
         }
 
         private void VCLocation_Click(object sender, EventArgs e)
