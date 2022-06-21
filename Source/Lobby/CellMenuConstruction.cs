@@ -1049,4 +1049,46 @@ namespace Fantasy_Kingdoms_Battle
             Spell.Selling.Reset();
         }
     }
+
+    sealed internal class CellMenuConstructionRecruitToGuild : CellMenuLocation
+    {
+        private readonly ListBaseResources cost = new ListBaseResources();
+
+        public CellMenuConstructionRecruitToGuild(Location l, DescriptorCellMenu d) : base(l, d)
+        {
+        }
+
+        internal override string GetLevel() => "\u2026";// Троеточие
+        internal override string GetText() => Location.ComponentObjectOfMap.ListHeroesForFlag.Count > 0 ? Location.ComponentObjectOfMap.ListHeroesForFlag.Count.ToString() : "";
+
+        internal override void Click()
+        {
+            Location.StateMenu = 1;
+            Program.formMain.layerGame.UpdateMenu();
+        }
+
+        internal override void Execute()
+        {
+        }
+
+        internal override ListBaseResources GetCost()
+        {
+            return cost;
+        }
+
+        internal override int GetImageIndex()
+        {
+            return Config.ImageIndexFirstItems + 184;
+        }
+
+        internal override bool InstantExecute()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            panelHint.AddSimpleHint("Информация о задании разведки");
+        }
+    }
 }
