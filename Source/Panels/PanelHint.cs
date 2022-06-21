@@ -542,21 +542,26 @@ namespace Fantasy_Kingdoms_Battle
         {
             if ((array != null) && (array.Length > 0))
             {
-                VCLabelValue lv;
+                VCLabelValue lv = null;
+                VCLabelValue priorlv = null;
 
                 for (int i = 0; i < array.Length; i++)
                 {
                     if (array[i] != 0)
                     {
                         lv = GetLabel(i);
+                        AdjustCell(lv, priorlv, FormMain.Config.GridSize, nextTop);
                         lv.Visible = true;
                         lv.Image.ImageIndex = FormMain.Descriptors.NeedsCreature[i].ImageIndex;
                         lv.Text = Utils.DecIntegerBy10(array[i]);
                         lv.ShiftY = nextTop;
 
-                        nextTop = lv.NextTop();
+                        priorlv = lv;
                     }
                 }
+
+                if (lv != null)
+                    nextTop = lv.NextTop();
             }
 
             VCLabelValue GetLabel(int index)
@@ -565,8 +570,7 @@ namespace Fantasy_Kingdoms_Battle
                     return listLabelNeeds[index];
                 else
                 {
-                    VCLabelValue l = new VCLabelValue(this, FormMain.Config.GridSize, 0, Color.White, false);
-                    l.Width = widthControl;
+                    VCLabelValue l = CreateLabelValue();
                     listLabelNeeds.Add(l);
                     return l;
                 }
@@ -578,7 +582,8 @@ namespace Fantasy_Kingdoms_Battle
             if (list.Count > 0)
             {
                 (DescriptorNeed, int) need;
-                VCLabelValue lv;
+                VCLabelValue lv = null;
+                VCLabelValue priorlv = null;
 
                 for (int i = 0; i < list.Count; i++)
                 {
@@ -586,23 +591,25 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(need.Item2 != 0);
 
                     lv = GetLabel(i);
+                    AdjustCell(lv, priorlv, FormMain.Config.GridSize, nextTop);
                     lv.Visible = true;
                     lv.Image.ImageIndex = need.Item1.ImageIndex;
                     lv.Text = Utils.DecIntegerBy10(need.Item2, showPlus);
-                    lv.ShiftY = nextTop;
 
-                    nextTop = lv.NextTop();
+                    priorlv = lv;
                 }
+
+                if (lv != null)
+                    nextTop = lv.NextTop();
             }
 
             VCLabelValue GetLabel(int index)
             {
                 if (index < listLabelNeeds.Count)
                     return listLabelNeeds[index];
-                else
+                else                    
                 {
-                    VCLabelValue l = new VCLabelValue(this, FormMain.Config.GridSize, 0, Color.White, false);
-                    l.Width = widthControl;
+                    VCLabelValue l = CreateLabelValue();
                     listLabelNeeds.Add(l);
                     return l;
                 }
@@ -1095,7 +1102,7 @@ namespace Fantasy_Kingdoms_Battle
             return met ? FormMain.Config.HintRequirementsMet : FormMain.Config.HintRequirementsNotMet;
         }
 
-        private void AdjustCell(VCCellSimple cell, VCCellSimple priorCell, int left, int top)
+        private void AdjustCell(VisualControl cell, VisualControl priorCell, int left, int top)
         {
             if (priorCell is null)
             {
@@ -1116,6 +1123,13 @@ namespace Fantasy_Kingdoms_Battle
                     cell.ShiftY = priorCell.NextTop();
                 }
             }
+        }
+
+        private VCLabelValue CreateLabelValue()
+        {
+            VCLabelValue l = new VCLabelValue(this, FormMain.Config.GridSize, 0, Color.White, false);
+            l.Width = widthControl / 4;
+            return l;
         }
     }
 }
