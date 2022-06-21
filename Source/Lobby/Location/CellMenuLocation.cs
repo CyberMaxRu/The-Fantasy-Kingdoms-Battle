@@ -79,13 +79,17 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        internal override bool GetImageIsEnabled() => Location.Player.FreeHeroes.Count > 0;
         internal override int GetQuantity() => Location.Player.FreeHeroes.Count;
         internal override string GetText() => "";
 
         internal override void Click()
         {
-            Location.StateMenu = 2;
-            Program.formMain.layerGame.UpdateMenu();
+            if (GetImageIsEnabled())
+            {
+                Location.StateMenu = 2;
+                Program.formMain.layerGame.UpdateMenu();
+            }
         }
 
         internal override void Execute()
@@ -109,7 +113,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            panelHint.AddSimpleHint("Нанять героев для разведки");
+            if (GetImageIsEnabled())
+                panelHint.AddSimpleHint("Нанять героев для разведки");
+            else
+                panelHint.AddSimpleHint("Нет свободных героев для найма");
         }
     }
 
