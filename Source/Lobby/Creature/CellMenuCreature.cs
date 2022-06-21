@@ -19,22 +19,39 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Creature Creature { get; set; }
         internal override string GetLevel() => Creature != null ? Creature.GetLevel() : "";
+        internal override string GetDaysExecuting()
+        {
+            switch (ModeText)
+            {
+                case ModeTextForCreature.Hire:
+                    if (BigEntity is Location l)
+                        return Creature != null ? Utils.FormatPercent((Creature as Hero).CalcPercentScoutArea(l)).ToString() : "";
+                    else
+                        return "";
+                case ModeTextForCreature.Scout:
+                    return Creature != null ? Utils.FormatPercent(Creature.PercentLocationForScout) : "";
+                default:
+                    return "";
+            }
+        }
 
         internal override string GetText()
         {
             switch (ModeText)
             {
                 case ModeTextForCreature.Hire:
-                    if (BigEntity is Location l)
-                        return Creature != null ? Utils.FormatPercent(Creature.PercentLocationForScout) : "";
+                    if ((Creature != null) && (Creature is Hero h))
+                        return h.CostOfHiring().ToString();
                     else
                         return "";
                 case ModeTextForCreature.Scout:
-                    return Creature != null ? Utils.FormatPercent(Creature.PercentLocationForScout): "";
+                    if ((Creature != null) && (Creature is Hero h2))
+                        return h2.PayForHire.ToString();
+                    else
+                        return "";
                 default:
                     return "";
             }
-
         }
 
         internal override void Click()
