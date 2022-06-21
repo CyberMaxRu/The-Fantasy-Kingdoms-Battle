@@ -46,7 +46,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PbScout_ShowHint(object sender, EventArgs e)
         {
-            PanelHint.AddSimpleHint("Разведано");
+            PanelHint.AddStep2Entity(location);
+            PanelHint.AddStep5Description("Разведано: " + Utils.FormatPercent(location.PercentScoutedArea));
         }
 
         private void ImgTypeLocation_ShowHint(object sender, EventArgs e)
