@@ -1027,7 +1027,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowPlayerNotices()
         {
-            pageResultTurn.LowText = curAppliedPlayer.ListNoticesForPlayer.Count > 0 ? curAppliedPlayer.ListNoticesForPlayer.Count.ToString() : "";
+            pageResultTurn.Quantity = curAppliedPlayer.ListNoticesForPlayer.Count;
 
             if (curAppliedPlayer.ListNoticesForPlayer.Count > 0)
             {
