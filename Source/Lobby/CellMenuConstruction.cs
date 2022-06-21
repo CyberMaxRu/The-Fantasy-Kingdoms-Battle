@@ -42,25 +42,25 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.Settings.ShowTypeCellMenu && (DaysLeft == 0) ? GetTextForLevel() : "";
         }
 
-        internal override int GetDaysExecuting()
+        internal override string GetDaysExecuting()
         {
             if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
-                return 0;
+                return "";
 
             if (InstantExecute())
-                return 0;
+                return "";
 
             if (Descriptor.CreatedEntity is null)
-                return 0;
+                return "";
 
             if (DaysLeft > 0)
-                return 0;
+                return "";
 
             //int days = Descriptor.CreatedEntity.GetCreating().DaysProcessing;
             //if (days > 1)
             //    return (days - 1).ToString();
 
-            return 0;
+            return "";
         }
 
         protected virtual string GetTextForLevel() => "";
@@ -350,17 +350,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForConstructed { get; set; }// Дней на завершение строительства
 
-        internal override int GetDaysExecuting()
+        internal override string GetDaysExecuting()
         {
             if (Construction.InConstructing)
             {
                 if (Construction.DaysConstructLeft == 0)
-                    return -1;
+                    return "";
                 else
-                    return Construction.DaysConstructLeft;
+                    return Construction.DaysConstructLeft.ToString();
             }
             else
-                return DaysForConstructed;
+                return DaysForConstructed.ToString();
         }
 
         internal override void Execute()
@@ -456,17 +456,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта
 
-        internal override int GetDaysExecuting()
+        internal override string GetDaysExecuting()
         {
             if (Construction.InConstructing)
             {
                 if (Construction.DaysConstructLeft == 0)
-                    return -1;
+                    return "";
                 else
-                    return Construction.DaysConstructLeft;
+                    return Construction.DaysConstructLeft.ToString();
             }
             else
-                return DaysForRepair;
+                return DaysForRepair.ToString();
         }
 
         internal override void Execute()

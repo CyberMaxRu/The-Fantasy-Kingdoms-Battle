@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string HighText { get; set; } = "";
         internal string LowText { get; set; } = "";
         internal Color Color { get; set; } = FormMain.Config.CommonCost;
-        internal int DaysExecuting { get; set; }
+        internal string DaysExecuting { get; set; } = "";
         internal string Level { get; set; } = "";
         internal int Quantity { get; set; }
         internal override void Draw(Graphics g)
@@ -86,9 +86,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Дней выполнения
-                if (DaysExecuting != 0)
+                if (DaysExecuting.Length > 0)
                 {
-                    lblDaysExecuting.Text = DaysExecuting != -1 ? DaysExecuting.ToString() : "-";
+                    lblDaysExecuting.Text = DaysExecuting;
                     lblDaysExecuting.Draw(g);
                 }
 

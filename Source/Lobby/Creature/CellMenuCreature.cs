@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         internal EventHandler OnClick { get; set; }
 
         internal Creature Creature { get; set; }
-        internal override string GetLevel() => Creature != null ? Creature.GetLevel() : "";        
+        internal override string GetLevel() => Creature != null ? Creature.GetLevel() : "";
 
         internal override string GetText()
         {
