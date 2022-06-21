@@ -150,6 +150,8 @@ namespace Fantasy_Kingdoms_Battle
         private CellMenuConstructionRepair CellMenuRepair { get; set; }// Действие для ремонта сооружения
         internal CellMenuConstruction MainCellMenu { get; private set; }//
 
+        //
+        internal List<Hero> Recruits { get; } = new List<Hero>();// Рекруты, готовые к найму
 
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
