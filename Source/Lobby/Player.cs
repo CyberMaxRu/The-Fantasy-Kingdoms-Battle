@@ -972,6 +972,8 @@ namespace Fantasy_Kingdoms_Battle
             if (CombatHeroes.Count == 0)
                 return;
 
+            return;
+
             List<Hero> freeHeroes = new List<Hero>();// Список свободных героев
 
             // Сначала сбрасываем всем состояние
