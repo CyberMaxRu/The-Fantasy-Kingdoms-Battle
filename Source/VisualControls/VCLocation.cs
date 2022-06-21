@@ -11,9 +11,9 @@ namespace Fantasy_Kingdoms_Battle
     sealed internal class VCLocation : VisualControl
     {
         private readonly VCImage128 imgTypeLocation;
+        private readonly VCProgressBar pbScout;
         private readonly VCText nameLocation;
         private readonly List<VCCell> listCells;
-        private readonly VCIconAndDigitValue lblScouted;
         private readonly VCIconAndDigitValue lblDanger;
 
         private Location location;
@@ -28,16 +28,24 @@ namespace Fantasy_Kingdoms_Battle
             nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
             nameLocation.IsActiveControl = false;
 
-            lblScouted = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), imgTypeLocation.ShiftY, 80, 42);
-            lblScouted.ShowHint += LblScouted_ShowHint;
-            lblDanger = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), lblScouted.NextTop(), 80, 39);
+            pbScout = new VCProgressBar(this, imgTypeLocation.ShiftX - 2, imgTypeLocation.NextTop() - 4);
+            pbScout.Width = imgTypeLocation.Width + 4;
+            pbScout.Max = 100;
+            pbScout.ShowHint += PbScout_ShowHint;
+
+            lblDanger = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), imgTypeLocation.ShiftY, 80, 39);
             lblDanger.ShowHint += LblDanger_ShowHint;
 
             listCells = new List<VCCell>();
 
             Width = 200;
-            Height = imgTypeLocation.NextTop();
+            Height = pbScout.NextTop();
             Click += VCLocation_Click;
+        }
+
+        private void PbScout_ShowHint(object sender, EventArgs e)
+        {
+            PanelHint.AddSimpleHint("Разведано");
         }
 
         private void VCLocation_Click(object sender, EventArgs e)
@@ -53,11 +61,6 @@ namespace Fantasy_Kingdoms_Battle
         private void LblDanger_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddSimpleHint("Уровень опасности");
-        }
-
-        private void LblScouted_ShowHint(object sender, EventArgs e)
-        {
-            PanelHint.AddSimpleHint("Разведано");
         }
 
         internal Location Location { get => location; set { location = value; UpdateLocation(); } }
@@ -78,7 +81,8 @@ namespace Fantasy_Kingdoms_Battle
             nameLocation.ShiftY = imgTypeLocation.Height - nameLocation.Height;
             imgTypeLocation.ArrangeControl(nameLocation);
 
-            lblScouted.Text = Utils.FormatPercent(location.PercentScoutedArea);
+            pbScout.Position = location.PercentScoutedArea / 10;
+            pbScout.Text = Utils.FormatPercent(location.PercentScoutedArea);
             lblDanger.Text = Utils.FormatPercent(location.Danger);
 
             // Не всегда все объекты видны. Тем не менее, создадим заранее под них ячейки - пусть будут, все равно пригодятся
@@ -108,10 +112,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ValidateCoordCell(VCCell cell, int index)
         {
-            int cellsPerLine = (Width - lblScouted.NextLeft() - FormMain.Config.GridSize) / 56;
+            int cellsPerLine = (Width - lblDanger.NextLeft() - FormMain.Config.GridSize) / 56;
             int line = index / cellsPerLine;
             int offset = index % cellsPerLine;
-            cell.ShiftX = lblScouted.NextLeft() + (offset * 56);
+            cell.ShiftX = lblDanger.NextLeft() + (offset * 56);
             cell.ShiftY = imgTypeLocation.ShiftY + (line * 56);
 
             ArrangeControl(cell);
