@@ -111,10 +111,6 @@ namespace Fantasy_Kingdoms_Battle
                 listCells.Add(cell);
             }
 
-            // Скрываем все ячейки
-            foreach (VCCell c in listCells)
-                c.Visible = false;
-
             int nextCell = 0;
             for (int i = 0; i < location.Lairs.Count; i++)
             {
@@ -124,6 +120,13 @@ namespace Fantasy_Kingdoms_Battle
                     listCells[nextCell].Visible = true;
                     nextCell++;
                 }
+            }
+
+            // Скрываем оставшиеся
+            for (int i = nextCell; i < listCells.Count; i++)
+            {
+                listCells[i].Visible = false;
+                listCells[i].Entity = null;
             }
         }
 
