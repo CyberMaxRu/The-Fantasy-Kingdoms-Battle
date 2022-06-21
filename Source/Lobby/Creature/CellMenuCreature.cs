@@ -25,11 +25,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case ModeTextForCreature.Hire:
                     if (BigEntity is Location l)
-                        return Creature != null ? Utils.FormatPercent((Creature as Hero).CalcPercentScoutArea(l)).ToString() : "";
+                        return Creature != null ? Utils.FormatPercent(Creature.PercentLocationForScout) : "";
                     else
                         return "";
                 case ModeTextForCreature.Scout:
-                    return Creature != null ? Utils.FormatPercent((Creature as Hero).CalcPercentScoutArea(Creature.LocationForScout)).ToString() : "";
+                    return Creature != null ? Utils.FormatPercent(Creature.PercentLocationForScout): "";
                 default:
                     return "";
             }
