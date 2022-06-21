@@ -36,7 +36,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override string GetLevel() => "\u2026";// Троеточие
-        internal override string GetText() => Location.ComponentObjectOfMap.ListHeroesForFlag.Count > 0 ? Location.ComponentObjectOfMap.ListHeroesForFlag.Count.ToString() : "";
+        internal override int GetQuantity() => Location.ComponentObjectOfMap.ListHeroesForFlag.Count;
+        internal override string GetText() => "";
 
         internal override void Click()
         {
