@@ -47,7 +47,9 @@ namespace Fantasy_Kingdoms_Battle
         private void PbScout_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddStep2Entity(location);
-            PanelHint.AddStep5Description("Разведано: " + Utils.FormatPercent(location.PercentScoutedArea));
+            PanelHint.AddStep5Description("Разведано: " + Utils.FormatPercent(location.PercentScoutedArea)
+                + (location.PercentScoutedArea == 1000 ? "" :
+                    Environment.NewLine + (location.PercentScoutAreaToday > 0 ? "Будет разведано в этот день: +" + Utils.FormatPercent(location.PercentScoutAreaToday) : "Разведки на этом ходу нет")));
         }
 
         private void ImgTypeLocation_ShowHint(object sender, EventArgs e)
@@ -80,6 +82,13 @@ namespace Fantasy_Kingdoms_Battle
                 ValidateCoordCell(listCells[i], i);
         }
 
+        internal override void DrawBackground(Graphics g)
+        {
+            base.DrawBackground(g);
+
+            UpdateLocation();
+        }
+
         private void UpdateLocation()
         {
             imgTypeLocation.ImageIndex = location.GetImageIndex();
@@ -89,7 +98,8 @@ namespace Fantasy_Kingdoms_Battle
             imgTypeLocation.ArrangeControl(nameLocation);
 
             pbScout.Position = location.PercentScoutedArea / 10;
-            pbScout.Text = Utils.FormatPercent(location.PercentScoutedArea);
+            pbScout.PositionPotential = (location.PercentScoutedArea + location.PercentScoutAreaToday) / 10;
+            pbScout.Text = Utils.FormatPercent(location.PercentScoutedArea) + (location.PercentScoutAreaToday > 0 ? $"+{Utils.FormatPercent(location.PercentScoutAreaToday)}" : "");
             lblDanger.Text = Utils.FormatPercent(location.Danger);
 
             // Не всегда все объекты видны. Тем не менее, создадим заранее под них ячейки - пусть будут, все равно пригодятся

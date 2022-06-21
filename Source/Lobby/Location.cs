@@ -106,6 +106,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
         internal int PercentNonScoutedArea { get => percentNonScoutedArea; }// Процент неразведанной части локации
+        internal int PercentScoutAreaToday { get; set; }// Сколько проценто локации будет разведано сегодня
+        internal List<Creature> ListCreaturesForScout { get; } = new List<Creature>();// Какие существа разведуют локацию
+
         internal int Danger { get; private set; }// Процент опасности локации
         internal int StateMenu { get; set; }//
         internal int PayForHire { get; set; }// Сколько было потрачено на найм
@@ -271,6 +274,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 cm.PrepareNewDay();
             }
+        }
+
+        internal void CalcPercentScoutToday()
+        {
+            PercentScoutAreaToday = 0;
+            foreach (Creature c in ListCreaturesForScout)
+                PercentScoutAreaToday += c.PercentLocationForScout;
+
+            if (PercentScoutAreaToday > PercentNonScoutedArea)
+                PercentScoutAreaToday = PercentNonScoutedArea;
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as TypeLobbyLocationSettings).ID + Number.ToString();// Убрать Number.ToString(), когда будет 1 игрок;

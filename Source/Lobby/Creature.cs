@@ -124,6 +124,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Действия
         internal Location LocationForScout { get; set; }// Локация, назначенная существу для разведки
+        internal int PercentLocationForScout { get; set; }// Сколько процентов локации будет разведано
 
 
         // Повышение уровня
@@ -468,6 +469,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(l.Player == BattleParticipant);
                 //Debug.Assert(StateCreature != FormMain.Descriptors.StateCreatureDoFlatScout);
                 Debug.Assert(LocationForScout is null);
+                Debug.Assert(PercentLocationForScout == 0);
 
                 LocationForScout = l;
                 StateCreature = FormMain.Descriptors.StateCreatureDoFlagScout;
@@ -476,15 +478,24 @@ namespace Fantasy_Kingdoms_Battle
                     h.TargetByFlag = l;
                     LocationForScout.PayForHire += h.PayForHire;
                 }
+
+                PercentLocationForScout = CalcPercentScoutArea(LocationForScout);
+                LocationForScout.ListCreaturesForScout.Add(this);
+                LocationForScout.CalcPercentScoutToday();
             }
             else
             {
+                Debug.Assert(PercentLocationForScout > 0);
+
                 StateCreature = TypeCreature.PersistentStateHeroAtMap;
                 if (this is Hero h)
                 {
                     LocationForScout.PayForHire -= h.PayForHire;
                     h.TargetByFlag = null;
                 }
+                LocationForScout.CalcPercentScoutToday();
+                PercentLocationForScout = 0;
+                LocationForScout.ListCreaturesForScout.Remove(this);
                 LocationForScout = null;
             }
         }
