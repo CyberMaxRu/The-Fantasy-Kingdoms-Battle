@@ -721,13 +721,21 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     pageMap.PageImage = l.GetBitmapBackground();
                     pageControl.ActivatePage(pageMap);
-                    UpdateBackgroundImage();
                 }
                 else
                 {
-                    pageMap.PageImage = MainControlbackground("Map");
-                    UpdateBackgroundImage();
+                    if (po is Construction c)
+                    {
+                        if (c.Location != null)
+                        {
+                            pageMap.PageImage = c.Location.GetBitmapBackground();
+                        }
+                    }
+                    else
+                        pageMap.PageImage = MainControlbackground("Map");
                 }
+
+                UpdateBackgroundImage();
 
                 selectedPlayerObject = po;
                 if ((po == null) && (pageControl.CurrentPage.Location != null))
