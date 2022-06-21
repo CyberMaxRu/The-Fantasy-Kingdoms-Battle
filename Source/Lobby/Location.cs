@@ -287,5 +287,10 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as TypeLobbyLocationSettings).ID + Number.ToString();// Убрать Number.ToString(), когда будет 1 игрок;
+
+        internal Bitmap GetBitmapBackground()
+        {
+            return Program.formMain.layerGame.MainControlbackground(Settings.Background);
+        }
     }
 }

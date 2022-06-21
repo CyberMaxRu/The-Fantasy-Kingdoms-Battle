@@ -717,8 +717,17 @@ namespace Fantasy_Kingdoms_Battle
                     selectedPlayerObject.HideInfo();
                 }
 
-                if (po is Location)
+                if (po is Location l)
+                {
+                    pageMap.PageImage = l.GetBitmapBackground();
                     pageControl.ActivatePage(pageMap);
+                    UpdateBackgroundImage();
+                }
+                else
+                {
+                    pageMap.PageImage = MainControlbackground("Map");
+                    UpdateBackgroundImage();
+                }
 
                 selectedPlayerObject = po;
                 if ((po == null) && (pageControl.CurrentPage.Location != null))
@@ -1097,7 +1106,7 @@ namespace Fantasy_Kingdoms_Battle
             pageLocation.Page.ArrangeControls();*/
         }
 
-        private Bitmap MainControlbackground(string nameTexture)
+        internal Bitmap MainControlbackground(string nameTexture)
         {
             return Program.formMain.CollectionBackgroundImage.GetBitmap(nameTexture, new Size(MainControl.Width, MainControl.Height));
         }
@@ -1137,6 +1146,11 @@ namespace Fantasy_Kingdoms_Battle
                 //winAdvice.ShowAdvice(pageControl.CurrentPage.Advice);
             }
 
+            UpdateBackgroundImage();
+        }
+
+        private void UpdateBackgroundImage()
+        {
             MainControl.BackgroundImage = pageControl.CurrentPage.PageImage;
         }
 
