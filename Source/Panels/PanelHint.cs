@@ -519,7 +519,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     listProperties[i].ShiftY = nextTop;
                     listProperties[i].Image.ImageIndex = FormMain.Descriptors.PropertiesCreature[i].ImageIndex;
-                    listProperties[i].Text = Utils.FormatDecimal100(props[i], true);
+                    listProperties[i].Text = FormatDecimal100(props[i], true);
                     listProperties[i].Visible = true;
                     nextTop = listProperties[i].NextTop();
                 }
@@ -531,7 +531,7 @@ namespace Fantasy_Kingdoms_Battle
             if (interest != 0)
             {
                 lblInterest.ShiftY = nextTop;
-                lblInterest.Text = Utils.DecIntegerBy10(interest, showPlus);
+                lblInterest.Text = DecIntegerBy10(interest, showPlus);
                 lblInterest.Visible = true;
 
                 nextTop = lblInterest.NextTop();
@@ -553,7 +553,7 @@ namespace Fantasy_Kingdoms_Battle
                         AdjustCell(lv, priorlv, FormMain.Config.GridSize, nextTop);
                         lv.Visible = true;
                         lv.Image.ImageIndex = FormMain.Descriptors.NeedsCreature[i].ImageIndex;
-                        lv.Text = Utils.DecIntegerBy10(array[i]);
+                        lv.Text = DecIntegerBy10(array[i]);
                         lv.ShiftY = nextTop;
 
                         priorlv = lv;
@@ -594,7 +594,7 @@ namespace Fantasy_Kingdoms_Battle
                     AdjustCell(lv, priorlv, FormMain.Config.GridSize, nextTop);
                     lv.Visible = true;
                     lv.Image.ImageIndex = need.Item1.ImageIndex;
-                    lv.Text = Utils.DecIntegerBy10(need.Item2, showPlus);
+                    lv.Text = DecIntegerBy10(need.Item2, showPlus);
 
                     priorlv = lv;
                 }
