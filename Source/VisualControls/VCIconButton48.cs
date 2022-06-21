@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
                 LowText = MenuCell.GetText();
                 DaysExecuting = MenuCell.GetDaysExecuting();
                 Level = MenuCell.GetLevel();
+                Quantity = MenuCell.GetQuantity();
                 Color = MenuCell.GetColorText();
             }
 

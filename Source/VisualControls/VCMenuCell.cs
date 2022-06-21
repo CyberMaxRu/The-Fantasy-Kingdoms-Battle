@@ -67,6 +67,7 @@ namespace Fantasy_Kingdoms_Battle
                     DaysExecuting = research.GetDaysExecuting();
 
                     Level = research.GetLevel();
+                    Quantity = research.GetQuantity();
                     LowText = research.GetText();
 
                     if (research.PosInQueue > 0)
