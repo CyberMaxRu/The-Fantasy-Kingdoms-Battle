@@ -129,9 +129,7 @@ namespace Fantasy_Kingdoms_Battle
             listProperties = new List<VCLabelValue>();
             foreach (DescriptorProperty dp in FormMain.Descriptors.PropertiesCreature)
             {
-                VCLabelValue lv = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), Color.White, false);
-                lv.Width = widthControl;
-                listProperties.Add(lv);
+                listProperties.Add(CreateLabelValue(3));
             }
 
             lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), Color.White, false);
@@ -513,17 +511,23 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep9Properties(int[] props)
         {
+            VCLabelValue priorlv = null;
+
             for (int i = 0; i < props.Length; i++)
             {
                 if (props[i] != 0)
                 {
-                    listProperties[i].ShiftY = nextTop;
+                    AdjustCell(listProperties[i], priorlv, FormMain.Config.GridSize, nextTop);
                     listProperties[i].Image.ImageIndex = FormMain.Descriptors.PropertiesCreature[i].ImageIndex;
                     listProperties[i].Text = FormatDecimal100(props[i], true);
                     listProperties[i].Visible = true;
-                    nextTop = listProperties[i].NextTop();
+
+                    priorlv = listProperties[i];
                 }
             }
+
+            if (priorlv != null)
+                nextTop = priorlv.NextTop();
         }
 
         internal void AddStep9Interest(int interest, bool showPlus)
@@ -570,7 +574,7 @@ namespace Fantasy_Kingdoms_Battle
                     return listLabelNeeds[index];
                 else
                 {
-                    VCLabelValue l = CreateLabelValue();
+                    VCLabelValue l = CreateLabelValue(4);
                     listLabelNeeds.Add(l);
                     return l;
                 }
@@ -609,7 +613,7 @@ namespace Fantasy_Kingdoms_Battle
                     return listLabelNeeds[index];
                 else                    
                 {
-                    VCLabelValue l = CreateLabelValue();
+                    VCLabelValue l = CreateLabelValue(4);
                     listLabelNeeds.Add(l);
                     return l;
                 }
@@ -1125,10 +1129,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private VCLabelValue CreateLabelValue()
+        private VCLabelValue CreateLabelValue(int columns)
         {
+            Assert(columns >= 1);
+
             VCLabelValue l = new VCLabelValue(this, FormMain.Config.GridSize, 0, Color.White, false);
-            l.Width = widthControl / 4;
+            l.Width = (widthControl - FormMain.Config.GridSize * (columns - 1)) / columns;
             return l;
         }
     }
