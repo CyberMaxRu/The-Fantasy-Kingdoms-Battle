@@ -304,6 +304,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PrepareTurn(bool beginOfDay)
         {
+            foreach (Location l in Locations)
+            {
+                l.CalcPercentScoutToday();
+            }
+                
             //
             List<Hero> listForDelete = new List<Hero>();
 
