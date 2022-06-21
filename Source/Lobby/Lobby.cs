@@ -279,7 +279,7 @@ namespace Fantasy_Kingdoms_Battle
                 SetPlayerAsCurrent(-1);
 
                 // Расчет результатов хода игроков
-                if (TimeOfDay == descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1])
+                //if (TimeOfDay == descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1])
                 {
                     foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
                         p.CalcDay();
