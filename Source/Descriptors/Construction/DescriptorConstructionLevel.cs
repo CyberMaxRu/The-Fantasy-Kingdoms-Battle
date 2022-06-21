@@ -70,6 +70,11 @@ namespace Fantasy_Kingdoms_Battle
             if (nir != null)
                 IncomeResources = new ListBaseResources(nir);
 
+            if (Number > 1)
+            {
+                Debug.Assert(Durability > forConstruction.Levels[Number - 1].Durability);
+            }
+
             Debug.Assert(MaxInhabitant >= 0);
             Debug.Assert(MaxInhabitant <= 100);
             Debug.Assert(Tax >= 0);
