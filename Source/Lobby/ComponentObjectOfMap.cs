@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeFlag TypeFlag { get; set; } = TypeFlag.None;// Тип установленного флага
         internal List<Creature> ListHeroesForFlag { get; } = new List<Creature>();// Список существ, выполняющих флаг
 
-        internal void AddHeroForFlag(Hero ph)
+        internal void AddHeroForFlag(Creature ph)
         {
             Debug.Assert(ph != null);
             Debug.Assert(ListHeroesForFlag.IndexOf(ph) == -1);
@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             ph.SetState(ph.StateForFlag(TypeFlag));
         }
 
-        internal void RemoveAttackingHero(Hero ph)
+        internal void RemoveAttackingHero(Creature ph)
         {
             Debug.Assert(ListHeroesForFlag.IndexOf(ph) != -1);
             Debug.Assert(ph.TargetByFlag == Owner);
@@ -73,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
             TypeFlag = TypeFlag.None;
             
             while (ListHeroesForFlag.Count > 0)
-                RemoveAttackingHero(ListHeroesForFlag[0] as Hero);
+                RemoveAttackingHero(ListHeroesForFlag[0] as Creature);
 
             Owner.Lobby.Layer.LairsWithFlagChanged();
         }
@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 string list = "";
                 int pos = 1;
-                foreach (Hero h in ListHeroesForFlag)
+                foreach (Creature h in ListHeroesForFlag)
                 {
                     list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
                     pos++;

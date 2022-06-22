@@ -94,7 +94,7 @@ namespace Fantasy_Kingdoms_Battle
             PanelHint.AddStep75Salary(Hero.CostOfHiring());
         }
 
-        internal Hero Hero { get => Entity as Hero; }
+        internal Creature Hero { get => Entity as Creature; }
 
         private void BtnDismiss_Click(object sender, EventArgs e)
         {

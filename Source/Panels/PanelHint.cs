@@ -802,7 +802,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = GuiUtils.NextTop(lblDefenseMelee);*/
         }
 
-        internal void AddStep17Signer(Hero signer)
+        internal void AddStep17Signer(Creature signer)
         {
             if (signer != null)
             {

@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс предмета у игрока (находящегося на герое или на складе)
     internal sealed class Item : SmallEntity
     {
-        public Item(BigEntity owner, DescriptorItem i, int quantity, Hero signer = null) : base(i)
+        public Item(BigEntity owner, DescriptorItem i, int quantity, Creature signer = null) : base(i)
         {
             Debug.Assert(i != null);
             Debug.Assert(quantity > 0);
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal BigEntity Owner { get; private set; }//Владелец предмета (у кого он сейчас находится)
-        internal Hero Signer { get; }// Подписант
+        internal Creature Signer { get; }// Подписант
         internal DescriptorItem Descriptor { get; }
         internal int Quantity { get; set; }// Количество предметов
         internal List<DescriptorItem> Modifiers { get; } = new List<DescriptorItem>();// Модификаторы (зачарование, яды) в предмете (оружие, доспехи)

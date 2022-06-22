@@ -118,7 +118,7 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal int Gold { get => gold; set { Debug.Assert(Descriptor.HasTreasury); gold = value; } }// Казна гильдии
-        internal List<Hero> Heroes { get; } = new List<Hero>();
+        internal List<Creature> Heroes { get; } = new List<Creature>();
 
         // Свойства для внешних сооружений
         internal Location Location { get; set; }// Локация, на которой находится сооружение
@@ -151,7 +151,7 @@ namespace Fantasy_Kingdoms_Battle
         internal CellMenuConstruction MainCellMenu { get; private set; }//
 
         //
-        internal List<Hero> Recruits { get; } = new List<Hero>();// Рекруты, готовые к найму
+        internal List<Creature> Recruits { get; } = new List<Creature>();// Рекруты, готовые к найму
 
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
@@ -616,13 +616,13 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal Hero HireHero(DescriptorCreature th, ListBaseResources cost)
+        internal Creature HireHero(DescriptorCreature th, ListBaseResources cost)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
             //Debug.Assert(Player.Gold >= TypeConstruction.TrainedHero.Cost);
 
-            Hero h = new Hero(this, Player, th);
+            Creature h = new Creature(this, th, Player, Player);
 
             if (th.CategoryCreature != CategoryCreature.Citizen)
             {
@@ -639,7 +639,7 @@ namespace Fantasy_Kingdoms_Battle
             return h;
         }
 
-        internal void AddHero(Hero ph)
+        internal void AddHero(Creature ph)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
@@ -774,7 +774,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Descriptor.ID != FormMain.Config.IDCityGraveyard)
                 {
-                    foreach (Hero h in Heroes)
+                    foreach (Creature h in Heroes)
                     {
                         h.PrepareNewDay();
                     }
@@ -823,7 +823,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level > 0);
 
-            foreach (Hero h in Heroes)
+            foreach (Creature h in Heroes)
             {
                 if (h.IsLive)
                     h.PrepareQueueShopping(queue);
@@ -862,7 +862,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
-                    lm = new Monster(mll.Monster, mll.Level, this);
+                    lm = new Monster(mll.Monster, mll.Level, this, this);
                     Monsters.Add(lm);
                     AddCombatHero(lm);
                 }
@@ -1159,7 +1159,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 string list = "";
                 int pos = 1;
-                foreach (Hero h in Heroes)
+                foreach (Creature h in Heroes)
                 {
                     list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
                     pos++;

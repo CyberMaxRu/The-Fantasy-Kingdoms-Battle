@@ -63,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.HireHero:
                     nameNotice = "Герой нанят:";
-                    nameText = (Entity as Hero).GetNameHero();
+                    nameText = (Entity as Creature).GetNameHero();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.MassEventBegin:
@@ -113,7 +113,7 @@ namespace Fantasy_Kingdoms_Battle
                         throw new Exception("Неизвестный тип сущности");
                     break;
                 case TypeNoticeForPlayer.HeroIsDead:
-                    Hero h = Entity as Hero;
+                    Creature h = Entity as Creature;
                     nameNotice = $"Герой погиб ({h.TypeCreature.Name}):";
                     nameText = $"{h.FullName}";
                     colorNameEntity = Color.SteelBlue;
@@ -163,7 +163,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Entity is Construction c)
                 Program.formMain.layerGame.SelectConstruction(c);
-            else if (Entity is Hero h)
+            else if (Entity is Creature h)
             {
                 if (h.IsLive)
                     Program.formMain.layerGame.SelectPlayerObject(h);

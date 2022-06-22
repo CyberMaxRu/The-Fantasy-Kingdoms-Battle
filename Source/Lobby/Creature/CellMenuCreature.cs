@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case ModeTextForCreature.Hire:
                     if (BigEntity is Location l)
-                        return Creature != null ? Utils.FormatPercent((Creature as Hero).CalcPercentScoutArea(l)).ToString() : "";
+                        return Creature != null ? Utils.FormatPercent((Creature as Creature).CalcPercentScoutArea(l)).ToString() : "";
                     else
                         return "";
                 case ModeTextForCreature.Scout:
@@ -40,12 +40,12 @@ namespace Fantasy_Kingdoms_Battle
             switch (ModeText)
             {
                 case ModeTextForCreature.Hire:
-                    if ((Creature != null) && (Creature is Hero h))
+                    if ((Creature != null) && (Creature is Creature h))
                         return h.CostOfHiring().ToString();
                     else
                         return "";
                 case ModeTextForCreature.Scout:
-                    if ((Creature != null) && (Creature is Hero h2))
+                    if ((Creature != null) && (Creature is Creature h2))
                         return h2.PayForHire.ToString();
                     else
                         return "";
