@@ -260,7 +260,7 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (HeroInBattle hb in DeadHeroes)
                 {
                     if (hb.Player == Player2)
-                        pl.MonsterIsDead(hb.PlayerHero as Monster);
+                        pl.MonsterIsDead(hb.PlayerHero as Creature);
                 }
             }
 

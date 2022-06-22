@@ -12,8 +12,10 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс существа
     internal class Creature : BigEntity
     {
-        public Creature(Construction pb, DescriptorCreature tc, BattleParticipant bp, Player p) : base(tc, bp.Lobby, p)
+        public Creature(Construction pb, DescriptorCreature tc, BattleParticipant bp, Player p, int level) : base(tc, bp.Lobby, p)
         {
+            Debug.Assert(tc != null);
+            Debug.Assert(level > 0);
             Construction = pb;
             Abode = Construction;
             TurnOfTrain = Player.Lobby.Turn;
@@ -795,6 +797,8 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep4Level($"Уровень {Level}");
                 panelHint.AddStep45State((StateCreature.Name, Color.SkyBlue));
                 panelHint.AddStep5Description(TypeCreature.Description);
+                panelHint.AddStep7Reward(TypeCreature.TypeReward.Cost.ValueGold());
+                panelHint.AddStep8Greatness(TypeCreature.TypeReward.Greatness, 0);
             }
             else
             {
@@ -808,15 +812,26 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.HideInfo();
 
-            Lobby.Layer.panelHeroInfo.Visible = false;
+            if (TypeCreature.CategoryCreature == CategoryCreature.Monster)
+                Lobby.Layer.panelMonsterInfo.Visible = false;
+            else
+                Lobby.Layer.panelHeroInfo.Visible = false;
         }
 
         internal override void ShowInfo(int selectPage = -1)
         {
             Debug.Assert(IsLive);
 
-            Lobby.Layer.panelHeroInfo.Visible = true;
-            Lobby.Layer.panelHeroInfo.Entity = this;
+            if (TypeCreature.CategoryCreature == CategoryCreature.Monster)
+            {
+                Lobby.Layer.panelMonsterInfo.Entity = this;
+                Lobby.Layer.panelMonsterInfo.Visible = true;
+            }
+            else
+            {
+                Lobby.Layer.panelHeroInfo.Visible = true;
+                Lobby.Layer.panelHeroInfo.Entity = this;
+            }
         }
 
         internal void ClearState()

@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal Monster Monster { get => Entity as Monster; }
+        internal Creature Monster { get => Entity as Creature; }
 
         protected override void CreateCustomControls()
         {

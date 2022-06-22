@@ -128,7 +128,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
         internal string IDPathToLocation { get; } = "";//
         internal Location NextLocation { get; private set; }// Дескриптор пути в другую локацию
-        internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
+        internal List<Creature> Monsters { get; } = new List<Creature>();// Монстры текущего уровня
 
         // Small-сущности в сооружении
         internal List<EntityForConstruction> ListEntities { get; } = new List<EntityForConstruction>();// Все сущности в сооружении
@@ -622,7 +622,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
             //Debug.Assert(Player.Gold >= TypeConstruction.TrainedHero.Cost);
 
-            Creature h = new Creature(this, th, Player, Player);
+            Creature h = new Creature(this, th, Player, Player, 1);
 
             if (th.CategoryCreature != CategoryCreature.Citizen)
             {
@@ -857,12 +857,12 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
             //Debug.Assert(TypeLair.Monsters.Count > 0);
 
-            Monster lm;
+            Creature lm;
             foreach (DescriptorConstructionLevelLair mll in Descriptor.Monsters)
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
-                    lm = new Monster(mll.Monster, mll.Level, this, this);
+                    lm = new Creature(this, mll.Monster, this, Player, mll.Level);
                     Monsters.Add(lm);
                     AddCombatHero(lm);
                 }
@@ -1071,7 +1071,7 @@ namespace Fantasy_Kingdoms_Battle
             Destroyed = true;
         }
 
-        internal void MonsterIsDead(Monster m)
+        internal void MonsterIsDead(Creature m)
         {
             Debug.Assert(m != null);
             Debug.Assert(m.BattleParticipant == this);
@@ -1116,7 +1116,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 string list = "";
                 int pos = 1;
-                foreach (Monster m in Monsters)
+                foreach (Creature m in Monsters)
                 {
                     list += (list != "" ? Environment.NewLine : "") + $"{pos}. {m.TypeCreature.Name} ({m.Level})";
                     pos++;
