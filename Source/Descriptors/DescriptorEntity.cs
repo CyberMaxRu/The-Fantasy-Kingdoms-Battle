@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             Descriptors.AddEntity(this);
         }
 
-        internal Uri UriSoundSelect { get; }// Звук при выборе сущности
+        internal Uri UriSoundSelect { get; }// Проигрываемый звук при выборе сущности
         internal abstract string GetTypeEntity();
     }
 }
