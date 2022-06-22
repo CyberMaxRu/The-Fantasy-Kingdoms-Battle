@@ -16,10 +16,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ModifyInterest >= 0);
             Debug.Assert(ModifyInterest <= 100);
 
+            Durability = GetIntegerNotNull(n, "Durability", ID, 1, 1_000_000);
             ModifyInterest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
         }
 
+        internal int Durability { get; }// Прочность улучшения
         internal int ModifyInterest { get; }// Изменение интереса к сооружению
         internal ListNeeds ListNeeds { get; }// Изменение удовлетворения потребностей героев
 

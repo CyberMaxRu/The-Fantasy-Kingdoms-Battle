@@ -679,6 +679,7 @@
         <Name>Библиотека</Name>
         <Description>Построить библиотеку. Повышает ум и знания героев.</Description>
         <ImageIndex>254</ImageIndex>
+        <Durability>100</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Cost>
@@ -1201,6 +1202,7 @@
         <Name>Кузница гномов</Name>
         <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
         <ImageIndex>226</ImageIndex>
+        <Durability>500</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <DaysProcessing>2</DaysProcessing>
@@ -1804,6 +1806,7 @@
         <Name>Трон</Name>
         <Description>Трон покажет величие Короля</Description>
         <ImageIndex>260</ImageIndex>
+        <Durability>200</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Cost>
@@ -1898,6 +1901,7 @@
         <Description>На поле растет пшеница - основной источник еды в Ардании.</Description>
         <ImageIndex>262</ImageIndex>
         <Construction>PeasantHouse</Construction>
+        <Durability>500</Durability>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
@@ -3945,6 +3949,7 @@
         <Name>Беседки</Name>
         <Description>Беседки увеличат популярность {Парка}</Description>
         <ImageIndex>215</ImageIndex>
+        <Durability>150</Durability>
         <Creating>
           <Cost>
             <Gold>500</Gold>
@@ -3962,6 +3967,7 @@
         <Name>Водопад</Name>
         <Description>Водопад увеличит популярность {Парка}</Description>
         <ImageIndex>246</ImageIndex>
+        <Durability>250</Durability>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -3987,6 +3993,7 @@
         <Name>Аллея</Name>
         <Description>Аллея увеличит популярность {Парка}</Description>
         <ImageIndex>214</ImageIndex>
+        <Durability>400</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -4013,6 +4020,7 @@
         <Description>Лабиринт увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>255</ImageIndex>
         <Interest>20</Interest>
+        <Durability>300</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Cost>
@@ -4037,6 +4045,7 @@
         <Name>Пруд</Name>
         <Description>Пруд увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>256</ImageIndex>
+        <Durability>300</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -4201,6 +4210,7 @@
         <Name>Мощение</Name>
         <Description>Мощение плиткой увеличит популярность {Площади}</Description>
         <ImageIndex>247</ImageIndex>
+        <Durability>200</Durability>
         <Interest>5</Interest>
         <Creating>
           <Cost>
@@ -4218,6 +4228,7 @@
         <Name>Фонтан</Name>
         <Description>Фонтан увеличит популярность {Площади}</Description>
         <ImageIndex>213</ImageIndex>
+        <Durability>200</Durability>
         <Interest>10</Interest>
         <Creating>
           <Cost>
@@ -4242,6 +4253,7 @@
         <Name>Статуя Короля</Name>
         <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
         <ImageIndex>231</ImageIndex>
+        <Durability>400</Durability>
         <Interest>15</Interest>
         <Creating>
           <Cost>
@@ -4967,6 +4979,7 @@
         <Name>Цветники</Name>
         <Description>Цветники увеличит популярность {Сада}</Description>
         <ImageIndex>257</ImageIndex>
+        <Durability>300</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -4992,6 +5005,7 @@
         <Name>Фруктовые деревья</Name>
         <Description>Увеличат популярность {Сада}</Description>
         <ImageIndex>258</ImageIndex>
+        <Durability>300</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -5010,6 +5024,7 @@
         <Name>Оранжерея</Name>
         <Description>Увеличит популярность {Сада}</Description>
         <ImageIndex>259</ImageIndex>
+        <Durability>400</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
