@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Базовый класс существа
-    internal class Creature : BigEntity
+    internal sealed class Creature : BigEntity
     {
         public Creature(Construction pb, DescriptorCreature tc, BattleParticipant bp, Player p, int level) : base(tc, bp.Lobby, p)
         {
@@ -325,7 +325,7 @@ namespace Fantasy_Kingdoms_Battle
             return Quiver is null ? 0 : Quiver.Descriptor.QuantityShots;
         }
 
-        internal virtual void SetIsDead(DescriptorReasonOfDeath reason)
+        internal void SetIsDead(DescriptorReasonOfDeath reason)
         {
             Debug.Assert(IsLive);
             Debug.Assert(DayOfDeath == 0);
@@ -526,7 +526,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal virtual void PrepareNewDay()
+        internal void PrepareNewDay()
         {
             Initialize();
 
