@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionVisit> Visits { get; } = new List<ConstructionVisit>();//
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
         internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
-        internal List<ConstructionBaseResource> IncomeBaseResources { get; } = new List<ConstructionBaseResource>();// Поступление базовых ресурсов
+        internal ConstructionListBaseResources IncomeBaseResources { get; private set; }// Поступление базовых ресурсов
         internal List<ConstructionResource> Resources { get; } = new List<ConstructionResource>();// Ресурсы
         internal List<ConstructionService> Services { get; } = new List<ConstructionService>();// Услуги, доступные в строении
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
@@ -527,12 +527,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Income()
         {
-            return (Level > 0) && (IncomeBaseResources[FormMain.Descriptors.Gold.Number] != null) ? IncomeBaseResources[FormMain.Descriptors.Gold.Number].Quantity : 0;
+            return (Level > 0) ? IncomeBaseResources.Gold : 0;
         }
 
         internal int IncomeForLevel(int level)
         {
-            return Descriptor.Levels[level].IncomeResources != null ? Descriptor.Levels[level].IncomeResources.ValueGold() : 0;
+            return Descriptor.Levels[level].IncomeResources != null ? Descriptor.Levels[level].IncomeResources.Gold : 0;
         }
 
         internal int DayBuildingForLevel(int level)
@@ -694,7 +694,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         if (Descriptor.Reward != null)
                         {
-                            panelHint.AddStep7Reward(Descriptor.Reward.Cost.ValueGold());
+                            panelHint.AddStep7Reward(Descriptor.Reward.Cost.Gold);
                             panelHint.AddStep8Greatness(Descriptor.Reward.Greatness, 0);
                         }
                     }
@@ -1605,8 +1605,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
                 CreateMonsters();
 
-            foreach (DescriptorBaseResource dbr in FormMain.Descriptors.BaseResources)
-                IncomeBaseResources.Add(new ConstructionBaseResource(this, dbr));
+            IncomeBaseResources = new ConstructionListBaseResources(this);
 
             DayLevelConstructed = new int[Descriptor.Levels.Length + 1];
             for (int i = 1; i < DayLevelConstructed.Length; i++)

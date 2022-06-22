@@ -169,7 +169,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IDTradePost.Length > 0);
             IDCityGraveyard = xmlDoc.SelectSingleNode("Game/Links/CityGraveyard").InnerText;
             Debug.Assert(IDCityGraveyard.Length > 0);
-            NameResourceGold = xmlDoc.SelectSingleNode("Game/Links/Gold").InnerText;
             IDReasonOfDeathInBattle = xmlDoc.SelectSingleNode("Game/Links/ReasonOfDeathInBattle").InnerText;
             Debug.Assert(IDReasonOfDeathInBattle.Length > 0);
             NameDefaultLevelTax = xmlDoc.SelectSingleNode("Game/Interface/DefaultLevelTax").InnerText;
@@ -345,7 +344,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string IDTradePost { get; private set; }// ID торгового поста
         internal string IDCityGraveyard { get; private set; }// ID торгового поста
         internal string IDReasonOfDeathInBattle { get; private set; }// ID причины смерти - в бою
-        internal string NameResourceGold { get; private set; }// ID ресурса - золото
         internal string NameDefaultLevelTax { get; private set; }// Уровень налогов по умолчанию
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада

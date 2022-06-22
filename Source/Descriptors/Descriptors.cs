@@ -67,7 +67,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(BaseResources.Count > 0);
             BaseResources.Capacity = BaseResources.Count;
-            Gold = FindBaseResource(FormMain.Config.NameResourceGold);
 
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
@@ -361,7 +360,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Списки описателей
         internal SortedList<string, DescriptorEntity> Entities { get; } = new SortedList<string, DescriptorEntity>();// Список всех сущностей
-        internal DescriptorBaseResource Gold { get; }
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
 
         // Товары в сооружениях

@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             lblNameLocation.StringFormat.Alignment = StringAlignment.Near;
             lblNameLocation.StringFormat.LineAlignment = StringAlignment.Center;
             lblNameLocation.Width = 24;
-            VCLabel lblGold = new VCLabel(panelSettings, FormMain.Config.GridSize, btnLocation.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Золота на старте: {ls.TypeLobby.BaseResources.ValueGold()}");
+            VCLabel lblGold = new VCLabel(panelSettings, FormMain.Config.GridSize, btnLocation.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Золота на старте: {ls.TypeLobby.BaseResources.Gold}");
             lblGold.SetWidthByText();
             VCLabel lblMaxHeroes = new VCLabel(panelSettings, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Максимум героев: {ls.TypeLobby.MaxHeroes}");
             lblMaxHeroes.SetWidthByText();

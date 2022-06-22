@@ -796,7 +796,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep4Level($"Уровень {Level}");
                 panelHint.AddStep45State((StateCreature.Name, Color.SkyBlue));
                 panelHint.AddStep5Description(TypeCreature.Description);
-                panelHint.AddStep7Reward(TypeCreature.TypeReward.Cost.ValueGold());
+                panelHint.AddStep7Reward(TypeCreature.TypeReward.Cost.Gold);
                 panelHint.AddStep8Greatness(TypeCreature.TypeReward.Greatness, 0);
             }
             else

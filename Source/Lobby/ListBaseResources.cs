@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
                 Add(0);
 
-            this[FormMain.Descriptors.Gold.Number] = gold;
+            this[0] = gold;
         }
 
         internal void AddResources(ListBaseResources qbr)
@@ -74,11 +74,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return false;
-        }
-
-        internal int ValueGold()
-        {
-            return this[FormMain.Descriptors.Gold.Number];
         }
 
         internal int Gold { get => this[0]; set { this[0] = value; } }

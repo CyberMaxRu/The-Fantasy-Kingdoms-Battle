@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PosInQueue { get; set; }// Номер в очереди
         internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
 
-        internal virtual string GetText() => DaysLeft == 0 ? GetCost().ValueGold().ToString() : DaysLeft.ToString() + " д.";
+        internal virtual string GetText() => DaysLeft == 0 ? GetCost().Gold.ToString() : DaysLeft.ToString() + " д.";
         internal virtual ListBaseResources GetCost() => null;
         internal abstract int GetImageIndex();
         internal virtual bool GetImageIsEnabled() => (DaysLeft > 0) || (CheckRequirements() && (DaysProcessed == 0));

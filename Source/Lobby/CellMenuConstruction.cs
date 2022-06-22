@@ -142,7 +142,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionResearch(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Debug.Assert(d.CreatedEntity.GetCreating().CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
+            Debug.Assert(d.CreatedEntity.GetCreating().CostResources.Gold > 0, $"У {d.CreatedEntity.ID} не указана цена.");
 
             Entity = d.CreatedEntity as DescriptorProduct;
         }
@@ -219,7 +219,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionService(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Debug.Assert(d.CreatedEntity.GetCreating().CostResources.ValueGold() > 0, $"У {d.CreatedEntity.ID} не указана цена.");
+            Debug.Assert(d.CreatedEntity.GetCreating().CostResources.Gold > 0, $"У {d.CreatedEntity.ID} не указана цена.");
 
             Entity = d.CreatedEntity as DescriptorConstructionService;
             Debug.Assert(Entity != null);
@@ -639,7 +639,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText()
         {
-            return (cp is null) && (Cooldown == 0) ? GetCost().ValueGold().ToString() : cp != null ? "идёт" : Cooldown.ToString() + " дн.";
+            return (cp is null) && (Cooldown == 0) ? GetCost().Gold.ToString() : cp != null ? "идёт" : Cooldown.ToString() + " дн.";
         }
 
         internal override ListBaseResources GetCost()
@@ -822,7 +822,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText()
         {
-            return ct is null ? GetCost().ValueGold().ToString() : "идёт";
+            return ct is null ? GetCost().Gold.ToString() : "идёт";
         }
 
         internal override ListBaseResources GetCost()
@@ -909,7 +909,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText()
         {
-            return Counter == 0 ? GetCost().ValueGold().ToString() : Counter.ToString() + " д.";
+            return Counter == 0 ? GetCost().Gold.ToString() : Counter.ToString() + " д.";
         }
 
         protected override string GetTextForLevel() => "+1";

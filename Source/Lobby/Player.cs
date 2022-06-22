@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             //
             BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
             if (Descriptor.TypePlayer == TypePlayer.Computer)   
-                BaseResources[FormMain.Descriptors.Gold.Number] = 100_000;
+                BaseResources.Gold = 100_000;
             ResourceGold = BaseResources.Gold;
 
             // Настраиваем игрока согласно настройкам лобби
@@ -609,7 +609,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Dictionary<string, BigEntity> Entities { get; } = new Dictionary<string, BigEntity>();// Все сущности игрока
 
         internal DescriptorLevelTax CurrentLevelTax { get; set; }// Текущий уровень налогов
-        internal int Gold { get => BaseResources[FormMain.Descriptors.Gold.Number]; }// Текущее количество золота
+        internal int Gold { get => BaseResources.Gold; }// Текущее количество золота
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы
         internal ListBaseResources BaseResourcesCollected { get; } = new ListBaseResources();// Собрано базовых ресурсов
@@ -1282,7 +1282,7 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateResourceInCastle()
         {
             if (Castle != null)
-                Castle.Gold = BaseResources.ValueGold();
+                Castle.Gold = BaseResources.Gold;
         }
 
         internal void AddGreatness(int greatness)

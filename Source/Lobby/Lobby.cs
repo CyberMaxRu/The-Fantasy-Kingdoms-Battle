@@ -539,7 +539,7 @@ namespace Fantasy_Kingdoms_Battle
                 lp.PositionInLobby = pos++;
 
             // Теперь сортируем игроков, вылетевших на прошлом ходу
-            foreach (Player lp in Players.Where(p => p.DayOfEndGame == Turn).OrderBy(p => p.CurrentLoses).OrderByDescending(p => p.GreatnessCollected).OrderByDescending(p => p.BaseResources[descriptors.Gold.Number]))
+            foreach (Player lp in Players.Where(p => p.DayOfEndGame == Turn).OrderBy(p => p.CurrentLoses).OrderByDescending(p => p.GreatnessCollected).OrderByDescending(p => p.BaseResources.Gold))
                 lp.PositionInLobby = pos++;
 
             // Проверяем, что нет ошибки в позициях

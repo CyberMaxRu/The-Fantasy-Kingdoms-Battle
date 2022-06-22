@@ -68,6 +68,7 @@
     <Compile Include="Source\Forms\WindowSetupTournament.cs" />
     <Compile Include="Source\Lobby\ComponentObjectOfMap.cs" />
     <Compile Include="Source\Lobby\ConstructionBaseResource.cs" />
+    <Compile Include="Source\Lobby\ConstructionListBaseResources.cs" />
     <Compile Include="Source\Lobby\ConstructionSpell.cs" />
     <Compile Include="Source\Lobby\Creature\CellMenuCreature.cs" />
     <Compile Include="Source\Lobby\Creature\CreatureModifyParameters.cs" />
