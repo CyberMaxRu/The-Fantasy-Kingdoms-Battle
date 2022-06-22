@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="CacheBackgroundImage.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionSpell.cs" />
+    <Compile Include="Source\Descriptors\Construction\DescriptorConstructionStructure.cs" />
     <Compile Include="Source\Descriptors\DescriptorTimeOfDay.cs" />
     <Compile Include="Source\Forms\WindowMessage.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />

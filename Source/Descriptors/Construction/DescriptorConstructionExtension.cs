@@ -9,19 +9,17 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionExtension : DescriptorEntityForActiveEntity
+    internal sealed class DescriptorConstructionExtension : DescriptorConstructionStructure
     {
         public DescriptorConstructionExtension(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {
             Debug.Assert(ModifyInterest >= 0);
             Debug.Assert(ModifyInterest <= 100);
 
-            Durability = GetIntegerNotNull(n, "Durability", ID, 1, 1_000_000);
             ModifyInterest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
         }
 
-        internal int Durability { get; }// Прочность улучшения
         internal int ModifyInterest { get; }// Изменение интереса к сооружению
         internal ListNeeds ListNeeds { get; }// Изменение удовлетворения потребностей героев
 

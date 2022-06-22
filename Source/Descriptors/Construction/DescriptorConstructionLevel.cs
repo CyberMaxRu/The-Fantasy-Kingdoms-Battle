@@ -10,14 +10,13 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionLevel : DescriptorEntityForActiveEntity
+    internal sealed class DescriptorConstructionLevel : DescriptorConstructionStructure
     {
         public DescriptorConstructionLevel(DescriptorConstruction forConstruction, XmlNode n) : base(forConstruction, n)
         {
             //Debug.Assert(Creating != null);// Для логов не надо
 
             Number = GetIntegerNotNull(n, "Number", ID, 1, 5);
-            Durability = GetIntegerNotNull(n, "Durability", ID, 0, 1_000_000);
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
             Tax = GetInteger(n, "Tax");
             Capacity = GetInteger(n, "Capacity");
@@ -95,7 +94,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Number { get; }
-        internal int Durability { get; }// Прочность сооружения
         internal int MaxInhabitant { get; }
         internal int Tax { get; }// Процент налога с дохода членов гильдии
         internal int Capacity { get; }

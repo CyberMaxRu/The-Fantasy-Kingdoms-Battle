@@ -25,9 +25,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            if (Entity is DescriptorConstructionLevel dcl)
+            if (Entity is DescriptorConstructionStructure dcs)
             {
-                constructionPoints = dcl.Durability;
+                constructionPoints = dcs.Durability;
             }
 
             Requirements.TuneLinks();
