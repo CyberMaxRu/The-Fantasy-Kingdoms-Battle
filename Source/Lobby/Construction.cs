@@ -221,10 +221,10 @@ namespace Fantasy_Kingdoms_Battle
 
                     for (int i = 0; i < InitialQuantityBaseResources.Count; i++)
                     {
-                        if (InitialQuantityBaseResources[i].Quantity > 0)
+                        if (InitialQuantityBaseResources[i] > 0)
                         {
                             int coefMining = Descriptor.Levels[Level].Mining != null ? Descriptor.Levels[Level].Mining[i] : 10;
-                            int quantity = Convert.ToInt32(InitialQuantityBaseResources[i].Quantity * coefMining / 10);
+                            int quantity = Convert.ToInt32(InitialQuantityBaseResources[i] * coefMining / 10);
                             Debug.Assert(quantity > 0);
                             IncomeBaseResources[i].Quantity = quantity;
                         }
@@ -239,10 +239,10 @@ namespace Fantasy_Kingdoms_Battle
                         ProvideBaseResources = true;
                         int q = 0;
 
-                        foreach (BaseResource br in Descriptor.Levels[Level].IncomeResources)
+                        for (int i = 0; i < Descriptor.Levels[Level].IncomeResources.Count; i++)
                         {
-                            IncomeBaseResources[br.Descriptor.Number].Quantity = br.Quantity;
-                            q += br.Quantity;
+                            IncomeBaseResources[i].Quantity = Descriptor.Levels[Level].IncomeResources[i];
+                            q += Descriptor.Levels[Level].IncomeResources[i];
                         }
 
                         Debug.Assert(q > 0);

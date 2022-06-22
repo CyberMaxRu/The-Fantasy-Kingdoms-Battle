@@ -9,19 +9,19 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     #pragma warning disable CS0659 // Тип переопределяет Object.Equals(object o), но не переопределяет Object.GetHashCode()
-    internal sealed class ListBaseResources : List<BaseResource>
+    internal sealed class ListBaseResources : List<int>
     #pragma warning restore CS0659 // Тип переопределяет Object.Equals(object o), но не переопределяет Object.GetHashCode()
     {
         public ListBaseResources() : base(FormMain.Descriptors.BaseResources.Count)
         {
             foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
-                Add(new BaseResource(br));
+                Add(0);
         }
 
         public ListBaseResources(XmlNode n) : base(FormMain.Descriptors.BaseResources.Count)
         {
             foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
-                Add(new BaseResource(br));
+                Add(0);
 
             if (n != null)
             {
@@ -30,10 +30,10 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     int value = Convert.ToInt32(n.ChildNodes[i].InnerText);
                     res = FormMain.Descriptors.FindBaseResource(n.ChildNodes[i].Name);
-                    Debug.Assert(this[res.Number].Quantity == 0);
+                    Debug.Assert(this[res.Number] == 0);
                     Debug.Assert(value >= 0);
 
-                    this[res.Number].Quantity = value;
+                    this[res.Number] = value;
                 }
             }
         }
@@ -41,27 +41,27 @@ namespace Fantasy_Kingdoms_Battle
         public ListBaseResources(ListBaseResources qbr) : base(FormMain.Descriptors.BaseResources.Count)
         {
             foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
-                Add(new BaseResource(br));
+                Add(0);
 
             for (int i = 0; i < Count; i++)
             {
-                this[i].Quantity = qbr[i].Quantity;
+                this[i] = qbr[i];
             }    
         }
 
         public ListBaseResources(int gold) : base(FormMain.Descriptors.BaseResources.Count)
         {
             foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
-                Add(new BaseResource(br));
+                Add(0);
 
-            this[FormMain.Descriptors.Gold.Number].Quantity = gold;
+            this[FormMain.Descriptors.Gold.Number] = gold;
         }
 
         internal void AddResources(ListBaseResources qbr)
         {
             for (int i = 0; i < Count; i++)
             {
-                this[i].Quantity += qbr[i].Quantity;
+                this[i] += qbr[i];
             }
         }
 
@@ -69,7 +69,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             for (int i = 0; i < Count; i++)
             {
-                if (this[i].Quantity != 0)
+                if (this[i] != 0)
                     return true;
             }
 
@@ -78,14 +78,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int ValueGold()
         {
-            return this[FormMain.Descriptors.Gold.Number].Quantity;
+            return this[FormMain.Descriptors.Gold.Number];
         }
+
+        internal int Gold { get => this[0]; set { this[0] = value; } }
 
         internal bool ResourcesEnough(ListBaseResources listOther)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (this[i].Quantity < listOther[i].Quantity)
+                if (this[i] < listOther[i])
                     return false;
             }
 
@@ -98,7 +100,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < Count; i++)
             {
-                if (this[i].Quantity != qbr[i].Quantity)
+                if (this[i] != qbr[i])
                     return false;
             }
 

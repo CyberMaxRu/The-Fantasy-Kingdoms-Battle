@@ -42,10 +42,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = lblCaption.NextTop();
 
-                foreach (BaseResource br in sb.BaseResources)
+                for (int i = 0; i < sb.BaseResources.Count; i++)
                 {
-                    if (br.Quantity > 0)
-                        AddBonus(text, br.Descriptor.ImageIndex, br.Descriptor.Name, $"+{br.Quantity}");
+                    if (sb.BaseResources[i] > 0)
+                        AddBonus(text, FormMain.Descriptors.BaseResources[i].ImageIndex, FormMain.Descriptors.BaseResources[i].Name, $"+{sb.BaseResources[i]}");
                 }
                 if (sb.Builders > 0)
                     AddBonus(text, FormMain.Config.Gui48_Build, "Строители", $"+{sb.Builders}");

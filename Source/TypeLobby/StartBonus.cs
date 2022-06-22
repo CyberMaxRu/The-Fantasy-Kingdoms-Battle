@@ -31,10 +31,10 @@ namespace Fantasy_Kingdoms_Battle
                 MaxQuantity = 10;
             CurrentQuantity = 0;
 
-            foreach (BaseResource br in BaseResources)
+            for (int i = 0; i < BaseResources.Count; i++)
             {
-                Debug.Assert(br.Quantity >= 0);
-                Debug.Assert(br.Quantity <= 10000);
+                Debug.Assert(BaseResources[i] >= 0);
+                Debug.Assert(BaseResources[i] <= 10000);
             }
 
             Debug.Assert(Builders >= 0);
@@ -84,9 +84,9 @@ namespace Fantasy_Kingdoms_Battle
                 + (PeasantHouse != 0 ? 1 : 0)
                 + (HolyPlace != 0 ? 1 : 0);
 
-            foreach (BaseResource br in BaseResources)
+            for (int i = 0; i < BaseResources.Count; i++)
             {
-                if (br.Quantity != 0)
+                if (BaseResources[i] != 0)
                     q++;
             }
 

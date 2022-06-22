@@ -81,10 +81,10 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < BaseResources.Count; i++)
             {
-                Debug.Assert(BaseResources[i].Quantity >= 0);
-                Debug.Assert(MaxBaseResources[i].Quantity >= 1_000);
-                Debug.Assert(MaxBaseResources[i].Quantity <= 1_000_000);
-                Debug.Assert(BaseResources[i].Quantity <= MaxBaseResources[i].Quantity);
+                Debug.Assert(BaseResources[i] >= 0);
+                Debug.Assert(MaxBaseResources[i] >= 1_000);
+                Debug.Assert(MaxBaseResources[i] <= 1_000_000);
+                Debug.Assert(BaseResources[i] <= MaxBaseResources[i]);
             }
 
             foreach (TypeLobby t in FormMain.Descriptors.TypeLobbies)

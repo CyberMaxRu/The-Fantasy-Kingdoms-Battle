@@ -698,12 +698,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 for (int i = 0; i < ownRes.Count; i++)
                 {
-                    if (requiresRes[i].Quantity > 0)
+                    if (requiresRes[i] > 0)
                     {
                         lbl = GetLabel(i);
                         lbl.Visible = true;
-                        lbl.Color = ColorRequirements(ownRes[i].Quantity >= requiresRes[i].Quantity);
-                        lbl.Text = requiresRes[i].Quantity.ToString();
+                        lbl.Color = ColorRequirements(ownRes[i] >= requiresRes[i]);
+                        lbl.Text = requiresRes[i].ToString();
                         lbl.Image.ImageIndex = FormMain.Descriptors.BaseResources[i].ImageIndex16;
                         lbl.ShiftX = nextLeft;
                         lbl.ShiftY = nextTop;
