@@ -124,7 +124,6 @@ namespace Fantasy_Kingdoms_Battle
             Initialize();
         }
 
-        internal int Number { get; }
         internal DescriptorCreature TypeCreature { get; }
         internal BattleParticipant BattleParticipant { get; }
         internal int Level { get; private set; }// Уровень существа
