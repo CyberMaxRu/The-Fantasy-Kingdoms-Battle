@@ -1135,7 +1135,11 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < sb.BaseResources.Count; i++)
             {
                 if (sb.BaseResources[i] > 0)
-                    AddNoticeForPlayer(FormMain.Descriptors.BaseResources[i], TypeNoticeForPlayer.ReceivedBaseResource);
+                {
+                    BaseResource bs = new BaseResource(FormMain.Descriptors.BaseResources[i]);
+                    bs.Quantity = sb.BaseResources[i];
+                    AddNoticeForPlayer(bs, TypeNoticeForPlayer.ReceivedBaseResource);
+                }
             }
 
             ConstructionPoints += sb.Builders;
