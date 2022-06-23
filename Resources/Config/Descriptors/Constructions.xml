@@ -1713,8 +1713,9 @@
           <Cost>
             <Gold>2000</Gold>
             <Wood>200</Wood>
-            <Iron>100</Iron>
+            <Brick>300</Brick>
             <Stone>500</Stone>
+            <Iron>100</Iron>
           </Cost>
           <Requirements>
             <Requirement>
@@ -1760,6 +1761,7 @@
         <Creating>
           <Cost>
             <Gold>4000</Gold>
+            <Brick>750</Brick>
             <Stone>1000</Stone>
           </Cost>
           <Requirements>
