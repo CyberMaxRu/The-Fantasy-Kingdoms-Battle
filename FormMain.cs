@@ -90,7 +90,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int II_STATE_HERO_TREASURER = 19;
 
         internal const int GUI_16_DAY = 0;
-        internal const int GUI_16_GOLD = 1;
+        internal const int GUI_16_GOLD = 43;
         internal const int GUI_16_BUILDER = 2;
         internal const int GUI_16_GREATNESS = 3;
         internal const int GUI_16_HOLYLAND = 4;
