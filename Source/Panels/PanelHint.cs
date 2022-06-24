@@ -676,7 +676,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12Creating(Player p, int constructionPoint, int daysCreating, ListBaseResources requiresRes)
+        internal void AddStep12Creating(Player p, int constructionPoint, int daysCreating, ListBaseResources requiresRes, List<TextRequirement> requirement)
         {
             if (requiresRes != null)
             {
@@ -713,6 +713,8 @@ namespace Fantasy_Kingdoms_Battle
                 lblTextForRequirement.ShiftY = nextTop;
                 nextTop = lblTextForRequirement.NextTop();
                 AddStep12Gold(p.BaseResources, requiresRes);
+
+                AddStep11Requirement(requirement);
             }
             else
             {
