@@ -688,21 +688,21 @@ namespace Fantasy_Kingdoms_Battle
                 lblCostGold.Text = costGold.ToString();
                 lblCostGold.Visible = true;
 
-                if (daysCreating > 0)
-                {
-                    lblDaysCreating.ShiftY = nextTop;
-                    lblDaysCreating.Text = daysCreating.ToString();
-                    lblDaysCreating.Visible = true;
-                    AdjustCell(lblDaysCreating, lblCostGold, FormMain.Config.GridSize, nextTop);
-                }
-
                 if (constructionPoint > 0)
                 {
                     //lblBuilders.Color = ColorRequirements(constructionPoint);
                     lblConstructionPoint.Text = constructionPoint.ToString();
                     lblConstructionPoint.ShiftY = nextTop;
                     lblConstructionPoint.Visible = true;
-                    AdjustCell(lblConstructionPoint, lblDaysCreating, FormMain.Config.GridSize, nextTop);
+                    AdjustCell(lblConstructionPoint, lblCostGold, FormMain.Config.GridSize, nextTop);
+                }
+
+                if (daysCreating > 0)
+                {
+                    lblDaysCreating.ShiftY = nextTop;
+                    lblDaysCreating.Text = daysCreating.ToString();
+                    lblDaysCreating.Visible = true;
+                    AdjustCell(lblDaysCreating, lblConstructionPoint, FormMain.Config.GridSize, nextTop);
                 }
 
                 nextTop = lblCostGold.NextTop();
