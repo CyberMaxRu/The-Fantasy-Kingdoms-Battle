@@ -676,16 +676,18 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12Creating(int costGold, int daysCreating, int constructionPoint, ListBaseResources ownRes, ListBaseResources requiresRes)
+        internal void AddStep12Creating(Player p, int constructionPoint, int daysCreating, ListBaseResources requiresRes)
         {
-            if (costGold > 0)
+            if (requiresRes != null)
             {
+                Assert(requiresRes.Gold > 0);
+
                 lblSeparateRequirement.Visible = true;
                 lblSeparateRequirement.ShiftY = nextTop;
                 nextTop = lblSeparateRequirement.NextTop();
 
                 lblCostGold.ShiftY = nextTop;
-                lblCostGold.Text = costGold.ToString();
+                lblCostGold.Text = requiresRes.Gold.ToString();
                 lblCostGold.Visible = true;
 
                 if (constructionPoint > 0)
@@ -710,7 +712,7 @@ namespace Fantasy_Kingdoms_Battle
                 lblTextForRequirement.Visible = true;
                 lblTextForRequirement.ShiftY = nextTop;
                 nextTop = lblTextForRequirement.NextTop();
-                AddStep12Gold(ownRes, requiresRes);
+                AddStep12Gold(p.BaseResources, requiresRes);
             }
             else
             {
