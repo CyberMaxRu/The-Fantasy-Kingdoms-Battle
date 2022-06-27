@@ -112,6 +112,10 @@ namespace Fantasy_Kingdoms_Battle
         internal bool InConstructing { get; set; }// Сооружение строится
         internal bool InRepair { get; set; }// Сооружение ремонтируется
 
+        // Исследования
+        internal int PointsResearch { get; private set; }// Всего очков исследования на этот ход
+        internal int RestPointsResearch { get; private set; }// Осталось очков исследования
+
         // Прочность
         internal int CurrentDurability { get; private set; }// Текущая прочность сооружения
         internal int MaxDurability { get; private set; }// Максимальная прочность сооружения
@@ -1611,7 +1615,15 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 1; i < DayLevelConstructed.Length; i++)
                 DayLevelConstructed[i] = -1;
 
+            UpdatePointsResearch();
+
             Player.AddConstruction(this);
+        }
+
+        private void UpdatePointsResearch()
+        {
+            PointsResearch = FormMain.Config.DefaultPointsResearch;
+            RestPointsResearch = PointsResearch;
         }
 
         internal void UpdateDaysConstruction()
