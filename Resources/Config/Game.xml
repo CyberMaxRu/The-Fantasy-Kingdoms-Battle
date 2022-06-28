@@ -21,6 +21,11 @@
     <MouseHoverTime>0</MouseHoverTime>
     <ObjectMenuWidth>247</ObjectMenuWidth>
   </Interface>
+  <GlobalSettings>
+    <Construction>
+      <DefaultPointsResearch>100</DefaultPointsResearch>
+    </Construction>
+  </GlobalSettings>
   <Colors>
     <Common>
       <Border>Black</Border>
@@ -143,5 +148,5 @@
     <ComputerPlayer>288</ComputerPlayer>
     <HumanPlayer>289</HumanPlayer>
     <Quest>191</Quest>
-</Gui48>
+  </Gui48>
 </Game>
