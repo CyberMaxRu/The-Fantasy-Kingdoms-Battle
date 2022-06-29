@@ -348,12 +348,12 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = d.CreatedEntity as DescriptorConstructionLevel;
         }
 
+        internal new DescriptorConstructionLevel Descriptor { get; }
         internal int DaysForConstructed { get; set; }// Дней на завершение строительства
 
-        internal new DescriptorConstructionLevel Descriptor { get; }
-
+        // Реализация
         internal override bool CheckRequirements() => Construction.CheckLevelRequirements(Descriptor.Number);
-        internal override int GetImageIndex() => Descriptor.ImageIndex;
+        internal override int GetImageIndex() => Construction.GetCellImageIndex();
         internal override bool GetImageIsEnabled() => Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
         protected override bool ConstructionMustMeConstructed() => false;
