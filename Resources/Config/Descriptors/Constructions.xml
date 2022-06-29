@@ -6818,6 +6818,7 @@
         <Number>1</Number>
         <Durability>100</Durability>
         <Creating>
+          <ConstructionPoints>100</ConstructionPoints>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6871,6 +6872,7 @@
         <Number>1</Number>
         <Durability>100</Durability>
         <Creating>
+          <ConstructionPoints>100</ConstructionPoints>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6924,6 +6926,7 @@
         <Number>1</Number>
         <Durability>250</Durability>
         <Creating>
+          <ConstructionPoints>250</ConstructionPoints>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6977,6 +6980,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
+          <ConstructionPoints>200</ConstructionPoints>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -7030,6 +7034,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
+          <ConstructionPoints>200</ConstructionPoints>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -7058,6 +7063,7 @@
         <Number>1</Number>
         <Durability>1000</Durability>
         <Creating>
+          <ConstructionPoints>1000</ConstructionPoints>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -7488,6 +7494,7 @@
         <Number>1</Number>
         <Durability>2000</Durability>
         <Creating>
+          <ConstructionPoints>2000</ConstructionPoints>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -7513,6 +7520,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
+          <ConstructionPoints>200</ConstructionPoints>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
