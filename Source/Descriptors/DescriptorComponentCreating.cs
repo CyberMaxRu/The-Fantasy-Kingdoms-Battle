@@ -11,12 +11,14 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorComponentCreating(DescriptorWithID entity, XmlNode n) : base()
         {
             Entity = entity;
+            cons
             CostResources = new ListBaseResources(n.SelectSingleNode("Cost"));
             Requirements = new ListDescriptorRequirements(entity, n.SelectSingleNode("Requirements"));
         }
 
         internal DescriptorWithID Entity { get; }
-        internal int ConstructionPoints(Player p) => p.CheatingIgnoreBuilders ? 0 : constructionPoints;// Количество требуемых очков строительства
+        //internal int ConstructionPoints { get; }
+        internal int CalcConstructionPoints(Player p) => p.CheatingIgnoreBuilders ? 0 : constructionPoints;// Количество требуемых очков строительства
         internal ListBaseResources CostResources { get; }// Стоимость (в базовых ресурсах)
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
         internal int DaysProcessing { get; } = 1;

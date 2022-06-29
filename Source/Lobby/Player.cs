@@ -1338,7 +1338,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if (type.Levels[1].GetCreating().ConstructionPoints(this) > RestConstructionPoints)
+            if (type.Levels[1].GetCreating().CalcConstructionPoints(this) > RestConstructionPoints)
                 return false;
 
             // Проверяем требования к зданиям
@@ -1364,7 +1364,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
             panelHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);
-            panelHint.AddStep13Builders(type.Levels[1].GetCreating().ConstructionPoints(this), RestConstructionPoints >= type.Levels[1].GetCreating().ConstructionPoints(this));
+            panelHint.AddStep13Builders(type.Levels[1].GetCreating().CalcConstructionPoints(this), RestConstructionPoints >= type.Levels[1].GetCreating().CalcConstructionPoints(this));
         }
 
         //

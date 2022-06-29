@@ -730,7 +730,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
-            panelHint.AddStep13Builders(Entity.Durability, Construction.Player.RestConstructionPoints >= Entity.GetCreating().ConstructionPoints(Construction.Player));
+            panelHint.AddStep13Builders(Entity.Durability, Construction.Player.RestConstructionPoints >= Entity.GetCreating().CalcConstructionPoints(Construction.Player));
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;

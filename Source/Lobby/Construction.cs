@@ -1150,7 +1150,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9Interest(Descriptor.Levels[requiredLevel].DescriptorVisit.Interest, false);
                 panelHint.AddStep9ListNeeds(Descriptor.Levels[requiredLevel].DescriptorVisit.ListNeeds, false);
             }
-            panelHint.AddStep12Creating(Player, Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), DayBuildingForLevel(requiredLevel),
+            panelHint.AddStep12Creating(Player, Descriptor.Levels[requiredLevel].GetCreating().CalcConstructionPoints(Player), DayBuildingForLevel(requiredLevel),
                 Descriptor.Levels[requiredLevel].GetCreating().CostResources, GetTextRequirements(requiredLevel));
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
