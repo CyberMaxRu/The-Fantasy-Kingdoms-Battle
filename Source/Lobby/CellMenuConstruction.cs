@@ -350,37 +350,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForConstructed { get; set; }// Дней на завершение строительства
 
-        internal override string GetDaysExecuting()
-        {
-            if (Construction.InConstructing)
-            {
-                if (Construction.DaysConstructLeft == 0)
-                    return "";
-                else
-                    return Construction.DaysConstructLeft.ToString();
-            }
-            else
-                return DaysForConstructed.ToString();
-        }
-
-        internal override void Execute()
-        {
-            Construction.Build(true);
-        }
-
         internal new DescriptorConstructionLevel Descriptor { get; }
 
+        internal override bool CheckRequirements() => Construction.CheckLevelRequirements(Descriptor.Number);
+        internal override int GetImageIndex() => Descriptor.ImageIndex;
+        internal override bool GetImageIsEnabled() => Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
+        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
         protected override bool ConstructionMustMeConstructed() => false;
-
-        internal override bool CheckRequirements()
-        {
-            return Construction.CheckLevelRequirements(Descriptor.Number);
-        }
-
-        internal override bool GetImageIsEnabled()
-        {
-            return Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
-        }
+        protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
 
         internal override string GetText()
         {
@@ -402,13 +379,6 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.GetCreating().CostResources;
         }
 
-        internal override int GetImageIndex()
-        {
-            return Descriptor.ImageIndex;
-        }
-
-        protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
-
         internal override Color GetColorText()
         {
             if (GetImageIsEnabled())
@@ -420,6 +390,24 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 return Color.Gray;
+        }
+
+        internal override string GetDaysExecuting()
+        {
+            if (Construction.InConstructing)
+            {
+                if (Construction.DaysConstructLeft == 0)
+                    return "";
+                else
+                    return Construction.DaysConstructLeft.ToString();
+            }
+            else
+                return DaysForConstructed.ToString();
+        }
+
+        internal override void Execute()
+        {
+            Construction.Build(true);
         }
 
         internal override void Click()
@@ -444,8 +432,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction.PrepareHintForBuildOrUpgrade(panelHint, Descriptor.Number);
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
     internal sealed class CellMenuConstructionRepair : CellMenuConstruction
