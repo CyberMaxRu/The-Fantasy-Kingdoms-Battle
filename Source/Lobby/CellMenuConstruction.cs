@@ -356,6 +356,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex() => Construction.GetCellImageIndex();
         internal override bool GetImageIsEnabled() => Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
+        internal override ListBaseResources GetCost() => Descriptor.GetCreating().CostResources;
         protected override bool ConstructionMustMeConstructed() => false;
         protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
 
@@ -372,11 +373,6 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 return base.GetText();
-        }
-
-        internal override ListBaseResources GetCost()
-        {
-            return Descriptor.GetCreating().CostResources;
         }
 
         internal override Color GetColorText()
