@@ -11,9 +11,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class CellOfMenu
     {
-        public CellOfMenu(BigEntity forEntity, DescriptorCellMenu d)
+        public CellOfMenu(BigEntity bigEntity, DescriptorCellMenu d)
         {
-            BigEntity = forEntity;
+            BigEntity = bigEntity;
             Descriptor = d;
             PosInQueue = 0;
         }
