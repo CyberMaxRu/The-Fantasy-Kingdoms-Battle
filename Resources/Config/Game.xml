@@ -22,6 +22,9 @@
     <ObjectMenuWidth>247</ObjectMenuWidth>
   </Interface>
   <GlobalSettings>
+    <Player>
+      <DefaultConstructionPoints>1000</DefaultConstructionPoints>
+    </Player>
     <Construction>
       <DefaultResearchPoints>100</DefaultResearchPoints>
     </Construction>
