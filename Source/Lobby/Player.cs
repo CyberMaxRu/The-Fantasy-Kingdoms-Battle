@@ -264,7 +264,8 @@ namespace Fantasy_Kingdoms_Battle
             ExtraLevelUp = 0;
             ExtraResearch = 0;
 
-            ConstructionPoints = Castle.Descriptor.Levels[Castle.Level].BuildersPerDay;
+            ConstructionPoints = FormMain.Config.DefaultConstructionPoints;
+            ConstructionPoints += Castle.Descriptor.Levels[Castle.Level].AddConstructionPoints;
             RestConstructionPoints = ConstructionPoints;
 
             // Начало хода у локации
@@ -1360,7 +1361,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep4Level("Уровень 1");
             //panelHint.AddStep6Income(type.Levels[1].Income);
             panelHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
-            panelHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
+            panelHint.AddStep9PlusBuilders(type.Levels[1].AddConstructionPoints);
             panelHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
             panelHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);

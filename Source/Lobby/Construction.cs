@@ -556,7 +556,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int BuildersPerDayForLevel(int level)
         {
-            return Descriptor.Levels[level].BuildersPerDay;
+            return Descriptor.Levels[level].AddConstructionPoints;
         }
 
         internal int IncomeNextLevel()
@@ -571,7 +571,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int BuildersPerDay()
         {
-            return Level > 0 ? Descriptor.Levels[Level].BuildersPerDay : 0;
+            return Level > 0 ? Descriptor.Levels[Level].AddConstructionPoints : 0;
         }
 
         internal int GreatnessAddNextLevel()
