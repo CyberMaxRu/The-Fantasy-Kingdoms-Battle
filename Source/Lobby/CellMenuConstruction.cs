@@ -100,7 +100,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (d.CreatedEntity is DescriptorConstruction)
                     return new CellMenuConstructionBuild(c, d);
                 if (d.CreatedEntity is DescriptorCreature)
-                    return new CellMenuConstructionHireCreature(c, d);
+                    return new CellMenuConstructionRecruitCreature(c, d);
 
                 throw new Exception($"Неизвестный тип сущности: {d.CreatedEntity.ID}.");
             }
@@ -116,7 +116,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (CheckRequirements())
                 {
-                    if (!(this is CellMenuConstructionHireCreature))
+                    if (!(this is CellMenuConstructionRecruitCreature))
                         if (!(this is CellMenuConstructionSpell))
                             Debug.Assert(Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0);
 
@@ -542,9 +542,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
-    internal sealed class CellMenuConstructionHireCreature : CellMenuConstruction
+    internal sealed class CellMenuConstructionRecruitCreature : CellMenuConstruction
     {
-        public CellMenuConstructionHireCreature(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionRecruitCreature(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             Creature = d.CreatedEntity as DescriptorCreature;
         }
