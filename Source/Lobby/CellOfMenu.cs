@@ -11,6 +11,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class CellOfMenu
     {
+        static CellOfMenu()
+        {
+            Descriptors = FormMain.Descriptors;
+            Config = FormMain.Config;
+        }
+
         public CellOfMenu(BigEntity bigEntity, DescriptorCellMenu d)
         {
             BigEntity = bigEntity;
@@ -18,8 +24,9 @@ namespace Fantasy_Kingdoms_Battle
             PosInQueue = 0;
         }
 
-        internal static Descriptors Descriptors { get; set; }
-        internal static Config Config { get; set; }
+        internal static Descriptors Descriptors { get; }
+        internal static Config Config { get; }
+
         internal DescriptorCellMenu Descriptor { get; }
         internal BigEntity BigEntity { get; }
 
