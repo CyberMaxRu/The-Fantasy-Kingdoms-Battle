@@ -569,7 +569,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Descriptor.CreatedEntity.GetCreating().CostResources;
         }
-        protected override string GetTextForLevel() => "о";
+        protected override string GetTextForLevel() => "р";
 
         internal override int GetImageIndex()
         {
