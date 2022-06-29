@@ -113,8 +113,8 @@ namespace Fantasy_Kingdoms_Battle
         internal bool InRepair { get; set; }// Сооружение ремонтируется
 
         // Исследования
-        internal int PointsResearch { get; private set; }// Всего очков исследования на этот ход
-        internal int RestPointsResearch { get; private set; }// Осталось очков исследования
+        internal int ResearchPoints { get; private set; }// Всего очков исследования на этот ход
+        internal int RestResearchPoints { get; private set; }// Осталось очков исследования
 
         // Прочность
         internal int CurrentDurability { get; private set; }// Текущая прочность сооружения
@@ -1622,8 +1622,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void UpdatePointsResearch()
         {
-            PointsResearch = FormMain.Config.DefaultPointsResearch;
-            RestPointsResearch = PointsResearch;
+            ResearchPoints = FormMain.Config.DefaultResearchPoints;
+            RestResearchPoints = ResearchPoints;
         }
 
         internal void UpdateDaysConstruction()

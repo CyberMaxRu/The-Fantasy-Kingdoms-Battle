@@ -23,7 +23,7 @@
   </Interface>
   <GlobalSettings>
     <Construction>
-      <DefaultPointsResearch>100</DefaultPointsResearch>
+      <DefaultResearchPoints>100</DefaultResearchPoints>
     </Construction>
   </GlobalSettings>
   <Colors>
