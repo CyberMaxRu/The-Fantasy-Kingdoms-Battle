@@ -71,6 +71,7 @@
     <CanBuild>False</CanBuild>
     <PersistentState>Treasurer</PersistentState>
     <Creating>
+      <ResearchPoints>200</ResearchPoints>
       <Cost>
         <Gold>2500</Gold>
       </Cost>
@@ -99,22 +100,6 @@
     <Reward>1</Reward>
     <Cost>0</Cost>
     <Construction>PeasantHouse</Construction>
-    <MaxLevel>1</MaxLevel>
-  </Creature>
-  <Creature>
-    <ID>Builder</ID>
-    <Name>Строитель</Name>
-    <Description>Строители занимаются тем, что строят и чинят сооружения.</Description>
-    <ImageIndex>85</ImageIndex>
-    <CategoryCreature>Citizen</CategoryCreature>
-    <TypeCreature>Human</TypeCreature>
-    <Reward>1</Reward>
-    <Creating>
-      <Cost>
-        <Gold>1000</Gold>
-      </Cost>
-    </Creating>
-    <Construction>Castle</Construction>
     <MaxLevel>1</MaxLevel>
   </Creature>
   <Creature>
