@@ -7,6 +7,7 @@ using System.Xml;
 using System.Diagnostics;
 using System.Drawing;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -129,6 +130,11 @@ namespace Fantasy_Kingdoms_Battle
 
             Extensions.TuneLinks();
             ListPerks.TuneLinks();
+
+            if ((Number == 1) && (GetCreating() != null))
+            {
+                Assert(GetCreating().ConstructionPoints == Durability, $"ID: {ID}, ConstructionPoints = {GetCreating().ConstructionPoints}, Durability = {Durability}");
+            }
         }
     }
 }
