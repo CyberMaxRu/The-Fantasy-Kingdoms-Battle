@@ -5666,7 +5666,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildDarkPriest</ID>
+    <ID>TempleDarkPriest</ID>
     <Name>Храм Крипты</Name>
     <Description>- Позволяет нанимать сестер Крипты//- Здесь исследуют заклинание "Чума и разорение"//- Сестры Крипты не любят паладинов</Description>
     <ImageIndex>39</ImageIndex>
@@ -5679,7 +5679,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildDarkPriest1</ID>
+        <ID>LevelTempleDarkPriest1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -5714,7 +5714,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildPriest</ID>
+    <ID>TemplePriest</ID>
     <Name>Храм Агрелы</Name>
     <Description>- Позволяет нанимать жриц Агрелы//- Здесь исследуют заклинание "Возрождение"</Description>
     <ImageIndex>46</ImageIndex>
@@ -5727,7 +5727,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildPriest1</ID>
+        <ID>LevelTemplePriest1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -5762,7 +5762,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildPaladin</ID>
+    <ID>TemplePaladin</ID>
     <Name>Храм Дауроса</Name>
     <Description>- Позволяет нанимать паладинов//- Здесь исследуют заклинание "Святой щит"//- Паладины не любят нежить, вызываемую сестрами Крипты</Description>
     <ImageIndex>45</ImageIndex>
@@ -5775,7 +5775,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildPaladin1</ID>
+        <ID>LevelTemplePaladin1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -5810,7 +5810,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildBlademaster</ID>
+    <ID>TempleBlademaster</ID>
     <Name>Храм Крольма</Name>
     <Description>- Позволяет нанимать мастеров меча//- Здесь исследуют заклинание "Гнев Крольма"</Description>
     <ImageIndex>37</ImageIndex>
@@ -5823,7 +5823,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildBlademaster1</ID>
+        <ID>LevelTempleBlademaster1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -5858,7 +5858,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildBeastmaster</ID>
+    <ID>TempleBeastmaster</ID>
     <Name>Храм Фервуса</Name>
     <Description>- Позволяет нанимать звероловов//- Здесь исследуют заклинание "Щит Хаоса"</Description>
     <ImageIndex>36</ImageIndex>
@@ -5871,7 +5871,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildBeastmaster1</ID>
+        <ID>LevelTempleBeastmaster1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -5906,7 +5906,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildMarksman</ID>
+    <ID>TempleMarksman</ID>
     <Name>Храм Хелии</Name>
     <Description>- Позволяет нанимать лучников Хелии//- Здесь исследуют заклинание "Удар Солнца"</Description>
     <ImageIndex>44</ImageIndex>
@@ -5919,7 +5919,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildMarksman1</ID>
+        <ID>LevelTempleMarksman1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -5954,7 +5954,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildIceMage</ID>
+    <ID>TempleIceMage</ID>
     <Name>Храм Холода</Name>
     <Description>- Позволяет нанимать магов Холода</Description>
     <ImageIndex>130</ImageIndex>
@@ -5967,7 +5967,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildIceMage1</ID>
+        <ID>LevelTempleIceMage1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -6002,7 +6002,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildDeathKnight</ID>
+    <ID>TempleDeathKnight</ID>
     <Name>Храм Лунорда</Name>
     <Description>- Позволяет нанимать ассасинов</Description>
     <ImageIndex>132</ImageIndex>
@@ -6015,7 +6015,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildDeathKnight1</ID>
+        <ID>LevelTempleDeathKnight1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -6050,7 +6050,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildFireMage</ID>
+    <ID>TempleFireMage</ID>
     <Name>Храм Огня</Name>
     <Description>- Позволяет нанимать магов Огня</Description>
     <ImageIndex>134</ImageIndex>
@@ -6063,7 +6063,7 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <ID>LevelGuildFireMage1</ID>
+        <ID>LevelTempleFireMage1</ID>
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
@@ -6691,39 +6691,39 @@
     <CellsMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Entity>GuildDarkPriest</Entity>
+        <Entity>TempleDarkPriest</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
-        <Entity>GuildPriest</Entity>
+        <Entity>TemplePriest</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Entity>GuildPaladin</Entity>
+        <Entity>TemplePaladin</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Entity>GuildBlademaster</Entity>
+        <Entity>TempleBlademaster</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Entity>GuildBeastmaster</Entity>
+        <Entity>TempleBeastmaster</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
-        <Entity>GuildMarksman</Entity>
+        <Entity>TempleMarksman</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Entity>GuildIceMage</Entity>
+        <Entity>TempleIceMage</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Entity>GuildDeathKnight</Entity>
+        <Entity>TempleDeathKnight</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>4,3</Pos>
-        <Entity>GuildFireMage</Entity>
+        <Entity>TempleFireMage</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>
