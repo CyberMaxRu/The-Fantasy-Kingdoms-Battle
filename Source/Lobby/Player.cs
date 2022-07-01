@@ -646,7 +646,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int ConstructionPoints { get; private set; }// Очков строительства на этот ход
         internal int RestConstructionPoints { get; private set; }// Остаток неизрасходованных очков строительства
-        internal List<Entity> QueueBuilding { get; } = new List<Entity>();// Очередь строительства
 
         internal List<DescriptorPersistentBonus>[] VariantPersistentBonus { get; }
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
@@ -1558,20 +1557,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListNoticesForPlayer.IndexOf(e) != -1);
 
             ListNoticesForPlayer.Remove(e);
-        }
-
-        internal void AddEntityToQueueBuilding(Entity e)
-        {
-            Debug.Assert(QueueBuilding.IndexOf(e) == -1);
-
-            QueueBuilding.Add(e);
-        }
-
-        internal void RemoveEntityToQueueBuilding(Entity e)
-        {
-            Debug.Assert(QueueBuilding.IndexOf(e) != -1);
-
-            QueueBuilding.Remove(e);
         }
 
         internal void SetScoutForHero(Creature c, Location l)
