@@ -210,7 +210,7 @@
         <PercentScoutedArea>0</PercentScoutedArea>
         <Constructions>
           <Construction>
-            <ID>Lumberjack</ID>
+            <ID>FellingArea</ID>
             <Visible>false</Visible>
             <Own>false</Own>
             <CanOwn>true</CanOwn>
@@ -222,7 +222,7 @@
             </Resources>
           </Construction>
           <Construction>
-            <ID>StoneQuarry</ID>
+            <ID>Stones</ID>
             <Visible>false</Visible>
             <Own>false</Own>
             <CanOwn>true</CanOwn>
