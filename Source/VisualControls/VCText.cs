@@ -178,6 +178,7 @@ namespace Fantasy_Kingdoms_Battle
                     widthLine = Font.WidthText(text);
                     if (widthLine > actualWidth)
                     {
+                        Debug.Assert(priorPosSpace != -1, $"Текст \"{text}\" шириной {widthLine} не помещается в ширину контрола {Width}.");
                         tmpStr = text.Substring(0, priorPosSpace);
                         linesText.Add(tmpStr);
                         text = text.Substring(priorPosSpace + 1);
