@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Padding Padding { get => padding; set { padding = value; TextToLines(text); DrawText(); } }
         internal int MinHeigth()
         {
-            return Padding.Top + Font.MaxHeightSymbol * linesText.Count + Padding.Bottom;
+            return linesText.Count > 0 ? Padding.Top + Font.MaxHeightSymbol * linesText.Count + Padding.Bottom : 0;
         }
 
         internal int MinWidth()
