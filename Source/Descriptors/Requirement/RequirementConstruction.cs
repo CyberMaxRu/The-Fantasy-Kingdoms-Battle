@@ -49,18 +49,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirement(Player p)
         {
-            Construction cReq = p.GetPlayerConstruction(construction);
+            Construction requiredConstruction = p.GetPlayerConstruction(construction);
 
             if (ForEntity is DescriptorConstructionLevel dcl)
             {               
-                Construction cOwner = p.GetPlayerConstruction(dcl.ActiveEntity as DescriptorConstruction);
-                if (cOwner == cReq)
-                    return (cReq.Level >= level) && (p.Lobby.Turn - cReq.DayLevelConstructed[level] >= skipTurnsFromBuild);
+                Construction ownerConstruction = p.GetPlayerConstruction(dcl.ActiveEntity as DescriptorConstruction, false);
+                // Если владелец еще не построен, то условие не выполнено
+                // Такое случается, если речь идет о Храме - его еще нет, а 
+                if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
+                    return (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
                 else
-                    return p.CheatingIgnoreRequirements ? true : (cReq.Level >= level) && (p.Lobby.Turn - cReq.DayLevelConstructed[level] >= skipTurnsFromBuild);
+                    return p.CheatingIgnoreRequirements ? true : (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
             }
             else
-                return p.CheatingIgnoreRequirements ? true : (cReq.Level >= level) && (p.Lobby.Turn - cReq.DayLevelConstructed[level] >= skipTurnsFromBuild);
+                return p.CheatingIgnoreRequirements ? true : (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
         }
 
         internal override TextRequirement GetTextRequirement(Player p)

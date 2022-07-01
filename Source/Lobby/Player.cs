@@ -711,7 +711,7 @@ namespace Fantasy_Kingdoms_Battle
             Lobby.Layer.LairsWithFlagChanged();
         }
 
-        internal Construction GetPlayerConstruction(DescriptorConstruction b)
+        internal Construction GetPlayerConstruction(DescriptorConstruction b, bool mustBeExists = true)
         {
             Debug.Assert(b != null);
 
@@ -729,6 +729,9 @@ namespace Fantasy_Kingdoms_Battle
                         return c;
                 }
             }
+
+            if (!mustBeExists)
+                return null;
 
             throw new Exception("У игрока " + GetName() + " сооружение " + b.ID + " не найдено.");
         }
