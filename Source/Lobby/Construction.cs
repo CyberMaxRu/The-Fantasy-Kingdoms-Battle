@@ -1805,6 +1805,5 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Неизвестное состояние");
             }
         }
-        //internal enum StateConstruction { None, NotBuild, PreparedBuild, Build, PauseBuild, Work, NeedRepair, Repair, Destroyed };
     }
 }
