@@ -4441,8 +4441,8 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>Municipality</ID>
-    <Name>Муниципалитет</Name>
+    <ID>TownHall</ID>
+    <Name>Ратуша</Name>
     <Description>- Когда город разрастается, можно дать ему самоуправление</Description>
     <ImageIndex>160</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
@@ -4451,10 +4451,10 @@
     <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <SoundSelect>municipality_select.wav</SoundSelect>
+    <SoundSelect>townhall_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <ID>LevelMunicipality1</ID>
+        <ID>LevelTownHall1</ID>
         <Number>1</Number>
         <Durability>500</Durability>
         <Creating>
@@ -4467,7 +4467,7 @@
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
       <Level>
-        <ID>LevelMunicipality2</ID>
+        <ID>LevelTownHall2</ID>
         <Number>2</Number>
         <Durability>600</Durability>
         <Creating>
@@ -4483,11 +4483,11 @@
     <CellsMenu>
       <CellMenu>
         <Pos>1,1</Pos>
-        <Entity>LevelMunicipality1</Entity>
+        <Entity>LevelTownHall1</Entity>
       </CellMenu>
       <CellMenu>
         <Pos>1,2</Pos>
-        <Entity>LevelMunicipality2</Entity>
+        <Entity>LevelTownHall2</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>
