@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             labelLevel.Width = 32;
             labelLevel.ShiftX = Width - labelLevel.Width - 6;
 
-            TextCaption = new VCText(this, 4, 0, Program.formMain.fontMedCaptionC, FormMain.Config.CommonCost, Width - FormMain.Config.GridSize);
+            TextCaption = new VCText(this, 4, 0, Program.formMain.fontSmallC, FormMain.Config.CommonCost, Width - FormMain.Config.GridSize);
             TextCaption.IsActiveControl = false;
             TextCaption.Visible = false;
         }
@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
             if (TextCaption.Visible)
             {
                 TextCaption.Height = TextCaption.MinHeigth();
-                TextCaption.ShiftY = Height - TextCaption.Height;
+                TextCaption.ShiftY = Height - TextCaption.Height - 3;
                 ArrangeControl(TextCaption);
             }
 
