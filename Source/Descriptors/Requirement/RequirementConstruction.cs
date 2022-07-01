@@ -54,8 +54,8 @@ namespace Fantasy_Kingdoms_Battle
             if (ForEntity is DescriptorConstructionLevel dcl)
             {               
                 Construction ownerConstruction = p.GetPlayerConstruction(dcl.ActiveEntity as DescriptorConstruction, false);
-                // Если владелец еще не построен, то условие не выполнено
-                // Такое случается, если речь идет о Храме - его еще нет, а 
+                // Отдельно обрабатываем случай, когда здание зависит от самого себя - это левелап и читинг в этом случае не допускается,
+                // чтобы нельзя было строить новый уровень без построенного предыдущего
                 if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
                     return (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
                 else
