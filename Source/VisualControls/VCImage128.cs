@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCImage128 : VCImage
     {
         private VCLabel labelLevel;
-        private VCLabel labelText;
 
         public VCImage128(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.imListObjects128, -1)
         {
@@ -24,13 +23,13 @@ namespace Fantasy_Kingdoms_Battle
             labelLevel.Width = 32;
             labelLevel.ShiftX = Width - labelLevel.Width - 6;
 
-            labelText = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
-            labelText.StringFormat.LineAlignment = StringAlignment.Far;
-            labelText.Width = Width;
+            TextCaption = new VCText(this, 4, 0, Program.formMain.fontMedCaptionC, FormMain.Config.CommonCost, Width - FormMain.Config.GridSize);
+            TextCaption.IsActiveControl = false;
+            TextCaption.Visible = false;
         }
 
         internal string Level { get; set; } = "";
-        internal string Text { get; set; } = "";
+        internal VCText TextCaption { get; }
         internal bool BorderWithoutProgressBar { get; set; }
 
         internal override void ArrangeControls()
@@ -54,9 +53,13 @@ namespace Fantasy_Kingdoms_Battle
             if (labelLevel.Visible)
                 labelLevel.Text = Level;
 
-            labelText.Visible = Text.Length > 0;
-            if (labelText.Visible)
-                labelText.Text = Text;
+            TextCaption.Visible = TextCaption.Text.Length > 0;
+            if (TextCaption.Visible)
+            {
+                TextCaption.Height = TextCaption.MinHeigth();
+                TextCaption.ShiftY = Height - TextCaption.Height;
+                ArrangeControl(TextCaption);
+            }
 
             base.Draw(g);
         }

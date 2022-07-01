@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal class VCText : VisualControl
     {
-        private string text;
+        private string text = "";
         private Color color;
         private Padding padding;
         private string preparedText;

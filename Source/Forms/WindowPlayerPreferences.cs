@@ -179,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateNumberAvatar()
         {
             imgAvatar.ImageIndex = curImageIndexAvatar;
-            imgAvatar.Text = $"{curImageIndexAvatar - FormMain.Config.ImageIndexFirstAvatar + 1}/{FormMain.Config.QuantityAllAvatars}";
+            imgAvatar.TextCaption.Text = $"{curImageIndexAvatar - FormMain.Config.ImageIndexFirstAvatar + 1}/{FormMain.Config.QuantityAllAvatars}";
 
             btnChangeAvatar.Enabled = curImageIndexAvatar >= FormMain.Config.ImageIndexExternalAvatar;
             btnDeleteAvatar.Enabled = btnChangeAvatar.Enabled;
