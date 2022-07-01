@@ -59,10 +59,10 @@ namespace Fantasy_Kingdoms_Battle
                 if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
                     return (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
                 else
-                    return p.CheatingIgnoreRequirements ? true : (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
+                    return p.CheatingIgnoreRequirements || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
             }
             else
-                return p.CheatingIgnoreRequirements ? true : (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
+                return p.CheatingIgnoreRequirements || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
         }
 
         internal override TextRequirement GetTextRequirement(Player p)
