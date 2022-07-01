@@ -13,7 +13,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelConstruction : VisualControl
     {
         private Bitmap bmpBackground;
-        private readonly VCLabel lblNameMapObject;
         private readonly VCImage128 imgMapObject;
         private readonly VCProgressBar pbDurability;
         private readonly VCIconButton48 btnHeroes;
@@ -32,13 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
             Visible = false;
 
-            lblNameMapObject = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, 24, "");
-            lblNameMapObject.StringFormat.Alignment = StringAlignment.Center;
-            //lblNameMapObject.ShowBorder = true;
-            lblNameMapObject.TruncLongText = true;
-            lblNameMapObject.IsActiveControl = false;
-
-            imgMapObject = new VCImage128(this, FormMain.Config.GridSize, lblNameMapObject.NextTop());
+            imgMapObject = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
             imgMapObject.HighlightUnderMouse = true;
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.BorderWithoutProgressBar = false;
@@ -92,7 +85,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = btnBuildOrUpgrade.NextLeft();
             Height = btnBuildOrUpgrade.NextTop();
-            lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
 
@@ -120,13 +112,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Construction Construction { get; private set; }
 
-        protected override void ValidateRectangle()
-        {
-            base.ValidateRectangle();
-
-            lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
-        }
-
         internal override void DrawBackground(Graphics g)
         {
             base.DrawBackground(g);
@@ -145,9 +130,8 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.ImageIndex = Construction.GetImageIndex();
             imgMapObject.ImageIsEnabled = Construction.GetNormalImage();
             imgMapObject.Level = Construction.GetLevel();
-
-            lblNameMapObject.Text = Construction.GetName();
-            lblNameMapObject.Color = Construction.GetColorCaption();
+            imgMapObject.TextCaption.Text = Construction.GetName();
+            imgMapObject.TextCaption.Color = Construction.GetColorCaption();
 
             btnBuildOrUpgrade.MenuCell = null;
             pbDurability.Visible = false;
