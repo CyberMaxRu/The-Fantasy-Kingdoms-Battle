@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCImage128 imgTypeLocation;
         private readonly VCProgressBar pbScout;
-        private readonly VCText nameLocation;
         private readonly List<VCCell> listCells;
         private readonly VCIconAndDigitValue lblDanger;
 
@@ -23,11 +22,10 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
 
             imgTypeLocation = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            imgTypeLocation.TextCaption.Color = Color.White;
             imgTypeLocation.ShowHint += ImgTypeLocation_ShowHint;
             imgTypeLocation.Click += ImgTypeLocation_Click;
             imgTypeLocation.PlaySoundOnClick = true;
-            nameLocation = new VCText(imgTypeLocation, 4, 8, Program.formMain.fontMedCaptionC, Color.White, imgTypeLocation.Width - 8);
-            nameLocation.IsActiveControl = false;
 
             pbScout = new VCProgressBar(this, imgTypeLocation.ShiftX - 2, imgTypeLocation.NextTop() - 4);
             pbScout.Width = imgTypeLocation.Width + 4;
@@ -92,10 +90,7 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateLocation()
         {
             imgTypeLocation.ImageIndex = location.GetImageIndex();
-            nameLocation.Text = location.Settings.Name;
-            nameLocation.Height = nameLocation.MinHeigth();
-            nameLocation.ShiftY = imgTypeLocation.Height - nameLocation.Height;
-            imgTypeLocation.ArrangeControl(nameLocation);
+            imgTypeLocation.TextCaption.Text = location.Settings.Name;
 
             pbScout.Position = location.PercentScoutedArea / 10;
             pbScout.PositionPotential = (location.PercentScoutedArea + location.PercentScoutAreaToday) / 10;
