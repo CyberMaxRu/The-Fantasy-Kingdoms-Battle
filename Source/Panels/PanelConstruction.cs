@@ -165,7 +165,7 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         pbDurability.Text = $"{Construction.CurrentDurability}" +
-                            $"{(Construction.MainCellMenu.ExecutingAction.CurrentPoints > 0 ? $"+{Construction.MainCellMenu.ExecutingAction.CurrentPoints}" : "")}/{Construction.MaxDurability}";
+                            $"{(Construction.ActionMain.ExecutingAction.CurrentPoints > 0 ? $"+{Construction.ActionMain.ExecutingAction.CurrentPoints}" : "")}/{Construction.MaxDurability}";
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
@@ -184,7 +184,7 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.PauseBuild:
                     case StateConstruction.InQueueBuild:
                         pbDurability.Color = Color.PaleTurquoise;
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.MainCellMenu.ExecutingAction.CurrentPoints;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ExecutingAction.CurrentPoints;
                         break;
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
@@ -196,7 +196,7 @@ namespace Fantasy_Kingdoms_Battle
                         else
                             pbDurability.Color = Color.Red;
 
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.MainCellMenu.ExecutingAction.CurrentPoints;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ExecutingAction.CurrentPoints;
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
@@ -227,10 +227,10 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         if (Construction.CanLevelUp())
                         {
-                            Debug.Assert(Construction.MainCellMenu != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
+                            Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.MenuCell = Construction.MainCellMenu;
+                            btnBuildOrUpgrade.MenuCell = Construction.ActionMain;
                         }
                         else
                         {
@@ -248,12 +248,12 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        if (Construction.MainCellMenu != null)
+                        if (Construction.ActionMain != null)
                         {
-                            Debug.Assert(Construction.MainCellMenu != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
+                            Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.MenuCell = Construction.MainCellMenu;
+                            btnBuildOrUpgrade.MenuCell = Construction.ActionMain;
                         }
                         else
                             btnBuildOrUpgrade.Visible = false;
@@ -358,7 +358,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
                 return;
 
-            Construction.MainCellMenu.Click();
+            Construction.ActionMain.Click();
         }
 
         protected override void SetEntity(Entity po)

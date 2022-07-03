@@ -151,10 +151,10 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
 
         // Действия
+        internal CellMenuConstruction ActionMain { get; private set; }// Основное действие, которое отображается в панели сооружения
+        private CellMenuConstructionLevelUp ActionBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
+        private CellMenuConstructionRepair ActionRepair { get; set; }// Действие для ремонта сооружения
         internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
-        private CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
-        private CellMenuConstructionRepair CellMenuRepair { get; set; }// Действие для ремонта сооружения
-        internal CellMenuConstruction MainCellMenu { get; private set; }//
 
         //
         internal List<Creature> Recruits { get; } = new List<Creature>();// Рекруты, готовые к найму
@@ -175,7 +175,7 @@ namespace Fantasy_Kingdoms_Battle
         }
         private void TuneCellMenuBuildOrUpgrade()
         {
-            CellMenuBuildOrLevelUp = null;
+            ActionBuildOrLevelUp = null;
 
             // Сооружение не построено, ищем действие для постройки
             List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
@@ -188,8 +188,8 @@ namespace Fantasy_Kingdoms_Battle
                         listForDelete.Add(cm);
                     else if (cml.Descriptor.Number == Level + 1)
                     {
-                        Debug.Assert(CellMenuBuildOrLevelUp is null);
-                        CellMenuBuildOrLevelUp = cml;
+                        Debug.Assert(ActionBuildOrLevelUp is null);
+                        ActionBuildOrLevelUp = cml;
                     }
                 }
             }
@@ -198,12 +198,12 @@ namespace Fantasy_Kingdoms_Battle
             foreach (CellMenuConstruction cmd in listForDelete)
                 Actions.Remove(cmd);
 
-            if (CellMenuRepair != null)
-                MainCellMenu = CellMenuRepair;
-            else if (CellMenuBuildOrLevelUp != null)
-                MainCellMenu = CellMenuBuildOrLevelUp;
+            if (ActionRepair != null)
+                ActionMain = ActionRepair;
+            else if (ActionBuildOrLevelUp != null)
+                ActionMain = ActionBuildOrLevelUp;
             else
-                MainCellMenu = null;
+                ActionMain = null;
         }
 
         private void UpdateCurrentIncomeResources()
@@ -1619,17 +1619,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            if (CellMenuRepair != null)
+            if (ActionRepair != null)
             {
                 if (CurrentDurability == MaxDurability)
                 {
-                    if (!Actions.Remove(CellMenuRepair))
+                    if (!Actions.Remove(ActionRepair))
                         EntityDoException("Не смог убрать кнопку окончания ремонта");
 
-                    CellMenuRepair = null;
+                    ActionRepair = null;
                 }
                 else
-                    CellMenuRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
+                    ActionRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
             }
 
             foreach (CellMenuConstruction cm in Actions)
@@ -1661,19 +1661,19 @@ namespace Fantasy_Kingdoms_Battle
                 PrepareBuilding();
             }
 
-            Player.AddToQueueBuilding(CellMenuBuildOrLevelUp);
+            Player.AddToQueueBuilding(ActionBuildOrLevelUp);
             UpdateState();
         }
 
         internal void StartRepair()
         {
-            Player.AddToQueueBuilding(CellMenuRepair);
+            Player.AddToQueueBuilding(ActionRepair);
             UpdateState();
         }
 
         internal void CancelRepair()
         {
-            Player.RemoveFromQueueBuilding(CellMenuRepair, false);
+            Player.RemoveFromQueueBuilding(ActionRepair, false);
             Player.RebuildQueueBuilding();
             UpdateState();
         }
@@ -1683,7 +1683,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Level > 0)
                 MaxDurability = Descriptor.Levels[Level].Durability;
 
-            Player.RemoveFromQueueBuilding(CellMenuBuildOrLevelUp, false);
+            Player.RemoveFromQueueBuilding(ActionBuildOrLevelUp, false);
             Player.RebuildQueueBuilding();
             UpdateState();
         }
@@ -1747,12 +1747,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 CurrentDurability -= damage;
 
-                if (CellMenuRepair is null)
+                if (ActionRepair is null)
                 {
-                    CellMenuRepair = new CellMenuConstructionRepair(this, new DescriptorCellMenu(new Point(0, 0)));
+                    ActionRepair = new CellMenuConstructionRepair(this, new DescriptorCellMenu(new Point(0, 0)));
                     //CellMenuRepair.PurchaseValue = new ListBaseResources(MaxDurability - CurrentDurability);
 
-                    Actions.Add(CellMenuRepair);
+                    Actions.Add(ActionRepair);
                 }
 
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionDamaged, damage);
