@@ -1928,7 +1928,6 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(cmc.ExecutingAction.AppliedPoints == 0);
             }
 
-
             if (cmc is CellMenuConstructionLevelUp)
             {
                 Assert(InConstructing || InRepair);
@@ -1960,6 +1959,13 @@ namespace Fantasy_Kingdoms_Battle
             if (removeFromList)
                 if (!QueueExecuting.Remove(cmc))
                     DoException($"{IDEntity}: не удалось удалить {IDEntity} из очереди строительства");
+
+            if (forCancel)
+            {
+                Assert(Actions.IndexOf(cmc) == -1);
+                Actions.Add(cmc);
+                Program.formMain.layerGame.UpdateMenu();
+            }
 
             DaysConstructLeft = 0;
             AddConstructionPointByDay = 0;
