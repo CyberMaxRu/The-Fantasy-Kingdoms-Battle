@@ -465,7 +465,7 @@ namespace Fantasy_Kingdoms_Battle
         // Реализация
         internal override bool CheckRequirements() => Construction.CheckLevelRequirements(Descriptor.Number);
         internal override int GetImageIndex() => Descriptor.ImageIndex;
-        internal override bool GetImageIsEnabled() => Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number) || base.GetImageIsEnabled();
+        internal override bool GetImageIsEnabled() => ExecutingAction.InQueue && (Construction.Level + 1 == Descriptor.Number) || base.GetImageIsEnabled();
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
         internal override ListBaseResources GetCost() => Descriptor.GetCreating().CostResources;
         protected override bool ConstructionMustMeConstructed() => false;
@@ -473,7 +473,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText()
         {
-            if (Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number))
+            if (ExecutingAction.InQueue)
+            //if (Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number))
             {
                 if (Construction.CurrentDurability == 0)
                     return "Отм.";
@@ -490,7 +491,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (GetImageIsEnabled())
             {
-                if (Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number))
+                if ((Construction.Level + 1 == Descriptor.Number))
                     return FormMain.Config.CommonCost;
                 else
                     return Color.LimeGreen;
@@ -501,7 +502,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetDaysExecuting()
         {
-            if (Construction.InConstructing)
+            Assert(ExecutingAction.RestDaysExecuting > 0);
+            return ExecutingAction.RestDaysExecuting.ToString();
+
+            /*if (ExecutingAction.RestDaysExecuting > 0)
             {
                 if (Construction.DaysConstructLeft == 0)
                     return "";
@@ -509,7 +513,7 @@ namespace Fantasy_Kingdoms_Battle
                     return Construction.DaysConstructLeft.ToString();
             }
             else
-                return DaysForConstructed.ToString();
+                return DaysForConstructed.ToString();*/
         }
 
         internal override void Execute()
@@ -525,7 +529,7 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(Construction.CurrentDurability == Construction.MaxDurability);
             }
 
-            if (Construction.InConstructing)
+            if (Descriptor.Number == 1)
             {
                 if (Construction.DaysConstructLeft == 0)
                     Construction.StartBuilding();
@@ -564,12 +568,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetDaysExecuting()
         {
-            if (Construction.InConstructing)
+            if (ExecutingAction != null)
             {
-                if (Construction.DaysConstructLeft == 0)
+                Assert(ExecutingAction.RestDaysExecuting > 0);
+
+                return ExecutingAction.RestDaysExecuting.ToString();
+                /*if (Construction.DaysConstructLeft == 0)
                     return "";
                 else
-                    return Construction.DaysConstructLeft.ToString();
+                    return Construction.DaysConstructLeft.ToString();*/
             }
             else
                 return DaysForRepair.ToString();

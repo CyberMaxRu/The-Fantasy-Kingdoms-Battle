@@ -1616,8 +1616,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (c.State == StateConstruction.NeedRepair)
                     c.InRepair = true;
-                else
-                    c.InConstructing = true;
+                //else
+                //    c.InConstructing = true;
             }
 
             queueExecuting.Add(cmc);

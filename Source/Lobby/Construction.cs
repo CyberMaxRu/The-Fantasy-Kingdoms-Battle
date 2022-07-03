@@ -110,7 +110,7 @@ namespace Fantasy_Kingdoms_Battle
         // Постройка/ремонт
         internal int DaysConstructLeft { get; set; }// Сколько еще дней будет строиться сооружение
         internal int[] DayLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
-        internal bool InConstructing { get; set; }// Сооружение строится
+        //internal bool InConstructing { get; set; }// Сооружение строится
         internal bool InRepair { get; set; }// Сооружение ремонтируется
 
         // Исследования
@@ -150,7 +150,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
 
-        // Меню
+        // Действия
+        internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
         private CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
         private CellMenuConstructionRepair CellMenuRepair { get; set; }// Действие для ремонта сооружения
         internal CellMenuConstruction MainCellMenu { get; private set; }//
@@ -160,9 +161,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
-
-        internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
-
         // 
         internal ListBaseResources InitialQuantityBaseResources { get; }// Исходные значения базовых ресурсов
         internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
@@ -293,7 +291,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Level++;
             DayLevelConstructed[Level] = Player.Lobby.CounterDay;
-            InConstructing = false;
+            //InConstructing = false;
 
             if (Level == 1)
             {
@@ -1704,7 +1702,7 @@ namespace Fantasy_Kingdoms_Battle
                 State = StateConstruction.Destroyed;
             else if ((Level == 1) && (MaxDurability == 0))
                 State = StateConstruction.None;// Если сооружение построено, и у него нет прочности, это элемент ландшафта. У него нет состояния.
-            else if (InConstructing)
+            else if (Level == 0)
             {
                 Assert(!InRepair);
 
@@ -1824,7 +1822,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (restCP > 0)
                 {
                     // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
-                    if (InConstructing)
+                    if (Level == 0)
                     {
                         if (cmc.ExecutingAction.AppliedPoints == 0)
                         {
@@ -1904,7 +1902,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (cmc is CellMenuConstructionLevelUp)
             {
-                Assert(InConstructing || InRepair);
+                //Assert( || InRepair);
                 Assert(MaxDurability > 0);
                 Assert(DaysConstructLeft > 0);
 
@@ -1913,7 +1911,7 @@ namespace Fantasy_Kingdoms_Battle
                     // Если сооружение еще не начинали строить, только возвращаем ресурсы
                     if (State == StateConstruction.PreparedBuild)
                     {
-                        InConstructing = false;
+                        //InConstructing = false;
                     }
                     else if (State == StateConstruction.Repair)
                     {
