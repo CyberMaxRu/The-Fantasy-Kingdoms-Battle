@@ -49,9 +49,9 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override ListBaseResources GetCost()
+        internal override void UpdatePurchase()
         {
-            return cost;
+            PurchaseValue = cost;
         }
 
         internal override int GetImageIndex()
@@ -96,9 +96,9 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override ListBaseResources GetCost()
+        internal override void UpdatePurchase()
         {
-            return cost;
+            PurchaseValue = cost;
         }
 
         internal override int GetImageIndex()
@@ -181,9 +181,9 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override ListBaseResources GetCost()
+        internal override void UpdatePurchase()
         {
-            return cost;
+            PurchaseValue = cost;
         }
 
         internal override int GetImageIndex()
@@ -225,12 +225,12 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(Entity);
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
-            panelHint.AddStep12Gold(Location.Player.BaseResources, GetCost());
+            panelHint.AddStep12Gold(Location.Player.BaseResources, PurchaseValue);
         }
 
-        internal override ListBaseResources GetCost()
+        internal override void UpdatePurchase()
         {
-            return new ListBaseResources(Entity.Selling.Gold);
+            PurchaseValue = new ListBaseResources(Entity.Selling.Gold);
         }
 
         internal override void Execute()

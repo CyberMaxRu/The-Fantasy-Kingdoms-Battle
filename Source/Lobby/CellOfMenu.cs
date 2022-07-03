@@ -33,7 +33,6 @@ namespace Fantasy_Kingdoms_Battle
         internal ListBaseResources PurchaseValue { get; private protected set; }// Стоимость покупки
 
         internal virtual string GetText() => "";
-        internal virtual ListBaseResources GetCost() => null;
         internal abstract int GetImageIndex();
         internal virtual bool GetImageIsEnabled() => true;// (DaysLeft > 0) || (CheckRequirements() && (DaysProcessed == 0));
         internal virtual string GetLevel() => "";

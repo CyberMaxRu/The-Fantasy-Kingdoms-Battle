@@ -114,9 +114,9 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override ListBaseResources GetCost()
+        internal override void UpdatePurchase()
         {
-            return resources;
+            PurchaseValue = resources;
         }
 
         internal override int GetImageIndex()
