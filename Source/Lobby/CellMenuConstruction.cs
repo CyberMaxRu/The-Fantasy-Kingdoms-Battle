@@ -16,36 +16,19 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction = c;
 
-            Creating = GetCreating();
-
-            if (Creating != null)
+            if (Descriptor.CreatedEntity != null)
             {
-                if (Creating.ConstructionPoints > 0)
-                {
-                    Points = Creating.ConstructionPoints;
-                    IsConstructionPoints = true;
-                }
-                else if (Creating.ResearchPoints > 0)
-                {
-                    Points = Creating.ResearchPoints;
-                    IsConstructionPoints = false;
-                }
-                else
-                    DoException("Нет очков для действия");
+                Creating = Descriptor.CreatedEntity.GetCreating();
+
+                if (Creating != null)
+                    if ((Creating.ConstructionPoints > 0) || (Creating.ResearchPoints > 0))
+                        ExecutingAction = new ComponentExecutingAction(Creating);
             }
         }
 
         internal Construction Construction { get; }
         internal DescriptorComponentCreating Creating { get; }
-
-        internal bool IsConstructionPoints { get; }// Используются очки строительства иначе очки действий
-        internal bool InQueue { get; set; }// Действие в очереди
-        internal int Points { get; }// Сколько очков нужно для выполнения действия
-        internal int AppliedPoints { get; set; }// Сколько очков было применено
-        internal int CurrentPoints { get; set; }// Сколько очков будет примено на текущем ходу
-        internal int NeedPoints { get => Points - AppliedPoints; }// Сколько очков осталось
-        internal int RestDaysExecuting { get; set; }// Сколько дней осталось до конца выполнения действия
-        internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
+        internal ComponentExecutingAction ExecutingAction { get; }
 
         internal override bool CheckRequirements()
         {
@@ -92,7 +75,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         protected virtual string GetTextForLevel() => "";
-        protected abstract DescriptorComponentCreating GetCreating();
 
         protected void RemoveSelf()
         {
@@ -141,28 +123,31 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
-            if (!InQueue)
+            if (ExecutingAction != null)
             {
-                if (CheckRequirements())
+                if (!ExecutingAction.InQueue)
                 {
-                    if (!(this is CellMenuConstructionRecruitCreature))
-                        if (!(this is CellMenuConstructionSpell))
-                            Debug.Assert(Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0);
+                    if (CheckRequirements())
+                    {
+                        if (!(this is CellMenuConstructionRecruitCreature))
+                            if (!(this is CellMenuConstructionSpell))
+                                Debug.Assert(Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0);
 
-                    Program.formMain.PlayPushButton();
+                        Program.formMain.PlayPushButton();
 
-                    Construction.Player.AddToQueueBuilding(this);
-                    //Construction.AddEntityToQueueProcessing(this);
+                        Construction.Player.AddToQueueBuilding(this);
+                        //Construction.AddEntityToQueueProcessing(this);
+                    }
                 }
-            }
-            else
-            {
-                if (DaysProcessed == 0)
+                else
                 {
-                    Program.formMain.PlayPushButton();
-                    Construction.Player.RemoveFromQueueBuilding(this, false);
-                    //Construction.RemoveEntityFromQueueProcessing(this);
-                    DaysLeft = 0;
+                    if (DaysProcessed == 0)
+                    {
+                        Program.formMain.PlayPushButton();
+                        Construction.Player.RemoveFromQueueBuilding(this, false);
+                        //Construction.RemoveEntityFromQueueProcessing(this);
+                        DaysLeft = 0;
+                    }
                 }
             }
         }
@@ -179,26 +164,60 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdatePurchase()
         {
-            PurchaseValue = GetCost();
+            if (ExecutingAction != null)
+                ExecutingAction.PurchaseValue = GetCost();
         }
 
         internal void UpdateDaysExecuted()
         {
-            if (Points > 0)
+            if (ExecutingAction != null)
             {
-                if (InQueue)
+                if (ExecutingAction.Points > 0)
                 {
-                    RestDaysExecuting = 1;
+                    if (ExecutingAction.InQueue)
+                    {
+                        ExecutingAction.RestDaysExecuting = 1;
+                    }
+                    else
+                    {
+                        ExecutingAction.RestDaysExecuting = 1;
+                    }
                 }
                 else
-                {
-                    RestDaysExecuting = 1;
-                }
+                    ExecutingAction.RestDaysExecuting = 0;
             }
-            else
-                RestDaysExecuting = 0;
         }
     }
+
+    internal sealed class ComponentExecutingAction
+    {
+        public ComponentExecutingAction(DescriptorComponentCreating ddc)
+        {
+            if (ddc.ConstructionPoints > 0)
+            {
+                Points = ddc.ConstructionPoints;
+                IsConstructionPoints = true;
+            }
+            else if (ddc.ResearchPoints > 0)
+            {
+                Points = ddc.ResearchPoints;
+                IsConstructionPoints = false;
+            }
+            else
+                DoException("Нет очков для действия");
+        }
+
+        internal bool IsConstructionPoints { get; }// Используются очки строительства иначе очки действий
+        internal bool InQueue { get; set; }// Действие в очереди
+        internal int Points { get; }// Сколько очков нужно для выполнения действия
+        internal int AppliedPoints { get; set; }// Сколько очков было применено
+        internal int CurrentPoints { get; set; }// Сколько очков будет примено на текущем ходу
+        internal int NeedPoints { get => Points - AppliedPoints; }// Сколько очков осталось
+        internal int RestDaysExecuting { get; set; }// Сколько дней осталось до конца выполнения действия
+        internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
+
+    }
+
 
     internal sealed class CellMenuConstructionResearch : CellMenuConstruction
     {
@@ -275,11 +294,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
-
-        protected override DescriptorComponentCreating GetCreating()
-        {
-            return Descriptor.CreatedEntity.GetCreating();
-        }
     }
 
     internal sealed class CellMenuConstructionService : CellMenuConstruction
@@ -589,11 +603,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
-
-        protected override DescriptorComponentCreating GetCreating()
-        {
-            return null;
-        }
     }
 
     internal sealed class CellMenuConstructionRecruitCreature : CellMenuConstruction
@@ -608,7 +617,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Execute()
         {
             Creature h = Construction.HireHero(Creature, GetCost());
-            PurchaseValue = null;
 
             if (Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0)
                 Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
@@ -1102,11 +1110,6 @@ namespace Fantasy_Kingdoms_Battle
             base.PrepareNewDay();
 
             Spell.Selling.Reset();
-        }
-
-        protected override DescriptorComponentCreating GetCreating()
-        {
-            return null;
         }
     }
 

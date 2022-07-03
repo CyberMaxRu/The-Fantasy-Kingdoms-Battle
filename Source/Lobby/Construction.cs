@@ -1521,7 +1521,7 @@ namespace Fantasy_Kingdoms_Battle
                 //SpendForBuild(cell);
                 QueueExecuting.Add(cell);
                 //Player.AddEntityToQueueBuilding()
-                cell.InQueue = true;
+                cell.ExecutingAction.InQueue = true;
 
                 if (cell is CellMenuConstructionBuild cm)
                 {
@@ -1538,13 +1538,13 @@ namespace Fantasy_Kingdoms_Battle
             return;
             Debug.Assert(QueueExecuting.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
-            Debug.Assert(cell.InQueue);
-            Debug.Assert(cell.PurchaseValue != null);
+            Debug.Assert(cell.ExecutingAction.InQueue);
+            Debug.Assert(cell.ExecutingAction.PurchaseValue != null);
 
-            cell.InQueue = false;
-            Player.ReturnResource(cell.PurchaseValue);
+            cell.ExecutingAction.InQueue = false;
+            Player.ReturnResource(cell.ExecutingAction.PurchaseValue);
             //Player.UnuseFreeBuilders(usedBuilders);
-            cell.PurchaseValue = null;
+            cell.ExecutingAction.PurchaseValue = null;
 
             if (removeFromList)
                 QueueExecuting.Remove(cell);
@@ -1777,7 +1777,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (CellMenuRepair is null)
                 {
                     CellMenuRepair = new CellMenuConstructionRepair(this, new DescriptorCellMenu(new Point(0, 0)));
-                    CellMenuRepair.PurchaseValue = new ListBaseResources(MaxDurability - CurrentDurability);
+                    //CellMenuRepair.PurchaseValue = new ListBaseResources(MaxDurability - CurrentDurability);
 
                     Researches.Add(CellMenuRepair);
                 }
@@ -1838,7 +1838,7 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
             Assert(cmc.Construction == this);
             Assert(QueueExecuting.IndexOf(cmc) == -1);
-            Assert(!cmc.InQueue);
+            Assert(!cmc.ExecutingAction.InQueue);
 
             int restCP = Player.RestConstructionPoints;
             int expenseCP;
@@ -1851,12 +1851,12 @@ namespace Fantasy_Kingdoms_Battle
                     // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
                     if (InConstructing)
                     {
-                        if (cmc.PurchaseValue is null)
+                        if (cmc.ExecutingAction.PurchaseValue is null)
                         {
                             if (Player.CheckRequiredResources(CostBuyOrUpgrade()))
                             {
-                                cmc.PurchaseValue = CostBuyOrUpgrade();
-                                Player.SpendResource(cmc.PurchaseValue);
+                                cmc.ExecutingAction.PurchaseValue = CostBuyOrUpgrade();
+                                Player.SpendResource(cmc.ExecutingAction.PurchaseValue);
                             }
                         }
 
@@ -1870,17 +1870,17 @@ namespace Fantasy_Kingdoms_Battle
                         // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
                         // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
                         // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
-                        if (cmc.PurchaseValue != null)
-                            Player.ReturnResource(cmc.PurchaseValue);
+                        if (cmc.ExecutingAction.PurchaseValue != null)
+                            Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
 
                         // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
                         expenseCP = Math.Min(Gold, Math.Min(restCP, MaxDurability - CurrentDurability));
-                        cmc.PurchaseValue = CompCostRepair(expenseCP);
-                        Player.SpendResource(cmc.PurchaseValue);
+                        cmc.ExecutingAction.PurchaseValue = CompCostRepair(expenseCP);
+                        Player.SpendResource(cmc.ExecutingAction.PurchaseValue);
                     }
 
                     // Если ресурсы были потрачены, то тратим очки строительства
-                    if (cmc.PurchaseValue != null)
+                    if (cmc.ExecutingAction.PurchaseValue != null)
                     {
                         usedCP += MaxDurability - CurrentDurability;
 
@@ -1896,8 +1896,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     // Очки строительства закончились
                     // Если были потрачены ресурсы, возвращаем их
-                    if (cmc.PurchaseValue != null)
-                        Player.ReturnResource(cmc.PurchaseValue);
+                    if (cmc.ExecutingAction.PurchaseValue != null)
+                        Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
 
                     usedCP += MaxDurability - CurrentDurability;
 
@@ -1915,7 +1915,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
         {
             Assert(cmc.Construction == this);
-            Assert(cmc.InQueue);
+            Assert(cmc.ExecutingAction.InQueue);
             Assert(QueueExecuting.IndexOf(cmc) != -1);
 
                 QueueExecuting.Remove(cmc);
@@ -1932,17 +1932,17 @@ namespace Fantasy_Kingdoms_Battle
                     if (State == StateConstruction.PreparedBuild)
                     {
                         // Освобождаем потраченные ресурсы
-                        if (cmc.PurchaseValue != null)
-                            Player.ReturnResource(cmc.PurchaseValue);
-                        cmc.PurchaseValue = null;
+                        if (cmc.ExecutingAction.PurchaseValue != null)
+                            Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
+                        cmc.ExecutingAction.PurchaseValue = null;
                         InConstructing = false;
                     }
                     else if (State == StateConstruction.Repair)
                     {
                         // Освобождаем потраченные ресурсы
-                        Assert(cmc.PurchaseValue != null);
-                        Player.ReturnResource(cmc.PurchaseValue);
-                        cmc.PurchaseValue = null;
+                        Assert(cmc.ExecutingAction.PurchaseValue != null);
+                        Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
+                        cmc.ExecutingAction.PurchaseValue = null;
                         InRepair = false;
                     }
                 }
