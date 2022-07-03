@@ -234,15 +234,6 @@
             </Resources>
           </Construction>
           <Construction>
-            <ID>TradePost</ID>
-            <Visible>false</Visible>
-            <Own>false</Own>
-            <CanOwn>true</CanOwn>
-            <IsEnemy>false</IsEnemy>
-            <MinPercentScout>0</MinPercentScout>
-            <MaxPercentScout>25</MaxPercentScout>
-          </Construction>
-          <Construction>
             <ID>Treasure</ID>
             <Visible>false</Visible>
             <Own>false</Own>
