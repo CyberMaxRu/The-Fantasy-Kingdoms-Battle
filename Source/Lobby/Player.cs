@@ -1601,7 +1601,7 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(c.MaxDurability > 0);
                 Assert(c.CurrentDurability < c.MaxDurability);
                 Assert(c.DaysConstructLeft == 0);
-                Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild) || (c.State == StateConstruction.PauseBuild)
+                Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)
                     || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
 
                 if (c.State == StateConstruction.NeedRepair)

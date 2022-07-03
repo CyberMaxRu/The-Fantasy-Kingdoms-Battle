@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum StateConstruction { None, Work, NotBuild, PreparedBuild, Build, InQueueBuild, PauseBuild, NeedRepair, Repair, Destroyed };
+    internal enum StateConstruction { None, Work, NotBuild, PreparedBuild, Build, InQueueBuild, NeedRepair, Repair, Destroyed };
 
     // Класс сооружения у игрока
     internal sealed class Construction : BattleParticipant
@@ -1736,7 +1736,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(damage >= 0);
             Assert(damage < CurrentDurability);
-            Assert((State == StateConstruction.Build) || (State == StateConstruction.PauseBuild) || (State == StateConstruction.Repair)
+            Assert((State == StateConstruction.Build) || (State == StateConstruction.Repair)
                 || (State == StateConstruction.NeedRepair) || (State == StateConstruction.Work));
 
             if (damage > 0)
@@ -1778,8 +1778,6 @@ namespace Fantasy_Kingdoms_Battle
                     return ("Строится", Color.SkyBlue);
                 case StateConstruction.InQueueBuild:
                     return ("В очереди на строительство", Color.White);
-                case StateConstruction.PauseBuild:
-                    return ("Строительство приостановлено", Color.Gray);
                 case StateConstruction.NeedRepair:
                     return ("Требуется ремонт", Color.Red);
                 case StateConstruction.Repair:

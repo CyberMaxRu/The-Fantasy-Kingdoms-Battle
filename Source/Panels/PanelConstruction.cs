@@ -160,7 +160,6 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                     case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
-                    case StateConstruction.PauseBuild:
                     case StateConstruction.InQueueBuild:
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
@@ -181,7 +180,6 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                     case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
-                    case StateConstruction.PauseBuild:
                     case StateConstruction.InQueueBuild:
                         pbDurability.Color = Color.PaleTurquoise;
                         pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ExecutingAction.CurrentPoints;
