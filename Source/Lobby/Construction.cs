@@ -163,6 +163,7 @@ namespace Fantasy_Kingdoms_Battle
         internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
 
         internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
+        //internal List<CellMenuConstruction> QueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки действий
 
         // 
         internal ListBaseResources InitialQuantityBaseResources { get; }// Исходные значения базовых ресурсов

@@ -122,7 +122,8 @@ namespace Fantasy_Kingdoms_Battle
 
                     Program.formMain.PlayPushButton();
 
-                    Construction.AddEntityToQueueProcessing(this);
+                    Construction.Player.AddToQueueBuilding(this);
+                    //Construction.AddEntityToQueueProcessing(this);
                 }
             }
             else
@@ -130,7 +131,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (DaysProcessed == 0)
                 {
                     Program.formMain.PlayPushButton();
-                    Construction.RemoveEntityFromQueueProcessing(this);
+                    Construction.Player.RemoveFromQueueBuilding(this, false);
+                    //Construction.RemoveEntityFromQueueProcessing(this);
                     DaysLeft = 0;
                 }
             }

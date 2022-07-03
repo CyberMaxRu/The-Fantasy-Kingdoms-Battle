@@ -1584,63 +1584,70 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(queueBuilding.IndexOf(cmc) == -1);
             Construction c = cmc.Construction;
-            Assert(c.MaxDurability > 0);
-            Assert(c.CurrentDurability < c.MaxDurability);
-            Assert(c.DaysConstructLeft == 0);
-            Assert(c.AddConstructionPointByDay == 0);
-            Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild) || (c.State == StateConstruction.PauseBuild)
-                || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
+            if (cmc is CellMenuConstructionLevelUp)
+            {
+                Assert(c.MaxDurability > 0);
+                Assert(c.CurrentDurability < c.MaxDurability);
+                Assert(c.DaysConstructLeft == 0);
+                Assert(c.AddConstructionPointByDay == 0);
+                Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild) || (c.State == StateConstruction.PauseBuild)
+                    || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
 
-            if (c.State == StateConstruction.NeedRepair)
-            {
-                Assert(c.DayLevelConstructed[c.Level] != -1);
+                if (c.State == StateConstruction.NeedRepair)
+                {
+                    Assert(c.DayLevelConstructed[c.Level] != -1);
+                }
+                else
+                {
+                    Assert(c.DayLevelConstructed[c.Level + 1] == -1);
+                }
+                //Assert(!c.InConstructOrRepair);
+                //Assert(c.SpendResourcesForConstruct is null);
+
+                if (c.State == StateConstruction.NeedRepair)
+                    c.InRepair = true;
+                else
+                    c.InConstructing = true;
             }
-            else
-            {
-                Assert(c.DayLevelConstructed[c.Level + 1] == -1);
-            }
-            //Assert(!c.InConstructOrRepair);
-            //Assert(c.SpendResourcesForConstruct is null);
 
             queueBuilding.Add(cmc);
-            if (c.State == StateConstruction.NeedRepair)
-                c.InRepair = true;
-            else
-                c.InConstructing = true;
-
             RebuildQueueBuilding();
         }
 
         internal void RemoveFromQueueBuilding(CellMenuConstruction cmc, bool constructed)
         {
             Construction c = cmc.Construction;
-            Assert(c.InConstructing || c.InRepair);
-            Assert(c.MaxDurability > 0);
-            Assert(c.DaysConstructLeft > 0);
+
+            if (cmc is CellMenuConstructionLevelUp)
+            {
+                Assert(c.InConstructing || c.InRepair);
+                Assert(c.MaxDurability > 0);
+                Assert(c.DaysConstructLeft > 0);
+
+                if (!constructed)
+                {
+                    // Если сооружение еще не начинали строить, только возвращаем ресурсы
+                    if (c.State == StateConstruction.PreparedBuild)
+                    {
+                        // Освобождаем потраченные ресурсы
+                        if (c.SpendResourcesForConstruct != null)
+                            ReturnResource(c.SpendResourcesForConstruct);
+                        c.SpendResourcesForConstruct = null;
+                        c.InConstructing = false;
+                    }
+                    else if (c.State == StateConstruction.Repair)
+                    {
+                        // Освобождаем потраченные ресурсы
+                        Assert(c.SpendResourcesForConstruct != null);
+                        ReturnResource(c.SpendResourcesForConstruct);
+                        c.SpendResourcesForConstruct = null;
+                        c.InRepair = false;
+                    }
+                }
+            }
 
             if (!queueBuilding.Remove(cmc))
                 DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
-
-            if (!constructed)
-            {
-                // Если сооружение еще не начинали строить, только возвращаем ресурсы
-                if (c.State == StateConstruction.PreparedBuild)
-                {
-                    // Освобождаем потраченные ресурсы
-                    if (c.SpendResourcesForConstruct != null)
-                        ReturnResource(c.SpendResourcesForConstruct);
-                    c.SpendResourcesForConstruct = null;
-                    c.InConstructing = false;
-                }
-                else if (c.State == StateConstruction.Repair)
-                {
-                    // Освобождаем потраченные ресурсы
-                    Assert(c.SpendResourcesForConstruct != null);
-                    ReturnResource(c.SpendResourcesForConstruct);
-                    c.SpendResourcesForConstruct = null;
-                    c.InRepair = false;
-                }
-            }
 
             c.DaysConstructLeft = 0;
             c.AddConstructionPointByDay = 0;
@@ -1659,63 +1666,67 @@ namespace Fantasy_Kingdoms_Battle
                 Construction c = cmc.Construction;
                 c.AssertNotDestroyed();
 
-                if (restCP > 0)
+                if (cmc is CellMenuConstructionLevelUp)
                 {
-                    // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
-                    if (c.InConstructing)
+
+                    if (restCP > 0)
                     {
-                        if (c.SpendResourcesForConstruct is null)
+                        // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
+                        if (c.InConstructing)
                         {
-                            if (CheckRequiredResources(c.CostBuyOrUpgrade()))
+                            if (c.SpendResourcesForConstruct is null)
                             {
-                                c.SpendResourcesForConstruct = c.CostBuyOrUpgrade();
-                                SpendResource(c.SpendResourcesForConstruct);
+                                if (CheckRequiredResources(c.CostBuyOrUpgrade()))
+                                {
+                                    c.SpendResourcesForConstruct = c.CostBuyOrUpgrade();
+                                    SpendResource(c.SpendResourcesForConstruct);
+                                }
                             }
+
+                            expenseCP = Math.Min(restCP, c.MaxDurability - c.CurrentDurability);
+                            Debug.Assert(expenseCP > 0);
+                        }
+                        else
+                        {
+                            Assert(c.InRepair);
+
+                            // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
+                            // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
+                            // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
+                            if (c.SpendResourcesForConstruct != null)
+                                ReturnResource(c.SpendResourcesForConstruct);
+
+                            // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
+                            expenseCP = Math.Min(Gold, Math.Min(restCP, c.MaxDurability - c.CurrentDurability));
+                            c.SpendResourcesForConstruct = c.CompCostRepair(expenseCP);
+                            SpendResource(c.SpendResourcesForConstruct);
                         }
 
-                        expenseCP = Math.Min(restCP, c.MaxDurability - c.CurrentDurability);
-                        Debug.Assert(expenseCP > 0);
+                        // Если ресурсы были потрачены, то тратим очки строительства
+                        if (c.SpendResourcesForConstruct != null)
+                        {
+                            usedCP += c.MaxDurability - c.CurrentDurability;
+
+                            c.AddConstructionPointByDay = expenseCP;
+
+                            restCP -= expenseCP;
+
+                            // Вычисляем, сколько еще дней будет строиться сооружение
+                            c.DaysConstructLeft = usedCP / ConstructionPoints + (usedCP % ConstructionPoints == 0 ? 0 : 1);
+                        }
                     }
                     else
                     {
-                        Assert(c.InRepair);
-
-                        // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
-                        // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
-                        // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
+                        // Очки строительства закончились
+                        // Если были потрачены ресурсы, возвращаем их
                         if (c.SpendResourcesForConstruct != null)
                             ReturnResource(c.SpendResourcesForConstruct);
 
-                        // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
-                        expenseCP = Math.Min(Gold, Math.Min(restCP, c.MaxDurability - c.CurrentDurability));
-                        c.SpendResourcesForConstruct = c.CompCostRepair(expenseCP);
-                        SpendResource(c.SpendResourcesForConstruct);
-                    }
-
-                    // Если ресурсы были потрачены, то тратим очки строительства
-                    if (c.SpendResourcesForConstruct != null)
-                    {
                         usedCP += c.MaxDurability - c.CurrentDurability;
 
-                        c.AddConstructionPointByDay = expenseCP;
-
-                        restCP -= expenseCP;
-
-                        // Вычисляем, сколько еще дней будет строиться сооружение
+                        c.AddConstructionPointByDay = 0;
                         c.DaysConstructLeft = usedCP / ConstructionPoints + (usedCP % ConstructionPoints == 0 ? 0 : 1);
                     }
-                }
-                else
-                {
-                    // Очки строительства закончились
-                    // Если были потрачены ресурсы, возвращаем их
-                    if (c.SpendResourcesForConstruct != null)
-                        ReturnResource(c.SpendResourcesForConstruct);
-
-                    usedCP += c.MaxDurability - c.CurrentDurability;
-
-                    c.AddConstructionPointByDay = 0;
-                    c.DaysConstructLeft = usedCP / ConstructionPoints + (usedCP % ConstructionPoints == 0 ? 0 : 1);
                 }
             }
 
