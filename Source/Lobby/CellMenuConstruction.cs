@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Construction Construction { get; }
         internal DescriptorComponentCreating Creating { get; }
-        internal ComponentExecutingAction ExecutingAction { get; }
+        internal ComponentExecutingAction ExecutingAction { get; private protected set; }
 
         internal override string GetText() => GetCost() != null ? GetCost().Gold.ToString() : "";
 
@@ -190,6 +190,25 @@ namespace Fantasy_Kingdoms_Battle
                     ExecutingAction.RestDaysExecuting = 0;
             }
         }
+
+        internal virtual void DoProgressExecutingAction()
+        {
+            if (ExecutingAction.CurrentPoints > 0)
+                ExecutingAction.AppliedPoints += ExecutingAction.CurrentPoints;
+
+            // Если прогресс завершен, выполняем действие
+            Assert(ExecutingAction.NeedPoints >= 0);
+            if (ExecutingAction.NeedPoints == 0)
+            {
+                Execute();
+            }
+        }
+
+        internal override void PrepareNewDay()
+        {
+            base.PrepareNewDay();
+
+        }
     }
 
     internal sealed class ComponentExecutingAction
@@ -208,6 +227,14 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 DoException("Нет очков для действия");
+        }
+
+        public ComponentExecutingAction(int constructionPoints)
+        {
+            Assert(constructionPoints > 0);
+
+            Points = constructionPoints;
+            IsConstructionPoints = true;
         }
 
         internal bool IsConstructionPoints { get; }// Используются очки строительства иначе очки действий
@@ -487,6 +514,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
+            Construction.Player.RemoveFromQueueBuilding(this, true);
             Construction.Build(true);
         }
 
@@ -512,12 +540,24 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction.PrepareHintForBuildOrUpgrade(panelHint, Descriptor.Number);
         }
+
+        internal override void DoProgressExecutingAction()
+        {
+            base.DoProgressExecutingAction();
+
+            if (Descriptor.Number == 1)
+            {
+                Construction.CurrentDurability += ExecutingAction.CurrentPoints;
+
+            }
+        }
     }
 
     internal sealed class CellMenuConstructionRepair : CellMenuConstruction
     {
         public CellMenuConstructionRepair(Construction c, DescriptorCellMenu d) : base(c, d)
         {
+            ExecutingAction = new ComponentExecutingAction(c.MaxDurability - c.CurrentDurability);
         }
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта
@@ -537,6 +577,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
+            Construction.Player.RemoveFromQueueBuilding(this, true);
+            Construction.InRepair = false;
+            Construction.Player.AddNoticeForPlayer(Construction, TypeNoticeForPlayer.ConstructionRepaired);
+            Construction.UpdateState();
         }
 
         protected override bool ConstructionMustMeConstructed() => true;

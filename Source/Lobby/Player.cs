@@ -273,6 +273,14 @@ namespace Fantasy_Kingdoms_Battle
                 l.PrepareNewDay();
 
             //
+            // Двигаем прогресс в очереди действий
+            // Делаем это из игрока, так как нам нужна строгая последовательность действий (одно может зависеть от другого)
+            foreach (CellMenuConstruction cm in queueExecuting)
+            {
+                cm.Construction.AssertNotDestroyed();
+                cm.DoProgressExecutingAction();
+            }
+
             List<Construction> lc = new List<Construction>();
             lc.AddRange(Constructions);
             foreach (Construction pc in lc)// Коллекция меняется при замене объекта
@@ -1584,6 +1592,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(queueExecuting.IndexOf(cmc) == -1);
             Construction c = cmc.Construction;
+            Assert(cmc.ExecutingAction.CurrentPoints == 0);
 
             // Это подробности реализации. Перенести это в CellMenuConstructionLevelUp
             if (cmc is CellMenuConstructionLevelUp)
@@ -1591,7 +1600,6 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(c.MaxDurability > 0);
                 Assert(c.CurrentDurability < c.MaxDurability);
                 Assert(c.DaysConstructLeft == 0);
-                Assert(c.AddConstructionPointByDay == 0);
                 Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild) || (c.State == StateConstruction.PauseBuild)
                     || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
 

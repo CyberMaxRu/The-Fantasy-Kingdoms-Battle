@@ -108,7 +108,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<CellMenuConstruction> QueueExecuting { get; } = new List<CellMenuConstruction>();// Очередь действий
 
         // Постройка/ремонт
-        internal int AddConstructionPointByDay { get; set; }// Сколько очков строительства будет добавлено в текущем дне
         internal int DaysConstructLeft { get; set; }// Сколько еще дней будет строиться сооружение
         internal int[] DayLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
         internal bool InConstructing { get; set; }// Сооружение строится
@@ -119,7 +118,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int RestResearchPoints { get; private set; }// Осталось очков исследования
 
         // Прочность
-        internal int CurrentDurability { get; private set; }// Текущая прочность сооружения
+        internal int CurrentDurability { get; set; }// Текущая прочность сооружения
         internal int MaxDurability { get; private set; }// Максимальная прочность сооружения
 
         //
@@ -765,7 +764,6 @@ namespace Fantasy_Kingdoms_Battle
                         RemoveProduct(CurrentTournament.Descriptor);
                 }
 
-
                 foreach (CellMenuConstruction cm in Actions)
                 {
                     cm.PrepareNewDay();
@@ -800,30 +798,6 @@ namespace Fantasy_Kingdoms_Battle
 
                     RemoveCellMenuFromQueue(cm, true, false);
                 }*/
-            }
-
-            if ((InConstructing || InRepair) && (AddConstructionPointByDay > 0))
-            {
-                CurrentDurability += AddConstructionPointByDay;
-                Assert(CurrentDurability <= MaxDurability);
-
-                if (CurrentDurability == MaxDurability)
-                {
-                    if (InConstructing)
-                    {
-                        Player.RemoveFromQueueBuilding(CellMenuBuildOrLevelUp, true);
-                        Build(true);
-                    }
-                    else
-                    {
-                        Player.RemoveFromQueueBuilding(CellMenuRepair, true);
-                        InRepair = false;
-                        Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionRepaired);
-                        UpdateState();
-                    }
-                }
-                else
-                    UpdateState();
             }
 
             // Пересчитываем стоимости и время выполнения в начале хода, так как эти параметры могли измениться от дефолтных
@@ -1724,7 +1698,7 @@ namespace Fantasy_Kingdoms_Battle
             UpdateState();
         }
 
-        private void UpdateState()
+        internal void UpdateState()
         {
             if (Destroyed)
                 State = StateConstruction.Destroyed;
@@ -1740,7 +1714,7 @@ namespace Fantasy_Kingdoms_Battle
                         State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
                     else
                     {
-                        if (AddConstructionPointByDay > 0)
+                        if (CellMenuBuildNewConstruction.ExecutingAction.CurrentPoints > 0)
                             State = StateConstruction.Build;// Стройка идет
                         else
                             State = StateConstruction.InQueueBuild;// В очереди на строительство
@@ -1885,7 +1859,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         usedCP += MaxDurability - CurrentDurability;
 
-                        AddConstructionPointByDay = expenseCP;
+                        cmc.ExecutingAction.CurrentPoints = expenseCP;
 
                         restCP -= expenseCP;
 
@@ -1902,7 +1876,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     usedCP += MaxDurability - CurrentDurability;
 
-                    AddConstructionPointByDay = 0;
+                    cmc.ExecutingAction.CurrentPoints = 0;
                     DaysConstructLeft = usedCP / Player.ConstructionPoints + (usedCP % Player.ConstructionPoints == 0 ? 0 : 1);
                 }
             }
@@ -1953,6 +1927,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(cmc.ExecutingAction.AppliedPoints == 0);
                 Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
+                if (cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
+                    Player.RestConstructionPoints += cmc.ExecutingAction.CurrentPoints;
             }
 
             if (removeFromList)
@@ -1967,7 +1943,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             DaysConstructLeft = 0;
-            AddConstructionPointByDay = 0;
+            cmc.ExecutingAction.CurrentPoints = 0;
         }
 
         internal void CalcPurchasesInActions()

@@ -165,7 +165,7 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         pbDurability.Text = $"{Construction.CurrentDurability}" +
-                            $"{(Construction.AddConstructionPointByDay > 0 ? $"+{Construction.AddConstructionPointByDay}" : "")}/{Construction.MaxDurability}";
+                            $"{(Construction.MainCellMenu.ExecutingAction.CurrentPoints > 0 ? $"+{Construction.MainCellMenu.ExecutingAction.CurrentPoints}" : "")}/{Construction.MaxDurability}";
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
@@ -184,8 +184,7 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.PauseBuild:
                     case StateConstruction.InQueueBuild:
                         pbDurability.Color = Color.PaleTurquoise;
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.MainCellMenu.ExecutingAction.CurrentPoints;
                         break;
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
@@ -197,7 +196,7 @@ namespace Fantasy_Kingdoms_Battle
                         else
                             pbDurability.Color = Color.Red;
 
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.AddConstructionPointByDay;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.MainCellMenu.ExecutingAction.CurrentPoints;
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
