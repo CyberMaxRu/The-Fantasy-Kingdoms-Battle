@@ -100,7 +100,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnQueue_Click(object sender, EventArgs e)
         {
-            if (Construction.ListQueueProcessing.Count > 0)
+            if (Construction.QueueExecuting.Count > 0)
             {
                 Construction.RemoveCellMenuFromQueue(Construction.QueueExecuting[0], true);
             }
@@ -108,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnQueue_ShowHint(object sender, EventArgs e)
         {
-            Construction.ListQueueProcessing[0].PrepareHint(PanelHint);
+            Construction.QueueExecuting[0].PrepareHint(PanelHint);
         }
 
         private void BtnHeroes_Click(object sender, EventArgs e)
@@ -144,13 +144,13 @@ namespace Fantasy_Kingdoms_Battle
             pbDurability.Visible = false;
             btnHeroes.Visible = false;
 
-            if (Construction.ListQueueProcessing.Count > 0)
+            if (Construction.QueueExecuting.Count > 0)
             {
-                CellMenuConstruction cm = Construction.ListQueueProcessing[0];
+                CellMenuConstruction cm = Construction.QueueExecuting[0];
                 btnQueue.Visible = true;
                 btnQueue.ImageIndex = cm.GetImageIndex();
                 btnQueue.LowText = cm.DaysLeft.ToString() + " д.";
-                btnQueue.Level = Construction.ListQueueProcessing.Count == 1 ? "" : Construction.ListQueueProcessing.Count.ToString();
+                btnQueue.Level = Construction.QueueExecuting.Count == 1 ? "" : Construction.QueueExecuting.Count.ToString();
             }
             else
                 btnQueue.Visible = false;
@@ -233,7 +233,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Construction.Descriptor.PlayerCanBuild)
                 {
-                    if (Construction.ListQueueProcessing.Count > 0)
+                    if (Construction.QueueExecuting.Count > 0)
                     {
                         btnBuildOrUpgrade.Visible = false;
                     }

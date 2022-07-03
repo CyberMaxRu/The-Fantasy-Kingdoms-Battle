@@ -105,7 +105,6 @@ namespace Fantasy_Kingdoms_Battle
         internal StateConstruction State { get; private set; }// Состояние сооружения
 
         // Очередь действий
-        internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
         internal List<CellMenuConstruction> QueueExecuting { get; } = new List<CellMenuConstruction>();// Очередь действий
 
         // Постройка/ремонт
@@ -1517,9 +1516,9 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 //SpendForBuild(cell);
-                ListQueueProcessing.Add(cell);
+                QueueExecuting.Add(cell);
                 //Player.AddEntityToQueueBuilding()
-                cell.PosInQueue = ListQueueProcessing.Count;
+                cell.PosInQueue = QueueExecuting.Count;
 
                 if (cell is CellMenuConstructionBuild cm)
                 {
@@ -1534,7 +1533,7 @@ namespace Fantasy_Kingdoms_Battle
                 QueueExecuting.Remove(cell);
 
             return;
-            Debug.Assert(ListQueueProcessing.IndexOf(cell) != -1);
+            Debug.Assert(QueueExecuting.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
             Debug.Assert(cell.PosInQueue > 0);
             Debug.Assert(cell.PurchaseValue != null);
@@ -1545,11 +1544,11 @@ namespace Fantasy_Kingdoms_Battle
             cell.PurchaseValue = null;
 
             if (removeFromList)
-                ListQueueProcessing.Remove(cell);
+                QueueExecuting.Remove(cell);
 
-            for (int i = 0; i < ListQueueProcessing.Count; i++)
+            for (int i = 0; i < QueueExecuting.Count; i++)
             {
-                ListQueueProcessing[i].PosInQueue = i + 1;
+                QueueExecuting[i].PosInQueue = i + 1;
             }
 
             if (CellMenuBuildNewConstruction != null)
