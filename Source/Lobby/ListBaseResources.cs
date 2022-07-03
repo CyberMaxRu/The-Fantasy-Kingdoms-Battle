@@ -14,13 +14,13 @@ namespace Fantasy_Kingdoms_Battle
     {
         public ListBaseResources() : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
+            for (int i = 0; i < FormMain.Descriptors.BaseResources.Count; i++)  
                 Add(0);
         }
 
         public ListBaseResources(XmlNode n) : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
+            for (int i = 0; i < FormMain.Descriptors.BaseResources.Count; i++)
                 Add(0);
 
             if (n != null)
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public ListBaseResources(ListBaseResources qbr) : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
+            for (int i = 0; i < FormMain.Descriptors.BaseResources.Count; i++)
                 Add(0);
 
             for (int i = 0; i < Count; i++)
@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public ListBaseResources(int gold) : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
+            for (int i = 0; i < FormMain.Descriptors.BaseResources.Count; i++)
                 Add(0);
 
             this[0] = gold;
