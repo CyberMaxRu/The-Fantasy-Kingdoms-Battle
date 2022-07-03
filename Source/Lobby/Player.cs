@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс игрока лобби
     internal abstract class Player : BattleParticipant
     {
-        private Construction Castle;
+        private readonly Construction Castle;
 
         private bool startBonusApplied = false;
 
@@ -35,8 +35,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        private List<CellMenuConstruction> queueExecuting = new List<CellMenuConstruction>();// Очередь выполнения действий
-        private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
+        private readonly List<CellMenuConstruction> queueExecuting = new List<CellMenuConstruction>();// Очередь выполнения действий
+        private readonly List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby, null)
         {
