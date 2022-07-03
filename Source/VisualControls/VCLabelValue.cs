@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCLabelValue : VCLabel
     {
         public VCLabelValue(VisualControl parent, int shiftX, int shiftY, Color foreColor, bool showBackground)
-            : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, foreColor, showBackground ? 24 : 16, "", Program.formMain.ilGui16)
+            : base(parent, shiftX, shiftY, Program.formMain.fontParagraph, foreColor, showBackground ? 24 : 16, "", Program.formMain.ilGui16)
         {
             StringFormat.Alignment = StringAlignment.Near;
             ShowBackground = showBackground;
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 ShiftImage = new Point(4, 4);
-                TopMargin = 2;
+                TopMargin = 0;
                 LeftMargin = 0;
                 RightMargin = 4;
             }
