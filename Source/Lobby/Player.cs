@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        private List<CellMenuConstruction> queueBuilding = new List<CellMenuConstruction>();// Очередь строительства/исследования
+        private List<CellMenuConstruction> queueExecuting = new List<CellMenuConstruction>();// Очередь выполнения действий
         private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby, null)
@@ -1582,7 +1582,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddToQueueBuilding(CellMenuConstruction cmc)
         {
-            Assert(queueBuilding.IndexOf(cmc) == -1);
+            Assert(queueExecuting.IndexOf(cmc) == -1);
             Construction c = cmc.Construction;
             if (cmc is CellMenuConstructionLevelUp)
             {
@@ -1610,7 +1610,7 @@ namespace Fantasy_Kingdoms_Battle
                     c.InConstructing = true;
             }
 
-            queueBuilding.Add(cmc);
+            queueExecuting.Add(cmc);
             RebuildQueueBuilding();
         }
 
@@ -1646,7 +1646,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (!queueBuilding.Remove(cmc))
+            if (!queueExecuting.Remove(cmc))
                 DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
 
             c.DaysConstructLeft = 0;
@@ -1661,7 +1661,7 @@ namespace Fantasy_Kingdoms_Battle
             int expenseCP;
             int usedCP = 0;
 
-            foreach (CellMenuConstruction cmc in queueBuilding)
+            foreach (CellMenuConstruction cmc in queueExecuting)
             {
                 Construction c = cmc.Construction;
                 c.AssertNotDestroyed();
