@@ -30,6 +30,8 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorComponentCreating Creating { get; }
         internal ComponentExecutingAction ExecutingAction { get; }
 
+        internal override string GetText() => GetCost() != null ? GetCost().Gold.ToString() : "";
+
         internal override bool CheckRequirements()
         {
             // Сначала проверяем, построено ли здание
@@ -141,7 +143,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    if (DaysProcessed == 0)
+                    //if (DaysProcessed == 0)
                     {
                         Program.formMain.PlayPushButton();
                         Construction.Player.RemoveFromQueueBuilding(this, false);

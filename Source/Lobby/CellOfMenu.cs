@@ -29,23 +29,22 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCellMenu Descriptor { get; }
         internal BigEntity BigEntity { get; }
 
-        internal int DaysProcessed { get; set; }// Количество дней, прошедшее с начала обработки действия ячейки
         internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
 
-        internal virtual string GetText() => DaysLeft == 0 ? GetCost().Gold.ToString() : DaysLeft.ToString() + " д.";
+        internal virtual string GetText() => "";
         internal virtual ListBaseResources GetCost() => null;
         internal abstract int GetImageIndex();
-        internal virtual bool GetImageIsEnabled() => (DaysLeft > 0) || (CheckRequirements() && (DaysProcessed == 0));
+        internal virtual bool GetImageIsEnabled() => true;// (DaysLeft > 0) || (CheckRequirements() && (DaysProcessed == 0));
         internal virtual string GetLevel() => "";
         internal virtual int GetQuantity() => 0;
         internal virtual string GetDaysExecuting() => "";
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
-        internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();
+        internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();// Переделать на null
         internal virtual void PrepareHint(PanelHint panelHint) { }
+        internal virtual void PrepareNewDay() { }
         internal abstract void Click();
         internal abstract void Execute();
         internal abstract bool InstantExecute();
-        internal virtual void PrepareNewDay() { }
     }
 }

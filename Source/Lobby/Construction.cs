@@ -785,9 +785,10 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (QueueExecuting.Count > 0)
+            foreach (CellMenuConstruction cmc in Researches)
             {
-                CellMenuConstruction cm = QueueExecuting[0];
+                cmc.PrepareNewDay();
+/*                CellMenuConstruction cm = QueueExecuting[0];
                 Debug.Assert(cm.DaysLeft > 0);
 
                 cm.DaysProcessed++;
@@ -798,7 +799,7 @@ namespace Fantasy_Kingdoms_Battle
                     cm.Execute();
 
                     RemoveCellMenuFromQueue(cm, true, false);
-                }
+                }*/
             }
 
             if ((InConstructing || InRepair) && (AddConstructionPointByDay > 0))
@@ -1537,7 +1538,7 @@ namespace Fantasy_Kingdoms_Battle
 
             return;
             Debug.Assert(QueueExecuting.IndexOf(cell) != -1);
-            Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
+            //Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
             Debug.Assert(cell.ExecutingAction.InQueue);
             Debug.Assert(cell.ExecutingAction.PurchaseValue != null);
 
@@ -1909,7 +1910,10 @@ namespace Fantasy_Kingdoms_Battle
 
             Player.RestConstructionPoints = restCP;
 
+            cmc.ExecutingAction.InQueue = true;
             QueueExecuting.Add(cmc);
+            //if (!Researches.Remove(cmc))
+            //    EntityDoException($"Не удалось удалить {cmc} из списка действий.");
         }
 
         internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
@@ -1917,8 +1921,6 @@ namespace Fantasy_Kingdoms_Battle
             Assert(cmc.Construction == this);
             Assert(cmc.ExecutingAction.InQueue);
             Assert(QueueExecuting.IndexOf(cmc) != -1);
-
-                QueueExecuting.Remove(cmc);
 
             if (cmc is CellMenuConstructionLevelUp)
             {
