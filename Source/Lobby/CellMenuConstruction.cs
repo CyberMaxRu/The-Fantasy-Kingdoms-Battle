@@ -162,6 +162,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void RemoveFromQueue(bool forCancel)
         {
             Construction.RemoveCellMenuFromQueue(this, true, forCancel);
+            Construction.Player.RebuildQueueBuilding();
         }
 
         internal void UpdatePurchase()
