@@ -144,6 +144,9 @@ namespace Fantasy_Kingdoms_Battle
             pbDurability.Visible = false;
             btnHeroes.Visible = false;
 
+            btnQueue1.Visible = Construction.QueueExecuting.Count >= 1;
+            btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
+
             if (Construction.QueueExecuting.Count > 0)
             {
                 CellMenuConstruction cm = Construction.QueueExecuting[0];
