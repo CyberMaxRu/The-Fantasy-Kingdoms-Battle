@@ -183,7 +183,7 @@ namespace Fantasy_Kingdoms_Battle
             // Сооружение не построено, ищем действие для постройки
             List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
 
-            foreach (CellMenuConstruction cm in Researches)
+            foreach (CellMenuConstruction cm in Actions)
             {
                 if (cm is CellMenuConstructionLevelUp cml)
                 {
@@ -199,7 +199,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Удаляем все ячейки, если они относятся к уже построенным уровням
             foreach (CellMenuConstruction cmd in listForDelete)
-                Researches.Remove(cmd);
+                Actions.Remove(cmd);
 
             if (CellMenuRepair != null)
                 MainCellMenu = CellMenuRepair;
@@ -310,7 +310,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 // Убираем операцию постройки из меню
                 CellMenuConstruction cmBuild = null;
-                foreach (CellMenuConstruction cm in Researches)
+                foreach (CellMenuConstruction cm in Actions)
                 {
                     if (cm is CellMenuConstructionLevelUp cml)
                         if (cml.Descriptor.Number == Level)
@@ -322,7 +322,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (cmBuild != null)
                 {
-                    Researches.Remove(cmBuild);
+                    Actions.Remove(cmBuild);
                     Lobby.Layer.UpdateMenu();
                 }
             }
@@ -458,7 +458,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ValidateResearches()
         {
-            Debug.Assert(Researches != null);
+            Debug.Assert(Actions != null);
 
             /*List<ConstructionCellMenu> forRemove = new List<ConstructionCellMenu>();
 
@@ -766,7 +766,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
 
-                foreach (CellMenuConstruction cm in Researches)
+                foreach (CellMenuConstruction cm in Actions)
                 {
                     cm.PrepareNewDay();
                 }
@@ -785,7 +785,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            foreach (CellMenuConstruction cmc in Researches)
+            foreach (CellMenuConstruction cmc in Actions)
             {
                 cmc.PrepareNewDay();
 /*                CellMenuConstruction cm = QueueExecuting[0];
@@ -1453,7 +1453,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool GoodsExists(DescriptorItem item)
         {
-            foreach (CellMenuConstruction cm in Researches)
+            foreach (CellMenuConstruction cm in Actions)
             {
                 if (cm is CellMenuConstructionResearch cmr)
                     if (cmr.Entity.ID == item.ID)
@@ -1621,7 +1621,7 @@ namespace Fantasy_Kingdoms_Battle
         private void TuneConstructionByCreate()
         {
             foreach (DescriptorCellMenu d in Descriptor.CellsMenu)
-                Researches.Add(CellMenuConstruction.Create(this, d));
+                Actions.Add(CellMenuConstruction.Create(this, d));
 
             if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
                 CreateMonsters();
@@ -1651,7 +1651,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (CurrentDurability == MaxDurability)
                 {
-                    if (!Researches.Remove(CellMenuRepair))
+                    if (!Actions.Remove(CellMenuRepair))
                         EntityDoException("Не смог убрать кнопку окончания ремонта");
 
                     CellMenuRepair = null;
@@ -1660,7 +1660,7 @@ namespace Fantasy_Kingdoms_Battle
                     CellMenuRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
             }
 
-            foreach (CellMenuConstruction cm in Researches)
+            foreach (CellMenuConstruction cm in Actions)
             {
                 if (cm is CellMenuConstructionLevelUp cml)
                 {
@@ -1780,7 +1780,7 @@ namespace Fantasy_Kingdoms_Battle
                     CellMenuRepair = new CellMenuConstructionRepair(this, new DescriptorCellMenu(new Point(0, 0)));
                     //CellMenuRepair.PurchaseValue = new ListBaseResources(MaxDurability - CurrentDurability);
 
-                    Researches.Add(CellMenuRepair);
+                    Actions.Add(CellMenuRepair);
                 }
 
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionDamaged, damage);
@@ -1913,7 +1913,7 @@ namespace Fantasy_Kingdoms_Battle
             cmc.ExecutingAction.InQueue = true;
             QueueExecuting.Add(cmc);
 
-            if (!Researches.Remove(cmc))
+            if (!Actions.Remove(cmc))
                 EntityDoException($"Не удалось удалить {cmc} из списка действий.");
             Program.formMain.layerGame.UpdateMenu();
         }
@@ -1962,13 +1962,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CalcPurchasesInActions()
         {
-            foreach (CellMenuConstruction cmc in Researches)
+            foreach (CellMenuConstruction cmc in Actions)
                 cmc.UpdatePurchase();
         }
 
         internal void CalcDaysExecutingInActions()
         {
-            foreach (CellMenuConstruction cmc in Researches)
+            foreach (CellMenuConstruction cmc in Actions)
                 cmc.UpdateDaysExecuted();
         }
     }

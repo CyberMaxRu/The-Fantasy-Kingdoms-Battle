@@ -80,8 +80,8 @@ namespace Fantasy_Kingdoms_Battle
 
         protected void RemoveSelf()
         {
-            Debug.Assert(Construction.Researches.IndexOf(this) != -1);
-            Construction.Researches.Remove(this);
+            Debug.Assert(Construction.Actions.IndexOf(this) != -1);
+            Construction.Actions.Remove(this);
             Construction.Player.Lobby.Layer.UpdateMenu();
         }
 
@@ -674,7 +674,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Debug.Assert(Construction.Researches.IndexOf(this) != -1);
+            Debug.Assert(Construction.Actions.IndexOf(this) != -1);
             Debug.Assert(cp is null);
 
             cp = new ConstructionEvent(Construction, ConstructionEvent);
@@ -860,7 +860,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Debug.Assert(Construction.Researches.IndexOf(this) != -1);
+            Debug.Assert(Construction.Actions.IndexOf(this) != -1);
             Debug.Assert(ct is null);
 
             ct = new ConstructionTournament(Construction, ConstructionTournament);
