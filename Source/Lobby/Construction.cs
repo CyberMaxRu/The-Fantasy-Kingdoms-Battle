@@ -30,7 +30,6 @@ namespace Fantasy_Kingdoms_Battle
             ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
 
             TuneByCreate();
-            PrepareBuilding();
 
             if (dc.DefaultLevel == 1)
                 Build(false);
@@ -1705,7 +1704,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(!InRepair);
 
-                if (DaysConstructLeft > 0)
+                if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
                 {
                     if (CurrentDurability == 0)
                         State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
@@ -1718,12 +1717,10 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
                 else
-                    State = StateConstruction.PauseBuild;// Стройка приостановлена
+                    State = StateConstruction.NotBuild;// Сооружение не построено
             }
             else if (InRepair)
                 State = StateConstruction.Repair;// Идет ремонт
-            else if (Level == 0)
-                State = StateConstruction.NotBuild;// Сооружение не построено
             else if (CurrentDurability == MaxDurability)
                 State = StateConstruction.Work;// Прочность равна дефолтной, сооружение работает
             else if (CurrentDurability < MaxDurability)
