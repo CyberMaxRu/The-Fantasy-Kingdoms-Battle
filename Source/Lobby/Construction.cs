@@ -1939,20 +1939,20 @@ namespace Fantasy_Kingdoms_Battle
                     // Если сооружение еще не начинали строить, только возвращаем ресурсы
                     if (State == StateConstruction.PreparedBuild)
                     {
-                        // Освобождаем потраченные ресурсы
-                        if (cmc.ExecutingAction.AppliedPoints == 0)
-                            Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
-                        cmc.ExecutingAction.PurchaseValue = null;
                         InConstructing = false;
                     }
                     else if (State == StateConstruction.Repair)
                     {
-                        // Освобождаем потраченные ресурсы
-                        if (cmc.ExecutingAction.AppliedPoints == 0)
-                            Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
                         InRepair = false;
                     }
                 }
+            }
+
+            // Освобождаем потраченные ресурсы, если выполнение действия не началось
+            if (forCancel)
+            {
+                Assert(cmc.ExecutingAction.AppliedPoints == 0);
+                Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
             }
 
             if (removeFromList)
