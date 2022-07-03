@@ -808,11 +808,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (CurrentDurability == MaxDurability)
                 {
-                    Player.RemoveFromQueueBuilding(this, true);
                     if (InConstructing)
+                    {
+                        Player.RemoveFromQueueBuilding(CellMenuBuildOrLevelUp, true);
                         Build(true);
+                    }
                     else
                     {
+                        Player.RemoveFromQueueBuilding(CellMenuRepair, true);
                         InRepair = false;
                         Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionRepaired);
                         UpdateState();
@@ -1672,19 +1675,19 @@ namespace Fantasy_Kingdoms_Battle
                 PrepareBuilding();
             }
 
-            Player.AddToQueueBuilding(this);
+            Player.AddToQueueBuilding(CellMenuBuildOrLevelUp);
             UpdateState();
         }
 
         internal void StartRepair()
         {
-            Player.AddToQueueBuilding(this);
+            Player.AddToQueueBuilding(CellMenuRepair);
             UpdateState();
         }
 
         internal void CancelRepair()
         {
-            Player.RemoveFromQueueBuilding(this, false);
+            Player.RemoveFromQueueBuilding(CellMenuRepair, false);
             Player.RebuildQueueBuilding();
             UpdateState();
         }
@@ -1694,7 +1697,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Level > 0)
                 MaxDurability = Descriptor.Levels[Level].Durability;
 
-            Player.RemoveFromQueueBuilding(this, false);
+            Player.RemoveFromQueueBuilding(CellMenuBuildOrLevelUp, false);
             Player.RebuildQueueBuilding();
             UpdateState();
         }

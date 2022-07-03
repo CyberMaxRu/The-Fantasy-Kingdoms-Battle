@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        private List<Construction> queueBuilding = new List<Construction>();// Очередь строительства
+        private List<CellMenuConstruction> queueBuilding = new List<CellMenuConstruction>();// Очередь строительства/исследования
         private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby, null)
@@ -1580,9 +1580,10 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddToQueueBuilding(Construction c)
+        internal void AddToQueueBuilding(CellMenuConstruction cmc)
         {
-            Assert(queueBuilding.IndexOf(c) == -1);
+            Assert(queueBuilding.IndexOf(cmc) == -1);
+            Construction c = cmc.Construction;
             Assert(c.MaxDurability > 0);
             Assert(c.CurrentDurability < c.MaxDurability);
             Assert(c.DaysConstructLeft == 0);
@@ -1601,7 +1602,7 @@ namespace Fantasy_Kingdoms_Battle
             //Assert(!c.InConstructOrRepair);
             //Assert(c.SpendResourcesForConstruct is null);
 
-            queueBuilding.Add(c);
+            queueBuilding.Add(cmc);
             if (c.State == StateConstruction.NeedRepair)
                 c.InRepair = true;
             else
@@ -1610,13 +1611,14 @@ namespace Fantasy_Kingdoms_Battle
             RebuildQueueBuilding();
         }
 
-        internal void RemoveFromQueueBuilding(Construction c, bool constructed)
+        internal void RemoveFromQueueBuilding(CellMenuConstruction cmc, bool constructed)
         {
+            Construction c = cmc.Construction;
             Assert(c.InConstructing || c.InRepair);
             Assert(c.MaxDurability > 0);
             Assert(c.DaysConstructLeft > 0);
 
-            if (!queueBuilding.Remove(c))
+            if (!queueBuilding.Remove(cmc))
                 DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
 
             if (!constructed)
@@ -1652,8 +1654,9 @@ namespace Fantasy_Kingdoms_Battle
             int expenseCP;
             int usedCP = 0;
 
-            foreach (Construction c in queueBuilding)
+            foreach (CellMenuConstruction cmc in queueBuilding)
             {
+                Construction c = cmc.Construction;
                 c.AssertNotDestroyed();
 
                 if (restCP > 0)
