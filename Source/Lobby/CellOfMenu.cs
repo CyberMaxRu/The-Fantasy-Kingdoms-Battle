@@ -30,6 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         internal BigEntity BigEntity { get; }
 
         internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
+        internal ListBaseResources PurchaseValue { get; private protected set; }// Стоимость покупки
 
         internal virtual string GetText() => "";
         internal virtual ListBaseResources GetCost() => null;
@@ -46,5 +47,7 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract void Click();
         internal abstract void Execute();
         internal abstract bool InstantExecute();
+
+        internal virtual void UpdatePurchase() { }// Обновление стоимости покупки
     }
 }

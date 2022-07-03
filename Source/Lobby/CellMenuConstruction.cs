@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
                         return false;
 
             // Потом проверяем наличие требуемых ресурсов
-            if (!Construction.Player.CheckRequiredResources(GetCost()))
+            if (!Construction.Player.CheckRequiredResources(PurchaseValue))
                 return false;
 
             if (Descriptor.CreatedEntity != null)
@@ -165,12 +165,6 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Player.RebuildQueueBuilding();
         }
 
-        internal void UpdatePurchase()
-        {
-            if (ExecutingAction != null)
-                ExecutingAction.PurchaseValue = GetCost();
-        }
-
         internal void UpdateDaysExecuted()
         {
             if (ExecutingAction != null)
@@ -244,8 +238,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int CurrentPoints { get; set; }// Сколько очков будет примено на текущем ходу
         internal int NeedPoints { get => Points - AppliedPoints; }// Сколько очков осталось
         internal int RestDaysExecuting { get; set; }// Сколько дней осталось до конца выполнения действия
-        internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
-
     }
 
 
@@ -269,6 +261,12 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
+        }
+
+
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override ListBaseResources GetCost()
@@ -347,6 +345,11 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
+        }
+
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override ListBaseResources GetCost()
@@ -432,6 +435,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = TypeConstruction.Levels[1].GetCreating().CostResources;
+        }
+
         internal override ListBaseResources GetCost()
         {
             return TypeConstruction.Levels[1].GetCreating().CostResources;
@@ -467,7 +475,13 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override bool GetImageIsEnabled() => ExecutingAction.InQueue && (Construction.Level + 1 == Descriptor.Number) || base.GetImageIsEnabled();
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.GetCreating().CostResources;
+        }
+
         internal override ListBaseResources GetCost() => Descriptor.GetCreating().CostResources;
+
         protected override bool ConstructionMustMeConstructed() => false;
         protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
 
@@ -591,6 +605,12 @@ namespace Fantasy_Kingdoms_Battle
                 return base.GetText();
         }
 
+        internal override void UpdatePurchase()
+        {
+            int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability - Construction.CurrentDurability));
+            PurchaseValue = Construction.CompCostRepair(expenseCP);
+        }
+
         internal override ListBaseResources GetCost()
         {
             // Если цены ремонта нет, значит, оно не в очереди. Пытаемся подсчитать, сколько это будет стоить
@@ -663,6 +683,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool CheckRequirements()
         {
             return base.CheckRequirements() && Construction.AllowHire();
+        }
+
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override ListBaseResources GetCost()
@@ -742,6 +767,11 @@ namespace Fantasy_Kingdoms_Battle
             return (cp is null) && (Cooldown == 0) ? GetCost().Gold.ToString() : cp != null ? "идёт" : Cooldown.ToString() + " дн.";
         }
 
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
+        }
+
         internal override ListBaseResources GetCost()
         {
             return Descriptor.CreatedEntity.GetCreating().CostResources;
@@ -808,6 +838,11 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Extension);
         }
 
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
+        }
+
         internal override ListBaseResources GetCost()
         {
             return Descriptor.CreatedEntity.GetCreating().CostResources;
@@ -855,6 +890,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
 
             Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Improvement);
+        }
+
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override ListBaseResources GetCost()
@@ -924,6 +964,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetText()
         {
             return ct is null ? GetCost().Gold.ToString() : "идёт";
+        }
+
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
         }
 
         internal override ListBaseResources GetCost()
@@ -1003,6 +1048,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = Descriptor.CreatedEntity.GetCreating().CostResources;
+        }
+
         internal override ListBaseResources GetCost()
         {
             return Descriptor.CreatedEntity.GetCreating().CostResources;
@@ -1080,11 +1130,6 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override ListBaseResources GetCost()
-        {
-            return new ListBaseResources();
-        }
-
         internal override void Execute()
         {
             
@@ -1120,6 +1165,11 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
+        }
+
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = new ListBaseResources(Entity.Selling.Gold);
         }
 
         internal override ListBaseResources GetCost()
@@ -1170,6 +1220,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
+        }
+
+        internal override void UpdatePurchase()
+        {
+            PurchaseValue = cost;
         }
 
         internal override ListBaseResources GetCost()

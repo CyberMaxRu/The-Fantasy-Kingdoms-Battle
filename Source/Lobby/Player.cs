@@ -288,6 +288,7 @@ namespace Fantasy_Kingdoms_Battle
                 pc.PrepareNewDay();
             }
 
+            CalcPurchasesInActions();// Расчет стоимостей действий
             RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
             UpdateDaysConstructionForConstructions();
         }
@@ -1719,6 +1720,12 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return text;
+        }
+
+        internal void CalcPurchasesInActions()
+        {
+            foreach (Construction c in Constructions)
+                c.CalcPurchasesInActions();
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;

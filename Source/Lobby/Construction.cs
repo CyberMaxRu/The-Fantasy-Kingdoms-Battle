@@ -1512,12 +1512,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(QueueExecuting.IndexOf(cell) != -1);
             //Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
             Debug.Assert(cell.ExecutingAction.InQueue);
-            Debug.Assert(cell.ExecutingAction.PurchaseValue != null);
+            Debug.Assert(cell.PurchaseValue != null);
 
             cell.ExecutingAction.InQueue = false;
-            Player.ReturnResource(cell.ExecutingAction.PurchaseValue);
+            Player.ReturnResource(cell.PurchaseValue);
             //Player.UnuseFreeBuilders(usedBuilders);
-            cell.ExecutingAction.PurchaseValue = null;
 
             if (removeFromList)
                 QueueExecuting.Remove(cell);
@@ -1828,8 +1827,8 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             if (Player.CheckRequiredResources(CostBuyOrUpgrade()))
                             {
-                                cmc.ExecutingAction.PurchaseValue = CostBuyOrUpgrade();
-                                Player.SpendResource(cmc.ExecutingAction.PurchaseValue);
+                                //cmc.PurchaseValue = CostBuyOrUpgrade();
+                                Player.SpendResource(cmc.PurchaseValue);
                             }
                         }
 
@@ -1844,12 +1843,12 @@ namespace Fantasy_Kingdoms_Battle
                         // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
                         // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
                         if (cmc.ExecutingAction.AppliedPoints == 0)
-                            Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
+                            Player.ReturnResource(cmc.PurchaseValue);
 
                         // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
                         expenseCP = Math.Min(Gold, Math.Min(restCP, MaxDurability - CurrentDurability));
-                        cmc.ExecutingAction.PurchaseValue = CompCostRepair(expenseCP);
-                        Player.SpendResource(cmc.ExecutingAction.PurchaseValue);
+                        cmc.UpdatePurchase();
+                        Player.SpendResource(cmc.PurchaseValue);
                     }
 
                     // Если ресурсы были потрачены, то тратим очки строительства
@@ -1870,7 +1869,7 @@ namespace Fantasy_Kingdoms_Battle
                     // Очки строительства закончились
                     // Если были потрачены ресурсы, возвращаем их
                     if (cmc.ExecutingAction.AppliedPoints == 0)
-                        Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
+                        Player.ReturnResource(cmc.PurchaseValue);
 
                     usedCP += MaxDurability - CurrentDurability;
 
@@ -1924,7 +1923,7 @@ namespace Fantasy_Kingdoms_Battle
             if (forCancel)
             {
                 Assert(cmc.ExecutingAction.AppliedPoints == 0);
-                Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
+                Player.ReturnResource(cmc.PurchaseValue);
                 if (cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
                     Player.RestConstructionPoints += cmc.ExecutingAction.CurrentPoints;
             }
@@ -1947,8 +1946,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CalcPurchasesInActions()
         {
+            AssertNotDestroyed();
+
             foreach (CellMenuConstruction cmc in Actions)
-                cmc.UpdatePurchase();
+                if (cmc.ExecutingAction != null)
+                {
+                    if (cmc.ExecutingAction.AppliedPoints == 0)
+                    {
+                        Assert(!cmc.ExecutingAction.InQueue);
+                        Assert(cmc.ExecutingAction.CurrentPoints == 0);
+                        cmc.UpdatePurchase();
+                    }
+                }
+                else
+                    cmc.UpdatePurchase();
         }
 
         internal void CalcDaysExecutingInActions()
