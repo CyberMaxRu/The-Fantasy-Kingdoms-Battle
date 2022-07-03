@@ -136,7 +136,11 @@ namespace Fantasy_Kingdoms_Battle
                     DaysLeft = 0;
                 }
             }
+        }
 
+        internal void AddToQueue()
+        {
+            Construction.AddCellMenuToQueue(this);
         }
     }
 

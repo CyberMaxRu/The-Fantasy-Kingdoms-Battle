@@ -102,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Construction.ListQueueProcessing.Count > 0)
             {
-                Construction.RemoveEntityFromQueueProcessing(Construction.ListQueueProcessing[0]);
+                Construction.RemoveCellMenuFromQueue(Construction.QueueExecuting[0], true);
             }
         }
 

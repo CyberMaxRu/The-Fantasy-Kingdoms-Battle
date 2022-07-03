@@ -104,6 +104,10 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; private set; }
         internal StateConstruction State { get; private set; }// Состояние сооружения
 
+        // Очередь действий
+        internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
+        internal List<CellMenuConstruction> QueueExecuting { get; } = new List<CellMenuConstruction>();// Очередь действий
+
         // Постройка/ремонт
         internal ListBaseResources SpendResourcesForConstruct { get; set; }// Расход ресурсов на строительство
         internal int AddConstructionPointByDay { get; set; }// Сколько очков строительства будет добавлено в текущем дне
@@ -161,9 +165,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
 
         internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
-
-        internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
-        //internal List<CellMenuConstruction> QueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки действий
 
         // 
         internal ListBaseResources InitialQuantityBaseResources { get; }// Исходные значения базовых ресурсов
@@ -786,9 +787,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (ListQueueProcessing.Count > 0)
+            if (QueueExecuting.Count > 0)
             {
-                CellMenuConstruction cm = ListQueueProcessing[0];
+                CellMenuConstruction cm = QueueExecuting[0];
                 Debug.Assert(cm.DaysLeft > 0);
 
                 cm.DaysProcessed++;
@@ -798,7 +799,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     cm.Execute();
 
-                    RemoveEntityFromQueueProcessing(cm);
+                    RemoveCellMenuFromQueue(cm, true);
                 }
             }
 
@@ -1501,6 +1502,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddEntityToQueueProcessing(CellMenuConstruction cell)
         {
+            QueueExecuting.Add(cell);
+            return;
+
             cell.DaysLeft = cell.InstantExecute() ? 1 : cell.Descriptor.CreatedEntity.GetCreating().DaysProcessing;
             if (cell.DaysLeft > 0)
                 cell.DaysLeft--;
@@ -1524,8 +1528,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void RemoveEntityFromQueueProcessing(CellMenuConstruction cell)
+        internal void RemoveEntityFromQueueProcessing(CellMenuConstruction cell, bool removeFromList)
         {
+            if (removeFromList)
+                QueueExecuting.Remove(cell);
+
+            return;
             Debug.Assert(ListQueueProcessing.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
             Debug.Assert(cell.PosInQueue > 0);
@@ -1535,7 +1543,9 @@ namespace Fantasy_Kingdoms_Battle
             Player.ReturnResource(cell.PurchaseValue);
             //Player.UnuseFreeBuilders(usedBuilders);
             cell.PurchaseValue = null;
-            ListQueueProcessing.Remove(cell);
+
+            if (removeFromList)
+                ListQueueProcessing.Remove(cell);
 
             for (int i = 0; i < ListQueueProcessing.Count; i++)
             {
@@ -1808,6 +1818,104 @@ namespace Fantasy_Kingdoms_Battle
                 default:
                     throw new Exception("Неизвестное состояние");
             }
+        }
+
+        internal void ClearQueueExecuting()
+        {
+            foreach (CellMenuConstruction cmc in QueueExecuting)
+                RemoveCellMenuFromQueue(cmc, false);
+
+            QueueExecuting.Clear();
+
+            // После очистки очереди, количество оставшихся очков исследования должно равняться дефолтному
+            Assert(RestResearchPoints == ResearchPoints);
+        }
+
+        internal void AddCellMenuToQueue(CellMenuConstruction cmc)
+        {
+            AssertNotDestroyed();
+            Assert(cmc.Construction == this);
+            Assert(QueueExecuting.IndexOf(cmc) == -1);
+
+            int restCP = Player.RestConstructionPoints;
+            int expenseCP;
+            int usedCP = 0;
+
+            if (cmc is CellMenuConstructionLevelUp)
+            {
+                if (restCP > 0)
+                {
+                    // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
+                    if (InConstructing)
+                    {
+                        if (SpendResourcesForConstruct is null)
+                        {
+                            if (Player.CheckRequiredResources(CostBuyOrUpgrade()))
+                            {
+                                SpendResourcesForConstruct = CostBuyOrUpgrade();
+                                Player.SpendResource(SpendResourcesForConstruct);
+                            }
+                        }
+
+                        expenseCP = Math.Min(restCP, MaxDurability - CurrentDurability);
+                        Debug.Assert(expenseCP > 0);
+                    }
+                    else
+                    {
+                        Assert(InRepair);
+
+                        // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
+                        // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
+                        // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
+                        if (SpendResourcesForConstruct != null)
+                            Player.ReturnResource(SpendResourcesForConstruct);
+
+                        // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
+                        expenseCP = Math.Min(Gold, Math.Min(restCP, MaxDurability - CurrentDurability));
+                        SpendResourcesForConstruct = CompCostRepair(expenseCP);
+                        Player.SpendResource(SpendResourcesForConstruct);
+                    }
+
+                    // Если ресурсы были потрачены, то тратим очки строительства
+                    if (SpendResourcesForConstruct != null)
+                    {
+                        usedCP += MaxDurability - CurrentDurability;
+
+                        AddConstructionPointByDay = expenseCP;
+
+                        restCP -= expenseCP;
+
+                        // Вычисляем, сколько еще дней будет строиться сооружение
+                        DaysConstructLeft = usedCP / Player.ConstructionPoints + (usedCP % Player.ConstructionPoints == 0 ? 0 : 1);
+                    }
+                }
+                else
+                {
+                    // Очки строительства закончились
+                    // Если были потрачены ресурсы, возвращаем их
+                    if (SpendResourcesForConstruct != null)
+                        Player.ReturnResource(SpendResourcesForConstruct);
+
+                    usedCP += MaxDurability - CurrentDurability;
+
+                    AddConstructionPointByDay = 0;
+                    DaysConstructLeft = usedCP / Player.ConstructionPoints + (usedCP % Player.ConstructionPoints == 0 ? 0 : 1);
+                }
+            }
+
+
+            Player.RestConstructionPoints = restCP;
+
+            QueueExecuting.Add(cmc);
+        }
+
+        internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList)
+        {
+            Assert(cmc.Construction == this);
+            Assert(QueueExecuting.IndexOf(cmc) != -1);
+
+            if (removeFromList)
+                QueueExecuting.Remove(cmc);
         }
     }
 }

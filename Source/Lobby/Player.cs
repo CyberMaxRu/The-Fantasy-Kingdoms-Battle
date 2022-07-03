@@ -645,7 +645,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool SkipBattle { get; set; }// Битва на этому ходу будет пропущена
 
         internal int ConstructionPoints { get; private set; }// Очков строительства на этот ход
-        internal int RestConstructionPoints { get; private set; }// Остаток неизрасходованных очков строительства
+        internal int RestConstructionPoints { get; set; }// Остаток неизрасходованных очков строительства
 
         internal List<DescriptorPersistentBonus>[] VariantPersistentBonus { get; }
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
@@ -1656,81 +1656,15 @@ namespace Fantasy_Kingdoms_Battle
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {
-            // Получаем все очки строительства и начинаем их распределять
-            int restCP = ConstructionPoints;
-            int expenseCP;
-            int usedCP = 0;
+            // Очищаем очереди выполнения во всех сооружениях
+            foreach (Construction c in Constructions)
+                c.ClearQueueExecuting();
 
+            Assert(RestConstructionPoints == ConstructionPoints);
+
+            // Составляем очереди у сооружений
             foreach (CellMenuConstruction cmc in queueExecuting)
-            {
-                Construction c = cmc.Construction;
-                c.AssertNotDestroyed();
-
-                if (cmc is CellMenuConstructionLevelUp)
-                {
-
-                    if (restCP > 0)
-                    {
-                        // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
-                        if (c.InConstructing)
-                        {
-                            if (c.SpendResourcesForConstruct is null)
-                            {
-                                if (CheckRequiredResources(c.CostBuyOrUpgrade()))
-                                {
-                                    c.SpendResourcesForConstruct = c.CostBuyOrUpgrade();
-                                    SpendResource(c.SpendResourcesForConstruct);
-                                }
-                            }
-
-                            expenseCP = Math.Min(restCP, c.MaxDurability - c.CurrentDurability);
-                            Debug.Assert(expenseCP > 0);
-                        }
-                        else
-                        {
-                            Assert(c.InRepair);
-
-                            // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
-                            // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
-                            // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
-                            if (c.SpendResourcesForConstruct != null)
-                                ReturnResource(c.SpendResourcesForConstruct);
-
-                            // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
-                            expenseCP = Math.Min(Gold, Math.Min(restCP, c.MaxDurability - c.CurrentDurability));
-                            c.SpendResourcesForConstruct = c.CompCostRepair(expenseCP);
-                            SpendResource(c.SpendResourcesForConstruct);
-                        }
-
-                        // Если ресурсы были потрачены, то тратим очки строительства
-                        if (c.SpendResourcesForConstruct != null)
-                        {
-                            usedCP += c.MaxDurability - c.CurrentDurability;
-
-                            c.AddConstructionPointByDay = expenseCP;
-
-                            restCP -= expenseCP;
-
-                            // Вычисляем, сколько еще дней будет строиться сооружение
-                            c.DaysConstructLeft = usedCP / ConstructionPoints + (usedCP % ConstructionPoints == 0 ? 0 : 1);
-                        }
-                    }
-                    else
-                    {
-                        // Очки строительства закончились
-                        // Если были потрачены ресурсы, возвращаем их
-                        if (c.SpendResourcesForConstruct != null)
-                            ReturnResource(c.SpendResourcesForConstruct);
-
-                        usedCP += c.MaxDurability - c.CurrentDurability;
-
-                        c.AddConstructionPointByDay = 0;
-                        c.DaysConstructLeft = usedCP / ConstructionPoints + (usedCP % ConstructionPoints == 0 ? 0 : 1);
-                    }
-                }
-            }
-
-            RestConstructionPoints = restCP;
+                cmc.AddToQueue();
         }
 
         internal void AddConstruction(Construction c)
