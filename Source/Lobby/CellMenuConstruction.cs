@@ -30,6 +30,11 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorComponentCreating Creating { get; }
         internal ComponentExecutingAction ExecutingAction { get; private protected set; }
 
+        internal virtual void InQueueChanged()
+        {
+
+        }
+
         internal override string GetText() => (ExecutingAction != null) && ExecutingAction.InQueue ? "" : PurchaseValue != null ? PurchaseValue.Gold.ToString() : "";
 
         internal override bool CheckRequirements()
@@ -157,12 +162,14 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddToQueue()
         {
             Construction.AddCellMenuToQueue(this);
+            InQueueChanged();
         }
 
         internal void RemoveFromQueue(bool forCancel)
         {
             Construction.RemoveCellMenuFromQueue(this, true, forCancel);
             Construction.Player.RebuildQueueBuilding();
+            InQueueChanged();
         }
 
         internal void UpdateDaysExecuted()
@@ -535,6 +542,13 @@ namespace Fantasy_Kingdoms_Battle
                 Construction.CurrentDurability += ExecutingAction.CurrentPoints;
 
             }
+        }
+
+        internal override void InQueueChanged()
+        {
+            base.InQueueChanged();
+
+            Construction.UpdateMaxDurability();
         }
     }
 

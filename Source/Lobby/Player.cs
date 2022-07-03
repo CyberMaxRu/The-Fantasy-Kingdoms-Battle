@@ -1596,10 +1596,19 @@ namespace Fantasy_Kingdoms_Battle
             Assert(cmc.ExecutingAction.CurrentPoints == 0);
 
             // Это подробности реализации. Перенести это в CellMenuConstructionLevelUp
-            if (cmc is CellMenuConstructionLevelUp)
+            if (cmc is CellMenuConstructionLevelUp cml)
             {
-                Assert(c.MaxDurability > 0);
-                Assert(c.CurrentDurability < c.MaxDurability);
+                if (cml.Descriptor.Number > 1)
+                {
+                    Assert(c.MaxDurability > 0);
+                    Assert(c.CurrentDurability < c.MaxDurability);
+                }
+                else
+                {
+                    Assert(c.QueueExecuting.Count == 0);// Постройка - всегда первая
+                    Assert(c.MaxDurability == 0);
+                    Assert(c.CurrentDurability == 0);
+                }
                 Assert(c.DaysConstructLeft == 0);
                 Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)
                     || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));

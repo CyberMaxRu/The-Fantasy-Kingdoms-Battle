@@ -251,11 +251,26 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void InitBuild()
+        internal void UpdateMaxDurability()
         {
-            MaxDurability = Descriptor.Levels[Level].Durability;
-            CurrentDurability = Descriptor.Levels[Level].Durability;
-            //DaysConstructLeft = Lobby.CounterDay;
+            if (Level == 0)
+            {
+                if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
+                {
+                    MaxDurability = Descriptor.Levels[Level].Durability;
+                    CurrentDurability = Descriptor.Levels[Level].Durability;
+                }
+                else
+                {
+                    MaxDurability = 0;
+                    CurrentDurability = 0;
+                }
+            }
+            else
+            {
+                MaxDurability = Descriptor.Levels[Level].Durability;
+                CurrentDurability = Descriptor.Levels[Level].Durability;
+            }
         }
 
         internal void Build(bool needNotice)
@@ -299,7 +314,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //
-            InitBuild();
+            UpdateMaxDurability();
             CreateProducts();
 
             if ((Descriptor.Category != CategoryConstruction.Lair) && (Descriptor.Category != CategoryConstruction.ElementLandscape))
