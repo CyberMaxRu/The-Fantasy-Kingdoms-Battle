@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             Location = null;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
 
-            TuneConstructionByCreate();
+            TuneByCreate();
             PrepareBuilding();
 
             if (dc.DefaultLevel == 1)
@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             ComponentObjectOfMap = new ComponentObjectOfMap(this, ls.Visible);
             IDPathToLocation = ls.PathToLocation;
 
-            TuneConstructionByCreate();
+            TuneByCreate();
 
             if (ls.Resources != null)
                 InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
             InitialQuantityBaseResources = initQ;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
-            TuneConstructionByCreate();
+            TuneByCreate();
 
             if (level == 1)
                 Build(false);
@@ -1592,7 +1592,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Настройка сооружения при создании
-        private void TuneConstructionByCreate()
+        private void TuneByCreate()
         {
             foreach (DescriptorCellMenu d in Descriptor.CellsMenu)
                 Actions.Add(CellMenuConstruction.Create(this, d));
