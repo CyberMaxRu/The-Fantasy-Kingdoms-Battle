@@ -108,7 +108,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<CellMenuConstruction> QueueExecuting { get; } = new List<CellMenuConstruction>();// Очередь действий
 
         // Постройка/ремонт
-        internal ListBaseResources SpendResourcesForConstruct { get; set; }// Расход ресурсов на строительство
         internal int AddConstructionPointByDay { get; set; }// Сколько очков строительства будет добавлено в текущем дне
         internal int DaysConstructLeft { get; set; }// Сколько еще дней будет строиться сооружение
         internal int[] DayLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
@@ -798,7 +797,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     cm.Execute();
 
-                    RemoveCellMenuFromQueue(cm, true);
+                    RemoveCellMenuFromQueue(cm, true, false);
                 }
             }
 
@@ -825,6 +824,10 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     UpdateState();
             }
+
+            // Пересчитываем стоимости и время выполнения в начале хода, так как эти параметры могли измениться от дефолтных
+            CalcPurchasesInActions();
+            CalcDaysExecutingInActions();
         }
 
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)
@@ -1518,7 +1521,7 @@ namespace Fantasy_Kingdoms_Battle
                 //SpendForBuild(cell);
                 QueueExecuting.Add(cell);
                 //Player.AddEntityToQueueBuilding()
-                cell.PosInQueue = QueueExecuting.Count;
+                cell.InQueue = true;
 
                 if (cell is CellMenuConstructionBuild cm)
                 {
@@ -1535,10 +1538,10 @@ namespace Fantasy_Kingdoms_Battle
             return;
             Debug.Assert(QueueExecuting.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
-            Debug.Assert(cell.PosInQueue > 0);
+            Debug.Assert(cell.InQueue);
             Debug.Assert(cell.PurchaseValue != null);
 
-            cell.PosInQueue = 0;
+            cell.InQueue = false;
             Player.ReturnResource(cell.PurchaseValue);
             //Player.UnuseFreeBuilders(usedBuilders);
             cell.PurchaseValue = null;
@@ -1548,7 +1551,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < QueueExecuting.Count; i++)
             {
-                QueueExecuting[i].PosInQueue = i + 1;
+                //QueueExecuting[i].PosInQueue = i + 1;
             }
 
             if (CellMenuBuildNewConstruction != null)
@@ -1822,7 +1825,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void ClearQueueExecuting()
         {
             foreach (CellMenuConstruction cmc in QueueExecuting)
-                RemoveCellMenuFromQueue(cmc, false);
+                RemoveCellMenuFromQueue(cmc, false, true);
 
             QueueExecuting.Clear();
 
@@ -1835,6 +1838,7 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
             Assert(cmc.Construction == this);
             Assert(QueueExecuting.IndexOf(cmc) == -1);
+            Assert(!cmc.InQueue);
 
             int restCP = Player.RestConstructionPoints;
             int expenseCP;
@@ -1847,12 +1851,12 @@ namespace Fantasy_Kingdoms_Battle
                     // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
                     if (InConstructing)
                     {
-                        if (SpendResourcesForConstruct is null)
+                        if (cmc.PurchaseValue is null)
                         {
                             if (Player.CheckRequiredResources(CostBuyOrUpgrade()))
                             {
-                                SpendResourcesForConstruct = CostBuyOrUpgrade();
-                                Player.SpendResource(SpendResourcesForConstruct);
+                                cmc.PurchaseValue = CostBuyOrUpgrade();
+                                Player.SpendResource(cmc.PurchaseValue);
                             }
                         }
 
@@ -1866,17 +1870,17 @@ namespace Fantasy_Kingdoms_Battle
                         // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
                         // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
                         // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
-                        if (SpendResourcesForConstruct != null)
-                            Player.ReturnResource(SpendResourcesForConstruct);
+                        if (cmc.PurchaseValue != null)
+                            Player.ReturnResource(cmc.PurchaseValue);
 
                         // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
                         expenseCP = Math.Min(Gold, Math.Min(restCP, MaxDurability - CurrentDurability));
-                        SpendResourcesForConstruct = CompCostRepair(expenseCP);
-                        Player.SpendResource(SpendResourcesForConstruct);
+                        cmc.PurchaseValue = CompCostRepair(expenseCP);
+                        Player.SpendResource(cmc.PurchaseValue);
                     }
 
                     // Если ресурсы были потрачены, то тратим очки строительства
-                    if (SpendResourcesForConstruct != null)
+                    if (cmc.PurchaseValue != null)
                     {
                         usedCP += MaxDurability - CurrentDurability;
 
@@ -1892,8 +1896,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     // Очки строительства закончились
                     // Если были потрачены ресурсы, возвращаем их
-                    if (SpendResourcesForConstruct != null)
-                        Player.ReturnResource(SpendResourcesForConstruct);
+                    if (cmc.PurchaseValue != null)
+                        Player.ReturnResource(cmc.PurchaseValue);
 
                     usedCP += MaxDurability - CurrentDurability;
 
@@ -1908,13 +1912,60 @@ namespace Fantasy_Kingdoms_Battle
             QueueExecuting.Add(cmc);
         }
 
-        internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList)
+        internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
         {
             Assert(cmc.Construction == this);
+            Assert(cmc.InQueue);
             Assert(QueueExecuting.IndexOf(cmc) != -1);
 
-            if (removeFromList)
                 QueueExecuting.Remove(cmc);
+
+            if (cmc is CellMenuConstructionLevelUp)
+            {
+                Assert(InConstructing || InRepair);
+                Assert(MaxDurability > 0);
+                Assert(DaysConstructLeft > 0);
+
+                if (forCancel)
+                {
+                    // Если сооружение еще не начинали строить, только возвращаем ресурсы
+                    if (State == StateConstruction.PreparedBuild)
+                    {
+                        // Освобождаем потраченные ресурсы
+                        if (cmc.PurchaseValue != null)
+                            Player.ReturnResource(cmc.PurchaseValue);
+                        cmc.PurchaseValue = null;
+                        InConstructing = false;
+                    }
+                    else if (State == StateConstruction.Repair)
+                    {
+                        // Освобождаем потраченные ресурсы
+                        Assert(cmc.PurchaseValue != null);
+                        Player.ReturnResource(cmc.PurchaseValue);
+                        cmc.PurchaseValue = null;
+                        InRepair = false;
+                    }
+                }
+            }
+
+            if (removeFromList)
+                if (!QueueExecuting.Remove(cmc))
+                    DoException($"{IDEntity}: не удалось удалить {IDEntity} из очереди строительства");
+
+            DaysConstructLeft = 0;
+            AddConstructionPointByDay = 0;
+        }
+
+        internal void CalcPurchasesInActions()
+        {
+            foreach (CellMenuConstruction cmc in Researches)
+                cmc.UpdatePurchase();
+        }
+
+        internal void CalcDaysExecutingInActions()
+        {
+            foreach (CellMenuConstruction cmc in Researches)
+                cmc.UpdateDaysExecuted();
         }
     }
 }

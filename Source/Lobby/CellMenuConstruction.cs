@@ -15,9 +15,37 @@ namespace Fantasy_Kingdoms_Battle
         public CellMenuConstruction(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             Construction = c;
+
+            Creating = GetCreating();
+
+            if (Creating != null)
+            {
+                if (Creating.ConstructionPoints > 0)
+                {
+                    Points = Creating.ConstructionPoints;
+                    IsConstructionPoints = true;
+                }
+                else if (Creating.ResearchPoints > 0)
+                {
+                    Points = Creating.ResearchPoints;
+                    IsConstructionPoints = false;
+                }
+                else
+                    DoException("Нет очков для действия");
+            }
         }
 
         internal Construction Construction { get; }
+        internal DescriptorComponentCreating Creating { get; }
+
+        internal bool IsConstructionPoints { get; }// Используются очки строительства иначе очки действий
+        internal bool InQueue { get; set; }// Действие в очереди
+        internal int Points { get; }// Сколько очков нужно для выполнения действия
+        internal int AppliedPoints { get; set; }// Сколько очков было применено
+        internal int CurrentPoints { get; set; }// Сколько очков будет примено на текущем ходу
+        internal int NeedPoints { get => Points - AppliedPoints; }// Сколько очков осталось
+        internal int RestDaysExecuting { get; set; }// Сколько дней осталось до конца выполнения действия
+        internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
 
         internal override bool CheckRequirements()
         {
@@ -64,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         protected virtual string GetTextForLevel() => "";
+        protected abstract DescriptorComponentCreating GetCreating();
 
         protected void RemoveSelf()
         {
@@ -112,7 +141,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
-            if (PosInQueue == 0)
+            if (!InQueue)
             {
                 if (CheckRequirements())
                 {
@@ -142,6 +171,33 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction.AddCellMenuToQueue(this);
         }
+
+        internal void RemoveFromQueue(bool forCancel)
+        {
+            Construction.RemoveCellMenuFromQueue(this, true, forCancel);
+        }
+
+        internal void UpdatePurchase()
+        {
+            PurchaseValue = GetCost();
+        }
+
+        internal void UpdateDaysExecuted()
+        {
+            if (Points > 0)
+            {
+                if (InQueue)
+                {
+                    RestDaysExecuting = 1;
+                }
+                else
+                {
+                    RestDaysExecuting = 1;
+                }
+            }
+            else
+                RestDaysExecuting = 0;
+        }
     }
 
     internal sealed class CellMenuConstructionResearch : CellMenuConstruction
@@ -161,7 +217,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep4Level(level);
             panelHint.AddStep5Description(Entity.SmallEntity.Description);
             //PanelHint.AddStep6Income(Descriptor.Income);
-            panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -219,6 +275,11 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
+
+        protected override DescriptorComponentCreating GetCreating()
+        {
+            return Descriptor.CreatedEntity.GetCreating();
+        }
     }
 
     internal sealed class CellMenuConstructionService : CellMenuConstruction
@@ -239,7 +300,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep4Level(level);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
-            panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -481,7 +542,8 @@ namespace Fantasy_Kingdoms_Battle
         internal override ListBaseResources GetCost()
         {
             // Если цены ремонта нет, значит, оно не в очереди. Пытаемся подсчитать, сколько это будет стоить
-            if (Construction.SpendResourcesForConstruct is null)
+            return null;
+            /*if (PurchaseValue is null)
             {
                 int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability - Construction.CurrentDurability));
                 PurchaseValue = Construction.CompCostRepair(expenseCP);
@@ -490,9 +552,8 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                PurchaseValue = null;
-                return Construction.SpendResourcesForConstruct;
-            }
+                return PurchaseValue;
+            }*/
         }
 
         internal override int GetImageIndex() => Config.Gui48_Build;
@@ -528,6 +589,11 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
+
+        protected override DescriptorComponentCreating GetCreating()
+        {
+            return null;
+        }
     }
 
     internal sealed class CellMenuConstructionRecruitCreature : CellMenuConstruction
@@ -575,7 +641,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(Creature);
             panelHint.AddStep5Description(Creature.Description);
             panelHint.AddStep75Salary(Creature.CostOfHiring);
-            panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            //panelHint.AddStep10DaysBuilding(InQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(Construction.GetTextRequirementsHire());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -650,7 +716,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(ConstructionEvent.Description);
             panelHint.AddStep9Interest(ConstructionEvent.Interest, false);
             panelHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds, false);
-            panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -715,7 +781,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep6Income(Descriptor.Income);
             panelHint.AddStep9Interest(Entity.ModifyInterest, true);
             panelHint.AddStep9ListNeeds(Entity.ListNeeds, true);
-            panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
             panelHint.AddStep13Builders(Entity.Durability, Construction.Player.RestConstructionPoints >= Entity.GetCreating().CalcConstructionPoints(Construction.Player));
@@ -762,7 +828,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //CreatedEntity.Creating.panelHint.AddStep6Income(Descriptor.Income);
-            panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -833,7 +899,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(ConstructionTournament.Description);
             panelHint.AddStep9Interest(ConstructionTournament.Interest, false);
             panelHint.AddStep9ListNeeds(ConstructionTournament.ListNeeds, false);
-            panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
         }
@@ -1036,6 +1102,11 @@ namespace Fantasy_Kingdoms_Battle
             base.PrepareNewDay();
 
             Spell.Selling.Reset();
+        }
+
+        protected override DescriptorComponentCreating GetCreating()
+        {
+            return null;
         }
     }
 

@@ -1616,41 +1616,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemoveFromQueueBuilding(CellMenuConstruction cmc, bool constructed)
         {
-            Construction c = cmc.Construction;
-
-            if (cmc is CellMenuConstructionLevelUp)
-            {
-                Assert(c.InConstructing || c.InRepair);
-                Assert(c.MaxDurability > 0);
-                Assert(c.DaysConstructLeft > 0);
-
-                if (!constructed)
-                {
-                    // Если сооружение еще не начинали строить, только возвращаем ресурсы
-                    if (c.State == StateConstruction.PreparedBuild)
-                    {
-                        // Освобождаем потраченные ресурсы
-                        if (c.SpendResourcesForConstruct != null)
-                            ReturnResource(c.SpendResourcesForConstruct);
-                        c.SpendResourcesForConstruct = null;
-                        c.InConstructing = false;
-                    }
-                    else if (c.State == StateConstruction.Repair)
-                    {
-                        // Освобождаем потраченные ресурсы
-                        Assert(c.SpendResourcesForConstruct != null);
-                        ReturnResource(c.SpendResourcesForConstruct);
-                        c.SpendResourcesForConstruct = null;
-                        c.InRepair = false;
-                    }
-                }
-            }
-
-            if (!queueExecuting.Remove(cmc))
-                DoException($"{IDEntity}: не удалось удалить {c.IDEntity} из очереди строительства");
-
-            c.DaysConstructLeft = 0;
-            c.AddConstructionPointByDay = 0;
+            cmc.RemoveFromQueue(!constructed);
         }
         
         // Перестройка очереди строительства

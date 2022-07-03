@@ -70,24 +70,24 @@ namespace Fantasy_Kingdoms_Battle
                     Quantity = research.GetQuantity();
                     LowText = research.GetText();
 
-                    if (research.PosInQueue > 0)
+                    if (true)// (research.InQueue)
                     {
                         //Level = "";
                         //Text = "";
 
                         //ImageIsEnabled = false;
                         //lblBanner.Visible = true;
-                        if (research.PosInQueue == 1)
+                        //if (research.PosInQueue == 1)
                         {
                             lblBanner.Text = research.DaysLeft.ToString();
                             lblBanner.Color = Color.LimeGreen;
                         }
-                        else
-                        {
-                            LowText = "ожид.";
-                            lblBanner.Text = research.PosInQueue.ToString();
-                            lblBanner.Color = Color.DarkGoldenrod;
-                        }
+                        //else
+                        //{
+                        //    LowText = "очер.";
+                        //    lblBanner.Text = research.PosInQueue.ToString();
+                        //    lblBanner.Color = Color.DarkGoldenrod;
+                       // }
                     }
                     else
                     {

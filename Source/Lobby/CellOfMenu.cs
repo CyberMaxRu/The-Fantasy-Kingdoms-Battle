@@ -21,7 +21,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             BigEntity = bigEntity;
             Descriptor = d;
-            PosInQueue = 0;
         }
 
         internal static Descriptors Descriptors { get; }
@@ -32,8 +31,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysProcessed { get; set; }// Количество дней, прошедшее с начала обработки действия ячейки
         internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
-        internal int PosInQueue { get; set; }// Номер в очереди
-        internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
 
         internal virtual string GetText() => DaysLeft == 0 ? GetCost().Gold.ToString() : DaysLeft.ToString() + " д.";
         internal virtual ListBaseResources GetCost() => null;
