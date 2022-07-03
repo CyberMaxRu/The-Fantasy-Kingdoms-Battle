@@ -19,6 +19,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnBuildOrUpgrade;
         private readonly VCIconButton48 btnQueue;
         private readonly VCLabelValue lblIncome;
+        private readonly VCIconButton48 btnQueue1;
+        private readonly VCBitmap btnQueue2;
+        private readonly VCBitmap btnQueue3;
 
         private readonly VCIconButton48 btnAction;
         private readonly VCIconButton48 btnInhabitants;
@@ -50,11 +53,15 @@ namespace Fantasy_Kingdoms_Battle
             btnQueue.ShowHint += BtnQueue_ShowHint;
             btnQueue.Click += BtnQueue_Click;
 
-            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Build);
+            btnQueue1 = new VCIconButton48(this, imgMapObject.ShiftX, pbDurability.NextTop(), 0);
+            btnQueue2 = new VCBitmap(this, btnQueue1.NextLeft() - 1, btnQueue1.ShiftY - 1, Program.formMain.bmpBackgroundEntityInQueue);
+            btnQueue3 = new VCBitmap(this, btnQueue2.NextLeft() - 3, btnQueue1.ShiftY - 1, Program.formMain.bmpBackgroundEntityInQueue);
+
+            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), pbDurability.NextTop(), FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
 
-            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, pbDurability.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
-            lblIncome.Width = imgMapObject.Width;
+            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Color.Green, true);
+            lblIncome.Width = 72;
             lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
@@ -83,7 +90,7 @@ namespace Fantasy_Kingdoms_Battle
             lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
-            Width = btnBuildOrUpgrade.NextLeft();
+            Width = lblIncome.NextLeft();
             Height = btnBuildOrUpgrade.NextTop();
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
