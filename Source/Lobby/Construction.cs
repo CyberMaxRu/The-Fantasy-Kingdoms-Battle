@@ -1912,8 +1912,10 @@ namespace Fantasy_Kingdoms_Battle
 
             cmc.ExecutingAction.InQueue = true;
             QueueExecuting.Add(cmc);
-            //if (!Researches.Remove(cmc))
-            //    EntityDoException($"Не удалось удалить {cmc} из списка действий.");
+
+            if (!Researches.Remove(cmc))
+                EntityDoException($"Не удалось удалить {cmc} из списка действий.");
+            Program.formMain.layerGame.UpdateMenu();
         }
 
         internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
