@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorComponentCreating Creating { get; }
         internal ComponentExecutingAction ExecutingAction { get; private protected set; }
 
-        internal override string GetText() => GetCost() != null ? GetCost().Gold.ToString() : "";
+        internal override string GetText() => (ExecutingAction != null) && ExecutingAction.InQueue ? "" : GetCost() != null ? GetCost().Gold.ToString() : "";
 
         internal override bool CheckRequirements()
         {
@@ -470,22 +470,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override ListBaseResources GetCost() => Descriptor.GetCreating().CostResources;
         protected override bool ConstructionMustMeConstructed() => false;
         protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
-
-        internal override string GetText()
-        {
-            if (ExecutingAction.InQueue)
-            //if (Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number))
-            {
-                if (Construction.CurrentDurability == 0)
-                    return "Отм.";
-                if (Construction.DaysConstructLeft > 0)
-                    return "Ост.";
-                
-                return "Прод.";
-            }
-            else
-                return base.GetText();
-        }
 
         internal override Color GetColorText()
         {
