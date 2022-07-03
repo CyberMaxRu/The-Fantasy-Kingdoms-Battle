@@ -20,7 +20,15 @@ namespace Fantasy_Kingdoms_Battle
             Assert(ResearchPoints >= 0, $"ID: {entity.ID}, ResearchPoints: {ResearchPoints}");
             Assert(ResearchPoints <= FormMain.Config.DefaultResearchPoints * 50, $"ID: {entity.ID}, ResearchPoints: {ResearchPoints}");
 
-            //Assert(((ConstructionPoints > 0) && (ResearchPoints == 0)) || ((ConstructionPoints == 0) && (ResearchPoints > 0)), $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}, ResearchPoints: {ResearchPoints}");
+
+            if (Entity is DescriptorCreature)
+            { 
+                //Assert((ConstructionPoints == 0) && (ResearchPoints == 0), $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}, ResearchPoints: {ResearchPoints}");
+            }
+            else
+            {
+                Assert(((ConstructionPoints > 0) && (ResearchPoints == 0)) || ((ConstructionPoints == 0) && (ResearchPoints > 0)), $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}, ResearchPoints: {ResearchPoints}");
+            }
         }
 
         internal DescriptorWithID Entity { get; }
