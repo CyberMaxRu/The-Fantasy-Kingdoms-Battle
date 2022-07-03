@@ -152,6 +152,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBorderForIconEnemy;
         internal readonly Bitmap bmpEmptyEntity;
         internal readonly Bitmap bmpBackgroundEntity;
+        internal readonly Bitmap bmpBackgroundEntityInQueue;
         internal readonly BitmapBorder bbBorderWindow;
         internal readonly BitmapBorder bbObject;
         internal readonly BitmapBorder bbToolBarLabel;
@@ -353,6 +354,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpBorderForIcon = LoadBitmap("BorderIconEntity.png");
             bmpEmptyEntity = LoadBitmap("EmptyEntity.png");
             bmpBackgroundEntity = LoadBitmap("BackgroundEntity.png");
+            bmpBackgroundEntityInQueue = LoadBitmap("BackgroundEntityInQueue.png");
             bbBorderWindow = new BitmapBorder(LoadBitmap("BorderWindow.png"), false, 14, 14, 14, 14, 60, 14, 14, 60, 14, 14);
             bbObject = new BitmapBorder(LoadBitmap("BorderObject.png"), false, 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
             bbToolBarLabel = new BitmapBorder(LoadBitmap("ToolbarLabel.png"), true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
