@@ -1943,6 +1943,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             DaysConstructLeft = 0;
+            cmc.ExecutingAction.InQueue = false;
             cmc.ExecutingAction.CurrentPoints = 0;
         }
 
