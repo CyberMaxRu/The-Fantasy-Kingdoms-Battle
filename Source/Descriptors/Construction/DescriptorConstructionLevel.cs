@@ -74,6 +74,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(Durability > forConstruction.Levels[Number - 1].Durability);
             }
+            else
+            {
+                ImageIndex = forConstruction.ImageIndex;
+            }
 
             Debug.Assert(MaxInhabitant >= 0);
             Debug.Assert(MaxInhabitant <= 100);

@@ -353,7 +353,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Реализация
         internal override bool CheckRequirements() => Construction.CheckLevelRequirements(Descriptor.Number);
-        internal override int GetImageIndex() => Construction.GetCellImageIndex();
+        internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override bool GetImageIsEnabled() => Construction.InConstructing && (Construction.Level + 1 == Descriptor.Number) ? true : base.GetImageIsEnabled();
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
         internal override ListBaseResources GetCost() => Descriptor.GetCreating().CostResources;
