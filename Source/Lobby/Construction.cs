@@ -1923,6 +1923,11 @@ namespace Fantasy_Kingdoms_Battle
             Assert(cmc.Construction == this);
             Assert(cmc.ExecutingAction.InQueue);
             Assert(QueueExecuting.IndexOf(cmc) != -1);
+            if (forCancel)
+            {
+                Assert(cmc.ExecutingAction.AppliedPoints == 0);
+            }
+
 
             if (cmc is CellMenuConstructionLevelUp)
             {

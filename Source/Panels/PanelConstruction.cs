@@ -17,7 +17,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCProgressBar pbDurability;
         private readonly VCIconButton48 btnHeroes;
         private readonly VCIconButton48 btnBuildOrUpgrade;
-        private readonly VCIconButton48 btnQueue;
         private readonly VCLabelValue lblIncome;
         private readonly VCIconButton48 btnQueue1;
         private readonly VCBitmap btnQueue2;
@@ -49,11 +48,9 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
             btnHeroes.Visible = false;
 
-            btnQueue = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, -1);
-            btnQueue.ShowHint += BtnQueue_ShowHint;
-            btnQueue.Click += BtnQueue_Click;
-
             btnQueue1 = new VCIconButton48(this, imgMapObject.ShiftX, pbDurability.NextTop(), 0);
+            btnQueue1.ShowHint += BtnQueue1_ShowHint;
+            btnQueue1.Click += BtnQueue1_Click;
             btnQueue2 = new VCBitmap(this, btnQueue1.NextLeft() - 1, btnQueue1.ShiftY - 1, Program.formMain.bmpBackgroundEntityInQueue);
             btnQueue3 = new VCBitmap(this, btnQueue2.NextLeft() - 3, btnQueue1.ShiftY - 1, Program.formMain.bmpBackgroundEntityInQueue);
 
@@ -98,15 +95,13 @@ namespace Fantasy_Kingdoms_Battle
             Click += ImgLair_Click;
         }
 
-        private void BtnQueue_Click(object sender, EventArgs e)
+        private void BtnQueue1_Click(object sender, EventArgs e)
         {
-            if (Construction.QueueExecuting.Count > 0)
-            {
+            if (Construction.QueueExecuting[0].ExecutingAction.AppliedPoints == 0)
                 Construction.RemoveCellMenuFromQueue(Construction.QueueExecuting[0], true, true);
-            }
         }
 
-        private void BtnQueue_ShowHint(object sender, EventArgs e)
+        private void BtnQueue1_ShowHint(object sender, EventArgs e)
         {
             Construction.QueueExecuting[0].PrepareHint(PanelHint);
         }
@@ -146,17 +141,6 @@ namespace Fantasy_Kingdoms_Battle
 
             btnQueue1.Visible = Construction.QueueExecuting.Count >= 1;
             btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
-
-            if (Construction.QueueExecuting.Count > 0)
-            {
-                CellMenuConstruction cm = Construction.QueueExecuting[0];
-                btnQueue.Visible = true;
-                btnQueue.ImageIndex = cm.GetImageIndex();
-                btnQueue.LowText = cm.DaysLeft.ToString() + " д.";
-                btnQueue.Level = Construction.QueueExecuting.Count == 1 ? "" : Construction.QueueExecuting.Count.ToString();
-            }
-            else
-                btnQueue.Visible = false;
 
             if (Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
             {
