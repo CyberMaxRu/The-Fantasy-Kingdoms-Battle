@@ -1852,7 +1852,7 @@ namespace Fantasy_Kingdoms_Battle
                     // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
                     if (InConstructing)
                     {
-                        if (cmc.ExecutingAction.PurchaseValue is null)
+                        if (cmc.ExecutingAction.AppliedPoints == 0)
                         {
                             if (Player.CheckRequiredResources(CostBuyOrUpgrade()))
                             {
@@ -1871,7 +1871,7 @@ namespace Fantasy_Kingdoms_Battle
                         // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
                         // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
                         // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
-                        if (cmc.ExecutingAction.PurchaseValue != null)
+                        if (cmc.ExecutingAction.AppliedPoints == 0)
                             Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
 
                         // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
@@ -1881,7 +1881,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
 
                     // Если ресурсы были потрачены, то тратим очки строительства
-                    if (cmc.ExecutingAction.PurchaseValue != null)
+                    if (cmc.ExecutingAction.AppliedPoints == 0)
                     {
                         usedCP += MaxDurability - CurrentDurability;
 
@@ -1897,7 +1897,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     // Очки строительства закончились
                     // Если были потрачены ресурсы, возвращаем их
-                    if (cmc.ExecutingAction.PurchaseValue != null)
+                    if (cmc.ExecutingAction.AppliedPoints == 0)
                         Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
 
                     usedCP += MaxDurability - CurrentDurability;
@@ -1940,7 +1940,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (State == StateConstruction.PreparedBuild)
                     {
                         // Освобождаем потраченные ресурсы
-                        if (cmc.ExecutingAction.PurchaseValue != null)
+                        if (cmc.ExecutingAction.AppliedPoints == 0)
                             Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
                         cmc.ExecutingAction.PurchaseValue = null;
                         InConstructing = false;
@@ -1948,9 +1948,8 @@ namespace Fantasy_Kingdoms_Battle
                     else if (State == StateConstruction.Repair)
                     {
                         // Освобождаем потраченные ресурсы
-                        Assert(cmc.ExecutingAction.PurchaseValue != null);
-                        Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
-                        cmc.ExecutingAction.PurchaseValue = null;
+                        if (cmc.ExecutingAction.AppliedPoints == 0)
+                            Player.ReturnResource(cmc.ExecutingAction.PurchaseValue);
                         InRepair = false;
                     }
                 }

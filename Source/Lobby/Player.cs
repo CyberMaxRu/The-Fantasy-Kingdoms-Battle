@@ -1584,6 +1584,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(queueExecuting.IndexOf(cmc) == -1);
             Construction c = cmc.Construction;
+
+            // Это подробности реализации. Перенести это в CellMenuConstructionLevelUp
             if (cmc is CellMenuConstructionLevelUp)
             {
                 Assert(c.MaxDurability > 0);
