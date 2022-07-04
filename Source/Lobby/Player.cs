@@ -275,7 +275,10 @@ namespace Fantasy_Kingdoms_Battle
             //
             // Двигаем прогресс в очереди действий
             // Делаем это из игрока, так как нам нужна строгая последовательность действий (одно может зависеть от другого)
-            foreach (CellMenuConstruction cm in queueExecuting)
+            // Так как при выполнении действия они удаляются из очереди, обходим через временный список
+            List<CellMenuConstruction> listActions = new List<CellMenuConstruction>();
+            listActions.AddRange(queueExecuting);
+            foreach (CellMenuConstruction cm in listActions)
             {
                 cm.Construction.AssertNotDestroyed();
                 cm.DoProgressExecutingAction();
