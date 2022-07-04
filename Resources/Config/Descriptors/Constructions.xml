@@ -4444,7 +4444,7 @@
     <ID>TownHall</ID>
     <Name>Ратуша</Name>
     <Description>- Когда город разрастается, можно дать ему самоуправление</Description>
-    <ImageIndex>160</ImageIndex>
+    <ImageIndex>193</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
