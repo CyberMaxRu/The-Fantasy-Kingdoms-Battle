@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual string GetText() => "";
         internal abstract int GetImageIndex();
-        internal virtual bool GetImageIsEnabled() => true;// (DaysLeft > 0) || (CheckRequirements() && (DaysProcessed == 0));
+        internal virtual bool GetImageIsEnabled() => CheckRequirements();
         internal virtual string GetLevel() => "";
         internal virtual int GetQuantity() => 0;
         internal virtual string GetDaysExecuting() => "";
