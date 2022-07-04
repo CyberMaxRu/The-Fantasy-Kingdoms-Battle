@@ -257,8 +257,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
                 {
-                    MaxDurability = Descriptor.Levels[Level].Durability;
-                    CurrentDurability = Descriptor.Levels[Level].Durability;
+                    MaxDurability = Descriptor.Levels[1].Durability;
+                    CurrentDurability = ActionBuildOrLevelUp.ExecutingAction.AppliedPoints;
                 }
                 else
                 {
@@ -1725,7 +1725,7 @@ namespace Fantasy_Kingdoms_Battle
                         State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
                     else
                     {
-                        if (CellMenuBuildNewConstruction.ExecutingAction.CurrentPoints > 0)
+                        if (ActionBuildOrLevelUp.ExecutingAction.CurrentPoints > 0)
                             State = StateConstruction.Build;// Стройка идет
                         else
                             State = StateConstruction.InQueueBuild;// В очереди на строительство
@@ -1842,7 +1842,7 @@ namespace Fantasy_Kingdoms_Battle
                             }
                         }
 
-                        expenseCP = Math.Min(restCP, MaxDurability - CurrentDurability);
+                        expenseCP = Math.Min(restCP, cmc.ExecutingAction.NeedPoints);
                         Debug.Assert(expenseCP > 0);
                     }
                     else
@@ -1856,7 +1856,7 @@ namespace Fantasy_Kingdoms_Battle
                             Player.ReturnResource(cmc.PurchaseValue);
 
                         // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
-                        expenseCP = Math.Min(Gold, Math.Min(restCP, MaxDurability - CurrentDurability));
+                        expenseCP = Math.Min(Gold, Math.Min(restCP, cmc.ExecutingAction.NeedPoints));
                         cmc.UpdatePurchase();
                         Player.SpendResource(cmc.PurchaseValue);
                     }
