@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ExecutingAction is null)
                 return "";
 
-            Assert(ExecutingAction.RestDaysExecuting > 0);
+            //Assert(ExecutingAction.RestDaysExecuting > 0);
             return ExecutingAction.RestDaysExecuting.ToString();
         }
 
