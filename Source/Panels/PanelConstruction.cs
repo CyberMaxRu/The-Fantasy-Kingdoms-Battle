@@ -142,6 +142,9 @@ namespace Fantasy_Kingdoms_Battle
             btnQueue1.Visible = Construction.QueueExecuting.Count >= 1;
             btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
 
+            btnQueue2.Visible = btnQueue1.Visible;
+            btnQueue3.Visible = btnQueue1.Visible;
+
             if (Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
             {
                 lblRewardGold.Visible = false;
