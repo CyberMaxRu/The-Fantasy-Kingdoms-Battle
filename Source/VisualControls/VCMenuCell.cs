@@ -70,32 +70,6 @@ namespace Fantasy_Kingdoms_Battle
                     Quantity = research.GetQuantity();
                     LowText = research.GetText();
 
-                    if (true)// (research.InQueue)
-                    {
-                        //Level = "";
-                        //Text = "";
-
-                        //ImageIsEnabled = false;
-                        //lblBanner.Visible = true;
-                        //if (research.PosInQueue == 1)
-                        {
-                            lblBanner.Text = research.DaysLeft.ToString();
-                            lblBanner.Color = Color.LimeGreen;
-                        }
-                        //else
-                        //{
-                        //    LowText = "очер.";
-                        //    lblBanner.Text = research.PosInQueue.ToString();
-                        //    lblBanner.Color = Color.DarkGoldenrod;
-                       // }
-                    }
-                    else
-                    {
-                        ImageIsEnabled = true;
-                        lblBanner.Visible = false;
-                    }
-                    //ImageIsEnabled = research.CheckRequirements();
-
                     // Накладываем фильтр
                     //if (!research.CheckRequirements())
                     //    ImageFilter = ImageFilter.Disabled;

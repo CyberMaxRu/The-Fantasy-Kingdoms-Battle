@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal sealed override string GetLevel()
         {
-            return Program.formMain.Settings.ShowTypeCellMenu && (DaysLeft == 0) ? GetTextForLevel() : "";
+            return Program.formMain.Settings.ShowTypeCellMenu ? GetTextForLevel() : "";
         }
 
         internal override string GetDaysExecuting()
@@ -144,7 +144,6 @@ namespace Fantasy_Kingdoms_Battle
                         Program.formMain.PlayPushButton();
                         Construction.Player.RemoveFromQueueBuilding(this, false);
                         //Construction.RemoveEntityFromQueueProcessing(this);
-                        DaysLeft = 0;
                     }
                 }
             }

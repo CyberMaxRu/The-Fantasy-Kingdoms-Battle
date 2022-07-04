@@ -28,8 +28,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorCellMenu Descriptor { get; }
         internal BigEntity BigEntity { get; }
-
-        internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
         internal ListBaseResources PurchaseValue { get; private protected set; }// Стоимость покупки
 
         internal virtual string GetText() => "";

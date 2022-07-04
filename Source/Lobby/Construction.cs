@@ -1487,7 +1487,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddEntityToQueueProcessing(CellMenuConstruction cell)
         {
-            QueueExecuting.Add(cell);
+            /*QueueExecuting.Add(cell);
             return;
 
             cell.DaysLeft = cell.InstantExecute() ? 1 : cell.Descriptor.CreatedEntity.GetCreating().DaysProcessing;
@@ -1510,15 +1510,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     CellMenuBuildNewConstruction = cm;
                 }
-            }
+            }*/
         }
 
         internal void RemoveEntityFromQueueProcessing(CellMenuConstruction cell, bool removeFromList)
         {
-            if (removeFromList)
-                QueueExecuting.Remove(cell);
-
-            return;
+            /*
             Debug.Assert(QueueExecuting.IndexOf(cell) != -1);
             //Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
             Debug.Assert(cell.ExecutingAction.InQueue);
@@ -1541,7 +1538,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(CellMenuBuildNewConstruction == cell);
 
                 CellMenuBuildNewConstruction = null;
-            }
+            }*/
         }
 
         private void UpdateSelectedColor()
