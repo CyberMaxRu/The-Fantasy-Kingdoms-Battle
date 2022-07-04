@@ -1595,7 +1595,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction c = cmc.Construction;
             Assert(cmc.ExecutingAction.CurrentPoints == 0);
 
-            // Это подробности реализации. Перенести это в CellMenuConstructionLevelUp
+            // !!! Это подробности реализации. Перенести это в Construction (CellMenuConstructionLevelUp) !!!
             if (cmc is CellMenuConstructionLevelUp cml)
             {
                 if (cml.Descriptor.Number > 1)
@@ -1609,7 +1609,7 @@ namespace Fantasy_Kingdoms_Battle
                     Assert(c.MaxDurability == 0);
                     Assert(c.CurrentDurability == 0);
                 }
-                Assert(c.DaysConstructLeft == 0);
+
                 Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)
                     || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
 

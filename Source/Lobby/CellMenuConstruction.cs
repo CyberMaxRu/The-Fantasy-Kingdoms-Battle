@@ -65,20 +65,11 @@ namespace Fantasy_Kingdoms_Battle
             if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
                 return "";
 
-            if (InstantExecute())
+            if (ExecutingAction is null)
                 return "";
 
-            if (Descriptor.CreatedEntity is null)
-                return "";
-
-            if (DaysLeft > 0)
-                return "";
-
-            //int days = Descriptor.CreatedEntity.GetCreating().DaysProcessing;
-            //if (days > 1)
-            //    return (days - 1).ToString();
-
-            return "";
+            Assert(ExecutingAction.RestDaysExecuting > 0);
+            return ExecutingAction.RestDaysExecuting.ToString();
         }
 
         protected virtual string GetTextForLevel() => "";
@@ -176,19 +167,22 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (ExecutingAction != null)
             {
-                if (ExecutingAction.Points > 0)
+                if (ExecutingAction.InQueue)
                 {
-                    if (ExecutingAction.InQueue)
-                    {
-                        ExecutingAction.RestDaysExecuting = 1;
-                    }
+                    /*if (ExecutingAction.IsConstructionPoints)
+                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.NeedPoints, Construction.Player.ConstructionPoints);
                     else
-                    {
-                        ExecutingAction.RestDaysExecuting = 1;
-                    }
+                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.NeedPoints, Construction.ResearchPoints);*/
                 }
                 else
-                    ExecutingAction.RestDaysExecuting = 0;
+                {
+                    if (ExecutingAction.IsConstructionPoints)
+                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.Player.ConstructionPoints);
+                    else
+                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.ResearchPoints);
+                }
+
+                Assert(ExecutingAction.RestDaysExecuting > 0);
             }
         }
 
@@ -519,7 +513,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Descriptor.Number == 1)
             {
-                if (Construction.DaysConstructLeft == 0)
+                if (!ExecutingAction.InQueue)
                     Construction.StartBuilding();
                 else
                     Construction.CancelBuilding();
