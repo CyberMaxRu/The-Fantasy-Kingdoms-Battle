@@ -1848,7 +1848,7 @@ namespace Fantasy_Kingdoms_Battle
                         if (cmc.ExecutingAction.AppliedPoints == 0)
                             Player.ReturnResource(cmc.PurchaseValue);
 
-                        // Пока что втупую считаем количество требуемого золота по соотношению 1 к 1
+                        // Пока что считаем количество требуемого золота по соотношению 1 к 1
                         expenseCP = Math.Min(Gold, Math.Min(restCP, cmc.ExecutingAction.NeedPoints));
                         cmc.UpdatePurchase();
                         Player.SpendResource(cmc.PurchaseValue);
@@ -1857,14 +1857,14 @@ namespace Fantasy_Kingdoms_Battle
                     // Если ресурсы были потрачены, то тратим очки строительства
                     if (cmc.ExecutingAction.AppliedPoints == 0)
                     {
-                        usedCP += MaxDurability - CurrentDurability;
+                        usedCP += cmc.ExecutingAction.NeedPoints;
 
                         cmc.ExecutingAction.CurrentPoints = expenseCP;
 
                         restCP -= expenseCP;
 
                         // Вычисляем, сколько еще дней будет строиться сооружение
-                        cmc.ExecutingAction.RestDaysExecuting = usedCP / Player.ConstructionPoints + (usedCP % Player.ConstructionPoints == 0 ? 0 : 1);
+                        cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(usedCP, Player.ConstructionPoints);
                     }
                 }
                 else
@@ -1874,10 +1874,10 @@ namespace Fantasy_Kingdoms_Battle
                     if (cmc.ExecutingAction.AppliedPoints == 0)
                         Player.ReturnResource(cmc.PurchaseValue);
 
-                    usedCP += MaxDurability - CurrentDurability;
+                    usedCP += cmc.ExecutingAction.NeedPoints;
 
                     cmc.ExecutingAction.CurrentPoints = 0;
-                    cmc.ExecutingAction.RestDaysExecuting = usedCP / Player.ConstructionPoints + (usedCP % Player.ConstructionPoints == 0 ? 0 : 1);
+                    cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(usedCP, Player.ConstructionPoints);
                 }
             }
 
@@ -1894,7 +1894,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int CalcDaysForExecuting(int applyPoints, int freePoints)
         {
-            return applyPoints / freePoints + (applyPoints % freePoints == 0 ? 0 : 1);
+            int d = applyPoints / freePoints + (applyPoints % freePoints == 0 ? 0 : 1);
+            Assert(d > 0);
+            return d;
         }
 
         internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
