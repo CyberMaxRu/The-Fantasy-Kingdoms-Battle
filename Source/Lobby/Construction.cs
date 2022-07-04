@@ -1965,7 +1965,8 @@ namespace Fantasy_Kingdoms_Battle
             if (forCancel)
             {
                 Assert(cmc.ExecutingAction.AppliedPoints == 0);
-                Player.ReturnResource(cmc.PurchaseValue);
+                if (cmc.ExecutingAction.CurrentPoints > 0)
+                    Player.ReturnResource(cmc.PurchaseValue);
                 if (cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
                     Player.RestConstructionPoints += cmc.ExecutingAction.CurrentPoints;
             }
