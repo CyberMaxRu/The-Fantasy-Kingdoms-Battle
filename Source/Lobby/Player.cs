@@ -1640,6 +1640,12 @@ namespace Fantasy_Kingdoms_Battle
             cmc.RemoveFromQueue(!constructed);
         }
         
+        internal void DeleteFromQueueBuilding(CellMenuConstruction cmc)
+        {
+            if (!queueExecuting.Remove(cmc))
+                EntityDoException("Не удалось удалить действие из очереди");
+        }
+
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {

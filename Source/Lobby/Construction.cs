@@ -1971,8 +1971,12 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (removeFromList)
+            {
                 if (!QueueExecuting.Remove(cmc))
                     DoException($"{IDEntity}: не удалось удалить {IDEntity} из очереди строительства");
+
+                Player.DeleteFromQueueBuilding(cmc);
+            }
 
             if (forCancel)
             {
