@@ -654,8 +654,8 @@ namespace Fantasy_Kingdoms_Battle
         internal bool SkipBattle { get; set; }// Битва на этому ходу будет пропущена
 
         internal int ConstructionPoints { get; private set; }// Очков строительства на этот ход
-        internal int RestConstructionPoints { get; set; }// Остаток неизрасходованных очков строительства
-        internal int ShiftDayForConstruct { get; set; }// Смещение в днях для следующего сооружения в очереди
+        internal int RestConstructionPoints { get; set; }// Остаток неизрасходованных очков строительства на этом ходу
+        internal int UsedConstructionPoints { get; set; }// Общее количество потраченных очков строительства на очередь
 
         internal List<DescriptorPersistentBonus>[] VariantPersistentBonus { get; }
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
@@ -1649,7 +1649,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Assert(RestConstructionPoints == ConstructionPoints);
 
-            ShiftDayForConstruct = 0;// Начинаем с нулевого смещения
+            UsedConstructionPoints = 0;// Обнуляем потраченное количество очков
 
             // Составляем очереди у сооружений
             foreach (CellMenuConstruction cmc in queueExecuting)

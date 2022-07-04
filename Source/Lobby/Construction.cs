@@ -104,6 +104,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<CellMenuConstruction> QueueExecuting { get; } = new List<CellMenuConstruction>();// Очередь действий
 
         // Постройка/ремонт
+        internal bool QueueBlocked { get; set; }// Очередь заблокирована
         internal int[] DayLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
         //internal bool InConstructing { get; set; }// Сооружение строится
         internal bool InRepair { get; set; }// Сооружение ремонтируется
@@ -1803,6 +1804,7 @@ namespace Fantasy_Kingdoms_Battle
                 RemoveCellMenuFromQueue(cmc, false, true);
 
             QueueExecuting.Clear();
+            QueueBlocked = false;
 
             // После очистки очереди, количество оставшихся очков исследования должно равняться дефолтному
             Assert(RestResearchPoints == ResearchPoints);
@@ -1815,89 +1817,112 @@ namespace Fantasy_Kingdoms_Battle
             Assert(QueueExecuting.IndexOf(cmc) == -1);
             Assert(!cmc.ExecutingAction.InQueue);
 
-            int restCP = Player.RestConstructionPoints;
-            int expenseCP;
-            int usedCP = 0;
+            cmc.ExecutingAction.InQueue = true;
+            cmc.ExecutingAction.RestDaysExecuting = 0;
+
+            QueueExecuting.Add(cmc);
+            if (!Actions.Remove(cmc))
+                EntityDoException($"Не удалось удалить {cmc} из списка действий.");
+            Program.formMain.layerGame.UpdateMenu();
+
+            // Если очередь заблокирована, ставим невозможность выполнения и выходм
+            if (QueueBlocked)
+                return;
+
+            int expenseCP = 0;
 
             // Правильная реализация
             if (cmc.ExecutingAction.IsConstructionPoints)
             {
+                // Если строительство еще не начинали, но очки строительства еще есть, списываем деньги
+                if ((cmc.ExecutingAction.AppliedPoints == 0) && (Player.RestConstructionPoints > 0))
+                {
+                    cmc.UpdatePurchase();// Это может быть какой-нибудь ремонт, который зависит от остатка денег и очков. Пересчитываем расход перед списанием
 
+                    if (Player.RestConstructionPoints > 0)
+                    {
+                        if (Player.CheckRequiredResources(cmc.PurchaseValue))
+                        {
+                            Player.SpendResource(cmc.PurchaseValue);
+                        }
+                        else
+                        {
+                            QueueBlocked = true;
+                            return;
+                        }
+                    }
+                }
+
+                // Ресурсы списаны, можно ставить в очередь
+                if (Player.RestConstructionPoints > 0)
+                {
+                    expenseCP = Math.Min(Player.RestConstructionPoints, cmc.ExecutingAction.NeedPoints);
+                }
+
+                if (expenseCP > 0)
+                {
+                    cmc.ExecutingAction.CurrentPoints = expenseCP;
+                    Player.RestConstructionPoints -= expenseCP;
+                }
+
+                Player.UsedConstructionPoints += cmc.ExecutingAction.NeedPoints;
+                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(Player.UsedConstructionPoints, Player.ConstructionPoints);
+
+                // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
+                /*if (Level == 0)
+                {
+
+                    expenseCP = Math.Min(restCP, cmc.ExecutingAction.NeedPoints);
+                    Debug.Assert(expenseCP > 0);
+                }
+                else
+                {
+                    Assert(InRepair);
+
+                    // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
+                    // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
+                    // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
+                    if (cmc.ExecutingAction.AppliedPoints == 0)
+                        Player.ReturnResource(cmc.PurchaseValue);
+
+                    // Пока что считаем количество требуемого золота по соотношению 1 к 1
+                    expenseCP = Math.Min(Gold, Math.Min(restCP, cmc.ExecutingAction.NeedPoints));
+                    cmc.UpdatePurchase();
+                    Player.SpendResource(cmc.PurchaseValue);
+                }
+
+                // Если ресурсы были потрачены, то тратим очки строительства
+                if (cmc.ExecutingAction.AppliedPoints == 0)
+                {
+                    usedCP += cmc.ExecutingAction.NeedPoints;
+
+                    cmc.ExecutingAction.CurrentPoints = expenseCP;
+
+                    restCP -= expenseCP;
+                }
+            }
+            else
+            {
+                // Очки строительства закончились
+                // Если были потрачены ресурсы, возвращаем их
+                if (cmc.ExecutingAction.AppliedPoints == 0)
+                    Player.ReturnResource(cmc.PurchaseValue);
+
+                usedCP += cmc.ExecutingAction.NeedPoints;
+
+            }*/
             }
             else
             {
 
             }
 
+            //cmc.ExecutingAction.CurrentPoints = 0;
+            //cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(usedCP, Player.ConstructionPoints) + Player.ShiftDayForConstruct;
 
-            if (cmc is CellMenuConstructionLevelUp)
-            {
-                if (restCP > 0)
-                {
-                    // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
-                    if (Level == 0)
-                    {
-                        if (cmc.ExecutingAction.AppliedPoints == 0)
-                        {
-                            if (Player.CheckRequiredResources(CostBuyOrUpgrade()))
-                            {
-                                //cmc.PurchaseValue = CostBuyOrUpgrade();
-                                Player.SpendResource(cmc.PurchaseValue);
-                            }
-                        }
+            //Player.RestConstructionPoints = restCP;
 
-                        expenseCP = Math.Min(restCP, cmc.ExecutingAction.NeedPoints);
-                        Debug.Assert(expenseCP > 0);
-                    }
-                    else
-                    {
-                        Assert(InRepair);
-
-                        // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
-                        // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
-                        // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
-                        if (cmc.ExecutingAction.AppliedPoints == 0)
-                            Player.ReturnResource(cmc.PurchaseValue);
-
-                        // Пока что считаем количество требуемого золота по соотношению 1 к 1
-                        expenseCP = Math.Min(Gold, Math.Min(restCP, cmc.ExecutingAction.NeedPoints));
-                        cmc.UpdatePurchase();
-                        Player.SpendResource(cmc.PurchaseValue);
-                    }
-
-                    // Если ресурсы были потрачены, то тратим очки строительства
-                    if (cmc.ExecutingAction.AppliedPoints == 0)
-                    {
-                        usedCP += cmc.ExecutingAction.NeedPoints;
-
-                        cmc.ExecutingAction.CurrentPoints = expenseCP;
-
-                        restCP -= expenseCP;
-                    }
-                }
-                else
-                {
-                    // Очки строительства закончились
-                    // Если были потрачены ресурсы, возвращаем их
-                    if (cmc.ExecutingAction.AppliedPoints == 0)
-                        Player.ReturnResource(cmc.PurchaseValue);
-
-                    usedCP += cmc.ExecutingAction.NeedPoints;
-
-                }
-
-                cmc.ExecutingAction.CurrentPoints = 0;
-                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(usedCP, Player.ConstructionPoints) + Player.ShiftDayForConstruct;
-            }
-
-            Player.RestConstructionPoints = restCP;
-
-            cmc.ExecutingAction.InQueue = true;
-            QueueExecuting.Add(cmc);
-
-            if (!Actions.Remove(cmc))
-                EntityDoException($"Не удалось удалить {cmc} из списка действий.");
-            Program.formMain.layerGame.UpdateMenu();
+            //cmc.ExecutingAction.InQueue = true;
         }
 
         internal int CalcDaysForExecuting(int applyPoints, int freePoints)
