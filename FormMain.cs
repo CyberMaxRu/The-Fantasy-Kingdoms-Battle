@@ -41,6 +41,7 @@ namespace Fantasy_Kingdoms_Battle
         // ImageList'ы
         internal readonly BitmapList imListObjects128;
         internal BitmapList imListObjects48 { get; }
+        internal BitmapList imListObjects32 { get; }
         internal readonly BitmapList ilGui16;
         internal readonly BitmapList ilGui24;
         internal readonly BitmapList ilGui32;
@@ -339,6 +340,7 @@ namespace Fantasy_Kingdoms_Battle
             LoadBitmapObjects();
 
             imListObjects48.AddBitmap(LoadBitmap("Gui48.png"));
+            imListObjects32 = new BitmapList(imListObjects48, new Size(32, 32), 0, null);
 
             ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), new Size(16, 16), true, false);
             ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), new Size(24, 24), true, true);

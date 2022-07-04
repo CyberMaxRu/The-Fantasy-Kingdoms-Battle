@@ -45,8 +45,11 @@ namespace Fantasy_Kingdoms_Battle
 
         public BitmapList(BitmapList fromList, Size newSize, int borderWidth, Bitmap mask)
         {
-            Debug.Assert(mask.Width == newSize.Width);
-            Debug.Assert(mask.Height == newSize.Height);
+            if (mask != null)
+            {
+                Debug.Assert(mask.Width == newSize.Width);
+                Debug.Assert(mask.Height == newSize.Height);
+            }
             Debug.Assert(newSize.Width < fromList.Size.Width);
             Debug.Assert(newSize.Height < fromList.Size.Height);
 
