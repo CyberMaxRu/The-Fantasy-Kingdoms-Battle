@@ -1819,6 +1819,17 @@ namespace Fantasy_Kingdoms_Battle
             int expenseCP;
             int usedCP = 0;
 
+            // Правильная реализация
+            if (cmc.ExecutingAction.IsConstructionPoints)
+            {
+
+            }
+            else
+            {
+
+            }
+
+
             if (cmc is CellMenuConstructionLevelUp)
             {
                 if (restCP > 0)
@@ -1862,9 +1873,6 @@ namespace Fantasy_Kingdoms_Battle
                         cmc.ExecutingAction.CurrentPoints = expenseCP;
 
                         restCP -= expenseCP;
-
-                        // Вычисляем, сколько еще дней будет строиться сооружение
-                        cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(usedCP, Player.ConstructionPoints);
                     }
                 }
                 else
@@ -1876,11 +1884,11 @@ namespace Fantasy_Kingdoms_Battle
 
                     usedCP += cmc.ExecutingAction.NeedPoints;
 
-                    cmc.ExecutingAction.CurrentPoints = 0;
-                    cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(usedCP, Player.ConstructionPoints);
                 }
-            }
 
+                cmc.ExecutingAction.CurrentPoints = 0;
+                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(usedCP, Player.ConstructionPoints) + Player.ShiftDayForConstruct;
+            }
 
             Player.RestConstructionPoints = restCP;
 

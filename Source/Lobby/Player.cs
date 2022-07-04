@@ -655,6 +655,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int ConstructionPoints { get; private set; }// Очков строительства на этот ход
         internal int RestConstructionPoints { get; set; }// Остаток неизрасходованных очков строительства
+        internal int ShiftDayForConstruct { get; set; }// Смещение в днях для следующего сооружения в очереди
 
         internal List<DescriptorPersistentBonus>[] VariantPersistentBonus { get; }
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
@@ -1647,6 +1648,8 @@ namespace Fantasy_Kingdoms_Battle
                 c.ClearQueueExecuting();
 
             Assert(RestConstructionPoints == ConstructionPoints);
+
+            ShiftDayForConstruct = 0;// Начинаем с нулевого смещения
 
             // Составляем очереди у сооружений
             foreach (CellMenuConstruction cmc in queueExecuting)
