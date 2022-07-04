@@ -204,9 +204,9 @@
       <Level>
         <ID>LevelGuildHunter1</ID>
         <Number>1</Number>
-        <Durability>300</Durability>
+        <Durability>1500</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <ConstructionPoints>1500</ConstructionPoints>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -217,7 +217,7 @@
       <Level>
         <ID>LevelGuildHunter2</ID>
         <Number>2</Number>
-        <Durability>350</Durability>
+        <Durability>2350</Durability>
         <Creating>
           <ConstructionPoints>300</ConstructionPoints>
           <Cost>
@@ -237,7 +237,7 @@
       <Level>
         <ID>LevelGuildHunter3</ID>
         <Number>3</Number>
-        <Durability>400</Durability>
+        <Durability>3400</Durability>
         <Creating>
           <ConstructionPoints>300</ConstructionPoints>
           <Cost>
@@ -434,9 +434,9 @@
       <Level>
         <ID>LevelGuildCleric1</ID>
         <Number>1</Number>
-        <Durability>400</Durability>
+        <Durability>3300</Durability>
         <Creating>
-          <ConstructionPoints>400</ConstructionPoints>
+          <ConstructionPoints>3300</ConstructionPoints>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -447,7 +447,7 @@
       <Level>
         <ID>LevelGuildCleric2</ID>
         <Number>2</Number>
-        <Durability>450</Durability>
+        <Durability>6450</Durability>
         <Creating>
           <ConstructionPoints>300</ConstructionPoints>
           <Cost>
@@ -467,7 +467,7 @@
       <Level>
         <ID>LevelGuildCleric3</ID>
         <Number>3</Number>
-        <Durability>700</Durability>
+        <Durability>9700</Durability>
         <Creating>
           <ConstructionPoints>300</ConstructionPoints>
           <Cost>
