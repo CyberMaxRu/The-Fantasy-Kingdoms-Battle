@@ -1964,7 +1964,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(QueueExecuting.IndexOf(cmc) != -1);
             if (forCancel)
             {
-                Assert(cmc.ExecutingAction.AppliedPoints == 0);
+                //Assert(cmc.ExecutingAction.AppliedPoints == 0);
             }
 
             if (cmc is CellMenuConstructionLevelUp)
@@ -1992,9 +1992,11 @@ namespace Fantasy_Kingdoms_Battle
             // Освобождаем потраченные ресурсы, если выполнение действия не началось
             if (forCancel)
             {
-                Assert(cmc.ExecutingAction.AppliedPoints == 0);
-                if (cmc.ExecutingAction.CurrentPoints > 0)
-                    Player.ReturnResource(cmc.PurchaseValue);
+                if (cmc.ExecutingAction.AppliedPoints == 0)
+                {
+                    if (cmc.ExecutingAction.CurrentPoints > 0)
+                        Player.ReturnResource(cmc.PurchaseValue);
+                }
                 if (cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
                     Player.RestConstructionPoints += cmc.ExecutingAction.CurrentPoints;
                 if (!cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
