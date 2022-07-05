@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
                 ImageIndex = MenuCell.GetImageIndex();
                 ImageIsEnabled = MenuCell.GetImageIsEnabled();
                 LowText = MenuCell.GetText();
-                DaysExecuting = MenuCell.GetDaysExecuting();
+                DaysExecuting = MenuCell.GetExtInfo();
                 Level = MenuCell.GetLevel();
                 Quantity = MenuCell.GetQuantity();
                 Color = MenuCell.GetColorText();

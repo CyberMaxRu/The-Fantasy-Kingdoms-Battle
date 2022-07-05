@@ -60,16 +60,16 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.Settings.ShowTypeCellMenu ? GetTextForLevel() : "";
         }
 
-        internal override string GetDaysExecuting()
+        internal override int GetDaysExecuting()
         {
             if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
-                return "";
+                return -1;
 
             if (ExecutingAction is null)
-                return "";
+                return -1;
 
             //Assert(ExecutingAction.RestDaysExecuting > 0);
-            return ExecutingAction.RestDaysExecuting.ToString();
+            return ExecutingAction.RestDaysExecuting;
         }
 
         protected virtual string GetTextForLevel() => "";
@@ -164,6 +164,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (ExecutingAction != null)
             {
+
                 if (ExecutingAction.InQueue)
                 {
                     /*if (ExecutingAction.IsConstructionPoints)
@@ -174,12 +175,12 @@ namespace Fantasy_Kingdoms_Battle
                 else
                 {
                     if (ExecutingAction.IsConstructionPoints)
-                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.Player.ConstructionPoints);
+                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.Player.ConstructionPoints, true);
                     else
-                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.ResearchPoints);
+                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.ResearchPoints, false);
                 }
 
-                Assert(ExecutingAction.RestDaysExecuting > 0);
+                //Assert(ExecutingAction.RestDaysExecuting > 0);
             }
         }
         internal virtual void StartExecute() { }// Вызывается перед началом выполнения действия
@@ -479,10 +480,10 @@ namespace Fantasy_Kingdoms_Battle
                 return Color.Gray;
         }
 
-        internal override string GetDaysExecuting()
+        internal override int GetDaysExecuting()
         {
-            Assert(ExecutingAction.RestDaysExecuting > 0);
-            return ExecutingAction.RestDaysExecuting.ToString();
+            //Assert(ExecutingAction.RestDaysExecuting > 0);
+            return ExecutingAction.RestDaysExecuting;
 
             /*if (ExecutingAction.RestDaysExecuting > 0)
             {
@@ -546,20 +547,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта
 
-        internal override string GetDaysExecuting()
+        internal override int GetDaysExecuting()
         {
             if (ExecutingAction != null)
             {
-                Assert(ExecutingAction.RestDaysExecuting > 0);
+                //Assert(ExecutingAction.RestDaysExecuting > 0);
 
-                return ExecutingAction.RestDaysExecuting.ToString();
+                return ExecutingAction.RestDaysExecuting;
                 /*if (Construction.DaysConstructLeft == 0)
                     return "";
                 else
                     return Construction.DaysConstructLeft.ToString();*/
             }
             else
-                return DaysForRepair.ToString();
+                return DaysForRepair;
         }
 
         internal override void Execute()

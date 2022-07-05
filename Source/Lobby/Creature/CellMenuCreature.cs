@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Creature Creature { get; set; }
         internal override string GetLevel() => Creature != null ? Creature.GetLevel() : "";
-        internal override string GetDaysExecuting()
+        internal override string GetExtInfo()
         {
             switch (ModeText)
             {

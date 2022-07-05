@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
                 g.DrawImageUnscaled(Program.formMain.bmpBackgroundEntityInQueue, Left - 1, Top - 1);
 
             ImageIndex = Action != null ? Action.GetImageIndex() : -1;
-            DaysExecuting = Action != null ? Action.GetDaysExecuting() : "";
+            DaysExecuting = Action != null ? Action.GetExtInfo() : "";
 
             base.Draw(g);
         }

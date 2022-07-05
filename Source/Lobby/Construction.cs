@@ -1855,7 +1855,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Player.UsedConstructionPoints += cmc.ExecutingAction.NeedPoints;
-                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(Player.UsedConstructionPoints, Player.ConstructionPoints);
+                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(Player.UsedConstructionPoints, Player.ConstructionPoints, true);
 
                 // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
                 /*if (Level == 0)
@@ -1933,7 +1933,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 UsedResearchPoints += cmc.ExecutingAction.NeedPoints;
-                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(UsedResearchPoints, ResearchPoints);
+                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(UsedResearchPoints, ResearchPoints, false);
             }
 
             //cmc.ExecutingAction.CurrentPoints = 0;
@@ -1945,8 +1945,13 @@ namespace Fantasy_Kingdoms_Battle
             cmc.InQueueChanged();
         }
 
-        internal int CalcDaysForExecuting(int applyPoints, int freePoints)
+        internal int CalcDaysForExecuting(int applyPoints, int freePoints, bool isConstructionPoints)
         {
+            if (isConstructionPoints && Player.CheatingInstantlyBuilding)
+                return 0;
+            if (!isConstructionPoints && Player.CheatingInstantlyResearch)
+                return 0;
+
             int d = applyPoints / freePoints + (applyPoints % freePoints == 0 ? 0 : 1);
             Assert(d > 0);
             return d;

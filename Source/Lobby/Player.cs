@@ -1751,6 +1751,12 @@ namespace Fantasy_Kingdoms_Battle
                 c.CalcPurchasesInActions();
         }
 
+        internal void CalcDaysExecutingInActions()
+        {
+            foreach (Construction c in Constructions)
+                c.CalcDaysExecutingInActions();
+        }
+
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
     }
 
