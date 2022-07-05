@@ -177,6 +177,9 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                     case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
+                        pbDurability.Text = $"{Construction.CurrentDurability}" +
+                           $"{(Construction.ActionMain.ExecutingAction.CurrentPoints > 0 ? $"+{Construction.ActionMain.ExecutingAction.CurrentPoints}" : "")}/{Construction.ActionMain.ExecutingAction.Points}";
+                        break;
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         pbDurability.Text = $"{Construction.CurrentDurability}" +
