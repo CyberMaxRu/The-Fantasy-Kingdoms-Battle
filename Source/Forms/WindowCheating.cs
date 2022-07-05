@@ -135,8 +135,12 @@ namespace Fantasy_Kingdoms_Battle
             player.CheatingInstantlyHire = chkbInstantlyHire.Checked;
 
             if (Program.formMain.CurrentHumanPlayer.CheatingInstantlyBuilding != player.CheatingInstantlyBuilding)
+            {
                 player.CalcDaysExecutingInActions();
 
+                if (player.CheatingInstantlyBuilding)
+                    player.RebuildQueueBuilding();
+            }
 
             Program.formMain.CurrentHumanPlayer.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
             Program.formMain.CurrentHumanPlayer.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
