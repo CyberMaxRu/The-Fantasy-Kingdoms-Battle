@@ -14,9 +14,16 @@ namespace Fantasy_Kingdoms_Battle
     {
         private DispatcherFrame frame;
 
-        public PlayerHuman(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby, player, playerIndex)
+        public PlayerHuman(Lobby lobby, HumanPlayer player, int playerIndex) : base(lobby, player, playerIndex)
         {
             Debug.Assert(player.TypePlayer == TypePlayer.Human);
+
+            CheatingIgnoreBaseResources = player.CheatingIgnoreBaseResources;
+            CheatingIgnoreBuilders = player.CheatingIgnoreBuilders;
+            CheatingIgnoreRequirements = player.CheatingIgnoreRequirements;
+            CheatingInstantlyBuilding = player.CheatingInstantlyBuilding;
+            CheatingInstantlyHire = player.CheatingInstantlyHire;
+            CheatingInstantlyResearch = player.CheatingInstantlyResearch;
 
             frame = new DispatcherFrame();
         }

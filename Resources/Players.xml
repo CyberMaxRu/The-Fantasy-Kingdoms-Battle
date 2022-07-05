@@ -6,6 +6,14 @@
     <Description>-</Description>
     <ImageIndex>1</ImageIndex>
     <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
+    <Cheating>
+      <IgnoreBaseResources>False</IgnoreBaseResources>
+      <IgnoreBuilders>False</IgnoreBuilders>
+      <IgnoreRequirements>False</IgnoreRequirements>
+      <InstantlyBuilding>True</InstantlyBuilding>
+      <InstantlyResearch>False</InstantlyResearch>
+      <InstantlyHire>False</InstantlyHire>
+    </Cheating>
     <TournamentSettings>
       <Tournament>
         <TypeLobby>WarOf8Lords</TypeLobby>

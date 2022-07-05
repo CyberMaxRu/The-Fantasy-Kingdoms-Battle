@@ -35,6 +35,14 @@ namespace Fantasy_Kingdoms_Battle
 
             DisableComputerPlayerByAvatar();
 
+            //
+            CheatingIgnoreBaseResources = GetBoolean(n, "Cheating/IgnoreBaseResources", false);
+            CheatingIgnoreBuilders = GetBoolean(n, "Cheating/IgnoreBuilders", false);
+            CheatingIgnoreRequirements = GetBoolean(n, "Cheating/IgnoreRequirements", false);
+            CheatingInstantlyBuilding = GetBoolean(n, "Cheating/InstantlyBuilding", false);
+            CheatingInstantlyResearch = GetBoolean(n, "Cheating/InstantlyResearch", false);
+            CheatingInstantlyHire = GetBoolean(n, "Cheating/InstantlyHire", false);
+
             // Создаем настройки всех типов лобби
             Assert(Descriptors.TypeLobbies.Count > 0);
             TournamentSettings = new LobbySettings[Descriptors.TypeLobbies.Count];
@@ -65,6 +73,13 @@ namespace Fantasy_Kingdoms_Battle
 
             DisableComputerPlayerByAvatar();
         }
+
+        internal bool CheatingIgnoreRequirements { get; set; }
+        internal bool CheatingIgnoreBaseResources { get; set; }
+        internal bool CheatingIgnoreBuilders { get; set; }
+        internal bool CheatingInstantlyBuilding { get; set; }
+        internal bool CheatingInstantlyResearch { get; set; }
+        internal bool CheatingInstantlyHire { get; set; }
 
         internal string DirectoryAvatar { get; set; }
         internal LobbySettings[] TournamentSettings { get; }
@@ -107,6 +122,15 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("Description", Description);
             writer.WriteElementString("ImageIndex", (ImageIndex - FormMain.Config.ImageIndexFirstAvatar + 1).ToString());
             writer.WriteElementString("DirectoryAvatar", DirectoryAvatar);
+
+            writer.WriteStartElement("Cheating");
+            writer.WriteElementString("IgnoreBaseResources", CheatingIgnoreBaseResources.ToString());
+            writer.WriteElementString("IgnoreBuilders", CheatingIgnoreBuilders.ToString());
+            writer.WriteElementString("IgnoreRequirements", CheatingIgnoreRequirements.ToString());
+            writer.WriteElementString("InstantlyBuilding", CheatingInstantlyBuilding.ToString());
+            writer.WriteElementString("InstantlyResearch", CheatingInstantlyResearch.ToString());
+            writer.WriteElementString("InstantlyHire", CheatingInstantlyHire.ToString());
+            writer.WriteEndElement();
 
             writer.WriteStartElement("TournamentSettings");
             foreach (LobbySettings lb in TournamentSettings)

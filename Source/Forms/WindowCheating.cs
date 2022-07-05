@@ -134,6 +134,14 @@ namespace Fantasy_Kingdoms_Battle
             player.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
             player.CheatingInstantlyHire = chkbInstantlyHire.Checked;
 
+            Program.formMain.CurrentHumanPlayer.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingIgnoreBuilders = chkbRequirementBuildersAlwaysZero.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingInstantlyHire = chkbInstantlyHire.Checked;
+            FormMain.Descriptors.SaveHumanPlayers();
+
             CloseForm(DialogAction.OK);
         }
     }
