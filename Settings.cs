@@ -192,6 +192,7 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteElementString("HideFulfilledRequirements", HideFulfilledRequirements.ToString());
             textWriter.WriteElementString("ShowExtraHint", ShowExtraHint.ToString());
             textWriter.WriteElementString("AllowCheating", AllowCheating.ToString());
+            textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();
             textWriter.Close();
