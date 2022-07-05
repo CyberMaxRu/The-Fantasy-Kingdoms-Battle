@@ -112,6 +112,7 @@ namespace Fantasy_Kingdoms_Battle
         // Исследования
         internal int ResearchPoints { get; private set; }// Всего очков исследования на этот ход
         internal int RestResearchPoints { get; private set; }// Осталось очков исследования
+        internal int UsedResearchPoints { get; private set; }// Использовано очков исследования
 
         // Прочность
         internal int CurrentDurability { get; set; }// Текущая прочность сооружения
@@ -1808,6 +1809,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // После очистки очереди, количество оставшихся очков исследования должно равняться дефолтному
             Assert(RestResearchPoints == ResearchPoints);
+            UsedResearchPoints = 0;
         }
 
         internal void AddCellMenuToQueue(CellMenuConstruction cmc)
@@ -1830,6 +1832,7 @@ namespace Fantasy_Kingdoms_Battle
                 return;
 
             int expenseCP = 0;
+            int expenseRP = 0;
 
             // Правильная реализация
             if (cmc.ExecutingAction.IsConstructionPoints)
@@ -1914,7 +1917,36 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                // Если исследование еще не начинали, но очки исследования еще есть, списываем деньги
+                if ((cmc.ExecutingAction.AppliedPoints == 0) && (RestResearchPoints > 0))
+                {
+                    if (RestResearchPoints > 0)
+                    {
+                        if (Player.CheckRequiredResources(cmc.PurchaseValue))
+                        {
+                            Player.SpendResource(cmc.PurchaseValue);
+                        }
+                        else
+                        {
+                            QueueBlocked = true;
+                            return;
+                        }
+                    }
+                }
 
+                // Ресурсы списаны, можно ставить в очередь
+                if (RestResearchPoints > 0)
+                {
+                    expenseRP = Math.Min(RestResearchPoints, cmc.ExecutingAction.NeedPoints);
+                    if (expenseRP > 0)
+                    {
+                        cmc.ExecutingAction.CurrentPoints = expenseRP;
+                        RestResearchPoints -= expenseRP;
+                    }
+                }
+
+                UsedResearchPoints += cmc.ExecutingAction.NeedPoints;
+                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(UsedResearchPoints, ResearchPoints);
             }
 
             //cmc.ExecutingAction.CurrentPoints = 0;
@@ -1969,6 +2001,8 @@ namespace Fantasy_Kingdoms_Battle
                     Player.ReturnResource(cmc.PurchaseValue);
                 if (cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
                     Player.RestConstructionPoints += cmc.ExecutingAction.CurrentPoints;
+                if (!cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
+                    RestResearchPoints += cmc.ExecutingAction.CurrentPoints;
             }
 
             if (removeFromList)
