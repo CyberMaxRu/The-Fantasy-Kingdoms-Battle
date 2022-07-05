@@ -253,22 +253,22 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Level == 0)
             {
-                if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
+                if ((ActionBuildOrLevelUp.ExecutingAction.AppliedPoints == 0) && (ActionBuildOrLevelUp.ExecutingAction.CurrentPoints > 0))
                 {
                     MaxDurability = Descriptor.Levels[1].Durability;
-                    CurrentDurability = ActionBuildOrLevelUp.ExecutingAction.AppliedPoints;
                 }
                 else
                 {
                     MaxDurability = 0;
-                    CurrentDurability = 0;
                 }
             }
             else
             {
-                MaxDurability = Descriptor.Levels[Level].Durability;
+                MaxDurability = Descriptor.Levels[Level].Durability;// Здесь надо считать через улучшения
                 CurrentDurability = Descriptor.Levels[Level].Durability;
             }
+
+            UpdateState();
         }
 
         internal void Build(bool needNotice)
@@ -1656,23 +1656,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Подготовка строительства сооружения
         // Вызывается у городских сооружений сразу
-        internal void PrepareBuilding()
-        {
-            MaxDurability = Descriptor.Levels[Level + 1].Durability;
-            UpdateState();
-        }
-
-        internal void StartBuilding()
-        {
-            if (Level > 0)
-            {
-                PrepareBuilding();
-            }
-
-            Player.AddToQueueBuilding(ActionBuildOrLevelUp);
-            UpdateState();
-        }
-
+        
         internal void StartRepair()
         {
             Player.AddToQueueBuilding(ActionRepair);
@@ -1682,16 +1666,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void CancelRepair()
         {
             Player.RemoveFromQueueBuilding(ActionRepair, false);
-            Player.RebuildQueueBuilding();
-            UpdateState();
-        }
-
-        internal void CancelBuilding()
-        {
-            if (Level > 0)
-                MaxDurability = Descriptor.Levels[Level].Durability;
-
-            Player.RemoveFromQueueBuilding(ActionBuildOrLevelUp, false);
             Player.RebuildQueueBuilding();
             UpdateState();
         }
@@ -1857,6 +1831,13 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Ресурсы списаны, можно ставить в очередь
+                if (Player.CheatingInstantlyBuilding)
+                {
+                    cmc.ExecutingAction.CurrentPoints = cmc.ExecutingAction.NeedPoints;
+                    cmc.DoProgressExecutingAction();
+                    return;
+                }
+
                 if (Player.RestConstructionPoints > 0)
                 {
                     expenseCP = Math.Min(Player.RestConstructionPoints, cmc.ExecutingAction.NeedPoints);

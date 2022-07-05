@@ -184,11 +184,17 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(ExecutingAction.RestDaysExecuting > 0);
             }
         }
+        internal virtual void StartExecute() { }// Вызывается перед началом выполнения действия
 
         internal virtual void DoProgressExecutingAction()
         {
             if (ExecutingAction.CurrentPoints > 0)
+            {
+                if (ExecutingAction.AppliedPoints == 0)
+                    StartExecute();
+
                 ExecutingAction.AppliedPoints += ExecutingAction.CurrentPoints;
+            }
 
             // Если прогресс завершен, выполняем действие
             Assert(ExecutingAction.NeedPoints >= 0);
@@ -196,12 +202,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Execute();
             }
-        }
-
-        internal override void PrepareNewDay()
-        {
-            base.PrepareNewDay();
-
         }
     }
 
@@ -497,28 +497,20 @@ namespace Fantasy_Kingdoms_Battle
                 return DaysForConstructed.ToString();*/
         }
 
-        internal override void Execute()
-        {
-            Construction.Player.RemoveFromQueueBuilding(this, true);
-            Construction.Build(true);
-        }
-
-        internal override void Click()
+        internal override void StartExecute()
         {
             if (Construction.Level > 0)
             {
                 Assert(Construction.CurrentDurability == Construction.MaxDurability);
             }
 
-            if (Descriptor.Number == 1)
-            {
-                if (!ExecutingAction.InQueue)
-                    Construction.StartBuilding();
-                else
-                    Construction.CancelBuilding();
-            }
-            else
-                Construction.StartBuilding();
+            base.StartExecute();
+        }
+
+        internal override void Execute()
+        {
+            Construction.Player.RemoveFromQueueBuilding(this, true);
+            Construction.Build(true);
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -541,7 +533,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.InQueueChanged();
 
-            Construction.UpdateMaxDurability();
+            if (Descriptor.Number == 1)
+                Construction.UpdateMaxDurability();
         }
     }
 
