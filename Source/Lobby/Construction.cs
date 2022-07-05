@@ -1831,8 +1831,8 @@ namespace Fantasy_Kingdoms_Battle
             if (QueueBlocked)
                 return;
 
-            int expenseCP = 0;
-            int expenseRP = 0;
+            int expenseCP;
+            int expenseRP;
 
             // Правильная реализация
             if (cmc.ExecutingAction.IsConstructionPoints)
@@ -1860,12 +1860,12 @@ namespace Fantasy_Kingdoms_Battle
                 if (Player.RestConstructionPoints > 0)
                 {
                     expenseCP = Math.Min(Player.RestConstructionPoints, cmc.ExecutingAction.NeedPoints);
-                }
 
-                if (expenseCP > 0)
-                {
-                    cmc.ExecutingAction.CurrentPoints = expenseCP;
-                    Player.RestConstructionPoints -= expenseCP;
+                    if (expenseCP > 0)
+                    {
+                        cmc.ExecutingAction.CurrentPoints = expenseCP;
+                        Player.RestConstructionPoints -= expenseCP;
+                    }
                 }
 
                 Player.UsedConstructionPoints += cmc.ExecutingAction.NeedPoints;
