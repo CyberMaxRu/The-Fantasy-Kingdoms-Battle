@@ -1970,7 +1970,10 @@ namespace Fantasy_Kingdoms_Battle
             if (cmc is CellMenuConstructionLevelUp)
             {
                 //Assert( || InRepair);
-                Assert(MaxDurability > 0);
+                if ((cmc.ExecutingAction.AppliedPoints > 0) || (cmc.ExecutingAction.CurrentPoints > 0))
+                {
+                    Assert(MaxDurability > 0);
+                }
 
                 if (forCancel)
                 {
