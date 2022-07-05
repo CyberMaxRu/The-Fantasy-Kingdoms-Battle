@@ -19,8 +19,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnBuildOrUpgrade;
         private readonly VCLabelValue lblIncome;
         private readonly VCIconButton48 btnQueue1;
-        private readonly VCBitmap bmpQueue2;
-        private readonly VCBitmap bmpQueue3;
+        private readonly VCEntityInQueue bmpQueue2;
+        private readonly VCEntityInQueue bmpQueue3;
 
         private readonly VCIconButton48 btnAction;
         private readonly VCIconButton48 btnInhabitants;
@@ -50,9 +50,10 @@ namespace Fantasy_Kingdoms_Battle
 
             btnQueue1 = new VCIconButton48(this, imgMapObject.ShiftX, pbDurability.NextTop(), 0);
             btnQueue1.ShowHint += BtnQueue1_ShowHint;
+            btnQueue1.ShowBorder = false;
             btnQueue1.Click += BtnQueue1_Click;
-            bmpQueue2 = new VCBitmap(this, btnQueue1.NextLeft() - 1, btnQueue1.ShiftY - 1, Program.formMain.bmpBackgroundEntityInQueue);
-            bmpQueue3 = new VCBitmap(this, bmpQueue2.NextLeft() - 3, btnQueue1.ShiftY - 1, Program.formMain.bmpBackgroundEntityInQueue);
+            bmpQueue2 = new VCEntityInQueue(this, btnQueue1.NextLeft(), btnQueue1.ShiftY);
+            bmpQueue3 = new VCEntityInQueue(this, bmpQueue2.NextLeft(), btnQueue1.ShiftY);
 
             btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), pbDurability.NextTop(), FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
@@ -140,9 +141,22 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.Visible = false;
 
             btnQueue1.Visible = Construction.QueueExecuting.Count >= 1;
-            btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
-            bmpQueue2.Visible = btnQueue1.Visible;
-            bmpQueue3.Visible = btnQueue1.Visible;
+            if (btnQueue1.Visible)
+            {
+                btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
+                bmpQueue2.Visible = true;
+                bmpQueue2.Action = Construction.QueueExecuting.Count >= 2 ? Construction.QueueExecuting[1] : null;
+                bmpQueue3.Visible = true;
+                bmpQueue3.Action = Construction.QueueExecuting.Count >= 3 ? Construction.QueueExecuting[2] : null;
+            }
+            else
+            {
+                btnQueue1.MenuCell = null;
+                bmpQueue2.Visible = false;
+                bmpQueue2.Action = null;
+                bmpQueue3.Visible = false;
+                bmpQueue3.Action = null;
+            }
 
             if (Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
             {

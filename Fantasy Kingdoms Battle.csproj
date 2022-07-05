@@ -186,6 +186,7 @@
     <Compile Include="Source\VisualControls\VCIconAndDigitValue.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage24.cs" />
+    <Compile Include="Source\VisualControls\VCEntityInQueue.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="Source\VisualControls\VCLinePlayerTournament.cs" />
     <Compile Include="Source\VisualControls\VCLocation.cs" />

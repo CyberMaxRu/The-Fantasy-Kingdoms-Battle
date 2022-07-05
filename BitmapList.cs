@@ -252,7 +252,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap GetImage(int imageIndex, bool enabled, bool over)
         {
             Debug.Assert(imageIndex >= 0);
-            Debug.Assert(imageIndex < Count);
+            Debug.Assert(imageIndex < Count, $"Попытка взять ImageIndex = {imageIndex} из коллекции в {Count}");
 
             List<Bitmap> array;
             if (enabled)
