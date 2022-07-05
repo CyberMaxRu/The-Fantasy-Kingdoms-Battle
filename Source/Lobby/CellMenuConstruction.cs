@@ -60,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.Settings.ShowTypeCellMenu ? GetTextForLevel() : "";
         }
 
-        internal override int GetDaysExecuting()
+        protected override int GetDaysExecuting()
         {
             if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
                 return -1;
@@ -480,7 +480,7 @@ namespace Fantasy_Kingdoms_Battle
                 return Color.Gray;
         }
 
-        internal override int GetDaysExecuting()
+        protected override int GetDaysExecuting()
         {
             //Assert(ExecutingAction.RestDaysExecuting > 0);
             return ExecutingAction.RestDaysExecuting;
@@ -547,7 +547,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта
 
-        internal override int GetDaysExecuting()
+        protected override int GetDaysExecuting()
         {
             if (ExecutingAction != null)
             {
