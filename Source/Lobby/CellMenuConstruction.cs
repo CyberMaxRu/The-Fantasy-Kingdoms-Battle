@@ -152,14 +152,12 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddToQueue()
         {
             Construction.AddCellMenuToQueue(this);
-            InQueueChanged();
         }
 
         internal void RemoveFromQueue(bool forCancel)
         {
             Construction.RemoveCellMenuFromQueue(this, true, forCancel);
             Construction.Player.RebuildQueueBuilding();
-            InQueueChanged();
         }
 
         internal void UpdateDaysExecuted()
@@ -520,13 +518,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void DoProgressExecutingAction()
         {
-            base.DoProgressExecutingAction();
+            Assert(Construction.MaxDurability > 0);
 
             if (Descriptor.Number == 1)
             {
                 Construction.CurrentDurability += ExecutingAction.CurrentPoints;
-
             }
+
+            base.DoProgressExecutingAction();
         }
 
         internal override void InQueueChanged()

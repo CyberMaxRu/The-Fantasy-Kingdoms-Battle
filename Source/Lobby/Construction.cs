@@ -1803,7 +1803,10 @@ namespace Fantasy_Kingdoms_Battle
 
             // Если очередь заблокирована, ставим невозможность выполнения и выходм
             if (QueueBlocked)
+            {
+                cmc.InQueueChanged();
                 return;
+            }
 
             int expenseCP;
             int expenseRP;
@@ -1825,6 +1828,7 @@ namespace Fantasy_Kingdoms_Battle
                         else
                         {
                             QueueBlocked = true;
+                            cmc.InQueueChanged();
                             return;
                         }
                     }
@@ -1834,6 +1838,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (Player.CheatingInstantlyBuilding)
                 {
                     cmc.ExecutingAction.CurrentPoints = cmc.ExecutingAction.NeedPoints;
+                    cmc.InQueueChanged();
                     cmc.DoProgressExecutingAction();
                     return;
                 }
@@ -1909,6 +1914,7 @@ namespace Fantasy_Kingdoms_Battle
                         }
                         else
                         {
+                            cmc.InQueueChanged();
                             QueueBlocked = true;
                             return;
                         }
@@ -1936,6 +1942,7 @@ namespace Fantasy_Kingdoms_Battle
             //Player.RestConstructionPoints = restCP;
 
             //cmc.ExecutingAction.InQueue = true;
+            cmc.InQueueChanged();
         }
 
         internal int CalcDaysForExecuting(int applyPoints, int freePoints)
@@ -2002,6 +2009,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             cmc.ExecutingAction.InQueue = false;
+            cmc.InQueueChanged();
             cmc.ExecutingAction.CurrentPoints = 0;
         }
 

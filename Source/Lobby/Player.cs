@@ -1610,7 +1610,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                 {
                     Assert(c.QueueExecuting.Count == 0);// Постройка - всегда первая
-                    Assert(c.MaxDurability == 0);
+                    //Assert(c.MaxDurability == 0);
                     Assert(c.CurrentDurability == 0);
                 }
 
@@ -1661,7 +1661,9 @@ namespace Fantasy_Kingdoms_Battle
             UsedConstructionPoints = 0;// Обнуляем потраченное количество очков
 
             // Составляем очереди у сооружений
-            foreach (CellMenuConstruction cmc in queueExecuting)
+            List<CellMenuConstruction> list = new List<CellMenuConstruction>();
+            list.AddRange(queueExecuting);
+            foreach (CellMenuConstruction cmc in list)
                 cmc.AddToQueue();
         }
 
