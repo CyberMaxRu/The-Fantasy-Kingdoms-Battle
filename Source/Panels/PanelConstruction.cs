@@ -172,11 +172,11 @@ namespace Fantasy_Kingdoms_Battle
                         pbDurability.Text = Construction.CurrentDurability.ToString();
                         break;
                     case StateConstruction.NotBuild:
+                    case StateConstruction.InQueueBuild:
                         pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
                         break;
                     case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
-                    case StateConstruction.InQueueBuild:
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         pbDurability.Text = $"{Construction.CurrentDurability}" +
