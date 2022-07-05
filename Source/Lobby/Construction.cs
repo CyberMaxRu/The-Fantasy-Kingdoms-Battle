@@ -1690,7 +1690,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
                 {
-                    if (CurrentDurability == 0)
+                    if ((CurrentDurability == 0) && (ActionBuildOrLevelUp.ExecutingAction.CurrentPoints > 0))
                         State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
                     else
                     {
