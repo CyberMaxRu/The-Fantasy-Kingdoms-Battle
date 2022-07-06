@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Threading;
+using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
@@ -75,6 +76,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareTurn(bool beginOfDay)
         {
+            if (CheatingIgnoreBaseResources)
+                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать основные ресурсы", Color.Orange);
+            if (CheatingIgnoreBuilders)
+                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать количество очков строительства", Color.Orange);
+            if (CheatingIgnoreRequirements)
+                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать требования", Color.Orange);
+            if (CheatingInstantlyBuilding)
+                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенная постройка", Color.Orange);
+            if (CheatingInstantlyResearch)
+                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенное исследование", Color.Orange);
+            if (CheatingInstantlyHire)
+                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенный найм", Color.Orange);
+
             base.PrepareTurn(beginOfDay);
 
             Lobby.Layer.ActivatePageResultTurn();

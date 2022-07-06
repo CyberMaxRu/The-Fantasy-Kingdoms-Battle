@@ -143,6 +143,11 @@ namespace Fantasy_Kingdoms_Battle
             SetNotice(Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
         }
 
+        public VCNoticeForPlayer(int imageIndex, string caption, string text, Color color) : base(52 + 399)
+        {
+            SetNotice(imageIndex, caption, text, color);
+        }
+
         private void CloseSelf()
         {
             Debug.Assert(Visible);

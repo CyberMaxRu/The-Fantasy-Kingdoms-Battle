@@ -1568,6 +1568,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void AddNoticeForPlayer(int imageIndex, string caption, string text, Color color)
+        {
+            if (GetTypePlayer() == TypePlayer.Human)
+            {
+                ListNoticesForPlayer.Add(new VCNoticeForPlayer(imageIndex, caption, text, color));
+            }
+        }
+
         internal void RemoveNoticeForPlayer(VCNoticeForPlayer e)
         {
             Debug.Assert(ListNoticesForPlayer.IndexOf(e) != -1);
