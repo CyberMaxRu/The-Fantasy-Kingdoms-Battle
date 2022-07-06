@@ -509,8 +509,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Construction.Player.RemoveFromQueueBuilding(this, true);
             Construction.Build(true);
+            Construction.Player.RemoveFromQueueBuilding(this, true);
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -520,7 +520,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void DoProgressExecutingAction()
         {
-            Assert(Construction.MaxDurability > 0);
+            //Assert(Construction.MaxDurability > 0);
 
             if (Descriptor.Number == 1)
             {
