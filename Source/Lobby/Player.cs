@@ -1609,7 +1609,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (cml.Descriptor.Number > 1)
                 {
                     Assert(c.MaxDurability > 0);
-                    Assert(c.CurrentDurability < c.MaxDurability);
+                    //Assert(c.CurrentDurability == c.MaxDurability);
                 }
                 else
                 {
@@ -1618,7 +1618,7 @@ namespace Fantasy_Kingdoms_Battle
                     Assert(c.CurrentDurability == 0);
                 }
 
-                Assert((c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)
+                Assert((c.State == StateConstruction.Work) || (c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)
                     || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
 
                 if (c.State == StateConstruction.NeedRepair)
