@@ -8,7 +8,6 @@
     <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
     <Cheating>
       <IgnoreBaseResources>False</IgnoreBaseResources>
-      <IgnoreBuilders>False</IgnoreBuilders>
       <IgnoreRequirements>False</IgnoreRequirements>
       <InstantlyBuilding>True</InstantlyBuilding>
       <InstantlyResearch>False</InstantlyResearch>

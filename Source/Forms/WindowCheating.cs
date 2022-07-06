@@ -21,7 +21,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private VCCheckBox chkbIgnoreRequirements;
         private VCCheckBox chkbIgnoreResources;
-        private VCCheckBox chkbRequirementBuildersAlwaysZero;
         private VCCheckBox chkbInstantlyBuilding;
         private VCCheckBox chkbInstantlyResearch;
         private VCCheckBox chkbInstantlyHire;
@@ -41,16 +40,12 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreResources.Hint = "Игнорировать требования к наличию достаточного количества базовых ресурсов и не тратить их";
             chkbIgnoreResources.Checked = player.CheatingIgnoreBaseResources;
 
-            chkbRequirementBuildersAlwaysZero = new VCCheckBox(ClientControl, 0, chkbIgnoreResources.NextTop(), "Игнорировать требования строителей");
-            chkbRequirementBuildersAlwaysZero.Hint = "Строительство не требует строителей";
-            chkbRequirementBuildersAlwaysZero.Checked = player.CheatingIgnoreBuilders;
-
-            chkbInstantlyBuilding = new VCCheckBox(ClientControl, 0, chkbRequirementBuildersAlwaysZero.NextTop(), "Мгновенная постройка сооружений");
+            chkbInstantlyBuilding = new VCCheckBox(ClientControl, 0, chkbIgnoreResources.NextTop(), "Мгновенная постройка сооружений");
             chkbInstantlyBuilding.Hint = "Сооружения строятся сразу же, минуя очередь и процесс постройки";
             chkbInstantlyBuilding.Checked = player.CheatingInstantlyBuilding;
 
             chkbInstantlyResearch = new VCCheckBox(ClientControl, 0, chkbInstantlyBuilding.NextTop(), "Мгновенное исследование в сооружении");
-            chkbInstantlyResearch.Hint = "Исследования, постройка и прочее в сооружении происходят сразу же";
+            chkbInstantlyResearch.Hint = "Исследования в сооружении происходят сразу же";
             chkbInstantlyResearch.Checked = player.CheatingInstantlyResearch;
 
             chkbInstantlyHire = new VCCheckBox(ClientControl, 0, chkbInstantlyResearch.NextTop(), "Мгновенный найм");
@@ -86,7 +81,6 @@ namespace Fantasy_Kingdoms_Battle
 
             chkbIgnoreRequirements.Width = ClientControl.Width;
             chkbIgnoreResources.Width = ClientControl.Width;
-            chkbRequirementBuildersAlwaysZero.Width = ClientControl.Width;
             chkbInstantlyBuilding.Width = ClientControl.Width;
             chkbInstantlyResearch.Width = ClientControl.Width;
             chkbInstantlyHire.Width = ClientControl.Width;
@@ -109,7 +103,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             chkbIgnoreRequirements.Checked = check;
             chkbIgnoreResources.Checked = check;
-            chkbRequirementBuildersAlwaysZero.Checked = check;
             chkbInstantlyBuilding.Checked = check;
             chkbInstantlyResearch.Checked = check;
             chkbInstantlyHire.Checked = check;
@@ -129,7 +122,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             player.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
             player.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
-            player.CheatingIgnoreBuilders = chkbRequirementBuildersAlwaysZero.Checked;
             player.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
             player.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
             player.CheatingInstantlyHire = chkbInstantlyHire.Checked;
@@ -144,7 +136,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain.CurrentHumanPlayer.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
             Program.formMain.CurrentHumanPlayer.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
-            Program.formMain.CurrentHumanPlayer.CheatingIgnoreBuilders = chkbRequirementBuildersAlwaysZero.Checked;
             Program.formMain.CurrentHumanPlayer.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
             Program.formMain.CurrentHumanPlayer.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
             Program.formMain.CurrentHumanPlayer.CheatingInstantlyHire = chkbInstantlyHire.Checked;

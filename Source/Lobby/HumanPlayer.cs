@@ -37,7 +37,6 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             CheatingIgnoreBaseResources = GetBoolean(n, "Cheating/IgnoreBaseResources", false);
-            CheatingIgnoreBuilders = GetBoolean(n, "Cheating/IgnoreBuilders", false);
             CheatingIgnoreRequirements = GetBoolean(n, "Cheating/IgnoreRequirements", false);
             CheatingInstantlyBuilding = GetBoolean(n, "Cheating/InstantlyBuilding", false);
             CheatingInstantlyResearch = GetBoolean(n, "Cheating/InstantlyResearch", false);
@@ -76,7 +75,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheatingIgnoreRequirements { get; set; }
         internal bool CheatingIgnoreBaseResources { get; set; }
-        internal bool CheatingIgnoreBuilders { get; set; }
         internal bool CheatingInstantlyBuilding { get; set; }
         internal bool CheatingInstantlyResearch { get; set; }
         internal bool CheatingInstantlyHire { get; set; }
@@ -125,7 +123,6 @@ namespace Fantasy_Kingdoms_Battle
 
             writer.WriteStartElement("Cheating");
             writer.WriteElementString("IgnoreBaseResources", CheatingIgnoreBaseResources.ToString());
-            writer.WriteElementString("IgnoreBuilders", CheatingIgnoreBuilders.ToString());
             writer.WriteElementString("IgnoreRequirements", CheatingIgnoreRequirements.ToString());
             writer.WriteElementString("InstantlyBuilding", CheatingInstantlyBuilding.ToString());
             writer.WriteElementString("InstantlyResearch", CheatingInstantlyResearch.ToString());

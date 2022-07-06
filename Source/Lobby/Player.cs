@@ -695,7 +695,6 @@ namespace Fantasy_Kingdoms_Battle
         // Читинг
         internal bool CheatingIgnoreRequirements { get; set; }
         internal bool CheatingIgnoreBaseResources { get; set; }
-        internal bool CheatingIgnoreBuilders { get; set; }
         internal bool CheatingInstantlyBuilding { get; set; }
         internal bool CheatingInstantlyResearch { get; set; }
         internal bool CheatingInstantlyHire { get; set; }
@@ -944,9 +943,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequireBuilders(int needBuilders)
         {
-            if (CheatingIgnoreBuilders)
-                return true;
-
             return RestConstructionPoints >= needBuilders;
         }
 

@@ -20,11 +20,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(player.TypePlayer == TypePlayer.Human);
 
             CheatingIgnoreBaseResources = player.CheatingIgnoreBaseResources;
-            CheatingIgnoreBuilders = player.CheatingIgnoreBuilders;
             CheatingIgnoreRequirements = player.CheatingIgnoreRequirements;
             CheatingInstantlyBuilding = player.CheatingInstantlyBuilding;
-            CheatingInstantlyHire = player.CheatingInstantlyHire;
             CheatingInstantlyResearch = player.CheatingInstantlyResearch;
+            CheatingInstantlyHire = player.CheatingInstantlyHire;
 
             frame = new DispatcherFrame();
         }
@@ -78,8 +77,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (CheatingIgnoreBaseResources)
                 AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать основные ресурсы", Color.Orange);
-            if (CheatingIgnoreBuilders)
-                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать количество очков строительства", Color.Orange);
             if (CheatingIgnoreRequirements)
                 AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать требования", Color.Orange);
             if (CheatingInstantlyBuilding)

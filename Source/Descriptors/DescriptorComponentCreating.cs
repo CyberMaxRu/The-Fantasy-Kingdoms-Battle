@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorWithID Entity { get; }
         internal int ConstructionPoints { get; }// Требуемые очки строительства
         internal int ResearchPoints { get; }// Требуемые очки исследования
-        internal int CalcConstructionPoints(Player p) => p.CheatingIgnoreBuilders ? 0 : ConstructionPoints;// Количество требуемых очков строительства
+        internal int CalcConstructionPoints(Player p) => ConstructionPoints;// Количество требуемых очков строительства
         internal ListBaseResources CostResources { get; }// Стоимость (в базовых ресурсах)
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
         internal int DaysProcessing { get; } = 1;
