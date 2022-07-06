@@ -126,11 +126,11 @@ namespace Fantasy_Kingdoms_Battle
             player.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
             player.CheatingInstantlyHire = chkbInstantlyHire.Checked;
 
-            if (Program.formMain.CurrentHumanPlayer.CheatingInstantlyBuilding != player.CheatingInstantlyBuilding)
+            if ((Program.formMain.CurrentHumanPlayer.CheatingInstantlyBuilding != player.CheatingInstantlyBuilding) || (Program.formMain.CurrentHumanPlayer.CheatingInstantlyResearch != player.CheatingInstantlyResearch))
             {
                 player.CalcDaysExecutingInActions();
 
-                if (player.CheatingInstantlyBuilding)
+                if (player.CheatingInstantlyBuilding || player.CheatingInstantlyResearch)
                     player.RebuildQueueBuilding();
             }
 
