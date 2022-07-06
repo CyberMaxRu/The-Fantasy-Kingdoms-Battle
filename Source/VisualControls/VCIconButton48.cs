@@ -26,8 +26,8 @@ namespace Fantasy_Kingdoms_Battle
                 ImageIndex = MenuCell.GetImageIndex();
                 ImageIsEnabled = MenuCell.GetImageIsEnabled();
                 LowText = MenuCell.GetText();
-                DaysExecuting = MenuCell.GetExtInfo();
-                Level = MenuCell.GetLevel();
+                DaysExecuting = MenuCell.GetExtInfo();                
+                Level = ShowBorder ? MenuCell.GetLevel() : "";// Если нет бордюра, значит это режим очереди исследования. Уровень и количество не показываем
                 Quantity = MenuCell.GetQuantity();
                 Color = MenuCell.GetColorText();
             }
