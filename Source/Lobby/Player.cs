@@ -1652,19 +1652,22 @@ namespace Fantasy_Kingdoms_Battle
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {
-            // Очищаем очереди выполнения во всех сооружениях
-            foreach (Construction c in Constructions)
-                c.ClearQueueExecuting();
+            if (queueExecuting.Count > 0)
+            {
+                // Очищаем очереди выполнения во всех сооружениях
+                foreach (Construction c in Constructions)
+                    c.ClearQueueExecuting();
 
-            Assert(RestConstructionPoints == ConstructionPoints);
+                Assert(RestConstructionPoints == ConstructionPoints);
 
-            UsedConstructionPoints = 0;// Обнуляем потраченное количество очков
+                UsedConstructionPoints = 0;// Обнуляем потраченное количество очков
 
-            // Составляем очереди у сооружений
-            List<CellMenuConstruction> list = new List<CellMenuConstruction>();
-            list.AddRange(queueExecuting);
-            foreach (CellMenuConstruction cmc in list)
-                cmc.AddToQueue();
+                // Составляем очереди у сооружений
+                List<CellMenuConstruction> list = new List<CellMenuConstruction>();
+                list.AddRange(queueExecuting);
+                foreach (CellMenuConstruction cmc in list)
+                    cmc.AddToQueue();
+            }
         }
 
         internal void AddConstruction(Construction c)
