@@ -193,6 +193,7 @@ namespace Fantasy_Kingdoms_Battle
                     StartExecute();
 
                 ExecutingAction.AppliedPoints += ExecutingAction.CurrentPoints;
+                ExecutingAction.CurrentPoints = 0;
             }
 
             // Если прогресс завершен, выполняем действие
