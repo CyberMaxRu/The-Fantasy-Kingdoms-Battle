@@ -88,6 +88,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (CellMenuConstruction pr in Actions)
             {
+                // Если действие в очереди, не отображаем его
+                if ((pr.ExecutingAction != null) && pr.ExecutingAction.InQueue)
+                    continue;
+
                 if (!menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used)
                 {
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;

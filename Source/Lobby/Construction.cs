@@ -174,33 +174,36 @@ namespace Fantasy_Kingdoms_Battle
         {
             ActionBuildOrLevelUp = null;
 
-            // Сооружение не построено, ищем действие для постройки
-            List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
-
-            foreach (CellMenuConstruction cm in Actions)
+            if ((Descriptor.DefaultLevel == 0) || (Descriptor.Levels.Length > 2))
             {
-                if (cm is CellMenuConstructionLevelUp cml)
+                // Сооружение не построено, ищем действие для постройки
+                List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
+
+                foreach (CellMenuConstruction cm in Actions)
                 {
-                    if (cml.Descriptor.Number <= Level)
-                        listForDelete.Add(cm);
-                    else if (cml.Descriptor.Number == Level + 1)
+                    if (cm is CellMenuConstructionLevelUp cml)
                     {
-                        Debug.Assert(ActionBuildOrLevelUp is null);
-                        ActionBuildOrLevelUp = cml;
+                        if (cml.Descriptor.Number <= Level)
+                            listForDelete.Add(cm);
+                        else if (cml.Descriptor.Number == Level + 1)
+                        {
+                            Debug.Assert(ActionBuildOrLevelUp is null);
+                            ActionBuildOrLevelUp = cml;
+                        }
                     }
                 }
-            }
 
-            // Удаляем все ячейки, если они относятся к уже построенным уровням
-            foreach (CellMenuConstruction cmd in listForDelete)
+                // Удаляем все ячейки, если они относятся к уже построенным уровням
+                foreach (CellMenuConstruction cmd in listForDelete)
                 Actions.Remove(cmd);
 
-            if (ActionRepair != null)
-                ActionMain = ActionRepair;
-            else if (ActionBuildOrLevelUp != null)
-                ActionMain = ActionBuildOrLevelUp;
-            else
-                ActionMain = null;
+                if (ActionRepair != null)
+                    ActionMain = ActionRepair;
+                else if (ActionBuildOrLevelUp != null)
+                    ActionMain = ActionBuildOrLevelUp;
+                else
+                    ActionMain = null;
+            }
         }
 
         private void UpdateCurrentIncomeResources()
@@ -1797,8 +1800,6 @@ namespace Fantasy_Kingdoms_Battle
             cmc.ExecutingAction.RestDaysExecuting = 0;
 
             QueueExecuting.Add(cmc);
-            if (!Actions.Remove(cmc))
-                EntityDoException($"Не удалось удалить {cmc} из списка действий.");
             Program.formMain.layerGame.UpdateMenu();
 
             // Если очередь заблокирована, ставим невозможность выполнения и выходм
@@ -2011,15 +2012,14 @@ namespace Fantasy_Kingdoms_Battle
                 Player.DeleteFromQueueBuilding(cmc);
             }
 
+            cmc.ExecutingAction.InQueue = false;
+            cmc.InQueueChanged();
+
             if (forCancel)
             {
-                Assert(Actions.IndexOf(cmc) == -1);
-                Actions.Add(cmc);
                 Program.formMain.layerGame.UpdateMenu();
             }
 
-            cmc.ExecutingAction.InQueue = false;
-            cmc.InQueueChanged();
             cmc.ExecutingAction.CurrentPoints = 0;
         }
 
