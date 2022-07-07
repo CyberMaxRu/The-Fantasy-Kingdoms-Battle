@@ -478,22 +478,6 @@ namespace Fantasy_Kingdoms_Battle
                 return Color.Gray;
         }
 
-        protected override int GetDaysExecuting()
-        {
-            //Assert(ExecutingAction.RestDaysExecuting > 0);
-            return ExecutingAction.RestDaysExecuting;
-
-            /*if (ExecutingAction.RestDaysExecuting > 0)
-            {
-                if (Construction.DaysConstructLeft == 0)
-                    return "";
-                else
-                    return Construction.DaysConstructLeft.ToString();
-            }
-            else
-                return DaysForConstructed.ToString();*/
-        }
-
         internal override void StartExecute()
         {
             if (Construction.Level > 0)
