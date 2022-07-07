@@ -1923,6 +1923,15 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Ресурсы списаны, можно ставить в очередь
+                if (Player.CheatingInstantlyResearch)
+                {
+                    cmc.ExecutingAction.CurrentPoints = cmc.ExecutingAction.NeedPoints;
+                    cmc.InQueueChanged();
+                    cmc.DoProgressExecutingAction();
+                    return;
+                }
+
+                // Ресурсы списаны, можно ставить в очередь
                 if (RestResearchPoints > 0)
                 {
                     expenseRP = Math.Min(RestResearchPoints, cmc.ExecutingAction.NeedPoints);

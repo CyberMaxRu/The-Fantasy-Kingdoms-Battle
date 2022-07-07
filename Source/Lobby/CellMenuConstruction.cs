@@ -277,8 +277,6 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            RemoveSelf();
-
             if (Entity.SmallEntity is DescriptorAbility da)
             {
                 ConstructionAbility ca = new ConstructionAbility(Construction, Entity, da);
@@ -312,6 +310,8 @@ namespace Fantasy_Kingdoms_Battle
                 Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.Research);
             }
 
+            RemoveSelf();
+            Construction.Player.RemoveFromQueueBuilding(this, true);
             Program.formMain.SetNeedRedrawFrame();
         }
 
