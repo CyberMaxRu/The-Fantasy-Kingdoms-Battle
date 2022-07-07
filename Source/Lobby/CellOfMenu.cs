@@ -30,24 +30,19 @@ namespace Fantasy_Kingdoms_Battle
         internal BigEntity BigEntity { get; }
         internal ListBaseResources PurchaseValue { get; private protected set; }// Стоимость покупки
 
-        internal virtual string GetText() => "";
         internal abstract int GetImageIndex();
         internal virtual bool GetImageIsEnabled() => CheckRequirements();
+        internal virtual string GetText() => "";
         internal virtual string GetLevel() => "";
         internal virtual int GetQuantity() => 0;
+        internal virtual string GetExtInfo() { int d = GetDaysExecuting(); return d == -1 ? "" : d > 0 ? d.ToString() : "*"; }
         protected virtual int GetDaysExecuting() => -1;
-        internal virtual string GetExtInfo()
-        {
-            int d = GetDaysExecuting();
-            return d == -1 ? "" : d > 0 ? d.ToString() : "*";
-        }
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
         internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();// Переделать на null
         internal virtual void PrepareHint(PanelHint panelHint) { }
         internal virtual void PrepareNewDay() { }
         internal abstract void Click();
-        internal abstract void Execute();
 
         internal virtual void UpdatePurchase() { }// Обновление стоимости покупки
     }

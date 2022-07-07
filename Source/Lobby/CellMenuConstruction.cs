@@ -73,6 +73,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         protected virtual string GetTextForLevel() => "";
+        protected abstract void Execute();
 
         protected void RemoveSelf()
         {
@@ -274,7 +275,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override string GetTextForLevel() => "и";
 
-        internal override void Execute()
+        protected override void Execute()
         {
             RemoveSelf();
 
@@ -350,7 +351,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override string GetTextForLevel() => "и";
 
-        internal override void Execute()
+        protected override void Execute()
         {
             RemoveSelf();
 
@@ -397,7 +398,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             /*if (ConstructionForBuild != null)
             {
@@ -503,7 +504,7 @@ namespace Fantasy_Kingdoms_Battle
             base.StartExecute();
         }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             Construction.Build(true);
             Construction.Player.RemoveFromQueueBuilding(this, true);
@@ -560,7 +561,7 @@ namespace Fantasy_Kingdoms_Battle
                 return DaysForRepair;
         }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             Construction.Player.RemoveFromQueueBuilding(this, true);
             Construction.InRepair = false;
@@ -645,7 +646,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorCreature Creature { get; private set; }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             Creature h = Construction.HireHero(Creature, PurchaseValue);
 
@@ -700,7 +701,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionMassEvent ConstructionEvent { get; }
         internal int Cooldown { get; private set; }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             Debug.Assert(Construction.Actions.IndexOf(this) != -1);
             Debug.Assert(cp is null);
@@ -786,7 +787,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorConstructionExtension Entity { get; }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             RemoveSelf();
 
@@ -833,7 +834,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorConstructionImprovement Entity { get; }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             RemoveSelf();
 
@@ -880,7 +881,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorConstructionTournament ConstructionTournament { get; }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             Debug.Assert(Construction.Actions.IndexOf(this) != -1);
             Debug.Assert(ct is null);
@@ -961,7 +962,7 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             Debug.Assert(CheckRequirements());
 
@@ -1062,7 +1063,7 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             
         }
@@ -1099,7 +1100,7 @@ namespace Fantasy_Kingdoms_Battle
             PurchaseValue = new ListBaseResources(Entity.Selling.Gold);
         }
 
-        internal override void Execute()
+        protected override void Execute()
         {
             switch (Entity.Action)
             {
@@ -1136,10 +1137,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Location.StateMenu = 1;
             Program.formMain.layerGame.UpdateMenu();
-        }
-
-        internal override void Execute()
-        {
         }
 
         internal override void UpdatePurchase()

@@ -61,11 +61,6 @@ namespace Fantasy_Kingdoms_Battle
             OnClick?.Invoke(this, EventArgs.Empty);
         }
 
-        internal override void Execute()
-        {
-            throw new NotImplementedException();
-        }
-
         internal override int GetImageIndex()
         {
             return Creature != null ? Creature.GetImageIndex() : -1;// Creature пропадает при клике на герое
@@ -103,10 +98,6 @@ namespace Fantasy_Kingdoms_Battle
                 ChangePage = true;
                 Program.formMain.layerGame.UpdateMenu();
             }
-        }
-
-        internal override void Execute()
-        {
         }
 
         internal override void UpdatePurchase()

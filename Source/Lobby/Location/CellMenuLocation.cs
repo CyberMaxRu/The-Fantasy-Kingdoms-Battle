@@ -21,8 +21,6 @@ namespace Fantasy_Kingdoms_Battle
             if (CheckRequirements())
             {
                 Program.formMain.PlayPushButton();
-
-                Execute();
             }
         }
     }
@@ -43,10 +41,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Location.StateMenu = 1;
             Program.formMain.layerGame.UpdateMenu();
-        }
-
-        internal override void Execute()
-        {
         }
 
         internal override void UpdatePurchase()
@@ -87,10 +81,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void Execute()
-        {
-        }
-
         internal override void UpdatePurchase()
         {
             PurchaseValue = cost;
@@ -125,10 +115,6 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.layerGame.UpdateMenu();
         }
 
-        internal override void Execute()
-        {
-        }
-
         internal override int GetImageIndex()
         {
             return Config.ImageIndexFirstItems + 185;
@@ -160,10 +146,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Location.StateMenu--;
             Program.formMain.layerGame.UpdateMenu();
-        }
-
-        internal override void Execute()
-        {
         }
 
         internal override void UpdatePurchase()
@@ -213,8 +195,10 @@ namespace Fantasy_Kingdoms_Battle
             PurchaseValue = new ListBaseResources(Entity.Selling.Gold);
         }
 
-        internal override void Execute()
+        internal override void Click()
         {
+            base.Click();
+                
             switch (Entity.Action)
             {
                 case ActionOfSpell.ScoutInLocation:
