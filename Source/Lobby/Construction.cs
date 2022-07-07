@@ -491,12 +491,7 @@ namespace Fantasy_Kingdoms_Battle
                 Researches.Remove(mc);
             }*/
         }
-
-        internal bool CanLevelUp()
-        {
-            return Level < Descriptor.MaxLevel;
-        }
-
+        
         internal int Income()
         {
             return (Level > 0) ? IncomeBaseResources.Gold : 0;

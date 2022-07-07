@@ -244,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (Construction.Level > 0)
                     {
-                        if (Construction.CanLevelUp())
+                        if (Construction.Level < Construction.Descriptor.MaxLevel)
                         {
                             Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
