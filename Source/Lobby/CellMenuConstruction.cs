@@ -45,6 +45,10 @@ namespace Fantasy_Kingdoms_Battle
                     if (Construction.Level == 0)
                         return false;
 
+            if (!ExecutingAction.InQueue)
+                if (Construction.QueueExecuting.Count >= Config.MaxLengthQueue)
+                    return false;
+
             // Потом проверяем наличие требуемых ресурсов
             if (!Construction.Player.CheckRequiredResources(PurchaseValue))
                 return false;
