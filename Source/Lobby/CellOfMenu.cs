@@ -48,7 +48,6 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void PrepareNewDay() { }
         internal abstract void Click();
         internal abstract void Execute();
-        internal abstract bool InstantExecute();
 
         internal virtual void UpdatePurchase() { }// Обновление стоимости покупки
     }

@@ -318,8 +318,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Entity.ImageIndex;
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionService : CellMenuConstruction
@@ -367,8 +365,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Entity.ImageIndex;
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionBuild : CellMenuConstruction
@@ -444,8 +440,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction.Player.PrepareHintForBuildTypeConstruction(panelHint, TypeConstruction);
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
     internal sealed class CellMenuConstructionLevelUp : CellMenuConstruction
@@ -462,7 +456,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool CheckRequirements() => Construction.CheckLevelRequirements(Descriptor.Number);
         internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override bool GetImageIsEnabled() => ExecutingAction.InQueue && (Construction.Level + 1 == Descriptor.Number) || base.GetImageIsEnabled();
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
         internal override void UpdatePurchase()
         {
             PurchaseValue = Descriptor.GetCreating().CostResources;
@@ -641,8 +634,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             //Construction.PrepareHintForBuildOrUpgrade(panelHint, Descriptor.Number);
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
     internal sealed class CellMenuConstructionRecruitCreature : CellMenuConstruction
@@ -694,8 +685,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep11Requirement(Construction.GetTextRequirementsHire());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, PurchaseValue);
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyHire;
     }
 
     internal sealed class CellMenuConstructionMassEvent : CellMenuConstruction
@@ -786,8 +775,6 @@ namespace Fantasy_Kingdoms_Battle
                 Cooldown--;
             }
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
     
     internal sealed class CellMenuConstructionExtension : CellMenuConstruction
@@ -835,8 +822,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep12Gold(Construction.Player.BaseResources, PurchaseValue);
             panelHint.AddStep13Builders(Entity.Durability, Construction.Player.RestConstructionPoints >= Entity.GetCreating().CalcConstructionPoints(Construction.Player));
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionImprovement : CellMenuConstruction
@@ -881,8 +866,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, PurchaseValue);
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionTournament : CellMenuConstruction
@@ -952,8 +935,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, PurchaseValue);
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
     internal enum TypeExtra { Builder, LevelUp, Research };
@@ -1064,8 +1045,6 @@ namespace Fantasy_Kingdoms_Battle
             if (Counter > 0)
                 Counter--;
         }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionAction : CellMenuConstruction
@@ -1086,11 +1065,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Execute()
         {
             
-        }
-
-        internal override bool InstantExecute()
-        {
-            return false;
         }
     }
 
@@ -1139,8 +1113,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements() => (Spell.Selling.RestQuantity > 0) && (base.CheckRequirements());
 
-        internal override bool InstantExecute() => true;
-
         internal override void PrepareNewDay()
         {
             base.PrepareNewDay();
@@ -1178,11 +1150,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Config.ImageIndexFirstItems + 184;
-        }
-
-        internal override bool InstantExecute()
-        {
-            throw new NotImplementedException();
         }
 
         internal override void PrepareHint(PanelHint panelHint)

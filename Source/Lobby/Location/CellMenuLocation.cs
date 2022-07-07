@@ -59,11 +59,6 @@ namespace Fantasy_Kingdoms_Battle
             return Config.ImageIndexFirstItems + 184;
         }
 
-        internal override bool InstantExecute()
-        {
-            throw new NotImplementedException();
-        }
-
         internal override void PrepareHint(PanelHint panelHint)
         {
             panelHint.AddSimpleHint("Информация о задании разведки");
@@ -106,11 +101,6 @@ namespace Fantasy_Kingdoms_Battle
             return Config.ImageIndexFirstItems + 289;
         }
 
-        internal override bool InstantExecute()
-        {
-            throw new NotImplementedException();
-        }
-
         internal override void PrepareHint(PanelHint panelHint)
         {
             if (GetImageIsEnabled())
@@ -149,11 +139,6 @@ namespace Fantasy_Kingdoms_Battle
             return base.CheckRequirements() && (Location.ComponentObjectOfMap.ListHeroesForFlag.Count > 0);
         }
 
-        internal override bool InstantExecute()
-        {
-            return true;
-        }
-
         internal override void PrepareHint(PanelHint panelHint)
         {
             panelHint.AddSimpleHint("Распустить героев, нанятых на разведку");
@@ -189,11 +174,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Config.ImageIndexFirstItems + 290;
-        }
-
-        internal override bool InstantExecute()
-        {
-            return true;
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -256,8 +236,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool CheckRequirements() => (Spell.Selling.RestQuantity > 0) && (base.CheckRequirements());
-
-        internal override bool InstantExecute() => true;
 
         internal override void PrepareNewDay()
         {

@@ -71,11 +71,6 @@ namespace Fantasy_Kingdoms_Battle
             return Creature != null ? Creature.GetImageIndex() : -1;// Creature пропадает при клике на герое
         }
 
-        internal override bool InstantExecute()
-        {
-            throw new NotImplementedException();
-        }
-
         internal override void PrepareHint(PanelHint panelHint)
         {
             if (BigEntity is Location l)
@@ -122,11 +117,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Config.ImageIndexFirstItems + 291;
-        }
-
-        internal override bool InstantExecute()
-        {
-            throw new NotImplementedException();
         }
 
         internal void SetQuantity(int quantity)
