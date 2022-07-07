@@ -90,7 +90,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override List<TextRequirement> GetTextRequirements()
         {
-            return Construction.GetResearchTextRequirements(this);
+            List<TextRequirement> list = new List<TextRequirement>();
+
+            if (Construction.Descriptor.IsInternalConstruction)
+            {
+                // Если нет требований, то по умолчанию остается только одно - сооружение должно быть построено
+                // Если есть, то не надо писать, что сооружение не построено - иначе не видно, какие там требования
+                if (Construction.Level == 0)
+                    list.Add(new TextRequirement(false, "Сооружение не построено"));
+
+                Construction.Player.TextRequirements(Descriptor.CreatedEntity.GetCreating().Requirements, list);
+            }
+
+            return list;
         }
 
         internal static CellMenuConstruction Create(Construction c, DescriptorCellMenu d)

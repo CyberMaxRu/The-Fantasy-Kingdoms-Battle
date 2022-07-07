@@ -814,23 +814,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<TextRequirement> GetResearchTextRequirements(CellMenuConstruction research)
-        {
-            List<TextRequirement> list = new List<TextRequirement>();
-
-            if (Descriptor.IsInternalConstruction)
-            {
-                // Если нет требований, то по умолчанию остается только одно - сооружение должно быть построено
-                // Если есть, то не надо писать, что сооружение не построено - иначе не видно, какие там требования
-                if (Level == 0)
-                    list.Add(new TextRequirement(false, "Сооружение не построено"));
-
-                Player.TextRequirements(research.Descriptor.CreatedEntity.GetCreating().Requirements, list);
-            }
-
-            return list;
-        }
-
         internal override int GetQuantity()
         {
             return ComponentObjectOfMap is null ? 0 :ComponentObjectOfMap.ListHeroesForFlag.Count;
