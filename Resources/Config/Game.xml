@@ -27,6 +27,7 @@
     </Player>
     <Construction>
       <DefaultResearchPoints>100</DefaultResearchPoints>
+      <MaxLengthQueue>3</MaxLengthQueue>
     </Construction>
   </GlobalSettings>
   <Colors>
