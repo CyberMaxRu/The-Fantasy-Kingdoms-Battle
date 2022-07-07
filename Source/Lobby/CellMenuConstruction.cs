@@ -514,10 +514,26 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
             panelHint.AddStep12Creating(Construction.Player, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), Construction.DayBuildingForLevel(Descriptor.Number),
-                Descriptor.GetCreating().CostResources, Construction.GetTextRequirements(Descriptor.Number));
+                Descriptor.GetCreating().CostResources, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
+
+        internal override List<TextRequirement> GetTextRequirements()
+        {
+            List<TextRequirement> list = new List<TextRequirement>();
+
+            Construction.Player.TextRequirements(Descriptor.GetCreating().Requirements, list);
+
+            if (Construction.CurrentMassEvent != null)
+                list.Add(new TextRequirement(false, "В сооружении идет мероприятие"));
+
+            if (Construction.CurrentTournament != null)
+                list.Add(new TextRequirement(false, "В сооружении идет турнир"));
+
+            return list;
+        }
+
 
         internal override void DoProgressExecutingAction()
         {

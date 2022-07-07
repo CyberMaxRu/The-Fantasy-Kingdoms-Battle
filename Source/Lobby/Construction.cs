@@ -526,21 +526,6 @@ namespace Fantasy_Kingdoms_Battle
             return Player.CheckRequirements(Descriptor.Levels[level].GetCreating().Requirements);
         }
 
-        internal List<TextRequirement> GetTextRequirements(int level)
-        {
-            List<TextRequirement> list = new List<TextRequirement>();
-
-            Player.TextRequirements(Descriptor.Levels[level].GetCreating().Requirements, list);
-
-            if (CurrentMassEvent != null)
-                list.Add(new TextRequirement(false, "В сооружении идет мероприятие"));
-
-            if (CurrentTournament != null)
-                list.Add(new TextRequirement(false, "В сооружении идет турнир"));
-
-            return list;
-        }
-
         internal int Income()
         {
             return (Level > 0) ? IncomeBaseResources.Gold : 0;
