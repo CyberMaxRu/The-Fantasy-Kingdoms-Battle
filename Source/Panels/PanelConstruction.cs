@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCImage128 imgMapObject;
         private readonly VCProgressBar pbDurability;
         private readonly VCIconButton48 btnHeroes;
-        private readonly VCIconButton48 btnBuildOrUpgrade;
+        private readonly VCIconButton48 btnMainAction;
         private readonly VCLabelValue lblIncome;
         private readonly VCIconButton48 btnQueue1;
         private readonly VCEntityInQueue bmpQueue2;
@@ -55,8 +55,8 @@ namespace Fantasy_Kingdoms_Battle
             bmpQueue2 = new VCEntityInQueue(this, btnQueue1.NextLeft(), btnQueue1.ShiftY);
             bmpQueue3 = new VCEntityInQueue(this, bmpQueue2.NextLeft(), btnQueue1.ShiftY);
 
-            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), pbDurability.NextTop(), FormMain.Config.Gui48_Build);
-            btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
+            btnMainAction = new VCIconButton48(this, imgMapObject.NextLeft(), pbDurability.NextTop(), FormMain.Config.Gui48_Build);
+            btnMainAction.Click += BtnBuildOrUpgrade_Click;
 
             lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Color.Green, true);
             lblIncome.Width = 72;
@@ -89,7 +89,7 @@ namespace Fantasy_Kingdoms_Battle
             lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
             Width = lblIncome.NextLeft();
-            Height = btnBuildOrUpgrade.NextTop();
+            Height = btnMainAction.NextTop();
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
 
@@ -136,7 +136,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.TextCaption.Text = Construction.GetName();
             imgMapObject.TextCaption.Color = Construction.GetColorCaption();
 
-            btnBuildOrUpgrade.MenuCell = null;
+            btnMainAction.MenuCell = null;
             pbDurability.Visible = false;
             btnHeroes.Visible = false;
 
@@ -244,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (Construction.QueueExecuting.Count > 0)
                     {
-                        btnBuildOrUpgrade.Visible = false;
+                        btnMainAction.Visible = false;
                     }
                     else if (Construction.Level > 0)
                     {
@@ -252,21 +252,21 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
-                            btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.MenuCell = Construction.ActionMain;
+                            btnMainAction.Visible = true;
+                            btnMainAction.MenuCell = Construction.ActionMain;
                         }
                         else
                         {
                             if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
                             {
-                                btnBuildOrUpgrade.Visible = true;
-                                btnBuildOrUpgrade.LowText = "";
-                                btnBuildOrUpgrade.Level = "";
-                                btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_Temple;
-                                btnBuildOrUpgrade.ImageIsEnabled = true;
+                                btnMainAction.Visible = true;
+                                btnMainAction.LowText = "";
+                                btnMainAction.Level = "";
+                                btnMainAction.ImageIndex = FormMain.Config.Gui48_Temple;
+                                btnMainAction.ImageIsEnabled = true;
                             }
                             else
-                                btnBuildOrUpgrade.Visible = false;
+                                btnMainAction.Visible = false;
                         }
                     }
                     else
@@ -275,15 +275,15 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
-                            btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.MenuCell = Construction.ActionMain;
+                            btnMainAction.Visible = true;
+                            btnMainAction.MenuCell = Construction.ActionMain;
                         }
                         else
-                            btnBuildOrUpgrade.Visible = false;
+                            btnMainAction.Visible = false;
                     }
                 }
                 else
-                    btnBuildOrUpgrade.Visible = false;
+                    btnMainAction.Visible = false;
             }
             else
             {
@@ -404,7 +404,7 @@ namespace Fantasy_Kingdoms_Battle
             void VisibleOur(bool visible)
             {
                 btnHeroes.Visible = visible;
-                btnBuildOrUpgrade.Visible = visible;
+                btnMainAction.Visible = visible;
                 lblIncome.Visible = visible;
 
             }
