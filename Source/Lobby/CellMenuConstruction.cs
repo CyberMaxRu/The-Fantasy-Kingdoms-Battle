@@ -451,7 +451,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal new DescriptorConstructionLevel Descriptor { get; }
-        internal int DaysForConstructed { get; set; }// Дней на завершение строительства
 
         // Реализация
         internal override bool CheckRequirements() => Construction.CheckLevelRequirements(Descriptor.Number);
