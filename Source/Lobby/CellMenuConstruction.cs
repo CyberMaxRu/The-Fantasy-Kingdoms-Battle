@@ -499,7 +499,24 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            Construction.PrepareHintForBuildOrUpgrade(panelHint, Descriptor.Number);
+            if (Descriptor.Number > Construction.Descriptor.MaxLevel)
+                return;// Убрать это
+
+            panelHint.AddStep2Entity(Construction);
+            panelHint.AddStep4Level(Descriptor.Number == 1 ? "Уровень 1" : $"Улучшить строение ({Descriptor.Number} ур.)");
+            panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.Description : "");
+            panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
+            panelHint.AddStep8Greatness(Construction.GreatnesAddForLevel(Descriptor.Number), Construction.GreatnesPerDayForLevel(Descriptor.Number));
+            panelHint.AddStep9PlusBuilders(Construction.BuildersPerDayForLevel(Descriptor.Number));
+            if (Descriptor.DescriptorVisit != null)
+            {
+                panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);
+                panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
+            }
+            panelHint.AddStep12Creating(Construction.Player, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), Construction.DayBuildingForLevel(Descriptor.Number),
+                Descriptor.GetCreating().CostResources, Construction.GetTextRequirements(Descriptor.Number));
+            //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
+            //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
 
         internal override void DoProgressExecutingAction()

@@ -1127,30 +1127,6 @@ namespace Fantasy_Kingdoms_Battle
                 return "Пока место не разведано, существа в нем неизвестны";
         }
 
-        internal void PrepareHintForBuildOrUpgrade(PanelHint panelHint, int requiredLevel)
-        {
-            if (requiredLevel > Descriptor.MaxLevel)
-                return;// Убрать это
-            Debug.Assert(requiredLevel > 0);
-            Debug.Assert(requiredLevel <= Descriptor.MaxLevel);
-
-            panelHint.AddStep2Entity(this);
-            panelHint.AddStep4Level(requiredLevel == 1 ? "Уровень 1" : $"Улучшить строение ({requiredLevel} ур.)");
-            panelHint.AddStep5Description(requiredLevel == 1 ? Descriptor.Description : "");
-            panelHint.AddStep6Income(IncomeForLevel(requiredLevel));
-            panelHint.AddStep8Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
-            panelHint.AddStep9PlusBuilders(BuildersPerDayForLevel(requiredLevel));
-            if (Descriptor.Levels[requiredLevel].DescriptorVisit != null)
-            {
-                panelHint.AddStep9Interest(Descriptor.Levels[requiredLevel].DescriptorVisit.Interest, false);
-                panelHint.AddStep9ListNeeds(Descriptor.Levels[requiredLevel].DescriptorVisit.ListNeeds, false);
-            }
-            panelHint.AddStep12Creating(Player, Descriptor.Levels[requiredLevel].GetCreating().CalcConstructionPoints(Player), DayBuildingForLevel(requiredLevel),
-                Descriptor.Levels[requiredLevel].GetCreating().CostResources, GetTextRequirements(requiredLevel));
-            //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
-            //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
-        }
-
         internal void PrepareHintForInhabitantCreatures(PanelHint panelHint)
         {
             if (Heroes.Count > 0)
