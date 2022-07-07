@@ -469,7 +469,30 @@ namespace Fantasy_Kingdoms_Battle
         internal new DescriptorConstructionLevel Descriptor { get; }
 
         // Реализация
-        internal override bool CheckRequirements() => Construction.CheckLevelRequirements(Descriptor.Number);
+        internal override bool CheckRequirements()
+        {
+            // При постройке храма из меню Святой земли, сюда прилетает 2 уровень
+            if (Construction.Descriptor.MaxLevel < Descriptor.Number)
+                return false;
+
+            // Сначала проверяем наличие золота
+            if (!Construction.Player.CheckRequiredResources(Descriptor.GetCreating().CostResources))
+                return false;
+
+            // Проверяем наличие очков строительства
+            //if (!Player.CheckRequireBuilders(Descriptor.Levels[level].GetCreating().ConstructionPoints(Player)))
+            //    return false;
+
+            // Проверяем, что нет события или турнира
+            if (Construction.CurrentMassEvent != null)
+                return false;
+            if (Construction.CurrentTournament != null)
+                return false;
+
+            // Проверяем требования к зданиям
+            return Construction.Player.CheckRequirements(Descriptor.GetCreating().Requirements);
+
+        }
         internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override bool GetImageIsEnabled() => ExecutingAction.InQueue && (Construction.Level + 1 == Descriptor.Number) || base.GetImageIsEnabled();
         internal override void UpdatePurchase()
@@ -519,13 +542,13 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.Description : "");
             panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
             panelHint.AddStep8Greatness(Construction.GreatnesAddForLevel(Descriptor.Number), Construction.GreatnesPerDayForLevel(Descriptor.Number));
-            panelHint.AddStep9PlusBuilders(Construction.BuildersPerDayForLevel(Descriptor.Number));
+            panelHint.AddStep9PlusBuilders(Descriptor.AddConstructionPoints);
             if (Descriptor.DescriptorVisit != null)
             {
                 panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
-            panelHint.AddStep12Creating(Construction.Player, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), Construction.DayBuildingForLevel(Descriptor.Number),
+            panelHint.AddStep12Creating(Construction.Player, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), Descriptor.GetCreating().DaysProcessing,
                 Descriptor.GetCreating().CostResources, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));

@@ -497,35 +497,6 @@ namespace Fantasy_Kingdoms_Battle
             return Level < Descriptor.MaxLevel;
         }
 
-        internal ListBaseResources CostBuyOrUpgrade()
-        {
-            return CanLevelUp() == true ? Descriptor.Levels[Level + 1].GetCreating().CostResources : null;
-        }
-
-        internal bool CheckLevelRequirements(int level)
-        {
-            // При постройке храма из меню Святой земли, сюда прилетает 2 уровень
-            if (Descriptor.MaxLevel < level)
-                return false;
-
-            // Сначала проверяем наличие золота
-            if (!Player.CheckRequiredResources(Descriptor.Levels[level].GetCreating().CostResources))
-                return false;
-
-            // Проверяем наличие очков строительства
-            //if (!Player.CheckRequireBuilders(Descriptor.Levels[level].GetCreating().ConstructionPoints(Player)))
-            //    return false;
-
-            // Проверяем, что нет события или турнира
-            if (CurrentMassEvent != null)
-                return false;
-            if (CurrentTournament != null)
-                return false;
-
-            // Проверяем требования к зданиям
-            return Player.CheckRequirements(Descriptor.Levels[level].GetCreating().Requirements);
-        }
-
         internal int Income()
         {
             return (Level > 0) ? IncomeBaseResources.Gold : 0;
@@ -536,11 +507,6 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Levels[level].IncomeResources != null ? Descriptor.Levels[level].IncomeResources.Gold : 0;
         }
 
-        internal int DayBuildingForLevel(int level)
-        {
-            return Descriptor.Levels[level].GetCreating().DaysProcessing;
-        }
-
         internal int GreatnesAddForLevel(int level)
         {
             return Descriptor.Levels[level].GreatnessByConstruction;
@@ -549,11 +515,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnesPerDayForLevel(int level)
         {
             return Descriptor.Levels[level].GreatnessPerDay;
-        }
-
-        internal int BuildersPerDayForLevel(int level)
-        {
-            return Descriptor.Levels[level].AddConstructionPoints;
         }
 
         internal int IncomeNextLevel()
@@ -579,11 +540,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessPerDayNextLevel()
         {
             return Level < Descriptor.MaxLevel ? GreatnesPerDayForLevel(Level + 1) : 0;
-        }
-
-        internal int BuildersPerDayNextLevel()
-        {
-            return Level < Descriptor.MaxLevel ? BuildersPerDayForLevel(Level + 1) : 0;
         }
 
         internal bool AllowHire()
