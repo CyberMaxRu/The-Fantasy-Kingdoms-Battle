@@ -37,7 +37,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int CalcConstructionPoints(Player p) => ConstructionPoints;// Количество требуемых очков строительства
         internal ListBaseResources CostResources { get; }// Стоимость (в базовых ресурсах)
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
-        internal int DaysProcessing { get; } = 1;
 
         internal override void TuneLinks()
         {

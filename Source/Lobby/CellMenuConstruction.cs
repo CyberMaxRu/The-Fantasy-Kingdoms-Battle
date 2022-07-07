@@ -144,10 +144,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (CheckRequirements())
                     {
-                        if (!(this is CellMenuConstructionRecruitCreature))
-                            if (!(this is CellMenuConstructionSpell))
-                                Debug.Assert(Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0);
-
                         Program.formMain.PlayPushButton();
 
                         Construction.Player.AddToQueueBuilding(this);
@@ -455,7 +451,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            Construction.Player.PrepareHintForBuildTypeConstruction(panelHint, TypeConstruction);
+            panelHint.AddStep2Descriptor(TypeConstruction);
+            //panelHint.AddStep4Level("Уровень 1");
+            //panelHint.AddStep6Income(type.Levels[1].Income);
+            panelHint.AddStep8Greatness(TypeConstruction.Levels[1].GreatnessByConstruction, TypeConstruction.Levels[1].GreatnessPerDay);
+            panelHint.AddStep9PlusBuilders(TypeConstruction.Levels[1].AddConstructionPoints);
+            //panelHint.AddStep10DaysBuilding(-1, TypeConstruction.Levels[1].GetCreating().DaysProcessing);
+            panelHint.AddStep11Requirement(Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
+            panelHint.AddStep12Gold(Construction.Player.BaseResources, TypeConstruction.Levels[1].GetCreating().CostResources);
+            panelHint.AddStep13Builders(TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player), Construction.Player.RestConstructionPoints >= TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player));
         }
     }
 
@@ -548,7 +552,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
-            panelHint.AddStep12Creating(Construction.Player, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), Descriptor.GetCreating().DaysProcessing,
+            panelHint.AddStep12Creating(Construction.Player, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), ExecutingAction.RestDaysExecuting,
                 Descriptor.GetCreating().CostResources, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
@@ -705,8 +709,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Creature h = Construction.HireHero(Creature, PurchaseValue);
 
-            if (Descriptor.CreatedEntity.GetCreating().DaysProcessing > 0)
-                Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
+            Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
         }
 
         internal override bool CheckRequirements()

@@ -1366,19 +1366,6 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal void PrepareHintForBuildTypeConstruction(PanelHint panelHint, DescriptorConstruction type)
-        {
-            panelHint.AddStep2Descriptor(type);
-            //panelHint.AddStep4Level("Уровень 1");
-            //panelHint.AddStep6Income(type.Levels[1].Income);
-            panelHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
-            panelHint.AddStep9PlusBuilders(type.Levels[1].AddConstructionPoints);
-            panelHint.AddStep10DaysBuilding(-1, type.Levels[1].GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
-            panelHint.AddStep12Gold(BaseResources, type.Levels[1].GetCreating().CostResources);
-            panelHint.AddStep13Builders(type.Levels[1].GetCreating().CalcConstructionPoints(this), RestConstructionPoints >= type.Levels[1].GetCreating().CalcConstructionPoints(this));
-        }
-
         //
         internal override string GetName() => Descriptor.Name;
         internal override Player GetPlayer() => this;
