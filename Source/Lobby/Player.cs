@@ -1343,20 +1343,6 @@ namespace Fantasy_Kingdoms_Battle
             return g;
         }
 
-        internal bool CanBuildTypeConstruction(DescriptorConstruction type)
-        {
-            // Сначала проверяем наличие ресурсов
-            if (!BaseResources.ResourcesEnough(type.Levels[1].GetCreating().CostResources))
-                return false;
-
-            // Проверяем наличие очков строительства
-            if (type.Levels[1].GetCreating().CalcConstructionPoints(this) > RestConstructionPoints)
-                return false;
-
-            // Проверяем требования к зданиям
-            return CheckRequirements(type.Levels[1].GetCreating().Requirements);
-        }
-
         internal List<TextRequirement> GetTextRequirementsBuildTypeConstruction(DescriptorConstruction type)
         {
             List<TextRequirement> list = new List<TextRequirement>();

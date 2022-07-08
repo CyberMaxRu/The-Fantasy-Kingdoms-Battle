@@ -406,7 +406,16 @@ namespace Fantasy_Kingdoms_Battle
                 return Construction.Player.CheckRequirements(Descriptor.CreatedEntity.GetCreating().Requirements);
             else
             {
-                return Construction.Player.CanBuildTypeConstruction(TypeConstruction);
+                // Сначала проверяем наличие ресурсов
+                if (!Construction.Player.BaseResources.ResourcesEnough(TypeConstruction.Levels[1].GetCreating().CostResources))
+                    return false;
+
+                // Проверяем наличие очков строительства
+                if (TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player) > Construction.Player.RestConstructionPoints)
+                    return false;
+
+                // Проверяем требования к зданиям
+                return Construction.Player.CheckRequirements(TypeConstruction.Levels[1].GetCreating().Requirements);
             }
         }
 
