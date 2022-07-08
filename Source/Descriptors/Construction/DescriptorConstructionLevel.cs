@@ -60,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (Number > 1)
-                GetCreating().Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1));
+                GetCreating().Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1, GetCreating().Requirements));
 
             XmlNode nm = n.SelectSingleNode("Mining");
             if (nm != null)

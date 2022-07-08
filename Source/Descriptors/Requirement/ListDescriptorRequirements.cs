@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     internal class ListDescriptorRequirements : List<DescriptorRequirement>
     {
         private bool linksTuned;
+
         public ListDescriptorRequirements(Descriptor forEntity, XmlNode n)
         {
             if (n != null)
@@ -24,15 +25,15 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     type = GetStringNotNull(r, "TypeRequirement");
                     if (type == "BuildedConstruction")
-                        Add(new RequirementConstruction(forEntity, r));
+                        Add(new RequirementConstruction(forEntity, r, this));
                     else if (type == "DestroyedLairs")
-                        Add(new RequirementDestroyedLairs(forEntity, r));
+                        Add(new RequirementDestroyedLairs(forEntity, r, this));
                     else if (type == "BuildedTypeConstruction")
-                        Add(new RequirementTypeConstruction(forEntity, r));
+                        Add(new RequirementTypeConstruction(forEntity, r, this));
                     else if (type == "GoodsInConstruction")
-                        Add(new RequirementGoods(forEntity, r));
+                        Add(new RequirementGoods(forEntity, r, this));
                     else if (type == "ExtensionInConstruction")
-                        Add(new RequirementExtension(forEntity, r));
+                        Add(new RequirementExtension(forEntity, r,this));
                     else
                         throw new Exception($"Неизвестный тип условия: {type}.");
                 }
@@ -40,6 +41,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorWithID ForEntity { get; }
+        internal bool AllowCheating { get; set; }
 
         internal void TuneLinks()
         {

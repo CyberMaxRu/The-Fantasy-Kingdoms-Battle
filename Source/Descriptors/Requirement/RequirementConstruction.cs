@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private int level;
         private int skipTurnsFromBuild;
 
-        public RequirementConstruction(Descriptor forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementConstruction(Descriptor forEntity, XmlNode n, ListDescriptorRequirements list) : base(forEntity, n, list)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             level = XmlUtils.GetInteger(n, "Level");
@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(skipTurnsFromBuild >= 0);
         }
 
-        public RequirementConstruction(Descriptor forCellMenu, string requiredConstruction, int requiredLevel) : base(forCellMenu)
+        public RequirementConstruction(Descriptor forCellMenu, string requiredConstruction, int requiredLevel, ListDescriptorRequirements list) : base(forCellMenu, list)
         {
             nameConstruction = requiredConstruction;
             level = requiredLevel;
@@ -49,6 +49,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirement(Player p)
         {
+            bool allowCheating = base.CheckRequirement(p);
+
             Construction requiredConstruction = p.GetPlayerConstruction(construction);
 
             if (ForEntity is DescriptorConstructionLevel dcl)
@@ -59,10 +61,10 @@ namespace Fantasy_Kingdoms_Battle
                 if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
                     return (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
                 else
-                    return p.CheatingIgnoreRequirements || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
+                    return allowCheating || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
             }
             else
-                return p.CheatingIgnoreRequirements || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
+                return allowCheating || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
         }
 
         internal override TextRequirement GetTextRequirement(Player p)

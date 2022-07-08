@@ -11,18 +11,21 @@ namespace Fantasy_Kingdoms_Battle
     // Класс требования
     internal abstract class DescriptorRequirement : Descriptor
     {
-        public DescriptorRequirement(Descriptor forEntity, XmlNode n) : base()
+        public DescriptorRequirement(Descriptor forEntity, XmlNode n, ListDescriptorRequirements list) : base()
         {
             ForEntity = forEntity;
+            List = list;                
         }
 
-        public DescriptorRequirement(Descriptor forEntity) : base()
+        public DescriptorRequirement(Descriptor forEntity, ListDescriptorRequirements list) : base()
         {
             ForEntity = forEntity;
+            List = list;
         }
 
         internal Descriptor ForEntity { get; }
-        internal abstract bool CheckRequirement(Player p);
+        internal ListDescriptorRequirements List { get; }
+        internal virtual bool CheckRequirement(Player p) => List.AllowCheating && p.CheatingIgnoreRequirements;
         internal abstract TextRequirement GetTextRequirement(Player p);
     }
 }

@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameTypeConstruction;
         private int quantity;
 
-        public RequirementTypeConstruction(Descriptor forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementTypeConstruction(Descriptor forEntity, XmlNode n, ListDescriptorRequirements list) : base(forEntity, n, list)
         {
             nameTypeConstruction = XmlUtils.GetStringNotNull(n, "TypeConstruction");
             quantity = XmlUtils.GetInteger(n, "Quantity");
@@ -24,11 +24,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(quantity > 0);
         }
 
-        internal override bool CheckRequirement(Player p)
-        {
-            return p.CheatingIgnoreRequirements ? true : p.TypeConstructionBuilded(typeConstruction) >= quantity;
-        }
-
+        internal override bool CheckRequirement(Player p) => base.CheckRequirement(p) || (p.TypeConstructionBuilded(typeConstruction) >= quantity);
+        
         internal override void TuneLinks()
         {
             base.TuneLinks();

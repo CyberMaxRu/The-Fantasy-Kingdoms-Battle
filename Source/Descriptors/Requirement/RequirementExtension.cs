@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstructionExtension Extension;
         private string nameExtension;
 
-        public RequirementExtension(Descriptor forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementExtension(Descriptor forEntity, XmlNode n, ListDescriptorRequirements list) : base(forEntity, n, list)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameExtension = XmlUtils.GetStringNotNull(n, "Extension");
@@ -25,10 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nameExtension.Length > 0);
         }
 
-        internal override bool CheckRequirement(Player p)
-        {
-            return p.CheatingIgnoreRequirements ? true : p.FindConstruction(Construction.ID).ExtensionAvailabled(Extension);
-        }
+        internal override bool CheckRequirement(Player p) => base.CheckRequirement(p) || p.FindConstruction(Construction.ID).ExtensionAvailabled(Extension);
 
         internal override void TuneLinks()
         {

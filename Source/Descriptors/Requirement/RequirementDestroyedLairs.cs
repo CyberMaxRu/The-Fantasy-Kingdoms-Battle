@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameConstruction;
         private int destroyed;
 
-        public RequirementDestroyedLairs(Descriptor forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementDestroyedLairs(Descriptor forEntity, XmlNode n, ListDescriptorRequirements list) : base(forEntity, n, list)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             destroyed = XmlUtils.GetInteger(n, "Destroyed");
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(destroyed > 0);
         }
 
-        internal override bool CheckRequirement(Player p) => p.CheatingIgnoreRequirements ? true : p.LairsDestroyed(construction) >= destroyed;
+        internal override bool CheckRequirement(Player p) => base.CheckRequirement(p) || (p.LairsDestroyed(construction) >= destroyed);
 
         internal override TextRequirement GetTextRequirement(Player p)
         {

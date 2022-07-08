@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             Mission = dm;
             Turn = GetIntegerNotNull(n, "Turn");
             StartRequirements = new ListDescriptorRequirements(this, n.SelectSingleNode("StartRequirements"));
+            StartRequirements.AllowCheating = false;
 
             // Загружаем части сообщения
             foreach (XmlNode np in n.SelectNodes("Part"))
