@@ -726,7 +726,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep12Gold(ListBaseResources ownRes, ListBaseResources requiresRes)
         {
-            if (requiresRes.ExistsResources())
+            if ((requiresRes != null) && requiresRes.ExistsResources())
             {
                 if (!lblSeparateRequirement.Visible)
                 {
