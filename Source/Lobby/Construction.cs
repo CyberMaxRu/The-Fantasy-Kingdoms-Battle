@@ -170,7 +170,8 @@ namespace Fantasy_Kingdoms_Battle
             else
                 return base.GetIDEntity(descriptor);
         }
-        private void TuneCellMenuBuildOrUpgrade()
+
+        private void TuneActionLevelUp()
         {
             ActionBuildOrLevelUp = null;
 
@@ -368,7 +369,7 @@ namespace Fantasy_Kingdoms_Battle
             if (needNotice)
                 Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);
 
-            TuneCellMenuBuildOrUpgrade();
+            TuneActionLevelUp();
             UpdateCurrentIncomeResources();
             UpdateState();
         }
@@ -1546,7 +1547,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            TuneCellMenuBuildOrUpgrade();// Если кнорка ремонта была удалена, надо обновить действия
+            TuneActionLevelUp();// Если кнорка ремонта была удалена, надо обновить действия
         }
 
         // Подготовка строительства сооружения
@@ -1568,7 +1569,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void TuneConstructAfterCreate()
         {
             UpdateCurrentIncomeResources();
-            TuneCellMenuBuildOrUpgrade();
+            TuneActionLevelUp();
             UpdateSelectedColor();
             UpdateState();
         }
@@ -1632,7 +1633,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionDamaged, damage);
                 UpdateState();
-                TuneCellMenuBuildOrUpgrade();
+                TuneActionLevelUp();
             }
         }
 
