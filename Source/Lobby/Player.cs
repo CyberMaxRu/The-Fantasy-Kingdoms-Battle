@@ -941,11 +941,6 @@ namespace Fantasy_Kingdoms_Battle
             return BaseResources.ResourcesEnough(reqResources);
         }
 
-        internal bool CheckRequireBuilders(int needBuilders)
-        {
-            return RestConstructionPoints >= needBuilders;
-        }
-
         internal bool CheckRequirements(List<DescriptorRequirement> list)
         {
             foreach (DescriptorRequirement r in list)
