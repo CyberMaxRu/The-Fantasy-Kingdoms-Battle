@@ -11,7 +11,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс описателя ячейки меню
+    // Класс описателя действия для сущности
     internal sealed class DescriptorActionForEntity : Descriptor
     {
         public DescriptorActionForEntity(XmlNode n) : base()
@@ -52,11 +52,11 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal Point Coord { get; }// Координаты в меню
-        internal string Action { get; }// Действие
+        internal string Action { get; }// Действие (если есть)
         internal string IDCreatedEntity { get; private set; }// ID создаваемой сущности (если есть)
         internal DescriptorWithID CreatedEntity { get; set; }// Описатель создаваемой сущности
         internal int DaysCooldown { get; }// Количество дней до возобновления действия
-        internal DescriptorActionForEntity NextCell { get; }// Следующая ячейка
+        internal DescriptorActionForEntity NextCell { get; }// Следующее действие в этих же координатах
 
         internal override void TuneLinks()
         {
