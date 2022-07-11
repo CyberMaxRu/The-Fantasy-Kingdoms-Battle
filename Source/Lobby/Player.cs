@@ -50,7 +50,6 @@ namespace Fantasy_Kingdoms_Battle
             BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
             if (Descriptor.TypePlayer == TypePlayer.Computer)   
                 BaseResources.Gold = 100_000;
-            ResourceGold = BaseResources.Gold;
 
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
@@ -626,7 +625,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы
         internal ListBaseResources BaseResourcesCollected { get; } = new ListBaseResources();// Собрано базовых ресурсов
-        internal int ResourceGold { get; set; }// Ресурс - золото
 
         internal List<DescriptorCreature> VariantsBonusedTypeSimpleHero { get; }// Варианты типов простых героев для выбора постоянного бонуса
         internal List<DescriptorCreature> VariantsBonusedTypeTempleHero { get; }// Варианты храмовников для выбора постоянного бонуса
@@ -1223,9 +1221,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (!CheatingIgnoreBaseResources)
                 {
-                    Debug.Assert(ResourceGold >= 0);
-                    Debug.Assert(ResourceGold >= gold);
-                    ResourceGold -= gold;
+                    Debug.Assert(BaseResources.Gold >= 0);
+                    Debug.Assert(BaseResources.Gold >= gold);
+                    BaseResources.Gold -= gold;
                 }
 
                 UpdateResourceInCastle();
@@ -1240,9 +1238,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (!CheatingIgnoreBaseResources)
                 {
-                    Debug.Assert(ResourceGold >= 0);
-                    Debug.Assert(ResourceGold >= gold);
-                    ResourceGold += gold;// Здесь нужен тест на превышение суммы лимита золота
+                    Debug.Assert(BaseResources.Gold >= 0);
+                    Debug.Assert(BaseResources.Gold >= gold);
+                    BaseResources.Gold += gold;// Здесь нужен тест на превышение суммы лимита золота
                 }
 
                 UpdateResourceInCastle();
