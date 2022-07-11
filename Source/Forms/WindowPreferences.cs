@@ -44,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbShowQuantityDaysForExecuting;
         private VCCheckBox chkbShowTypeCellMenu;
         private VCCheckBox chkbHideFulfilledRequirements;
+        private VCCheckBox chkbShowNameConstruction;
         private VCCheckBox chkbShowExtraHint;
         private VCCheckBox chkbAllowCheating;
 
@@ -114,7 +115,9 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowTypeCellMenu.Width = 440;
             chkbHideFulfilledRequirements = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowTypeCellMenu.NextTop(), "Скрывать выполненные требования");
             chkbHideFulfilledRequirements.Width = 440;
-            chkbShowExtraHint = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbHideFulfilledRequirements.NextTop(), "Показывать дополнительную подсказку");
+            chkbShowNameConstruction = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbHideFulfilledRequirements.NextTop(), "Показывать наименование сооружения");
+            chkbShowNameConstruction.Width = 440;
+            chkbShowExtraHint = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowNameConstruction.NextTop(), "Показывать дополнительную подсказку");
             chkbShowExtraHint.Width = 440;
             chkbAllowCheating = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowExtraHint.NextTop(), "Разрешить читинг");
             chkbAllowCheating.Width = 440;
@@ -189,6 +192,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowQuantityDaysForExecuting.Checked = settings.ShowQuantityDaysForExecuting;
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
+            chkbShowNameConstruction.Checked = settings.ShowNameConstruction;
             chkbShowExtraHint.Checked = settings.ShowExtraHint;
             chkbAllowCheating.Checked = settings.AllowCheating;
         }
@@ -225,6 +229,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.ShowQuantityDaysForExecuting = chkbShowQuantityDaysForExecuting.Checked;
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
             settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
+            settings.ShowNameConstruction = chkbShowNameConstruction.Checked;
             settings.ShowExtraHint = chkbShowExtraHint.Checked;
             settings.AllowCheating = chkbAllowCheating.Checked;
             settings.SaveSettings();

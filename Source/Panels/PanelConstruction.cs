@@ -133,7 +133,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.ImageIndex = Construction.GetImageIndex();
             imgMapObject.ImageIsEnabled = Construction.GetNormalImage();
             imgMapObject.Level = Construction.GetLevel();
-            imgMapObject.TextCaption.Text = Construction.GetName();
+            imgMapObject.TextCaption.Text = Program.formMain.Settings.ShowNameConstruction ? Construction.GetName() : "";
             imgMapObject.TextCaption.Color = Construction.GetColorCaption();
 
             btnMainAction.MenuCell = null;

@@ -78,6 +78,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowQuantityDaysForExecuting { get; set; }
         internal bool ShowTypeCellMenu { get; set; }
         internal bool HideFulfilledRequirements { get; set; }
+        internal bool ShowNameConstruction { get; set; }
         internal bool ShowExtraHint { get; set; }
         internal bool AllowCheating { get; set; }
 
@@ -103,6 +104,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowQuantityDaysForExecuting = true;
             ShowTypeCellMenu = true;
             HideFulfilledRequirements = true;
+            ShowNameConstruction = true;
             ShowExtraHint = true;
             AllowCheating = false;
         }
@@ -141,6 +143,7 @@ namespace Fantasy_Kingdoms_Battle
                     ShowQuantityDaysForExecuting = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowQuantityDaysForExecuting", ShowQuantityDaysForExecuting);
                     ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
                     HideFulfilledRequirements = XmlUtils.GetBoolean(doc, "Settings/Interface/HideFulfilledRequirements", HideFulfilledRequirements);
+                    ShowNameConstruction = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowNameConstruction", ShowNameConstruction);
                     ShowExtraHint = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowExtraHint", ShowExtraHint);
                     AllowCheating = XmlUtils.GetBoolean(doc, "Settings/Interface/AllowCheating", AllowCheating);
 
@@ -190,6 +193,7 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteElementString("ShowQuantityDaysForExecuting", ShowQuantityDaysForExecuting.ToString());
             textWriter.WriteElementString("ShowTypeCellMenu", ShowTypeCellMenu.ToString());
             textWriter.WriteElementString("HideFulfilledRequirements", HideFulfilledRequirements.ToString());
+            textWriter.WriteElementString("ShowNameConstruction", ShowNameConstruction.ToString());
             textWriter.WriteElementString("ShowExtraHint", ShowExtraHint.ToString());
             textWriter.WriteElementString("AllowCheating", AllowCheating.ToString());
             textWriter.WriteEndElement();

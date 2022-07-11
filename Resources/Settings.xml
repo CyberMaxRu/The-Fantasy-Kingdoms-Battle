@@ -23,6 +23,7 @@
     <ShowQuantityDaysForExecuting>True</ShowQuantityDaysForExecuting>
     <ShowTypeCellMenu>True</ShowTypeCellMenu>
     <HideFulfilledRequirements>True</HideFulfilledRequirements>
+    <ShowNameConstruction>False</ShowNameConstruction>
     <ShowExtraHint>True</ShowExtraHint>
     <AllowCheating>True</AllowCheating>
   </Interface>
