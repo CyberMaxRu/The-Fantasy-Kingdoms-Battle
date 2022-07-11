@@ -635,7 +635,7 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока
-        internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий в графстве
+        internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий во владении
 
         // Локации
         internal List<Location> Locations { get; } = new List<Location>();// Локации
