@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorConstructionSpell(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {
             TypeEntity = (TypeEntity)Enum.Parse(typeof(TypeEntity), GetStringNotNull(n, "TypeEntity"));
-            Coord = GetPoint(n, "Coord");
+            Coord = GetPoint(n, "Pos");
             Scouted = GetBooleanNotNull(n, "Scouted");
             Action = (ActionOfSpell)Enum.Parse(typeof(ActionOfSpell), GetStringNotNull(n, "Action"));
         }
