@@ -1499,7 +1499,7 @@ namespace Fantasy_Kingdoms_Battle
         // Настройка сооружения при создании
         private void TuneByCreate()
         {
-            foreach (DescriptorCellMenu d in Descriptor.CellsMenu)
+            foreach (DescriptorActionForEntity d in Descriptor.CellsMenu)
                 Actions.Add(CellMenuConstruction.Create(this, d));
 
             if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
@@ -1625,7 +1625,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (ActionRepair is null)
                 {
-                    ActionRepair = new CellMenuConstructionRepair(this, new DescriptorCellMenu(new Point(0, 0)));
+                    ActionRepair = new CellMenuConstructionRepair(this, new DescriptorActionForEntity(new Point(0, 0)));
                     //CellMenuRepair.PurchaseValue = new ListBaseResources(MaxDurability - CurrentDurability);
 
                     Actions.Add(ActionRepair);

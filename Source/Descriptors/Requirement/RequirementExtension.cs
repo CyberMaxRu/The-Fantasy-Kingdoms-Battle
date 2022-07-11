@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             nameExtension = "";
 
             bool founded = false;
-            foreach (DescriptorCellMenu cm in Construction.CellsMenu)
+            foreach (DescriptorActionForEntity cm in Construction.CellsMenu)
                 if (cm.IDCreatedEntity == Extension.ID)
                 {
                     //cm.UseForResearches.Add(Goods);

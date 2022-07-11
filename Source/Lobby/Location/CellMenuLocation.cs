@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     abstract internal class CellMenuLocation : ActionForEntity
     {
-        public CellMenuLocation(Location l, DescriptorCellMenu d) : base(l, d)
+        public CellMenuLocation(Location l, DescriptorActionForEntity d) : base(l, d)
         {
             Location = l;
         }
@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly ListBaseResources cost = new ListBaseResources();
 
-        public CellMenuLocationScout(Location l, DescriptorCellMenu d) : base(l, d)
+        public CellMenuLocationScout(Location l, DescriptorActionForEntity d) : base(l, d)
         {
         }
 
@@ -63,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly ListBaseResources cost = new ListBaseResources();
 
-        public CellMenuLocationAddScoutHero(Location l, DescriptorCellMenu d) : base(l, d)
+        public CellMenuLocationAddScoutHero(Location l, DescriptorActionForEntity d) : base(l, d)
         {
 
         }
@@ -102,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
 
     sealed internal class CellMenuLocationCancelScout : CellMenuLocation
     {
-        public CellMenuLocationCancelScout(Location l, DescriptorCellMenu d) : base(l, d)
+        public CellMenuLocationCancelScout(Location l, DescriptorActionForEntity d) : base(l, d)
         {
 
         }
@@ -135,7 +135,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly ListBaseResources cost = new ListBaseResources();
 
-        public CellMenuLocationReturn(Location l, DescriptorCellMenu d) : base(l, d)
+        public CellMenuLocationReturn(Location l, DescriptorActionForEntity d) : base(l, d)
         {
 
         }
@@ -166,7 +166,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuLocationSpell : CellMenuLocation
     {
-        public CellMenuLocationSpell(Location forLocation, ConstructionSpell spell) : base(forLocation, new DescriptorCellMenu(spell.DescriptorSpell.Coord))
+        public CellMenuLocationSpell(Location forLocation, ConstructionSpell spell) : base(forLocation, new DescriptorActionForEntity(spell.DescriptorSpell.Coord))
         {
             Spell = spell;
             Entity = spell.DescriptorSpell;

@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
 
     sealed internal class CellMenuCreature : ActionForEntity
     {
-        public CellMenuCreature(BigEntity forEntity, DescriptorCellMenu d) : base(forEntity, d)
+        public CellMenuCreature(BigEntity forEntity, DescriptorActionForEntity d) : base(forEntity, d)
         {
         }
 
@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
         private ListBaseResources resources;
         private int quantityPerPage = FormMain.Config.PlateWidth * (FormMain.Config.PlateHeight - 1);
 
-        public CellMenuCreaturePage(BigEntity forEntity, DescriptorCellMenu d) : base(forEntity, d)
+        public CellMenuCreaturePage(BigEntity forEntity, DescriptorActionForEntity d) : base(forEntity, d)
         {
             resources = new ListBaseResources();
         }

@@ -285,7 +285,7 @@
     <Compile Include="Source\VisualControls\VCCell.cs" />
     <Compile Include="Source\Lobby\CellMenuConstruction.cs" />
     <Compile Include="Source\Descriptors\Requirement\DescriptorRequirement.cs" />
-    <Compile Include="Source\Descriptors\DescriptorCellMenu.cs" />
+    <Compile Include="Source\Descriptors\DescriptorActionForEntity.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Source\Lobby\Lobby.cs" />

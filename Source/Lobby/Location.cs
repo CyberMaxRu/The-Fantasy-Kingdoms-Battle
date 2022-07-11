@@ -14,13 +14,13 @@ namespace Fantasy_Kingdoms_Battle
         private int percentScoutedArea;
         private int percentNonScoutedArea;
 
-        private readonly DescriptorCellMenu descScout;
+        private readonly DescriptorActionForEntity descScout;
         private readonly CellMenuLocationScout cmScout;
-        private readonly DescriptorCellMenu descAddScoutHero;
+        private readonly DescriptorActionForEntity descAddScoutHero;
         private readonly CellMenuLocationAddScoutHero cmAddScoutHero;
-        private readonly DescriptorCellMenu descCancelScout;
+        private readonly DescriptorActionForEntity descCancelScout;
         private readonly CellMenuLocationCancelScout cmCancelScout;
-        private readonly DescriptorCellMenu descReturnFromScout;
+        private readonly DescriptorActionForEntity descReturnFromScout;
         private readonly CellMenuLocationReturn cmReturnFromScout;
 
         public Location(Player player, TypeLobbyLocationSettings settings) : base(settings, player.Lobby, player)
@@ -43,13 +43,13 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Создание меню
-            descScout = new DescriptorCellMenu(new Point(0, 0));
+            descScout = new DescriptorActionForEntity(new Point(0, 0));
             cmScout = new CellMenuLocationScout(this, descScout);
-            descAddScoutHero = new DescriptorCellMenu(new Point(1, 2));
+            descAddScoutHero = new DescriptorActionForEntity(new Point(1, 2));
             cmAddScoutHero = new CellMenuLocationAddScoutHero(this, descAddScoutHero);
-            descCancelScout = new DescriptorCellMenu(new Point(2, 2));
+            descCancelScout = new DescriptorActionForEntity(new Point(2, 2));
             cmCancelScout = new CellMenuLocationCancelScout(this, descCancelScout);
-            descReturnFromScout = new DescriptorCellMenu(new Point(3, 2));
+            descReturnFromScout = new DescriptorActionForEntity(new Point(3, 2));
             cmReturnFromScout = new CellMenuLocationReturn(this, descReturnFromScout);
 
             // Создание рандомных логов монстров согласно настроек типа лобби

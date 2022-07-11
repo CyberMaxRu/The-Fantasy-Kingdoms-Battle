@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             Config = FormMain.Config;
         }
 
-        public ActionForEntity(BigEntity bigEntity, DescriptorCellMenu d)
+        public ActionForEntity(BigEntity bigEntity, DescriptorActionForEntity d)
         {
             BigEntity = bigEntity;
             Descriptor = d;
@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         internal static Descriptors Descriptors { get; }
         internal static Config Config { get; }
 
-        internal DescriptorCellMenu Descriptor { get; }
+        internal DescriptorActionForEntity Descriptor { get; }
         internal BigEntity BigEntity { get; }
         internal ListBaseResources PurchaseValue { get; private protected set; }// Стоимость покупки
 

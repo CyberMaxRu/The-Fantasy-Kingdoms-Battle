@@ -283,7 +283,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            foreach (DescriptorCellMenu cm in CellsMenu)
+            foreach (DescriptorActionForEntity cm in CellsMenu)
                 cm.TuneLinks();
 
             foreach (DescriptorConstructionLevelLair mll in Monsters)

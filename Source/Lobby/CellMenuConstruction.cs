@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class CellMenuConstruction : ActionForEntity
     {
-        public CellMenuConstruction(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstruction(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Construction = c;
 
@@ -106,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal static CellMenuConstruction Create(Construction c, DescriptorCellMenu d)
+        internal static CellMenuConstruction Create(Construction c, DescriptorActionForEntity d)
         {
             if (d.CreatedEntity != null)
             {
@@ -260,7 +260,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionResearch : CellMenuConstruction
     {
-        public CellMenuConstructionResearch(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionResearch(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Debug.Assert(d.CreatedEntity.GetCreating().CostResources.Gold > 0, $"У {d.CreatedEntity.ID} не указана цена.");
 
@@ -336,7 +336,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionService : CellMenuConstruction
     {
-        public CellMenuConstructionService(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionService(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Debug.Assert(d.CreatedEntity.GetCreating().CostResources.Gold > 0, $"У {d.CreatedEntity.ID} не указана цена.");
 
@@ -383,7 +383,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionBuild : CellMenuConstruction
     {
-        public CellMenuConstructionBuild(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionBuild(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             TypeConstruction = d.CreatedEntity as DescriptorConstruction;
 
@@ -471,7 +471,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionLevelUp : CellMenuConstruction
     {
-        public CellMenuConstructionLevelUp(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionLevelUp(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Descriptor = d.CreatedEntity as DescriptorConstructionLevel;
         }
@@ -603,7 +603,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionRepair : CellMenuConstruction
     {
-        public CellMenuConstructionRepair(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionRepair(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             ExecutingAction = new ComponentExecutingAction(c.MaxDurability - c.CurrentDurability);
         }
@@ -704,7 +704,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionRecruitCreature : CellMenuConstruction
     {
-        public CellMenuConstructionRecruitCreature(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionRecruitCreature(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Creature = d.CreatedEntity as DescriptorCreature;
         }
@@ -756,7 +756,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private ConstructionEvent cp;
 
-        public CellMenuConstructionMassEvent(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionMassEvent(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             ConstructionEvent = d.CreatedEntity as DescriptorConstructionMassEvent;
             Debug.Assert(ConstructionEvent != null);
@@ -844,7 +844,7 @@ namespace Fantasy_Kingdoms_Battle
     
     internal sealed class CellMenuConstructionExtension : CellMenuConstruction
     {
-        public CellMenuConstructionExtension(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionExtension(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Entity = d.CreatedEntity as DescriptorConstructionExtension;
         }
@@ -891,7 +891,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionImprovement : CellMenuConstruction
     {
-        public CellMenuConstructionImprovement(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionImprovement(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Entity = d.CreatedEntity as DescriptorConstructionImprovement;
         }
@@ -937,7 +937,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private ConstructionTournament ct;
 
-        public CellMenuConstructionTournament(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionTournament(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             ConstructionTournament = d.CreatedEntity as DescriptorConstructionTournament;
             Debug.Assert(ConstructionTournament != null);
@@ -1006,7 +1006,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionExtra : CellMenuConstruction
     {
-        public CellMenuConstructionExtra(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionExtra(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             TypeExtra = (TypeExtra)Enum.Parse(typeof(TypeExtra), d.IDCreatedEntity);
         }
@@ -1114,7 +1114,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionAction : CellMenuConstruction
     {
-        public CellMenuConstructionAction(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstructionAction(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
         }
 
@@ -1135,7 +1135,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionSpell : CellMenuConstruction
     {
-        public CellMenuConstructionSpell(Construction forConstruction, ConstructionSpell spell) : base(forConstruction, new DescriptorCellMenu(spell.DescriptorSpell.Coord))
+        public CellMenuConstructionSpell(Construction forConstruction, ConstructionSpell spell) : base(forConstruction, new DescriptorActionForEntity(spell.DescriptorSpell.Coord))
         {
             ForConstruction = forConstruction;
             Spell = spell;
@@ -1190,7 +1190,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly ListBaseResources cost = new ListBaseResources();
 
-        public CellMenuConstructionRecruitToGuild(Location l, DescriptorCellMenu d) : base(l, d)
+        public CellMenuConstructionRecruitToGuild(Location l, DescriptorActionForEntity d) : base(l, d)
         {
         }
 

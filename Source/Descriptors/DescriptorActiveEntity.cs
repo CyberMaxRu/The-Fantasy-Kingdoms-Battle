@@ -20,9 +20,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (XmlNode l in ncm.SelectNodes("CellMenu"))
                 {
-                    DescriptorCellMenu dcm = new DescriptorCellMenu(l);
+                    DescriptorActionForEntity dcm = new DescriptorActionForEntity(l);
 
-                    foreach (DescriptorCellMenu dcm2 in CellsMenu)
+                    foreach (DescriptorActionForEntity dcm2 in CellsMenu)
                     {
                         Debug.Assert(!dcm2.Coord.Equals(dcm.Coord), $"У {ID} ячейка ({dcm.Coord.X + 1}, {dcm.Coord.Y + 1}) уже занята.");
                         if ((dcm2.IDCreatedEntity.Length > 0) && (dcm.IDCreatedEntity.Length > 0))
@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal SortedList<string, DescriptorEntityForActiveEntity> Entities { get; } = new SortedList<string, DescriptorEntityForActiveEntity>();// Список всех малых сущностей
-        internal List<DescriptorCellMenu> CellsMenu { get; } = new List<DescriptorCellMenu>();// Меню
+        internal List<DescriptorActionForEntity> CellsMenu { get; } = new List<DescriptorActionForEntity>();// Меню
 
         internal override void TuneLinks()
         {

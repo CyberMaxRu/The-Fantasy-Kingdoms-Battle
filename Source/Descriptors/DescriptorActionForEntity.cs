@@ -12,9 +12,9 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс описателя ячейки меню
-    internal sealed class DescriptorCellMenu : Descriptor
+    internal sealed class DescriptorActionForEntity : Descriptor
     {
-        public DescriptorCellMenu(XmlNode n) : base()
+        public DescriptorActionForEntity(XmlNode n) : base()
         {
             Coord = GetPoint(n, "Pos");
             Action = GetString(n, "Action");
@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
             {
-                NextCell = new DescriptorCellMenu(next);
+                NextCell = new DescriptorActionForEntity(next);
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {IDCreatedEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
 
@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(DaysCooldown <= 100);
         }
 
-        public DescriptorCellMenu(Point coord) : base()
+        public DescriptorActionForEntity(Point coord) : base()
         {
             Coord = coord;
 
@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string IDCreatedEntity { get; private set; }// ID создаваемой сущности (если есть)
         internal DescriptorWithID CreatedEntity { get; set; }// Описатель создаваемой сущности
         internal int DaysCooldown { get; }// Количество дней до возобновления действия
-        internal DescriptorCellMenu NextCell { get; }// Следующая ячейка
+        internal DescriptorActionForEntity NextCell { get; }// Следующая ячейка
 
         internal override void TuneLinks()
         {

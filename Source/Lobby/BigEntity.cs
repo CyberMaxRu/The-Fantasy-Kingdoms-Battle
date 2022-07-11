@@ -150,15 +150,15 @@ namespace Fantasy_Kingdoms_Battle
             if (listCellMenuCreatures is null)
             {
                 listCellMenuCreatures = new List<CellMenuCreature>();
-                DescriptorCellMenu dcm;
+                DescriptorActionForEntity dcm;
                 for (int y = 0; y < menu.GetLength(0) - 1; y++)
                     for (int x = 0; x < menu.GetLength(1); x++)
                     {
-                        dcm = new DescriptorCellMenu(new Point(x, y));
+                        dcm = new DescriptorActionForEntity(new Point(x, y));
                         listCellMenuCreatures.Add(new CellMenuCreature(this, dcm));
                     }
 
-                dcm = new DescriptorCellMenu(new Point(0, menu.GetLength(0) - 1));
+                dcm = new DescriptorActionForEntity(new Point(0, menu.GetLength(0) - 1));
                 cmPageCreatures = new CellMenuCreaturePage(this, dcm);
             }
 
