@@ -7,7 +7,7 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    abstract internal class CellMenuLocation : CellOfMenu
+    abstract internal class CellMenuLocation : ActionForEntity
     {
         public CellMenuLocation(Location l, DescriptorCellMenu d) : base(l, d)
         {

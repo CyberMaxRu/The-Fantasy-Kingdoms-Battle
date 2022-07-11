@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum ModeTextForCreature { Hire, Scout, };
 
-    sealed internal class CellMenuCreature : CellOfMenu
+    sealed internal class CellMenuCreature : ActionForEntity
     {
         public CellMenuCreature(BigEntity forEntity, DescriptorCellMenu d) : base(forEntity, d)
         {
@@ -73,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    sealed internal class CellMenuCreaturePage : CellOfMenu
+    sealed internal class CellMenuCreaturePage : ActionForEntity
     {
         private ListBaseResources resources;
         private int quantityPerPage = FormMain.Config.PlateWidth * (FormMain.Config.PlateHeight - 1);

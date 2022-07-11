@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal CellOfMenu Action { get; set; }
+        internal ActionForEntity Action { get; set; }
 
         internal override void Draw(Graphics g)
         {

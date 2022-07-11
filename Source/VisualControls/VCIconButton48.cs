@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
         }
 
-        internal CellOfMenu MenuCell { get; set; }
+        internal ActionForEntity MenuCell { get; set; }
 
         internal override void Draw(Graphics g)
         {

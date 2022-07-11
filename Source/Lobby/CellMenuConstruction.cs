@@ -10,7 +10,7 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class CellMenuConstruction : CellOfMenu
+    internal abstract class CellMenuConstruction : ActionForEntity
     {
         public CellMenuConstruction(Construction c, DescriptorCellMenu d) : base(c, d)
         {

@@ -9,15 +9,15 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class CellOfMenu
+    internal abstract class ActionForEntity
     {
-        static CellOfMenu()
+        static ActionForEntity()
         {
             Descriptors = FormMain.Descriptors;
             Config = FormMain.Config;
         }
 
-        public CellOfMenu(BigEntity bigEntity, DescriptorCellMenu d)
+        public ActionForEntity(BigEntity bigEntity, DescriptorCellMenu d)
         {
             BigEntity = bigEntity;
             Descriptor = d;
