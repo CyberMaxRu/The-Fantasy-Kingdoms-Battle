@@ -89,9 +89,9 @@ namespace Fantasy_Kingdoms_Battle
 
         protected virtual bool ConstructionMustMeConstructed() => true;
 
-        internal override List<TextRequirement> GetTextRequirements()
+        protected override void UpdateTextRequirements(List<TextRequirement> list)
         {
-            List<TextRequirement> list = new List<TextRequirement>();
+            base.UpdateTextRequirements(list);
 
             if (Construction.Descriptor.IsInternalConstruction)
             {
@@ -102,8 +102,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 Construction.Player.TextRequirements(Descriptor.CreatedEntity.GetCreating().Requirements, list);
             }
-
-            return list;
         }
 
         internal static CellMenuConstruction Create(Construction c, DescriptorActionForEntity d)
@@ -564,9 +562,9 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
 
-        internal override List<TextRequirement> GetTextRequirements()
+        protected override void UpdateTextRequirements(List<TextRequirement> list)
         {
-            List<TextRequirement> list = new List<TextRequirement>();
+            base.UpdateTextRequirements(list);
 
             Construction.Player.TextRequirements(Descriptor.GetCreating().Requirements, list);
 
@@ -575,8 +573,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Construction.CurrentTournament != null)
                 list.Add(new TextRequirement(false, "В сооружении идет турнир"));
-
-            return list;
         }
 
 
@@ -782,16 +778,15 @@ namespace Fantasy_Kingdoms_Battle
             return (cp is null) && (Cooldown == 0) && base.CheckRequirements() && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
         }
 
-        internal override List<TextRequirement> GetTextRequirements()
+        protected override void UpdateTextRequirements(List<TextRequirement> list)
         {
+            base.UpdateTextRequirements(list);
+
             Debug.Assert(!((cp != null) && (Cooldown > 0)));
 
-            List<TextRequirement> list = base.GetTextRequirements();
             if (Construction.Level > 1)
                 list.Add(new TextRequirement((cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
                     ? "Событие можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
-
-            return list;
         }
 
         internal override string GetText()
@@ -962,14 +957,13 @@ namespace Fantasy_Kingdoms_Battle
             return (ct is null) && base.CheckRequirements() && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
         }
 
-        internal override List<TextRequirement> GetTextRequirements()
+        protected override void UpdateTextRequirements(List<TextRequirement> list)
         {
-            List<TextRequirement> list = base.GetTextRequirements();
+            base.UpdateTextRequirements(list);
+
             if (Construction.Level > 1)
                 list.Add(new TextRequirement((ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
                     ? "Турнир можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : $"Осталось подождать дней: {1}"));
-
-            return list;
         }
 
         internal override string GetText()
@@ -1019,11 +1013,10 @@ namespace Fantasy_Kingdoms_Battle
             return (Counter == 0) && base.CheckRequirements();
         }
 
-        internal override List<TextRequirement> GetTextRequirements()
+        protected override void UpdateTextRequirements(List<TextRequirement> list)
         {
-            List<TextRequirement> list = base.GetTextRequirements();
+            base.UpdateTextRequirements(list);
             list.Add(new TextRequirement(Counter == 0, Counter == 0 ? "Покупка доступна" : "Дней до новой покупки: " + Counter.ToString()));
-            return list;
         }
 
         protected override void Execute()

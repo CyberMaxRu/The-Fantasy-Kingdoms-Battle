@@ -11,6 +11,8 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class ActionForEntity
     {
+        private List<TextRequirement> textRequirements = new List<TextRequirement>();
+
         static ActionForEntity()
         {
             Descriptors = FormMain.Descriptors;
@@ -39,11 +41,17 @@ namespace Fantasy_Kingdoms_Battle
         protected virtual int GetDaysExecuting() => -1;
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
-        internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();// Переделать на null
+        internal List<TextRequirement> GetTextRequirements()
+        {
+            textRequirements.Clear();
+            UpdateTextRequirements(textRequirements);
+            return textRequirements;
+        }
         internal virtual void PrepareHint(PanelHint panelHint) { }
         internal virtual void PrepareNewDay() { }
         internal abstract void Click();
 
         internal virtual void UpdatePurchase() { }// Обновление стоимости покупки
+        protected virtual void UpdateTextRequirements(List<TextRequirement> list) { }
     }
 }
