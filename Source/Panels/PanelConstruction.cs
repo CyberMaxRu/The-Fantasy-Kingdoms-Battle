@@ -144,6 +144,7 @@ namespace Fantasy_Kingdoms_Battle
             if (btnQueue1.Visible)
             {
                 btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
+                btnQueue1.HighlightUnderMouse = Construction.QueueExecuting[0].ExecutingAction.AppliedPoints == 0;
                 bmpQueue2.Visible = true;
                 bmpQueue2.Action = Construction.QueueExecuting.Count >= 2 ? Construction.QueueExecuting[1] : null;
                 bmpQueue3.Visible = true;
