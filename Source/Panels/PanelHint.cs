@@ -617,12 +617,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep10DaysBuilding(int daysPassed, int daysBuilding)
+        internal void AddStep10DaysBuilding(int daysBuilding)
         {
             if (daysBuilding > 0)
             {
                 lblDaysCreating.ShiftY = nextTop;
-                lblDaysCreating.Text = (daysPassed >= 0 ? daysPassed.ToString() + "/" : "") + daysBuilding.ToString();
+                lblDaysCreating.Text = daysBuilding.ToString();
                 lblDaysCreating.Visible = true;
                 nextTop = lblDaysCreating.NextTop();
             }
