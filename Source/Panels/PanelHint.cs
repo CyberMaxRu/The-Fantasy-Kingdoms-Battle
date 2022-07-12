@@ -780,7 +780,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep13Builders(int builders, bool buildersEnough)
+        internal void AddStep13Builders(int builders)
         {
             if (builders > 0)
             {
@@ -794,7 +794,6 @@ namespace Fantasy_Kingdoms_Battle
                     nextTop = lblTextForRequirement.NextTop();
                 }
 
-                lblConstructionPoint.Color = ColorRequirements(buildersEnough);
                 lblConstructionPoint.Text = builders.ToString();
                 lblConstructionPoint.ShiftY = nextTop;
                 lblConstructionPoint.Visible = true;

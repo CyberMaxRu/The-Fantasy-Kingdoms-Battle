@@ -465,7 +465,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep10DaysBuilding(-1, TypeConstruction.Levels[1].GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
             panelHint.AddStep12Gold(Construction.Player.BaseResources, TypeConstruction.Levels[1].GetCreating().CostResources);
-            panelHint.AddStep13Builders(TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player), Construction.Player.RestConstructionPoints >= TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player));
+            panelHint.AddStep13Builders(TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player));
         }
     }
 
@@ -885,7 +885,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
             panelHint.AddStep12Gold(Construction.Player.BaseResources, PurchaseValue);
-            panelHint.AddStep13Builders(Entity.Durability, Construction.Player.RestConstructionPoints >= Entity.GetCreating().CalcConstructionPoints(Construction.Player));
+            panelHint.AddStep13Builders(Entity.Durability);
         }
     }
 
