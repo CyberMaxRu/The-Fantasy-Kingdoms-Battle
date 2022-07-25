@@ -9,7 +9,7 @@
     <Cheating>
       <IgnoreBaseResources>False</IgnoreBaseResources>
       <IgnoreRequirements>False</IgnoreRequirements>
-      <InstantlyBuilding>True</InstantlyBuilding>
+      <InstantlyBuilding>False</InstantlyBuilding>
       <InstantlyResearch>False</InstantlyResearch>
       <InstantlyHire>False</InstantlyHire>
     </Cheating>
