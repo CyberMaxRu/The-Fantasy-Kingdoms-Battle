@@ -93,7 +93,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.UpdateTextRequirements(list);
 
-            if (Construction.Descriptor.IsInternalConstruction)
+            if (Construction.Descriptor.IsInternalConstruction && ConstructionMustMeConstructed())
             {
                 // Если нет требований, то по умолчанию остается только одно - сооружение должно быть построено
                 // Если есть, то не надо писать, что сооружение не построено - иначе не видно, какие там требования
