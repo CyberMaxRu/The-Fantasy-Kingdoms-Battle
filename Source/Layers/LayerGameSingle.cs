@@ -497,7 +497,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = listLocations.Count; i < curAppliedPlayer.Locations.Count; i++)
             {
                 VCLocation vcl = new VCLocation(pageMap.Page, 0, 0);
-                vcl.Width = pageMap.Page.Width;
+                //vcl.Width = pageMap.Page.Width;
                 vcl.Visible = false;
                 listLocations.Add(vcl);
             }

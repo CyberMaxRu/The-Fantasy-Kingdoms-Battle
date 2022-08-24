@@ -32,12 +32,13 @@ namespace Fantasy_Kingdoms_Battle
             pbScout.Max = 100;
             pbScout.ShowHint += PbScout_ShowHint;
 
-            lblDanger = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), imgTypeLocation.ShiftY, 80, 39);
+            lblDanger = new VCIconAndDigitValue(this, imgTypeLocation.NextLeft(), imgTypeLocation.ShiftY, 72, 39);
             lblDanger.ShowHint += LblDanger_ShowHint;
 
             listCells = new List<VCCell>();
 
-            Width = 200;
+            Width = 192;
+            Width = lblDanger.NextLeft();
             Height = pbScout.NextTop();
             Click += VCLocation_Click;
         }
@@ -76,6 +77,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ValidateRectangle();
 
+            return;
             for (int i = 0; i < listCells.Count; i++)
                 ValidateCoordCell(listCells[i], i);
         }
@@ -97,6 +99,7 @@ namespace Fantasy_Kingdoms_Battle
             pbScout.Text = Utils.FormatPercent(location.PercentScoutedArea) + (location.PercentScoutAreaToday > 0 ? $"+{Utils.FormatPercent(location.PercentScoutAreaToday)}" : "");
             lblDanger.Text = Utils.FormatPercent(location.Danger);
 
+            return;
             // Не всегда все объекты видны. Тем не менее, создадим заранее под них ячейки - пусть будут, все равно пригодятся
             while (listCells.Count < Location.Lairs.Count)
             {
