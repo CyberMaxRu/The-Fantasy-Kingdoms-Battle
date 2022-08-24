@@ -199,7 +199,6 @@ namespace Fantasy_Kingdoms_Battle
                         throw new Exception($"Неизвестное состояние {Construction.State}");
                 }
 
-                pbDurability.PositionPotential = 0;
                 switch (Construction.State)
                 {
                     case StateConstruction.Work:
