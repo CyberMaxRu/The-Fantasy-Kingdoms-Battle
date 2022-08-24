@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             TypeLobby = typeLobby;
 
             Name2 = XmlUtils.GetStringNotNull(n, "Name2");
+            Coord = XmlUtils.GetPoint(n, "Coord");
             nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
             Background = XmlUtils.GetStringNotNull(n, "Background");
             Visible = XmlUtils.GetBooleanNotNull(n, "Visible");
@@ -65,6 +66,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string Name2 { get; }// Наименование в падеже
+        internal Point Coord { get; }// Координата локации на карте
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal DescriptorTypeLandscape TypeLandscape { get; private set; }
         internal string Background { get; }// Название фоновой картинки

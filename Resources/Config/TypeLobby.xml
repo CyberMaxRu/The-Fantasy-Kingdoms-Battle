@@ -31,8 +31,8 @@
     <VariantsUpSimpleHero>3</VariantsUpSimpleHero>
     <VariantsUpTempleHero>3</VariantsUpTempleHero>
     <MaxLoses>3</MaxLoses>
-    <MapWidth>5</MapWidth>
-    <MapHeight>5</MapHeight>
+    <MapWidth>3</MapWidth>
+    <MapHeight>3</MapHeight>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
     <Locations>
@@ -40,6 +40,7 @@
         <ID>Neighbourhood</ID>
         <Name>Окрестности города</Name>
         <Name2>Окрестностях города</Name2>
+        <Coord>2,2</Coord>
         <TypeLandscape>TypeLandscapeNeighborhoodOfCity</TypeLandscape>
         <Background>Capital</Background>
         <Visible>true</Visible>
@@ -125,7 +126,7 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>25</MinPercentScout>
             <MaxPercentScout>50</MaxPercentScout>
-            <PathToLocation>LocationForest</PathToLocation>
+            <PathToLocation>Location1</PathToLocation>
           </Construction>
           <Construction>
             <ID>PathToLocation</ID>
@@ -135,7 +136,7 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>50</MinPercentScout>
             <MaxPercentScout>80</MaxPercentScout>
-            <PathToLocation>LocationSwamp</PathToLocation>
+            <PathToLocation>Location2</PathToLocation>
           </Construction>
           <Construction>
             <ID>PathToLocation</ID>
@@ -145,7 +146,57 @@
             <IsEnemy>false</IsEnemy>
             <MinPercentScout>90</MinPercentScout>
             <MaxPercentScout>95</MaxPercentScout>
-            <PathToLocation>LocationMountain</PathToLocation>
+            <PathToLocation>Location3</PathToLocation>
+          </Construction>
+          <Construction>
+            <ID>PathToLocation</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>90</MinPercentScout>
+            <MaxPercentScout>95</MaxPercentScout>
+            <PathToLocation>Location4</PathToLocation>
+          </Construction>
+          <Construction>
+            <ID>PathToLocation</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>90</MinPercentScout>
+            <MaxPercentScout>95</MaxPercentScout>
+            <PathToLocation>Location6</PathToLocation>
+          </Construction>
+          <Construction>
+            <ID>PathToLocation</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>90</MinPercentScout>
+            <MaxPercentScout>95</MaxPercentScout>
+            <PathToLocation>Location7</PathToLocation>
+          </Construction>
+          <Construction>
+            <ID>PathToLocation</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>90</MinPercentScout>
+            <MaxPercentScout>95</MaxPercentScout>
+            <PathToLocation>Location8</PathToLocation>
+          </Construction>
+          <Construction>
+            <ID>PathToLocation</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>90</MinPercentScout>
+            <MaxPercentScout>95</MaxPercentScout>
+            <PathToLocation>Location9</PathToLocation>
           </Construction>
           <Construction>
             <ID>FellingArea</ID>
@@ -200,9 +251,10 @@
         </Constructions>
       </Location>
       <Location>
-        <ID>LocationForest</ID>
-        <Name>Лес</Name>
-        <Name2>Лесу</Name2>
+        <ID>Location2</ID>
+        <Name>Дальний лес</Name>
+        <Name2>Дальнем лесу</Name2>
+        <Coord>2,1</Coord>
         <TypeLandscape>TypeLandscapeForest</TypeLandscape>
         <Background>Forest</Background>
         <Visible>false</Visible>
@@ -290,9 +342,192 @@
         </Constructions>
       </Location>
       <Location>
-        <ID>LocationSwamp</ID>
-        <Name>Болото</Name>
-        <Name2>Болоте</Name2>
+        <ID>Location7</ID>
+        <Name>Запад Приболотного леса</Name>
+        <Name2>Западе Приболотного леса</Name2>
+        <Coord>1,3</Coord>
+        <TypeLandscape>TypeLandscapeForest</TypeLandscape>
+        <Background>Forest</Background>
+        <Visible>false</Visible>
+        <PercentScoutAreaByUnit>10</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
+        <Constructions>
+          <Construction>
+            <ID>FellingArea</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>40</MaxPercentScout>
+            <Resources>
+              <Wood>250</Wood>
+            </Resources>
+          </Construction>
+          <Construction>
+            <ID>Stones</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>30</MinPercentScout>
+            <MaxPercentScout>60</MaxPercentScout>
+            <Resources>
+              <Stone>500</Stone>
+            </Resources>
+          </Construction>
+          <Construction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>30</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>GraveyardZombie</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>10</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>HolyPlace</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>50</MinPercentScout>
+            <MaxPercentScout>75</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>ThroneLightning</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>WolfsDen</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>10</MinPercentScout>
+            <MaxPercentScout>75</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>BearsDen</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>75</MinPercentScout>
+            <MaxPercentScout>100</MaxPercentScout>
+          </Construction>
+        </Constructions>
+      </Location>
+      <Location>
+        <ID>Location8</ID>
+        <Name>Восток Приболотного леса</Name>
+        <Name2>Востоке Приболотного леса</Name2>
+        <Coord>2,3</Coord>
+        <TypeLandscape>TypeLandscapeForest</TypeLandscape>
+        <Background>Forest</Background>
+        <Visible>false</Visible>
+        <PercentScoutAreaByUnit>10</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
+        <Constructions>
+          <Construction>
+            <ID>FellingArea</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>40</MaxPercentScout>
+            <Resources>
+              <Wood>250</Wood>
+            </Resources>
+          </Construction>
+          <Construction>
+            <ID>Stones</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>30</MinPercentScout>
+            <MaxPercentScout>60</MaxPercentScout>
+            <Resources>
+              <Stone>500</Stone>
+            </Resources>
+          </Construction>
+          <Construction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>30</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>GraveyardZombie</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>10</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>HolyPlace</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>50</MinPercentScout>
+            <MaxPercentScout>75</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>ThroneLightning</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>WolfsDen</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>10</MinPercentScout>
+            <MaxPercentScout>75</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>BearsDen</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>true</IsEnemy>
+            <MinPercentScout>75</MinPercentScout>
+            <MaxPercentScout>100</MaxPercentScout>
+          </Construction>
+        </Constructions>
+      </Location>
+      <Location>
+        <ID>Location1</ID>
+        <Name>Север Туманного болота</Name>
+        <Name2>Севере Туманного болота</Name2>
+        <Coord>1,1</Coord>
         <TypeLandscape>TypeLandscapeSwamp</TypeLandscape>
         <Background>Swamp</Background>
         <Visible>false</Visible>
@@ -323,11 +558,132 @@
         </Constructions>
       </Location>
       <Location>
-        <ID>LocationMountain</ID>
-        <Name>Горы</Name>
-        <Name2>Горах</Name2>
+        <ID>Location4</ID>
+        <Name>Юг Туманного болота</Name>
+        <Name2>Юге Туманного болота</Name2>
+        <Coord>1,2</Coord>
+        <TypeLandscape>TypeLandscapeSwamp</TypeLandscape>
+        <Background>Swamp</Background>
+        <Visible>false</Visible>
+        <PercentScoutAreaByUnit>5</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
+        <Constructions>
+          <Construction>
+            <ID>Ore</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>true</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>20</MinPercentScout>
+            <MaxPercentScout>40</MaxPercentScout>
+            <Resources>
+              <Iron>200</Iron>
+            </Resources>
+          </Construction>
+          <Construction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+        </Constructions>
+      </Location>
+      <Location>
+        <ID>Location3</ID>
+        <Name>Север Мглистых гор</Name>
+        <Name2>Севере Мглистых гор</Name2>
+        <Coord>3,1</Coord>
         <TypeLandscape>TypeLandscapeMountain</TypeLandscape>
         <Background>Mountain</Background>
+        <Visible>false</Visible>
+        <PercentScoutAreaByUnit>15</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
+        <Constructions>
+          <Construction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>Goldmine</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+            <Resources>
+              <Gold>2500</Gold>
+            </Resources>
+          </Construction>
+        </Constructions>
+      </Location>
+      <Location>
+        <ID>Location6</ID>
+        <Name>Юг Мглистых гор</Name>
+        <Name2>Юг Мглистых гор</Name2>
+        <Coord>3,2</Coord>
+        <TypeLandscape>TypeLandscapeMountain</TypeLandscape>
+        <Background>Mountain</Background>
+        <Visible>false</Visible>
+        <PercentScoutAreaByUnit>15</PercentScoutAreaByUnit>
+        <PercentScoutedArea>0</PercentScoutedArea>
+        <Constructions>
+          <Construction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>Treasure</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+          </Construction>
+          <Construction>
+            <ID>Goldmine</ID>
+            <Visible>false</Visible>
+            <Own>false</Own>
+            <CanOwn>false</CanOwn>
+            <IsEnemy>false</IsEnemy>
+            <MinPercentScout>0</MinPercentScout>
+            <MaxPercentScout>50</MaxPercentScout>
+            <Resources>
+              <Gold>2500</Gold>
+            </Resources>
+          </Construction>
+        </Constructions>
+      </Location>
+      <Location>
+        <ID>Location9</ID>
+        <Name>Заповедная пустошь</Name>
+        <Name2>Заповедной пустоши</Name2>
+        <Coord>3,3</Coord>
+        <TypeLandscape>TypeLandscapeWasteland</TypeLandscape>
+        <Background>Wasteland</Background>
         <Visible>false</Visible>
         <PercentScoutAreaByUnit>15</PercentScoutAreaByUnit>
         <PercentScoutedArea>0</PercentScoutedArea>

@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BigEntity selectedPlayerObject;
 
-        internal readonly List<VCLocation> listLocations = new List<VCLocation>();
+        internal VCLocation[,] listLocations;
 
         private WindowAdvice winAdvice;
 
@@ -494,36 +494,25 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateNeighborhoods()
         {
-            for (int i = listLocations.Count; i < curAppliedPlayer.Locations.Count; i++)
+            if (listLocations is null)
             {
-                VCLocation vcl = new VCLocation(pageMap.Page, 0, 0);
-                //vcl.Width = pageMap.Page.Width;
-                vcl.Visible = false;
-                listLocations.Add(vcl);
+                listLocations = new VCLocation[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
+
+                for (int y = 0; y < lobby.TypeLobby.MapHeight; y++)
+                    for (int x = 0; x < lobby.TypeLobby.MapWidth; x++)
+                    {
+                        VCLocation vcl = new VCLocation(pageMap.Page, 0, 0);
+                        vcl.ShiftX = x * (vcl.Width + Config.GridSize);
+                        vcl.ShiftY = y * (vcl.Height + Config.GridSize);
+                        listLocations[y, x] = vcl;
+                    }
+
+                pageMap.Page.ArrangeControls();
             }
 
-            foreach (VCLocation l in listLocations)
-            {
-                l.Visible = false;
-            }
-
-            for (int i = 0; i < curAppliedPlayer.Locations.Count; i++)
-            {
-                listLocations[i].Location = curAppliedPlayer.Locations[i];
-                listLocations[i].Visible = listLocations[i].Location.Visible;
-            }
-
-            int top = 0;
-            foreach (VCLocation l in listLocations)
-            {
-                if (l.Visible)
-                {
-                    l.ShiftY = top;
-                    top = l.NextTop();
-                }
-            }
-
-            pageMap.Page.ArrangeControls();
+            for (int y = 0; y < lobby.TypeLobby.MapHeight; y++)
+                for (int x = 0; x < lobby.TypeLobby.MapWidth; x++)
+                    listLocations[y, x].Location = curAppliedPlayer.Locations[y, x];
 
             return;
             /*Location l = curAppliedPlayer.CurrentLocation;
@@ -1363,11 +1352,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (VCPageButton p in pageControl.Pages)
             {
                 p.Page.Width = CalcWidthPage();
-            }
-
-            foreach (VCLocation l in listLocations)
-            {
-                l.Width = CalcWidthPage();
             }
         }
 

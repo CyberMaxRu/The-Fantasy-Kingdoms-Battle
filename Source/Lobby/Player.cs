@@ -145,10 +145,11 @@ namespace Fantasy_Kingdoms_Battle
                     new Construction(this, tck);
             }
 
+            Locations = new Location[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
             foreach (TypeLobbyLocationSettings tll in lobby.TypeLobby.Locations)
             {
                 Location l = new Location(this, tll);
-                Locations.Add(l);
+                Locations[l.Settings.Coord.Y, l.Settings.Coord.X] = l;
             }
 
             foreach (Location l in Locations)
@@ -636,7 +637,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий во владении
 
         // Локации
-        internal List<Location> Locations { get; } = new List<Location>();// Локации
+        internal Location[,] Locations { get; }// Карта локаций
         internal Location LocationCapital { get; }
         internal Location CurrentLocation { get; set; }// Текущая выбранная локация
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -97,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodeLairSettings = n.SelectSingleNode("Locations");
             Debug.Assert(nodeLairSettings != null);
 
-            Locations = new List<TypeLobbyLocationSettings>();
+            Locations = new TypeLobbyLocationSettings[MapHeight, MapWidth];
             TypeLobbyLocationSettings ls;
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Location"))
@@ -113,7 +114,8 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                Locations.Add(ls);
+                Assert(Locations[ls.Coord.Y, ls.Coord.X] is null);
+                Locations[ls.Coord.Y, ls.Coord.X] = ls;
 
                 /*Debug.Assert(Locations[ls.Coord.Y, ls.Coord.X] == null);
                 Locations[ls.Coord.Y, ls.Coord.X] = ls;*/
@@ -163,7 +165,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MapHeight { get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
-        internal List<TypeLobbyLocationSettings> Locations { get; }
+        internal TypeLobbyLocationSettings[,] Locations { get; }
         //internal TypeLobbyLocationSettings[,] Locations { get; }
 
         internal void TuneDeferredLinks()
