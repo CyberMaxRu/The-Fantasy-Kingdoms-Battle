@@ -187,7 +187,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(Entity);
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
-            panelHint.AddStep12Creating(Location.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Location.Player, PurchaseValue);
         }
 
         internal override void UpdatePurchase()

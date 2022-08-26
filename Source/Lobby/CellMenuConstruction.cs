@@ -275,7 +275,7 @@ namespace Fantasy_Kingdoms_Battle
             //PanelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
 
 
@@ -352,7 +352,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
 
         internal override void UpdatePurchase()
@@ -462,7 +462,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9PlusBuilders(TypeConstruction.Levels[1].AddConstructionPoints);
             //panelHint.AddStep10DaysBuilding(-1, TypeConstruction.Levels[1].GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
-            panelHint.AddStep12Creating(Construction.Player, TypeConstruction.Levels[1].GetCreating().CostResources);
+            panelHint.AddStep12CostExecuting(Construction.Player, TypeConstruction.Levels[1].GetCreating().CostResources);
             panelHint.AddStep13Builders(TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player));
         }
     }
@@ -556,7 +556,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
-            panelHint.AddStep12Creating(Construction.Player, Descriptor.GetCreating().CostResources, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting(Construction.Player, Descriptor.GetCreating().CostResources, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), ExecutingAction.RestDaysExecuting, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
@@ -743,7 +743,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep75Salary(Creature.CostOfHiring);
             //panelHint.AddStep10DaysBuilding(InQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(Construction.GetTextRequirementsHire());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
     }
 
@@ -815,7 +815,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds, false);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
 
         internal override void PrepareNewDay()
@@ -878,7 +878,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
             panelHint.AddStep13Builders(Entity.Durability);
         }
     }
@@ -923,7 +923,7 @@ namespace Fantasy_Kingdoms_Battle
             //CreatedEntity.Creating.panelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
     }
 
@@ -991,7 +991,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9ListNeeds(ConstructionTournament.ListNeeds, false);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
     }
 
@@ -1092,7 +1092,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
 
         internal override void PrepareNewDay()
@@ -1148,7 +1148,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(Entity);
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
-            panelHint.AddStep12Creating(Construction.Player, PurchaseValue);
+            panelHint.AddStep12CostExecuting(Construction.Player, PurchaseValue);
         }
 
         internal override void UpdatePurchase()

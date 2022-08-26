@@ -695,11 +695,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12Creating(Player p, ListBaseResources requiresRes, int constructionPoint = 0, int daysCreating = 0, List<TextRequirement> requirement = null)
+        internal void AddStep12CostExecuting(Player p, ListBaseResources costResources, int constructionPoint = 0, int daysCreating = 0, List<TextRequirement> requirement = null)
         {
-            if (requiresRes != null)
+            if (costResources != null)
             {
-                Assert(requiresRes.Gold > 0);
+                Assert(costResources.Gold > 0);
 
                 sprChapterCost.Visible = true;
                 sprChapterCost.ShiftY = nextTop;
@@ -708,8 +708,8 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblChapterCost.NextTop();
 
                 lblCostGold.ShiftY = nextTop;
-                lblCostGold.Text = requiresRes.Gold.ToString();
-                lblCostGold.Color = ColorRequirements(p.BaseResources.Gold >= requiresRes.Gold);
+                lblCostGold.Text = costResources.Gold.ToString();
+                lblCostGold.Color = ColorRequirements(p.BaseResources.Gold >= costResources.Gold);
                 lblCostGold.Visible = true;
 
                 if (constructionPoint > 0)
@@ -730,7 +730,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 nextTop = lblCostGold.NextTop();
-                AddCostResources(p.BaseResources, requiresRes);
+                AddCostResources(p.BaseResources, costResources);
 
                 if (requirement != null)
                     AddStep11Requirement(requirement);
@@ -739,7 +739,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(daysCreating == 0);
                 Assert(constructionPoint == 0);
-                Assert(requiresRes is null);
+                Assert(costResources is null);
             }
         }
 

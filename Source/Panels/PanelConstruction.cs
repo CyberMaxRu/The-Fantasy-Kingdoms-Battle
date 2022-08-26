@@ -471,7 +471,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             PanelHint.AddStep11Requirement(Construction.GetRequirements());
-            PanelHint.AddStep12Creating(Construction.Player, Construction.RequiredGold());
+            PanelHint.AddStep12CostExecuting(Construction.Player, Construction.RequiredGold());
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
