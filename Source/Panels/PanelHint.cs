@@ -46,9 +46,9 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCSeparator sprChapterCost;
         internal readonly VCLabel lblChapterCost;
         internal readonly VCLabelValue lblCostGold;
-        internal readonly VCLabelValue lblConstructionPoint;
-        internal readonly VCLabelValue lblDaysCreating;
-        internal readonly List<VCLabelValue> listRequiredResources = new List<VCLabelValue>();
+        internal readonly VCLabelValue lblCostPoint;
+        internal readonly VCLabelValue lblDaysExecuting;
+        internal readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
 
         //
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
@@ -149,11 +149,11 @@ namespace Fantasy_Kingdoms_Battle
             lblCostGold = CreateLabelValue(4);
             lblCostGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
 
-            lblConstructionPoint = CreateLabelValue(4);
-            lblConstructionPoint.Image.ImageIndex = FormMain.GUI_16_BUILDER;
+            lblCostPoint = CreateLabelValue(4);
+            lblCostPoint.Image.ImageIndex = FormMain.GUI_16_BUILDER;
 
-            lblDaysCreating = CreateLabelValue(4);
-            lblDaysCreating.Image.ImageIndex = FormMain.GUI_16_DAY;
+            lblDaysExecuting = CreateLabelValue(4);
+            lblDaysExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
 
             //
             lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
@@ -292,9 +292,9 @@ namespace Fantasy_Kingdoms_Battle
             sprChapterCost.Visible = false;
             lblChapterCost.Visible = false;
             lblCostGold.Visible = false;
-            lblConstructionPoint.Visible = false;
-            lblDaysCreating.Visible = false;
-            foreach (VCLabel l in listRequiredResources)
+            lblCostPoint.Visible = false;
+            lblDaysExecuting.Visible = false;
+            foreach (VCLabel l in listCostResources)
                 l.Visible = false;
 
             //
@@ -640,10 +640,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (daysBuilding > 0)
             {
-                lblDaysCreating.ShiftY = nextTop;
-                lblDaysCreating.Text = daysBuilding.ToString();
-                lblDaysCreating.Visible = true;
-                nextTop = lblDaysCreating.NextTop();
+                lblDaysExecuting.ShiftY = nextTop;
+                lblDaysExecuting.Text = daysBuilding.ToString();
+                lblDaysExecuting.Visible = true;
+                nextTop = lblDaysExecuting.NextTop();
             }
         }
 
@@ -715,18 +715,18 @@ namespace Fantasy_Kingdoms_Battle
                 if (constructionPoint > 0)
                 {
                     //lblBuilders.Color = ColorRequirements(constructionPoint);
-                    lblConstructionPoint.Text = constructionPoint.ToString();
-                    lblConstructionPoint.ShiftY = nextTop;
-                    lblConstructionPoint.Visible = true;
-                    AdjustCell(lblConstructionPoint, lblCostGold, FormMain.Config.GridSize, nextTop);
+                    lblCostPoint.Text = constructionPoint.ToString();
+                    lblCostPoint.ShiftY = nextTop;
+                    lblCostPoint.Visible = true;
+                    AdjustCell(lblCostPoint, lblCostGold, FormMain.Config.GridSize, nextTop);
                 }
 
                 if (daysCreating > 0)
                 {
-                    lblDaysCreating.ShiftY = nextTop;
-                    lblDaysCreating.Text = daysCreating.ToString();
-                    lblDaysCreating.Visible = true;
-                    AdjustCell(lblDaysCreating, lblConstructionPoint, FormMain.Config.GridSize, nextTop);
+                    lblDaysExecuting.ShiftY = nextTop;
+                    lblDaysExecuting.Text = daysCreating.ToString();
+                    lblDaysExecuting.Visible = true;
+                    AdjustCell(lblDaysExecuting, lblCostPoint, FormMain.Config.GridSize, nextTop);
                 }
 
                 nextTop = lblCostGold.NextTop();
@@ -776,13 +776,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 VCLabelValue GetLabel(int index)
                 {
-                    if (index < listRequiredResources.Count)
-                        return listRequiredResources[index];
+                    if (index < listCostResources.Count)
+                        return listCostResources[index];
                     else
                     {
                         VCLabelValue l = new VCLabelValue(this, 0, 0, FormMain.Config.HintIncome, false);
                         l.Width = 64;
-                        listRequiredResources.Add(l);
+                        listCostResources.Add(l);
                         return l;
                     }
                 }
@@ -803,11 +803,11 @@ namespace Fantasy_Kingdoms_Battle
                     nextTop = lblTextForRequirement.NextTop();
                 }
 
-                lblConstructionPoint.Text = builders.ToString();
-                lblConstructionPoint.ShiftY = nextTop;
-                lblConstructionPoint.Visible = true;
+                lblCostPoint.Text = builders.ToString();
+                lblCostPoint.ShiftY = nextTop;
+                lblCostPoint.Visible = true;
 
-                nextTop = lblConstructionPoint.NextTop();
+                nextTop = lblCostPoint.NextTop();
             }
         }
 
