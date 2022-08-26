@@ -730,7 +730,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 nextTop = lblCostGold.NextTop();
-                AddStep12Gold(p.BaseResources, requiresRes);
+                AddCostResources(p.BaseResources, requiresRes);
 
                 if (requirement != null)
                     AddStep11Requirement(requirement);
@@ -743,21 +743,21 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void AddStep12Gold(ListBaseResources ownRes, ListBaseResources requiresRes)
+        private void AddCostResources(ListBaseResources ownRes, ListBaseResources costResources)
         {
-            if ((requiresRes != null) && requiresRes.ExistsResources())
+            if ((costResources != null) && costResources.ExistsResources())
             {
                 VCLabelValue lbl = null;
                 int nextLeft = FormMain.Config.GridSize;
 
                 for (int i = Config.INDEX_FIRST_RESOURCE; i < ownRes.Count; i++)
                 {
-                    if (requiresRes[i] > 0)
+                    if (costResources[i] > 0)
                     {
                         lbl = GetLabel(i);
                         lbl.Visible = true;
-                        lbl.Color = ColorRequirements(ownRes[i] >= requiresRes[i]);
-                        lbl.Text = requiresRes[i].ToString();
+                        lbl.Color = ColorRequirements(ownRes[i] >= costResources[i]);
+                        lbl.Text = costResources[i].ToString();
                         lbl.Image.ImageIndex = FormMain.Descriptors.BaseResources[i].ImageIndex16;
                         lbl.ShiftX = nextLeft;
                         lbl.ShiftY = nextTop;
