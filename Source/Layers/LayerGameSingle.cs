@@ -484,11 +484,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnLevelTax_Click(object sender, EventArgs e)
         {
-            if (!((VCIconButton48)sender).ManualSelected)
+            VCIconButton48 ib = (VCIconButton48)sender;
+            if (!ib.ManualSelected)
             {
                 listBtnLevelTax[curAppliedPlayer.CurrentLevelTax.Index].ManualSelected = false;
-                curAppliedPlayer.CurrentLevelTax = Descriptors.LevelTaxes[((VCIconButton48)sender).Tag];
-                ((VCIconButton48)sender).ManualSelected = true;
+                curAppliedPlayer.CurrentLevelTax = Descriptors.LevelTaxes[ib.Tag];
+                ib.ManualSelected = true;
             }
         }
 
