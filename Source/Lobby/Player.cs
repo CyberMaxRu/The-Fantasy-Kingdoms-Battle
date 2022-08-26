@@ -179,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
             //
             Castle = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
-            Castle.DoDamage(1000);
+            Castle.DoDamage(500);
             Graveyard = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDCityGraveyard));
 
             LevelGreatness = 1;
