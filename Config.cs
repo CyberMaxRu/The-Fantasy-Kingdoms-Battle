@@ -313,6 +313,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<string> ExternalAvatars { get; } = new List<string>();
 
         // Константы
+        internal const int INDEX_FIRST_RESOURCE = 1;
+
         internal int GridSize { get; private set; }// Размер ячейки сетки
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
         internal int MaxLengthIDEntity { get; set; }// Максимальная длина ID сущности

@@ -38,13 +38,19 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblSalary;
         internal readonly VCLabelValue lblGreatnessAdd;
         internal readonly VCLabelValue lblBuildersPerDay;
-        internal readonly List<VCLabelValue> listRequiredResources = new List<VCLabelValue>();
 
         internal readonly List<VCLabelValue> listProperties = new List<VCLabelValue>();
         internal readonly VCLabelValue lblInterest;
+
+        // Раздел "Стоимость"
+        internal readonly VCSeparator sprChapterCost;
+        internal readonly VCLabel lblChapterCost;
         internal readonly VCLabelValue lblCostGold;
-        internal readonly VCLabelValue lblDaysCreating;
         internal readonly VCLabelValue lblConstructionPoint;
+        internal readonly VCLabelValue lblDaysCreating;
+        internal readonly List<VCLabelValue> listRequiredResources = new List<VCLabelValue>();
+
+        //
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
         internal readonly VCLabel lblSigner;
         internal readonly VCSeparator lblSeparateTooltip;
@@ -132,15 +138,24 @@ namespace Fantasy_Kingdoms_Battle
             lblInterest.Image.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
             lblInterest.Width = widthControl;
 
+            // Стоимость
+            sprChapterCost = new VCSeparator(this, FormMain.Config.GridSize, lblInterest.NextTop());
+            sprChapterCost.Width = widthControl;
+
+            lblChapterCost = new VCLabel(this, FormMain.Config.GridSize, sprChapterCost.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Стоимость:");
+            lblChapterCost.Width = widthControl;
+            lblChapterCost.StringFormat.Alignment = StringAlignment.Near;
+
             lblCostGold = CreateLabelValue(4);
             lblCostGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
-
-            lblDaysCreating = CreateLabelValue(4);
-            lblDaysCreating.Image.ImageIndex = FormMain.GUI_16_DAY;
 
             lblConstructionPoint = CreateLabelValue(4);
             lblConstructionPoint.Image.ImageIndex = FormMain.GUI_16_BUILDER;
 
+            lblDaysCreating = CreateLabelValue(4);
+            lblDaysCreating.Image.ImageIndex = FormMain.GUI_16_DAY;
+
+            //
             lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
@@ -268,17 +283,21 @@ namespace Fantasy_Kingdoms_Battle
             lblTextForRequirement.Visible = false;
             listRequirements.Clear();
 
-            foreach (VCLabel l in listRequiredResources)
-                l.Visible = false;
-
             foreach (VCLabelValue l in listProperties)
                 l.Visible = false;
 
             lblInterest.Visible = false;
-            lblCostGold.Visible = false;
-            lblDaysCreating.Visible = false;
-            lblConstructionPoint.Visible = false;
 
+            //
+            sprChapterCost.Visible = false;
+            lblChapterCost.Visible = false;
+            lblCostGold.Visible = false;
+            lblConstructionPoint.Visible = false;
+            lblDaysCreating.Visible = false;
+            foreach (VCLabel l in listRequiredResources)
+                l.Visible = false;
+
+            //
             foreach (VCLabelValue ln in listLabelNeeds)
                 ln.Visible = false;
 
@@ -676,18 +695,21 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12Creating(Player p, int constructionPoint, int daysCreating, ListBaseResources requiresRes, List<TextRequirement> requirement)
+        internal void AddStep12Creating(Player p, ListBaseResources requiresRes, int constructionPoint = 0, int daysCreating = 0, List<TextRequirement> requirement = null)
         {
             if (requiresRes != null)
             {
                 Assert(requiresRes.Gold > 0);
 
-                lblSeparateRequirement.Visible = true;
-                lblSeparateRequirement.ShiftY = nextTop;
-                nextTop = lblSeparateRequirement.NextTop();
+                sprChapterCost.Visible = true;
+                sprChapterCost.ShiftY = nextTop;
+                lblChapterCost.Visible = true;
+                lblChapterCost.ShiftY = sprChapterCost.NextTop();
+                nextTop = lblChapterCost.NextTop();
 
                 lblCostGold.ShiftY = nextTop;
                 lblCostGold.Text = requiresRes.Gold.ToString();
+                lblCostGold.Color = ColorRequirements(p.BaseResources.Gold >= requiresRes.Gold);
                 lblCostGold.Visible = true;
 
                 if (constructionPoint > 0)
@@ -708,13 +730,10 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 nextTop = lblCostGold.NextTop();
-
-                lblTextForRequirement.Visible = true;
-                lblTextForRequirement.ShiftY = nextTop;
-                nextTop = lblTextForRequirement.NextTop();
                 AddStep12Gold(p.BaseResources, requiresRes);
 
-                AddStep11Requirement(requirement);
+                if (requirement != null)
+                    AddStep11Requirement(requirement);
             }
             else
             {
@@ -724,24 +743,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12Gold(ListBaseResources ownRes, ListBaseResources requiresRes)
+        private void AddStep12Gold(ListBaseResources ownRes, ListBaseResources requiresRes)
         {
             if ((requiresRes != null) && requiresRes.ExistsResources())
             {
-                if (!lblSeparateRequirement.Visible)
-                {
-                    lblSeparateRequirement.Visible = true;
-                    lblSeparateRequirement.ShiftY = nextTop;
-                    nextTop = lblSeparateRequirement.NextTop();
-                    lblTextForRequirement.Visible = true;
-                    lblTextForRequirement.ShiftY = nextTop;
-                    nextTop = lblTextForRequirement.NextTop();
-                }
-
                 VCLabelValue lbl = null;
                 int nextLeft = FormMain.Config.GridSize;
 
-                for (int i = 0; i < ownRes.Count; i++)
+                for (int i = Config.INDEX_FIRST_RESOURCE; i < ownRes.Count; i++)
                 {
                     if (requiresRes[i] > 0)
                     {
@@ -762,7 +771,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                if (lbl != null)
+                if ((lbl != null) && (nextLeft > FormMain.Config.GridSize))
                     nextTop = lbl.NextTop();
 
                 VCLabelValue GetLabel(int index)
