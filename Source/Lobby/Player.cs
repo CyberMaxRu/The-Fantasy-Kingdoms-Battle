@@ -36,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
         private readonly List<CellMenuConstruction> queueExecuting = new List<CellMenuConstruction>();// Очередь выполнения действий
+        private readonly List<CellMenuConstructionRepair> queueRepair = new List<CellMenuConstructionRepair>();// Очередь ремонта
         private readonly List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby, null)
@@ -1623,7 +1624,14 @@ namespace Fantasy_Kingdoms_Battle
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {
-            if (queueExecuting.Count > 0)
+            queueRepair.Clear();
+            foreach (Construction c in Constructions)
+            {
+                if (c.ActionMain is CellMenuConstructionRepair cr)
+                    queueRepair.Add(cr);
+            }
+
+            if ((queueExecuting.Count > 0) || (queueRepair.Count > 0))
             {
                 // Очищаем очереди выполнения во всех сооружениях
                 foreach (Construction c in Constructions)
@@ -1632,6 +1640,15 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(RestConstructionPoints == ConstructionPoints);
 
                 UsedConstructionPoints = 0;// Обнуляем потраченное количество очков
+
+                // Сначала ремонтируем сооружения, потом уже достраиваем что есть
+                if (queueRepair.Count > 0)
+                {
+                    foreach (CellMenuConstructionRepair cr in queueRepair.OrderBy(c => c.ExecutingAction.NeedPoints))
+                    {
+                        cr.AddToQueue();
+                    }
+                }
 
                 // Составляем очереди у сооружений
                 List<CellMenuConstruction> list = new List<CellMenuConstruction>();
