@@ -248,8 +248,13 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
-                            btnMainAction.Visible = true;
-                            btnMainAction.MenuCell = Construction.ActionMain;
+                            if (!Construction.ActionMain.ExecutingAction.InQueue)
+                            {
+                                btnMainAction.Visible = true;
+                                btnMainAction.MenuCell = Construction.ActionMain;
+                            }
+                            else
+                                btnMainAction.Visible = false;
                         }
                         else
                         {
@@ -271,8 +276,13 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
-                            btnMainAction.Visible = true;
-                            btnMainAction.MenuCell = Construction.ActionMain;
+                            if (!Construction.ActionMain.ExecutingAction.InQueue)
+                            {
+                                btnMainAction.Visible = true;
+                                btnMainAction.MenuCell = Construction.ActionMain;
+                            }
+                            else
+                                btnMainAction.Visible = false;
                         }
                         else
                             btnMainAction.Visible = false;
