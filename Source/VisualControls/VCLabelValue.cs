@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (!showBackground)
             {
-                TopMargin = -2;
+                TopMargin = -4;
             }
             else
             {
