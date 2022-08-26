@@ -695,7 +695,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12CostExecuting(Player p, ListBaseResources costResources, int constructionPoint = 0, int daysCreating = 0, List<TextRequirement> requirement = null)
+        internal void AddStep12CostExecuting(Player p, ListBaseResources costResources)
+        {
+            AddStep12CostExecuting(p, costResources, 0, 0, null);
+        }
+
+        internal void AddStep12CostExecuting(Player p, ListBaseResources costResources, int constructionPoint, int daysCreating, List<TextRequirement> requirement)
         {
             if (costResources != null)
             {
