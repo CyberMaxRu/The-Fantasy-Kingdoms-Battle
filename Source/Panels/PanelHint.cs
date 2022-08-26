@@ -259,6 +259,7 @@ namespace Fantasy_Kingdoms_Battle
             timerHover.Tick += TimerHover_Tick;
         }
 
+        internal Player Player { get; set; }// 
         internal bool ExistHint { get; set; }
         internal VisualControl ForControl { get; private set; }// Подсказка для этого контрола
 
@@ -695,12 +696,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12CostExecuting(Player p, ListBaseResources costResources)
+        internal void AddStep12CostExecuting(ListBaseResources costResources)
         {
-            AddStep12CostExecuting(p, costResources, 0, 0, null);
+            AddStep12CostExecuting(costResources, 0, 0, null);
         }
 
-        internal void AddStep12CostExecuting(Player p, ListBaseResources costResources, int constructionPoint, int daysCreating, List<TextRequirement> requirement)
+        internal void AddStep12CostExecuting(ListBaseResources costResources, int constructionPoint, int daysCreating, List<TextRequirement> requirement)
         {
             if (costResources != null)
             {
@@ -714,7 +715,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 lblCostGold.ShiftY = nextTop;
                 lblCostGold.Text = costResources.Gold.ToString();
-                lblCostGold.Color = ColorRequirements(p.BaseResources.Gold >= costResources.Gold);
+                lblCostGold.Color = ColorRequirements(Player.BaseResources.Gold >= costResources.Gold);
                 lblCostGold.Visible = true;
 
                 if (constructionPoint > 0)
@@ -735,7 +736,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 nextTop = lblCostGold.NextTop();
-                AddCostResources(p.BaseResources, costResources);
+                AddCostResources(Player.BaseResources, costResources);
 
                 if (requirement != null)
                     AddStep11Requirement(requirement);

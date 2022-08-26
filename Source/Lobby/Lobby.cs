@@ -203,6 +203,8 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 CurrentPlayer = null;
+
+            VisualControl.PanelHint.Player = CurrentPlayer;
         }
 
         internal void Start()
