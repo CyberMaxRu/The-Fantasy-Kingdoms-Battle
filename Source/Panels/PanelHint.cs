@@ -682,7 +682,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (!(Program.formMain.Settings.HideFulfilledRequirements && tr.Performed))
                     {
-                        lr = new VCText(this, FormMain.Config.GridSize * 4, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
+                        lr = new VCText(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
                         lr.StringFormat.Alignment = StringAlignment.Near;
                         lr.Text = tr.Text;
                         lr.Height = lr.MinHeigth();
