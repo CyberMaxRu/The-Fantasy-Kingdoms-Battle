@@ -42,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorWithID ForEntity { get; }
         internal bool AllowCheating { get; set; }
+        internal RequirementConstruction RequirementOurConstruction { get; set; }
 
         internal void TuneLinks()
         {

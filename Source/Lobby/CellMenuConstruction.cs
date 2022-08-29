@@ -96,9 +96,12 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.Descriptor.IsInternalConstruction && ConstructionMustMeConstructed())
             {
                 // Если нет требований, то по умолчанию остается только одно - сооружение должно быть построено
-                // Если есть, то не надо писать, что сооружение не построено - иначе не видно, какие там требования
+                // Если есть, то не надо писать, что сооружение не построено - оно будет прописано в условии
                 if (Construction.Level == 0)
-                    list.Add(new TextRequirement(false, "Построить сооружение"));
+                {
+                    if ((Descriptor.CreatedEntity.GetCreating().Requirements != null) && (Descriptor.CreatedEntity.GetCreating().Requirements.RequirementOurConstruction is null))
+                        list.Add(new TextRequirement(false, "Построить сооружение"));
+                }
 
                 Construction.Player.TextRequirements(Descriptor.CreatedEntity.GetCreating().Requirements, list, Construction);
             }

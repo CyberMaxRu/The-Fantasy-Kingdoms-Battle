@@ -14,25 +14,26 @@ namespace Fantasy_Kingdoms_Battle
     {
         private DescriptorConstruction construction;
         private string idConstruction;
-        private int level;
         private int skipTurnsFromBuild;
 
         public RequirementConstruction(Descriptor forEntity, XmlNode n, ListDescriptorRequirements list) : base(forEntity, n, list)
         {
             idConstruction = XmlUtils.GetStringNotNull(n, "Construction");
-            level = XmlUtils.GetInteger(n, "Level");
+            Level = XmlUtils.GetInteger(n, "Level");
             skipTurnsFromBuild = GetInteger(n, "SkipTurnsFromBuild");
 
             Debug.Assert(idConstruction.Length > 0);
-            Debug.Assert(level >= 0);
+            Debug.Assert(Level >= 0);
             Debug.Assert(skipTurnsFromBuild >= 0);
         }
 
         public RequirementConstruction(Descriptor forCellMenu, string requiredConstruction, int requiredLevel, ListDescriptorRequirements list) : base(forCellMenu, list)
         {
             idConstruction = requiredConstruction;
-            level = requiredLevel;
+            Level = requiredLevel;
         }
+
+        internal int Level { get; }
 
         internal override void TuneLinks()
         {
@@ -45,14 +46,20 @@ namespace Fantasy_Kingdoms_Battle
             idConstruction = "";
 
             Debug.Assert(construction.IsOurConstruction);
-            Debug.Assert(level <= construction.MaxLevel, $"Требуется сооружение {construction.ID} {level} уровня, но у него максимум {construction.MaxLevel} уровень.");
+            Debug.Assert(Level <= construction.MaxLevel, $"Требуется сооружение {construction.ID} {Level} уровня, но у него максимум {construction.MaxLevel} уровень.");
 
             // Если сущность требует уровень в этого же сооружения, это требование должно идти первым (как самое приоритетное)
             if (ForEntity is DescriptorEntityForActiveEntity de)
                 if (de.ActiveEntity is DescriptorConstruction dc)
                     if (dc.ID == construction.ID)
+                    {
+                        Utils.Assert(List.RequirementOurConstruction is null);
+
                         if (List.IndexOf(this) != 0)
                             Utils.DoException($"В {de.ID} условие по {dc.ID} должно быть первым (сейчас {List.IndexOf(this)})");
+
+                        List.RequirementOurConstruction = this;
+                    }
         }
 
         internal override bool CheckRequirement(Player p)
@@ -67,21 +74,21 @@ namespace Fantasy_Kingdoms_Battle
                 // Отдельно обрабатываем случай, когда здание зависит от самого себя - это левелап и читинг в этом случае не допускается,
                 // чтобы нельзя было строить новый уровень без построенного предыдущего
                 if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
-                    return (requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild);
+                    return (requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[Level] >= skipTurnsFromBuild);
                 else
-                    return allowCheating || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
+                    return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[Level] >= skipTurnsFromBuild));
             }
             else
-                return allowCheating || ((requiredConstruction.Level >= level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[level] >= skipTurnsFromBuild));
+                return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[Level] >= skipTurnsFromBuild));
         }
 
         internal override TextRequirement GetTextRequirement(Player p, Construction inConstruction = null)
         {
             Construction needConstruction = p.GetPlayerConstruction(construction);
             if ((inConstruction != null) && (needConstruction == inConstruction))
-                return new TextRequirement(CheckRequirement(p), level.ToString() + "-й уровень");
+                return new TextRequirement(CheckRequirement(p), Level.ToString() + "-й уровень");
             else
-                return new TextRequirement(CheckRequirement(p), needConstruction.Descriptor.Name + (level > 1 ? " " + level + " уровня" : ""));
+                return new TextRequirement(CheckRequirement(p), needConstruction.Descriptor.Name + (Level > 1 ? " " + Level + " уровня" : ""));
         }
     }
 
