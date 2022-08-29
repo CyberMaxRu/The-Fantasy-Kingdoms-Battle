@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction needConstruction = p.GetPlayerConstruction(construction);
             if ((inConstruction != null) && (needConstruction == inConstruction))
-                return new TextRequirement(CheckRequirement(p), Level.ToString() + "-й уровень");
+                return new TextRequirement(CheckRequirement(p), Level == 1 ? "Построить сооружение" : Level.ToString() + "-й уровень");
             else
                 return new TextRequirement(CheckRequirement(p), needConstruction.Descriptor.Name + (Level > 1 ? " " + Level + " уровня" : ""));
         }
