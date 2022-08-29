@@ -952,13 +952,11 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        internal void TextRequirements(List<DescriptorRequirement> listReq, List<TextRequirement> listTextReq)
+        internal void TextRequirements(List<DescriptorRequirement> listReq, List<TextRequirement> listTextReq, Construction inConstruction = null)
         {
-            Construction pb;
-
             foreach (DescriptorRequirement r in listReq)
             {
-                listTextReq.Add(r.GetTextRequirement(this));
+                listTextReq.Add(r.GetTextRequirement(this, inConstruction));
             }
         }
 

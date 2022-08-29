@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirement(Player p) => base.CheckRequirement(p) || (p.LairsDestroyed(construction) >= destroyed);
 
-        internal override TextRequirement GetTextRequirement(Player p)
+        internal override TextRequirement GetTextRequirement(Player p, Construction inConstruction = null)
         {
             return new TextRequirement(CheckRequirement(p), $"Разрушить {construction.Name}: {p.LairsDestroyed(construction)}/{destroyed}");
         }

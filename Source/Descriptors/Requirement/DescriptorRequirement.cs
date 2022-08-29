@@ -26,6 +26,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Descriptor ForEntity { get; }
         internal ListDescriptorRequirements List { get; }
         internal virtual bool CheckRequirement(Player p) => List.AllowCheating && p.CheatingIgnoreRequirements;
-        internal abstract TextRequirement GetTextRequirement(Player p);
+        internal abstract TextRequirement GetTextRequirement(Player p, Construction inConstruction = null);
     }
 }
