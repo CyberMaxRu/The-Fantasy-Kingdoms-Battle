@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
+using System.Windows.Documents;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -45,6 +46,13 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(construction.IsOurConstruction);
             Debug.Assert(level <= construction.MaxLevel, $"Требуется сооружение {construction.ID} {level} уровня, но у него максимум {construction.MaxLevel} уровень.");
+
+            // Если сущность требует уровень в этого же сооружения, это требование должно идти первым (как самое приоритетное)
+            if (ForEntity is DescriptorEntityForActiveEntity de)
+                if (de.ActiveEntity is DescriptorConstruction dc)
+                    if (dc.ID == construction.ID)
+                        if (List.IndexOf(this) != 0)
+                            Utils.DoException($"В {de.ID} условие по {dc.ID} должно быть первым (сейчас {List.IndexOf(this)})");
         }
 
         internal override bool CheckRequirement(Player p)
