@@ -25,50 +25,50 @@ namespace Fantasy_Kingdoms_Battle
     // Панель подсказки
     internal sealed class PanelHint : VisualControl
     {
-        internal readonly VCText lblHeader;
-        internal readonly VCCellSimple imgCell;
-        internal readonly VCText lblType;
-        internal readonly VCText lblAction;
-        internal readonly VCText lblState;
-        internal readonly VCText lblDescription;
-        internal readonly VCLabelValue lblIncome;
-        internal readonly VCLabelValue lblSalary;
-        internal readonly VCLabelValue lblGreatnessAdd;
-        internal readonly VCLabelValue lblBuildersPerDay;
+        private readonly VCText lblHeader;
+        private readonly VCCellSimple imgCell;
+        private readonly VCText lblType;
+        private readonly VCText lblAction;
+        private readonly VCText lblState;
+        private readonly VCText lblDescription;
+        private readonly VCLabelValue lblIncome;
+        private readonly VCLabelValue lblSalary;
+        private readonly VCLabelValue lblGreatnessAdd;
+        private readonly VCLabelValue lblBuildersPerDay;
 
-        internal readonly List<VCLabelValue> listProperties = new List<VCLabelValue>();
-        internal readonly VCLabelValue lblInterest;
+        private readonly List<VCLabelValue> listProperties = new List<VCLabelValue>();
+        private readonly VCLabelValue lblInterest;
 
         // Раздел "Выполнение"
-        internal readonly VCSeparator sepExecuting;
+        private readonly VCSeparator sepExecuting;
         private readonly VCLabel lblNameExecuting;
 
         // Подраздел "Стоимость"
-        internal readonly VCLabel lblChapterCost;
-        internal readonly VCLabelValue lblCostGold;
-        internal readonly VCLabelValue lblCostPoint;
-        internal readonly VCLabelValue lblDaysExecuting;
-        internal readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
+        private readonly VCLabel lblChapterCost;
+        private readonly VCLabelValue lblCostGold;
+        private readonly VCLabelValue lblCostPoint;
+        private readonly VCLabelValue lblDaysExecuting;
+        private readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
 
         // Подраздел "Условия"
-        internal readonly VCLabel lblTextForRequirement;
-        internal readonly List<VCText> listRequirements = new List<VCText>();
+        private readonly VCLabel lblTextForRequirement;
+        private readonly List<VCText> listRequirements = new List<VCText>();
 
 
         //
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
-        internal readonly VCLabel lblSigner;
-        internal readonly VCSeparator lblSeparateTooltip;
-        internal readonly VCText lblTooltip;
+        private readonly VCLabel lblSigner;
+        private readonly VCSeparator lblSeparateTooltip;
+        private readonly VCText lblTooltip;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
         private readonly List<VCCellSimple> listCellBaseResources = new List<VCCellSimple>();
-        internal readonly VCLabel lblDamageMelee;
-        internal readonly VCLabel lblDamageArcher;
-        internal readonly VCLabel lblDamageMagic;
-        internal readonly VCLabel lblDefenseMelee;
-        internal readonly VCLabel lblDefenseArcher;
-        internal readonly VCLabel lblDefenseMagic;
+        private readonly VCLabel lblDamageMelee;
+        private readonly VCLabel lblDamageArcher;
+        private readonly VCLabel lblDamageMagic;
+        private readonly VCLabel lblDefenseMelee;
+        private readonly VCLabel lblDefenseArcher;
+        private readonly VCLabel lblDefenseMagic;
         private int nextTop;
         private readonly Color colorBackground;
         private Bitmap bmpBackground;
