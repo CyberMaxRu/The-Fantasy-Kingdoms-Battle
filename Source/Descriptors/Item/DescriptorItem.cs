@@ -180,6 +180,37 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
 
-        internal override string GetTypeEntity() => "Предмет";
+        internal override string GetTypeEntity() => GetNameCategory();
+
+        internal string GetNameCategory()
+        {
+            switch (CategoryItem)
+            {
+                case CategoryItem.Potion:
+                    return "Напиток";
+                case CategoryItem.Enchant:
+                    return "Зачарование";
+                case CategoryItem.Artifact:
+                    return "Артефакт";
+                case CategoryItem.Elixir:
+                    return "Эликсир";
+                case CategoryItem.Food:
+                    return "Еда";
+                case CategoryItem.Thing:
+                    return "Вещь";
+                case CategoryItem.Weapon:
+                    return "Оружие";
+                case CategoryItem.Armour:
+                    return "Доспех";
+                case CategoryItem.Quiver:
+                    return "Колчан";
+                case CategoryItem.Monster:
+                    return "Монстр";
+                case CategoryItem.Game:
+                    return "Игра";
+                default:
+                    throw new Exception($"Неизвестная категория {CategoryItem}");
+            }
+        }
     }
 }
