@@ -679,11 +679,11 @@ namespace Fantasy_Kingdoms_Battle
                 lblCostGold.Color = ColorRequirements(Player.BaseResources.Gold >= costResources.Gold);
                 lblCostGold.Visible = true;
 
+                lblCostPoint.ShiftY = nextTop;
                 if (constructionPoint > 0)
                 {
                     //lblBuilders.Color = ColorRequirements(constructionPoint);
                     lblCostPoint.Text = constructionPoint.ToString();
-                    lblCostPoint.ShiftY = nextTop;
                     lblCostPoint.Visible = true;
                     AdjustCell(lblCostPoint, lblCostGold, FormMain.Config.GridSize, nextTop);
                 }
