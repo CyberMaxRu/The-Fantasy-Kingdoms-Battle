@@ -728,6 +728,17 @@ namespace Fantasy_Kingdoms_Battle
             return Creature.ImageIndex;
         }
 
+        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        {
+            base.UpdateTextRequirements(list);
+
+            if ((Construction.Level > 0) && (Construction.Heroes.Count == Construction.MaxHeroes()))
+                list.Add(new TextRequirement(false, Construction.Descriptor.GetTextConstructionIsFull()));
+
+            if (Construction.MaxHeroesAtPlayer())
+                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев в королевстве"));
+        }
+
         internal override void PrepareHint(PanelHint panelHint)
         {
             /*panelHint.AddStep2Header(TypeConstruction.TrainedHero.Name);
@@ -740,7 +751,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Creature.Description);
             panelHint.AddStep75Salary(Creature.CostOfHiring);
             //panelHint.AddStep10DaysBuilding(InQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue, 0, true, 0, Construction.GetTextRequirementsHire());
+            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue, 0, true, 0, GetTextRequirements());
         }
     }
 

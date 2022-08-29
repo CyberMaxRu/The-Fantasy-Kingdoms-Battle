@@ -553,22 +553,6 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal List<TextRequirement> GetTextRequirementsHire()
-        {
-            List<TextRequirement> list = new List<TextRequirement>();
-
-            if (Level == 0)
-                list.Add(new TextRequirement(false, Descriptor.GetTextConstructionNotBuilded()));
-
-            if ((Level > 0) && (Heroes.Count == MaxHeroes()))
-                list.Add(new TextRequirement(false, Descriptor.GetTextConstructionIsFull()));
-
-            if (MaxHeroesAtPlayer())
-                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев в королевстве"));
-
-            return list;
-        }
-
         internal Creature HireHero(DescriptorCreature th, ListBaseResources cost)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
