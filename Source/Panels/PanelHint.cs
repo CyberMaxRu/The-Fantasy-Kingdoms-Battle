@@ -665,13 +665,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep10Requirement(string notEnoughrequirement)
-        {
-            List<TextRequirement> r = new List<TextRequirement>();
-            r.Add(new TextRequirement(false, notEnoughrequirement));
-            AddStep11Requirement(r);
-        }
-
         internal void AddStep11Requirement(List<TextRequirement> requirement)
         {
             Debug.Assert(requirement != null);
