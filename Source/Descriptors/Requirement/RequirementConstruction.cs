@@ -12,24 +12,24 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class RequirementConstruction : DescriptorRequirement
     {
         private DescriptorConstruction construction;
-        private string nameConstruction;
+        private string idConstruction;
         private int level;
         private int skipTurnsFromBuild;
 
         public RequirementConstruction(Descriptor forEntity, XmlNode n, ListDescriptorRequirements list) : base(forEntity, n, list)
         {
-            nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
+            idConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             level = XmlUtils.GetInteger(n, "Level");
             skipTurnsFromBuild = GetInteger(n, "SkipTurnsFromBuild");
 
-            Debug.Assert(nameConstruction.Length > 0);
+            Debug.Assert(idConstruction.Length > 0);
             Debug.Assert(level >= 0);
             Debug.Assert(skipTurnsFromBuild >= 0);
         }
 
         public RequirementConstruction(Descriptor forCellMenu, string requiredConstruction, int requiredLevel, ListDescriptorRequirements list) : base(forCellMenu, list)
         {
-            nameConstruction = requiredConstruction;
+            idConstruction = requiredConstruction;
             level = requiredLevel;
         }
 
@@ -40,8 +40,8 @@ namespace Fantasy_Kingdoms_Battle
 
             base.TuneLinks();
 
-            construction = Descriptors.FindConstruction(nameConstruction);
-            nameConstruction = "";
+            construction = Descriptors.FindConstruction(idConstruction);
+            idConstruction = "";
 
             Debug.Assert(construction.IsOurConstruction);
             Debug.Assert(level <= construction.MaxLevel, $"Требуется сооружение {construction.ID} {level} уровня, но у него максимум {construction.MaxLevel} уровень.");
