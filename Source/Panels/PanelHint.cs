@@ -656,10 +656,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources)
         {
-            AddStep12CostExecuting(nameExecuting, costResources, 0, 0, null);
+            AddStep12CostExecuting(nameExecuting, costResources, 0, true, 0, null);
         }
 
-        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int constructionPoint, int daysCreating, List<TextRequirement> requirement)
+        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int constructionPoint, bool isConstructionPoints, int daysCreating, List<TextRequirement> requirement)
         {
             if (costResources != null)
             {
@@ -685,6 +685,7 @@ namespace Fantasy_Kingdoms_Battle
                     //lblBuilders.Color = ColorRequirements(constructionPoint);
                     lblCostPoint.Text = constructionPoint.ToString();
                     lblCostPoint.Visible = true;
+                    lblCostPoint.Image.ImageIndex = isConstructionPoints ? FormMain.GUI_16_BUILDER : FormMain.GUI_16_RESEARCH_POINTS;
                     AdjustCell(lblCostPoint, lblCostGold, FormMain.Config.GridSize, nextTop);
                 }
 
