@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabelValue lblDaysExecuting;
         private readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
 
-        // Подраздел "Требования"
+        // Подраздел "Требуется"
         private readonly VCLabel lblTextForRequirement;
         private readonly List<VCText> listRequirements = new List<VCText>();
 
@@ -157,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
             lblDaysExecuting = CreateLabelValue(4);
             lblDaysExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
 
-            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Требования:");
+            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Требуется:");
             lblTextForRequirement.Width = widthControl;
             lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
 
