@@ -15,7 +15,6 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorGroupItems(XmlNode n) : base(n)
         {
-            ShortName = XmlUtils.GetStringNotNull(n, "ShortName");
             CategoryGroupItems = (CategoryGroupItems)Enum.Parse(typeof(CategoryGroupItems), n.SelectSingleNode("CategoryGroupItems").InnerText);
 
             // Проверяем, что таких ID, Name и ImageIndex нет
@@ -25,6 +24,33 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(gi.Name != Name);
                 Debug.Assert(gi.ImageIndex != ImageIndex);
                 //Debug.Assert(gi.Description != Description);
+            }
+
+            switch (CategoryGroupItems)
+            {
+                case CategoryGroupItems.MeleeWeapons:
+                    ShortName = "Ближ.";
+                    break;
+                case CategoryGroupItems.RangeWeapons:
+                    ShortName = "Даль.";
+                    break;
+                case CategoryGroupItems.Staffs:
+                    ShortName = "Пос.";
+                    break;
+                case CategoryGroupItems.PlateArmors:
+                    ShortName = "Латы";
+                    break;
+                case CategoryGroupItems.Armors:
+                    ShortName = "Досп.";
+                    break;
+                case CategoryGroupItems.Robes:
+                    ShortName = "Робы";
+                    break;
+                case CategoryGroupItems.Quivers:
+                    ShortName = "Колч.";
+                    break;
+                default:
+                    throw new Exception($"Неизвестная категория групп предметов {CategoryGroupItems}");
             }
         }
 

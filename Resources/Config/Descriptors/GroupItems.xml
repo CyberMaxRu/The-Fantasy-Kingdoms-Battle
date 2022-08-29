@@ -5,7 +5,6 @@
     <Name>Простое рукопашное оружие</Name>
     <Description>- Безыскусное, но функциональное рукопашное оружие// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>6</ImageIndex>
-    <ShortName>Ближ.</ShortName>
     <CategoryGroupItems>MeleeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -25,7 +24,6 @@
     <Name>Улучшенное рукопашное оружие</Name>
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>7</ImageIndex>
-    <ShortName>Ближ.</ShortName>
     <CategoryGroupItems>MeleeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -45,7 +43,6 @@
     <Name>Мастерское рукопашное оружие</Name>
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>8</ImageIndex>
-    <ShortName>Ближ.</ShortName>
     <CategoryGroupItems>MeleeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -65,7 +62,6 @@
     <Name>Экспертное рукопашное оружие</Name>
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>9</ImageIndex>
-    <ShortName>Ближ.</ShortName>
     <CategoryGroupItems>MeleeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -85,7 +81,6 @@
     <Name>Руническое рукопашное оружие</Name>
     <Description>- Руническое рукопашное оружие// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>10</ImageIndex>
-    <ShortName>Ближ.</ShortName>
     <CategoryGroupItems>MeleeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -105,7 +100,6 @@
     <Name>Простое стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>11</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>RangeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -119,7 +113,6 @@
     <Name>Улучшенное стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>12</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>RangeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -133,7 +126,6 @@
     <Name>Мастерское стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>13</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>RangeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -147,7 +139,6 @@
     <Name>Экспертное стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>14</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>RangeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -161,7 +152,6 @@
     <Name>Стрелковое оружие из демонического дерева</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>15</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>RangeWeapons</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -175,7 +165,6 @@
     <Name>Простое магическое оружие</Name>
     <Description>Обыкновенная тисовая палка// Включает в себя посохи</Description>
     <ImageIndex>16</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>Staffs</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -191,7 +180,6 @@
     <Name>Улучшенное магическое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>17</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>Staffs</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -207,7 +195,6 @@
     <Name>Мастерское магическое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>18</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>Staffs</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -223,7 +210,6 @@
     <Name>Экспертное магическое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>19</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>Staffs</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -239,7 +225,6 @@
     <Name>Магическое оружие из кости дракона</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>20</ImageIndex>
-    <ShortName>Даль.</ShortName>
     <CategoryGroupItems>Staffs</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -255,7 +240,6 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>PlateArmors</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -269,7 +253,6 @@
     <Name>Улучшенная стальная броня</Name>
     <Description></Description>
     <ImageIndex>22</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>PlateArmors</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -283,7 +266,6 @@
     <Name>Мастерская стальная броня</Name>
     <Description></Description>
     <ImageIndex>23</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>PlateArmors</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -297,7 +279,6 @@
     <Name>Экспертная стальная броня</Name>
     <Description></Description>
     <ImageIndex>24</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>PlateArmors</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -311,7 +292,6 @@
     <Name>Доспех из неврила</Name>
     <Description></Description>
     <ImageIndex>25</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>PlateArmors</CategoryGroupItems>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -325,7 +305,6 @@
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Armors</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -341,7 +320,6 @@
     <Name>Улучшенная кожаная броня</Name>
     <Description></Description>
     <ImageIndex>27</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Armors</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -357,7 +335,6 @@
     <Name>Мастерская кожаная броня</Name>
     <Description></Description>
     <ImageIndex>28</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Armors</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -373,7 +350,6 @@
     <Name>Экспертная кожаная броня</Name>
     <Description></Description>
     <ImageIndex>29</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Armors</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -389,7 +365,6 @@
     <Name>Доспех из кожи дракона</Name>
     <Description></Description>
     <ImageIndex>30</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Armors</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
@@ -405,7 +380,6 @@
     <Name>Простая роба</Name>
     <Description>Обычная льняная роба</Description>
     <ImageIndex>31</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Robes</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -421,7 +395,6 @@
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Robes</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -437,7 +410,6 @@
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Robes</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -453,7 +425,6 @@
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Robes</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -469,7 +440,6 @@
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
-    <ShortName>Досп.</ShortName>
     <CategoryGroupItems>Robes</CategoryGroupItems>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -485,7 +455,6 @@
     <Name>Обычный колчан</Name>
     <Description>Колчан на минимальное количество стрел</Description>
     <ImageIndex>152</ImageIndex>
-    <ShortName>Колч.</ShortName>
     <CategoryGroupItems>Quivers</CategoryGroupItems>
     <Heroes>
       <Hero>Hunter</Hero>
