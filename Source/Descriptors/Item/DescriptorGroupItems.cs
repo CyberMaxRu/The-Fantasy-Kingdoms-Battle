@@ -8,12 +8,15 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum CategoryGroupItems { MeleeWeapons, RangeWeapons, Staffs, PlateArmors, Armors, Robes, Quivers };
+
     // Группа предметов
     internal sealed class DescriptorGroupItems : DescriptorSmallEntity
     {
         public DescriptorGroupItems(XmlNode n) : base(n)
         {
             ShortName = XmlUtils.GetStringNotNull(n, "ShortName");
+            CategoryGroupItems = (CategoryGroupItems)Enum.Parse(typeof(CategoryGroupItems), n.SelectSingleNode("CategoryGroupItems").InnerText);
 
             // Проверяем, что таких ID, Name и ImageIndex нет
             foreach (DescriptorGroupItems gi in Descriptors.GroupItems)
@@ -26,9 +29,33 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string ShortName { get; }//
+        internal CategoryGroupItems CategoryGroupItems { get; }
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
 
-        internal override string GetTypeEntity() => "Группа предметов";
+        internal override string GetTypeEntity() => GetNameCategory();
+
+        internal string GetNameCategory()
+        {
+            switch (CategoryGroupItems)
+            {
+                case CategoryGroupItems.MeleeWeapons:
+                    return "Оружия ближнего боя";
+                case CategoryGroupItems.RangeWeapons:
+                    return "Оружия дальнего боя";
+                case CategoryGroupItems.Staffs:
+                    return "Посохи";
+                case CategoryGroupItems.PlateArmors:
+                    return "Латы";
+                case CategoryGroupItems.Armors:
+                    return "Доспехи";
+                case CategoryGroupItems.Robes:
+                    return "Робы";
+                case CategoryGroupItems.Quivers:
+                    return "Колчаны";
+                default:
+                    throw new Exception($"Неизвестная категория групп предметов {CategoryGroupItems}");
+            }
+        }
 
         internal override void TuneLinks()
         {
