@@ -19,6 +19,8 @@ namespace Fantasy_Kingdoms_Battle
         private Entity entity;
         private bool _disposed = false;
 
+        protected int stepForNextControl = FormMain.Config.GridSize;
+
         static VisualControl()
         {
             PanelHint = new PanelHint();
@@ -454,7 +456,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int NextTop()
         {
-            return ShiftY + Height + FormMain.Config.GridSize;
+            return ShiftY + Height + stepForNextControl;
         }
 
         internal void AddControl(VisualControl vc)

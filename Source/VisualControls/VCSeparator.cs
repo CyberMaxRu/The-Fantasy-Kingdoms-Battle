@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCSeparator(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
+            stepForNextControl = FormMain.Config.GridSizeHalf;
+
             Width = GetBitmap().Width;
         }
 
