@@ -460,10 +460,8 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep6Income(type.Levels[1].Income);
             panelHint.AddStep8Greatness(TypeConstruction.Levels[1].GreatnessByConstruction, TypeConstruction.Levels[1].GreatnessPerDay);
             panelHint.AddStep9PlusBuilders(TypeConstruction.Levels[1].AddConstructionPoints);
-            //panelHint.AddStep10DaysBuilding(-1, TypeConstruction.Levels[1].GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
-            panelHint.AddStep12CostExecuting("Построить", TypeConstruction.Levels[1].GetCreating().CostResources);
-            panelHint.AddStep13Builders(TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player));
+            //panelHint.AddStep10DaysBuilding(-1, );
+            panelHint.AddStep12CostExecuting("Построить", TypeConstruction.Levels[1].GetCreating().CostResources, TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player), ExecutingAction.RestDaysExecuting, Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
         }
     }
 
@@ -877,9 +875,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9Interest(Entity.ModifyInterest, true);
             panelHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12CostExecuting("Построить", PurchaseValue);
-            panelHint.AddStep13Builders(Entity.Durability);
+            panelHint.AddStep12CostExecuting("Построить", PurchaseValue, ExecutingAction.Points, ExecutingAction.RestDaysExecuting, GetTextRequirements());
         }
     }
 

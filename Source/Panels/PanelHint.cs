@@ -790,28 +790,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep13Builders(int builders)
-        {
-            if (builders > 0)
-            {
-                if (!sepExecuting.Visible)
-                {
-                    sepExecuting.Visible = true;
-                    sepExecuting.ShiftY = nextTop;
-                    nextTop = sepExecuting.NextTop();
-                    lblTextForRequirement.Visible = true;
-                    lblTextForRequirement.ShiftY = nextTop;
-                    nextTop = lblTextForRequirement.NextTop();
-                }
-
-                lblCostPoint.Text = builders.ToString();
-                lblCostPoint.ShiftY = nextTop;
-                lblCostPoint.Visible = true;
-
-                nextTop = lblCostPoint.NextTop();
-            }
-        }
-
         internal void AddStep14PlayerItem(Item pi)
         {
             Debug.Assert(pi != null);
