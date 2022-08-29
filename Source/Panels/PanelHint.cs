@@ -31,9 +31,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCText lblAction;
         internal readonly VCText lblState;
         internal readonly VCText lblDescription;
-        internal readonly VCSeparator lblSeparateRequirement;
-        internal readonly VCLabel lblTextForRequirement;
-        internal readonly List<VCText> listRequirements = new List<VCText>();
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblSalary;
         internal readonly VCLabelValue lblGreatnessAdd;
@@ -42,13 +39,21 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly List<VCLabelValue> listProperties = new List<VCLabelValue>();
         internal readonly VCLabelValue lblInterest;
 
-        // Раздел "Стоимость"
-        internal readonly VCSeparator sprChapterCost;
+        // Раздел "Выполнение"
+        internal readonly VCSeparator sepExecuting;
+        private readonly VCLabel lblNameExecuting;
+
+        // Подраздел "Стоимость"
         internal readonly VCLabel lblChapterCost;
         internal readonly VCLabelValue lblCostGold;
         internal readonly VCLabelValue lblCostPoint;
         internal readonly VCLabelValue lblDaysExecuting;
         internal readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
+
+        // Подраздел "Условия"
+        internal readonly VCLabel lblTextForRequirement;
+        internal readonly List<VCText> listRequirements = new List<VCText>();
+
 
         //
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
@@ -121,28 +126,25 @@ namespace Fantasy_Kingdoms_Battle
             lblBuildersPerDay.Image.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuildersPerDay.Width = widthControl;
 
-            lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop());
-            lblSeparateRequirement.Width = widthControl;
-
-            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Требования:");
-            lblTextForRequirement.Width = widthControl;
-            lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
-
             listProperties = new List<VCLabelValue>();
             foreach (DescriptorProperty dp in FormMain.Descriptors.PropertiesCreature)
             {
                 listProperties.Add(CreateLabelValue(3));
             }
 
-            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblTextForRequirement.NextTop(), Color.White, false);
+            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Color.White, false);
             lblInterest.Image.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
             lblInterest.Width = widthControl;
 
-            // Стоимость
-            sprChapterCost = new VCSeparator(this, FormMain.Config.GridSize, lblInterest.NextTop());
-            sprChapterCost.Width = widthControl;
+            //
+            sepExecuting = new VCSeparator(this, FormMain.Config.GridSize, lblInterest.NextTop());
+            sepExecuting.Width = widthControl;
 
-            lblChapterCost = new VCLabel(this, FormMain.Config.GridSize, sprChapterCost.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Стоимость:");
+            lblNameExecuting = new VCLabel(this, FormMain.Config.GridSize, sepExecuting.NextTop(), Program.formMain.fontMedCaptionC, Color.PaleTurquoise, Program.formMain.fontMedCaptionC.MaxHeightSymbol, "");
+            lblNameExecuting.Width = widthControl;
+            lblNameExecuting.StringFormat.Alignment = StringAlignment.Near;
+
+            lblChapterCost = new VCLabel(this, FormMain.Config.GridSize, lblNameExecuting.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Стоимость:");
             lblChapterCost.Width = widthControl;
             lblChapterCost.StringFormat.Alignment = StringAlignment.Near;
 
@@ -154,6 +156,10 @@ namespace Fantasy_Kingdoms_Battle
 
             lblDaysExecuting = CreateLabelValue(4);
             lblDaysExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
+
+            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Условия:");
+            lblTextForRequirement.Width = widthControl;
+            lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
 
             //
             lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
@@ -280,7 +286,8 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (VCText l in listRequirements)
                 l.Dispose();
-            lblSeparateRequirement.Visible = false;
+            sepExecuting.Visible = false;
+            lblNameExecuting.Visible = false;
             lblTextForRequirement.Visible = false;
             listRequirements.Clear();
 
@@ -290,7 +297,6 @@ namespace Fantasy_Kingdoms_Battle
             lblInterest.Visible = false;
 
             //
-            sprChapterCost.Visible = false;
             lblChapterCost.Visible = false;
             lblCostGold.Visible = false;
             lblCostPoint.Visible = false;
@@ -671,9 +677,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(requirement != null);
             if (requirement.Count > 0)
             {
-                lblSeparateRequirement.Visible = true;
-                lblSeparateRequirement.ShiftY = nextTop;
-                nextTop = lblSeparateRequirement.NextTop();
+                if (!sepExecuting.Visible)
+                {
+                    sepExecuting.Visible = true;
+                    sepExecuting.ShiftY = nextTop;
+                    nextTop = sepExecuting.NextTop();
+                }
+
                 lblTextForRequirement.Visible = true;
                 lblTextForRequirement.ShiftY = nextTop;
                 nextTop = lblTextForRequirement.NextTop();
@@ -696,21 +706,24 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12CostExecuting(ListBaseResources costResources)
+        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources)
         {
-            AddStep12CostExecuting(costResources, 0, 0, null);
+            AddStep12CostExecuting(nameExecuting, costResources, 0, 0, null);
         }
 
-        internal void AddStep12CostExecuting(ListBaseResources costResources, int constructionPoint, int daysCreating, List<TextRequirement> requirement)
+        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int constructionPoint, int daysCreating, List<TextRequirement> requirement)
         {
             if (costResources != null)
             {
                 Assert(costResources.Gold > 0);
 
-                sprChapterCost.Visible = true;
-                sprChapterCost.ShiftY = nextTop;
+                sepExecuting.ShiftY = nextTop;
+                sepExecuting.Visible = true;
+                lblNameExecuting.Text = nameExecuting;
+                lblNameExecuting.ShiftY = sepExecuting.NextTop();
+                lblNameExecuting.Visible = true;
                 lblChapterCost.Visible = true;
-                lblChapterCost.ShiftY = sprChapterCost.NextTop();
+                lblChapterCost.ShiftY = lblNameExecuting.NextTop();
                 nextTop = lblChapterCost.NextTop();
 
                 lblCostGold.ShiftY = nextTop;
@@ -799,11 +812,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (builders > 0)
             {
-                if (!lblSeparateRequirement.Visible)
+                if (!sepExecuting.Visible)
                 {
-                    lblSeparateRequirement.Visible = true;
-                    lblSeparateRequirement.ShiftY = nextTop;
-                    nextTop = lblSeparateRequirement.NextTop();
+                    sepExecuting.Visible = true;
+                    sepExecuting.ShiftY = nextTop;
+                    nextTop = sepExecuting.NextTop();
                     lblTextForRequirement.Visible = true;
                     lblTextForRequirement.ShiftY = nextTop;
                     nextTop = lblTextForRequirement.NextTop();

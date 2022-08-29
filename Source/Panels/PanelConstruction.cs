@@ -452,26 +452,31 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAction_ShowHint(object sender, EventArgs e)
         {
+            string nameAction;
+
             switch (Construction.TypeAction())
             {
                 case TypeFlag.Scout:
                     PanelHint.AddStep2Header("Разведка");
                     PanelHint.AddStep5Description("Установить флаг разведки для отправки героев к месту");
+                    nameAction = "Установить флаг разведки";
                     break;
                 case TypeFlag.Attack:
                     PanelHint.AddStep2Header("Атака");
                     PanelHint.AddStep5Description("Установить флаг атаки для отправки героев к месту");
+                    nameAction = "Установить флаг атаки";
                     break;
                 case TypeFlag.Defense:
                     PanelHint.AddStep2Header("Защита");
                     PanelHint.AddStep5Description("Установить флаг защиты для отправки героев к месту");
+                    nameAction = "Установить флаг защиты";
                     break;
                 default:
                     throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
             }
 
             PanelHint.AddStep11Requirement(Construction.GetRequirements());
-            PanelHint.AddStep12CostExecuting(Construction.RequiredGold());
+            PanelHint.AddStep12CostExecuting(nameAction, Construction.RequiredGold());
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
