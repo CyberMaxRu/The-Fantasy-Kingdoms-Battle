@@ -3077,13 +3077,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Workshop</Construction>
-              <Level>1</Level>
-            </Requirement>
-          </Requirements>
         </Creating>
         <IncomeResources>
           <Gold>250</Gold>
@@ -3098,13 +3091,6 @@
           <Cost>
             <Gold>2500</Gold>
           </Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Workshop</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
         </Creating>
         <IncomeResources>
           <Gold>350</Gold>
