@@ -274,8 +274,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Entity.SmallEntity.Description);
             //PanelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue);
+            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue, 0, ExecutingAction.RestDaysExecuting, GetTextRequirements());
         }
 
 
@@ -351,8 +350,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue);
+            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue, 0, ExecutingAction.RestDaysExecuting, GetTextRequirements());
         }
 
         internal override void UpdatePurchase()
@@ -740,8 +738,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Creature.Description);
             panelHint.AddStep75Salary(Creature.CostOfHiring);
             //panelHint.AddStep10DaysBuilding(InQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(Construction.GetTextRequirementsHire());
-            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue);
+            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue, 0, ExecutingAction.RestDaysExecuting, Construction.GetTextRequirementsHire());
         }
     }
 
@@ -812,8 +809,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9Interest(ConstructionEvent.Interest, false);
             panelHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds, false);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12CostExecuting("Подготовить мероприятие", PurchaseValue);
+            panelHint.AddStep12CostExecuting("Подготовить мероприятие", PurchaseValue, 0, ExecutingAction.RestDaysExecuting, GetTextRequirements());
         }
 
         internal override void PrepareNewDay()
@@ -918,8 +914,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Entity.Description);
             //CreatedEntity.Creating.panelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12CostExecuting("Построить улучшение", PurchaseValue);
+            panelHint.AddStep12CostExecuting("Построить улучшение", PurchaseValue, 0, ExecutingAction.RestDaysExecuting, GetTextRequirements());
         }
     }
 
@@ -986,8 +981,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9Interest(ConstructionTournament.Interest, false);
             panelHint.AddStep9ListNeeds(ConstructionTournament.ListNeeds, false);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12CostExecuting("Подготовить турнир", PurchaseValue);
+            panelHint.AddStep12CostExecuting("Подготовить турнир", PurchaseValue, 0, ExecutingAction.RestDaysExecuting, GetTextRequirements());
         }
     }
 
@@ -1087,8 +1081,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Неизвестный тип бонуса: {TypeExtra}.");
             }
 
-            panelHint.AddStep11Requirement(GetTextRequirements());
-            panelHint.AddStep12CostExecuting("Добавить бонус", PurchaseValue);
+            panelHint.AddStep12CostExecuting("Добавить бонус", PurchaseValue, 0, 0, GetTextRequirements());
         }
 
         internal override void PrepareNewDay()

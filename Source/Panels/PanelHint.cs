@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabelValue lblDaysExecuting;
         private readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
 
-        // Подраздел "Условия"
+        // Подраздел "Требования"
         private readonly VCLabel lblTextForRequirement;
         private readonly List<VCText> listRequirements = new List<VCText>();
 
@@ -157,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
             lblDaysExecuting = CreateLabelValue(4);
             lblDaysExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
 
-            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Условия:");
+            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Требования:");
             lblTextForRequirement.Width = widthControl;
             lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
 
@@ -654,40 +654,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep11Requirement(List<TextRequirement> requirement)
-        {
-            Debug.Assert(requirement != null);
-            if (requirement.Count > 0)
-            {
-                if (!sepExecuting.Visible)
-                {
-                    sepExecuting.Visible = true;
-                    sepExecuting.ShiftY = nextTop;
-                    nextTop = sepExecuting.NextTop();
-                }
-
-                lblTextForRequirement.Visible = true;
-                lblTextForRequirement.ShiftY = nextTop;
-                nextTop = lblTextForRequirement.NextTop();
-
-                VCText lr;
-                foreach (TextRequirement tr in requirement)
-                {
-                    if (!(Program.formMain.Settings.HideFulfilledRequirements && tr.Performed))
-                    {
-                        lr = new VCText(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
-                        lr.StringFormat.Alignment = StringAlignment.Near;
-                        lr.Text = tr.Text;
-                        lr.Height = lr.MinHeigth();
-                        //lr.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, 0);
-
-                        listRequirements.Add(lr);
-                        nextTop = lr.NextTop();
-                    }
-                }
-            }
-        }
-
         internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources)
         {
             AddStep12CostExecuting(nameExecuting, costResources, 0, 0, null);
@@ -734,7 +700,37 @@ namespace Fantasy_Kingdoms_Battle
                 AddCostResources(Player.BaseResources, costResources);
 
                 if (requirement != null)
-                    AddStep11Requirement(requirement);
+                {
+                    if (requirement.Count > 0)
+                    {
+                        if (!sepExecuting.Visible)
+                        {
+                            sepExecuting.Visible = true;
+                            sepExecuting.ShiftY = nextTop;
+                            nextTop = sepExecuting.NextTop();
+                        }
+
+                        lblTextForRequirement.Visible = true;
+                        lblTextForRequirement.ShiftY = nextTop;
+                        nextTop = lblTextForRequirement.NextTop();
+
+                        VCText lr;
+                        foreach (TextRequirement tr in requirement)
+                        {
+                            if (!(Program.formMain.Settings.HideFulfilledRequirements && tr.Performed))
+                            {
+                                lr = new VCText(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
+                                lr.StringFormat.Alignment = StringAlignment.Near;
+                                lr.Text = tr.Text;
+                                lr.Height = lr.MinHeigth();
+                                //lr.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, 0);
+
+                                listRequirements.Add(lr);
+                                nextTop = lr.NextTop();
+                            }
+                        }
+                    }
+                }
             }
             else
             {

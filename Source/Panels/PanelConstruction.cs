@@ -475,8 +475,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
             }
 
-            PanelHint.AddStep11Requirement(Construction.GetRequirements());
-            PanelHint.AddStep12CostExecuting(nameAction, Construction.RequiredGold());
+            PanelHint.AddStep12CostExecuting(nameAction, Construction.RequiredGold(), 0, 0, Construction.GetRequirements());
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
