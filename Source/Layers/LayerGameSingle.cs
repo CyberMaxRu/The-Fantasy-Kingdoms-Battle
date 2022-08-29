@@ -54,7 +54,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Контролы тулбара
         private readonly VCToolLabel labelDay;
-        private readonly VCImage imgTimesOfDay;
         private readonly VCToolLabelResource[] labelsResources;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelHeroes;
@@ -126,9 +125,7 @@ namespace Fantasy_Kingdoms_Battle
             labelDay.StringFormat.Alignment = StringAlignment.Near;
             labelDay.Click += LabelDay_Click;
             labelDay.ShowHint += LabelDay_ShowHint;
-            labelDay.Width = 96;
-            imgTimesOfDay = new VCImage(labelDay, labelDay.Width - 21, 4, Program.formMain.ilGui16, -1);
-            imgTimesOfDay.IsActiveControl = false;
+            labelDay.Width = 72;
 
             labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
             labelBuilders.ShowHint += LabelBuilders_ShowHint;
@@ -979,7 +976,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            bmpTopPanel.Bitmap = lobby.TimeOfDay.GetBitmap(new Size(bmpTopPanel.Width, bmpTopPanel.Height));
             bmpCurtain.Visible = !MainControl.Visible;
 
             Program.formMain.ShowFrame(true);
@@ -1010,7 +1006,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human);
 
             labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
-            imgTimesOfDay.ImageIndex = lobby.TimeOfDay.ImageIndex;
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
@@ -1209,8 +1204,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             PanelHint.AddStep2Header($"Ход игры: {lobby.Turn}");
             PanelHint.AddStep5Description(
-                $"Месяц: {lobby.Month}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}День: {lobby.Day}{Environment.NewLine}Время суток: {lobby.TimeOfDay.Name}");
-            PanelHint.AddStep21Tooltip($"В неделе 7 дней.{Environment.NewLine}В месяце 4 недели.{Environment.NewLine} {Environment.NewLine}{lobby.TimeOfDay.Description}");
+                $"Месяц: {lobby.Month}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}День: {lobby.Day}{Environment.NewLine}");
+            PanelHint.AddStep21Tooltip($"В неделе 7 дней.{Environment.NewLine}В месяце 4 недели.{Environment.NewLine}");
         }
 
         internal override void Draw(Graphics g)

@@ -102,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player CurrentPlayer { get; private set; }
         internal List<MissionMember> Members { get; } = new List<MissionMember>();
         internal int Turn { get; private set; }// Текущий ход лобби
-        internal DescriptorTimeOfDay TimeOfDay { get; private set; }// Время суток
+        private DescriptorTimeOfDay TimeOfDay { get; set; }// Время суток
         internal int Day { get; private set; }// День
         internal int Week { get; private set; }// Неделя
         internal int Month { get; private set; }// Месяц
