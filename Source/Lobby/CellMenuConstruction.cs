@@ -563,7 +563,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.UpdateTextRequirements(list);
 
-            Construction.Player.TextRequirements(Descriptor.GetCreating().Requirements, list);
+            Construction.Player.TextRequirements(Descriptor.GetCreating().Requirements, list, Construction);
 
             if (Construction.CurrentMassEvent != null)
                 list.Add(new TextRequirement(false, "В сооружении идет мероприятие"));
