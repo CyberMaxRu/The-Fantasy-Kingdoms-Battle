@@ -2954,14 +2954,14 @@
           </Cost>
           <Requirements>
             <Requirement>
-              <TypeRequirement>GoodsInConstruction</TypeRequirement>
-              <Construction>Market</Construction>
-              <Goods>ProductMeat</Goods>
-            </Requirement>
-            <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
               <Construction>Tavern</Construction>
               <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Goods>ProductMeat</Goods>
             </Requirement>
           </Requirements>
         </Creating>
@@ -2983,14 +2983,14 @@
           </Cost>
           <Requirements>
             <Requirement>
-              <TypeRequirement>GoodsInConstruction</TypeRequirement>
-              <Construction>Market</Construction>
-              <Goods>ProductWheat</Goods>
-            </Requirement>
-            <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
               <Construction>Tavern</Construction>
               <Level>2</Level>
+            </Requirement>
+            <Requirement>
+              <TypeRequirement>GoodsInConstruction</TypeRequirement>
+              <Construction>Market</Construction>
+              <Goods>ProductWheat</Goods>
             </Requirement>
           </Requirements>
         </Creating>
