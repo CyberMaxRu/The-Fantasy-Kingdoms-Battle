@@ -643,17 +643,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep10DaysBuilding(int daysBuilding)
-        {
-            if (daysBuilding > 0)
-            {
-                lblDaysExecuting.ShiftY = nextTop;
-                lblDaysExecuting.Text = daysBuilding.ToString();
-                lblDaysExecuting.Visible = true;
-                nextTop = lblDaysExecuting.NextTop();
-            }
-        }
-
         internal void AddStep10CostGold(int cost)
         {
             if (cost > 0)
