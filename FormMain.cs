@@ -92,7 +92,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal const int GUI_16_DAY = 0;
         internal const int GUI_16_GOLD = 43;
-        internal const int GUI_16_BUILDER = 2;
+        internal const int GUI_16_REPAIR = 2;
         internal const int GUI_16_GREATNESS = 3;
         internal const int GUI_16_HOLYLAND = 4;
         internal const int GUI_16_TRADEPOST = 5;
@@ -122,6 +122,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_SUN = 40;
         internal const int GUI_16_CRESCENT = 41;
         internal const int GUI_16_RESEARCH_POINTS = 45;
+        internal const int GUI_16_BUILDER = 52;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
