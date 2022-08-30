@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Image.ImageIndex = imageIndex;
             Width = 80;
-            TopMargin = 2;
+            TopMargin = 1;
             RightMargin = 6;
 
             ShiftImage = new Point(6, 4);
