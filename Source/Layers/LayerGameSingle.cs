@@ -56,6 +56,7 @@ namespace Fantasy_Kingdoms_Battle
         // Контролы тулбара
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabelResource[] labelsResources;
+        private readonly VisualControl panelCityParameters;
         private readonly VCToolLabelSettlementParameter[] labelCityParameters;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelHeroes;
@@ -142,14 +143,17 @@ namespace Fantasy_Kingdoms_Battle
             labelGreatness.ShowHint += LabelGreatness_ShowHint;
             labelGreatness.Width = 112;
 
+            panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, labelDay.ShiftY);
             labelCityParameters = new VCToolLabelSettlementParameter[Descriptors.SettlementParameters.Count];
 
+            int nextLeft = 0;
             foreach (DescriptorSettlementParameter sp in Descriptors.SettlementParameters)
             {
-                VCToolLabelSettlementParameter lblParam = new VCToolLabelSettlementParameter(bmpPreparedToolbar, 0, labelDay.ShiftY, sp);
-                lblParam.Width = 104;
+                VCToolLabelSettlementParameter lblParam = new VCToolLabelSettlementParameter(panelCityParameters, nextLeft, 0, sp);
+                nextLeft = lblParam.NextLeft();
                 labelCityParameters[sp.Index] = lblParam;
             }
+            panelCityParameters.ApplyMaxSize();
 
             labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
@@ -1336,13 +1340,9 @@ namespace Fantasy_Kingdoms_Battle
             bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
-            int shift0 = MainControl.Width - Config.GridSizeHalf;
-            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
-            {
-                labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);
-            }
+            panelCityParameters.ShiftX = (MainControl.Width - panelCityParameters.Width) / 2;
 
-            shift0 = MainControl.Width - Config.GridSizeHalf;
+            int shift0 = MainControl.Width - Config.GridSizeHalf;
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);

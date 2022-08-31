@@ -15,13 +15,6 @@
     <ImageIndex16>6</ImageIndex16>
   </SettlementParameter>
   <SettlementParameter>
-    <ID>Danger</ID>
-    <Name>Опасность</Name>
-    <Description>Чем ниже опасность, тем выше прирост населения и больше доход.</Description>
-    <ImageIndex>7</ImageIndex>
-    <ImageIndex16>7</ImageIndex16>
-  </SettlementParameter>
-  <SettlementParameter>
     <ID>Happiness</ID>
     <Name>Счастье</Name>
     <Description>Чем выше уровень счастья, тем лучше трудится население.</Description>

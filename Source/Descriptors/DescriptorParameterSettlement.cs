@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorSettlementParameter(XmlNode n) : base(n)
         {
             ImageIndex16 = XmlUtils.GetIntegerNotNull(n, "ImageIndex16");
-            Index = Descriptors.BaseResources.Count;
+            Index = Descriptors.SettlementParameters.Count;
 
             foreach (DescriptorSettlementParameter sp in Descriptors.SettlementParameters)
             {
