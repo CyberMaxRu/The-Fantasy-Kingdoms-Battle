@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
             : base(parent, shiftX, shiftY, "", parameter.ImageIndex16)
         {
             Parameter = parameter;
-            Width = 80;
+            Width = 72;
             ShowHint += VCToolLabelSettlementParameter_ShowHint;
         }
 

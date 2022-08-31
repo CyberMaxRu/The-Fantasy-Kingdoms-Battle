@@ -58,8 +58,11 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabelResource[] labelsResources;
         private readonly VisualControl panelCityParameters;
         private readonly VCToolLabelSettlementParameter[] labelCityParameters;
-        private readonly VCToolLabel labelBuilders;
+        private readonly VCToolLabel labelKnowledge;
+        private readonly VCToolLabel labelTraditions;
+        private readonly VCToolLabel labelPeople;
         private readonly VCToolLabel labelHeroes;
+        private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
@@ -130,13 +133,23 @@ namespace Fantasy_Kingdoms_Battle
             labelDay.ShowHint += LabelDay_ShowHint;
             labelDay.Width = 72;
 
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
-            labelBuilders.ShowHint += LabelBuilders_ShowHint;
-            labelBuilders.Width = 112;
-            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
+            labelKnowledge = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_KNOWLEDGE);
+            labelKnowledge.ShowHint += LabelKnowledge_ShowHint;
+            labelKnowledge.Width = 80;
+            labelTraditions = new VCToolLabel(bmpPreparedToolbar, labelKnowledge.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_TRADITIONS);
+            //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
+            labelTraditions.Width = 56;
+            labelPeople = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_PEOPLE);
+            //labelPeople.ShowHint += LabelKnowledge_ShowHint;
+            labelPeople.Width = 72;
+
+            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelPeople.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
             labelHeroes.ShowHint += LabelHeroes_ShowHint;
             labelHeroes.Width = 80;
-            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
+            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
+            labelBuilders.ShowHint += LabelBuilders_ShowHint;
+            labelBuilders.Width = 112;
+            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
             labelCorruption.ShowHint += LabelCorruption_ShowHint;
             labelCorruption.Width = 112;
             labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_GREATNESS);
@@ -159,7 +172,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelDay.ShiftY, br);
-                lblRes.Width = 88;
                 labelsResources[br.Number] = lblRes;
             }
 
@@ -357,6 +369,11 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ActivatePage(pageResultTurn);
             UpdateNameCurrentPage();
+        }
+
+        private void LabelKnowledge_ShowHint(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void CellObjectMenu_ShowHint(object sender, EventArgs e)
