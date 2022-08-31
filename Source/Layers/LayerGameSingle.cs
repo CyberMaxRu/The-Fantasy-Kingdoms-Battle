@@ -260,7 +260,8 @@ namespace Fantasy_Kingdoms_Battle
             foreach (CapitalPage cp in Descriptors.CapitalPages)
             {
                 VCPageButton pageCapital = pageControl.AddPage(cp.ImageIndex, cp.Name, "", null);
-                pageCapital.Hint = cp.Description;
+                pageCapital.Hint = cp.Name;
+                pageCapital.HintDescription = cp.Description;
                 pagesCapital.Add(pageCapital);
             }
 

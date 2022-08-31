@@ -16,6 +16,8 @@ namespace Fantasy_Kingdoms_Battle
             HighlightUnderMouse = true;
             ShowBorder = true;
             Caption = caption;
+            Hint = caption;
+            HintDescription = advice;
             Advice = advice;
             Layer = layer;
             PlaySoundOnClick = true;
