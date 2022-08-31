@@ -56,9 +56,13 @@ namespace Fantasy_Kingdoms_Battle
         // Контролы тулбара
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabelResource[] labelsResources;
+        private readonly VisualControl panelCityParameters;
         private readonly VCToolLabelSettlementParameter[] labelCityParameters;
-        private readonly VCToolLabel labelBuilders;
+        private readonly VCToolLabel labelKnowledge;
+        private readonly VCToolLabel labelTraditions;
+        private readonly VCToolLabel labelPeople;
         private readonly VCToolLabel labelHeroes;
+        private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
@@ -129,33 +133,45 @@ namespace Fantasy_Kingdoms_Battle
             labelDay.ShowHint += LabelDay_ShowHint;
             labelDay.Width = 72;
 
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
-            labelBuilders.ShowHint += LabelBuilders_ShowHint;
-            labelBuilders.Width = 112;
-            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
+            labelKnowledge = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_KNOWLEDGE);
+            labelKnowledge.ShowHint += LabelKnowledge_ShowHint;
+            labelKnowledge.Width = 80;
+            labelTraditions = new VCToolLabel(bmpPreparedToolbar, labelKnowledge.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_TRADITIONS);
+            //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
+            labelTraditions.Width = 56;
+            labelPeople = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_PEOPLE);
+            //labelPeople.ShowHint += LabelKnowledge_ShowHint;
+            labelPeople.Width = 72;
+
+            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelPeople.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
             labelHeroes.ShowHint += LabelHeroes_ShowHint;
             labelHeroes.Width = 80;
-            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
+            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
+            labelBuilders.ShowHint += LabelBuilders_ShowHint;
+            labelBuilders.Width = 112;
+            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
             labelCorruption.ShowHint += LabelCorruption_ShowHint;
             labelCorruption.Width = 112;
             labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_GREATNESS);
             labelGreatness.ShowHint += LabelGreatness_ShowHint;
             labelGreatness.Width = 112;
 
+            panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, labelDay.ShiftY);
             labelCityParameters = new VCToolLabelSettlementParameter[Descriptors.SettlementParameters.Count];
 
+            int nextLeft = 0;
             foreach (DescriptorSettlementParameter sp in Descriptors.SettlementParameters)
             {
-                VCToolLabelSettlementParameter lblParam = new VCToolLabelSettlementParameter(bmpPreparedToolbar, 0, labelDay.ShiftY, sp);
-                lblParam.Width = 104;
+                VCToolLabelSettlementParameter lblParam = new VCToolLabelSettlementParameter(panelCityParameters, nextLeft, 0, sp);
+                nextLeft = lblParam.NextLeft();
                 labelCityParameters[sp.Index] = lblParam;
             }
+            panelCityParameters.ApplyMaxSize();
 
             labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelDay.ShiftY, br);
-                lblRes.Width = 104;
                 labelsResources[br.Number] = lblRes;
             }
 
@@ -353,6 +369,11 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ActivatePage(pageResultTurn);
             UpdateNameCurrentPage();
+        }
+
+        private void LabelKnowledge_ShowHint(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void CellObjectMenu_ShowHint(object sender, EventArgs e)
@@ -969,9 +990,9 @@ namespace Fantasy_Kingdoms_Battle
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
                     ShowResoures(true);
-                    labelGreatness.Visible = true;
+                    labelGreatness.Visible = false;
                     labelHeroes.Visible = true;
-                    labelCorruption.Visible = true;
+                    labelCorruption.Visible = false;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
@@ -1336,13 +1357,9 @@ namespace Fantasy_Kingdoms_Battle
             bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
-            int shift0 = MainControl.Width - Config.GridSizeHalf;
-            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
-            {
-                labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);
-            }
+            panelCityParameters.ShiftX = (MainControl.Width - panelCityParameters.Width) / 2;
 
-            shift0 = MainControl.Width - Config.GridSizeHalf;
+            int shift0 = MainControl.Width - Config.GridSizeHalf;
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);

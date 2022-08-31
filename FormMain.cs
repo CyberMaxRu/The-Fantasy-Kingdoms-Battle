@@ -122,7 +122,10 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_SUN = 40;
         internal const int GUI_16_CRESCENT = 41;
         internal const int GUI_16_RESEARCH_POINTS = 45;
+        internal const int GUI_16_KNOWLEDGE = 51;
         internal const int GUI_16_BUILDER = 52;
+        internal const int GUI_16_PEOPLE = 53;
+        internal const int GUI_16_TRADITIONS = 57;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;

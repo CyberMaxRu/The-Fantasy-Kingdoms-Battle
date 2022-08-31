@@ -52,6 +52,9 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.TypePlayer == TypePlayer.Computer)   
                 BaseResources.Gold = 100_000;
 
+            CityParameters = new ListSettlementParameters();
+            //CityParameters.
+
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
@@ -632,6 +635,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorCreature> VariantsBonusedTypeTempleHero { get; }// Варианты храмовников для выбора постоянного бонуса
         internal DescriptorCreature SelectedBonusSimpleHero { get; set; }
         internal DescriptorCreature SelectedBonusTempleHero { get; set; }
+
+        //
+        internal ListSettlementParameters CityParameters { get; }// Параметры города
 
         //
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока

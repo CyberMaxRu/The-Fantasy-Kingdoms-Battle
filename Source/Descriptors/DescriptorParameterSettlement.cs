@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorSettlementParameter(XmlNode n) : base(n)
         {
             ImageIndex16 = XmlUtils.GetIntegerNotNull(n, "ImageIndex16");
-            Index = Descriptors.BaseResources.Count;
+            Index = Descriptors.SettlementParameters.Count;
 
             foreach (DescriptorSettlementParameter sp in Descriptors.SettlementParameters)
             {
@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity()
         {
-            return "Параметр населенного пункта";
+            return "Параметр насел. пункта";
         }
 
         internal override void TuneLinks()

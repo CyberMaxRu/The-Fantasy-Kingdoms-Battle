@@ -518,6 +518,17 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Базовый ресурс {ID} не найден.");
         }
 
+        internal DescriptorSettlementParameter FindSettlementParameter(string ID)
+        {
+            foreach (DescriptorSettlementParameter sp in SettlementParameters)
+            {
+                if (sp.ID == ID)
+                    return sp;
+            }
+
+            throw new Exception($"Параметр населенного пункта {ID} не найден.");
+        }
+
         internal DescriptorTypeConstruction FindTypeConstruction(string ID)
         {
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
