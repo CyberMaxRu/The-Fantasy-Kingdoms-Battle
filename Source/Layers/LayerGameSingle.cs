@@ -159,7 +159,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelDay.ShiftY, br);
-                lblRes.Width = 104;
+                lblRes.Width = 88;
                 labelsResources[br.Number] = lblRes;
             }
 
@@ -973,9 +973,9 @@ namespace Fantasy_Kingdoms_Battle
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
                     ShowResoures(true);
-                    labelGreatness.Visible = true;
+                    labelGreatness.Visible = false;
                     labelHeroes.Visible = true;
-                    labelCorruption.Visible = true;
+                    labelCorruption.Visible = false;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
