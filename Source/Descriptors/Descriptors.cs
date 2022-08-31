@@ -67,6 +67,16 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(BaseResources.Count > 0);
             BaseResources.Capacity = BaseResources.Count;
 
+            // Загрузка конфигурации параметров населенных пунктов
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\SettlementParameters.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/SettlementParameter"))
+            {
+                SettlementParameters.Add(new DescriptorSettlementParameter(n));
+            }
+
+            Debug.Assert(SettlementParameters.Count > 0);
+            SettlementParameters.Capacity = SettlementParameters.Count;
+
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
@@ -360,6 +370,7 @@ namespace Fantasy_Kingdoms_Battle
         // Списки описателей
         internal SortedList<string, DescriptorEntity> Entities { get; } = new SortedList<string, DescriptorEntity>();// Список всех сущностей
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
+        internal List<DescriptorSettlementParameter> SettlementParameters { get; } = new List<DescriptorSettlementParameter>();
 
         // Товары в сооружениях
         internal List<DescriptorProduct> ConstructionProducts { get; } = new List<DescriptorProduct>();

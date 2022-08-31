@@ -56,6 +56,7 @@ namespace Fantasy_Kingdoms_Battle
         // Контролы тулбара
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabelResource[] labelsResources;
+        private readonly VCToolLabelSettlementParameter[] labelCityParameters;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelHeroes;
         private readonly VCToolLabel labelCorruption;
@@ -141,8 +142,16 @@ namespace Fantasy_Kingdoms_Battle
             labelGreatness.ShowHint += LabelGreatness_ShowHint;
             labelGreatness.Width = 112;
 
-            labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
+            labelCityParameters = new VCToolLabelSettlementParameter[Descriptors.SettlementParameters.Count];
 
+            foreach (DescriptorSettlementParameter sp in Descriptors.SettlementParameters)
+            {
+                VCToolLabelSettlementParameter lblParam = new VCToolLabelSettlementParameter(bmpPreparedToolbar, 0, labelDay.ShiftY, sp);
+                lblParam.Width = 104;
+                labelCityParameters[sp.Index] = lblParam;
+            }
+
+            labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelDay.ShiftY, br);
@@ -989,6 +998,9 @@ namespace Fantasy_Kingdoms_Battle
 
             void ShowResoures(bool visible)
             {
+                foreach (VCToolLabelSettlementParameter sp in labelCityParameters)
+                    sp.Visible = visible;
+
                 foreach (VCToolLabelResource l in labelsResources)
                 {
                     l.Visible = visible;
@@ -1233,6 +1245,11 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
 
+                foreach (VCToolLabelSettlementParameter sp in labelCityParameters)
+                {
+                    sp.UpdateData(curAppliedPlayer);
+                }
+
                 foreach (VCToolLabelResource l in labelsResources)
                 {
                     l.UpdateData(curAppliedPlayer);
@@ -1320,6 +1337,12 @@ namespace Fantasy_Kingdoms_Battle
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
             int shift0 = MainControl.Width - Config.GridSizeHalf;
+            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
+            {
+                labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);
+            }
+
+            shift0 = MainControl.Width - Config.GridSizeHalf;
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);

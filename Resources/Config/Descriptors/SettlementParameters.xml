@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <SettlementParameter>
+    <ID>Health</ID>
+    <Name>Санитария</Name>
+    <Description>Чем выше уровень санитарии, тем меньше вероятности болезней и счастливее население.</Description>
+    <ImageIndex>5</ImageIndex>
+    <ImageIndex16>5</ImageIndex16>
+  </SettlementParameter>
+  <SettlementParameter>
+    <ID>Crime</ID>
+    <Name>Преступность</Name>
+    <Description>Чем ниже преступность, тем счастливее население и больше доход.</Description>
+    <ImageIndex>6</ImageIndex>
+    <ImageIndex16>6</ImageIndex16>
+  </SettlementParameter>
+  <SettlementParameter>
+    <ID>Danger</ID>
+    <Name>Опасность</Name>
+    <Description>Чем ниже опасность, тем выше прирост населения и больше доход.</Description>
+    <ImageIndex>7</ImageIndex>
+    <ImageIndex16>7</ImageIndex16>
+  </SettlementParameter>
+  <SettlementParameter>
+    <ID>Happiness</ID>
+    <Name>Счастье</Name>
+    <Description>Чем выше уровень счастья, тем лучше трудится население.</Description>
+    <ImageIndex>8</ImageIndex>
+    <ImageIndex16>8</ImageIndex16>
+  </SettlementParameter>
+  <SettlementParameter>
+    <ID>PublicOrder</ID>
+    <Name>Общественный порядок</Name>
+    <Description>Чем выше порядок, тем меньше вероятность протестов, бунтов и мятежей.</Description>
+    <ImageIndex>9</ImageIndex>
+    <ImageIndex16>9</ImageIndex16>
+  </SettlementParameter>
+  <SettlementParameter>
+    <ID>PopulationGrowth</ID>
+    <Name>Рост населения</Name>
+    <Description>Чем выше рост населения, тем быстрее появляется новый житель.</Description>
+    <ImageIndex>10</ImageIndex>
+    <ImageIndex16>10</ImageIndex16>
+  </SettlementParameter>
+</Descriptors>

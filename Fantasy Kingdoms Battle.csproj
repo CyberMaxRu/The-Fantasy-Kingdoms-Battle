@@ -63,6 +63,7 @@
     <Compile Include="CacheBackgroundImage.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionSpell.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionStructure.cs" />
+    <Compile Include="Source\Descriptors\DescriptorParameterSettlement.cs" />
     <Compile Include="Source\Descriptors\DescriptorTimeOfDay.cs" />
     <Compile Include="Source\Forms\WindowMessage.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />
@@ -255,6 +256,7 @@
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
     <Compile Include="Source\VisualControls\VCText.cs" />
     <Compile Include="Source\VisualControls\VCToolLabelResource.cs" />
+    <Compile Include="Source\VisualControls\VCToolLabelSettlementParameter.cs" />
     <Compile Include="Source\VisualControls\VCWindowCaption.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorSpecialization.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorStateCreature.cs" />
@@ -336,6 +338,7 @@
     <Content Include="Resources\Config\Descriptors\BaseResources.xml" />
     <Content Include="Resources\Config\Descriptors\CapitalPages.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
+    <Content Include="Resources\Config\Descriptors\SettlementParameters.xml" />
     <Content Include="Resources\Config\Descriptors\PersistentBonuses.xml" />
     <Content Include="Resources\Config\Descriptors\Poisons.xml" />
     <Content Include="Resources\Config\Descriptors\ReasonsOfDeath.xml" />
