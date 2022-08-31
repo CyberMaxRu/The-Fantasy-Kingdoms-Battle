@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity()
         {
-            return "Параметр населенного пункта";
+            return "Параметр насел. пункта";
         }
 
         internal override void TuneLinks()

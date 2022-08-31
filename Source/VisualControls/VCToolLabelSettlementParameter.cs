@@ -13,20 +13,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             Parameter = parameter;
             Width = 80;
-            ShowHint += VCToolLabelResource_ShowHint;
+            ShowHint += VCToolLabelSettlementParameter_ShowHint;
         }
 
-        private void VCToolLabelResource_ShowHint(object sender, EventArgs e)
+        private void VCToolLabelSettlementParameter_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddStep2Descriptor(Parameter);
-            PanelHint.AddStep5Description("Количество ресурса");
+            PanelHint.AddStep5Description(Parameter.Description);
         }
 
         internal DescriptorSettlementParameter Parameter { get; }
 
         internal void UpdateData(Player p)
         {
-            //Text = p. BaseResources[Parameter.Number].ToString();
+            Text = p.CityParameters[Parameter.Index].ToString();
         }
     }
 }
