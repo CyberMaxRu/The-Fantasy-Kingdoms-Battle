@@ -2,8 +2,8 @@
 <Descriptors>
   <SettlementParameter>
     <ID>Health</ID>
-    <Name>Санитария</Name>
-    <Description>Чем выше уровень санитарии, тем меньше вероятности болезней и счастливее население.</Description>
+    <Name>Здоровье</Name>
+    <Description>Чем выше уровень здоровья, тем меньше вероятности болезней и счастливее население.</Description>
     <ImageIndex>5</ImageIndex>
     <ImageIndex16>5</ImageIndex16>
   </SettlementParameter>
