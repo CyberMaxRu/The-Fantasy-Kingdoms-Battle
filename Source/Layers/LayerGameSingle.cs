@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageMap;
         //private readonly VCPageButton pageLocation;
         //private readonly VCPageButton pageTemples;
+        private readonly VCLabel labelCaptionPage;
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
@@ -272,6 +273,11 @@ namespace Fantasy_Kingdoms_Battle
 
             listBtnLevelTax = new List<VCIconButton48>();
 
+            labelCaptionPage = new VCLabel(pageControl, pageMap.NextLeft() + FormMain.Config.GridSize * 2, 0, Program.formMain.fontMedCaptionC, Color.White, 48, "");
+            labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
+            labelCaptionPage.ShiftY = (48 - labelCaptionPage.Font.MaxHeightSymbol) / 2;
+            labelCaptionPage.Width = 320;
+
             // Создаем массив из страниц, линий и позиций
             panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
 
@@ -336,7 +342,7 @@ namespace Fantasy_Kingdoms_Battle
             MakePagesBackground();
 
             pageControl.ActivatePage(pageResultTurn);
-            ShowNamePlayer(pageControl.CurrentPage.Caption);
+            UpdateNameCurrentPage();
         }
 
         private void CellObjectMenu_ShowHint(object sender, EventArgs e)
@@ -1126,7 +1132,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void UpdateNameCurrentPage()
         {
-            ShowNamePlayer(pageControl.CurrentPage.Caption);
+            labelCaptionPage.Text = pageControl.CurrentPage.Caption;
         }
 
         private void PageControl_PageChanged(object sender, EventArgs e)
