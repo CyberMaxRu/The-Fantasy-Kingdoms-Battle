@@ -35,5 +35,11 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal void Zeroing()
+        {
+            for (int i = 0; i < Count; i++)
+                this[i] = 0;
+        }
     }
 }

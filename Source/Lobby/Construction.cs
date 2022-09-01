@@ -147,6 +147,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
 
+        // Изменение параметров населенного пункта
+        internal ListSettlementParameters SettlementParameters { get; } = new ListSettlementParameters();
+
         // Действия
         internal CellMenuConstruction ActionMain { get; private set; }// Основное действие, которое отображается в панели сооружения
         private CellMenuConstructionLevelUp ActionBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
@@ -613,6 +616,7 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep6Income(Income());
                     panelHint.AddStep8Greatness(0, GreatnessPerDay());
                     panelHint.AddStep9PlusBuilders(BuildersPerDay());
+                    panelHint.AddStep9SettlementParameters(SettlementParameters);
                     panelHint.AddStep9Interest(GetInterest(), false);
                     panelHint.AddStep9ListNeeds(SatisfactionNeeds);
                 }
@@ -1552,10 +1556,24 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneConstructAfterCreate()
         {
+            UpdateSettlementParameters();
             UpdateCurrentIncomeResources();
             TuneActionLevelUp();
             UpdateSelectedColor();
             UpdateState();
+        }
+
+        private void UpdateSettlementParameters()
+        {
+            if ((Level > 0) && (Descriptor.Levels[Level].SettlementParameters != null))
+            {
+                for (int i = 0; i < Descriptor.Levels[Level].SettlementParameters.Count; i++)
+                {
+                    SettlementParameters[i] = Descriptor.Levels[Level].SettlementParameters[i];
+                }
+            }
+            else
+                SettlementParameters.Zeroing();
         }
 
         internal void UpdateState()

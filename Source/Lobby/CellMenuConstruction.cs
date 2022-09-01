@@ -548,6 +548,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.Description : "");
             panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
             panelHint.AddStep8Greatness(Construction.GreatnesAddForLevel(Descriptor.Number), Construction.GreatnesPerDayForLevel(Descriptor.Number));
+            panelHint.AddStep9SettlementParameters(Descriptor.SettlementParameters);
             panelHint.AddStep9PlusBuilders(Descriptor.AddConstructionPoints);
             if (Descriptor.DescriptorVisit != null)
             {
