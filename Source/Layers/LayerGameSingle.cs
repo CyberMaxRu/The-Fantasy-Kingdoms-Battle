@@ -236,7 +236,7 @@ namespace Fantasy_Kingdoms_Battle
             vcRightPanel.Width = Math.Max(FormMain.Config.ObjectMenuWidth, panelCombatHeroes.Width + Config.GridSize);
 
             // Панели информации об объектахs
-            panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
+            panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.ShiftY);
             panelHeroInfo.Width = vcRightPanel.Width - Config.GridSize;
             panelHeroInfo.ApplyMaxSize();
             panelHeroInfo.Width = panelHeroInfo.Width + Config.GridSize;
