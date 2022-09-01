@@ -1736,6 +1736,12 @@
             <Gold>0</Gold>
           </Cost>
         </Creating>
+        <SettlementParameters>
+          <Crime>-100</Crime>
+          <Happiness>100</Happiness>
+          <PublicOrder>200</PublicOrder>
+          <PopulationGrowth>50</PopulationGrowth>
+        </SettlementParameters>
         <IncomeResources>
           <Gold>1000</Gold>
           <Wood>50</Wood>
@@ -1787,6 +1793,12 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <SettlementParameters>
+          <Crime>-150</Crime>
+          <Happiness>150</Happiness>
+          <PublicOrder>250</PublicOrder>
+          <PopulationGrowth>10</PopulationGrowth>
+        </SettlementParameters>
         <IncomeResources>
           <Gold>1500</Gold>
           <Wood>50</Wood>
@@ -1835,6 +1847,12 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <SettlementParameters>
+          <Crime>-200</Crime>
+          <Happiness>200</Happiness>
+          <PublicOrder>300</PublicOrder>
+          <PopulationGrowth>150</PopulationGrowth>
+        </SettlementParameters>
         <IncomeResources>
           <Gold>2000</Gold>
           <Wood>50</Wood>
