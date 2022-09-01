@@ -988,6 +988,9 @@ namespace Fantasy_Kingdoms_Battle
                     btnEndTurn.ImageIsEnabled = true;
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
+                    labelKnowledge.Visible = true;
+                    labelTraditions.Visible = true;
+                    labelPeople.Visible = true;
                     ShowResoures(true);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = true;
@@ -1000,6 +1003,9 @@ namespace Fantasy_Kingdoms_Battle
                     btnEndTurn.ImageIsEnabled = false;
                     labelDay.Visible = false;
                     labelBuilders.Visible = false;
+                    labelKnowledge.Visible = false;
+                    labelTraditions.Visible = false;
+                    labelPeople.Visible = false;
                     ShowResoures(false);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = false;
