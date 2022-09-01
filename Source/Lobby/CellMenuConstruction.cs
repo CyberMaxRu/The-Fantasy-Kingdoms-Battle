@@ -545,7 +545,7 @@ namespace Fantasy_Kingdoms_Battle
 
             panelHint.AddStep2Entity(Construction);
             //panelHint.AddStep4Level(Descriptor.Number == 1 ? "Уровень 1" : $"Улучшить строение ({Descriptor.Number} ур.)");
-            panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.Description : "");
+            panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.ActiveEntity.Description : "");
             panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
             panelHint.AddStep8Greatness(Construction.GreatnesAddForLevel(Descriptor.Number), Construction.GreatnesPerDayForLevel(Descriptor.Number));
             panelHint.AddStep9SettlementParameters(Descriptor.SettlementParameters);
