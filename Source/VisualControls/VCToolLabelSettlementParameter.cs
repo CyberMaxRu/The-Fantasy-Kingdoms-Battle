@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateData(Player p)
         {
-            Text = p.CityParameters[Parameter.Index].ToString();
+            Text = Utils.FormatDecimal100(p.CityParameters[Parameter.Index]);
         }
     }
 }

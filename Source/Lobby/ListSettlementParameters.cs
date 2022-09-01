@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         public ListSettlementParameters() : base(FormMain.Descriptors.SettlementParameters.Count)
         {
             for (int i = 0; i < FormMain.Descriptors.SettlementParameters.Count; i++)
-                Add(i);// 0
+                Add(0);
         }
 
         public ListSettlementParameters(XmlNode n) : base(FormMain.Descriptors.SettlementParameters.Count)
@@ -40,6 +40,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             for (int i = 0; i < Count; i++)
                 this[i] = 0;
+        }
+
+        internal void AddParameters(ListSettlementParameters list)
+        {
+            for (int i = 0; i < Count; i++)
+                this[i] += list[i];
         }
     }
 }

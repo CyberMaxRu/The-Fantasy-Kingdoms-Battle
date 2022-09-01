@@ -298,6 +298,16 @@ namespace Fantasy_Kingdoms_Battle
             CalcPurchasesInActions();// Расчет стоимостей действий
             RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
             UpdateDaysConstructionForConstructions();
+
+            CalcCityParameters();
+        }
+
+        private void CalcCityParameters()
+        {
+            CityParameters.Zeroing();
+
+            foreach (Construction c in Constructions)
+                CityParameters.AddParameters(c.SettlementParameters);
         }
 
         internal void ReceiveResources()
