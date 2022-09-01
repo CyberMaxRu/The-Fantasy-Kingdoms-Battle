@@ -13,7 +13,10 @@ namespace Fantasy_Kingdoms_Battle
 
     internal abstract class VCBitmapBand : VisualControl
     {
-        protected Bitmap bmpForDraw;
+        static private Dictionary<(Bitmap, Color, int), Bitmap> cacheBands = new Dictionary<(Bitmap, Color, int), Bitmap>();
+
+        private Bitmap bmpForDraw;
+        private Color color;
 
         public VCBitmapBand(VisualControl parent, int shiftX, int shiftY, int widthCap) : base(parent, shiftX, shiftY)
         {
@@ -23,41 +26,53 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool TruncateLeft { get; set; }// Если размер меньше минимального, отрезается изображение слева
         internal int WidthCap { get; }// Ширина боковушки
+        internal Color Color { get; set; } = Color.Transparent;
 
-        internal override void ArrangeControls()
-        {
-            if ((bmpForDraw == null) || (bmpForDraw.Width != Width))
-            {
-                bmpForDraw?.Dispose();
-                bmpForDraw = PrepareBand(GetBitmap());
-            }
-
-            base.ArrangeControls();
-        }
+        protected abstract Bitmap GetBitmap();
 
         internal override void Draw(Graphics g)
         {
             base.Draw(g);
 
-            if (bmpForDraw != null)
-                g.DrawImageUnscaled(bmpForDraw, Left, Top);
-        }
-
-        protected Bitmap PrepareBand(Bitmap bmpBand)
-        {
-            Debug.Assert(Width > 0);
-
-            if (!TruncateLeft)
+            if ((bmpForDraw == null) || (color != Color) || (bmpForDraw.Width != Width) || (bmpForDraw != GetBitmap()))
             {
-                Debug.Assert(Width >= bmpBand.Width, $"Width={Width}, bmpBand.Width={bmpBand.Width}");
+                bmpForDraw = GetBand(GetBitmap(), Width, WidthCap, TruncateLeft, Color);
+                color = Color;
             }
 
-            int widthCap = WidthCap;
+            g.DrawImageUnscaled(bmpForDraw, Left, Top);
+        }
+
+        protected static Bitmap GetBand(Bitmap bmpBand, int width, int widthCap, bool truncateLeft, Color color)
+        {
+            Debug.Assert(width > 0);
+
+            foreach (KeyValuePair<(Bitmap, Color, int), Bitmap> b in cacheBands)
+            {
+                if ((b.Key.Item1 == bmpBand) && (b.Key.Item2 == color) && (b.Key.Item3 == width))
+                    return b.Value;
+            }
+
+            Bitmap bmp = PrepareBand(bmpBand, width, widthCap, truncateLeft);
+            cacheBands.Add((bmpBand, color, width), bmp);
+            if (color != Color.Transparent)
+                Utils.LackBitmap(bmp, color);
+
+            return bmp;
+        }
+
+        private static Bitmap PrepareBand(Bitmap bmpBand, int width, int widthCap, bool truncateLeft)
+        {
+            if (!truncateLeft)
+            {
+                Debug.Assert(width >= bmpBand.Width, $"Width={width}, bmpBand.Width={bmpBand.Width}");
+            }
+
             int widthBody = bmpBand.Width - widthCap - widthCap;
             Debug.Assert(widthBody > 0);
-            int offsetX = !TruncateLeft || (Width >= bmpBand.Width) ? 0 : Width - bmpBand.Width + 1;
+            int offsetX = !truncateLeft || (width >= bmpBand.Width) ? 0 : width - bmpBand.Width + 1;
 
-            Bitmap bmp = new Bitmap(Width, bmpBand.Height);
+            Bitmap bmp = new Bitmap(width, bmpBand.Height);
             Graphics gb = Graphics.FromImage(bmp);
 
             gb.DrawImage(bmpBand, offsetX, 0, new Rectangle(0, 0, widthCap, bmpBand.Height), GraphicsUnit.Pixel);
@@ -87,7 +102,5 @@ namespace Fantasy_Kingdoms_Battle
 
             return bmp;
         }
-
-        protected abstract Bitmap GetBitmap();
     }
 }

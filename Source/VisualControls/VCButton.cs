@@ -12,10 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCButton : VCBitmapBand
     {
         private readonly VCLabel labelCaption;
-        private Bitmap bmpNormal;
-        private Bitmap bmpHot;
-        private Bitmap bmpDisabled;
-        private Bitmap bmpPressed;
         private bool enabled = true;
 
         public VCButton(VisualControl parent, int shiftX, int shiftY, string caption) : base(parent, shiftX, shiftY, 31)
@@ -32,19 +28,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Caption { get; set; }
         internal bool Enabled { get => enabled; set { enabled = value; PlaySoundOnEnter = enabled; } }
-        protected override Bitmap GetBitmap() => Program.formMain.bmpBandButtonNormal;
+        protected override Bitmap GetBitmap() => !Enabled ? Program.formMain.bmpBandButtonDisabled : MouseOver && MouseClicked ? Program.formMain.bmpBandButtonPressed : MouseOver ? Program.formMain.bmpBandButtonHot : Program.formMain.bmpBandButtonNormal;
         protected override bool AllowClick() => Enabled;
 
         internal override void ArrangeControls()
-        {
-            bmpNormal = bmpForDraw;
-            bmpHot?.Dispose();
-            bmpHot = PrepareBand(Program.formMain.bmpBandButtonHot);
-            bmpDisabled?.Dispose();
-            bmpDisabled = PrepareBand(Program.formMain.bmpBandButtonDisabled);
-            bmpPressed?.Dispose();
-            bmpPressed = PrepareBand(Program.formMain.bmpBandButtonPressed);
-
+        {            
             labelCaption.Width = Width - (WidthCap * 2);
 
             base.ArrangeControls();
@@ -56,7 +44,6 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(bmpDisabled != null);
             //Debug.Assert(bmpPressed != null);
 
-            bmpForDraw = !Enabled ? bmpDisabled : MouseOver && MouseClicked ? bmpPressed : MouseOver ? bmpHot : bmpNormal;
             labelCaption.Text = Caption;
             labelCaption.Color = !enabled ? Color.DarkGray : MouseOver ? Color.Gold : Color.PaleTurquoise;
 

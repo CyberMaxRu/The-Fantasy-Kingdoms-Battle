@@ -30,7 +30,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Max { get; set; }
         internal int Position { get; set; }
         internal int PositionPotential { get; set; }
-        internal Color Color { get; set; } = Color.Transparent;
         internal string Text { get; set; } = "";
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBar;
 
@@ -143,21 +142,6 @@ namespace Fantasy_Kingdoms_Battle
             Height = GetBitmap().Height;
         }
 
-        internal Color Color { get; set; }
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBarFore;
-
-        internal override void Draw(Graphics g)
-        {
-            if (Color != color)
-            {
-                bmpForDraw?.Dispose();
-                bmpForDraw = PrepareBand(GetBitmap());
-                Utils.LackBitmap(bmpForDraw, Color);
-
-                color = Color;
-            }
-
-            base.Draw(g);
-        }
     }
 }
