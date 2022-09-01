@@ -373,7 +373,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelKnowledge_ShowHint(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         private void CellObjectMenu_ShowHint(object sender, EventArgs e)
