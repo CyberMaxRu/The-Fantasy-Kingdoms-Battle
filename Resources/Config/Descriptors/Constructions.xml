@@ -1147,6 +1147,10 @@
             </Requirement>
           </Requirements>
         </Creating>
+        <SettlementParameters>
+          <Health>-1</Health>
+          <Happiness>-2</Happiness>
+        </SettlementParameters>
         <IncomeResources>
           <Iron>50</Iron>
         </IncomeResources>

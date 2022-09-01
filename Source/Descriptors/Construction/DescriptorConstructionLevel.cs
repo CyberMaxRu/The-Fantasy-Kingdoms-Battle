@@ -66,6 +66,10 @@ namespace Fantasy_Kingdoms_Battle
             if (nm != null)
                 Mining = new ListCoefMining(nm);
 
+            XmlNode nsp = n.SelectSingleNode("SettlementParameters");
+            if (nsp != null)
+                SettlementParameters = new ListSettlementParameters(nsp);
+            
             XmlNode nir = n.SelectSingleNode("IncomeResources");
             if (nir != null)
                 IncomeResources = new ListBaseResources(nir);
@@ -110,6 +114,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
         internal ListDefaultProperties Properties { get; }// Список характеристик
         internal ListCoefMining Mining { get; }// Коэффициенты добычи ресурса
+        internal ListSettlementParameters SettlementParameters { get; }// Изменение параметров нас. пункта
         internal ListBaseResources IncomeResources { get; }// Сколько и каких ресурсов приносит сооружение в день
 
 

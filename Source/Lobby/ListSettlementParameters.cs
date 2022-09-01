@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
                     int value = Convert.ToInt32(n.ChildNodes[i].InnerText);
                     sp = FormMain.Descriptors.FindSettlementParameter(n.ChildNodes[i].Name);
                     Debug.Assert(this[sp.Index] == 0);
-                    Debug.Assert(value >= 0);
+                    //Debug.Assert(value >= 0);
 
                     this[sp.Index] = value;
                 }
