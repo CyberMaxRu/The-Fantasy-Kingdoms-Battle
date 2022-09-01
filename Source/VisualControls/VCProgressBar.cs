@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCProgressBarFore ppfFore;
         private VCLabel lblText;
 
-        public VCProgressBar(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public VCProgressBar(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, 17)
         {
             lblText = new VCLabel(this, 0, 2, Program.formMain.fontSmallC, Color.White, 16, "");
             lblText.Visible = false;
@@ -32,7 +32,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int PositionPotential { get; set; }
         internal Color Color { get; set; } = Color.Transparent;
         internal string Text { get; set; } = "";
-        protected override int WidthCap() => 17;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBar;
 
         internal override void ArrangeControls()
@@ -127,12 +126,11 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCProgressBarBack : VCBitmapBand
     {
-        public VCProgressBarBack(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public VCProgressBarBack(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, 7)
         {
             Height = GetBitmap().Height;
         }
 
-        protected override int WidthCap() => 7;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBarBack;
     }
 
@@ -140,13 +138,12 @@ namespace Fantasy_Kingdoms_Battle
     {
         private Color color;
 
-        public VCProgressBarFore(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public VCProgressBarFore(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, 8)
         {
             Height = GetBitmap().Height;
         }
 
         internal Color Color { get; set; }
-        protected override int WidthCap() => 8;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBarFore;
 
         internal override void Draw(Graphics g)

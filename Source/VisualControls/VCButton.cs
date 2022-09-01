@@ -18,14 +18,14 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpPressed;
         private bool enabled = true;
 
-        public VCButton(VisualControl parent, int shiftX, int shiftY, string caption) : base(parent, shiftX, shiftY)
+        public VCButton(VisualControl parent, int shiftX, int shiftY, string caption) : base(parent, shiftX, shiftY, 31)
         {
             Caption = caption;
             Width = 160;
             PlaySoundOnEnter = true;
             PlaySoundOnClick = true;
 
-            labelCaption = new VCLabel(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
+            labelCaption = new VCLabel(this, WidthCap, 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaption.IsActiveControl = false;
@@ -33,7 +33,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Caption { get; set; }
         internal bool Enabled { get => enabled; set { enabled = value; PlaySoundOnEnter = enabled; Program.formMain.NeedRedrawFrame(); } }
-        protected override int WidthCap() => 31;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandButtonNormal;
 
         internal override void ArrangeControls()
@@ -46,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpPressed?.Dispose();
             bmpPressed = PrepareBand(Program.formMain.bmpBandButtonPressed);
 
-            labelCaption.Width = Width - WidthCap() - WidthCap();
+            labelCaption.Width = Width - WidthCap - WidthCap;
 
             base.ArrangeControls();
         }

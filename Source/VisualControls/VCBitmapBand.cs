@@ -15,12 +15,14 @@ namespace Fantasy_Kingdoms_Battle
     {
         protected Bitmap bmpForDraw;
 
-        public VCBitmapBand(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public VCBitmapBand(VisualControl parent, int shiftX, int shiftY, int widthCap) : base(parent, shiftX, shiftY)
         {
+            WidthCap = widthCap;
             Height = GetBitmap().Height;
         }
 
         internal bool TruncateLeft { get; set; }// Если размер меньше минимального, отрезается изображение слева
+        internal int WidthCap { get; }// Ширина боковушки
 
         internal override void ArrangeControls()
         {
@@ -50,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Width >= bmpBand.Width, $"Width={Width}, bmpBand.Width={bmpBand.Width}");
             }
 
-            int widthCap = WidthCap();
+            int widthCap = WidthCap;
             int widthBody = bmpBand.Width - widthCap - widthCap;
             Debug.Assert(widthBody > 0);
             int offsetX = !TruncateLeft || (Width >= bmpBand.Width) ? 0 : Width - bmpBand.Width + 1;
@@ -86,7 +88,6 @@ namespace Fantasy_Kingdoms_Battle
             return bmp;
         }
 
-        protected abstract int WidthCap();
         protected abstract Bitmap GetBitmap();
     }
 }

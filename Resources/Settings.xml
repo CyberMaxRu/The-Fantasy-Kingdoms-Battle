@@ -13,7 +13,7 @@
   <Sound>
     <PlaySound>True</PlaySound>
     <PlayMusic>False</PlayMusic>
-    <VolumeSound>26</VolumeSound>
+    <VolumeSound>25</VolumeSound>
     <VolumeMusic>50</VolumeMusic>
     <MusicFromMajesty1>False</MusicFromMajesty1>
     <MusicFromMajesty2>False</MusicFromMajesty2>
