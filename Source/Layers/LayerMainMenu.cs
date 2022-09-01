@@ -39,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             btnWarOfLords = new VCButton(bmpMainMenu, 80, 88, "Война лордов");
             btnWarOfLords.Width = bmpMainMenu.Width - 80 - 80;
             btnWarOfLords.Click += BtnTournament_Click;
+            btnWarOfLords.Enabled = false;
 
             btnSingleMission = new VCButton(bmpMainMenu, 80, btnWarOfLords.NextTop(), "Одиночная миссия");
             btnSingleMission.Width = bmpMainMenu.Width - 80 - 80;
