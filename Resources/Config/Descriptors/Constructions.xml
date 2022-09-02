@@ -5,7 +5,7 @@
     <Name>Гильдия воинов</Name>
     <Description>- Позволяет нанимать воинов//- В гильдии исследуют и продают особые способности воинов//- Здесь исследуют способность "Призыв к оружию"</Description>
     <ImageIndex>49</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>1,2</Pos>
@@ -201,7 +201,7 @@
     <Name>Гильдия рейнджеров</Name>
     <Description>- Позволяет нанимать рейнджеров//- В гильдии исследуют и продают особые способности рейнджеров//- Здесь исследуют заклинание "Взгляд орла"</Description>
     <ImageIndex>42</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>2,2</Pos>
@@ -431,7 +431,7 @@
     <Name>Гильдия послушниц</Name>
     <Description>- Позволяет нанимать послушниц//- В гильдии исследуют и продают особые способности послушниц//- Здесь исследуют заклинание "Святое лечение"</Description>
     <ImageIndex>38</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>3,2</Pos>
@@ -627,7 +627,7 @@
     <Name>Башня магов</Name>
     <Description>- Позволяет нанимать магов//- В гильдии исследуют и продают особые способности магов//- Здесь исследуют разнообразные заклинания</Description>
     <ImageIndex>43</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>3,3</Pos>
@@ -881,7 +881,7 @@
     <Name>Бунгало эльфов</Name>
     <Description>- Позволяет нанимать эльфиек//- В гильдии исследуют и продают особые способности эльфиек//- Эльфийки очень не любят гномов</Description>
     <ImageIndex>41</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>2,3</Pos>
@@ -1139,7 +1139,7 @@
     <Name>Поселение гномов</Name>
     <Description>- Позволяет нанимать гномов//- В гильдии исследуют и продают особые способности гномов//- Здесь исследуют заклинание "Наговор камня"//- Гномы очень не любят эльфиек</Description>
     <ImageIndex>40</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>1,3</Pos>
@@ -1426,7 +1426,7 @@
     <Name>Казарма стражи</Name>
     <Description>- Позволяет нанимать стражу</Description>
     <ImageIndex>157</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>4,2</Pos>
@@ -1502,7 +1502,7 @@
     <Name>Особняк воровок</Name>
     <Description>- Позволяет нанимать воровок//- В особняке исследуют и продают особые способности разбойниц//- Здесь исследуют и продают яды для оружия//- Здесь исследуют способность "Вымогательство"</Description>
     <ImageIndex>47</ImageIndex>
-    <TypeConstruction>Guild</TypeConstruction>
+    <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
     <Pos>4,3</Pos>
@@ -1773,7 +1773,7 @@
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-              <TypeConstruction>Guild</TypeConstruction>
+              <TypeConstruction>WarGuild</TypeConstruction>
               <Quantity>1</Quantity>
             </Requirement>
             <Requirement>
@@ -1827,7 +1827,7 @@
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
-              <TypeConstruction>Guild</TypeConstruction>
+              <TypeConstruction>WarGuild</TypeConstruction>
               <Quantity>2</Quantity>
             </Requirement>
             <Requirement>

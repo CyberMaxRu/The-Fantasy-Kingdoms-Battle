@@ -5,8 +5,8 @@
     <Name>Власть</Name>
   </TypeConstruction>
   <TypeConstruction>
-    <ID>Guild</ID>
-    <Name>Гильдия</Name>
+    <ID>WarGuild</ID>
+    <Name>Военная гильдия</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Manufacture</ID>
