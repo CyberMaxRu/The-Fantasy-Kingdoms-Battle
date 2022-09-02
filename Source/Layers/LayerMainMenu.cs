@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
+using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -112,11 +113,16 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImageUnscaled(bitmapLogo, 0, 0);
         }
 
+        internal override void KeyUp(KeyEventArgs e)
+        {
+            base.KeyUp(e);
+
+            if (e.KeyCode == Keys.Escape)
+                btnExitToWindows.DoClick();
+        }
+
         private void BtnTournament_Click(object sender, EventArgs e)
         {
-            WindowInfo.ShowInfo("Информация", "Игровой режим \"Война лордов\" временно отключен.");
-            return;
-
             /*LobbySettings ls = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
             WindowSetupTournament w = new WindowSetupTournament(ls);
             if (w.ShowDialog() == DialogAction.OK)
