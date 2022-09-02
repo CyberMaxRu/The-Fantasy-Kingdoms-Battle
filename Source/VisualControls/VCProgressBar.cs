@@ -22,11 +22,8 @@ namespace Fantasy_Kingdoms_Battle
             lblText.ManualDraw = true;
             lblText.StringFormat.Alignment = StringAlignment.Center;
             lblText.StringFormat.LineAlignment = StringAlignment.Near;
-
-            Height = GetBitmap().Height;
         }
 
-        //internal bool Enabled { get => enabled; set { enabled = value; PlaySoundOnEnter = enabled; Program.formMain.NeedRedrawFrame(); } }
         internal int Max { get; set; }
         internal int Position { get; set; }
         internal int PositionPotential { get; set; }
@@ -127,7 +124,6 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCProgressBarBack(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, 7)
         {
-            Height = GetBitmap().Height;
         }
 
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBarBack;
@@ -135,11 +131,8 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCProgressBarFore : VCBitmapBand
     {
-        private Color color;
-
         public VCProgressBarFore(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, 8)
         {
-            Height = GetBitmap().Height;
         }
 
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBarFore;
