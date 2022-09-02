@@ -137,6 +137,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             WindowPlayerPreferences w = new WindowPlayerPreferences(null);
             w.ShowDialog();
+            w.Dispose();
         }
 
         private void BtnPreferences_Click(object sender, EventArgs e)
