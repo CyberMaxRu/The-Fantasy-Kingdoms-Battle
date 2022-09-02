@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
+        private readonly VCLabel labelVersionName;
         private readonly VCButton btnWarOfLords;
         private readonly VCButton btnSingleMission;
         private readonly VCButton btnEditorConquest;
@@ -29,6 +30,8 @@ namespace Fantasy_Kingdoms_Battle
             // Фон
             bitmapNameGame = new VCBitmap(this, 0, 0, LoadBitmap("NameGame.png"));
 
+            labelVersionName = new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol, $"({FormMain.VERSION_POSTFIX})");
+            labelVersionName.SetWidthByText();
             labelVersion = new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol,
                 $"Сборка {FormMain.VERSION} от {FormMain.DATE_VERSION}");
             labelVersion.SetWidthByText();
@@ -92,8 +95,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             bitmapNameGame.ShiftX = (Width - bitmapNameGame.Width) / 2;
             bitmapNameGame.ShiftY = 32;//(bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
-            labelVersion.ShiftX = Program.formMain.sizeGamespace.Width - labelVersion.Width - FormMain.Config.GridSize;
-            labelVersion.ShiftY = Program.formMain.sizeGamespace.Height - labelVersion.Height - FormMain.Config.GridSize;
+            labelVersionName.ShiftX = labelVersionName.Parent.Width - labelVersionName.Width - FormMain.Config.GridSize;
+            labelVersionName.ShiftY = labelVersionName.Parent.Height - labelVersionName.Height - FormMain.Config.GridSize;
+            labelVersion.ShiftX = labelVersion.Parent.Width - labelVersion.Width - FormMain.Config.GridSize;
+            labelVersion.ShiftY = labelVersionName.ShiftY - labelVersion.Height - FormMain.Config.GridSize;
             bmpMainMenu.ShiftX = Program.formMain.sizeGamespace.Width - bmpMainMenu.Width - FormMain.Config.GridSize;
             bmpMainMenu.ShiftY = (Program.formMain.sizeGamespace.Height - bmpMainMenu.Height) / 2 - (FormMain.Config.GridSize * 1);
 
