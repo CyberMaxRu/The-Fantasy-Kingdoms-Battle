@@ -29,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PositionPotential { get; set; }
         internal string Text { get; set; } = "";
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBar;
+        internal Color ColorProgress { get; set; } = Color.Transparent;
 
         internal override void ArrangeControls()
         {
@@ -71,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
                     int lengthPotential = (ppbBack.Width - 1) * PositionPotential / Max;
                     if (lengthPotential > length)
                     {
-                        Color colorPotential = Color.FromArgb(Color.A, Convert.ToByte(Color.R * 0.5), Convert.ToByte(Color.G * 0.5), Convert.ToByte(Color.B * 0.5));
+                        Color colorPotential = Color.FromArgb(ColorProgress.A, Convert.ToByte(ColorProgress.R * 0.5), Convert.ToByte(ColorProgress.G * 0.5), Convert.ToByte(ColorProgress.B * 0.5));
 
                         if ((ppfForePotential is null) || (ppfForePotential.Width != lengthPotential) || (ppfForePotential.Color != colorPotential))
                         {
@@ -91,14 +92,14 @@ namespace Fantasy_Kingdoms_Battle
                 // Определяем длину прогресса
                 if (length > 0)
                 {
-                    if ((ppfFore is null) || (ppfFore.Width != length) || (ppfFore.Color != Color))
+                    if ((ppfFore is null) || (ppfFore.Width != length) || (ppfFore.Color != ColorProgress))
                     {
                         ppfFore?.Dispose();
 
                         ppfFore = new VCProgressBarFore(this, 11, 5);
                         ppfFore.TruncateLeft = true;
                         ppfFore.Width = length;
-                        ppfFore.Color = Color;
+                        ppfFore.Color = ColorProgress;
                         ppfFore.Visible = false;
                         ArrangeControl(ppfFore);
                     }

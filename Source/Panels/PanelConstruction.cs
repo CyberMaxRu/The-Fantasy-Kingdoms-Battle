@@ -202,24 +202,24 @@ namespace Fantasy_Kingdoms_Battle
                 switch (Construction.State)
                 {
                     case StateConstruction.Work:
-                        pbDurability.Color = Color.Lime;
+                        pbDurability.ColorProgress = Color.Lime;
                         break;
                     case StateConstruction.NotBuild:
                     case StateConstruction.InQueueBuild:
                         break;
                     case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
-                        pbDurability.Color = Color.PaleTurquoise;
+                        pbDurability.ColorProgress = Color.PaleTurquoise;
                         break;
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
                         if (percent >= 60)
-                            pbDurability.Color = Color.Lime;
+                            pbDurability.ColorProgress = Color.Lime;
                         else if (percent >= 50)
-                            pbDurability.Color = Color.Yellow;
+                            pbDurability.ColorProgress = Color.Yellow;
                         else
-                            pbDurability.Color = Color.Red;
+                            pbDurability.ColorProgress = Color.Red;
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
