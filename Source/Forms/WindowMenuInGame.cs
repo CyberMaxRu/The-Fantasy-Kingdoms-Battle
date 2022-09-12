@@ -7,16 +7,16 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    class WindowMenuInGame : CustomWindow
+    sealed class WindowMenuInGame : CustomWindow
     {
         private Lobby lobby;
         private VCBitmap bmpMenu;
-        private VCButtonForMenu btnBackToGame;
-        private VCButtonForMenu btnNewGame;
-        private VCButtonForMenu btnGamePreferences;
-        private VCButtonForMenu btnPlayerPreferences;
-        private VCButtonForMenu btnExitToMainMenu;
-        private VCButtonForMenu btnExitToWindows;
+        private readonly VCButtonForMenu btnBackToGame;
+        private readonly VCButtonForMenu btnNewGame;
+        private readonly VCButtonForMenu btnGamePreferences;
+        private readonly VCButtonForMenu btnPlayerPreferences;
+        private readonly VCButtonForMenu btnExitToMainMenu;
+        private readonly VCButtonForMenu btnExitToWindows;
 
         public WindowMenuInGame(Lobby lobby)
         {
