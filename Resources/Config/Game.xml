@@ -20,6 +20,7 @@
     <DefaultLevelTax>Normal</DefaultLevelTax>
     <MouseHoverTime>0</MouseHoverTime>
     <ObjectMenuWidth>247</ObjectMenuWidth>
+    <ShiftXButtonsInMenu>80</ShiftXButtonsInMenu>
   </Interface>
   <GlobalSettings>
     <Player>

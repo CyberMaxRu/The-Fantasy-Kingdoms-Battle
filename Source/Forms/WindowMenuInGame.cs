@@ -11,12 +11,12 @@ namespace Fantasy_Kingdoms_Battle
     {
         private Lobby lobby;
         private VCBitmap bmpMenu;
-        private VCButton btnBackToGame;
-        private VCButton btnNewGame;
-        private VCButton btnGamePreferences;
-        private VCButton btnPlayerPreferences;
-        private VCButton btnExitToMainMenu;
-        private VCButton btnExitToWindows;
+        private VCButtonForMenu btnBackToGame;
+        private VCButtonForMenu btnNewGame;
+        private VCButtonForMenu btnGamePreferences;
+        private VCButtonForMenu btnPlayerPreferences;
+        private VCButtonForMenu btnExitToMainMenu;
+        private VCButtonForMenu btnExitToWindows;
 
         public WindowMenuInGame(Lobby lobby)
         {
@@ -25,29 +25,12 @@ namespace Fantasy_Kingdoms_Battle
             Width = bmpMenu.Width;
             Height = bmpMenu.Height;
 
-            btnBackToGame = new VCButton(bmpMenu, 80, 72, "Вернуться к игре");
-            btnBackToGame.Width = Width - 80 - 80;
-            btnBackToGame.Click += BtnBackToGame_Click;
-
-            btnNewGame = new VCButton(bmpMenu, 80, btnBackToGame.NextTop(), "Новая игра");
-            btnNewGame.Width = Width - 80 - 80;
-            btnNewGame.Click += BtnNewGame_Click;
-
-            btnExitToWindows = new VCButton(bmpMenu, 80, bmpMenu.Height - 96, "Выход в Windows");
-            btnExitToWindows.Width = Width - 80 - 80;
-            btnExitToWindows.Click += BtnExitToWindows_Click;
-
-            btnExitToMainMenu = new VCButton(bmpMenu, 80, btnExitToWindows.ShiftY - 40, "Выход в главное меню");
-            btnExitToMainMenu.Width = Width - 80 - 80;
-            btnExitToMainMenu.Click += BtnExitToMainMenu_Click;
-
-            btnGamePreferences = new VCButton(bmpMenu, 80, btnExitToMainMenu.ShiftY - 40, "Настройки");
-            btnGamePreferences.Width = Width - 80 - 80;
-            btnGamePreferences.Click += BtnSettings_Click;
-
-            btnPlayerPreferences = new VCButton(bmpMenu, 80, btnGamePreferences.ShiftY - 40, "Настройки игрока");
-            btnPlayerPreferences.Width = Width - 80 - 80;
-            btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
+            btnBackToGame = new VCButtonForMenu(bmpMenu, 72, "Вернуться к игре", BtnBackToGame_Click);
+            btnNewGame = new VCButtonForMenu(bmpMenu, btnBackToGame.NextTop(), "Новая игра", BtnNewGame_Click);
+            btnExitToWindows = new VCButtonForMenu(bmpMenu, bmpMenu.Height - 96, "Выход в Windows", BtnExitToWindows_Click);
+            btnExitToMainMenu = new VCButtonForMenu(bmpMenu, btnExitToWindows.ShiftY - 40, "Выход в главное меню", BtnExitToMainMenu_Click);
+            btnGamePreferences = new VCButtonForMenu(bmpMenu, btnExitToMainMenu.ShiftY - 40, "Настройки", BtnSettings_Click);
+            btnPlayerPreferences = new VCButtonForMenu(bmpMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
 
             CancelButton = btnBackToGame;
         }

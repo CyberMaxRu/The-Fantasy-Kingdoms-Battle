@@ -16,13 +16,13 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCLabel labelVersionName;
-        private readonly VCButton btnWarOfLords;
-        private readonly VCButton btnSingleMission;
-        private readonly VCButton btnEditorConquest;
-        private readonly VCButton btnPlayerPreferences;
-        private readonly VCButton btnGamePreferences;
-        private readonly VCButton btnAboutProgram;
-        private readonly VCButton btnExitToWindows;
+        private readonly VCButtonForMenu btnWarOfLords;
+        private readonly VCButtonForMenu btnSingleMission;
+        private readonly VCButtonForMenu btnEditorConquest;
+        private readonly VCButtonForMenu btnPlayerPreferences;
+        private readonly VCButtonForMenu btnGamePreferences;
+        private readonly VCButtonForMenu btnAboutProgram;
+        private readonly VCButtonForMenu btnExitToWindows;
 
         private LayerEditorConquest layerEditor;
 
@@ -40,34 +40,22 @@ namespace Fantasy_Kingdoms_Battle
             // Главное меню
             bmpMainMenu = new VCBitmap(this, 0, 0, LoadBitmap("MenuMain.png"));
 
-            btnWarOfLords = new VCButton(bmpMainMenu, 80, 88, "Война лордов");
-            btnWarOfLords.Width = bmpMainMenu.Width - 80 - 80;
-            btnWarOfLords.Click += BtnTournament_Click;
+            btnWarOfLords = new VCButtonForMenu(bmpMainMenu, 88, "Война лордов", BtnTournament_Click);
             btnWarOfLords.Enabled = false;
 
-            btnSingleMission = new VCButton(bmpMainMenu, 80, btnWarOfLords.NextTop(), "Одиночная миссия");
-            btnSingleMission.Width = bmpMainMenu.Width - 80 - 80;
-            btnSingleMission.Click += BtnSingleMission_Click;
+            btnSingleMission = new VCButtonForMenu(bmpMainMenu, btnWarOfLords.NextTop(), "Одиночная миссия", BtnSingleMission_Click);
 
-            /*btnEditorConquest = new VCButton(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
+            /*btnEditorConquest = new VCButtonForMenu(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
             btnEditorConquest.Click += BtnEditorConquest_Click;*/
 
-            btnExitToWindows = new VCButton(bmpMainMenu, 80, bmpMainMenu.Height - 96, "Выход");
-            btnExitToWindows.Width = bmpMainMenu.Width - 80 - 80;
-            btnExitToWindows.Click += BtnExitToWindows_Click;
+            btnExitToWindows = new VCButtonForMenu(bmpMainMenu, bmpMainMenu.Height - 96, "Выход", BtnExitToWindows_Click);
 
-            btnAboutProgram = new VCButton(bmpMainMenu, 80, btnExitToWindows.ShiftY - 40, "О программе");
-            btnAboutProgram.Width = bmpMainMenu.Width - 80 - 80;
-            btnAboutProgram.Click += BtnAboutProgram_Click;
+            btnAboutProgram = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "О программе", BtnAboutProgram_Click);
 
-            btnGamePreferences = new VCButton(bmpMainMenu, 80, btnAboutProgram.ShiftY - 40, "Настройки игры");
-            btnGamePreferences.Width = bmpMainMenu.Width - 80 - 80;
-            btnGamePreferences.Click += BtnPreferences_Click;
+            btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutProgram.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
 
-            btnPlayerPreferences = new VCButton(bmpMainMenu, 80, btnGamePreferences.ShiftY - 40, "Настройки игрока");
-            btnPlayerPreferences.Width = bmpMainMenu.Width - 80 - 80;
-            btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
+            btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
         }
 
         private void BtnSingleMission_Click(object sender, EventArgs e)

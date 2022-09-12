@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - кнопка
-    internal sealed class VCButton : VCBitmapBand
+    internal class VCButton : VCBitmapBand
     {
         private readonly VCLabel labelCaption;
         private bool enabled = true;

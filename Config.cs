@@ -115,6 +115,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ObjectMenuWidth >= 50);
             Debug.Assert(ObjectMenuWidth <= 500);
 
+            ShiftXButtonsInMenu = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftXButtonsInMenu").InnerText);
+            Debug.Assert(ShiftXButtonsInMenu >= 0);
+            Debug.Assert(ShiftXButtonsInMenu <= 200);            
+
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
             Debug.Assert(HeroInRow >= 3);
             Debug.Assert(HeroInRow <= 14);
@@ -332,7 +336,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int HeroRows { get; private set; }// Рядов героев
         internal int RowsBetweenSides { get; private set; }// Рядов между сторонами
         internal int StepsInSecond { get; private set; }// Шагов в секунду
-        internal int StepInMSec {get; private set; }// Время шага в миллисекундах
+        internal int StepInMSec { get; private set; }// Время шага в миллисекундах
         internal int MaxDurationBattleWithMonster { get; private set; }// Максимальная длительность боя c монстрами в секундах
         internal int MaxDurationBattleWithPlayer { get; private set; }// Максимальная длительность боя с другим игроком в секундах
         internal int MaxFramesPerSecond { get; private set; }// Максимальная частота перерисовки кадров
@@ -348,6 +352,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxValueProperty { get; private set; }// 
         internal int MouseHoverTime { get; set; }
         internal int ObjectMenuWidth { get; set; }
+        internal int ShiftXButtonsInMenu { get; set; }
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
