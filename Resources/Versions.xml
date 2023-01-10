@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.21</ActualVersion>
+  <ActualVersion>0.3.22</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -592,6 +592,13 @@
     <Description>
       <Line>[*] Очередь строительства.</Line>
       <Line>[*] Множество мелких доработок и улучшений.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.22</Number>
+    <DateBuild>12.09.2022</DateBuild>
+    <Description>
+      <Line>[+] Начало реализации одиночной миссии.</Line>
     </Description>
   </Version>
 </Versions>
