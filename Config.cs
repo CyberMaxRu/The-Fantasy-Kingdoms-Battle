@@ -363,7 +363,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ShiftXButtonsInMenu { get; set; }
 
         internal int TickPerSecond { get; set; }// Количество тиков в секунду
-        internal int ConstructionPointsPerSecond { get; set; }// Количество тиков в секунду
+        internal int ConstructionPointsPerSecond { get; set; }// Количество очков строительства в секунду
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
