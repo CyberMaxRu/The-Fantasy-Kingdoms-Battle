@@ -149,6 +149,14 @@ namespace Fantasy_Kingdoms_Battle
 
             MaxDurationFrame = 1_000 / MaxFramesPerSecond;
 
+            InterfaceFramePerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/FramePerSecond").InnerText);
+            Debug.Assert(InterfaceFramePerSecond >= 5);
+            Debug.Assert(InterfaceFramePerSecond <= 100);
+
+            GameTickPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TickPerSecond").InnerText);
+            Debug.Assert(InterfaceFramePerSecond >= 5);
+            Debug.Assert(InterfaceFramePerSecond <= 100);
+
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
             Debug.Assert(MaxStatPointPerLevel >= 5, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
             Debug.Assert(MaxStatPointPerLevel <= 100, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
@@ -353,6 +361,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int MouseHoverTime { get; set; }
         internal int ObjectMenuWidth { get; set; }
         internal int ShiftXButtonsInMenu { get; set; }
+
+        internal int TickPerSecond { get; set; }// Количество тиков в секунду
+        internal int ConstructionPointsPerSecond { get; set; }// Количество тиков в секунду
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин

@@ -23,7 +23,13 @@
     <ShiftXButtonsInMenu>80</ShiftXButtonsInMenu>
   </Interface>
   <GlobalSettings>
+    <HoursInTurn>24</HoursInTurn>
+    <HoursInDay>16</HoursInDay>
+    <HoursInNight>8</HoursInNight>
+    <TicksInHour>50</TicksInHour>
+    <TickPerSecond>50</TickPerSecond>
     <Player>
+      <ConstructionPointsPerSecond>10</ConstructionPointsPerSecond>
       <DefaultConstructionPoints>1000</DefaultConstructionPoints>
     </Player>
     <Construction>

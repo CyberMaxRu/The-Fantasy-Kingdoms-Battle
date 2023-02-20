@@ -207,6 +207,14 @@ namespace Fantasy_Kingdoms_Battle
             VisualControl.PanelHint.Player = CurrentPlayer;
         }
 
+        internal void DoTick()
+        {
+            for (int i = 0; i < Players.Length; i++)
+            {
+                Players[i].DoTurn();
+            }
+        }
+
         internal void Start()
         {
             // Реальный игрок должен быть жив
@@ -288,6 +296,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 DoEndTurn();
+
+                //stopLobby = true;
             }
 
             bool ExistsHumanPlayer()

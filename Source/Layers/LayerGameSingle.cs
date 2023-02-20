@@ -97,6 +97,9 @@ namespace Fantasy_Kingdoms_Battle
         int horInterval;
         int verInterval;
 
+        // Отрисовка кадров
+        private readonly Timer timerTick;// Таймер отрисовки кадров
+
         internal Lobby CurrentLobby { get { return lobby; } }
 
 
@@ -369,6 +372,14 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ActivatePage(pageResultTurn);
             UpdateNameCurrentPage();
+
+            timerTick = new Timer();
+            timerTick.Tick += TimerTick_Tick;
+        }
+
+        private void TimerTick_Tick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void LabelKnowledge_ShowHint(object sender, EventArgs e)
