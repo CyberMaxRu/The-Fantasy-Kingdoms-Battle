@@ -21,13 +21,15 @@
     <MouseHoverTime>0</MouseHoverTime>
     <ObjectMenuWidth>247</ObjectMenuWidth>
     <ShiftXButtonsInMenu>80</ShiftXButtonsInMenu>
+    <FramesPerSecond>25</FramesPerSecond>
   </Interface>
   <GlobalSettings>
     <HoursInTurn>24</HoursInTurn>
     <HoursInDay>16</HoursInDay>
     <HoursInNight>8</HoursInNight>
-    <TicksInHour>50</TicksInHour>
-    <TickPerSecond>50</TickPerSecond>
+    <TicksInRealSecond>50</TicksInRealSecond>
+    <TicksInHour>100</TicksInHour>
+    <TicksInHour>100</TicksInHour>
     <Player>
       <ConstructionPointsPerSecond>10</ConstructionPointsPerSecond>
       <DefaultConstructionPoints>1000</DefaultConstructionPoints>

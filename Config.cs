@@ -362,7 +362,12 @@ namespace Fantasy_Kingdoms_Battle
         internal int ObjectMenuWidth { get; set; }
         internal int ShiftXButtonsInMenu { get; set; }
 
-        internal int TickPerSecond { get; set; }// Количество тиков в секунду
+        internal int FramesPerSecond { get; set; }// Отрисовка количества кадров в секунду
+        internal int HoursInTurn { get; set; }// Количество игровых часов в одном ходу
+        internal int HoursInDay { get; set; }// Количество дневных часов 
+        internal int HoursInNight { get; set; }// Количество ночных часов
+        internal int TicksInRealSecond { get; set; }// Количество тиков в реальной секунде
+        internal int TicksInHour { get; set; }// Количество тиков в игровом часе
         internal int ConstructionPointsPerSecond { get; set; }// Количество очков строительства в секунду
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
