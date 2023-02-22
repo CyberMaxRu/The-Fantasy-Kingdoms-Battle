@@ -371,6 +371,14 @@ namespace Fantasy_Kingdoms_Battle
             UpdateNameCurrentPage();
         }
 
+        // Сейчас будет рисоваться кадр. Делаем расчеты тактов игры
+        internal override void BeforeDrawFrame()
+        {
+            base.BeforeDrawFrame();
+
+            lobby?.DoTick();
+        }
+
         private void LabelKnowledge_ShowHint(object sender, EventArgs e)
         {
         }

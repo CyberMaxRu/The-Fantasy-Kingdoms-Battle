@@ -101,12 +101,18 @@ namespace Fantasy_Kingdoms_Battle
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
         internal List<MissionMember> Members { get; } = new List<MissionMember>();
+
+        // Поддержка ходов
         internal int Turn { get; private set; }// Текущий ход лобби
+        internal int CounterSeconds { get; private set; }// Прошло игровых секунд
+        internal TimeSpan timePassed { get; } = new TimeSpan();// Прошло реального времени
+
         private DescriptorTimeOfDay TimeOfDay { get; set; }// Время суток
         internal int Day { get; private set; }// День
         internal int Week { get; private set; }// Неделя
         internal int Month { get; private set; }// Месяц
         internal int CounterDay { get => Turn; }// Текущий день с начала игры
+
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }

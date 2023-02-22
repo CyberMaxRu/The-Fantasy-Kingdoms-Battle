@@ -26,6 +26,11 @@ namespace Fantasy_Kingdoms_Battle
             Height = Program.formMain.sizeGamespace.Height;
         }
 
+        internal virtual void BeforeDrawFrame()
+        {
+
+        }
+
         internal virtual void PreferencesChanged() { }
     }
 }

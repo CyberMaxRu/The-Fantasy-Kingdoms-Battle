@@ -171,7 +171,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TicksInRealSecond >= 1);
             Debug.Assert(TicksInRealSecond <= 200);
 
-            ConstructionPointsPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInHour").InnerText);
+            ConstructionPointsPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/ConstructionPointsPerSecond").InnerText);
             Debug.Assert(ConstructionPointsPerSecond >= 1);
             Debug.Assert(ConstructionPointsPerSecond <= 1_000);
 

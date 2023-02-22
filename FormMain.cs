@@ -499,6 +499,7 @@ namespace Fantasy_Kingdoms_Battle
             if (!stateDrawFrame)
             {
                 stateDrawFrame = true;
+                currentLayer.BeforeDrawFrame();
                 ShowFrame(true);
                 stateDrawFrame = false;
             }
