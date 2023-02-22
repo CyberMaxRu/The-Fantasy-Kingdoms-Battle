@@ -28,10 +28,9 @@
     <HoursInDay>16</HoursInDay>
     <HoursInNight>8</HoursInNight>
     <TicksInRealSecond>50</TicksInRealSecond>
-    <TicksInHour>100</TicksInHour>
-    <TicksInHour>100</TicksInHour>
+    <TicksInHour>150</TicksInHour>
+    <ConstructionPointsPerSecond>20</ConstructionPointsPerSecond>
     <Player>
-      <ConstructionPointsPerSecond>10</ConstructionPointsPerSecond>
       <DefaultConstructionPoints>1000</DefaultConstructionPoints>
     </Player>
     <Construction>

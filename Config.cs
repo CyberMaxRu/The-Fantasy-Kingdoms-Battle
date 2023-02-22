@@ -149,13 +149,31 @@ namespace Fantasy_Kingdoms_Battle
 
             MaxDurationFrame = 1_000 / MaxFramesPerSecond;
 
-            InterfaceFramePerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/FramePerSecond").InnerText);
-            Debug.Assert(InterfaceFramePerSecond >= 5);
-            Debug.Assert(InterfaceFramePerSecond <= 100);
+            FramesPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/FramesPerSecond").InnerText);
+            Debug.Assert(FramesPerSecond >= 5);
+            Debug.Assert(FramesPerSecond <= 100);
 
-            GameTickPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TickPerSecond").InnerText);
-            Debug.Assert(InterfaceFramePerSecond >= 5);
-            Debug.Assert(InterfaceFramePerSecond <= 100);
+            DurationFrame = 1_000 / FramesPerSecond;
+
+            HoursInDay = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/HoursInDay").InnerText);
+            Debug.Assert(HoursInDay >= 1);
+            Debug.Assert(HoursInDay <= 50);
+            HoursInNight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/HoursInNight").InnerText);
+            Debug.Assert(HoursInNight >= 1);
+            Debug.Assert(HoursInNight <= 50);
+            HoursInTurn = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/HoursInTurn").InnerText);
+            Debug.Assert(HoursInTurn == HoursInDay + HoursInNight);
+
+            TicksInRealSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInRealSecond").InnerText);
+            Debug.Assert(TicksInRealSecond >= 1);
+            Debug.Assert(TicksInRealSecond <= 200);
+            TicksInHour = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInHour").InnerText);
+            Debug.Assert(TicksInRealSecond >= 1);
+            Debug.Assert(TicksInRealSecond <= 200);
+
+            ConstructionPointsPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInHour").InnerText);
+            Debug.Assert(ConstructionPointsPerSecond >= 1);
+            Debug.Assert(ConstructionPointsPerSecond <= 1_000);
 
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
             Debug.Assert(MaxStatPointPerLevel >= 5, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
@@ -363,6 +381,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ShiftXButtonsInMenu { get; set; }
 
         internal int FramesPerSecond { get; set; }// Отрисовка количества кадров в секунду
+        internal int DurationFrame { get; set; }// Длительность кадра в миллисекундах
         internal int HoursInTurn { get; set; }// Количество игровых часов в одном ходу
         internal int HoursInDay { get; set; }// Количество дневных часов 
         internal int HoursInNight { get; set; }// Количество ночных часов
