@@ -215,9 +215,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoTick()
         {
+            // Увеличиваем текущее время
+
+
+            // Ходим игроками
             for (int i = 0; i < Players.Length; i++)
             {
-                Players[i].DoTurn();
+                Players[i].DoTick();
             }
         }
 

@@ -268,7 +268,7 @@ namespace Fantasy_Kingdoms_Battle
             ExtraLevelUp = 0;
             ExtraResearch = 0;
 
-            ConstructionPoints = FormMain.Config.DefaultConstructionPoints;
+            ConstructionPoints = 1000;
             ConstructionPoints += Castle.Descriptor.Levels[Castle.Level].AddConstructionPoints;
             RestConstructionPoints = ConstructionPoints;
 
@@ -375,6 +375,16 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetTypeEntity() => Descriptor.GetTypeEntity();
 
         internal abstract void DoTurn();
+
+        // Ход любого игрока. Сначала делаем все расчеты тика, а потом включается ИИ или сам игрок
+        internal virtual void DoTick()
+        {
+            foreach (Construction c in Constructions)
+            {
+                c.DoTick();
+            }
+        }
+
         internal abstract void EndTurn();
         internal virtual void CalcDay()
         {
@@ -1590,14 +1600,14 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (cml.Descriptor.Number > 1)
                 {
-                    Assert(c.MaxDurability > 0);
+                    Assert(c.MaxDurability.Value > 0);
                     //Assert(c.CurrentDurability == c.MaxDurability);
                 }
                 else
                 {
                     Assert(c.QueueExecuting.Count == 0);// Постройка - всегда первая
                     //Assert(c.MaxDurability == 0);
-                    Assert(c.CurrentDurability == 0);
+                    Assert(c.CurrentDurability.Value == 0);
                 }
 
                 Assert((c.State == StateConstruction.Work) || (c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)

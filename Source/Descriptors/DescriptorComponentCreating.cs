@@ -10,13 +10,12 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorComponentCreating(DescriptorWithID entity, XmlNode n) : base()
         {
             Entity = entity;
-            ConstructionPoints = GetInteger(n, "ConstructionPoints");
+            ConstructionPoints = GetInteger(n, "ConstructionPoints") * 1000;
             ResearchPoints = GetInteger(n, "ResearchPoints");
             CostResources = new ListBaseResources(n.SelectSingleNode("Cost"));
             Requirements = new ListDescriptorRequirements(entity, n.SelectSingleNode("Requirements"));
 
             Assert(ConstructionPoints >= 0, $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}");
-            Assert(ConstructionPoints <= FormMain.Config.DefaultConstructionPoints * 50, $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}");
             Assert(ResearchPoints >= 0, $"ID: {entity.ID}, ResearchPoints: {ResearchPoints}");
             Assert(ResearchPoints <= FormMain.Config.DefaultResearchPoints * 50, $"ID: {entity.ID}, ResearchPoints: {ResearchPoints}");
 

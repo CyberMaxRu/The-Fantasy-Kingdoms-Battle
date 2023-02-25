@@ -1234,7 +1234,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void NeedRedrawFrame()
         {
-            needRedrawFrame = true;
+            //needRedrawFrame = true;
         }
 
         protected override void OnDeactivate(EventArgs e)

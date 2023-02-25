@@ -10,8 +10,27 @@ using System.Net.NetworkInformation;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс вспомогательных методов
+    // Класс целого числа с дробной частью с тремя знаками
+    internal sealed class Integer1000
+    {
+        private int _value;
 
+        public Integer1000()
+        {
+            Value = 0;
+        }
+
+        public Integer1000(int asInteger)
+        {
+            Value = asInteger * 1000;
+        }
+
+        internal int Value { get => _value; set { _value = value; AsInteger = value / 1000; } }
+        internal int AsInteger { get; private set; }
+        public override string ToString() => AsInteger.ToString();
+    }
+
+    // Класс вспомогательных методов
     internal sealed class Utils
     {
         private static readonly float dpiX;

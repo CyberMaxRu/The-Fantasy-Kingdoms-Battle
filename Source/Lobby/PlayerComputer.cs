@@ -96,5 +96,10 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+
+        internal override void DoTick()
+        {
+            base.DoTick();
+        }
     }
 }

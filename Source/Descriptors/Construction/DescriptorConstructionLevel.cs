@@ -76,7 +76,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Number > 1)
             {
-                Debug.Assert(Durability > forConstruction.Levels[Number - 1].Durability);
+                Debug.Assert(Durability.Value > forConstruction.Levels[Number - 1].Durability.Value);
             }
             else
             {
@@ -142,7 +142,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Number == 1) && (GetCreating() != null))
             {
-                Assert(GetCreating().ConstructionPoints == Durability, $"ID: {ID}, ConstructionPoints = {GetCreating().ConstructionPoints}, Durability = {Durability}");
+                Assert(GetCreating().ConstructionPoints == Durability.Value, $"ID: {ID}, ConstructionPoints = {GetCreating().ConstructionPoints}, Durability = {Durability}");
             }
         }
     }

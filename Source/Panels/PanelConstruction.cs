@@ -170,30 +170,28 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     case StateConstruction.Work:
                         pbDurability.Text = Construction.CurrentDurability.ToString();
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = Construction.CurrentDurability;
+                        pbDurability.Max = Construction.MaxDurability.AsInteger;
+                        pbDurability.Position = Construction.CurrentDurability.AsInteger;
                         break;
                     case StateConstruction.NotBuild:
                     case StateConstruction.InQueueBuild:
                         pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
-                        pbDurability.Max = Construction.MaxDurability;
+                        pbDurability.Max = Construction.MaxDurability.AsInteger;
                         pbDurability.Position = 0;
                         break;
                     case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
-                        pbDurability.Text = $"{Construction.CurrentDurability}" +
-                           $"{(Construction.ActionMain.ExecutingAction.CurrentPoints > 0 ? $"+{Construction.ActionMain.ExecutingAction.CurrentPoints}" : "")}/{Construction.ActionMain.ExecutingAction.Points}";
-                        pbDurability.Max = Construction.ActionMain.ExecutingAction.Points;
-                        pbDurability.Position = Construction.ActionMain.ExecutingAction.AppliedPoints;
-                        pbDurability.PositionPotential = Construction.ActionMain.ExecutingAction.AppliedPoints + Construction.ActionMain.ExecutingAction.CurrentPoints;
+                        pbDurability.Text = $"{Construction.CurrentDurability.AsInteger}/{Construction.MaxDurability.AsInteger}";
+                        pbDurability.Max = Construction.MaxDurability.AsInteger;
+                        pbDurability.Position = Construction.CurrentDurability.AsInteger;
                         break;
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         pbDurability.Text = $"{Construction.CurrentDurability}" +
                             $"{(Construction.ActionMain.ExecutingAction.CurrentPoints > 0 ? $"+{Construction.ActionMain.ExecutingAction.CurrentPoints}" : "")}/{Construction.MaxDurability}";
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = Construction.CurrentDurability;
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ExecutingAction.CurrentPoints;
+                        pbDurability.Max = Construction.MaxDurability.AsInteger;
+                        pbDurability.Position = Construction.CurrentDurability.AsInteger;
+                        pbDurability.PositionPotential = Construction.CurrentDurability.AsInteger + Construction.ActionMain.ExecutingAction.CurrentPoints;
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
@@ -213,7 +211,7 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
-                        int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
+                        int percent = Construction.CurrentDurability.AsInteger * 100 / Construction.MaxDurability.AsInteger;
                         if (percent >= 60)
                             pbDurability.ColorProgress = Color.Lime;
                         else if (percent >= 50)

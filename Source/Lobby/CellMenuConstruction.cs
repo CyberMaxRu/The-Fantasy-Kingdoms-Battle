@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public ComponentExecutingAction(int constructionPoints)
         {
-            Assert(constructionPoints > 0);
+            //Assert(constructionPoints > 0);
 
             Points = constructionPoints;
             IsConstructionPoints = true;
@@ -580,7 +580,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Descriptor.Number == 1)
             {
-                Construction.CurrentDurability += ExecutingAction.CurrentPoints;
+                Construction.CurrentDurability.Value += ExecutingAction.CurrentPoints;
             }
 
             base.DoProgressExecutingAction();
@@ -599,7 +599,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionRepair(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
-            ExecutingAction = new ComponentExecutingAction(c.MaxDurability - c.CurrentDurability);
+            ExecutingAction = new ComponentExecutingAction(c.MaxDurability.Value - c.CurrentDurability.Value);
         }
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта
@@ -647,7 +647,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void UpdatePurchase()
         {
-            int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability - Construction.CurrentDurability));
+            int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability.Value - Construction.CurrentDurability.Value));
             PurchaseValue = Construction.CompCostRepair(expenseCP);
             // Если цены ремонта нет, значит, оно не в очереди. Пытаемся подсчитать, сколько это будет стоить
             /*if (PurchaseValue is null)

@@ -157,5 +157,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.playerMusic.PlayWinLobbyTheme();
             WindowInfo.ShowInfo("ПОБЕДА!", $"Поздравлям, вы победитель!");
         }
+
+        internal override void DoTick()
+        {
+            base.DoTick();
+
+        }
     }
 }

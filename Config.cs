@@ -95,10 +95,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxHeroForSelectBonus >= 1);
             Debug.Assert(MaxHeroForSelectBonus <= 5);
 
-            DefaultConstructionPoints = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/Player/DefaultConstructionPoints").InnerText);
-            Debug.Assert(DefaultConstructionPoints >= 100);
-            Debug.Assert(DefaultConstructionPoints <= 10_000);
-
             DefaultResearchPoints = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/Construction/DefaultResearchPoints").InnerText);
             Debug.Assert(DefaultResearchPoints >= 100);
             Debug.Assert(DefaultResearchPoints <= 1000);
@@ -171,9 +167,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TicksInRealSecond >= 1);
             Debug.Assert(TicksInRealSecond <= 200);
 
-            ConstructionPointsPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/ConstructionPointsPerSecond").InnerText);
-            Debug.Assert(ConstructionPointsPerSecond >= 1);
-            Debug.Assert(ConstructionPointsPerSecond <= 1_000);
+            ConstructionPointsPerHour = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/ConstructionPointsPerHour").InnerText);
+            ConstructionPointsPerHour = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/ConstructionPointsPerHour").InnerText);
+            Debug.Assert(ConstructionPointsPerHour >= 1);
+            Debug.Assert(ConstructionPointsPerHour <= 1_000);
 
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
             Debug.Assert(MaxStatPointPerLevel >= 5, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
@@ -387,7 +384,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int HoursInNight { get; set; }// Количество ночных часов
         internal int TicksInRealSecond { get; set; }// Количество тиков в реальной секунде
         internal int TicksInHour { get; set; }// Количество тиков в игровом часе
-        internal int ConstructionPointsPerSecond { get; set; }// Количество очков строительства в секунду
+        internal int ConstructionPointsPerHour { get; set; }// Количество очков строительства в час
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
@@ -405,7 +402,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
         internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса
         internal int MaxHeroForSelectBonus { get; private set; }// Максимальное количество типов героев для выбора постоянного бонуса
-        internal int DefaultConstructionPoints { get; private set; }// Очков строительства по умолчанию у игрока
         internal int DefaultResearchPoints { get; private set; }// Очков исследования по умолчанию у сооружения
         internal int MaxLengthQueue { get; private set; }// Максимальная длина очереди
 
