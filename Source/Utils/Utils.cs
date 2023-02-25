@@ -6,15 +6,17 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Net.NetworkInformation;
 
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс вспомогательных методов
+
     internal sealed class Utils
     {
-        private static float dpiX;
-        private static float dpiY;
-        private static int DEFAULT_DPI = 96;
+        private static readonly float dpiX;
+        private static readonly float dpiY;
+        private static readonly int DEFAULT_DPI = 96;
 
         static Utils()
         {
@@ -99,6 +101,11 @@ namespace Fantasy_Kingdoms_Battle
             int modval = Math.Abs(value) % 100;
 
             return (value > 0 ? (showPlus ? "+" : "") : "-") + val100.ToString() + (modval > 0 ? "." + modval.ToString() : "");
+        }
+
+        internal static string FormatDurability(decimal value)
+        {
+            return ((int)decimal.Truncate(value)).ToString();
         }
 
         internal static string FormatPercent(int value, bool showPlus = false)
