@@ -112,6 +112,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        // Изменение прозрачности
         internal static Bitmap ApplyDisappearance(Image i, int curDisappearance, int MaxValue)
         {
             Debug.Assert(curDisappearance <= MaxValue);
