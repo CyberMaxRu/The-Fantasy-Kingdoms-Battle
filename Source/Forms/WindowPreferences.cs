@@ -9,11 +9,9 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Окно настроек
-    internal sealed class WindowPreferences : VCForm
+    internal sealed class WindowPreferences : WindowOkCancel
     {
-        private VCButton btnAccept;
         private VCButton btnDefault;
-        private VCButton btnCancel;
 
         private VisualControl vcPanelGame;
         private VCLabel lblCaptionPanelGame;
@@ -50,10 +48,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private Settings settings;
 
-        public WindowPreferences() : base()
+        public WindowPreferences() : base("Настройки игры")
         {
-            windowCaption.Caption = "Настройки игры";
-
             vcPanelGame = new VisualControl(ClientControl, 0, 0);
             vcPanelGame.ShowBorder = true;
             lblCaptionPanelGame = new VCLabel(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Общие настройки:");
@@ -108,38 +104,34 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPanelInterface = new VCLabel(vcPanelInterface, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Интерфейс:");
             lblCaptionPanelInterface.StringFormat.Alignment = StringAlignment.Near;
             chkbShowShortNames = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, lblCaptionPanelInterface.NextTop(), "Наименования на иконках умений и предметов");
-            chkbShowShortNames.Width = 440;
+            chkbShowShortNames.Width = 520;
             chkbShowQuantityDaysForExecuting = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowShortNames.NextTop(), "Показывать количество дней для выполнения действия в меню");
-            chkbShowQuantityDaysForExecuting.Width = 440;
+            chkbShowQuantityDaysForExecuting.Width = 520;
             chkbShowTypeCellMenu = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowQuantityDaysForExecuting.NextTop(), "Показывать тип объекта в меню");
-            chkbShowTypeCellMenu.Width = 440;
+            chkbShowTypeCellMenu.Width = 520;
             chkbHideFulfilledRequirements = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowTypeCellMenu.NextTop(), "Скрывать выполненные требования");
-            chkbHideFulfilledRequirements.Width = 440;
+            chkbHideFulfilledRequirements.Width = 520;
             chkbShowNameConstruction = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbHideFulfilledRequirements.NextTop(), "Показывать наименование сооружения");
-            chkbShowNameConstruction.Width = 440;
+            chkbShowNameConstruction.Width = 520;
             chkbShowExtraHint = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowNameConstruction.NextTop(), "Показывать дополнительную подсказку");
-            chkbShowExtraHint.Width = 440;
+            chkbShowExtraHint.Width = 520;
             chkbAllowCheating = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowExtraHint.NextTop(), "Разрешить читинг");
-            chkbAllowCheating.Width = 440;
+            chkbAllowCheating.Width = 520;
             vcPanelInterface.ApplyMaxSize();
             vcPanelInterface.Height += 8;
             lblCaptionPanelInterface.Width = vcPanelInterface.Width - (FormMain.Config.GridSize * 2);
 
-            btnAccept = new VCButton(ClientControl, 24, vcPanelInterface.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
-            btnAccept.Width = 160;
-            btnAccept.Click += BtnAccept_Click;
-            btnDefault = new VCButton(ClientControl, btnAccept.NextLeft(), btnAccept.ShiftY, "Базовые");
-            btnDefault.Width = 160;
+            btnDefault = new VCButton(ClientControl, 0, vcPanelInterface.NextTop(), "По умолчанию");
+            btnDefault.Width = 184;
             btnDefault.Click += BtnDefault_Click;
-            btnCancel = new VCButton(ClientControl, btnDefault.NextLeft(), btnAccept.ShiftY, "Отмена");
-            btnCancel.Width = 160;
+
+            btnOk.Caption = "Принять";
+            btnOk.Click += BtnAccept_Click;
+            btnCancel.Caption = "Отмена";
             btnCancel.Click += BtnCancel_Click;
 
-            AcceptButton = btnAccept;
-            CancelButton = btnCancel;
-
-            ClientControl.Width = btnCancel.ShiftX + btnCancel.Width + btnCancel.Left + btnAccept.ShiftX;
-            ClientControl.Height = btnCancel.NextTop();
+            ClientControl.Width = vcPanelInterface.Width;
+            ClientControl.Height = btnDefault.NextTop() + btnOk.Height;
             vcPanelGame.Width = ClientControl.Width - (vcPanelGame.ShiftX * 2);
             vcPanelBatttlefield.Width = ClientControl.Width - (vcPanelBatttlefield.ShiftX * 2);
             vcPanelSound.Width = ClientControl.Width - (vcPanelSound.ShiftX * 2);
