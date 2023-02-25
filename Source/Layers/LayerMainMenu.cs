@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private Bitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
+        private readonly Bitmap[] arrayBitmapNameGame;
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCLabel labelVersionName;
@@ -26,10 +27,23 @@ namespace Fantasy_Kingdoms_Battle
 
         private LayerEditorConquest layerEditor;
 
+        private int idxAnimation = 0;
+        private int frameAnimation = 0;
+
         public LayerMainMenu() : base()
         {
             // Фон
             bitmapNameGame = new VCBitmap(this, 0, 0, LoadBitmap("NameGame.png"));
+
+            int minAlpha = Config.MainMenuMinAlphaBanner;
+            int frames = Config.MainMenuFramesAnimationBanner;
+            double deltaRad = Math.PI / frames;
+            arrayBitmapNameGame = new Bitmap[frames];
+            for (int i = 0; i < arrayBitmapNameGame.Length; i++)
+            {
+                int alpha = minAlpha + (int)((255 - minAlpha) * Math.Sin(deltaRad * i));
+                arrayBitmapNameGame[i] = GuiUtils.ApplyDisappearance(bitmapNameGame.Bitmap, alpha, 255);
+            }
 
             labelVersionName = new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol, $"({FormMain.VERSION_POSTFIX})");
             labelVersionName.SetWidthByText();
@@ -43,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
             btnWarOfLords = new VCButtonForMenu(bmpMainMenu, 88, "Война лордов", BtnTournament_Click);
             btnWarOfLords.Enabled = false;
 
-            btnSingleMission = new VCButtonForMenu(bmpMainMenu, btnWarOfLords.NextTop(), "Одиночная миссия", BtnSingleMission_Click);
+            btnSingleMission = new VCButtonForMenu(bmpMainMenu, btnWarOfLords.NextTop(), "Одиночная игра", BtnSingleMission_Click);
 
             /*btnEditorConquest = new VCButtonForMenu(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
@@ -100,6 +114,24 @@ namespace Fantasy_Kingdoms_Battle
 
             g.DrawImageUnscaled(bitmapLogo, 0, 0);
         }
+
+        internal override void Draw(Graphics g)
+        {
+            frameAnimation++;
+            if (frameAnimation > Config.MainMenuFramesForAnimationFrames)
+            {
+                frameAnimation = 0;
+
+                idxAnimation++;
+                if (idxAnimation == arrayBitmapNameGame.Length)
+                    idxAnimation = 0;
+            }
+
+            bitmapNameGame.Bitmap = arrayBitmapNameGame[idxAnimation];
+
+            base.Draw(g);
+        }
+
 
         internal override void KeyUp(KeyEventArgs e)
         {

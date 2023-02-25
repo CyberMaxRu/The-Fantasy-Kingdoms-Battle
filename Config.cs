@@ -172,6 +172,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ConstructionPointsPerHour >= 1);
             Debug.Assert(ConstructionPointsPerHour <= 1_000);
 
+            // MainMenu
+            MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
+            MainMenuFramesAnimationBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/FramesAnimationBanner").InnerText);
+            MainMenuFramesForAnimationFrames = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/FramesForAnimationFrames").InnerText);
+
+            //
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
             Debug.Assert(MaxStatPointPerLevel >= 5, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
             Debug.Assert(MaxStatPointPerLevel <= 100, $"MaxStatPointPerLevel: {MaxStatPointPerLevel}");
@@ -385,6 +391,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int TicksInRealSecond { get; set; }// Количество тиков в реальной секунде
         internal int TicksInHour { get; set; }// Количество тиков в игровом часе
         internal int ConstructionPointsPerHour { get; set; }// Количество очков строительства в час
+
+        internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
+        internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера
+        internal int MainMenuFramesForAnimationFrames { get; set; }// Количество кадров, которое рисуется один кадр анимации баннера
+
 
         internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
