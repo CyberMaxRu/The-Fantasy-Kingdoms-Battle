@@ -76,6 +76,13 @@ namespace Fantasy_Kingdoms_Battle
             timerAnimation.Tick += TimerAnimation_Tick;
         }
 
+        protected override void OnEnabledChanged()
+        {
+            base.OnEnabledChanged();
+
+            timerAnimation.Enabled = Enabled;
+        }
+
         private void TimerAnimation_Tick(object sender, EventArgs e)
         {
             Assert(!inDraw);

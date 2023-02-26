@@ -8,6 +8,8 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class LayerCustom : VisualControl
     {
+        private bool _enabled = true;
+
         public LayerCustom() : base()
         {
             if (Program.formMain.sizeGamespace.Width > 0)
@@ -19,11 +21,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static Config Config { get; set; }
         internal static Descriptors Descriptors { get; set; }
+        internal bool Enabled { get => _enabled; set { if (_enabled != value) { _enabled = value; OnEnabledChanged(); } } }
 
         internal virtual void ApplyCurrentWindowSize()
         {
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
+        }
+
+        protected virtual void OnEnabledChanged()
+        {
+
         }
 
         internal virtual void BeforeDrawFrame()
