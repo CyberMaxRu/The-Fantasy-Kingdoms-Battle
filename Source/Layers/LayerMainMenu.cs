@@ -27,8 +27,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private LayerEditorConquest layerEditor;
 
+        private readonly Timer timerAnimation;
         private int idxAnimation = 0;
         private int frameAnimation = 0;
+        private bool inDraw;
 
         public LayerMainMenu() : base()
         {
@@ -54,22 +56,32 @@ namespace Fantasy_Kingdoms_Battle
             // Главное меню
             bmpMainMenu = new VCBitmap(this, 0, 0, LoadBitmap("MenuMain.png"));
 
-            btnWarOfLords = new VCButtonForMenu(bmpMainMenu, 88, "Война лордов", BtnTournament_Click);
-            btnWarOfLords.Enabled = false;
+            //btnWarOfLords = new VCButtonForMenu(bmpMainMenu, 88, "Война лордов", BtnTournament_Click);
+            //btnWarOfLords.Enabled = false;
 
-            btnSingleMission = new VCButtonForMenu(bmpMainMenu, btnWarOfLords.NextTop(), "Одиночная игра", BtnSingleMission_Click);
+            btnSingleMission = new VCButtonForMenu(bmpMainMenu, 88, "Одиночная игра", BtnSingleMission_Click);
 
             /*btnEditorConquest = new VCButtonForMenu(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
             btnEditorConquest.Click += BtnEditorConquest_Click;*/
 
             btnExitToWindows = new VCButtonForMenu(bmpMainMenu, bmpMainMenu.Height - 96, "Выход", BtnExitToWindows_Click);
-
             btnAboutProgram = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "О программе", BtnAboutProgram_Click);
-
             btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutProgram.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
-
             btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
+
+            timerAnimation = new Timer();
+            timerAnimation.Interval = Config.DurationFrame;
+            timerAnimation.Enabled = true;
+            timerAnimation.Tick += TimerAnimation_Tick;
+        }
+
+        private void TimerAnimation_Tick(object sender, EventArgs e)
+        {
+            Assert(!inDraw);
+            inDraw = true;
+            Program.formMain.ShowFrame(true);
+            inDraw = false;
         }
 
         private void BtnSingleMission_Click(object sender, EventArgs e)
