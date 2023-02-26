@@ -27,7 +27,7 @@
   <MainMenu>
     <MinAlphaBanner>130</MinAlphaBanner>
     <FramesAnimationBanner>30</FramesAnimationBanner>
-    <FramesForAnimationFrames>2</FramesForAnimationFrames>
+    <FramesForAnimationFrames>1</FramesForAnimationFrames>
   </MainMenu>
   <GlobalSettings>
     <HoursInTurn>24</HoursInTurn>

@@ -29,7 +29,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly Timer timerAnimation;
         private int idxAnimation = 0;
-        private int frameAnimation = 0;
         private bool inDraw;
 
         public LayerMainMenu() : base()
@@ -136,15 +135,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            frameAnimation++;
-            if (frameAnimation > Config.MainMenuFramesForAnimationFrames)
-            {
-                frameAnimation = 0;
-
-                idxAnimation++;
-                if (idxAnimation == arrayBitmapNameGame.Length)
-                    idxAnimation = 0;
-            }
+            idxAnimation++;
+            if (idxAnimation == arrayBitmapNameGame.Length)
+                idxAnimation = 0;
 
             bitmapNameGame.Bitmap = arrayBitmapNameGame[idxAnimation];
 
