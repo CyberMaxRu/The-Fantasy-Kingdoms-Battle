@@ -1719,7 +1719,7 @@
     <ImageIndex>184</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
-    <Page>Guild</Page>
+    <Page>Power</Page>
     <Pos>1,1</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -4164,7 +4164,7 @@
     <ImageIndex>158</ImageIndex>
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
-    <Page>Guild</Page>
+    <Page>Power</Page>
     <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -4422,7 +4422,7 @@
     <ImageIndex>159</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
-    <Page>Guild</Page>
+    <Page>Power</Page>
     <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
@@ -4473,7 +4473,7 @@
     <ImageIndex>193</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
-    <Page>Guild</Page>
+    <Page>Power</Page>
     <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>

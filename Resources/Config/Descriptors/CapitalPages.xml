@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <CapitalPage>
-    <ID>Guild</ID>
-    <Name>Гильдии и военные сооружения</Name>
+    <ID>Power</ID>
+    <Name>Общегородские строения</Name>
     <ImageIndex>164</ImageIndex>
-    <Description>В гильдиях нанимаются герои</Description>
-    <NameTexture>Guilds</NameTexture>
+    <Description>Строения, необходимые для функционирования города</Description>
+    <NameTexture>Power</NameTexture>
   </CapitalPage>
   <CapitalPage>
     <ID>Economic</ID>
@@ -13,5 +13,12 @@
     <ImageIndex>165</ImageIndex>
     <Description>Надежная экономика - залог победы</Description>
     <NameTexture>Economic</NameTexture>
+  </CapitalPage>
+  <CapitalPage>
+    <ID>Guild</ID>
+    <Name>Гильдии и военные сооружения</Name>
+    <ImageIndex>312</ImageIndex>
+    <Description>В гильдиях нанимаются герои</Description>
+    <NameTexture>Guilds</NameTexture>
   </CapitalPage>
 </Descriptors>
