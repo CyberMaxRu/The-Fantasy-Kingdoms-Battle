@@ -210,10 +210,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
 
-        // Отрисовка кадров
-        private readonly Timer timerTick;// Таймер отрисовки кадров
-        private bool stateDrawFrame;// Сейчас рисуется кадр
-
         public FormMain()
         {
             InitializeComponent();
@@ -479,12 +475,6 @@ namespace Fantasy_Kingdoms_Battle
 
             //ImportNames();// Однократная операция
 
-
-            timerTick = new Timer();
-            timerTick.Interval = Config.DurationFrame;
-            timerTick.Enabled = true;
-            timerTick.Tick += TimerTick_Tick;
-
             // 
             void SetStage(string text)
             {
@@ -492,17 +482,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblStage.Refresh();
             }
 
-        }
-
-        private void TimerTick_Tick(object sender, EventArgs e)
-        {
-            if (!stateDrawFrame)
-            {
-                stateDrawFrame = true;
-                currentLayer.BeforeDrawFrame();
-                ShowFrame(true);
-                stateDrawFrame = false;
-            }
         }
 
         internal HumanPlayer CurrentHumanPlayer { get; private set; }
@@ -1202,7 +1181,7 @@ namespace Fantasy_Kingdoms_Battle
                 //SetNeedRedrawFrame();
             }
 
-            ShowFrame(true);
+            //ShowFrame(true);
         }
 
         private void ControlForHintLeave()
