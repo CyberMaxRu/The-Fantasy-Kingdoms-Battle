@@ -213,7 +213,7 @@ namespace Fantasy_Kingdoms_Battle
             VisualControl.PanelHint.Player = CurrentPlayer;
         }
 
-        internal void DoTick()
+        internal void DoTicks()
         {
             // Увеличиваем текущее время
 
@@ -232,6 +232,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].IsLive);
             Debug.Assert(CheckUniqueNamePlayers());
 
+            return;
             while (!stopLobby)
             {
                 Debug.Assert(ExistsHumanPlayer());

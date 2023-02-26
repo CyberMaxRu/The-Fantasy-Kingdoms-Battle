@@ -376,7 +376,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.BeforeDrawFrame();
 
-            lobby?.DoTick();
+            lobby?.DoTicks();
         }
 
         private void LabelKnowledge_ShowHint(object sender, EventArgs e)
@@ -926,6 +926,16 @@ namespace Fantasy_Kingdoms_Battle
             ShowCurrentPlayerLobby();
 
             lobby.Start();
+
+            while (true)
+            {
+                Application.DoEvents();
+                if (lobby is null)
+                    break;
+                lobby.DoTicks();
+                Program.formMain.ShowFrame(true);
+                System.Threading.Thread.Sleep(40);
+            }
         }
 
         private void Map_Click(object sender, EventArgs e)
@@ -1399,8 +1409,11 @@ namespace Fantasy_Kingdoms_Battle
                 for (int y = 0; y < panels.GetLength(1); y++)
                     for (int x = 0; x < panels.GetLength(2); x++)
                     {
-                        panels[z, y, x].ShiftX = (panels[z, y, x].Width + horInterval) * x;
-                        panels[z, y, x].ShiftY = (panels[z, y, x].Height + verInterval) * y;
+                        if (panels[z, y, x] != null)
+                        {
+                            panels[z, y, x].ShiftX = (panels[z, y, x].Width + horInterval) * x;
+                            panels[z, y, x].ShiftY = (panels[z, y, x].Height + verInterval) * y;
+                        }
                     }
 
             pageControl.ShiftX = panelEmptyInfo.ShiftX + panelEmptyInfo.Width + horInterval;

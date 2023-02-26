@@ -122,9 +122,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            frame.Continue = true;
+            //frame.Continue = true;
             //Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(ExitFrame), frame);
-            Dispatcher.PushFrame(frame);
+            //Dispatcher.PushFrame(frame);
         }
 
         public object ExitFrame(object f)
