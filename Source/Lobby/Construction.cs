@@ -1959,12 +1959,16 @@ namespace Fantasy_Kingdoms_Battle
             if (Destroyed)
                 return;
 
-            if (CurrentDurability.Value < MaxDurability.Value)
+            if (queueExecuting.Count > 0)
             {
-                // Увеличиваем прогресс строительства
-                CurrentDurability.Value += ConstructionPointPerTick();
-                if (CurrentDurability.Value > MaxDurability.Value)
-                    CurrentDurability = MaxDurability;
+
+                if (CurrentDurability.Value < MaxDurability.Value)
+                {
+                    // Увеличиваем прогресс строительства
+                    CurrentDurability.Value += ConstructionPointPerTick();
+                    if (CurrentDurability.Value > MaxDurability.Value)
+                        CurrentDurability = MaxDurability;
+                }
             }
         }
 
