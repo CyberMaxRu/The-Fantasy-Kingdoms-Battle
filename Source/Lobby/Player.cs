@@ -1778,6 +1778,11 @@ namespace Fantasy_Kingdoms_Battle
                 c.CalcDaysExecutingInActions();
         }
 
+        internal double CoefficientExecuting(TypeCreating typeCreating)
+        {
+            return 1;
+        }
+
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
     }
 

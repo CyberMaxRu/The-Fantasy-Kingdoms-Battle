@@ -51,8 +51,8 @@ namespace Fantasy_Kingdoms_Battle
         // Подраздел "Стоимость"
         private readonly VCLabel lblChapterCost;
         private readonly VCLabelValue lblCostGold;
-        private readonly VCLabelValue lblCostPoint;
-        private readonly VCLabelValue lblDaysExecuting;
+        private readonly VCLabelValue lblBuilders;
+        private readonly VCLabelValue lblTimeExecuting;
         private readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
 
         // Подраздел "Требуется"
@@ -162,11 +162,11 @@ namespace Fantasy_Kingdoms_Battle
             lblCostGold = CreateLabelValue(4);
             lblCostGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
 
-            lblCostPoint = CreateLabelValue(4);
-            lblCostPoint.Image.ImageIndex = FormMain.GUI_16_BUILDER;
+            lblBuilders = CreateLabelValue(4);
+            lblBuilders.Image.ImageIndex = FormMain.GUI_16_BUILDER;
 
-            lblDaysExecuting = CreateLabelValue(4);
-            lblDaysExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
+            lblTimeExecuting = CreateLabelValue(4);
+            lblTimeExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
 
             lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Требуется:");
             lblTextForRequirement.Width = widthControl;
@@ -318,8 +318,8 @@ namespace Fantasy_Kingdoms_Battle
             //
             lblChapterCost.Visible = false;
             lblCostGold.Visible = false;
-            lblCostPoint.Visible = false;
-            lblDaysExecuting.Visible = false;
+            lblBuilders.Visible = false;
+            lblTimeExecuting.Visible = false;
             foreach (VCLabel l in listCostResources)
                 l.Visible = false;
 
@@ -728,10 +728,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources)
         {
-            AddStep12CostExecuting(nameExecuting, costResources, 0, true, 0, null);
+            AddStep12CostExecuting(nameExecuting, costResources, 0, 0, null);
         }
 
-        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int constructionPoint, bool isConstructionPoints, int daysCreating, List<TextRequirement> requirement)
+        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int time, int builders, List<TextRequirement> requirement)
         {
             if (costResources != null)
             {
@@ -751,22 +751,21 @@ namespace Fantasy_Kingdoms_Battle
                 lblCostGold.Color = ColorRequirements(Player.BaseResources.Gold >= costResources.Gold);
                 lblCostGold.Visible = true;
 
-                lblCostPoint.ShiftY = nextTop;
-                if (constructionPoint > 0)
+                lblBuilders.ShiftY = nextTop;
+                if (builders > 0)
                 {
                     //lblBuilders.Color = ColorRequirements(constructionPoint);
-                    lblCostPoint.Text = constructionPoint.ToString();
-                    lblCostPoint.Visible = true;
-                    lblCostPoint.Image.ImageIndex = isConstructionPoints ? FormMain.GUI_16_BUILDER : FormMain.GUI_16_RESEARCH_POINTS;
-                    AdjustCell(lblCostPoint, lblCostGold, FormMain.Config.GridSize, nextTop);
+                    lblBuilders.Text = builders.ToString();
+                    lblBuilders.Visible = true;
+                    AdjustCell(lblBuilders, lblCostGold, FormMain.Config.GridSize, nextTop);
                 }
 
-                if (daysCreating > 0)
+                if (time > 0)
                 {
-                    lblDaysExecuting.ShiftY = nextTop;
-                    lblDaysExecuting.Text = daysCreating.ToString();
-                    lblDaysExecuting.Visible = true;
-                    AdjustCell(lblDaysExecuting, lblCostPoint, FormMain.Config.GridSize, nextTop);
+                    lblTimeExecuting.ShiftY = nextTop;
+                    lblTimeExecuting.Text = time.ToString();
+                    lblTimeExecuting.Visible = true;
+                    AdjustCell(lblTimeExecuting, lblBuilders, FormMain.Config.GridSize, nextTop);
                 }
 
                 nextTop = lblCostGold.NextTop();

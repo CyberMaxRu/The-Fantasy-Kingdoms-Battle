@@ -142,7 +142,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Number == 1) && (GetCreating() != null))
             {
-                Assert(GetCreating().ConstructionPoints == Durability.Value, $"ID: {ID}, ConstructionPoints = {GetCreating().ConstructionPoints}, Durability = {Durability}");
+                //Assert(GetCreating().ConstructionPoints == Durability.Value, $"ID: {ID}, ConstructionPoints = {GetCreating().ConstructionPoints}, Durability = {Durability}");
             }
         }
     }

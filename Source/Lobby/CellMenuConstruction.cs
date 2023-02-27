@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.Settings.ShowTypeCellMenu ? GetTextForLevel() : "";
         }
 
-        protected override int GetDaysExecuting()
+        protected override int GetTimeExecuting()
         {
             if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
                 return -1;
@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
                 return -1;
 
             //Assert(ExecutingAction.RestDaysExecuting > 0);
-            return ExecutingAction.RestDaysExecuting;
+            return ExecutingAction.RestTimeExecuting;
         }
 
         protected virtual string GetTextForLevel() => "";
@@ -193,9 +193,9 @@ namespace Fantasy_Kingdoms_Battle
                 else
                 {
                     if (ExecutingAction.IsConstructionPoints)
-                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.Player.ConstructionPoints, true);
+                        ExecutingAction.RestTimeExecuting = Construction.CalcTimeForExecuting(ExecutingAction.Points, Construction.Player.ConstructionPoints, true);
                     else
-                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.ResearchPoints, false);
+                        ExecutingAction.RestTimeExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.ResearchPoints, false);
                 }
 
                 //Assert(ExecutingAction.RestDaysExecuting > 0);
@@ -252,10 +252,10 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsConstructionPoints { get; }// Используются очки строительства иначе очки действий
         internal bool InQueue { get; set; }// Действие в очереди
         internal int Points { get; }// Сколько очков нужно для выполнения действия
-        internal int AppliedPoints { get; set; }// Сколько очков было применено
+        internal  AppliedPoints { get; set; }// Сколько очков было применено
         internal int CurrentPoints { get; set; }// Сколько очков будет примено на текущем ходу
         internal int NeedPoints { get => Points - AppliedPoints; }// Сколько очков осталось
-        internal int RestDaysExecuting { get; set; }// Сколько дней осталось до конца выполнения действия
+        internal int RestTimeExecuting { get; set; }// Сколько секунд осталось до конца выполнения действия
     }
 
 
@@ -277,7 +277,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Entity.SmallEntity.Description);
             //PanelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue, ExecutingAction.NeedPoints, false, ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue, ExecutingAction.RestTimeExecuting, 0, GetTextRequirements());
         }
 
         internal override void UpdatePurchase()
@@ -352,7 +352,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue, ExecutingAction.NeedPoints, false, ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Исследовать", PurchaseValue, ExecutingAction.RestTimeExecuting, 0, GetTextRequirements());
         }
 
         internal override void UpdatePurchase()
@@ -461,7 +461,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep8Greatness(TypeConstruction.Levels[1].GreatnessByConstruction, TypeConstruction.Levels[1].GreatnessPerDay);
             panelHint.AddStep9PlusBuilders(TypeConstruction.Levels[1].AddConstructionPoints);
             //panelHint.AddStep10DaysBuilding(-1, );
-            panelHint.AddStep12CostExecuting("Построить", TypeConstruction.Levels[1].GetCreating().CostResources, TypeConstruction.Levels[1].GetCreating().CalcConstructionPoints(Construction.Player), true, ExecutingAction.RestDaysExecuting, Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
+            panelHint.AddStep12CostExecuting("Построить", TypeConstruction.Levels[1].GetCreating().CostResources, TypeConstruction.Levels[1].GetCreating().Time, TypeConstruction.Levels[1].GetCreating().Builders, Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
         }
     }
 
@@ -555,7 +555,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
-            panelHint.AddStep12CostExecuting(Descriptor.Number == 1 ? "Построить" : $"Улучшить до {Descriptor.Number} ур.", Descriptor.GetCreating().CostResources, Descriptor.GetCreating().CalcConstructionPoints(Construction.Player), true, ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting(Descriptor.Number == 1 ? "Построить" : $"Улучшить до {Descriptor.Number} ур.", Descriptor.GetCreating().CostResources, Descriptor.GetCreating().CalcEstimatedTime(Construction.Player), Descriptor.GetCreating().Builders, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
@@ -604,13 +604,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта
 
-        protected override int GetDaysExecuting()
+        protected override int GetTimeExecuting()
         {
             if (ExecutingAction != null)
             {
                 //Assert(ExecutingAction.RestDaysExecuting > 0);
 
-                return ExecutingAction.RestDaysExecuting;
+                return ExecutingAction.RestTimeExecuting;
                 /*if (Construction.DaysConstructLeft == 0)
                     return "";
                 else
@@ -823,7 +823,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9Interest(ConstructionEvent.Interest, false);
             panelHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds, false);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Подготовить мероприятие", PurchaseValue, ExecutingAction.NeedPoints, false,ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Подготовить мероприятие", PurchaseValue, ExecutingAction.RestTimeExecuting, 0, GetTextRequirements());
         }
 
         internal override void PrepareNewDay()
@@ -885,7 +885,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9Interest(Entity.ModifyInterest, true);
             panelHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Построить", PurchaseValue, ExecutingAction.NeedPoints, true, ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Построить", PurchaseValue, ExecutingAction.RestTimeExecuting, 0, GetTextRequirements());
         }
     }
 
@@ -928,7 +928,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Entity.Description);
             //CreatedEntity.Creating.panelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Улучшение", PurchaseValue, ExecutingAction.NeedPoints, false, ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Улучшение", PurchaseValue, ExecutingAction.RestTimeExecuting, 0, GetTextRequirements());
         }
     }
 
@@ -995,7 +995,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep9Interest(ConstructionTournament.Interest, false);
             panelHint.AddStep9ListNeeds(ConstructionTournament.ListNeeds, false);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Подготовить турнир", PurchaseValue, ExecutingAction.NeedPoints, false, ExecutingAction.RestDaysExecuting, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Подготовить турнир", PurchaseValue, ExecutingAction.RestTimeExecuting, 0, GetTextRequirements());
         }
     }
 

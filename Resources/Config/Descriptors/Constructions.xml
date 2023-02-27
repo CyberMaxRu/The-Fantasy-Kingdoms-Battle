@@ -21,7 +21,7 @@
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
-          <ConstructionPoints>400</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>550</Gold>
           </Cost>
@@ -37,7 +37,7 @@
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>25</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -60,7 +60,7 @@
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>25</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -75,7 +75,7 @@
         <ID>ProductCloseCombatCourse</ID>
         <Entity>CloseCombatCourse</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -92,7 +92,7 @@
         <ID>ProductWarriorImpAttack</ID>
         <Entity>WarriorImpAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -116,7 +116,7 @@
         <ID>ProductWarriorMaimAttack</ID>
         <Entity>WarriorMaimAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -140,7 +140,7 @@
         <ID>ProductWarriorResistanceBuff</ID>
         <Entity>WarriorResistanceBuff</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -215,7 +215,7 @@
         <Number>1</Number>
         <Durability>1500</Durability>
         <Creating>
-          <ConstructionPoints>1500</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -228,7 +228,7 @@
         <Number>2</Number>
         <Durability>2350</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -248,7 +248,7 @@
         <Number>3</Number>
         <Durability>3400</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -284,7 +284,7 @@
         <ID>ProductFittingClothes</ID>
         <Entity>FittingClothes</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -301,7 +301,7 @@
         <ID>ProductHunterImpAttack</ID>
         <Entity>HunterImpAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -325,7 +325,7 @@
         <ID>ProductHunterStingShotAttack</ID>
         <Entity>HunterStingShotAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -349,7 +349,7 @@
         <ID>ProductHunterManaburnAttack</ID>
         <Entity>HunterManaburnAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -373,7 +373,7 @@
         <ID>ProductEyeOfEagle</ID>
         <Entity>EyeOfEagle</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -445,7 +445,7 @@
         <Number>1</Number>
         <Durability>3300</Durability>
         <Creating>
-          <ConstructionPoints>3300</ConstructionPoints>
+          <Time>40</Time>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -461,7 +461,7 @@
         <Number>2</Number>
         <Durability>6450</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -484,7 +484,7 @@
         <Number>3</Number>
         <Durability>9700</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -501,7 +501,7 @@
         <ID>ProductHolyWater</ID>
         <Entity>HolyWater</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -518,7 +518,7 @@
         <ID>ProductHolyAttack</ID>
         <Entity>HolyAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -542,7 +542,7 @@
         <ID>ProductClericManaRegenBuff</ID>
         <Entity>ClericManaRegenBuff</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -566,7 +566,7 @@
         <ID>ProductClericKnockbackAttack</ID>
         <Entity>ClericKnockbackAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -641,7 +641,7 @@
         <Number>1</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>400</ConstructionPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -661,7 +661,7 @@
         <Number>2</Number>
         <Durability>450</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -686,7 +686,7 @@
         <Number>3</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -711,7 +711,7 @@
         <Durability>100</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>100</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -730,7 +730,7 @@
         <ID>ProductEnchantWeaponAttack</ID>
         <Entity>EnchantWeaponAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -747,7 +747,7 @@
         <ID>ProductMageFireballAttack</ID>
         <Entity>MageFireballAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -764,7 +764,7 @@
         <ID>ProductMageFreezeAttack</ID>
         <Entity>MageFreezeAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -788,7 +788,7 @@
         <ID>ProductMageGuardianWind</ID>
         <Entity>MageGuardianWind</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
@@ -812,7 +812,7 @@
         <ID>ProductMageFirestormAttack</ID>
         <Entity>MageFirestormAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -895,7 +895,7 @@
         <Durability>800</Durability>
         <Number>1</Number>
         <Creating>
-          <ConstructionPoints>800</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -915,7 +915,7 @@
         <Number>2</Number>
         <Durability>1000</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -940,7 +940,7 @@
         <Number>3</Number>
         <Durability>1200</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -969,7 +969,7 @@
         <ImageIndex>227</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -981,7 +981,7 @@
         <ID>ProductElixirSpeed</ID>
         <Entity>ElixirSpeed</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -998,7 +998,7 @@
         <ID>ProductElfImpAttack</ID>
         <Entity>ElfImpAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -1022,7 +1022,7 @@
         <ID>ProductElfWine</ID>
         <Entity>ElfWine</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -1046,7 +1046,7 @@
         <ID>ProductElfBuff</ID>
         <Entity>ElfBuff</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -1070,7 +1070,7 @@
         <ID>ProductElfMagicArrow</ID>
         <Entity>ElfMagicArrow</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -1153,7 +1153,7 @@
         <Number>1</Number>
         <Durability>1200</Durability>
         <Creating>
-          <ConstructionPoints>1200</ConstructionPoints>
+          <Time>90</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1181,7 +1181,7 @@
         <Number>2</Number>
         <Durability>1400</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1210,7 +1210,7 @@
         <Number>3</Number>
         <Durability>1600</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -1244,7 +1244,7 @@
         <Durability>500</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>1000</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1263,7 +1263,7 @@
         <ID>ProductSimpleRunes</ID>
         <Entity>SimpleRunes</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -1280,7 +1280,7 @@
         <ID>ProductDwarfImpAttack</ID>
         <Entity>DwarfImpAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -1304,7 +1304,7 @@
         <ID>ProductDwarfBerserkBuff</ID>
         <Entity>DwarfBerserkBuff</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
@@ -1328,7 +1328,7 @@
         <ID>ProductDwarfBeer</ID>
         <Entity>DwarfBeer</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -1357,7 +1357,7 @@
         <ID>ProductDwarfAntiBuildingAttack</ID>
         <Entity>DwarfAntiBuildingAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -1440,7 +1440,7 @@
         <Number>1</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1453,7 +1453,7 @@
         <Number>2</Number>
         <Durability>600</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>10</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1473,7 +1473,7 @@
         <Number>3</Number>
         <Durability>700</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>10</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1516,7 +1516,7 @@
         <Number>1</Number>
         <Durability>250</Durability>
         <Creating>
-          <ConstructionPoints>250</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1536,7 +1536,7 @@
         <Number>2</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>10</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1556,7 +1556,7 @@
         <Number>3</Number>
         <Durability>350</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>10</Time>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1570,7 +1570,7 @@
         <ID>ProductEnchantWeaponPoison</ID>
         <Entity>EnchantWeaponPoison</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -1587,7 +1587,7 @@
         <ID>ProductRoguePoisonAttack</ID>
         <Entity>RoguePoisonAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -1604,7 +1604,7 @@
         <ID>ProductRogueImpAttack</ID>
         <Entity>RogueImpAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -1628,7 +1628,7 @@
         <ID>ProductRogueKickAttack</ID>
         <Entity>RogueKickAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -1652,7 +1652,7 @@
         <ID>ProductStunAttack</ID>
         <Entity>StunAttack</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -1731,7 +1731,7 @@
         <Durability>2000</Durability>
         <Number>1</Number>
         <Creating>
-          <ConstructionPoints>2000</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>0</Gold>
           </Cost>
@@ -1762,7 +1762,7 @@
         <Number>2</Number>
         <Durability>3000</Durability>
         <Creating>
-          <ConstructionPoints>4000</ConstructionPoints>
+          <Time>120</Time>
           <Cost>
             <Gold>2000</Gold>
             <Wood>200</Wood>
@@ -1818,7 +1818,7 @@
         <Number>3</Number>
         <Durability>4000</Durability>
         <Creating>
-          <ConstructionPoints>4000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>4000</Gold>
             <Brick>750</Brick>
@@ -1877,7 +1877,7 @@
         <Durability>200</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>5</Time>
           <Cost>
             <Gold>5000</Gold>
           </Cost>
@@ -1998,7 +1998,7 @@
         <Number>1</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2034,7 +2034,7 @@
         <Number>1</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2048,7 +2048,7 @@
         <Number>2</Number>
         <Durability>700</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -2069,7 +2069,7 @@
         <Number>3</Number>
         <Durability>900</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2134,7 +2134,7 @@
         <ID>ProductApple</ID>
         <Entity>Apple</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2151,7 +2151,7 @@
         <ID>ProductWheat</ID>
         <Entity>Wheat</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2168,7 +2168,7 @@
         <ID>ProductMeat</ID>
         <Entity>Meat</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
@@ -2185,7 +2185,7 @@
         <ID>ProductGingerRoot</ID>
         <Entity>GingerRoot</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2209,7 +2209,7 @@
         <ID>ProductAmanita</ID>
         <Entity>Amanita</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2233,7 +2233,7 @@
         <ID>ProductCornedBeef</ID>
         <Entity>CornedBeef</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2315,7 +2315,7 @@
         <Number>1</Number>
         <Durability>800</Durability>
         <Creating>
-          <ConstructionPoints>800</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2329,7 +2329,7 @@
         <Number>2</Number>
         <Durability>1000</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2350,7 +2350,7 @@
         <Number>3</Number>
         <Durability>1250</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -2371,7 +2371,7 @@
         <Number>4</Number>
         <Durability>1500</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2445,7 +2445,7 @@
         <Description>- Увеличивает доход от крестьянских хозяйств.</Description>
         <ImageIndex>237</ImageIndex>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2558,7 +2558,7 @@
         <ID>ProductGroupWeaponMelee1</ID>
         <Entity>GroupWeaponMelee1</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2647,7 +2647,7 @@
         <ID>ProductGroupArmourLeather1</ID>
         <Entity>GroupArmourLeather1</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2834,7 +2834,7 @@
         <Number>1</Number>
         <Durability>250</Durability>
         <Creating>
-          <ConstructionPoints>250</ConstructionPoints>
+          <Time>25</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2859,7 +2859,7 @@
         <ID>LevelTavern2</ID>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2891,7 +2891,7 @@
         <Number>3</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -2971,7 +2971,7 @@
         <ID>ProductTavernSoup</ID>
         <Entity>TavernSoup</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2988,7 +2988,7 @@
         <ID>ProductTavernMeat</ID>
         <Entity>TavernMeat</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -3017,7 +3017,7 @@
         <ID>ProductTavernBeer</ID>
         <Entity>TavernBeer</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -3092,7 +3092,7 @@
         <Number>1</Number>
         <Durability>800</Durability>
         <Creating>
-          <ConstructionPoints>800</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3113,7 +3113,7 @@
         <Number>2</Number>
         <Durability>900</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -3127,7 +3127,7 @@
         <Number>3</Number>
         <Durability>1000</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -3142,7 +3142,7 @@
         <ID>ProductAmuletOfRegeneration</ID>
         <Entity>AmuletOfRegeneration</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3159,7 +3159,7 @@
         <ID>ProductRingOfProtection</ID>
         <Entity>RingOfProtection</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -3183,7 +3183,7 @@
         <ID>ProductImpAmuletOfProtection</ID>
         <Entity>ImpAmuletOfProtection</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3207,7 +3207,7 @@
         <ID>ProductQuiver</ID>
         <Entity>Quiver</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3224,7 +3224,7 @@
         <ID>ProductSmallBag</ID>
         <Entity>SmallBag</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -3248,7 +3248,7 @@
         <ID>ProductGroupWeaponRange1</ID>
         <Entity>GroupWeaponRange1</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3337,7 +3337,7 @@
         <ID>ProductGroupArmourMage1</ID>
         <Entity>GroupArmourMage1</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3426,7 +3426,7 @@
         <ID>ProductGroupWeaponMage1</ID>
         <Entity>GroupWeaponMage1</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3613,7 +3613,7 @@
         <Number>1</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>50</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3627,7 +3627,7 @@
         <Number>2</Number>
         <Durability>550</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3641,7 +3641,7 @@
         <Number>3</Number>
         <Durability>600</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3656,7 +3656,7 @@
         <ID>ProductPotionOfHealth</ID>
         <Entity>PotionOfHealth</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>150</Gold>
           </Cost>
@@ -3673,7 +3673,7 @@
         <ID>ProductPotionOfMana</ID>
         <Entity>PotionOfMana</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -3690,7 +3690,7 @@
         <ID>ProductPotionOfCheerfulness</ID>
         <Entity>PotionOfCheerfulness</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -3707,7 +3707,7 @@
         <ID>ProductElixirMeleeProt</ID>
         <Entity>ElixirMeleeProt</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3731,7 +3731,7 @@
         <ID>ProductElixirRangeProt</ID>
         <Entity>ElixirRangeProt</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3755,7 +3755,7 @@
         <ID>ProductElixirMagicProt</ID>
         <Entity>ElixirMagicProt</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3779,7 +3779,7 @@
         <ID>ProductElixirStrength</ID>
         <Entity>ElixirStrength</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3803,7 +3803,7 @@
         <ID>ProductElixirAccuracy</ID>
         <Entity>ElixirAccuracy</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3827,7 +3827,7 @@
         <ID>ProductElixirWisdom</ID>
         <Entity>ElixirWisdom</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3917,7 +3917,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>120</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -3942,7 +3942,7 @@
         <Number>2</Number>
         <Durability>250</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3967,7 +3967,7 @@
         <Number>3</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3996,7 +3996,7 @@
         <ImageIndex>215</ImageIndex>
         <Durability>150</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>10</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4017,7 +4017,7 @@
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4044,7 +4044,7 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4071,7 +4071,7 @@
         <Durability>300</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>40</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4098,7 +4098,7 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -4175,7 +4175,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4199,7 +4199,7 @@
         <Number>2</Number>
         <Durability>250</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4230,7 +4230,7 @@
         <Number>3</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4266,7 +4266,7 @@
         <Durability>200</Durability>
         <Interest>5</Interest>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4285,7 +4285,7 @@
         <Durability>200</Durability>
         <Interest>10</Interest>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4311,7 +4311,7 @@
         <Durability>400</Durability>
         <Interest>15</Interest>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4335,7 +4335,7 @@
         <ID>ProductLuckyCoins</ID>
         <Entity>LuckyCoins</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4359,7 +4359,7 @@
         <ID>ProductHerald</ID>
         <Entity>Herald</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4433,7 +4433,7 @@
         <Number>1</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4446,7 +4446,7 @@
         <Number>2</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>400</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4484,7 +4484,7 @@
         <Number>1</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>500</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4497,7 +4497,7 @@
         <Number>2</Number>
         <Durability>600</Durability>
         <Creating>
-          <ConstructionPoints>400</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4535,7 +4535,7 @@
         <Number>1</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4559,7 +4559,7 @@
         <Number>2</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4583,7 +4583,7 @@
         <Number>3</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4613,7 +4613,7 @@
         <Interest>10</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4635,7 +4635,7 @@
         <Interest>10</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4664,7 +4664,7 @@
         <Interest>10</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4730,7 +4730,7 @@
         <Number>1</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>400</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4741,7 +4741,7 @@
         <Number>2</Number>
         <Durability>450</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -4752,7 +4752,7 @@
         <Number>3</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>5000</Gold>
           </Cost>
@@ -4764,7 +4764,7 @@
         <ID>ProductHospitalHerbs</ID>
         <Entity>HospitalHerbs</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4781,7 +4781,7 @@
         <ID>ProductHospitalHealthPotion</ID>
         <Entity>HospitalHealthPotion</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4798,7 +4798,7 @@
         <ID>ProductElixirAntipoison</ID>
         <Entity>ElixirAntipoison</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4822,7 +4822,7 @@
         <ID>ProductElixirRegeneration</ID>
         <Entity>ElixirRegeneration</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4846,7 +4846,7 @@
         <ID>ProductHospitalPowerTherapy</ID>
         <Entity>HospitalPowerTherapy</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -4920,7 +4920,7 @@
         <Number>1</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4932,7 +4932,7 @@
         <Number>2</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>10</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -4973,7 +4973,7 @@
         <Number>1</Number>
         <Durability>100</Durability>
         <Creating>
-          <ConstructionPoints>100</ConstructionPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4998,7 +4998,7 @@
         <Number>2</Number>
         <Durability>150</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5023,7 +5023,7 @@
         <Number>3</Number>
         <Durability>200</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>15</Time>
           <Cost>          
             <Gold>500</Gold>
           </Cost>
@@ -5054,7 +5054,7 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5081,7 +5081,7 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5101,7 +5101,7 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>25</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -5248,7 +5248,7 @@
         <Number>1</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>90</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -5262,7 +5262,7 @@
         <Number>2</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5283,7 +5283,7 @@
         <Number>3</Number>
         <Durability>500</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -5310,7 +5310,7 @@
         <ID>ProductWolfInMenagerie</ID>
         <Entity>WolfInMenagerie</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5334,7 +5334,7 @@
         <ID>ProductBearInMenagerie</ID>
         <Entity>BearInMenagerie</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5363,7 +5363,7 @@
         <ID>ProductSerpentInMenagerie</ID>
         <Entity>SerpentInMenagerie</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
@@ -5392,7 +5392,7 @@
         <ID>ProductDragonInMenagerie</ID>
         <Entity>DragonInMenagerie</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>5000</Gold>
           </Cost>
@@ -5467,7 +5467,7 @@
         <Number>1</Number>
         <Durability>300</Durability>
         <Creating>
-          <ConstructionPoints>300</ConstructionPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5492,7 +5492,7 @@
         <Number>2</Number>
         <Durability>350</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -5524,7 +5524,7 @@
         <Number>3</Number>
         <Durability>400</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5560,7 +5560,7 @@
           <Gold>50</Gold>
         </IncomeResources>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5580,7 +5580,7 @@
           <Gold>50</Gold>
         </IncomeResources>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5607,7 +5607,7 @@
           <Gold>100</Gold>
         </IncomeResources>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5636,7 +5636,7 @@
         <ID>ProductPlayingCards</ID>
         <Entity>PlayingCards</Entity>
         <Creating>
-          <ResearchPoints>100</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -5709,7 +5709,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5757,7 +5757,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5805,7 +5805,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5853,7 +5853,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5901,7 +5901,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5949,7 +5949,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5997,7 +5997,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -6045,7 +6045,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -6093,7 +6093,7 @@
         <Number>1</Number>
         <Durability>5000</Durability>
         <Creating>
-          <ConstructionPoints>5000</ConstructionPoints>
+          <Time>180</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -6835,7 +6835,7 @@
         <Number>1</Number>
         <Durability>100</Durability>
         <Creating>
-          <ConstructionPoints>100</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6889,7 +6889,7 @@
         <Number>1</Number>
         <Durability>100</Durability>
         <Creating>
-          <ConstructionPoints>100</ConstructionPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6943,7 +6943,7 @@
         <Number>1</Number>
         <Durability>250</Durability>
         <Creating>
-          <ConstructionPoints>250</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6997,7 +6997,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -7051,7 +7051,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -7080,7 +7080,7 @@
         <Number>1</Number>
         <Durability>1000</Durability>
         <Creating>
-          <ConstructionPoints>1000</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -7511,7 +7511,7 @@
         <Number>1</Number>
         <Durability>2000</Durability>
         <Creating>
-          <ConstructionPoints>2000</ConstructionPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -7537,7 +7537,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
-          <ConstructionPoints>200</ConstructionPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>

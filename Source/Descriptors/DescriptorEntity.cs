@@ -24,5 +24,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Uri UriSoundSelect { get; }// Проигрываемый звук при выборе сущности
         internal abstract string GetTypeEntity();
+        internal abstract 
     }
 }

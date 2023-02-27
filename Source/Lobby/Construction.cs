@@ -1693,7 +1693,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(!cmc.ExecutingAction.InQueue);
 
             cmc.ExecutingAction.InQueue = true;
-            cmc.ExecutingAction.RestDaysExecuting = 0;
+            cmc.ExecutingAction.RestTimeExecuting = 0;
 
             QueueExecuting.Add(cmc);
             Program.formMain.layerGame.UpdateMenu();
@@ -1752,7 +1752,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Player.UsedConstructionPoints += cmc.ExecutingAction.NeedPoints;
-                cmc.ExecutingAction.RestDaysExecuting = CalcDaysForExecuting(Player.UsedConstructionPoints, Player.ConstructionPoints, true);
+                // Здесь надо переделать через прогресс прочности сооружения
+                cmc.ExecutingAction.RestTimeExecuting = CalcTimeForExecuting(cmc.ExecutingAction.AppliedPoints Points Player.UsedConstructionPoints, Player.ConstructionPoints, true);
 
                 // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
                 /*if (Level == 0)
@@ -1849,19 +1850,6 @@ namespace Fantasy_Kingdoms_Battle
 
             //cmc.ExecutingAction.InQueue = true;
             cmc.InQueueChanged();
-        }
-
-        internal int CalcDaysForExecuting(int applyPoints, int freePoints, bool isConstructionPoints)
-        {
-            return 1;
-            if (isConstructionPoints && Player.CheatingInstantlyBuilding)
-                return 0;
-            if (!isConstructionPoints && Player.CheatingInstantlyResearch)
-                return 0;
-
-            int d = applyPoints / freePoints + (applyPoints % freePoints == 0 ? 0 : 1);
-            Assert(d > 0);
-            return d;
         }
 
         internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
@@ -1966,6 +1954,31 @@ namespace Fantasy_Kingdoms_Battle
                 if (CurrentDurability.Value > MaxDurability.Value)
                     CurrentDurability = MaxDurability;
             }
+        }
+
+        internal int CalcTimeForExecuting(Integer1000 progress, int max, int fullTime, TypeCreating typeCreating)
+        {
+            Assert(progress.Value < max * 1000);
+
+            // Сначала вычисляем, сколько очков прогресса выполняется за 1 секунду
+            double perSecond = max / fullTime;
+            int time = (int)((max - progress.AsInteger) / perSecond);
+
+            // Если значение получилось меньше 1, то ставим в 1, чтобы продолжить показывать оставшуюся 1 секунду
+            if (time == 0)
+                time = 1;
+
+            return time;
+            /*
+            if (isConstructionPoints && Player.CheatingInstantlyBuilding)
+                return 0;
+            if (!isConstructionPoints && Player.CheatingInstantlyResearch)
+                return 0;
+
+            int d = applyPoints / freePoints + (applyPoints % freePoints == 0 ? 0 : 1);
+            Assert(d > 0);
+            return d;
+            */
         }
 
         private int ConstructionPointPerTick()

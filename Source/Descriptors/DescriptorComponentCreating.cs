@@ -1,41 +1,52 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using static Fantasy_Kingdoms_Battle.Utils;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс описателя с информацией о создании сущности
+    internal enum TypeCreating { Building, Research, Hire };
+
     internal sealed class DescriptorComponentCreating : Descriptor
     {
         public DescriptorComponentCreating(DescriptorWithID entity, XmlNode n) : base()
         {
             Entity = entity;
-            ConstructionPoints = GetInteger(n, "ConstructionPoints") * 1000;
-            ResearchPoints = GetInteger(n, "ResearchPoints");
+            Time = new Integer1000(GetIntegerNotNull(n, "Time"));
+            Builders = GetInteger(n, "Builders");
             CostResources = new ListBaseResources(n.SelectSingleNode("Cost"));
             Requirements = new ListDescriptorRequirements(entity, n.SelectSingleNode("Requirements"));
 
-            Assert(ConstructionPoints >= 0, $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}");
-            Assert(ResearchPoints >= 0, $"ID: {entity.ID}, ResearchPoints: {ResearchPoints}");
-            Assert(ResearchPoints <= FormMain.Config.DefaultResearchPoints * 50, $"ID: {entity.ID}, ResearchPoints: {ResearchPoints}");
-
+            Assert(Time.AsInteger > 0, $"ID: {entity.ID}, Time: {Time}");
+            Assert(Builders >= 0, $"ID: {entity.ID}, Builders: {Builders}");
 
             if (Entity is DescriptorCreature)
-            { 
+            {
                 //Assert((ConstructionPoints == 0) && (ResearchPoints == 0), $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}, ResearchPoints: {ResearchPoints}");
             }
+
+            if (Entity is DescriptorConstruction)
+                TypeCreating = TypeCreating.Building;
+            else if (Entity is DescriptorAbility)
+                TypeCreating = TypeCreating.Research;
+            else if (Entity is DescriptorCreature)
+                TypeCreating = TypeCreating.Hire;
             else
-            {
-                Assert(((ConstructionPoints > 0) && (ResearchPoints == 0)) || ((ConstructionPoints == 0) && (ResearchPoints > 0)), $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}, ResearchPoints: {ResearchPoints}");
-            }
+                DoException("Неизвестный тип создаваемой сущности: " + Entity.ToString());
         }
 
         internal DescriptorWithID Entity { get; }
-        internal int ConstructionPoints { get; }// Требуемые очки строительства
-        internal int ResearchPoints { get; }// Требуемые очки исследования
-        internal int CalcConstructionPoints(Player p) => ConstructionPoints;// Количество требуемых очков строительства
+        internal TypeCreating TypeCreating { get; }// Тип создаваемой сущности
+        internal Integer1000 Time { get; }//Время создания (в секундах)
+        internal int Builders { get; }//Количество одновременно требуемых строителей
         internal ListBaseResources CostResources { get; }// Стоимость (в базовых ресурсах)
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
+        internal int CalcEstimatedTime(Player p)
+        {
+            double coef = p.CoefficientExecuting(TypeCreating);
+            return (int)Math.Round(Time.AsInteger * coef);
+        }
 
         internal override void TuneLinks()
         {
