@@ -151,26 +151,19 @@ namespace Fantasy_Kingdoms_Battle
 
             DurationFrame = 1_000 / FramesPerSecond;
 
-            HoursInDay = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/HoursInDay").InnerText);
-            Debug.Assert(HoursInDay >= 1);
-            Debug.Assert(HoursInDay <= 50);
-            HoursInNight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/HoursInNight").InnerText);
-            Debug.Assert(HoursInNight >= 1);
-            Debug.Assert(HoursInNight <= 50);
-            HoursInTurn = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/HoursInTurn").InnerText);
-            Debug.Assert(HoursInTurn == HoursInDay + HoursInNight);
+            SecondsInDay = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/SecondsInDay").InnerText);
+            Debug.Assert(SecondsInDay >= 0);
+            Debug.Assert(SecondsInDay <= 60);
+            SecondsInNight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/SecondsInNight").InnerText);
+            Debug.Assert(SecondsInNight >= 0);
+            Debug.Assert(SecondsInNight <= 60);
+            SecondsInTurn = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/SecondsInTurn").InnerText);
+            Debug.Assert(SecondsInTurn == SecondsInDay + SecondsInNight);
+            Debug.Assert(SecondsInTurn > 0);
 
-            TicksInRealSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInRealSecond").InnerText);
-            Debug.Assert(TicksInRealSecond >= 1);
-            Debug.Assert(TicksInRealSecond <= 200);
-            TicksInHour = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInHour").InnerText);
-            Debug.Assert(TicksInRealSecond >= 1);
-            Debug.Assert(TicksInRealSecond <= 200);
-
-            ConstructionPointsPerHour = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/ConstructionPointsPerHour").InnerText);
-            ConstructionPointsPerHour = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/ConstructionPointsPerHour").InnerText);
-            Debug.Assert(ConstructionPointsPerHour >= 1);
-            Debug.Assert(ConstructionPointsPerHour <= 1_000);
+            TicksInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInSecond").InnerText);
+            Debug.Assert(TicksInSecond >= 10);
+            Debug.Assert(TicksInSecond <= 200);
 
             // MainMenu
             MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
@@ -384,12 +377,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int FramesPerSecond { get; set; }// Отрисовка количества кадров в секунду
         internal int DurationFrame { get; set; }// Длительность кадра в миллисекундах
-        internal int HoursInTurn { get; set; }// Количество игровых часов в одном ходу
-        internal int HoursInDay { get; set; }// Количество дневных часов 
-        internal int HoursInNight { get; set; }// Количество ночных часов
-        internal int TicksInRealSecond { get; set; }// Количество тиков в реальной секунде
-        internal int TicksInHour { get; set; }// Количество тиков в игровом часе
-        internal int ConstructionPointsPerHour { get; set; }// Количество очков строительства в час
+        internal int SecondsInTurn { get; set; }// Сколько реальных секунд длятся одни игровые сутки
+        internal int SecondsInDay { get; set; }// Сколько реальных секунд длится один игровой день
+        internal int SecondsInNight { get; set; }// Сколько реальных секунд длится одна игровая ночь
+        internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
 
         internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
         internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера

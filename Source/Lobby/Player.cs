@@ -379,6 +379,12 @@ namespace Fantasy_Kingdoms_Battle
         // Ход любого игрока. Сначала делаем все расчеты тика, а потом включается ИИ или сам игрок
         internal virtual void DoTick()
         {
+            // Проходим по очереди выполнения и делаем прогресс
+            foreach (CellMenuConstruction cmc in queueExecuting)
+            {
+                cmc.DoProgressExecutingAction();
+            }
+
             foreach (Construction c in Constructions)
             {
                 c.DoTick();

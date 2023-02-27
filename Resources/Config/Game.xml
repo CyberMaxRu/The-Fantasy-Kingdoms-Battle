@@ -29,12 +29,10 @@
     <FramesAnimationBanner>30</FramesAnimationBanner>
   </MainMenu>
   <GlobalSettings>
-    <HoursInTurn>24</HoursInTurn>
-    <HoursInDay>16</HoursInDay>
-    <HoursInNight>8</HoursInNight>
-    <TicksInRealSecond>50</TicksInRealSecond>
-    <TicksInHour>150</TicksInHour>
-    <ConstructionPointsPerHour>100</ConstructionPointsPerHour>
+    <SecondsInTurn>45</SecondsInTurn>
+    <SecondsInDay>30</SecondsInDay>
+    <SecondsInNight>15</SecondsInNight>
+    <TicksInSecond>50</TicksInSecond>
     <Construction>
       <DefaultResearchPoints>100</DefaultResearchPoints>
       <MaxLengthQueue>3</MaxLengthQueue>

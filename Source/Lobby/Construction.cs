@@ -1959,23 +1959,19 @@ namespace Fantasy_Kingdoms_Battle
             if (Destroyed)
                 return;
 
-            if (queueExecuting.Count > 0)
+            if (CurrentDurability.Value < MaxDurability.Value)
             {
-
-                if (CurrentDurability.Value < MaxDurability.Value)
-                {
-                    // Увеличиваем прогресс строительства
-                    CurrentDurability.Value += ConstructionPointPerTick();
-                    if (CurrentDurability.Value > MaxDurability.Value)
-                        CurrentDurability = MaxDurability;
-                }
+                // Увеличиваем прогресс строительства
+                CurrentDurability.Value += ConstructionPointPerTick();
+                if (CurrentDurability.Value > MaxDurability.Value)
+                    CurrentDurability = MaxDurability;
             }
         }
 
         private int ConstructionPointPerTick()
         {
-            int cpPerTick = 1000 * FormMain.Config.ConstructionPointsPerHour / FormMain.Config.TicksInHour;
-            return cpPerTick;
+            //int cpPerTick = 1000 * FormMain.Config.ConstructionPointsPerHour / FormMain.Config.TicksInHour;
+            return 0;// cpPerTick;
         }
     }
 }
