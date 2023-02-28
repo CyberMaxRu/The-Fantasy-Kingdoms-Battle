@@ -261,7 +261,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Level == 0)
             {
-                if ((ActionBuildOrLevelUp.ExecutingAction.AppliedPoints == 0) && (ActionBuildOrLevelUp.ExecutingAction.CurrentPoints > 0))
+                if (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks == 0)
                 {
                     MaxDurability.Value = Descriptor.Levels[1].Durability.Value;
                 }
@@ -1589,11 +1589,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
                 {
-                    if ((CurrentDurability.Value == 0) && (ActionBuildOrLevelUp.ExecutingAction.CurrentPoints > 0))
+                    if ((CurrentDurability.Value == 0) && (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0))
                         State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
                     else
                     {
-                        if (ActionBuildOrLevelUp.ExecutingAction.CurrentPoints > 0)
+                        if (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0)
                             State = StateConstruction.Build;// Стройка идет
                         else
                             State = StateConstruction.InQueueBuild;// В очереди на строительство
@@ -1693,23 +1693,33 @@ namespace Fantasy_Kingdoms_Battle
             Assert(!cmc.ExecutingAction.InQueue);
 
             cmc.ExecutingAction.InQueue = true;
-            cmc.ExecutingAction.RestTimeExecuting = 0;
 
             QueueExecuting.Add(cmc);
             Program.formMain.layerGame.UpdateMenu();
 
-            // Если очередь заблокирована, ставим невозможность выполнения и выходм
+            // Если очередь заблокирована, ставим невозможность выполнения и выходим
             if (QueueBlocked)
             {
                 cmc.InQueueChanged();
                 return;
             }
 
+            // Реализация для real-time
+            // По идее все должно быть уже рассчитано. Лишний вызов
+            cmc.UpdatePurchase();// Это может быть какой-нибудь ремонт, который зависит от остатка денег и очков. Пересчитываем расход перед списанием
+            if (Player.CheckRequiredResources(cmc.PurchaseValue))
+            {
+                Player.SpendResource(cmc.PurchaseValue);
+                cmc.InQueueChanged();
+            }
+
+            // Правильная реализация
+            /*
             int expenseCP;
             int expenseRP;
 
-            // Правильная реализация
-            if (cmc.ExecutingAction.IsConstructionPoints)
+              
+             if (cmc.ExecutingAction.IsConstructionPoints)
             {
                 // Если строительство еще не начинали, но очки строительства еще есть, списываем деньги
                 if ((cmc.ExecutingAction.AppliedPoints == 0) && (Player.RestConstructionPoints > 0))
@@ -1754,51 +1764,51 @@ namespace Fantasy_Kingdoms_Battle
                 Player.UsedConstructionPoints += cmc.ExecutingAction.NeedPoints;
                 // Здесь надо переделать через прогресс прочности сооружения
                 cmc.ExecutingAction.RestTimeExecuting = CalcTimeForExecuting(cmc.ExecutingAction.AppliedPoints Points Player.UsedConstructionPoints, Player.ConstructionPoints, true);
+            */
+            // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
+            /*if (Level == 0)
+            {
 
-                // Если ресурсы еще не тратили, пробуем потратить. Возможно, их не хватит
-                /*if (Level == 0)
-                {
-
-                    expenseCP = Math.Min(restCP, cmc.ExecutingAction.NeedPoints);
-                    Debug.Assert(expenseCP > 0);
-                }
-                else
-                {
-                    Assert(InRepair);
-
-                    // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
-                    // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
-                    // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
-                    if (cmc.ExecutingAction.AppliedPoints == 0)
-                        Player.ReturnResource(cmc.PurchaseValue);
-
-                    // Пока что считаем количество требуемого золота по соотношению 1 к 1
-                    expenseCP = Math.Min(Gold, Math.Min(restCP, cmc.ExecutingAction.NeedPoints));
-                    cmc.UpdatePurchase();
-                    Player.SpendResource(cmc.PurchaseValue);
-                }
-
-                // Если ресурсы были потрачены, то тратим очки строительства
-                if (cmc.ExecutingAction.AppliedPoints == 0)
-                {
-                    usedCP += cmc.ExecutingAction.NeedPoints;
-
-                    cmc.ExecutingAction.CurrentPoints = expenseCP;
-
-                    restCP -= expenseCP;
-                }
+                expenseCP = Math.Min(restCP, cmc.ExecutingAction.NeedPoints);
+                Debug.Assert(expenseCP > 0);
             }
             else
             {
-                // Очки строительства закончились
-                // Если были потрачены ресурсы, возвращаем их
+                Assert(InRepair);
+
+                // В случае ремонта, мы тратим столько очков строительства, на сколько у нас хватает денег
+                // Причем деньги тратятся только на текущий ход (вполне может быть, что сооружение будет снова подломано, поэтому чинить надо будет больше)
+                // Поэтому сейчас просто возвращаем все ресурсы, и заново просчитываем
                 if (cmc.ExecutingAction.AppliedPoints == 0)
                     Player.ReturnResource(cmc.PurchaseValue);
 
+                // Пока что считаем количество требуемого золота по соотношению 1 к 1
+                expenseCP = Math.Min(Gold, Math.Min(restCP, cmc.ExecutingAction.NeedPoints));
+                cmc.UpdatePurchase();
+                Player.SpendResource(cmc.PurchaseValue);
+            }
+
+            // Если ресурсы были потрачены, то тратим очки строительства
+            if (cmc.ExecutingAction.AppliedPoints == 0)
+            {
                 usedCP += cmc.ExecutingAction.NeedPoints;
 
-            }*/
+                cmc.ExecutingAction.CurrentPoints = expenseCP;
+
+                restCP -= expenseCP;
             }
+        }
+        else
+        {
+            // Очки строительства закончились
+            // Если были потрачены ресурсы, возвращаем их
+            if (cmc.ExecutingAction.AppliedPoints == 0)
+                Player.ReturnResource(cmc.PurchaseValue);
+
+            usedCP += cmc.ExecutingAction.NeedPoints;
+
+        }*/
+            /*}
             else
             {
                 // Если исследование еще не начинали, но очки исследования еще есть, списываем деньги
@@ -1849,7 +1859,7 @@ namespace Fantasy_Kingdoms_Battle
             //Player.RestConstructionPoints = restCP;
 
             //cmc.ExecutingAction.InQueue = true;
-            cmc.InQueueChanged();
+            cmc.InQueueChanged();*/
         }
 
         internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
@@ -1865,7 +1875,7 @@ namespace Fantasy_Kingdoms_Battle
             if (cmc is CellMenuConstructionLevelUp)
             {
                 //Assert( || InRepair);
-                if ((cmc.ExecutingAction.AppliedPoints > 0) || (cmc.ExecutingAction.CurrentPoints > 0))
+                if (cmc.ExecutingAction.PassedMilliTicks > 0)
                 {
                     //Assert(MaxDurability > 0);
                 }
@@ -1887,15 +1897,10 @@ namespace Fantasy_Kingdoms_Battle
             // Освобождаем потраченные ресурсы, если выполнение действия не началось
             if (forCancel)
             {
-                if (cmc.ExecutingAction.AppliedPoints == 0)
+                if (cmc.ExecutingAction.PassedMilliTicks == 0)
                 {
-                    if (cmc.ExecutingAction.CurrentPoints > 0)
-                        Player.ReturnResource(cmc.PurchaseValue);
+                    Player.ReturnResource(cmc.PurchaseValue);
                 }
-                if (cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
-                    Player.RestConstructionPoints += cmc.ExecutingAction.CurrentPoints;
-                if (!cmc.ExecutingAction.IsConstructionPoints && (cmc.ExecutingAction.CurrentPoints > 0))
-                    RestResearchPoints += cmc.ExecutingAction.CurrentPoints;
             }
 
             if (removeFromList)
@@ -1913,8 +1918,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.layerGame.UpdateMenu();
             }
-
-            cmc.ExecutingAction.CurrentPoints = 0;
         }
 
         internal void CalcPurchasesInActions()
@@ -1924,10 +1927,10 @@ namespace Fantasy_Kingdoms_Battle
             foreach (CellMenuConstruction cmc in Actions)
                 if (cmc.ExecutingAction != null)
                 {
-                    if (cmc.ExecutingAction.AppliedPoints == 0)
+                    if (cmc.ExecutingAction.PassedMilliTicks == 0)
                     {
                         Assert(!cmc.ExecutingAction.InQueue);
-                        Assert(cmc.ExecutingAction.CurrentPoints == 0);
+                        Assert(cmc.ExecutingAction.PassedMilliTicks == 0);
                         cmc.UpdatePurchase();
                     }
                 }
@@ -1937,8 +1940,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CalcDaysExecutingInActions()
         {
-            foreach (CellMenuConstruction cmc in Actions)
-                cmc.UpdateDaysExecuted();
+            //foreach (CellMenuConstruction cmc in Actions)
+            //    cmc.UpdateTimeExecuted();
         }
 
         // Новые методы для реал-таймового режима

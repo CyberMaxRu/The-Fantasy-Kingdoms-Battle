@@ -13,12 +13,12 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorComponentCreating(DescriptorWithID entity, XmlNode n) : base()
         {
             Entity = entity;
-            Time = new Integer1000(GetIntegerNotNull(n, "Time"));
+            Time = GetIntegerNotNull(n, "Time");
             Builders = GetInteger(n, "Builders");
             CostResources = new ListBaseResources(n.SelectSingleNode("Cost"));
             Requirements = new ListDescriptorRequirements(entity, n.SelectSingleNode("Requirements"));
 
-            Assert(Time.AsInteger > 0, $"ID: {entity.ID}, Time: {Time}");
+            Assert(Time > 0, $"ID: {entity.ID}, Time: {Time}");
             Assert(Builders >= 0, $"ID: {entity.ID}, Builders: {Builders}");
 
             if (Entity is DescriptorCreature)
@@ -38,15 +38,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorWithID Entity { get; }
         internal TypeCreating TypeCreating { get; }// Тип создаваемой сущности
-        internal Integer1000 Time { get; }//Время создания (в секундах)
+        internal int Time { get; }//Время создания (в секундах)
         internal int Builders { get; }//Количество одновременно требуемых строителей
         internal ListBaseResources CostResources { get; }// Стоимость (в базовых ресурсах)
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
-        internal int CalcEstimatedTime(Player p)
-        {
-            double coef = p.CoefficientExecuting(TypeCreating);
-            return (int)Math.Round(Time.AsInteger * coef);
-        }
 
         internal override void TuneLinks()
         {

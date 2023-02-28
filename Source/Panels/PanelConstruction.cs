@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnQueue1_Click(object sender, EventArgs e)
         {
-            if (Construction.QueueExecuting[0].ExecutingAction.AppliedPoints == 0)
+            if (Construction.QueueExecuting[0].ExecutingAction.PassedMilliTicks == 0)
                 Construction.QueueExecuting[0].RemoveFromQueue(true);
         }
 
@@ -144,7 +144,7 @@ namespace Fantasy_Kingdoms_Battle
             if (btnQueue1.Visible)
             {
                 btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
-                btnQueue1.HighlightUnderMouse = Construction.QueueExecuting[0].ExecutingAction.AppliedPoints == 0;
+                btnQueue1.HighlightUnderMouse = Construction.QueueExecuting[0].ExecutingAction.PassedMilliTicks == 0;
                 bmpQueue2.Visible = true;
                 bmpQueue2.Action = Construction.QueueExecuting.Count >= 2 ? Construction.QueueExecuting[1] : null;
                 bmpQueue3.Visible = true;
@@ -188,10 +188,10 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         pbDurability.Text = $"{Construction.CurrentDurability}" +
-                            $"{(Construction.ActionMain.ExecutingAction.CurrentPoints > 0 ? $"+{Construction.ActionMain.ExecutingAction.CurrentPoints}" : "")}/{Construction.MaxDurability}";
+                            $"{(Construction.ActionMain.ExecutingAction.PassedMilliTicks > 0 ? $"+{Construction.ActionMain.ExecutingAction.PassedMilliTicks}" : "")}/{Construction.MaxDurability}";
                         pbDurability.Max = Construction.MaxDurability.AsInteger;
                         pbDurability.Position = Construction.CurrentDurability.AsInteger;
-                        pbDurability.PositionPotential = Construction.CurrentDurability.AsInteger + Construction.ActionMain.ExecutingAction.CurrentPoints;
+                        pbDurability.PositionPotential = Construction.CurrentDurability.AsInteger + Construction.ActionMain.ExecutingAction.PassedMilliTicks;
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
@@ -473,7 +473,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
             }
 
-            PanelHint.AddStep12CostExecuting(nameAction, Construction.RequiredGold(), 0, true, 0, Construction.GetRequirements());
+            PanelHint.AddStep12CostExecuting(nameAction, Construction.RequiredGold(), 0, 0, Construction.GetRequirements());
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)

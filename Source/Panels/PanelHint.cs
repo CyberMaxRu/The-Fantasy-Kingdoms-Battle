@@ -806,8 +806,8 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Assert(daysCreating == 0);
-                Assert(constructionPoint == 0);
+                Assert(time == 0);
+                Assert(builders == 0);
                 Assert(costResources is null);
             }
         }

@@ -1212,9 +1212,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelBuilders_ShowHint(object sender, EventArgs e)
         {
-            PanelHint.AddStep2Header("Очки строительства");
-            PanelHint.AddStep5Description("Всего очков: " + curAppliedPlayer.ConstructionPoints.ToString()
-                + Environment.NewLine + "Свободно очков: " + curAppliedPlayer.RestConstructionPoints.ToString());
+            //PanelHint.AddStep2Header("Очки строительства");
+            //PanelHint.AddStep5Description("Всего очков: " + curAppliedPlayer.ConstructionPoints.ToString()
+            //    + Environment.NewLine + "Свободно очков: " + curAppliedPlayer.RestConstructionPoints.ToString());
         }
 
         private void PanelCombatHeroes_Click(object sender, EventArgs e)
@@ -1278,7 +1278,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((lobby != null) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
-                labelBuilders.Text = $"{curAppliedPlayer.RestConstructionPoints}/{curAppliedPlayer.ConstructionPoints}";
+                //labelBuilders.Text = $"{curAppliedPlayer.RestConstructionPoints}/{curAppliedPlayer.ConstructionPoints}";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"

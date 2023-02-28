@@ -268,38 +268,9 @@ namespace Fantasy_Kingdoms_Battle
             ExtraLevelUp = 0;
             ExtraResearch = 0;
 
-            ConstructionPoints = 1000;
-            ConstructionPoints += Castle.Descriptor.Levels[Castle.Level].AddConstructionPoints;
-            RestConstructionPoints = ConstructionPoints;
-
             // Начало хода у локации
             foreach (Location l in Locations)
                 l.PrepareNewDay();
-
-            //
-            // Двигаем прогресс в очереди действий
-            // Делаем это из игрока, так как нам нужна строгая последовательность действий (одно может зависеть от другого)
-            // Так как при выполнении действия они удаляются из очереди, обходим через временный список
-            List<CellMenuConstruction> listActions = new List<CellMenuConstruction>();
-            listActions.AddRange(queueExecuting);
-            foreach (CellMenuConstruction cm in listActions)
-            {
-                cm.Construction.AssertNotDestroyed();
-                cm.DoProgressExecutingAction();
-            }
-
-            List<Construction> lc = new List<Construction>();
-            lc.AddRange(Constructions);
-            foreach (Construction pc in lc)// Коллекция меняется при замене объекта
-            {
-                pc.PrepareNewDay();
-            }
-
-            CalcPurchasesInActions();// Расчет стоимостей действий
-            RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
-            UpdateDaysConstructionForConstructions();
-
-            CalcCityParameters();
         }
 
         private void CalcCityParameters()
@@ -379,6 +350,30 @@ namespace Fantasy_Kingdoms_Battle
         // Ход любого игрока. Сначала делаем все расчеты тика, а потом включается ИИ или сам игрок
         internal virtual void DoTick()
         {
+            // Двигаем прогресс в очереди действий
+            // Делаем это из игрока, так как нам нужна строгая последовательность действий (одно может зависеть от другого)
+            // Так как при выполнении действия они удаляются из очереди, обходим через временный список
+            List<CellMenuConstruction> listActions = new List<CellMenuConstruction>();
+            listActions.AddRange(queueExecuting);
+            foreach (CellMenuConstruction cm in listActions)
+            {
+                cm.Construction.AssertNotDestroyed();
+                cm.DoTick();
+            }
+
+            List<Construction> lc = new List<Construction>();
+            lc.AddRange(Constructions);
+            foreach (Construction pc in lc)// Коллекция меняется при замене объекта
+            {
+                pc.PrepareNewDay();
+            }
+
+            CalcPurchasesInActions();// Расчет стоимостей действий
+            RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
+            UpdateDaysConstructionForConstructions();
+
+            CalcCityParameters();
+
             // Проходим по очереди выполнения и делаем прогресс
             foreach (CellMenuConstruction cmc in queueExecuting)
             {
@@ -687,10 +682,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int DayOfEndGame { get; private set; }// День вылета из лобби
         internal int SkippedBattles { get; set; }// Сколько битв было пропущено (про причине нечетного количества игроков)
         internal bool SkipBattle { get; set; }// Битва на этому ходу будет пропущена
-
-        internal int ConstructionPoints { get; private set; }// Очков строительства на этот ход
-        internal int RestConstructionPoints { get; set; }// Остаток неизрасходованных очков строительства на этом ходу
-        internal int UsedConstructionPoints { get; set; }// Общее количество потраченных очков строительства на очередь
 
         internal List<DescriptorPersistentBonus>[] VariantPersistentBonus { get; }
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
@@ -1179,8 +1170,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            ConstructionPoints += sb.Builders;
-            RestConstructionPoints += sb.Builders;
             CreateExternalConstructions(FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse, TypeNoticeForPlayer.Build);
             DescriptorConstruction holyPlace = FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace, TypeNoticeForPlayer.Explore);
@@ -1480,13 +1469,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddFreeBuilder()
         {
-            RestConstructionPoints++;
+            
         }
 
         internal void UseFreeBuilder(int builders)
         {
             Debug.Assert(builders >= 0);
 
+            /*
             if (builders > 0)
             {
                 Debug.Assert(RestConstructionPoints > 0);
@@ -1494,16 +1484,16 @@ namespace Fantasy_Kingdoms_Battle
                 RestConstructionPoints -= builders;
 
                 Debug.Assert(RestConstructionPoints >= 0);
-            }
+            }*/
         }
 
         internal void UnuseFreeBuilders(int builders)
         {
             Debug.Assert(builders >= 0);
 
-            RestConstructionPoints += builders;
+            /*RestConstructionPoints += builders;
 
-            Debug.Assert(RestConstructionPoints >= 0);
+            Debug.Assert(RestConstructionPoints >= 0);*/
         }
 
         internal void AddExtraLevelUp()
@@ -1599,7 +1589,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(queueExecuting.IndexOf(cmc) == -1);
             Construction c = cmc.Construction;
-            Assert(cmc.ExecutingAction.CurrentPoints == 0);
+            Assert(cmc.ExecutingAction.PassedMilliTicks == 0);
 
             // !!! Это подробности реализации. Перенести это в Construction (CellMenuConstructionLevelUp) !!!
             if (cmc is CellMenuConstructionLevelUp cml)
@@ -1654,6 +1644,7 @@ namespace Fantasy_Kingdoms_Battle
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {
+            /*
             queueRepair.Clear();
             foreach (Construction c in Constructions)
             {
@@ -1685,7 +1676,7 @@ namespace Fantasy_Kingdoms_Battle
                 list.AddRange(queueExecuting);
                 foreach (CellMenuConstruction cmc in list)
                     cmc.AddToQueue();
-            }
+            }*/
         }
 
         internal void AddConstruction(Construction c)
@@ -1704,17 +1695,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
         
-        internal int CalcDaysForEndConstruction(int currentDurability, int maxDurability)
-        {
-            Assert(currentDurability >= 0);
-            Assert(maxDurability > 0);
-            Assert(currentDurability < maxDurability);
-
-            int val = (maxDurability - currentDurability) / ConstructionPoints + ((maxDurability - currentDurability) % ConstructionPoints == 0 ? 0 : 1);
-            Assert(val > 0);
-            return val;
-        }
-
         internal void AddQuest(DescriptorMissionQuest quest)
         {
             PlayerQuest q = new PlayerQuest(this, quest);

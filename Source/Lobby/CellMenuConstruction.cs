@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
                 Creating = Descriptor.CreatedEntity.GetCreating();
 
                 if (Creating != null)
-                    if ((Creating.ConstructionPoints > 0) || (Creating.ResearchPoints > 0))
+                    if (Creating.Time > 0)
                         ExecutingAction = new ComponentExecutingAction(Creating);
             }
         }
@@ -178,86 +178,70 @@ namespace Fantasy_Kingdoms_Battle
                 Construction.Player.RebuildQueueBuilding();
         }
 
-        internal void UpdateDaysExecuted()
-        {
-            if (ExecutingAction != null)
-            {
-
-                if (ExecutingAction.InQueue)
-                {
-                    /*if (ExecutingAction.IsConstructionPoints)
-                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.NeedPoints, Construction.Player.ConstructionPoints);
-                    else
-                        ExecutingAction.RestDaysExecuting = Construction.CalcDaysForExecuting(ExecutingAction.NeedPoints, Construction.ResearchPoints);*/
-                }
-                else
-                {
-                    if (ExecutingAction.IsConstructionPoints)
-                        ExecutingAction.RestTimeExecuting = Construction.CalcTimeForExecuting(ExecutingAction.Points, Construction.Player.ConstructionPoints, true);
-                    else
-                        ExecutingAction.RestTimeExecuting = Construction.CalcDaysForExecuting(ExecutingAction.Points, Construction.ResearchPoints, false);
-                }
-
-                //Assert(ExecutingAction.RestDaysExecuting > 0);
-            }
-        }
         internal virtual void StartExecute() { }// Вызывается перед началом выполнения действия
 
-        internal virtual void DoProgressExecutingAction()
+        internal virtual void DoTick()
         {
-            if (ExecutingAction.CurrentPoints > 0)
-            {
-                if (ExecutingAction.AppliedPoints == 0)
-                    StartExecute();
+            if (ExecutingAction.PassedMilliTicks == 0)
+                StartExecute();
 
-                ExecutingAction.AppliedPoints += ExecutingAction.CurrentPoints;
-                ExecutingAction.CurrentPoints = 0;
-            }
+            ExecutingAction.CalcTick(1000);
 
             // Если прогресс завершен, выполняем действие
-            Assert(ExecutingAction.NeedPoints >= 0);
-            if (ExecutingAction.NeedPoints == 0)
+            if (ExecutingAction.RestMilliTicks == 0)
             {
                 Execute();
             }
+        }
+
+        internal virtual void DoProgressExecutingAction()
+        {
         }
     }
 
     internal sealed class ComponentExecutingAction
     {
-        public ComponentExecutingAction(DescriptorComponentCreating ddc)
+        public ComponentExecutingAction(DescriptorComponentCreating dcc)
         {
-            if (ddc.ConstructionPoints > 0)
-            {
-                Points = ddc.ConstructionPoints;
-                IsConstructionPoints = true;
-            }
-            else if (ddc.ResearchPoints > 0)
-            {
-                Points = ddc.ResearchPoints;
-                IsConstructionPoints = false;
-            }
-            else
-                DoException("Нет очков для действия");
+            TotalMilliTicks = dcc.Time * FormMain.Config.TicksInSecond * 1000;
+            RestMilliTicks = TotalMilliTicks;
+            RestTimeExecuting = -1;
         }
 
-        public ComponentExecutingAction(int constructionPoints)
+        public ComponentExecutingAction(int seconds)
         {
-            //Assert(constructionPoints > 0);
+            Assert(seconds > 0);
 
-            Points = constructionPoints;
-            IsConstructionPoints = true;
+            TotalMilliTicks = seconds * FormMain.Config.TicksInSecond * 1000;
+            RestMilliTicks = TotalMilliTicks;
+            RestTimeExecuting = -1;
         }
 
-        internal bool IsConstructionPoints { get; }// Используются очки строительства иначе очки действий
+        internal int TotalMilliTicks { get; }// Всего миллитиков для выполнения действия
+        internal int PassedMilliTicks { get; private set; }// Прошло миллитиков
+        internal int RestMilliTicks { get; private set; }// Осталось миллитиков
+        internal int RestTimeExecuting { get; private set; }// Сколько секунд осталось до конца выполнения
+        internal int Percent { get; private set; }// Процент выполнения
         internal bool InQueue { get; set; }// Действие в очереди
-        internal int Points { get; }// Сколько очков нужно для выполнения действия
-        internal  AppliedPoints { get; set; }// Сколько очков было применено
-        internal int CurrentPoints { get; set; }// Сколько очков будет примено на текущем ходу
-        internal int NeedPoints { get => Points - AppliedPoints; }// Сколько очков осталось
-        internal int RestTimeExecuting { get; set; }// Сколько секунд осталось до конца выполнения действия
-    }
 
+        // Добавление миллитика
+        internal void CalcTick(int milliTicks)
+        {
+            Assert(PassedMilliTicks < TotalMilliTicks);
+            Assert(milliTicks > 0);
+
+            PassedMilliTicks += milliTicks;
+            if (PassedMilliTicks > TotalMilliTicks)
+                PassedMilliTicks = TotalMilliTicks;
+
+            RestMilliTicks = TotalMilliTicks - PassedMilliTicks;
+
+            // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
+            RestTimeExecuting = RestMilliTicks % (milliTicks * FormMain.Config.TicksInSecond) + 1;
+
+            Percent = PassedMilliTicks * 100 / TotalMilliTicks;
+        }
+    }
 
     internal sealed class CellMenuConstructionResearch : CellMenuConstruction
     {
@@ -555,7 +539,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
-            panelHint.AddStep12CostExecuting(Descriptor.Number == 1 ? "Построить" : $"Улучшить до {Descriptor.Number} ур.", Descriptor.GetCreating().CostResources, Descriptor.GetCreating().CalcEstimatedTime(Construction.Player), Descriptor.GetCreating().Builders, GetTextRequirements());
+            panelHint.AddStep12CostExecuting(Descriptor.Number == 1 ? "Построить" : $"Улучшить до {Descriptor.Number} ур.", Descriptor.GetCreating().CostResources, ExecutingAction.RestTimeExecuting, Descriptor.GetCreating().Builders, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
@@ -580,7 +564,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Descriptor.Number == 1)
             {
-                Construction.CurrentDurability.Value += ExecutingAction.CurrentPoints;
+                Construction.CurrentDurability.Value += 1; //ExecutingAction.CurrentPoints;
             }
 
             base.DoProgressExecutingAction();
@@ -647,8 +631,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void UpdatePurchase()
         {
-            int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability.Value - Construction.CurrentDurability.Value));
-            PurchaseValue = Construction.CompCostRepair(expenseCP);
+            //int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability.Value - Construction.CurrentDurability.Value));
+            //PurchaseValue = Construction.CompCostRepair(expenseCP);
             // Если цены ремонта нет, значит, оно не в очереди. Пытаемся подсчитать, сколько это будет стоить
             /*if (PurchaseValue is null)
             {
@@ -752,7 +736,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep5Description(Creature.Description);
             panelHint.AddStep75Salary(Creature.CostOfHiring);
             //panelHint.AddStep10DaysBuilding(InQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue, 0, true, 0, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue, 0, 0, GetTextRequirements());
         }
     }
 
@@ -1095,7 +1079,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Неизвестный тип бонуса: {TypeExtra}.");
             }
 
-            panelHint.AddStep12CostExecuting("Добавить бонус", PurchaseValue, 0, false, 0, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Добавить бонус", PurchaseValue, 0, 0, GetTextRequirements());
         }
 
         internal override void PrepareNewDay()
