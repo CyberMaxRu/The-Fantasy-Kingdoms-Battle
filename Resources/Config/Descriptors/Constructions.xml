@@ -2098,7 +2098,7 @@
         <Interest>30</Interest>
         <NameGoods>Посетить ярмарку</NameGoods>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -2395,7 +2395,7 @@
         <Description>Оружие и доспехи получают дополнительную прочность.</Description>
         <ImageIndex>234</ImageIndex>
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -2414,7 +2414,7 @@
         <Description>Кузница может выпускать больше оружия и доспехов.</Description>
         <ImageIndex>235</ImageIndex>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2433,7 +2433,7 @@
         <Description>- Кузница может выпускать больше оружия и доспехов.</Description>
         <ImageIndex>236</ImageIndex>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2464,7 +2464,7 @@
         <ID>ProductGroupArmourMetal1</ID>
         <Entity>GroupArmourMetal1</Entity>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>15</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2481,7 +2481,7 @@
         <ID>ProductGroupArmourMetal2</ID>
         <Entity>GroupArmourMetal2</Entity>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2505,7 +2505,7 @@
         <ID>ProductGroupArmourMetal3</ID>
         <Entity>GroupArmourMetal3</Entity>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2529,7 +2529,7 @@
         <ID>ProductGroupArmourMetal4</ID>
         <Entity>GroupArmourMetal4</Entity>
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>3500</Gold>
           </Cost>
@@ -2558,7 +2558,7 @@
         <ID>ProductGroupWeaponMelee1</ID>
         <Entity>GroupWeaponMelee1</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>15</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2575,7 +2575,7 @@
         <ID>ProductGroupWeaponMelee2</ID>
         <Entity>GroupWeaponMelee2</Entity>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2599,7 +2599,7 @@
         <ID>ProductGroupWeaponMelee3</ID>
         <Entity>GroupWeaponMelee3</Entity>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2623,7 +2623,7 @@
         <ID>ProductGroupWeaponMelee4</ID>
         <Entity>GroupWeaponMelee4</Entity>
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>3500</Gold>
           </Cost>
@@ -2647,7 +2647,7 @@
         <ID>ProductGroupArmourLeather1</ID>
         <Entity>GroupArmourLeather1</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>15</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2664,7 +2664,7 @@
         <ID>ProductGroupArmourLeather2</ID>
         <Entity>GroupArmourLeather2</Entity>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2688,7 +2688,7 @@
         <ID>ProductGroupArmourLeather3</ID>
         <Entity>GroupArmourLeather3</Entity>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2712,7 +2712,7 @@
         <ID>ProductGroupArmourLeather4</ID>
         <Entity>GroupArmourLeather4</Entity>
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>3500</Gold>
           </Cost>
@@ -2931,7 +2931,7 @@
         <Interest>40</Interest>
         <NameGoods>Участвовать в пире</NameGoods>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>120</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3248,7 +3248,7 @@
         <ID>ProductGroupWeaponRange1</ID>
         <Entity>GroupWeaponRange1</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>15</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3265,7 +3265,7 @@
         <ID>ProductGroupWeaponRange2</ID>
         <Entity>GroupWeaponRange2</Entity>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3289,7 +3289,7 @@
         <ID>ProductGroupWeaponRange3</ID>
         <Entity>GroupWeaponRange3</Entity>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -3313,7 +3313,7 @@
         <ID>ProductGroupWeaponRange4</ID>
         <Entity>GroupWeaponRange4</Entity>
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>3500</Gold>
           </Cost>
@@ -3337,7 +3337,7 @@
         <ID>ProductGroupArmourMage1</ID>
         <Entity>GroupArmourMage1</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>15</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3354,7 +3354,7 @@
         <ID>ProductGroupArmourMage2</ID>
         <Entity>GroupArmourMage2</Entity>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3378,7 +3378,7 @@
         <ID>ProductGroupArmourMage3</ID>
         <Entity>GroupArmourMage3</Entity>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -3402,7 +3402,7 @@
         <ID>ProductGroupArmourMage4</ID>
         <Entity>GroupArmourMage4</Entity>
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>3500</Gold>
           </Cost>
@@ -3426,7 +3426,7 @@
         <ID>ProductGroupWeaponMage1</ID>
         <Entity>GroupWeaponMage1</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>15</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -3443,7 +3443,7 @@
         <ID>ProductGroupWeaponMage2</ID>
         <Entity>GroupWeaponMage2</Entity>
         <Creating>
-          <ResearchPoints>200</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3467,7 +3467,7 @@
         <ID>ProductGroupWeaponMage3</ID>
         <Entity>GroupWeaponMage3</Entity>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>45</Time>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -3491,7 +3491,7 @@
         <ID>ProductGroupWeaponMage4</ID>
         <Entity>GroupWeaponMage4</Entity>
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>60</Time>
           <Cost>
             <Gold>3500</Gold>
           </Cost>
@@ -5137,7 +5137,7 @@
           <Hero>Cleric</Hero>
         </Heroes>        
         <Creating>
-          <ResearchPoints>400</ResearchPoints>
+          <Time>20</Time>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -5165,7 +5165,7 @@
         <Interest>50</Interest>
         <NameGoods>Посетить концерт эльфийской музыки</NameGoods>
         <Creating>
-          <ResearchPoints>300</ResearchPoints>
+          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
