@@ -237,7 +237,7 @@ namespace Fantasy_Kingdoms_Battle
             RestMilliTicks = TotalMilliTicks - PassedMilliTicks;
 
             // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
-            RestTimeExecuting = RestMilliTicks % (milliTicks * FormMain.Config.TicksInSecond) + 1;
+            RestTimeExecuting = RestMilliTicks / (milliTicks * FormMain.Config.TicksInSecond) + 1;
 
             Percent = PassedMilliTicks * 100 / TotalMilliTicks;
         }
