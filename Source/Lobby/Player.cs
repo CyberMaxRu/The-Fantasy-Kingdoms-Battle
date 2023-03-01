@@ -1596,14 +1596,14 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (cml.Descriptor.Number > 1)
                 {
-                    Assert(c.MaxDurability.Value > 0);
+                    Assert(c.MaxDurability > 0);
                     //Assert(c.CurrentDurability == c.MaxDurability);
                 }
                 else
                 {
                     Assert(c.QueueExecuting.Count == 0);// Постройка - всегда первая
                     //Assert(c.MaxDurability == 0);
-                    Assert(c.CurrentDurability.Value == 0);
+                    Assert(c.CurrentDurability == 0);
                 }
 
                 Assert((c.State == StateConstruction.Work) || (c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)

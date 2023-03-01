@@ -116,8 +116,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int UsedResearchPoints { get; private set; }// Использовано очков исследования
 
         // Прочность
-        internal Integer1000 CurrentDurability { get; set; } = new Integer1000();// Текущая прочность сооружения
-        internal Integer1000 MaxDurability { get; private set; } = new Integer1000();// Максимальная прочность сооружения
+        internal int CurrentDurability { get; set; }// Текущая прочность сооружения
+        internal int MaxDurability { get; private set; }// Максимальная прочность сооружения
 
         //
         internal int Gold { get => gold; set { Debug.Assert(Descriptor.HasTreasury); gold = value; } }// Казна гильдии
@@ -263,11 +263,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks == 0)
                 {
-                    MaxDurability.Value = Descriptor.Levels[1].Durability.Value;
+                    MaxDurability = Descriptor.Levels[1].Durability;
                 }
                 else
                 {
-                    MaxDurability.Value = 0;
+                    MaxDurability = 0;
                 }
             }
             else
@@ -1077,7 +1077,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
 
-        internal override bool GetNormalImage() => (CurrentDurability.Value == MaxDurability.Value) && ((Level > 0) || (Descriptor.MaxLevel == 0));
+        internal override bool GetNormalImage() => (CurrentDurability == MaxDurability) && ((Level > 0) || (Descriptor.MaxLevel == 0));
 
         internal override string GetLevel()
         {
@@ -1581,7 +1581,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Destroyed)
                 State = StateConstruction.Destroyed;
-            else if ((Level == 1) && (MaxDurability.Value == 0))
+            else if ((Level == 1) && (MaxDurability == 0))
                 State = StateConstruction.None;// Если сооружение построено, и у него нет прочности, это элемент ландшафта. У него нет состояния.
             else if (Level == 0)
             {
@@ -1589,7 +1589,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
                 {
-                    if ((CurrentDurability.Value == 0) && (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0))
+                    if ((CurrentDurability == 0) && (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0))
                         State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
                     else
                     {
@@ -1606,7 +1606,7 @@ namespace Fantasy_Kingdoms_Battle
                 State = StateConstruction.Repair;// Идет ремонт
             else if (CurrentDurability == MaxDurability)
                 State = StateConstruction.Work;// Прочность равна дефолтной, сооружение работает
-            else if (CurrentDurability.Value < MaxDurability.Value)
+            else if (CurrentDurability < MaxDurability)
             {
                 State = StateConstruction.NeedRepair;// Сооружение повреждено, требуется ремонт
                 //CellMenuRepair.PurchaseValue = CompCostRepair(Math.Min(Player.RestConstructionPoints, restCP, c.MaxDurability - c.CurrentDurability))            
@@ -1618,13 +1618,13 @@ namespace Fantasy_Kingdoms_Battle
         internal void DoDamage(int damage)
         {
             Assert(damage >= 0);
-            Assert(damage < CurrentDurability.Value);
+            Assert(damage < CurrentDurability);
             Assert((State == StateConstruction.Build) || (State == StateConstruction.Repair)
                 || (State == StateConstruction.NeedRepair) || (State == StateConstruction.Work));
 
             if (damage > 0)
             {
-                CurrentDurability.Value -= damage;
+                CurrentDurability -= damage;
 
                 if (ActionRepair is null)
                 {
@@ -1950,11 +1950,11 @@ namespace Fantasy_Kingdoms_Battle
             if (Destroyed)
                 return;
 
-            if (CurrentDurability.Value < MaxDurability.Value)
+            if (CurrentDurability < MaxDurability)
             {
                 // Увеличиваем прогресс строительства
-                CurrentDurability.Value += ConstructionPointPerTick();
-                if (CurrentDurability.Value > MaxDurability.Value)
+                CurrentDurability += ConstructionPointPerTick();
+                if (CurrentDurability > MaxDurability)
                     CurrentDurability = MaxDurability;
             }
         }

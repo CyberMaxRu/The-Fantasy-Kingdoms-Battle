@@ -12,9 +12,9 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorConstructionStructure(DescriptorConstruction forConstruction, XmlNode n) : base(forConstruction, n)
         {
-            Durability = new Integer1000(GetIntegerNotNull(n, "Durability", ID, 0, 1_000_000));
+            Durability = GetIntegerNotNull(n, "Durability", ID, 0, 1_000_000);
         }
 
-        internal Integer1000 Durability { get; }// Прочность сооружения
+        internal int Durability { get; }// Прочность сооружения
     }
 }

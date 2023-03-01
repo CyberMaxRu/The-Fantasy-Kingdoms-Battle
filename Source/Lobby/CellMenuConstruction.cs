@@ -564,7 +564,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Descriptor.Number == 1)
             {
-                Construction.CurrentDurability.Value += 1; //ExecutingAction.CurrentPoints;
+                Construction.CurrentDurability += 1; //ExecutingAction.CurrentPoints;
             }
 
             base.DoProgressExecutingAction();
@@ -583,7 +583,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionRepair(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
-            ExecutingAction = new ComponentExecutingAction(c.MaxDurability.Value - c.CurrentDurability.Value);
+            ExecutingAction = new ComponentExecutingAction(c.MaxDurability - c.CurrentDurability);
         }
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта
