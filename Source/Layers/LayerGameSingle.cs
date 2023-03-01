@@ -929,12 +929,18 @@ namespace Fantasy_Kingdoms_Battle
 
             while (true)
             {
+                DateTime curTime = DateTime.Now;
+
                 Application.DoEvents();
                 if (lobby is null)
                     break;
                 lobby.DoTicks();
                 Program.formMain.ShowFrame(true);
-                System.Threading.Thread.Sleep(40);
+
+                TimeSpan ts = DateTime.Now - curTime;
+                int delta = 40 - ts.Milliseconds;
+                if (delta > 0)
+                System.Threading.Thread.Sleep(delta);
             }
         }
 
