@@ -71,7 +71,7 @@
     <CanBuild>False</CanBuild>
     <PersistentState>Treasurer</PersistentState>
     <Creating>
-      <ResearchPoints>200</ResearchPoints>
+      <Time>20</Time>
       <Cost>
         <Gold>2500</Gold>
       </Cost>
@@ -162,7 +162,7 @@
     <PrefixName>Сэр</PrefixName>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>15</Time>
       <Cost>
         <Gold>200</Gold>
       </Cost>
@@ -512,7 +512,7 @@
     <Strength>20</Strength>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>20</Time>
       <Cost>
         <Gold>150</Gold>
       </Cost>
@@ -845,7 +845,7 @@
     <DefaultPositionPriority>200</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>25</Time>
       <Cost>
         <Gold>350</Gold>
       </Cost>
@@ -1150,7 +1150,7 @@
     <DefaultPositionPriority>210</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>1</DaysProcessing>
+      <Time>60</Time>
       <Cost>
         <Gold>500</Gold>
       </Cost>
@@ -1457,7 +1457,7 @@
     <DefaultPositionPriority>110</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>1</DaysProcessing>
+      <Time>45</Time>
       <Cost>
         <Gold>700</Gold>
       </Cost>
@@ -1744,7 +1744,7 @@
     <DefaultPositionPriority>50</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>1</DaysProcessing>
+      <Time>45</Time>
       <Cost>
         <Gold>700</Gold>
       </Cost>
@@ -2028,7 +2028,7 @@
     <DefaultPositionPriority>20</DefaultPositionPriority>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>10</Time>
       <Cost>
         <Gold>100</Gold>
       </Cost>
@@ -2320,7 +2320,7 @@
     <NameFromTypeHero>Cleric</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -2574,7 +2574,7 @@
     <NameFromTypeHero>Cleric</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -2826,7 +2826,7 @@
     <NameFromTypeHero>Warrior</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -3077,7 +3077,7 @@
     <NameFromTypeHero>Warrior</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -3326,7 +3326,7 @@
     <NameFromTypeHero>Hunter</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -3580,7 +3580,7 @@
     <NameFromTypeHero>Hunter</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -3834,7 +3834,7 @@
     <PrefixName>Мастер</PrefixName>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -4042,7 +4042,7 @@
     <NameFromTypeHero>Mage</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
@@ -4273,7 +4273,7 @@
     <NameFromTypeHero>Rogue</NameFromTypeHero>
     <MovePoints>15</MovePoints>
     <Creating>
-      <DaysProcessing>0</DaysProcessing>
+      <Time>90</Time>
       <Cost>
         <Gold>1000</Gold>
       </Cost>
