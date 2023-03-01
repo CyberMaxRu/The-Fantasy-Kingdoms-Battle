@@ -76,7 +76,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Number > 1)
             {
-                Debug.Assert(Durability.Value > forConstruction.Levels[Number - 1].Durability.Value);
+                Debug.Assert(Durability > forConstruction.Levels[Number - 1].Durability);
             }
             else
             {
