@@ -26,9 +26,21 @@ namespace Fantasy_Kingdoms_Battle
                 //Assert((ConstructionPoints == 0) && (ResearchPoints == 0), $"ID: {entity.ID}, ConstructionPoints: {ConstructionPoints}, ResearchPoints: {ResearchPoints}");
             }
 
-            if (Entity is DescriptorConstruction)
+            if (Entity is DescriptorConstructionLevel)
+                TypeCreating = TypeCreating.Building;
+            else if (Entity is DescriptorConstructionExtension)
                 TypeCreating = TypeCreating.Building;
             else if (Entity is DescriptorAbility)
+                TypeCreating = TypeCreating.Research;
+            else if (Entity is DescriptorProduct)
+                TypeCreating = TypeCreating.Research;
+            else if (Entity is DescriptorConstructionService)
+                TypeCreating = TypeCreating.Research;
+            else if (Entity is DescriptorConstructionMassEvent)
+                TypeCreating = TypeCreating.Research;
+            else if (Entity is DescriptorConstructionImprovement)
+                TypeCreating = TypeCreating.Research;
+            else if (Entity is DescriptorConstructionTournament)
                 TypeCreating = TypeCreating.Research;
             else if (Entity is DescriptorCreature)
                 TypeCreating = TypeCreating.Hire;
