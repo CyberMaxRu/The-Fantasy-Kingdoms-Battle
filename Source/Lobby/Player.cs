@@ -370,7 +370,8 @@ namespace Fantasy_Kingdoms_Battle
 
             CalcPurchasesInActions();// Расчет стоимостей действий
             RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
-            UpdateDaysConstructionForConstructions();
+
+            UpdateTimeInConstructions();
 
             CalcCityParameters();
 
@@ -1687,11 +1688,11 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Обновление количества дней постройки у сооружений
-        internal void UpdateDaysConstructionForConstructions()
+        internal void UpdateTimeInConstructions()
         {
             foreach (Construction c in Constructions)
             {
-                c.UpdateDaysConstruction();
+                c.UpdateTime();
             }
         }
         

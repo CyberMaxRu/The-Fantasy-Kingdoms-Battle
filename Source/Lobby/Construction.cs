@@ -1511,7 +1511,7 @@ namespace Fantasy_Kingdoms_Battle
             RestResearchPoints = ResearchPoints;
         }
 
-        internal void UpdateDaysConstruction()
+        internal void UpdateTime()
         {
             AssertNotDestroyed();
 
@@ -1527,16 +1527,17 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     ActionRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
             }
-
+            */
             foreach (CellMenuConstruction cm in Actions)
             {
+                cm.UpdateTime();
                 if (cm is CellMenuConstructionLevelUp cml)
                 {
                     Debug.Assert(cml.Descriptor.Number > Level);// Не должно быть действия на постройку уже построенного уровня
                 }
             }
-            */
-            TuneActionLevelUp();// Если кнорка ремонта была удалена, надо обновить действия
+            
+            TuneActionLevelUp();// Если кнопка ремонта была удалена, надо обновить действия
         }
 
         // Подготовка строительства сооружения

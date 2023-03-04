@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
+using System.Security.Policy;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -190,6 +191,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void UpdateTime()
+        {
+            if (ExecutingAction != null)
+                ExecutingAction.UpdateRestTimeExecuting();
+        }
+
         internal virtual void DoProgressExecutingAction()
         {
         }
@@ -200,6 +207,7 @@ namespace Fantasy_Kingdoms_Battle
         public ComponentExecutingAction(DescriptorComponentCreating dcc)
         {
             TotalMilliTicks = dcc.Time * FormMain.Config.TicksInSecond * 1000;
+            MilliTicksPerTick = 1000;
             RestMilliTicks = TotalMilliTicks;
             RestTimeExecuting = -1;
         }
@@ -209,6 +217,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(seconds > 0);
 
             TotalMilliTicks = seconds * FormMain.Config.TicksInSecond * 1000;
+            MilliTicksPerTick = 1000;
             RestMilliTicks = TotalMilliTicks;
             RestTimeExecuting = -1;
         }
@@ -216,6 +225,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int TotalMilliTicks { get; }// Всего миллитиков для выполнения действия
         internal int PassedMilliTicks { get; private set; }// Прошло миллитиков
         internal int RestMilliTicks { get; private set; }// Осталось миллитиков
+        internal int MilliTicksPerTick { get; private set; }// Количество миллитиков в одном тике
         internal int RestTimeExecuting { get; private set; }// Сколько секунд осталось до конца выполнения
         internal int Percent { get; private set; }// Процент выполнения
         internal bool InQueue { get; set; }// Действие в очереди
@@ -232,9 +242,13 @@ namespace Fantasy_Kingdoms_Battle
 
             RestMilliTicks = TotalMilliTicks - PassedMilliTicks;
 
-            // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
-            RestTimeExecuting = RestMilliTicks / (milliTicks * FormMain.Config.TicksInSecond) + 1;
+            MilliTicksPerTick = milliTicks;
+        }
 
+        internal void UpdateRestTimeExecuting()
+        {
+            // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
+            RestTimeExecuting = (RestMilliTicks / (MilliTicksPerTick * FormMain.Config.TicksInSecond)) + 1;
             Percent = PassedMilliTicks * 100 / TotalMilliTicks;
         }
     }
