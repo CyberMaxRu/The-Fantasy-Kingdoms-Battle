@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         internal BigEntity BigEntity { get; }
         internal ListBaseResources PurchaseValue { get; private protected set; }// Стоимость покупки
 
+        internal bool Destroyed { get; set; }// Действие необходимо удалить
         internal abstract int GetImageIndex();
         internal virtual bool GetImageIsEnabled() => CheckRequirements();
         internal virtual string GetText() => "";

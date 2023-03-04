@@ -16,5 +16,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Durability { get; }// Прочность сооружения
+        internal int IncreaseDurability { get; set; }// Увеличение прочности по сравнению с предыдущим уровнем
     }
 }

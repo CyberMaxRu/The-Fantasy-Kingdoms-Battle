@@ -88,6 +88,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (CellMenuConstruction pr in Actions)
             {
+                Utils.Assert(!pr.Destroyed);
+                    
                 // Если действие в очереди, не отображаем его
                 if ((pr.ExecutingAction != null) && pr.ExecutingAction.InQueue)
                     continue;

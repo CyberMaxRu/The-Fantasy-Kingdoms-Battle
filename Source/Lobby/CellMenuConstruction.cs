@@ -80,7 +80,8 @@ namespace Fantasy_Kingdoms_Battle
         protected void RemoveSelf()
         {
             Debug.Assert(Construction.Actions.IndexOf(this) != -1);
-            Construction.Actions.Remove(this);
+            Destroyed = true;
+            //Construction.Actions.Remove(this);
             Construction.Player.Lobby.Layer.UpdateMenu();
         }
 
@@ -180,15 +181,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void DoTick()
         {
-            if (ExecutingAction.PassedMilliTicks == 0)
-                StartExecute();
-
-            ExecutingAction.CalcTick(1000);
-
-            // Если прогресс завершен, выполняем действие
-            if (ExecutingAction.RestMilliTicks == 0)
+            if ((ExecutingAction != null) && ExecutingAction.InQueue)
             {
-                Execute();
+                if (ExecutingAction.PassedMilliTicks == 0)
+                    StartExecute();
+
+                ExecutingAction.CalcTick(1000);
+
+                // Если прогресс завершен, выполняем действие
+                if (ExecutingAction.RestMilliTicks == 0)
+                {
+                    Execute();
+                }
             }
         }
 
@@ -461,9 +465,14 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionLevelUp : CellMenuConstruction
     {
+        private int milliTicksForOneDurability;// Сколько миллитиков необходимо для увеличения прочности на 1 единицу
+        private int elapsedMilliTicks;// Сколько миллитиков прошло с последнего увеличения прочности
+
         public CellMenuConstructionLevelUp(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Descriptor = d.CreatedEntity as DescriptorConstructionLevel;
+
+            milliTicksForOneDurability = 1000 * Descriptor.GetCreating().Time * FormMain.Config.TicksInSecond / Descriptor.IncreaseDurability;
         }
 
         internal new DescriptorConstructionLevel Descriptor { get; }
@@ -568,14 +577,25 @@ namespace Fantasy_Kingdoms_Battle
         }
 
 
+        internal override void DoTick()
+        {
+            if ((ExecutingAction != null) && ExecutingAction.InQueue)
+            {
+                elapsedMilliTicks += 1000;
+                if (elapsedMilliTicks >= milliTicksForOneDurability)
+                {
+                    Construction.CurrentDurability += 1;
+                    elapsedMilliTicks -= milliTicksForOneDurability;
+                }
+            }
+
+            base.DoTick();
+        }
+
         internal override void DoProgressExecutingAction()
         {
             //Assert(Construction.MaxDurability > 0);
 
-            if (Descriptor.Number == 1)
-            {
-                Construction.CurrentDurability += 1; //ExecutingAction.CurrentPoints;
-            }
 
             base.DoProgressExecutingAction();
         }

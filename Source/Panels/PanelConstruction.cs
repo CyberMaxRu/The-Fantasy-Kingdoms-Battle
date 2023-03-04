@@ -179,7 +179,6 @@ namespace Fantasy_Kingdoms_Battle
                         pbDurability.Max = Construction.MaxDurability;
                         pbDurability.Position = 0;
                         break;
-                    case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
                         pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
                         pbDurability.Max = Construction.MaxDurability;
@@ -205,7 +204,6 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.NotBuild:
                     case StateConstruction.InQueueBuild:
                         break;
-                    case StateConstruction.PreparedBuild:
                     case StateConstruction.Build:
                         pbDurability.ColorProgress = Color.PaleTurquoise;
                         break;

@@ -74,6 +74,14 @@ namespace Fantasy_Kingdoms_Battle
             if (nir != null)
                 IncomeResources = new ListBaseResources(nir);
 
+            // Указываем, на сколько увеличится прочность сооружения
+            if (Durability > 0)
+            {
+                IncreaseDurability = Number == 1 ? Durability : Durability - forConstruction.Levels[Number - 1].Durability;
+
+                Assert(IncreaseDurability > 0);
+            }
+
             if (Number > 1)
             {
                 Debug.Assert(Durability > forConstruction.Levels[Number - 1].Durability);

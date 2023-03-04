@@ -10,11 +10,12 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum StateConstruction { None, Work, NotBuild, PreparedBuild, Build, InQueueBuild, NeedRepair, Repair, Destroyed };
+    internal enum StateConstruction { None, Work, NotBuild, Build, InQueueBuild, NeedRepair, Repair, Destroyed };
 
     // Класс сооружения у игрока
     internal sealed class Construction : BattleParticipant
     {
+        private List<CellMenuConstruction> tempListActions = new List<CellMenuConstruction>();
         private int gold;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
@@ -200,7 +201,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Удаляем все ячейки, если они относятся к уже построенным уровням
                 foreach (CellMenuConstruction cmd in listForDelete)
-                Actions.Remove(cmd);
+                    cmd.Destroyed = true;
 
                 if (ActionRepair != null)
                     ActionMain = ActionRepair;
@@ -1586,15 +1587,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
                 {
-                    if ((CurrentDurability == 0) && (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0))
-                        State = StateConstruction.PreparedBuild;// Стройка подготовлена, еще не начата
+                    if (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0)
+                        State = StateConstruction.Build;// Стройка идет
                     else
-                    {
-                        if (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0)
-                            State = StateConstruction.Build;// Стройка идет
-                        else
-                            State = StateConstruction.InQueueBuild;// В очереди на строительство
-                    }
+                        State = StateConstruction.InQueueBuild;// В очереди на строительство
                 }
                 else
                     State = StateConstruction.NotBuild;// Сооружение не построено
@@ -1652,8 +1648,6 @@ namespace Fantasy_Kingdoms_Battle
                     return ("Работает", Color.LightGreen);
                 case StateConstruction.NotBuild:
                     return ("Не построено", Color.Gray);
-                case StateConstruction.PreparedBuild:
-                    return ("Подготовлено к строительству", Color.SkyBlue);
                 case StateConstruction.Build:
                     return ("Строится", Color.SkyBlue);
                 case StateConstruction.InQueueBuild:
@@ -1880,7 +1874,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (forCancel)
                 {
                     // Если сооружение еще не начинали строить, только возвращаем ресурсы
-                    if (State == StateConstruction.PreparedBuild)
+                    if (State == StateConstruction.InQueueBuild)
                     {
                         //InConstructing = false;
                     }
@@ -1910,11 +1904,12 @@ namespace Fantasy_Kingdoms_Battle
 
             cmc.ExecutingAction.InQueue = false;
             cmc.InQueueChanged();
+            cmc.Destroyed = true;
 
-            if (forCancel)
+            /*if (forCancel)
             {
                 Program.formMain.layerGame.UpdateMenu();
-            }
+            }*/
         }
 
         internal void CalcPurchasesInActions()
@@ -1944,15 +1939,23 @@ namespace Fantasy_Kingdoms_Battle
         // Новые методы для реал-таймового режима
         internal void DoTick()
         {
-            if (Destroyed)
-                return;
+            tempListActions.Clear();
+            tempListActions.AddRange(Actions);
 
-            if (CurrentDurability < MaxDurability)
+            foreach (CellMenuConstruction cmc in tempListActions)
             {
-                // Увеличиваем прогресс строительства
-                CurrentDurability += ConstructionPointPerTick();
-                if (CurrentDurability > MaxDurability)
-                    CurrentDurability = MaxDurability;
+                    cmc.DoTick();
+            }
+        }
+
+        internal void ValidateActions()
+        {
+            for (int i = 0; i < Actions.Count;)
+            {
+                if (Actions[i].Destroyed)
+                    Actions.RemoveAt(i);
+                else
+                    i++;
             }
         }
 

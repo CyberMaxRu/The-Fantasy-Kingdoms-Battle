@@ -353,12 +353,18 @@ namespace Fantasy_Kingdoms_Battle
             // Двигаем прогресс в очереди действий
             // Делаем это из игрока, так как нам нужна строгая последовательность действий (одно может зависеть от другого)
             // Так как при выполнении действия они удаляются из очереди, обходим через временный список
-            List<CellMenuConstruction> listActions = new List<CellMenuConstruction>();
+            /*List<CellMenuConstruction> listActions = new List<CellMenuConstruction>();
             listActions.AddRange(queueExecuting);
             foreach (CellMenuConstruction cm in listActions)
             {
                 cm.Construction.AssertNotDestroyed();
                 cm.DoTick();
+            }*/
+
+            // Делаем тик у сооружений
+            foreach (Construction c in Constructions)
+            {
+                c.DoTick();
             }
 
             List<Construction> lc = new List<Construction>();
@@ -369,9 +375,15 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             CalcPurchasesInActions();// Расчет стоимостей действий
-            RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
+                                     //RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
 
-            UpdateTimeInConstructions();
+            // Подготовка следующего тика
+            foreach (Construction c in Constructions)
+            {
+                c.ValidateActions();
+                c.UpdateState();
+                c.UpdateTime();
+            }
 
             CalcCityParameters();
 
@@ -379,11 +391,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (CellMenuConstruction cmc in queueExecuting)
             {
                 cmc.DoProgressExecutingAction();
-            }
-
-            foreach (Construction c in Constructions)
-            {
-                c.DoTick();
             }
         }
 
@@ -1608,7 +1615,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Assert((c.State == StateConstruction.Work) || (c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)
-                    || (c.State == StateConstruction.PreparedBuild) || (c.State == StateConstruction.NeedRepair));
+                  || (c.State == StateConstruction.NeedRepair));
 
                 if (c.State == StateConstruction.NeedRepair)
                 {
@@ -1682,15 +1689,6 @@ namespace Fantasy_Kingdoms_Battle
             Constructions.Add(c);
         }
 
-        // Обновление количества дней постройки у сооружений
-        internal void UpdateTimeInConstructions()
-        {
-            foreach (Construction c in Constructions)
-            {
-                c.UpdateTime();
-            }
-        }
-        
         internal void AddQuest(DescriptorMissionQuest quest)
         {
             PlayerQuest q = new PlayerQuest(this, quest);
