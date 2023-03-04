@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Creating != null)
                     if (Creating.Time > 0)
-                        ExecutingAction = new ComponentExecutingAction(Creating);
+                        ExecutingAction = new ComponentExecutingAction(Creating, Construction.Player.GetMilliTicksForAction());
             }
         }
 
@@ -186,7 +186,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (ExecutingAction.PassedMilliTicks == 0)
                     StartExecute();
 
-                ExecutingAction.CalcTick(1000);
+                ExecutingAction.CalcTick(Construction.Player.GetMilliTicksForAction());
 
                 // Если прогресс завершен, выполняем действие
                 if (ExecutingAction.RestMilliTicks == 0)
@@ -208,20 +208,20 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class ComponentExecutingAction
     {
-        public ComponentExecutingAction(DescriptorComponentCreating dcc)
+        public ComponentExecutingAction(DescriptorComponentCreating dcc, int milliTicksPerTicks)
         {
             TotalMilliTicks = dcc.Time * FormMain.Config.TicksInSecond * 1000;
-            MilliTicksPerTick = 1000;
+            MilliTicksPerTick = milliTicksPerTicks;
             RestMilliTicks = TotalMilliTicks;
             RestTimeExecuting = -1;
         }
 
-        public ComponentExecutingAction(int seconds)
+        public ComponentExecutingAction(int seconds, int milliTicksPerTicks)
         {
             Assert(seconds > 0);
 
             TotalMilliTicks = seconds * FormMain.Config.TicksInSecond * 1000;
-            MilliTicksPerTick = 1000;
+            MilliTicksPerTick = milliTicksPerTicks;
             RestMilliTicks = TotalMilliTicks;
             RestTimeExecuting = -1;
         }
@@ -581,7 +581,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if ((ExecutingAction != null) && ExecutingAction.InQueue)
             {
-                elapsedMilliTicks += 1000;
+                elapsedMilliTicks += Construction.Player.GetMilliTicksForAction();
                 if (elapsedMilliTicks >= milliTicksForOneDurability)
                 {
                     Construction.CurrentDurability += 1;
@@ -613,7 +613,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionRepair(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
-            ExecutingAction = new ComponentExecutingAction(c.MaxDurability - c.CurrentDurability);
+            ExecutingAction = new ComponentExecutingAction(c.MaxDurability - c.CurrentDurability, Construction.Player.GetMilliTicksForAction());
         }
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта

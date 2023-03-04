@@ -374,15 +374,12 @@ namespace Fantasy_Kingdoms_Battle
                 pc.PrepareNewDay();
             }
 
-            CalcPurchasesInActions();// Расчет стоимостей действий
-                                     //RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
+            //RebuildQueueBuilding();// Перестраиваем очередь строительства согласно текущим параметрам
 
-            // Подготовка следующего тика
+            // Обновляем данные для следующего тика, 
             foreach (Construction c in Constructions)
             {
-                c.ValidateActions();
-                c.UpdateState();
-                c.UpdateTime();
+                c.UpdateAfterTick();
             }
 
             CalcCityParameters();
@@ -1682,6 +1679,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal int GetMilliTicksForAction()
+        {
+            return 1000;
+        }
+
         internal void AddConstruction(Construction c)
         {
             Assert(Constructions.IndexOf(c) == -1);
@@ -1738,12 +1740,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return text;
-        }
-
-        internal void CalcPurchasesInActions()
-        {
-            foreach (Construction c in Constructions)
-                c.CalcPurchasesInActions();
         }
 
         internal void CalcDaysExecutingInActions()

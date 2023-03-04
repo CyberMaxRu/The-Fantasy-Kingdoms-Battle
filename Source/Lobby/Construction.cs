@@ -1944,8 +1944,16 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (CellMenuConstruction cmc in tempListActions)
             {
-                    cmc.DoTick();
+                cmc.DoTick();
             }
+        }
+
+        internal void UpdateAfterTick()
+        {
+            ValidateActions();
+            CalcPurchasesInActions();
+            UpdateState();
+            UpdateTime();
         }
 
         internal void ValidateActions()
