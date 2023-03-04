@@ -265,10 +265,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     MaxDurability = Descriptor.Levels[1].Durability;
                 }
-                else
-                {
-                    MaxDurability = 0;
-                }
             }
             else
             {
