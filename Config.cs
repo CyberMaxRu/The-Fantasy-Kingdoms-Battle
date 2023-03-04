@@ -165,6 +165,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TicksInSecond >= 10);
             Debug.Assert(TicksInSecond <= 200);
 
+            LengthTicksInMSec = 1000 / TicksInSecond;
+            Debug.Assert(LengthTicksInMSec * TicksInSecond == 1000);
+
             // MainMenu
             MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
             MainMenuFramesAnimationBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/FramesAnimationBanner").InnerText);
@@ -381,6 +384,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int SecondsInDay { get; set; }// Сколько реальных секунд длится один игровой день
         internal int SecondsInNight { get; set; }// Сколько реальных секунд длится одна игровая ночь
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
+        internal int LengthTicksInMSec { get; set; }// Длительность одного тика игры в миллисекундах
 
         internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
         internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера

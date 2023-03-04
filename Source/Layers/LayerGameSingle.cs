@@ -37,6 +37,9 @@ namespace Fantasy_Kingdoms_Battle
         private VCMap mapArdania;
         private DescriptorMap descriptorMap;
 
+        // Поддержка реального времени игры
+        private Stopwatch internalTimer;
+
         // Поддержка режима отладки
         internal bool debugMode = false;
         internal Pen penDebugBorder = new Pen(Color.Red);
@@ -932,6 +935,8 @@ namespace Fantasy_Kingdoms_Battle
 
             lobby.Start();
             firstFrameOfSecond = DateTime.Now;
+            internalTimer = new Stopwatch();
+            internalTimer.Start();
 
             while (true)
             {
@@ -947,10 +952,15 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Application.DoEvents();
-                if (lobby is null)
-                    break;
-                lobby.DoTicks();
-                countTicks++;
+                // Догоняем по внутреннему таймеру тики
+                long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.LengthTicksInMSec;
+                while (elapsedTicks >= lobby.CounterTicks)
+                {
+                    if (lobby is null)
+                        break;
+                    lobby.DoTicks();
+                    countTicks++;
+                }
 
                 countFrames++;
                 Program.formMain.ShowFrame(true);

@@ -104,8 +104,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Поддержка ходов
         internal int Turn { get; private set; }// Текущий ход лобби
-        internal int CounterSeconds { get; private set; }// Прошло игровых секунд
-        internal TimeSpan timePassed { get; } = new TimeSpan();// Прошло реального времени
+        internal int CounterTicks { get; private set; }// Сколько тиков прошло
 
         private DescriptorTimeOfDay TimeOfDay { get; set; }// Время суток
         internal int Day { get; private set; }// День
@@ -215,14 +214,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoTicks()
         {
-            // Увеличиваем текущее время
-
-
             // Ходим игроками
             for (int i = 0; i < Players.Length; i++)
             {
                 Players[i].DoTick();
             }
+
+            // Увеличиваем количество прошедших тиков
+            CounterTicks++;
         }
 
         internal void Start()
