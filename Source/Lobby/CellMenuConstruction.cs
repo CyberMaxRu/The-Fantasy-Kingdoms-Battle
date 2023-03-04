@@ -67,14 +67,10 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetTimeExecuting()
         {
-            if (!Program.formMain.Settings.ShowTimeForExecuting)
-                return -1;
-
-            if (ExecutingAction is null)
-                return -1;
-
-            //Assert(ExecutingAction.RestDaysExecuting > 0);
-            return ExecutingAction.RestTimeExecuting;
+            if (Program.formMain.Settings.ShowTimeForExecuting && (ExecutingAction != null))
+                return ExecutingAction.RestTimeExecuting;
+            
+            return base.GetTimeExecuting();
         }
 
         protected virtual string GetTextForLevel() => "";
