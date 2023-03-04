@@ -185,6 +185,7 @@ namespace Fantasy_Kingdoms_Battle
             Castle.Gold = Gold;
             Castle.DoDamage(500);
             Graveyard = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDCityGraveyard));
+            GuildofBuilders = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDGuildOfBuilders));
 
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
@@ -193,6 +194,7 @@ namespace Fantasy_Kingdoms_Battle
             Creature advisor = Castle.HireHero(FormMain.Descriptors.FindCreature("Advisor"), null);
             Creature captain = Castle.HireHero(FormMain.Descriptors.FindCreature("Captain"), null);
             Creature treasurer = Castle.HireHero(FormMain.Descriptors.FindCreature("Treasurer"), null);
+            GuildofBuilders.HireHero(FormMain.Descriptors.FindCreature("Builder"), null);
 
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
@@ -704,6 +706,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int LairsShowed { get; private set; }
 
         //
+        internal Construction GuildofBuilders{ get; }// Гильдия строителей
         internal Construction Graveyard { get; }// Кладбище игрока
 
         // Статистика

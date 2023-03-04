@@ -93,7 +93,7 @@
   <Creature>
     <ID>Peasant</ID>
     <Name>Крестьянин</Name>
-    <Description>Это просто крестьяне, Сир. Они обучены строить и чинить здания.</Description>
+    <Description>Это просто крестьяне, Сир. Они обучены выращивать еду.</Description>
     <ImageIndex>119</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
@@ -101,6 +101,31 @@
     <Cost>0</Cost>
     <Construction>PeasantHouse</Construction>
     <MaxLevel>1</MaxLevel>
+  </Creature>
+  <Creature>
+    <ID>Builder</ID>
+    <Name>Строитель</Name>
+    <Description>Строители обучены строить и чинить здания.</Description>
+    <ImageIndex>195</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
+    <TypeCreature>Human</TypeCreature>
+    <Reward>1</Reward>
+    <Cost>0</Cost>
+    <Construction>GuildOfBuilders</Construction>
+    <MaxLevel>1</MaxLevel>
+    <Creating>
+      <Time>10</Time>
+      <Cost>
+        <Gold>250</Gold>
+      </Cost>
+      <Requirements>
+        <Requirement>
+          <TypeRequirement>BuildedConstruction</TypeRequirement>
+          <Construction>Castle</Construction>
+          <Level>1</Level>
+        </Requirement>
+      </Requirements>
+    </Creating>
   </Creature>
   <Creature>
     <ID>Guardian</ID>
