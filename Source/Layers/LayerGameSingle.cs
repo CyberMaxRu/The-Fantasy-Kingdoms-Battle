@@ -45,6 +45,11 @@ namespace Fantasy_Kingdoms_Battle
         internal VCLabel labelLayers;
         internal DateTime startDebugAction;
         internal TimeSpan durationDrawFrame;
+        internal DateTime firstFrameOfSecond;
+        internal int countFrames;
+        internal int countTicks;
+        internal int framesPerSecond;
+        internal int ticksPerSecond;
 
         private readonly List<VCIconButton48> listBtnLevelTax;
 
@@ -926,15 +931,28 @@ namespace Fantasy_Kingdoms_Battle
             ShowCurrentPlayerLobby();
 
             lobby.Start();
+            firstFrameOfSecond = DateTime.Now;
 
             while (true)
             {
                 DateTime curTime = DateTime.Now;
+                TimeSpan delta1 = curTime - firstFrameOfSecond;
+                if (delta1.TotalMilliseconds >= 1000)
+                {
+                    firstFrameOfSecond = DateTime.Now;
+                    framesPerSecond = countFrames;
+                    ticksPerSecond = countTicks;
+                    countFrames = 0;
+                    countTicks = 0;
+                }
 
                 Application.DoEvents();
                 if (lobby is null)
                     break;
                 lobby.DoTicks();
+                countTicks++;
+
+                countFrames++;
                 Program.formMain.ShowFrame(true);
 
                 TimeSpan ts = DateTime.Now - curTime;

@@ -867,7 +867,7 @@ namespace Fantasy_Kingdoms_Battle
                     gfxRenderFrame.DrawRectangle(layerGame.penDebugBorder, controlWithHint.Rectangle);
 
                 layerGame.durationDrawFrame = DateTime.Now - layerGame.startDebugAction;
-                layerGame.labelTimeDrawFrame.Text = $"Draw frame: {layerGame.durationDrawFrame.TotalMilliseconds}";
+                layerGame.labelTimeDrawFrame.Text = $"FPS: {layerGame.framesPerSecond}, TPS: {layerGame.ticksPerSecond}, Draw frame: {layerGame.durationDrawFrame.TotalMilliseconds}";
                 layerGame.vcDebugInfo.Paint(gfxRenderFrame);
             }
 
