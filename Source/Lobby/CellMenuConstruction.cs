@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetTimeExecuting()
         {
-            if (!Program.formMain.Settings.ShowQuantityDaysForExecuting)
+            if (!Program.formMain.Settings.ShowTimeForExecuting)
                 return -1;
 
             if (ExecutingAction is null)

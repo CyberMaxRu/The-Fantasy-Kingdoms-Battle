@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl vcPanelInterface;
         private VCLabel lblCaptionPanelInterface;
         private VCCheckBox chkbShowShortNames;
-        private VCCheckBox chkbShowQuantityDaysForExecuting;
+        private VCCheckBox chkbShowTimeForExecuting;
         private VCCheckBox chkbShowTypeCellMenu;
         private VCCheckBox chkbHideFulfilledRequirements;
         private VCCheckBox chkbShowNameConstruction;
@@ -105,9 +105,9 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPanelInterface.StringFormat.Alignment = StringAlignment.Near;
             chkbShowShortNames = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, lblCaptionPanelInterface.NextTop(), "Наименования на иконках умений и предметов");
             chkbShowShortNames.Width = 520;
-            chkbShowQuantityDaysForExecuting = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowShortNames.NextTop(), "Показывать количество дней для выполнения действия в меню");
-            chkbShowQuantityDaysForExecuting.Width = 520;
-            chkbShowTypeCellMenu = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowQuantityDaysForExecuting.NextTop(), "Показывать тип объекта в меню");
+            chkbShowTimeForExecuting = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowShortNames.NextTop(), "Показывать время для выполнения действия");
+            chkbShowTimeForExecuting.Width = 520;
+            chkbShowTypeCellMenu = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowTimeForExecuting.NextTop(), "Показывать тип объекта в меню");
             chkbShowTypeCellMenu.Width = 520;
             chkbHideFulfilledRequirements = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowTypeCellMenu.NextTop(), "Скрывать выполненные требования");
             chkbHideFulfilledRequirements.Width = 520;
@@ -181,7 +181,7 @@ namespace Fantasy_Kingdoms_Battle
             tbVolumeSound.Position = settings.VolumeSound;
             tbVolumeMusic.Position = settings.VolumeMusic;
             chkbShowShortNames.Checked = settings.ShowShortNames;
-            chkbShowQuantityDaysForExecuting.Checked = settings.ShowQuantityDaysForExecuting;
+            chkbShowTimeForExecuting.Checked = settings.ShowTimeForExecuting;
             chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
             chkbHideFulfilledRequirements.Checked = settings.HideFulfilledRequirements;
             chkbShowNameConstruction.Checked = settings.ShowNameConstruction;
@@ -218,7 +218,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.MusicFromMajesty1 = chkbMusicFromMajesty1.Checked;
             settings.MusicFromMajesty2 = chkbMusicFromMajesty2.Checked;
             settings.ShowShortNames = chkbShowShortNames.Checked;
-            settings.ShowQuantityDaysForExecuting = chkbShowQuantityDaysForExecuting.Checked;
+            settings.ShowTimeForExecuting = chkbShowTimeForExecuting.Checked;
             settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
             settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
             settings.ShowNameConstruction = chkbShowNameConstruction.Checked;

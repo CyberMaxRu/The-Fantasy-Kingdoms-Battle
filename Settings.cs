@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool MusicFromMajesty2 { get; set; }
 
         internal bool ShowShortNames { get; set; }
-        internal bool ShowQuantityDaysForExecuting { get; set; }
+        internal bool ShowTimeForExecuting { get; set; }
         internal bool ShowTypeCellMenu { get; set; }
         internal bool HideFulfilledRequirements { get; set; }
         internal bool ShowNameConstruction { get; set; }
@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
             VolumeSound = 50;
             VolumeMusic = 50;
             ShowShortNames = false;
-            ShowQuantityDaysForExecuting = true;
+            ShowTimeForExecuting = true;
             ShowTypeCellMenu = true;
             HideFulfilledRequirements = true;
             ShowNameConstruction = true;
@@ -140,7 +140,7 @@ namespace Fantasy_Kingdoms_Battle
                     MusicFromMajesty2 = XmlUtils.GetBoolean(doc, "Settings/Sound/MusicFromMajesty2", MusicFromMajesty2);
 
                     ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
-                    ShowQuantityDaysForExecuting = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowQuantityDaysForExecuting", ShowQuantityDaysForExecuting);
+                    ShowTimeForExecuting = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTimeForExecuting", ShowTimeForExecuting);
                     ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
                     HideFulfilledRequirements = XmlUtils.GetBoolean(doc, "Settings/Interface/HideFulfilledRequirements", HideFulfilledRequirements);
                     ShowNameConstruction = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowNameConstruction", ShowNameConstruction);
@@ -190,7 +190,7 @@ namespace Fantasy_Kingdoms_Battle
 
             textWriter.WriteStartElement("Interface");
             textWriter.WriteElementString("ShowShortNames", ShowShortNames.ToString());
-            textWriter.WriteElementString("ShowQuantityDaysForExecuting", ShowQuantityDaysForExecuting.ToString());
+            textWriter.WriteElementString("ShowQuantityDaysForExecuting", ShowTimeForExecuting.ToString());
             textWriter.WriteElementString("ShowTypeCellMenu", ShowTypeCellMenu.ToString());
             textWriter.WriteElementString("HideFulfilledRequirements", HideFulfilledRequirements.ToString());
             textWriter.WriteElementString("ShowNameConstruction", ShowNameConstruction.ToString());
