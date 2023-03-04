@@ -4608,7 +4608,7 @@
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <MaxInhabitant>5</MaxInhabitant>
+        <MaxInhabitant>2</MaxInhabitant>
       </Level>
       <Level>
         <ID>LevelGuildOfBuilders2</ID>
@@ -4623,7 +4623,7 @@
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
-        <MaxInhabitant>5</MaxInhabitant>
+        <MaxInhabitant>3</MaxInhabitant>
       </Level>
       <Level>
         <ID>LevelGuildOfBuilders3</ID>
@@ -4638,7 +4638,7 @@
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
-        <MaxInhabitant>5</MaxInhabitant>
+        <MaxInhabitant>4</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>

@@ -384,6 +384,7 @@ namespace Fantasy_Kingdoms_Battle
                 c.UpdateAfterTick();
             }
 
+            UpdateBuilderInfo();
             CalcCityParameters();
         }
 
@@ -708,6 +709,12 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal Construction GuildofBuilders{ get; }// Гильдия строителей
         internal Construction Graveyard { get; }// Кладбище игрока
+
+        // Строители
+        internal int MaxBuilders { get; private set; }// Максимальное количество строителей
+        internal int CurrentBuilders { get; private set; }// Текущее количество строителей
+        internal int FreeBuilders { get; private set; }// Свободных строителей
+
 
         // Статистика
         internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();
@@ -1748,6 +1755,12 @@ namespace Fantasy_Kingdoms_Battle
         internal double CoefficientExecuting(TypeCreating typeCreating)
         {
             return 1;
+        }
+
+        internal void UpdateBuilderInfo()
+        {
+            MaxBuilders = GuildofBuilders.Descriptor.Levels[GuildofBuilders.Level].MaxInhabitant;
+            CurrentBuilders = GuildofBuilders.Heroes.Count;
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
