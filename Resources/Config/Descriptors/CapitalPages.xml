@@ -2,14 +2,14 @@
 <Descriptors>
   <CapitalPage>
     <ID>Power</ID>
-    <Name>Общегородские строения</Name>
+    <Name>Общегородские сооружения</Name>
     <ImageIndex>164</ImageIndex>
-    <Description>Строения, необходимые для функционирования города</Description>
+    <Description>Сооружения, необходимые для функционирования города</Description>
     <NameTexture>Power</NameTexture>
   </CapitalPage>
   <CapitalPage>
     <ID>Economic</ID>
-    <Name>Экономические строения</Name>
+    <Name>Экономические сооружения</Name>
     <ImageIndex>165</ImageIndex>
     <Description>Надежная экономика - залог победы</Description>
     <NameTexture>Economic</NameTexture>
