@@ -248,7 +248,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateRestTimeExecuting()
         {
             // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
-            RestTimeExecuting = (RestMilliTicks / (MilliTicksPerTick * FormMain.Config.TicksInSecond)) + 1;
+            RestTimeExecuting = (int)Math.Truncate(RestMilliTicks / (MilliTicksPerTick * FormMain.Config.TicksInSecond) + 0.5);
             Percent = PassedMilliTicks * 100 / TotalMilliTicks;
         }
     }
