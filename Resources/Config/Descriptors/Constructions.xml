@@ -4583,6 +4583,77 @@
     </CellsMenu>
   </Construction>
   <Construction>
+    <ID>GuildOfBuilders</ID>
+    <Name>Гильдия строителей</Name>
+    <Description>- Гильдия занимается строительством сооружений в городе и в окрестностях</Description>
+    <ImageIndex>194</ImageIndex>
+    <TypeConstruction>Power</TypeConstruction>
+    <Category>Economic</Category>
+    <Page>Power</Page>
+    <Pos>1,3</Pos>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>3</MaxLevel>
+    <SoundSelect>townhall_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <ID>LevelGuildOfBuilders1</ID>
+        <Number>1</Number>
+        <Durability>500</Durability>
+        <Creating>
+          <Time>30</Time>
+          <Builders>0</Builders>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+        </Creating>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>5</GreatnessPerDay>
+      </Level>
+      <Level>
+        <ID>LevelGuildOfBuilders2</ID>
+        <Number>2</Number>
+        <Durability>600</Durability>
+        <Creating>
+          <Time>30</Time>
+          <Builders>1</Builders>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+        </Creating>
+        <GreatnessByConstruction>200</GreatnessByConstruction>
+        <GreatnessPerDay>10</GreatnessPerDay>
+      </Level>
+      <Level>
+        <ID>LevelGuildOfBuilders3</ID>
+        <Number>3</Number>
+        <Durability>800</Durability>
+        <Creating>
+          <Time>30</Time>
+          <Builders>2</Builders>
+          <Cost>
+            <Gold>500</Gold>
+          </Cost>
+        </Creating>
+        <GreatnessByConstruction>200</GreatnessByConstruction>
+        <GreatnessPerDay>10</GreatnessPerDay>
+      </Level>
+    </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>1,1</Pos>
+        <Entity>LevelGuildOfBuilders1</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,2</Pos>
+        <Entity>LevelGuildOfBuilders2</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelGuildOfBuilders3</Entity>
+      </CellMenu>
+    </CellsMenu>
+  </Construction>
+  <Construction>
     <ID>Arena</ID>
     <Name>Арена</Name>
     <Description>- Позволяет улучшать навыки героями</Description>
