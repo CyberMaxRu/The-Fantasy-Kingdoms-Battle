@@ -1203,8 +1203,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCheating_Click(object sender, EventArgs e)
         {
+            Pause();
+
             WindowCheating w = new WindowCheating(curAppliedPlayer);
             w.ShowDialog();
+
+            Continue();
         }
 
         private void LabelCorruption_ShowHint(object sender, EventArgs e)
@@ -1335,8 +1339,24 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        private void Pause()
+        {
+            Assert(internalTimer.IsRunning);
+
+            internalTimer.Stop();
+        }
+
+        private void Continue()
+        {
+            Assert(!internalTimer.IsRunning);
+
+            internalTimer.Start();
+        }
+
         private void ShowInGameMenu()
         {
+            Pause();
+
             WindowMenuInGame w = new WindowMenuInGame(CurrentLobby);
             DialogAction dr = w.ShowDialog();
             switch (dr)
@@ -1361,6 +1381,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Program.formMain.ProgramState != ProgramState.NeedQuit)
                 Program.formMain.ShowFrame(true);
+
+            Continue();
         }
 
         internal override void KeyUp(KeyEventArgs e)
