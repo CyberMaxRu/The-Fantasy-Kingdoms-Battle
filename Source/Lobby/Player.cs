@@ -1645,7 +1645,6 @@ namespace Fantasy_Kingdoms_Battle
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {
-            /*
             queueRepair.Clear();
             foreach (Construction c in Constructions)
             {
@@ -1659,25 +1658,21 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (Construction c in Constructions)
                     c.ClearQueueExecuting();
 
-                Assert(RestConstructionPoints == ConstructionPoints);
-
-                UsedConstructionPoints = 0;// Обнуляем потраченное количество очков
-
                 // Сначала ремонтируем сооружения, потом уже достраиваем что есть
-                if (queueRepair.Count > 0)
+                /*if (queueRepair.Count > 0)
                 {
                     foreach (CellMenuConstructionRepair cr in queueRepair.OrderBy(c => c.ExecutingAction.NeedPoints))
                     {
                         cr.AddToQueue();
                     }
-                }
+                }*/
 
                 // Составляем очереди у сооружений
                 List<CellMenuConstruction> list = new List<CellMenuConstruction>();
                 list.AddRange(queueExecuting);
                 foreach (CellMenuConstruction cmc in list)
                     cmc.AddToQueue();
-            }*/
+            }
         }
 
         internal void AddConstruction(Construction c)
