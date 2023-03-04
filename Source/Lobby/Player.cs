@@ -383,12 +383,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             CalcCityParameters();
-
-            // Проходим по очереди выполнения и делаем прогресс
-            foreach (CellMenuConstruction cmc in queueExecuting)
-            {
-                cmc.DoProgressExecutingAction();
-            }
         }
 
         internal abstract void EndTurn();

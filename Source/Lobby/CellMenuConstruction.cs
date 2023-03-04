@@ -200,10 +200,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             ExecutingAction?.UpdateRestTimeExecuting();
         }
-
-        internal virtual void DoProgressExecutingAction()
-        {
-        }
     }
 
     internal sealed class ComponentExecutingAction
@@ -593,13 +589,6 @@ namespace Fantasy_Kingdoms_Battle
             base.DoTick();
         }
 
-        internal override void DoProgressExecutingAction()
-        {
-            //Assert(Construction.MaxDurability > 0);
-
-
-            base.DoProgressExecutingAction();
-        }
 
         internal override void InQueueChanged()
         {
