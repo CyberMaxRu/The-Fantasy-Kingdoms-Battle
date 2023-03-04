@@ -193,8 +193,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateTime()
         {
-            if (ExecutingAction != null)
-                ExecutingAction.UpdateRestTimeExecuting();
+            ExecutingAction?.UpdateRestTimeExecuting();
         }
 
         internal virtual void DoProgressExecutingAction()
