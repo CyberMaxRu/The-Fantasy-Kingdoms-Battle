@@ -77,7 +77,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCIconButton48 btnInGameMenu;
         private readonly VCIconButton48 btnCheating;
-        private readonly VCIconButton48 btnEndTurn;
 
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
