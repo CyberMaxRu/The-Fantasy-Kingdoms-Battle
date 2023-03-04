@@ -4175,7 +4175,7 @@
         <Number>1</Number>
         <Durability>200</Durability>
         <Creating>
-          <Time>20</Time>
+          <Time>10</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
