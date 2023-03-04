@@ -22,6 +22,7 @@
         <Tax>50</Tax>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>550</Gold>
           </Cost>
@@ -38,6 +39,7 @@
         <Tax>50</Tax>
         <Creating>
           <Time>25</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -61,6 +63,7 @@
         <Tax>50</Tax>
         <Creating>
           <Time>25</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -216,6 +219,7 @@
         <Durability>1500</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -229,6 +233,7 @@
         <Durability>2350</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -249,6 +254,7 @@
         <Durability>3400</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -446,6 +452,7 @@
         <Durability>3300</Durability>
         <Creating>
           <Time>40</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -462,6 +469,7 @@
         <Durability>6450</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -485,6 +493,7 @@
         <Durability>9700</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -642,6 +651,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>45</Time>
+          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -662,6 +672,7 @@
         <Durability>450</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -687,6 +698,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -712,6 +724,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>15</Time>
+          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -896,6 +909,7 @@
         <Number>1</Number>
         <Creating>
           <Time>60</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -916,6 +930,7 @@
         <Durability>1000</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -941,6 +956,7 @@
         <Durability>1200</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -1154,6 +1170,7 @@
         <Durability>1200</Durability>
         <Creating>
           <Time>90</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1182,6 +1199,7 @@
         <Durability>1400</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1211,6 +1229,7 @@
         <Durability>1600</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -1245,6 +1264,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1441,6 +1461,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1454,6 +1475,7 @@
         <Durability>600</Durability>
         <Creating>
           <Time>10</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1474,6 +1496,7 @@
         <Durability>700</Durability>
         <Creating>
           <Time>10</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1517,6 +1540,7 @@
         <Durability>250</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1537,6 +1561,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>10</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1557,6 +1582,7 @@
         <Durability>350</Durability>
         <Creating>
           <Time>10</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1732,6 +1758,7 @@
         <Number>1</Number>
         <Creating>
           <Time>60</Time>
+          <Builders>0</Builders>
           <Cost>
             <Gold>0</Gold>
           </Cost>
@@ -1763,6 +1790,7 @@
         <Durability>3000</Durability>
         <Creating>
           <Time>120</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>2000</Gold>
             <Wood>200</Wood>
@@ -1819,6 +1847,7 @@
         <Durability>4000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>4000</Gold>
             <Brick>750</Brick>
@@ -1878,6 +1907,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>5</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>5000</Gold>
           </Cost>
@@ -1999,6 +2029,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2035,6 +2066,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>45</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2049,6 +2081,7 @@
         <Durability>700</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -2070,6 +2103,7 @@
         <Durability>900</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2316,6 +2350,7 @@
         <Durability>800</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2330,6 +2365,7 @@
         <Durability>1000</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2351,6 +2387,7 @@
         <Durability>1250</Durability>
         <Creating>
           <Time>45</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -2372,6 +2409,7 @@
         <Durability>1500</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -2835,6 +2873,7 @@
         <Durability>250</Durability>
         <Creating>
           <Time>25</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2860,6 +2899,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2892,6 +2932,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3093,6 +3134,7 @@
         <Durability>800</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3114,6 +3156,7 @@
         <Durability>900</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -3128,6 +3171,7 @@
         <Durability>1000</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -3614,6 +3658,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>50</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3628,6 +3673,7 @@
         <Durability>550</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3642,6 +3688,7 @@
         <Durability>600</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3918,6 +3965,7 @@
         <Durability>200</Durability>
         <Creating>
           <Time>120</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -3943,6 +3991,7 @@
         <Durability>250</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -3968,6 +4017,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3997,6 +4047,7 @@
         <Durability>150</Durability>
         <Creating>
           <Time>10</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4018,6 +4069,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4045,6 +4097,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4072,6 +4125,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>40</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4099,6 +4153,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>45</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -4176,6 +4231,7 @@
         <Durability>200</Durability>
         <Creating>
           <Time>10</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4200,6 +4256,7 @@
         <Durability>250</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4231,6 +4288,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4267,6 +4325,7 @@
         <Interest>5</Interest>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4286,6 +4345,7 @@
         <Interest>10</Interest>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4312,6 +4372,7 @@
         <Interest>15</Interest>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4434,6 +4495,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4447,6 +4509,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4485,6 +4548,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4498,6 +4562,7 @@
         <Durability>600</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>2</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4536,6 +4601,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>45</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4560,6 +4626,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4584,6 +4651,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4731,6 +4799,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4742,6 +4811,7 @@
         <Durability>450</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -4753,6 +4823,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>5000</Gold>
           </Cost>
@@ -4921,6 +4992,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4933,6 +5005,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>10</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -4974,6 +5047,7 @@
         <Durability>100</Durability>
         <Creating>
           <Time>45</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4999,6 +5073,7 @@
         <Durability>150</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5024,6 +5099,7 @@
         <Durability>200</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>          
             <Gold>500</Gold>
           </Cost>
@@ -5055,6 +5131,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5082,6 +5159,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>20</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5102,6 +5180,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>25</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -5249,6 +5328,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>90</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -5263,6 +5343,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5284,6 +5365,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -5468,6 +5550,7 @@
         <Durability>300</Durability>
         <Creating>
           <Time>60</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5493,6 +5576,7 @@
         <Durability>350</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -5525,6 +5609,7 @@
         <Durability>400</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5710,6 +5795,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5758,6 +5844,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5806,6 +5893,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5854,6 +5942,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5902,6 +5991,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5950,6 +6040,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5998,6 +6089,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -6046,6 +6138,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -6094,6 +6187,7 @@
         <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
+          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -6836,6 +6930,7 @@
         <Durability>100</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6890,6 +6985,7 @@
         <Durability>100</Durability>
         <Creating>
           <Time>15</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6944,6 +7040,7 @@
         <Durability>250</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -6998,6 +7095,7 @@
         <Durability>200</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -7052,6 +7150,7 @@
         <Durability>200</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -7081,6 +7180,7 @@
         <Durability>1000</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -7512,6 +7612,7 @@
         <Durability>2000</Durability>
         <Creating>
           <Time>30</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -7538,6 +7639,7 @@
         <Durability>200</Durability>
         <Creating>
           <Time>45</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
