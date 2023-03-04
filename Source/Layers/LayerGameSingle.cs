@@ -196,19 +196,13 @@ namespace Fantasy_Kingdoms_Battle
             btnCheating.Hint = "Читинг";
             btnCheating.HintDescription = "Открыть настройки читинга";
 
-            btnEndTurn = Program.formMain.CreateButton(bmpTopPanel, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, null);
-            btnEndTurn.HighlightUnderMouse = true;
-            btnEndTurn.ShowBorder = true;
-            btnEndTurn.Hint = "Конец хода";
-            btnEndTurn.HintDescription = "Завершение хода";
-
             panelLairWithFlags = new VisualControl(MainControl, 0, Config.GridSize);
             panelLairWithFlags.Width = Program.formMain.imListObjects48.Size.Width;
             panelLairWithFlags.Height = Program.formMain.imListObjects48.Size.Height;
 
             // Отладочная информация
             vcDebugInfo = new VisualControl();
-            labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize * 8, Config.GridSize, Program.formMain.fontParagraph, Color.White, 16, "");
+            labelTimeDrawFrame = new VCLabel(vcDebugInfo, btnCheating.NextLeft(), Config.GridSize, Program.formMain.fontParagraph, Color.White, 16, "");
             labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
             labelTimeDrawFrame.Width = 300;
             labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Program.formMain.fontParagraph, Color.White, 16, "Layers");
@@ -1036,7 +1030,6 @@ namespace Fantasy_Kingdoms_Battle
                     while (pageResultTurn.Page.Controls.Count > 0)
                         pageResultTurn.Page.RemoveControl(pageResultTurn.Page.Controls[0]);
 
-                    btnEndTurn.ImageIsEnabled = true;
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
                     labelKnowledge.Visible = true;
@@ -1051,7 +1044,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    btnEndTurn.ImageIsEnabled = false;
                     labelDay.Visible = false;
                     labelBuilders.Visible = false;
                     labelKnowledge.Visible = false;
@@ -1157,14 +1149,6 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnInGameMenu_Click(object sender, EventArgs e)
         {
             ShowInGameMenu();
-        }
-
-        private void BtnEndTurn_Click(object sender, EventArgs e)
-        {
-            Program.formMain.StopSoundSelect();
-            PanelHint.HideHint();
-
-            curAppliedPlayer.EndTurn();
         }
 
         private void DrawPageLocation()
@@ -1428,8 +1412,6 @@ namespace Fantasy_Kingdoms_Battle
             panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
             vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
             vcRightPanel.ShiftX = MainControl.Width - vcRightPanel.Width;
-
-            btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
             bmpObjectMenu.ShiftX = vcRightPanel.Width - bmpObjectMenu.Width;
             bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
