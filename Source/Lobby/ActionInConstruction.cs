@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Creating != null)
                     if (Creating.Time > 0)
-                        ProgressExecuting = new ComponentProgressExecuting(Creating.Time, Construction.Player.GetMilliTicksForAction());
+                        ProgressExecuting = new ComponentProgressExecuting(Creating.Time, Creating.Builders, Construction.Player.GetMilliTicksForAction());
             }
         }
 
@@ -158,21 +158,25 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal virtual void StartExecute() { }// Вызывается перед началом выполнения действия
+        internal virtual void StartProgress() { }// Вызывается перед началом выполнения действия
 
         internal virtual void DoTick()
         {
             if ((ProgressExecuting != null) && ProgressExecuting.InQueue)
             {
                 if (ProgressExecuting.PassedMilliTicks == 0)
-                    StartExecute();
+                    StartProgress();
 
-                ProgressExecuting.CalcTick(Construction.Player.GetMilliTicksForAction());
-
-                // Если прогресс завершен, выполняем действие
-                if (ProgressExecuting.RestMilliTicks == 0)
+                Assert(ProgressExecuting.State != StateProgress.WaitForQueue);
+                if (ProgressExecuting.State == StateProgress.Active)
                 {
-                    Execute();
+                    ProgressExecuting.CalcTick(Construction.Player.GetMilliTicksForAction());
+
+                    // Если прогресс завершен, выполняем действие
+                    if (ProgressExecuting.RestMilliTicks == 0)
+                    {
+                        Execute();
+                    }
                 }
             }
         }
@@ -451,14 +455,14 @@ namespace Fantasy_Kingdoms_Battle
                 return Color.Gray;
         }
 
-        internal override void StartExecute()
+        internal override void StartProgress()
         {
             if (Construction.Level > 0)
             {
                 Assert(Construction.CurrentDurability == Construction.MaxDurability);
             }
 
-            base.StartExecute();
+            base.StartProgress();
         }
 
         protected override void Execute()
@@ -557,7 +561,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionRepair(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
-            ProgressExecuting = new ComponentProgressExecuting(c.MaxDurability - c.CurrentDurability, Construction.Player.GetMilliTicksForAction());
+            ProgressExecuting = new ComponentProgressExecuting(c.MaxDurability - c.CurrentDurability, 1, Construction.Player.GetMilliTicksForAction());
         }
 
         internal int DaysForRepair { get; set; }// Дней на завершение ремонта

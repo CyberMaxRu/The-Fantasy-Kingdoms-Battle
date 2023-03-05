@@ -3,10 +3,12 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс - компонента прогресса выполнения действия
+    // Класс - компонента прогресса подготовки действия
+    internal enum StateProgress { WaitForQueue, Active, WaitBuilders };
+
     internal sealed class ComponentProgressExecuting
     {
-        public ComponentProgressExecuting(int seconds, int milliTicksPerTicks)
+        public ComponentProgressExecuting(int seconds, int needBuilders, int milliTicksPerTicks)
         {
             Assert(seconds > 0);
             Assert(milliTicksPerTicks > 0);
@@ -15,6 +17,8 @@ namespace Fantasy_Kingdoms_Battle
             RestMilliTicks = TotalMilliTicks;
             MilliTicksPerTick = milliTicksPerTicks;
             RestTimeExecuting = -1;
+            NeedBuilders = needBuilders;
+            State = StateProgress.WaitForQueue;
         }
 
         // Свойства для расчета прогресса
@@ -25,13 +29,19 @@ namespace Fantasy_Kingdoms_Battle
         internal int RestTimeExecuting { get; private set; }// Сколько секунд осталось до конца выполнения
 
         // Дополнительные флаги
+        internal StateProgress State { get; set; }// Состояние выполнения
         internal bool InQueue { get; set; }// Действие в очереди
+        internal int NeedBuilders { get; set; }// Количество необходимых строителей
+        internal int UsedBuilders { get; set; }// Количество задействованных строителей
 
         // Обработка тика игры
         internal void CalcTick(int addMilliTicks)
         {
+            Assert(State == StateProgress.Active);
             Assert(PassedMilliTicks < TotalMilliTicks);
             Assert(addMilliTicks > 0);
+            Assert(InQueue);
+            Assert(((NeedBuilders > 0) && (UsedBuilders == NeedBuilders)) || ((NeedBuilders == 0) && (UsedBuilders == 0)));
 
             PassedMilliTicks += addMilliTicks;
             if (PassedMilliTicks > TotalMilliTicks)

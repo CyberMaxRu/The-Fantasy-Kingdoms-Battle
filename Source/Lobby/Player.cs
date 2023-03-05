@@ -366,9 +366,8 @@ namespace Fantasy_Kingdoms_Battle
                 cm.DoTick();
             }*/
 
-            // Вызываем диспетчер действий
-
-
+            // Вызываем диспетчер очереди, чтобы он распределил строителей по заданиям
+            DispatcherQueue();
 
             // Делаем тик у сооружений
             foreach (Construction c in Constructions)
@@ -393,6 +392,49 @@ namespace Fantasy_Kingdoms_Battle
 
             UpdateBuilderInfo();
             CalcCityParameters();
+        }
+
+        private void DispatcherQueue()
+        {
+            // Проходим по очереди задач, и настраиваем состояние
+            foreach (ActionInConstruction a in queueExecuting)
+            {
+                switch (a.ProgressExecuting.State)
+                {
+                    case StateProgress.WaitForQueue:
+                        if (a.ProgressExecuting.NeedBuilders == 0)
+                            a.ProgressExecuting.State = StateProgress.Active;
+                        else if (FreeBuilders >= a.ProgressExecuting.NeedBuilders)
+                        {
+                            UseFreeBuilder(a.ProgressExecuting.NeedBuilders);
+                            a.ProgressExecuting.UsedBuilders = a.ProgressExecuting.NeedBuilders;
+                            a.ProgressExecuting.State = StateProgress.Active;
+                        }
+                        else
+                            a.ProgressExecuting.State = StateProgress.WaitBuilders;                                
+                        break;
+                    case StateProgress.Active:
+                        if (a.ProgressExecuting.NeedBuilders > 0)
+                        {
+                            if (a.ProgressExecuting.UsedBuilders < a.ProgressExecuting.NeedBuilders)
+                                a.ProgressExecuting.State = StateProgress.WaitBuilders;
+                        }
+                        break;
+                    case StateProgress.WaitBuilders:
+                        Assert(a.ProgressExecuting.NeedBuilders > 0);
+
+                        if (FreeBuilders >= a.ProgressExecuting.NeedBuilders)
+                        {
+                            UseFreeBuilder(a.ProgressExecuting.NeedBuilders);
+                            a.ProgressExecuting.UsedBuilders = a.ProgressExecuting.NeedBuilders;
+                            a.ProgressExecuting.State = StateProgress.Active;
+                        }
+                        break;
+                    default:
+                        DoException($"Неизвестное состояние прогресса: {a.ProgressExecuting.State}");
+                        break;
+                }
+            }
         }
 
         internal abstract void EndTurn();
@@ -1490,26 +1532,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UseFreeBuilder(int builders)
         {
-            Debug.Assert(builders >= 0);
+            Assert(builders > 0);
+            Assert(FreeBuilders >= builders);
 
-            /*
-            if (builders > 0)
-            {
-                Debug.Assert(RestConstructionPoints > 0);
-
-                RestConstructionPoints -= builders;
-
-                Debug.Assert(RestConstructionPoints >= 0);
-            }*/
+            FreeBuilders -= builders;
         }
 
         internal void UnuseFreeBuilders(int builders)
         {
-            Debug.Assert(builders >= 0);
+            Assert(builders > 0);
 
-            /*RestConstructionPoints += builders;
-
-            Debug.Assert(RestConstructionPoints >= 0);*/
+            FreeBuilders += builders;
         }
 
         internal void AddExtraLevelUp()
@@ -1618,6 +1651,8 @@ namespace Fantasy_Kingdoms_Battle
         internal void RemoveFromQueueExecuting(ActionInConstruction cmc, bool constructed)
         {
             cmc.Construction.RemoveCellMenuFromQueue(cmc, !constructed);
+            if (cmc.ProgressExecuting.UsedBuilders > 0)
+                UnuseFreeBuilders(cmc.ProgressExecuting.UsedBuilders);
         }
         
         internal void DeleteFromQueueBuilding(ActionInConstruction cmc)
