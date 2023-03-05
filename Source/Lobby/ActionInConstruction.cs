@@ -525,8 +525,9 @@ namespace Fantasy_Kingdoms_Battle
                 elapsedMilliTicks += Construction.Player.GetMilliTicksForAction();
                 if (elapsedMilliTicks >= milliTicksForOneDurability)
                 {
-                    Construction.CurrentDurability += 1;
-                    elapsedMilliTicks -= milliTicksForOneDurability;
+                    int incDurability = elapsedMilliTicks / milliTicksForOneDurability;
+                    Construction.CurrentDurability += incDurability;
+                    elapsedMilliTicks -= milliTicksForOneDurability * incDurability;
                 }
             }
 
