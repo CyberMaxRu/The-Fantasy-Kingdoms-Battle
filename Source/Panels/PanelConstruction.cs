@@ -164,59 +164,72 @@ namespace Fantasy_Kingdoms_Battle
 
                 pbDurability.Visible = true;
                 pbDurability.PositionPotential = 0;
-                switch (Construction.State)
-                {
-                    case StateConstruction.Work:
-                        pbDurability.Text = Construction.CurrentDurability.ToString();
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = Construction.CurrentDurability;
-                        break;
-                    case StateConstruction.NotBuild:
-                    case StateConstruction.InQueueBuild:
-                        pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = 0;
-                        break;
-                    case StateConstruction.Build:
-                        pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = Construction.CurrentDurability;
-                        break;
-                    case StateConstruction.NeedRepair:
-                    case StateConstruction.Repair:
-                        pbDurability.Text = $"{Construction.CurrentDurability}" +
-                            $"{(Construction.ActionMain.ProgressExecuting.PassedMilliTicks > 0 ? $"+{Construction.ActionMain.ProgressExecuting.PassedMilliTicks}" : "")}/{Construction.MaxDurability}";
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = Construction.CurrentDurability;
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ProgressExecuting.PassedMilliTicks;
-                        break;
-                    default:
-                        throw new Exception($"Неизвестное состояние {Construction.State}");
-                }
 
-                switch (Construction.State)
+                if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
                 {
-                    case StateConstruction.Work:
-                        pbDurability.ColorProgress = Color.Lime;
-                        break;
-                    case StateConstruction.NotBuild:
-                    case StateConstruction.InQueueBuild:
-                        break;
-                    case StateConstruction.Build:
-                        pbDurability.ColorProgress = Color.PaleTurquoise;
-                        break;
-                    case StateConstruction.NeedRepair:
-                    case StateConstruction.Repair:
-                        int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
-                        if (percent >= 60)
+                    int percent = Construction.FirstActionInQueue.ProgressExecuting.PassedMilliTicks * 100 / Construction.FirstActionInQueue.ProgressExecuting.TotalMilliTicks;
+
+                    pbDurability.Text = percent.ToString() + "%";
+                    pbDurability.Max = 100;
+                    pbDurability.Position = percent;
+                    pbDurability.ColorProgress = Color.Fuchsia;
+                }
+                else
+                {
+                    switch (Construction.State)
+                    {
+                        case StateConstruction.Work:
+                            pbDurability.Text = Construction.CurrentDurability.ToString();
+                            pbDurability.Max = Construction.MaxDurability;
+                            pbDurability.Position = Construction.CurrentDurability;
+                            break;
+                        case StateConstruction.NotBuild:
+                        case StateConstruction.InQueueBuild:
+                            pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
+                            pbDurability.Max = Construction.MaxDurability;
+                            pbDurability.Position = 0;
+                            break;
+                        case StateConstruction.Build:
+                            pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
+                            pbDurability.Max = Construction.MaxDurability;
+                            pbDurability.Position = Construction.CurrentDurability;
+                            break;
+                        case StateConstruction.NeedRepair:
+                        case StateConstruction.Repair:
+                            pbDurability.Text = $"{Construction.CurrentDurability}" +
+                                $"{(Construction.ActionMain.ProgressExecuting.PassedMilliTicks > 0 ? $"+{Construction.ActionMain.ProgressExecuting.PassedMilliTicks}" : "")}/{Construction.MaxDurability}";
+                            pbDurability.Max = Construction.MaxDurability;
+                            pbDurability.Position = Construction.CurrentDurability;
+                            pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ProgressExecuting.PassedMilliTicks;
+                            break;
+                        default:
+                            throw new Exception($"Неизвестное состояние {Construction.State}");
+                    }
+
+                    switch (Construction.State)
+                    {
+                        case StateConstruction.Work:
                             pbDurability.ColorProgress = Color.Lime;
-                        else if (percent >= 50)
-                            pbDurability.ColorProgress = Color.Yellow;
-                        else
-                            pbDurability.ColorProgress = Color.Red;
-                        break;
-                    default:
-                        throw new Exception($"Неизвестное состояние {Construction.State}");
+                            break;
+                        case StateConstruction.NotBuild:
+                        case StateConstruction.InQueueBuild:
+                            break;
+                        case StateConstruction.Build:
+                            pbDurability.ColorProgress = Color.PaleTurquoise;
+                            break;
+                        case StateConstruction.NeedRepair:
+                        case StateConstruction.Repair:
+                            int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
+                            if (percent >= 60)
+                                pbDurability.ColorProgress = Color.Lime;
+                            else if (percent >= 50)
+                                pbDurability.ColorProgress = Color.Yellow;
+                            else
+                                pbDurability.ColorProgress = Color.Red;
+                            break;
+                        default:
+                            throw new Exception($"Неизвестное состояние {Construction.State}");
+                    }
                 }
 
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();

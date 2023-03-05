@@ -104,6 +104,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Очередь действий
         internal List<ActionInConstruction> QueueExecuting { get; } = new List<ActionInConstruction>();// Очередь действий
+        internal ActionInConstruction FirstActionInQueue { get; private set; }// Первое действие в очереди
 
         // Постройка/ремонт
         internal int[] TurnLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
@@ -1663,6 +1664,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        private void UpdateFirstAction()
+        {
+            FirstActionInQueue = QueueExecuting.Count > 0 ? QueueExecuting[0] : null;
+        }
+
         internal void AddCellMenuToQueue(ActionInConstruction cmc)
         {
             AssertNotDestroyed();
@@ -1672,6 +1678,8 @@ namespace Fantasy_Kingdoms_Battle
 
             cmc.ProgressExecuting.InQueue = true;// Указываем, что действие поставлено в очередь
             QueueExecuting.Add(cmc);
+
+            UpdateFirstAction();
         }
 
         internal void RemoveCellMenuFromQueue(ActionInConstruction cmc, bool forCancel)
@@ -1722,6 +1730,8 @@ namespace Fantasy_Kingdoms_Battle
 
             cmc.ProgressExecuting.InQueue = false;
             cmc.Destroyed = true;
+
+            UpdateFirstAction();
 
             // Если не было отмены, значит, идет процесс отработки прогресса и строительство завершено.
             // Перестраивать очередь не нужно
