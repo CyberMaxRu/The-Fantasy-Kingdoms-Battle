@@ -32,8 +32,6 @@ namespace Fantasy_Kingdoms_Battle
         internal ComponentProgressExecuting ProgressExecuting { get; private protected set; }
 
         protected virtual void BeforeAddToQueue() { }
-        internal virtual void InQueueChanged() { }
-
         internal override string GetText() => (ProgressExecuting != null) && ProgressExecuting.InQueue ? "" : PurchaseValue != null ? PurchaseValue.Gold.ToString() : "";
 
         internal override bool CheckRequirements()
@@ -142,6 +140,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (CheckRequirements())
                     {
+                        Construction.Player.SpendResource(PurchaseValue);
                         Program.formMain.PlayPushButton();
                         BeforeAddToQueue();
                         Construction.Player.AddActionToQueue(this);
@@ -509,6 +508,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             if ((ProgressExecuting != null) && ProgressExecuting.InQueue)
             {
+                if ((Descriptor.Number == 1) && (ProgressExecuting.PassedMilliTicks == 0))
+                    Construction.UpdateMaxDurability();
+
                 elapsedMilliTicks += Construction.Player.GetMilliTicksForAction();
                 if (elapsedMilliTicks >= milliTicksForOneDurability)
                 {
@@ -549,14 +551,6 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.State == StateConstruction.NeedRepair)
                 Construction.InRepair = true;
         }    
-
-        internal override void InQueueChanged()
-        {
-            base.InQueueChanged();
-
-            if (Descriptor.Number == 1)
-                Construction.UpdateMaxDurability();
-        }
     }
 
     internal sealed class CellMenuConstructionRepair : ActionInConstruction

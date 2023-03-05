@@ -106,7 +106,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ActionInConstruction> QueueExecuting { get; } = new List<ActionInConstruction>();// Очередь действий
 
         // Постройка/ремонт
-        internal bool QueueBlocked { get; set; }// Очередь заблокирована
         internal int[] TurnLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
         //internal bool InConstructing { get; set; }// Сооружение строится
         internal bool InRepair { get; set; }// Сооружение ремонтируется
@@ -1675,26 +1674,8 @@ namespace Fantasy_Kingdoms_Battle
             Assert(QueueExecuting.IndexOf(cmc) == -1);
             Assert(!cmc.ProgressExecuting.InQueue);
 
-            cmc.ProgressExecuting.InQueue = true;
-
+            cmc.ProgressExecuting.InQueue = true;// Указываем, что действие поставлено в очередь
             QueueExecuting.Add(cmc);
-            Program.formMain.layerGame.UpdateMenu();
-
-            // Если очередь заблокирована, ставим невозможность выполнения и выходим
-            if (QueueBlocked)
-            {
-                cmc.InQueueChanged();
-                return;
-            }
-
-            // Реализация для real-time
-            // По идее все должно быть уже рассчитано. Лишний вызов
-            cmc.UpdatePurchase();// Это может быть какой-нибудь ремонт, который зависит от остатка денег и очков. Пересчитываем расход перед списанием
-            if (Player.CheckRequiredResources(cmc.PurchaseValue))
-            {
-                Player.SpendResource(cmc.PurchaseValue);
-                cmc.InQueueChanged();
-            }
         }
 
         internal void RemoveCellMenuFromQueue(ActionInConstruction cmc, bool forCancel)
@@ -1744,7 +1725,6 @@ namespace Fantasy_Kingdoms_Battle
             Player.DeleteFromQueueBuilding(cmc);
 
             cmc.ProgressExecuting.InQueue = false;
-            cmc.InQueueChanged();
             cmc.Destroyed = true;
 
             // Если не было отмены, значит, идет процесс отработки прогресса и строительство завершено.
