@@ -402,7 +402,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Descriptor = d.CreatedEntity as DescriptorConstructionLevel;
 
-            milliTicksForOneDurability = 1000 * Descriptor.ComponentCreating.Time * FormMain.Config.TicksInSecond / Descriptor.IncreaseDurability;
+            milliTicksForOneDurability = Descriptor.ComponentCreating.Time * FormMain.Config.TicksInSecond * 1000 / Descriptor.IncreaseDurability;
         }
 
         internal new DescriptorConstructionLevel Descriptor { get; }
@@ -441,6 +441,10 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool ConstructionMustMeConstructed() => false;
         protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
+        internal override string GetText()
+        {
+            return "";// ProgressExecuting.State == StateProgress.WaitBuilders;
+        }
 
         internal override Color GetColorText()
         {
@@ -467,6 +471,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
+            Assert(Construction.CurrentDurability == Construction.MaxDurability);
             Construction.Build(true);
             Construction.Player.RemoveFromQueueExecuting(this, true);
         }
