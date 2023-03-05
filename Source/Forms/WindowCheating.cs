@@ -130,8 +130,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 player.CalcDaysExecutingInActions();
 
-                if (player.CheatingInstantlyBuilding || player.CheatingInstantlyResearch)
-                    player.RebuildQueueBuilding();
+                //if (player.CheatingInstantlyBuilding || player.CheatingInstantlyResearch)
+                //    player.RebuildQueueBuilding();
             }
 
             Program.formMain.CurrentHumanPlayer.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;

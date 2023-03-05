@@ -159,11 +159,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddToQueue()
-        {
-            Construction.AddCellMenuToQueue(this);
-        }
-
         internal void RemoveFromQueue(bool forCancel)
         {
             Construction.RemoveCellMenuFromQueue(this, true, forCancel);

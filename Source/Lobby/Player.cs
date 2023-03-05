@@ -1621,7 +1621,7 @@ namespace Fantasy_Kingdoms_Battle
             List<ActionInConstruction> list = new List<ActionInConstruction>();
             list.AddRange(queueExecuting);
             foreach (ActionInConstruction cmc in list)
-                cmc.AddToQueue();
+                cmc.Construction.AddCellMenuToQueue(cmc);
 
             return;
 
