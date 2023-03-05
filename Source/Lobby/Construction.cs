@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private List<ActionInConstruction> tempListActions = new List<ActionInConstruction>();
         private int gold;
+        private int currentDurability;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
         public Construction(Player p, DescriptorConstruction dc) : base(dc, p.Lobby, p)
@@ -117,7 +118,20 @@ namespace Fantasy_Kingdoms_Battle
         internal int UsedResearchPoints { get; private set; }// Использовано очков исследования
 
         // Прочность
-        internal int CurrentDurability { get; set; }// Текущая прочность сооружения
+        internal int CurrentDurability// Текущая прочность сооружения
+        {
+            get => currentDurability;
+            set
+            {
+                Assert(value != 0);
+
+                currentDurability += value;
+
+                Assert(CurrentDurability >= 0);
+                Assert(CurrentDurability <= MaxDurability);
+            }
+        }
+
         internal int MaxDurability { get; private set; }// Максимальная прочность сооружения
 
         //
