@@ -9,6 +9,7 @@ namespace Fantasy_Kingdoms_Battle
         public ComponentProgressExecuting(int seconds, int milliTicksPerTicks)
         {
             Assert(seconds > 0);
+            Assert(milliTicksPerTicks > 0);
 
             TotalMilliTicks = seconds * FormMain.Config.TicksInSecond * 1000;
             RestMilliTicks = TotalMilliTicks;
