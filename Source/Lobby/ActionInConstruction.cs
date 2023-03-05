@@ -510,8 +510,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void DoTick()
         {
-            if ((ProgressExecuting != null) && ProgressExecuting.InQueue)
+            if ((ProgressExecuting != null) && ProgressExecuting.State == StateProgress.Active)
             {
+                Assert(ProgressExecuting.InQueue);
+
                 if ((Descriptor.Number == 1) && (ProgressExecuting.PassedMilliTicks == 0))
                     Construction.UpdateMaxDurability();
 
