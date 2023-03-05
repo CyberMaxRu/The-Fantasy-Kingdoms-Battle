@@ -60,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (Number > 1)
-                GetCreating().Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1, GetCreating().Requirements));
+                ComponentCreating.Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1, ComponentCreating.Requirements));
 
             XmlNode nm = n.SelectSingleNode("Mining");
             if (nm != null)
@@ -148,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
             Extensions.TuneLinks();
             ListPerks.TuneLinks();
 
-            if ((Number == 1) && (GetCreating() != null))
+            if ((Number == 1) && (ComponentCreating != null))
             {
                 //Assert(GetCreating().ConstructionPoints == Durability.Value, $"ID: {ID}, ConstructionPoints = {GetCreating().ConstructionPoints}, Durability = {Durability}");
             }

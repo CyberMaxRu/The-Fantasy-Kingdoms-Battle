@@ -9,7 +9,6 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class DescriptorWithID : Descriptor
     {
         private string name;
-        private DescriptorComponentCreating Creating;
 
         public DescriptorWithID(XmlNode n) : base()
         {
@@ -18,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
 
             XmlNode nc = n.SelectSingleNode("Creating");
             if (nc != null)
-                Creating = new DescriptorComponentCreating(this, nc);
+                ComponentCreating = new DescriptorComponentCreating(this, nc);
 
             CheckData();
         }
@@ -35,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование сущности
         
         protected virtual string GetName(XmlNode n) => GetStringNotNull(n, "Name");
-        internal virtual DescriptorComponentCreating GetCreating() => Creating;
+        protected internal DescriptorComponentCreating ComponentCreating { get; protected set; }
 
 
         private void CheckData()
@@ -81,8 +80,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            if (Creating != null)
-                Creating.TuneLinks();
+            if (ComponentCreating != null)
+                ComponentCreating.TuneLinks();
         }
     }
 }

@@ -250,7 +250,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
@@ -304,11 +303,6 @@ namespace Fantasy_Kingdoms_Battle
 
             //if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
             //    CellsMenu.Remove(Levels[1]);
-        }
-
-        internal override DescriptorComponentCreating GetCreating()
-        {
-            return Levels != null ? Levels[1].GetCreating() : null;
         }
 
         internal string GetTextConstructionNotBuilded()

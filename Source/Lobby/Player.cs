@@ -1370,7 +1370,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            TextRequirements(type.Levels[1].GetCreating().Requirements, list);
+            TextRequirements(type.Levels[1].ComponentCreating.Requirements, list);
 
             return list;
         }
@@ -1661,7 +1661,7 @@ namespace Fantasy_Kingdoms_Battle
 
             return;
 
-            queueRepair.Clear();
+            /*queueRepair.Clear();
             foreach (Construction c in Constructions)
             {
                 if (c.ActionMain is CellMenuConstructionRepair cr)
@@ -1682,13 +1682,13 @@ namespace Fantasy_Kingdoms_Battle
                         cr.AddToQueue();
                     }
                 }*/
-
+            /*
                 // Составляем очереди у сооружений
                 List<ActionInConstruction> list = new List<ActionInConstruction>();
                 list.AddRange(queueExecuting);
                 foreach (ActionInConstruction cmc in list)
                     cmc.AddToQueue();
-            }
+            }*/
         }
 
         internal int GetMilliTicksForAction()
