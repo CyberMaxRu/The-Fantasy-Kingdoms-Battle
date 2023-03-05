@@ -493,10 +493,15 @@ namespace Fantasy_Kingdoms_Battle
                 Researches.Remove(mc);
             }*/
         }
-        
+
         internal int Income()
         {
             return (Level > 0) ? IncomeBaseResources.Gold : 0;
+        }
+
+        internal int DurabilityForLevel(int level)
+        {
+            return Descriptor.Levels[level].Durability;
         }
 
         internal int IncomeForLevel(int level)
@@ -611,6 +616,7 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep45State(GetDataState());
                     panelHint.AddStep5Description(Descriptor.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
+                    panelHint.AddStep55Durability(MaxDurability);
                     panelHint.AddStep6Income(Income());
                     panelHint.AddStep8Greatness(0, GreatnessPerDay());
                     panelHint.AddStep9PlusBuilders(BuildersPerDay());

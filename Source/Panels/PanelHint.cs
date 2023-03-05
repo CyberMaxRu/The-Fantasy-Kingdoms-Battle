@@ -31,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCText lblAction;
         private readonly VCText lblState;
         private readonly VCText lblDescription;
+        private readonly VCLabelValue lblDurability;
         private readonly VCLabelValue lblIncome;
         private readonly VCLabelValue lblSalary;
         private readonly VCLabelValue lblGreatnessAdd;
@@ -115,7 +116,11 @@ namespace Fantasy_Kingdoms_Battle
             lblDescription.StringFormat.Alignment = StringAlignment.Near;
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome, false);
+            lblDurability = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome, false);
+            lblDurability.Image.ImageIndex = FormMain.GUI_16_DURABILITY;
+            lblDurability.Width = widthControl;
+
+            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDurability.NextTop(), FormMain.Config.HintIncome, false);
             lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.Width = widthControl;
 
@@ -290,6 +295,7 @@ namespace Fantasy_Kingdoms_Battle
             lblAction.Visible = false;
             lblState.Visible = false;
             lblDescription.Visible = false;
+            lblDurability.Visible = false;
             lblIncome.Visible = false;
             lblSalary.Visible = false;
             lblGreatnessAdd.Visible = false;
@@ -476,6 +482,17 @@ namespace Fantasy_Kingdoms_Battle
                 lblDescription.Visible = true;
 
                 nextTop = lblDescription.NextTop();
+            }
+        }
+
+        internal void AddStep55Durability(int durability)
+        {
+            if (durability > 0)
+            {
+                lblDurability.ShiftY = nextTop;
+                lblDurability.Visible = true;
+                lblDurability.Text = durability.ToString();
+                nextTop = lblDurability.NextTop();
             }
         }
 
