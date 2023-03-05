@@ -3,24 +3,16 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс прогресса выполнения действия
+    // Класс - компонента прогресса выполнения действия
     internal sealed class ComponentExecutingAction
     {
-        public ComponentExecutingAction(DescriptorComponentCreating dcc, int milliTicksPerTicks)
-        {
-            TotalMilliTicks = dcc.Time * FormMain.Config.TicksInSecond * 1000;
-            MilliTicksPerTick = milliTicksPerTicks;
-            RestMilliTicks = TotalMilliTicks;
-            RestTimeExecuting = -1;
-        }
-
         public ComponentExecutingAction(int seconds, int milliTicksPerTicks)
         {
             Assert(seconds > 0);
 
             TotalMilliTicks = seconds * FormMain.Config.TicksInSecond * 1000;
-            MilliTicksPerTick = milliTicksPerTicks;
             RestMilliTicks = TotalMilliTicks;
+            MilliTicksPerTick = milliTicksPerTicks;
             RestTimeExecuting = -1;
         }
 

@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Creating != null)
                     if (Creating.Time > 0)
-                        ExecutingAction = new ComponentExecutingAction(Creating, Construction.Player.GetMilliTicksForAction());
+                        ExecutingAction = new ComponentExecutingAction(Creating.Time, Construction.Player.GetMilliTicksForAction());
             }
         }
 
