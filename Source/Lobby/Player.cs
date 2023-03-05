@@ -363,6 +363,8 @@ namespace Fantasy_Kingdoms_Battle
                 cm.DoTick();
             }*/
 
+            // Вызываем диспетчер действий
+
             // Делаем тик у сооружений
             foreach (Construction c in Constructions)
             {
@@ -1600,7 +1602,12 @@ namespace Fantasy_Kingdoms_Battle
             Assert(a.ProgressExecuting.PassedMilliTicks == 0);
 
             queueExecuting.Add(a);
-            RebuildQueueBuilding();
+
+            // Составляем очереди у сооружений
+            List<ActionInConstruction> list = new List<ActionInConstruction>();
+            list.AddRange(queueExecuting);
+            foreach (ActionInConstruction cmc in list)
+                cmc.Construction.AddCellMenuToQueue(cmc);
         }
 
         internal void RemoveFromQueueExecuting(ActionInConstruction cmc, bool constructed)
@@ -1617,14 +1624,6 @@ namespace Fantasy_Kingdoms_Battle
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {
-            // Составляем очереди у сооружений
-            List<ActionInConstruction> list = new List<ActionInConstruction>();
-            list.AddRange(queueExecuting);
-            foreach (ActionInConstruction cmc in list)
-                cmc.Construction.AddCellMenuToQueue(cmc);
-
-            return;
-
             /*queueRepair.Clear();
             foreach (Construction c in Constructions)
             {
