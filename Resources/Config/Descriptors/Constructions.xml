@@ -2065,7 +2065,7 @@
         <Number>1</Number>
         <Durability>500</Durability>
         <Creating>
-          <Time>45</Time>
+          <Time>5</Time>
           <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
@@ -2168,7 +2168,7 @@
         <ID>ProductApple</ID>
         <Entity>Apple</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>10</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -2185,7 +2185,7 @@
         <ID>ProductWheat</ID>
         <Entity>Wheat</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>15</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -2202,7 +2202,7 @@
         <ID>ProductMeat</ID>
         <Entity>Meat</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>20</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
