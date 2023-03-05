@@ -21,7 +21,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int RestMilliTicks { get; private set; }// Осталось миллитиков
         internal int MilliTicksPerTick { get; private set; }// Количество миллитиков в одном тике
         internal int RestTimeExecuting { get; private set; }// Сколько секунд осталось до конца выполнения
-        internal int Percent { get; private set; }// Процент выполнения
         internal bool InQueue { get; set; }// Действие в очереди
 
         // Добавление миллитика
@@ -44,7 +43,6 @@ namespace Fantasy_Kingdoms_Battle
             // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
             RestTimeExecuting = (int)Math.Truncate(RestMilliTicks * 1.00000 / (MilliTicksPerTick * FormMain.Config.TicksInSecond) + 0.99);
             Assert(RestTimeExecuting > 0);
-            Percent = PassedMilliTicks * 100 / TotalMilliTicks;
         }
     }
 }
