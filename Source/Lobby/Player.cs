@@ -1598,7 +1598,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(queueExecuting.IndexOf(a) == -1);
             Construction c = a.Construction;
-            Assert(a.ExecutingAction.PassedMilliTicks == 0);
+            Assert(a.ProgressExecuting.PassedMilliTicks == 0);
 
             // !!! Это подробности реализации. Перенести это в Construction (CellMenuConstructionLevelUp) !!!
             if (a is CellMenuConstructionLevelUp cml)

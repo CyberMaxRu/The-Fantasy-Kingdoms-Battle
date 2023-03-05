@@ -262,7 +262,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Level == 0)
             {
-                if (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks == 0)
+                if (ActionBuildOrLevelUp.ProgressExecuting.PassedMilliTicks == 0)
                 {
                     MaxDurability = Descriptor.Levels[1].Durability;
                 }
@@ -1591,9 +1591,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(!InRepair);
 
-                if (ActionBuildOrLevelUp.ExecutingAction.InQueue)
+                if (ActionBuildOrLevelUp.ProgressExecuting.InQueue)
                 {
-                    if (ActionBuildOrLevelUp.ExecutingAction.PassedMilliTicks > 0)
+                    if (ActionBuildOrLevelUp.ProgressExecuting.PassedMilliTicks > 0)
                         State = StateConstruction.Build;// Стройка идет
                     else
                         State = StateConstruction.InQueueBuild;// В очереди на строительство
@@ -1687,9 +1687,9 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
             Assert(cmc.Construction == this);
             Assert(QueueExecuting.IndexOf(cmc) == -1);
-            Assert(!cmc.ExecutingAction.InQueue);
+            Assert(!cmc.ProgressExecuting.InQueue);
 
-            cmc.ExecutingAction.InQueue = true;
+            cmc.ProgressExecuting.InQueue = true;
 
             QueueExecuting.Add(cmc);
             Program.formMain.layerGame.UpdateMenu();
@@ -1862,7 +1862,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void RemoveCellMenuFromQueue(ActionInConstruction cmc, bool removeFromList, bool forCancel)
         {
             Assert(cmc.Construction == this);
-            Assert(cmc.ExecutingAction.InQueue);
+            Assert(cmc.ProgressExecuting.InQueue);
             Assert(QueueExecuting.IndexOf(cmc) != -1);
             if (forCancel)
             {
@@ -1872,7 +1872,7 @@ namespace Fantasy_Kingdoms_Battle
             if (cmc is CellMenuConstructionLevelUp)
             {
                 //Assert( || InRepair);
-                if (cmc.ExecutingAction.PassedMilliTicks > 0)
+                if (cmc.ProgressExecuting.PassedMilliTicks > 0)
                 {
                     //Assert(MaxDurability > 0);
                 }
@@ -1894,7 +1894,7 @@ namespace Fantasy_Kingdoms_Battle
             // Освобождаем потраченные ресурсы, если выполнение действия не началось
             if (forCancel)
             {
-                if (cmc.ExecutingAction.PassedMilliTicks == 0)
+                if (cmc.ProgressExecuting.PassedMilliTicks == 0)
                 {
                     Player.ReturnResource(cmc.PurchaseValue);
                 }
@@ -1908,7 +1908,7 @@ namespace Fantasy_Kingdoms_Battle
                 Player.DeleteFromQueueBuilding(cmc);
             }
 
-            cmc.ExecutingAction.InQueue = false;
+            cmc.ProgressExecuting.InQueue = false;
             cmc.InQueueChanged();
             cmc.Destroyed = true;
 
@@ -1923,12 +1923,12 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
 
             foreach (ActionInConstruction cmc in Actions)
-                if (cmc.ExecutingAction != null)
+                if (cmc.ProgressExecuting != null)
                 {
-                    if (cmc.ExecutingAction.PassedMilliTicks == 0)
+                    if (cmc.ProgressExecuting.PassedMilliTicks == 0)
                     {
-                        Assert(!cmc.ExecutingAction.InQueue);
-                        Assert(cmc.ExecutingAction.PassedMilliTicks == 0);
+                        Assert(!cmc.ProgressExecuting.InQueue);
+                        Assert(cmc.ProgressExecuting.PassedMilliTicks == 0);
                         cmc.UpdatePurchase();
                     }
                 }

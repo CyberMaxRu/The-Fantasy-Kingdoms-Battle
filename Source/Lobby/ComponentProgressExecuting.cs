@@ -4,9 +4,9 @@ using static Fantasy_Kingdoms_Battle.Utils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс - компонента прогресса выполнения действия
-    internal sealed class ComponentExecutingAction
+    internal sealed class ComponentProgressExecuting
     {
-        public ComponentExecutingAction(int seconds, int milliTicksPerTicks)
+        public ComponentProgressExecuting(int seconds, int milliTicksPerTicks)
         {
             Assert(seconds > 0);
 

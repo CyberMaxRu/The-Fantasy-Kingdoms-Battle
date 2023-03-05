@@ -68,7 +68,7 @@
     <Compile Include="Source\Forms\WindowMessage.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />
     <Compile Include="Source\Forms\WindowSetupTournament.cs" />
-    <Compile Include="Source\Lobby\ComponentExecutingAction.cs" />
+    <Compile Include="Source\Lobby\ComponentProgressExecuting.cs" />
     <Compile Include="Source\Lobby\ComponentObjectOfMap.cs" />
     <Compile Include="Source\Lobby\ConstructionBaseResource.cs" />
     <Compile Include="Source\Lobby\ConstructionListBaseResources.cs" />

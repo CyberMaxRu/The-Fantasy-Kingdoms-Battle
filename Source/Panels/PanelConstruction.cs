@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnQueue1_Click(object sender, EventArgs e)
         {
-            if (Construction.QueueExecuting[0].ExecutingAction.PassedMilliTicks == 0)
+            if (Construction.QueueExecuting[0].ProgressExecuting.PassedMilliTicks == 0)
                 Construction.QueueExecuting[0].RemoveFromQueue(true);
         }
 
@@ -144,7 +144,7 @@ namespace Fantasy_Kingdoms_Battle
             if (btnQueue1.Visible)
             {
                 btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
-                btnQueue1.HighlightUnderMouse = Construction.QueueExecuting[0].ExecutingAction.PassedMilliTicks == 0;
+                btnQueue1.HighlightUnderMouse = Construction.QueueExecuting[0].ProgressExecuting.PassedMilliTicks == 0;
                 bmpQueue2.Visible = true;
                 bmpQueue2.Action = Construction.QueueExecuting.Count >= 2 ? Construction.QueueExecuting[1] : null;
                 bmpQueue3.Visible = true;
@@ -187,10 +187,10 @@ namespace Fantasy_Kingdoms_Battle
                     case StateConstruction.NeedRepair:
                     case StateConstruction.Repair:
                         pbDurability.Text = $"{Construction.CurrentDurability}" +
-                            $"{(Construction.ActionMain.ExecutingAction.PassedMilliTicks > 0 ? $"+{Construction.ActionMain.ExecutingAction.PassedMilliTicks}" : "")}/{Construction.MaxDurability}";
+                            $"{(Construction.ActionMain.ProgressExecuting.PassedMilliTicks > 0 ? $"+{Construction.ActionMain.ProgressExecuting.PassedMilliTicks}" : "")}/{Construction.MaxDurability}";
                         pbDurability.Max = Construction.MaxDurability;
                         pbDurability.Position = Construction.CurrentDurability;
-                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ExecutingAction.PassedMilliTicks;
+                        pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ProgressExecuting.PassedMilliTicks;
                         break;
                     default:
                         throw new Exception($"Неизвестное состояние {Construction.State}");
@@ -244,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
-                            if (!Construction.ActionMain.ExecutingAction.InQueue)
+                            if (!Construction.ActionMain.ProgressExecuting.InQueue)
                             {
                                 btnMainAction.Visible = true;
                                 btnMainAction.MenuCell = Construction.ActionMain;
@@ -272,7 +272,7 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
 
-                            if (!Construction.ActionMain.ExecutingAction.InQueue)
+                            if (!Construction.ActionMain.ProgressExecuting.InQueue)
                             {
                                 btnMainAction.Visible = true;
                                 btnMainAction.MenuCell = Construction.ActionMain;
