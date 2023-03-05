@@ -196,6 +196,9 @@ namespace Fantasy_Kingdoms_Battle
             Creature treasurer = Castle.HireHero(FormMain.Descriptors.FindCreature("Treasurer"), null);
             GuildofBuilders.HireHero(FormMain.Descriptors.FindCreature("Builder"), null);
 
+            UpdateBuilderInfo();
+            FreeBuilders = CurrentBuilders;
+
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
@@ -364,6 +367,8 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             // Вызываем диспетчер действий
+
+
 
             // Делаем тик у сооружений
             foreach (Construction c in Constructions)
