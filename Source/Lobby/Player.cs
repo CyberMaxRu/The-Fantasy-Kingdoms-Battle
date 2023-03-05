@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        private readonly List<CellMenuConstruction> queueExecuting = new List<CellMenuConstruction>();// Очередь выполнения действий
+        private readonly List<ActionInConstruction> queueExecuting = new List<ActionInConstruction>();// Очередь выполнения действий
         private readonly List<CellMenuConstructionRepair> queueRepair = new List<CellMenuConstructionRepair>();// Очередь ремонта
         private readonly List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
@@ -1594,7 +1594,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddToQueueBuilding(CellMenuConstruction cmc)
+        internal void AddToQueueBuilding(ActionInConstruction cmc)
         {
             Assert(queueExecuting.IndexOf(cmc) == -1);
             Construction c = cmc.Construction;
@@ -1639,12 +1639,12 @@ namespace Fantasy_Kingdoms_Battle
             RebuildQueueBuilding();
         }
 
-        internal void RemoveFromQueueBuilding(CellMenuConstruction cmc, bool constructed)
+        internal void RemoveFromQueueBuilding(ActionInConstruction cmc, bool constructed)
         {
             cmc.RemoveFromQueue(!constructed);
         }
         
-        internal void DeleteFromQueueBuilding(CellMenuConstruction cmc)
+        internal void DeleteFromQueueBuilding(ActionInConstruction cmc)
         {
             if (!queueExecuting.Remove(cmc))
                 EntityDoException("Не удалось удалить действие из очереди");
@@ -1653,6 +1653,14 @@ namespace Fantasy_Kingdoms_Battle
         // Перестройка очереди строительства
         internal void RebuildQueueBuilding()
         {
+            // Составляем очереди у сооружений
+            List<ActionInConstruction> list = new List<ActionInConstruction>();
+            list.AddRange(queueExecuting);
+            foreach (ActionInConstruction cmc in list)
+                cmc.AddToQueue();
+
+            return;
+
             queueRepair.Clear();
             foreach (Construction c in Constructions)
             {
@@ -1676,9 +1684,9 @@ namespace Fantasy_Kingdoms_Battle
                 }*/
 
                 // Составляем очереди у сооружений
-                List<CellMenuConstruction> list = new List<CellMenuConstruction>();
+                List<ActionInConstruction> list = new List<ActionInConstruction>();
                 list.AddRange(queueExecuting);
-                foreach (CellMenuConstruction cmc in list)
+                foreach (ActionInConstruction cmc in list)
                     cmc.AddToQueue();
             }
         }

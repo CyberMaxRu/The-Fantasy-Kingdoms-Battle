@@ -11,9 +11,9 @@ using System.Security.Policy;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class CellMenuConstruction : ActionForEntity
+    internal abstract class ActionInConstruction : ActionForEntity
     {
-        public CellMenuConstruction(Construction c, DescriptorActionForEntity d) : base(c, d)
+        public ActionInConstruction(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Construction = c;
 
@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal static CellMenuConstruction Create(Construction c, DescriptorActionForEntity d)
+        internal static ActionInConstruction Create(Construction c, DescriptorActionForEntity d)
         {
             if (d.CreatedEntity != null)
             {
@@ -254,7 +254,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionResearch : CellMenuConstruction
+    internal sealed class CellMenuConstructionResearch : ActionInConstruction
     {
         public CellMenuConstructionResearch(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -328,7 +328,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionService : CellMenuConstruction
+    internal sealed class CellMenuConstructionService : ActionInConstruction
     {
         public CellMenuConstructionService(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -374,7 +374,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionBuild : CellMenuConstruction
+    internal sealed class CellMenuConstructionBuild : ActionInConstruction
     {
         public CellMenuConstructionBuild(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -460,7 +460,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionLevelUp : CellMenuConstruction
+    internal sealed class CellMenuConstructionLevelUp : ActionInConstruction
     {
         private int milliTicksForOneDurability;// Сколько миллитиков необходимо для увеличения прочности на 1 единицу
         private int elapsedMilliTicks;// Сколько миллитиков прошло с последнего увеличения прочности
@@ -600,7 +600,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionRepair : CellMenuConstruction
+    internal sealed class CellMenuConstructionRepair : ActionInConstruction
     {
         public CellMenuConstructionRepair(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -701,7 +701,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionRecruitCreature : CellMenuConstruction
+    internal sealed class CellMenuConstructionRecruitCreature : ActionInConstruction
     {
         public CellMenuConstructionRecruitCreature(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -761,7 +761,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionMassEvent : CellMenuConstruction
+    internal sealed class CellMenuConstructionMassEvent : ActionInConstruction
     {
         private ConstructionEvent cp;
 
@@ -849,7 +849,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
     
-    internal sealed class CellMenuConstructionExtension : CellMenuConstruction
+    internal sealed class CellMenuConstructionExtension : ActionInConstruction
     {
         public CellMenuConstructionExtension(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -894,7 +894,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionImprovement : CellMenuConstruction
+    internal sealed class CellMenuConstructionImprovement : ActionInConstruction
     {
         public CellMenuConstructionImprovement(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -937,7 +937,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionTournament : CellMenuConstruction
+    internal sealed class CellMenuConstructionTournament : ActionInConstruction
     {
         private ConstructionTournament ct;
 
@@ -1006,7 +1006,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal enum TypeExtra { Builder, LevelUp, Research };
 
-    internal sealed class CellMenuConstructionExtra : CellMenuConstruction
+    internal sealed class CellMenuConstructionExtra : ActionInConstruction
     {
         public CellMenuConstructionExtra(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -1112,7 +1112,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionAction : CellMenuConstruction
+    internal sealed class CellMenuConstructionAction : ActionInConstruction
     {
         public CellMenuConstructionAction(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
@@ -1133,7 +1133,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionSpell : CellMenuConstruction
+    internal sealed class CellMenuConstructionSpell : ActionInConstruction
     {
         public CellMenuConstructionSpell(Construction forConstruction, ConstructionSpell spell) : base(forConstruction, new DescriptorActionForEntity(spell.DescriptorSpell.Coord))
         {

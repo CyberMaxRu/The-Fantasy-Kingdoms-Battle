@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal Lobby Lobby { get; }
         internal bool Destroyed { get; set; } = false;// Сущность уничтожена, работа с ней запрещена
-        internal List<CellMenuConstruction> Actions { get; } = new List<CellMenuConstruction>();
+        internal List<ActionInConstruction> Actions { get; } = new List<ActionInConstruction>();
 
         internal Perk MainPerk { get; set; }// Основной перк существа 
         internal List<Perk> Perks { get; } = new List<Perk>();// Перки
@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected void FillResearches(VCMenuCell[,] menu)
         {
-            foreach (CellMenuConstruction pr in Actions)
+            foreach (ActionInConstruction pr in Actions)
             {
                 Utils.Assert(!pr.Destroyed);
                     
@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used = true;
                 }
-                else if (((CellMenuConstruction)menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research).Construction == pr.Construction)
+                else if (((ActionInConstruction)menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research).Construction == pr.Construction)
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
             }
         }

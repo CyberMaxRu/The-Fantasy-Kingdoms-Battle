@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс сооружения у игрока
     internal sealed class Construction : BattleParticipant
     {
-        private List<CellMenuConstruction> tempListActions = new List<CellMenuConstruction>();
+        private List<ActionInConstruction> tempListActions = new List<ActionInConstruction>();
         private int gold;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
@@ -103,7 +103,7 @@ namespace Fantasy_Kingdoms_Battle
         internal StateConstruction State { get; private set; }// Состояние сооружения
 
         // Очередь действий
-        internal List<CellMenuConstruction> QueueExecuting { get; } = new List<CellMenuConstruction>();// Очередь действий
+        internal List<ActionInConstruction> QueueExecuting { get; } = new List<ActionInConstruction>();// Очередь действий
 
         // Постройка/ремонт
         internal bool QueueBlocked { get; set; }// Очередь заблокирована
@@ -153,7 +153,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListSettlementParameters SettlementParameters { get; } = new ListSettlementParameters();
 
         // Действия
-        internal CellMenuConstruction ActionMain { get; private set; }// Основное действие, которое отображается в панели сооружения
+        internal ActionInConstruction ActionMain { get; private set; }// Основное действие, которое отображается в панели сооружения
         private CellMenuConstructionLevelUp ActionBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
         private CellMenuConstructionRepair ActionRepair { get; set; }// Действие для ремонта сооружения
         internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
@@ -183,9 +183,9 @@ namespace Fantasy_Kingdoms_Battle
             if ((Descriptor.DefaultLevel == 0) || (Descriptor.Levels.Length > 2))
             {
                 // Сооружение не построено, ищем действие для постройки
-                List<CellMenuConstruction> listForDelete = new List<CellMenuConstruction>();
+                List<ActionInConstruction> listForDelete = new List<ActionInConstruction>();
 
-                foreach (CellMenuConstruction cm in Actions)
+                foreach (ActionInConstruction cm in Actions)
                 {
                     if (cm is CellMenuConstructionLevelUp cml)
                     {
@@ -200,7 +200,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Удаляем все ячейки, если они относятся к уже построенным уровням
-                foreach (CellMenuConstruction cmd in listForDelete)
+                foreach (ActionInConstruction cmd in listForDelete)
                     cmd.Destroyed = true;
 
                 if (ActionRepair != null)
@@ -323,8 +323,8 @@ namespace Fantasy_Kingdoms_Battle
             if ((Descriptor.Category != CategoryConstruction.Lair) && (Descriptor.Category != CategoryConstruction.ElementLandscape))
             {
                 // Убираем операцию постройки из меню
-                CellMenuConstruction cmBuild = null;
-                foreach (CellMenuConstruction cm in Actions)
+                ActionInConstruction cmBuild = null;
+                foreach (ActionInConstruction cm in Actions)
                 {
                     if (cm is CellMenuConstructionLevelUp cml)
                         if (cml.Descriptor.Number == Level)
@@ -706,7 +706,7 @@ namespace Fantasy_Kingdoms_Battle
                         RemoveProduct(CurrentTournament.Descriptor);
                 }
 
-                foreach (CellMenuConstruction cm in Actions)
+                foreach (ActionInConstruction cm in Actions)
                 {
                     cm.PrepareNewDay();
                 }
@@ -725,7 +725,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            foreach (CellMenuConstruction cmc in Actions)
+            foreach (ActionInConstruction cmc in Actions)
             {
                 cmc.PrepareNewDay();
 /*                CellMenuConstruction cm = QueueExecuting[0];
@@ -1328,7 +1328,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool GoodsExists(DescriptorItem item)
         {
-            foreach (CellMenuConstruction cm in Actions)
+            foreach (ActionInConstruction cm in Actions)
             {
                 if (cm is CellMenuConstructionResearch cmr)
                     if (cmr.Entity.ID == item.ID)
@@ -1378,7 +1378,7 @@ namespace Fantasy_Kingdoms_Battle
             return text;
         }
 
-        internal void AddEntityToQueueProcessing(CellMenuConstruction cell)
+        internal void AddEntityToQueueProcessing(ActionInConstruction cell)
         {
             /*QueueExecuting.Add(cell);
             return;
@@ -1406,7 +1406,7 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        internal void RemoveEntityFromQueueProcessing(CellMenuConstruction cell, bool removeFromList)
+        internal void RemoveEntityFromQueueProcessing(ActionInConstruction cell, bool removeFromList)
         {
             /*
             Debug.Assert(QueueExecuting.IndexOf(cell) != -1);
@@ -1492,7 +1492,7 @@ namespace Fantasy_Kingdoms_Battle
         private void TuneByCreate()
         {
             foreach (DescriptorActionForEntity d in Descriptor.CellsMenu)
-                Actions.Add(CellMenuConstruction.Create(this, d));
+                Actions.Add(ActionInConstruction.Create(this, d));
 
             if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
                 CreateMonsters();
@@ -1531,7 +1531,7 @@ namespace Fantasy_Kingdoms_Battle
                     ActionRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
             }
             */
-            foreach (CellMenuConstruction cm in Actions)
+            foreach (ActionInConstruction cm in Actions)
             {
                 cm.UpdateTime();
                 if (cm is CellMenuConstructionLevelUp cml)
@@ -1671,7 +1671,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ClearQueueExecuting()
         {
-            foreach (CellMenuConstruction cmc in QueueExecuting)
+            foreach (ActionInConstruction cmc in QueueExecuting)
                 RemoveCellMenuFromQueue(cmc, false, true);
 
             QueueExecuting.Clear();
@@ -1682,7 +1682,7 @@ namespace Fantasy_Kingdoms_Battle
             UsedResearchPoints = 0;
         }
 
-        internal void AddCellMenuToQueue(CellMenuConstruction cmc)
+        internal void AddCellMenuToQueue(ActionInConstruction cmc)
         {
             AssertNotDestroyed();
             Assert(cmc.Construction == this);
@@ -1859,7 +1859,7 @@ namespace Fantasy_Kingdoms_Battle
             cmc.InQueueChanged();*/
         }
 
-        internal void RemoveCellMenuFromQueue(CellMenuConstruction cmc, bool removeFromList, bool forCancel)
+        internal void RemoveCellMenuFromQueue(ActionInConstruction cmc, bool removeFromList, bool forCancel)
         {
             Assert(cmc.Construction == this);
             Assert(cmc.ExecutingAction.InQueue);
@@ -1922,7 +1922,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            foreach (CellMenuConstruction cmc in Actions)
+            foreach (ActionInConstruction cmc in Actions)
                 if (cmc.ExecutingAction != null)
                 {
                     if (cmc.ExecutingAction.PassedMilliTicks == 0)
@@ -1948,7 +1948,7 @@ namespace Fantasy_Kingdoms_Battle
             tempListActions.Clear();
             tempListActions.AddRange(Actions);
 
-            foreach (CellMenuConstruction cmc in tempListActions)
+            foreach (ActionInConstruction cmc in tempListActions)
             {
                 cmc.DoTick();
             }
