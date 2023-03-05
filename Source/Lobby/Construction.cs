@@ -330,8 +330,10 @@ namespace Fantasy_Kingdoms_Battle
                 //PrepareTurn();
             }
 
-            //
-            UpdateMaxDurability();
+            // Если у сооружения есть прочность, обновляем её
+            if (Descriptor.Levels[1].Durability > 0)
+                UpdateMaxDurability();
+
             CreateProducts();
 
             if ((Descriptor.Category != CategoryConstruction.Lair) && (Descriptor.Category != CategoryConstruction.ElementLandscape))
