@@ -1554,7 +1554,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CancelRepair()
         {
-            Player.RemoveFromQueueBuilding(ActionRepair, false);
+            Player.RemoveFromQueueExecuting(ActionRepair, false);
             Player.RebuildQueueBuilding();
             UpdateState();
         }

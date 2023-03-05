@@ -1639,7 +1639,7 @@ namespace Fantasy_Kingdoms_Battle
             RebuildQueueBuilding();
         }
 
-        internal void RemoveFromQueueBuilding(ActionInConstruction cmc, bool constructed)
+        internal void RemoveFromQueueExecuting(ActionInConstruction cmc, bool constructed)
         {
             cmc.RemoveFromQueue(!constructed);
         }

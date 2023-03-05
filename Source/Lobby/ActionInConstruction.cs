@@ -156,7 +156,7 @@ namespace Fantasy_Kingdoms_Battle
                     //if (DaysProcessed == 0)
                     {
                         Program.formMain.PlayPushButton();
-                        Construction.Player.RemoveFromQueueBuilding(this, false);
+                        Construction.Player.RemoveFromQueueExecuting(this, false);
                         //Construction.RemoveEntityFromQueueProcessing(this);
                     }
                 }
@@ -318,7 +318,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             RemoveSelf();
-            Construction.Player.RemoveFromQueueBuilding(this, true);
+            Construction.Player.RemoveFromQueueExecuting(this, true);
             Program.formMain.SetNeedRedrawFrame();
         }
 
@@ -535,7 +535,7 @@ namespace Fantasy_Kingdoms_Battle
         protected override void Execute()
         {
             Construction.Build(true);
-            Construction.Player.RemoveFromQueueBuilding(this, true);
+            Construction.Player.RemoveFromQueueExecuting(this, true);
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -627,7 +627,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            Construction.Player.RemoveFromQueueBuilding(this, true);
+            Construction.Player.RemoveFromQueueExecuting(this, true);
             Construction.InRepair = false;
             Construction.Player.AddNoticeForPlayer(Construction, TypeNoticeForPlayer.ConstructionRepaired);
             Construction.UpdateState();
