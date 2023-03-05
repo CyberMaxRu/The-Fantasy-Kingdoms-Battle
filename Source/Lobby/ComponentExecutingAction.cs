@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int RestTimeExecuting { get; private set; }// Сколько секунд осталось до конца выполнения
         internal bool InQueue { get; set; }// Действие в очереди
 
-        // Добавление миллитика
+        // Обработка тика игры
         internal void CalcTick(int milliTicks)
         {
             Assert(PassedMilliTicks < TotalMilliTicks);
