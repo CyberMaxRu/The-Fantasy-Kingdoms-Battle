@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -118,15 +120,30 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(curDisappearance <= MaxValue);
 
             double percent = (double)curDisappearance / MaxValue;
-
             Bitmap b = new Bitmap(i);
-            for (int y = 0; y < b.Height; y++)
+
+            Rectangle rect = new Rectangle(0, 0, b.Width, b.Height);
+            BitmapData bmpData = b.LockBits(rect, ImageLockMode.ReadWrite, b.PixelFormat);
+            IntPtr ptr = bmpData.Scan0;
+            int bytes = Math.Abs(bmpData.Stride) * b.Height;
+            byte[] rgbValues = new byte[bytes];
+            Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+            for (int counter = 0; counter < rgbValues.Length; counter += 4)
+            {
+                rgbValues[counter + 3] = Convert.ToByte(rgbValues[counter + 3] * percent);
+            }
+
+            Marshal.Copy(rgbValues, 0, ptr, bytes);
+            b.UnlockBits(bmpData);
+
+            /*for (int y = 0; y < b.Height; y++)
                 for (int x = 0; x < b.Width; x++)
                 {
                     Color pixel = b.GetPixel(x, y);
                     b.SetPixel(x, y, Color.FromArgb((int)(pixel.A * percent), pixel));
                 }
-
+*/
             return b;
         }
     }
