@@ -949,8 +949,6 @@ namespace Fantasy_Kingdoms_Battle
                 long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.LengthTicksInMSec;
                 while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
                 {
-                    if (lobby is null)
-                        break;
                     lobby.DoTicks();
                     countTicks++;
                 }
@@ -961,7 +959,10 @@ namespace Fantasy_Kingdoms_Battle
                 TimeSpan ts = DateTime.Now - curTime;
                 int delta = 40 - ts.Milliseconds;
                 if (delta > 0)
-                System.Threading.Thread.Sleep(delta);
+                    System.Threading.Thread.Sleep(delta);
+
+                if (lobby is null)
+                    break;
             }
         }
 
