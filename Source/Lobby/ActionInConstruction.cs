@@ -31,10 +31,8 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorComponentCreating Creating { get; }
         internal ComponentProgressExecuting ProgressExecuting { get; private protected set; }
 
-        internal virtual void InQueueChanged()
-        {
-
-        }
+        protected virtual void BeforeAddToQueue() { }
+        internal virtual void InQueueChanged() { }
 
         internal override string GetText() => (ProgressExecuting != null) && ProgressExecuting.InQueue ? "" : PurchaseValue != null ? PurchaseValue.Gold.ToString() : "";
 
@@ -145,6 +143,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (CheckRequirements())
                     {
                         Program.formMain.PlayPushButton();
+                        BeforeAddToQueue();
                         Construction.Player.AddActionToQueue(this);
                     }
                 }
@@ -535,6 +534,35 @@ namespace Fantasy_Kingdoms_Battle
             base.DoTick();
         }
 
+        protected override void BeforeAddToQueue()
+        {
+            base.BeforeAddToQueue();
+
+            if (Descriptor.Number == 1)
+            {
+                Assert(Construction.QueueExecuting.Count == 0);// Постройка - всегда первая
+                Assert(Construction.CurrentDurability == 0);
+            }
+            else
+            {
+                Assert(Construction.MaxDurability > 0);
+            }
+
+            Assert((Construction.State == StateConstruction.Work) || (Construction.State == StateConstruction.NotBuild) || (Construction.State == StateConstruction.InQueueBuild)
+              || (Construction.State == StateConstruction.NeedRepair));
+
+            if (Construction.State == StateConstruction.NeedRepair)
+            {
+                Assert(Construction.TurnLevelConstructed[Construction.Level] != -1);
+            }
+            else
+            {
+                Assert(Construction.TurnLevelConstructed[Construction.Level + 1] == -1);
+            }
+
+            if (Construction.State == StateConstruction.NeedRepair)
+                Construction.InRepair = true;
+        }    
 
         internal override void InQueueChanged()
         {

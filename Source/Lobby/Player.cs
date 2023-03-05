@@ -1597,43 +1597,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddActionToQueue(ActionInConstruction a)
         {
             Assert(queueExecuting.IndexOf(a) == -1);
-            Construction c = a.Construction;
             Assert(a.ProgressExecuting.PassedMilliTicks == 0);
-
-            // !!! Это подробности реализации. Перенести это в Construction (CellMenuConstructionLevelUp) !!!
-            if (a is CellMenuConstructionLevelUp cml)
-            {
-                if (cml.Descriptor.Number > 1)
-                {
-                    Assert(c.MaxDurability > 0);
-                    //Assert(c.CurrentDurability == c.MaxDurability);
-                }
-                else
-                {
-                    Assert(c.QueueExecuting.Count == 0);// Постройка - всегда первая
-                    //Assert(c.MaxDurability == 0);
-                    Assert(c.CurrentDurability == 0);
-                }
-
-                Assert((c.State == StateConstruction.Work) || (c.State == StateConstruction.NotBuild) || (c.State == StateConstruction.InQueueBuild)
-                  || (c.State == StateConstruction.NeedRepair));
-
-                if (c.State == StateConstruction.NeedRepair)
-                {
-                    Assert(c.TurnLevelConstructed[c.Level] != -1);
-                }
-                else
-                {
-                    Assert(c.TurnLevelConstructed[c.Level + 1] == -1);
-                }
-                //Assert(!c.InConstructOrRepair);
-                //Assert(c.SpendResourcesForConstruct is null);
-
-                if (c.State == StateConstruction.NeedRepair)
-                    c.InRepair = true;
-                //else
-                //    c.InConstructing = true;
-            }
 
             queueExecuting.Add(a);
             RebuildQueueBuilding();
