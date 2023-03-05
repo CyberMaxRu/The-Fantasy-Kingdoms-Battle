@@ -74,12 +74,12 @@ namespace Fantasy_Kingdoms_Battle
                 // Отдельно обрабатываем случай, когда здание зависит от самого себя - это левелап и читинг в этом случае не допускается,
                 // чтобы нельзя было строить новый уровень без построенного предыдущего
                 if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
-                    return (requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[Level] >= skipTurnsFromBuild);
+                    return (requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild);
                 else
-                    return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[Level] >= skipTurnsFromBuild));
+                    return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild));
             }
             else
-                return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.DayLevelConstructed[Level] >= skipTurnsFromBuild));
+                return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild));
         }
 
         internal override TextRequirement GetTextRequirement(Player p, Construction inConstruction = null)

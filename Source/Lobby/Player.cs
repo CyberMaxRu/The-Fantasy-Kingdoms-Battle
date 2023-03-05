@@ -1620,11 +1620,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (c.State == StateConstruction.NeedRepair)
                 {
-                    Assert(c.DayLevelConstructed[c.Level] != -1);
+                    Assert(c.TurnLevelConstructed[c.Level] != -1);
                 }
                 else
                 {
-                    Assert(c.DayLevelConstructed[c.Level + 1] == -1);
+                    Assert(c.TurnLevelConstructed[c.Level + 1] == -1);
                 }
                 //Assert(!c.InConstructOrRepair);
                 //Assert(c.SpendResourcesForConstruct is null);

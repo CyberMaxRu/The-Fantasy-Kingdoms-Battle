@@ -107,7 +107,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Постройка/ремонт
         internal bool QueueBlocked { get; set; }// Очередь заблокирована
-        internal int[] DayLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
+        internal int[] TurnLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
         //internal bool InConstructing { get; set; }// Сооружение строится
         internal bool InRepair { get; set; }// Сооружение ремонтируется
 
@@ -307,7 +307,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Level++;
-            DayLevelConstructed[Level] = Player.Lobby.CounterDay;
+            TurnLevelConstructed[Level] = Player.Lobby.CounterDay;
             //InConstructing = false;
 
             if (Level == 1)
@@ -1499,9 +1499,9 @@ namespace Fantasy_Kingdoms_Battle
 
             IncomeBaseResources = new ConstructionListBaseResources(this);
 
-            DayLevelConstructed = new int[Descriptor.Levels.Length + 1];
-            for (int i = 1; i < DayLevelConstructed.Length; i++)
-                DayLevelConstructed[i] = -1;
+            TurnLevelConstructed = new int[Descriptor.Levels.Length + 1];
+            for (int i = 1; i < TurnLevelConstructed.Length; i++)
+                TurnLevelConstructed[i] = -1;
 
             UpdatePointsResearch();
 
