@@ -145,10 +145,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (CheckRequirements())
                     {
                         Program.formMain.PlayPushButton();
-
                         Construction.Player.AddToQueueBuilding(this);
-                        Construction.UpdateMaxDurability();
-                        //Construction.AddEntityToQueueProcessing(this);
                     }
                 }
                 else
