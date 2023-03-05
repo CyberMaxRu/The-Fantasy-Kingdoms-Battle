@@ -16,26 +16,29 @@ namespace Fantasy_Kingdoms_Battle
             RestTimeExecuting = -1;
         }
 
+        // Свойства для расчета прогресса
         internal int TotalMilliTicks { get; }// Всего миллитиков для выполнения действия
         internal int PassedMilliTicks { get; private set; }// Прошло миллитиков
         internal int RestMilliTicks { get; private set; }// Осталось миллитиков
         internal int MilliTicksPerTick { get; private set; }// Количество миллитиков в одном тике
         internal int RestTimeExecuting { get; private set; }// Сколько секунд осталось до конца выполнения
+
+        // Дополнительные флаги
         internal bool InQueue { get; set; }// Действие в очереди
 
         // Обработка тика игры
-        internal void CalcTick(int milliTicks)
+        internal void CalcTick(int addMilliTicks)
         {
             Assert(PassedMilliTicks < TotalMilliTicks);
-            Assert(milliTicks > 0);
+            Assert(addMilliTicks > 0);
 
-            PassedMilliTicks += milliTicks;
+            PassedMilliTicks += addMilliTicks;
             if (PassedMilliTicks > TotalMilliTicks)
                 PassedMilliTicks = TotalMilliTicks;
 
             RestMilliTicks = TotalMilliTicks - PassedMilliTicks;
 
-            MilliTicksPerTick = milliTicks;
+            MilliTicksPerTick = addMilliTicks;
         }
 
         internal void UpdateRestTimeExecuting()
