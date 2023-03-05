@@ -1594,14 +1594,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddActionToQueue(ActionInConstruction cmc)
+        internal void AddActionToQueue(ActionInConstruction a)
         {
-            Assert(queueExecuting.IndexOf(cmc) == -1);
-            Construction c = cmc.Construction;
-            Assert(cmc.ExecutingAction.PassedMilliTicks == 0);
+            Assert(queueExecuting.IndexOf(a) == -1);
+            Construction c = a.Construction;
+            Assert(a.ExecutingAction.PassedMilliTicks == 0);
 
             // !!! Это подробности реализации. Перенести это в Construction (CellMenuConstructionLevelUp) !!!
-            if (cmc is CellMenuConstructionLevelUp cml)
+            if (a is CellMenuConstructionLevelUp cml)
             {
                 if (cml.Descriptor.Number > 1)
                 {
@@ -1635,7 +1635,7 @@ namespace Fantasy_Kingdoms_Battle
                 //    c.InConstructing = true;
             }
 
-            queueExecuting.Add(cmc);
+            queueExecuting.Add(a);
             RebuildQueueBuilding();
         }
 
