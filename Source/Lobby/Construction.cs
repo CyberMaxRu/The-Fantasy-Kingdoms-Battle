@@ -740,10 +740,6 @@ namespace Fantasy_Kingdoms_Battle
                     RemoveCellMenuFromQueue(cm, true, false);
                 }*/
             }
-
-            // Пересчитываем стоимости и время выполнения в начале хода, так как эти параметры могли измениться от дефолтных
-            CalcPurchasesInActions();
-            CalcDaysExecutingInActions();
         }
 
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)
@@ -1745,9 +1741,8 @@ namespace Fantasy_Kingdoms_Battle
             foreach (ActionInConstruction cmc in Actions)
                 if (cmc.ProgressExecuting != null)
                 {
-                    if (cmc.ProgressExecuting.PassedMilliTicks == 0)
+                    if (!cmc.ProgressExecuting.InQueue)
                     {
-                        Assert(!cmc.ProgressExecuting.InQueue);
                         Assert(cmc.ProgressExecuting.PassedMilliTicks == 0);
                         cmc.UpdatePurchase();
                     }

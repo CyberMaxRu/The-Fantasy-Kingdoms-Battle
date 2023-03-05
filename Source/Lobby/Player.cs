@@ -1640,12 +1640,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(a.ProgressExecuting.PassedMilliTicks == 0);
 
             queueExecuting.Add(a);
-
-            // Составляем очереди у сооружений
-            List<ActionInConstruction> list = new List<ActionInConstruction>();
-            list.AddRange(queueExecuting);
-            foreach (ActionInConstruction cmc in list)
-                cmc.Construction.AddCellMenuToQueue(cmc);
+            a.Construction.AddCellMenuToQueue(a);
         }
 
         internal void RemoveFromQueueExecuting(ActionInConstruction cmc, bool constructed)
