@@ -1594,7 +1594,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddToQueueBuilding(ActionInConstruction cmc)
+        internal void AddActionToQueue(ActionInConstruction cmc)
         {
             Assert(queueExecuting.IndexOf(cmc) == -1);
             Construction c = cmc.Construction;

@@ -1548,7 +1548,7 @@ namespace Fantasy_Kingdoms_Battle
         
         internal void StartRepair()
         {
-            Player.AddToQueueBuilding(ActionRepair);
+            Player.AddActionToQueue(ActionRepair);
             UpdateState();
         }
 
