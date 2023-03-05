@@ -1605,7 +1605,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemoveFromQueueExecuting(ActionInConstruction cmc, bool constructed)
         {
-            cmc.RemoveFromQueue(!constructed);
+            cmc.Construction.RemoveCellMenuFromQueue(cmc, !constructed);
         }
         
         internal void DeleteFromQueueBuilding(ActionInConstruction cmc)

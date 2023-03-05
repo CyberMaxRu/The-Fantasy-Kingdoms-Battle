@@ -1555,7 +1555,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void CancelRepair()
         {
             Player.RemoveFromQueueExecuting(ActionRepair, false);
-            Player.RebuildQueueBuilding();
             UpdateState();
         }
 
@@ -1667,19 +1666,6 @@ namespace Fantasy_Kingdoms_Battle
                 default:
                     throw new Exception("Неизвестное состояние");
             }
-        }
-
-        internal void ClearQueueExecuting()
-        {
-            foreach (ActionInConstruction cmc in QueueExecuting)
-                RemoveCellMenuFromQueue(cmc, false, true);
-
-            QueueExecuting.Clear();
-            QueueBlocked = false;
-
-            // После очистки очереди, количество оставшихся очков исследования должно равняться дефолтному
-            Assert(RestResearchPoints == ResearchPoints);
-            UsedResearchPoints = 0;
         }
 
         internal void AddCellMenuToQueue(ActionInConstruction cmc)
@@ -1859,7 +1845,7 @@ namespace Fantasy_Kingdoms_Battle
             cmc.InQueueChanged();*/
         }
 
-        internal void RemoveCellMenuFromQueue(ActionInConstruction cmc, bool removeFromList, bool forCancel)
+        internal void RemoveCellMenuFromQueue(ActionInConstruction cmc, bool forCancel)
         {
             Assert(cmc.Construction == this);
             Assert(cmc.ProgressExecuting.InQueue);
@@ -1900,17 +1886,19 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (removeFromList)
-            {
-                if (!QueueExecuting.Remove(cmc))
-                    DoException($"{IDEntity}: не удалось удалить {IDEntity} из очереди строительства");
+            if (!QueueExecuting.Remove(cmc))
+                DoException($"{IDEntity}: не удалось удалить {IDEntity} из очереди строительства");
 
-                Player.DeleteFromQueueBuilding(cmc);
-            }
+            Player.DeleteFromQueueBuilding(cmc);
 
             cmc.ProgressExecuting.InQueue = false;
             cmc.InQueueChanged();
             cmc.Destroyed = true;
+
+            // Если не было отмены, значит, идет процесс отработки прогресса и строительство завершено.
+            // Перестраивать очередь не нужно
+            if (forCancel)
+                Player.RebuildQueueBuilding();
 
             /*if (forCancel)
             {

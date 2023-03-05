@@ -159,15 +159,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void RemoveFromQueue(bool forCancel)
-        {
-            Construction.RemoveCellMenuFromQueue(this, true, forCancel);
-            // Если не было отмены, значит, идет процесс отработки прогресса и строительство завершено.
-            // Перестраивать очередь не нужно
-            if (forCancel)
-                Construction.Player.RebuildQueueBuilding();
-        }
-
         internal virtual void StartExecute() { }// Вызывается перед началом выполнения действия
 
         internal virtual void DoTick()

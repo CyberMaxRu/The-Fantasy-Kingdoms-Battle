@@ -98,8 +98,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnQueue1_Click(object sender, EventArgs e)
         {
-            if (Construction.QueueExecuting[0].ProgressExecuting.PassedMilliTicks == 0)
-                Construction.QueueExecuting[0].RemoveFromQueue(true);
         }
 
         private void BtnQueue1_ShowHint(object sender, EventArgs e)
