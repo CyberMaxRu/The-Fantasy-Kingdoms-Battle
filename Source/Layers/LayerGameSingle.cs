@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabelSettlementParameter[] labelCityParameters;
         private readonly VCToolLabel labelKnowledge;
         private readonly VCToolLabel labelTraditions;
-        private readonly VCToolLabel labelPeople;
+        //private readonly VCToolLabel labelPeople;
         private readonly VCToolLabel labelHeroes;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelCorruption;
@@ -145,11 +145,11 @@ namespace Fantasy_Kingdoms_Battle
             labelTraditions = new VCToolLabel(bmpPreparedToolbar, labelKnowledge.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_TRADITIONS);
             //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
             labelTraditions.Width = 56;
-            labelPeople = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_PEOPLE);
+            //labelPeople = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_PEOPLE);
             //labelPeople.ShowHint += LabelKnowledge_ShowHint;
-            labelPeople.Width = 72;
+            //labelPeople.Width = 72;
 
-            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelPeople.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
+            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
             labelHeroes.ShowHint += LabelHeroes_ShowHint;
             labelHeroes.Width = 80;
             labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
@@ -1028,7 +1028,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelBuilders.Visible = true;
                     labelKnowledge.Visible = true;
                     labelTraditions.Visible = true;
-                    labelPeople.Visible = true;
+                    //labelPeople.Visible = true;
                     ShowResoures(true);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = true;
@@ -1042,7 +1042,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelBuilders.Visible = false;
                     labelKnowledge.Visible = false;
                     labelTraditions.Visible = false;
-                    labelPeople.Visible = false;
+                    //labelPeople.Visible = false;
                     ShowResoures(false);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = false;
