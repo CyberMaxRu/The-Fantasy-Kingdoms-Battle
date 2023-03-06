@@ -49,8 +49,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Bitmap bmp = new Bitmap(width, Height);
-            int beginAlpha = 50;
-            float stepAlpha = width / beginAlpha;
+            int beginAlpha = 140;
+            int endAlpha = 50;
+            float stepAlpha = width / (beginAlpha - endAlpha);
             // Инициализируем цветом и градиентной прозрачностью
             for (int y = 0; y < bmp.Height; y++)
                 for (int x = 0; x < bmp.Width; x++)
