@@ -1596,20 +1596,18 @@ namespace Fantasy_Kingdoms_Battle
                 State = StateConstruction.Destroyed;
             else if ((Level == 1) && (MaxDurability == 0))
                 State = StateConstruction.None;// Если сооружение построено, и у него нет прочности, это элемент ландшафта. У него нет состояния.
-            else if (Level == 0)
+            else if (InLevelUp)
             {
                 Assert(!InRepair);
+                Assert(ActionBuildOrLevelUp.ProgressExecuting.InQueue);
 
-                if (ActionBuildOrLevelUp.ProgressExecuting.InQueue)
-                {
-                    if (ActionBuildOrLevelUp.ProgressExecuting.PassedMilliTicks > 0)
-                        State = StateConstruction.Build;// Стройка идет
-                    else
-                        State = StateConstruction.InQueueBuild;// В очереди на строительство
-                }
+                if (ActionBuildOrLevelUp.ProgressExecuting.PassedMilliTicks > 0)
+                    State = StateConstruction.Build;// Стройка идет
                 else
-                    State = StateConstruction.NotBuild;// Сооружение не построено
+                    State = StateConstruction.InQueueBuild;// В очереди на строительство
             }
+            else if (Level == 0)
+                State = StateConstruction.NotBuild;// Сооружение не построено
             else if (InRepair)
                 State = StateConstruction.Repair;// Идет ремонт
             else if (CurrentDurability == MaxDurability)
