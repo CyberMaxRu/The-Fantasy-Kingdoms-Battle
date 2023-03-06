@@ -147,6 +147,7 @@ namespace Fantasy_Kingdoms_Battle
                         Program.formMain.PlayPushButton();
                         BeforeAddToQueue();
                         Construction.Player.AddActionToQueue(this);
+                        Construction.Player.Lobby.Layer.UpdateMenu();
                     }
                 }
                 else
