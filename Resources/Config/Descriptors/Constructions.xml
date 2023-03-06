@@ -3658,7 +3658,7 @@
         <Durability>500</Durability>
         <Creating>
           <Time>50</Time>
-          <Builders>1</Builders>
+          <Builders>0</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -3673,7 +3673,7 @@
         <Durability>550</Durability>
         <Creating>
           <Time>20</Time>
-          <Builders>1</Builders>
+          <Builders>0</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -3688,7 +3688,7 @@
         <Durability>600</Durability>
         <Creating>
           <Time>20</Time>
-          <Builders>1</Builders>
+          <Builders>0</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
