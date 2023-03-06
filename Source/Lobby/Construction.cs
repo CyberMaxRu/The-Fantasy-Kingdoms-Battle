@@ -1741,6 +1741,7 @@ namespace Fantasy_Kingdoms_Battle
             Player.DeleteFromQueueBuilding(cmc);
 
             cmc.ProgressExecuting.InQueue = false;
+            cmc.ProgressExecuting.State = StateProgress.Inactive;
             cmc.Destroyed = true;
 
             UpdateFirstAction();

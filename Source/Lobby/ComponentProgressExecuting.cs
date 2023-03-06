@@ -3,9 +3,10 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс - компонента прогресса подготовки действия
-    internal enum StateProgress { WaitForQueue, Active, WaitBuilders };
+    // Состояния прогресса - неактивно (не поставлено в очередь), активно, ожидание (стоит в очереди, не первое), ожидание строителей (первое)
+    internal enum StateProgress { Inactive, Active, WaitInQueue, WaitBuilders };
 
+    // Класс - компонента прогресса подготовки действия
     internal sealed class ComponentProgressExecuting
     {
         public ComponentProgressExecuting(int seconds, int needBuilders, int milliTicksPerTicks)
@@ -18,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             MilliTicksPerTick = milliTicksPerTicks;
             RestTimeExecuting = -1;
             NeedBuilders = needBuilders;
-            State = StateProgress.WaitForQueue;
+            State = StateProgress.Inactive;
         }
 
         // Свойства для расчета прогресса

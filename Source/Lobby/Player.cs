@@ -397,6 +397,7 @@ namespace Fantasy_Kingdoms_Battle
         private void DispatcherQueue()
         {
             bool firstAction;
+
             // Проходим по очереди задач, и настраиваем состояние
             foreach (ActionInConstruction a in queueExecuting)
             {
@@ -406,7 +407,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     switch (a.ProgressExecuting.State)
                     {
-                        case StateProgress.WaitForQueue:
+                        case StateProgress.Inactive:
+                        case StateProgress.WaitInQueue:
                             if (a.ProgressExecuting.NeedBuilders == 0)
                                 a.ProgressExecuting.State = StateProgress.Active;
                             else if (FreeBuilders >= a.ProgressExecuting.NeedBuilders)
@@ -441,7 +443,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
                 else
-                    a.ProgressExecuting.State = StateProgress.WaitForQueue;
+                    a.ProgressExecuting.State = StateProgress.WaitInQueue;
             }
         }
 
