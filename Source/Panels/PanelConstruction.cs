@@ -185,20 +185,15 @@ namespace Fantasy_Kingdoms_Battle
                             pbDurability.Position = Construction.CurrentDurability;
                             break;
                         case StateConstruction.NotBuild:
-                        case StateConstruction.InQueueBuild:
                             pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
                             pbDurability.Max = Construction.MaxDurability;
                             pbDurability.Position = 0;
                             break;
+                        case StateConstruction.InQueueBuild:
                         case StateConstruction.Build:
-                            pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
-                            pbDurability.Max = Construction.MaxDurability;
-                            pbDurability.Position = Construction.CurrentDurability;
-                            break;
                         case StateConstruction.NeedRepair:
                         case StateConstruction.Repair:
-                            pbDurability.Text = $"{Construction.CurrentDurability}" +
-                                $"{(Construction.ActionMain.ProgressExecuting.PassedMilliTicks > 0 ? $"+{Construction.ActionMain.ProgressExecuting.PassedMilliTicks}" : "")}/{Construction.MaxDurability}";
+                            pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
                             pbDurability.Max = Construction.MaxDurability;
                             pbDurability.Position = Construction.CurrentDurability;
                             break;
