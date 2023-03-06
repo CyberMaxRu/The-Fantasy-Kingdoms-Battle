@@ -7,7 +7,7 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - иконка
     internal class VCImage : VisualControl
     {
-        private VCLabel lblDaysExecuting;
+        private VCLabel lblRestTtimeExecuting;
 
         public VCImage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY)
         {
@@ -17,19 +17,19 @@ namespace Fantasy_Kingdoms_Battle
             Width = BitmapList.Size.Width;
             Height = BitmapList.Size.Height;
 
-            lblDaysExecuting = new VCLabel(this, 4, 1, Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
-            lblDaysExecuting.StringFormat.LineAlignment = StringAlignment.Near;
-            lblDaysExecuting.StringFormat.Alignment = StringAlignment.Near;
-            lblDaysExecuting.Width = Width - 4;
-            lblDaysExecuting.Visible = false;
-            lblDaysExecuting.ManualDraw = true;
+            lblRestTtimeExecuting = new VCLabel(this, 4, 1, Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblRestTtimeExecuting.StringFormat.LineAlignment = StringAlignment.Near;
+            lblRestTtimeExecuting.StringFormat.Alignment = StringAlignment.Near;
+            lblRestTtimeExecuting.Width = Width - 4;
+            lblRestTtimeExecuting.Visible = false;
+            lblRestTtimeExecuting.ManualDraw = true;
         }
 
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; }
         internal bool ImageIsEnabled { get; set; } = true;
         internal bool HighlightUnderMouse { get; set; } = false;
-        internal string DaysExecuting { get; set; } = "";
+        internal string RestTimeExecuting { get; set; } = "";
 
         internal override void MouseEnter(bool leftButtonDown)
         {
@@ -57,10 +57,10 @@ namespace Fantasy_Kingdoms_Battle
                 BitmapList.DrawImage(g, ImageIndex, /*UseFilter*/ ImageIsEnabled, HighlightUnderMouse && MouseOver && !MouseClicked, Left, Top);
 
                 // Дней выполнения
-                if (DaysExecuting.Length > 0)
+                if (RestTimeExecuting.Length > 0)
                 {
-                    lblDaysExecuting.Text = DaysExecuting;
-                    lblDaysExecuting.Draw(g);
+                    lblRestTtimeExecuting.Text = RestTimeExecuting;
+                    lblRestTtimeExecuting.Draw(g);
                 }
 
             }
