@@ -18,12 +18,12 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCCustomNotice(int width) : base()
         {
-            Cell = new VCCellSimple(this, 0, 3);
+            Cell = new VCCellSimple(this, 0, 0);
 
-            lblCaption = new VCLabel(this, Cell.NextLeft(), 4, Program.formMain.fontParagraphC, Color.White, 16, "");
+            lblCaption = new VCLabel(this, Cell.NextLeft(), 0, Program.formMain.fontParagraphC, Color.White, 16, "");
 
-            lblText = new VCLabel(this, lblCaption.ShiftX, 27, Program.formMain.fontParagraphC, Color.White, 16, "");
-            Height = 54;
+            lblText = new VCLabel(this, lblCaption.ShiftX, 24, Program.formMain.fontParagraphC, Color.White, 16, "");
+            Height = Cell.Height;
             Width = width;
 
             bmpBackground = PrepareBackground(width - 52);
