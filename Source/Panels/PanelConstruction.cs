@@ -166,7 +166,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 pbDurability.Visible = true;
 
-                if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
+                if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && !(Construction.FirstActionInQueue is CellMenuConstructionRepair) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
                 {
                     int percent = Construction.FirstActionInQueue.ProgressExecuting.PassedMilliTicks * 100 / Construction.FirstActionInQueue.ProgressExecuting.TotalMilliTicks;
 
