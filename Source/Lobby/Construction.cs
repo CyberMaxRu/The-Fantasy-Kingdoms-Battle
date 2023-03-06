@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(value != 0);
 
-                currentDurability += value;
+                currentDurability = value;
 
                 Assert(CurrentDurability >= 0);
                 Assert(CurrentDurability <= MaxDurability);
