@@ -461,10 +461,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void StartProgress()
         {
-            if (Construction.Level > 0)
+            /*if (Construction.Level > 0)
             {
                 Assert(Construction.CurrentDurability == Construction.MaxDurability);
-            }
+            }*/
 
             base.StartProgress();
         }
@@ -519,7 +519,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(ProgressExecuting.InQueue);
 
-                if ((Descriptor.Number == 1) && (ProgressExecuting.PassedMilliTicks == 0))
+                if (ProgressExecuting.PassedMilliTicks == 0)
                 {
                     Construction.InLevelUp = true;
                     Construction.UpdateMaxDurability();

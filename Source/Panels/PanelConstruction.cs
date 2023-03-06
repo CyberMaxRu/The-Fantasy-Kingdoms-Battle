@@ -163,7 +163,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblRewardGreatness.Visible = false;
 
                 pbDurability.Visible = true;
-                pbDurability.PositionPotential = 0;
 
                 if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
                 {
@@ -200,7 +199,6 @@ namespace Fantasy_Kingdoms_Battle
                                 $"{(Construction.ActionMain.ProgressExecuting.PassedMilliTicks > 0 ? $"+{Construction.ActionMain.ProgressExecuting.PassedMilliTicks}" : "")}/{Construction.MaxDurability}";
                             pbDurability.Max = Construction.MaxDurability;
                             pbDurability.Position = Construction.CurrentDurability;
-                            pbDurability.PositionPotential = Construction.CurrentDurability + Construction.ActionMain.ProgressExecuting.PassedMilliTicks;
                             break;
                         default:
                             throw new Exception($"Неизвестное состояние {Construction.State}");
