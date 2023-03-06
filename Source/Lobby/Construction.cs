@@ -1600,14 +1600,17 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(!InRepair);
                 Assert(ActionBuildOrLevelUp.ProgressExecuting.InQueue);
+                Assert(ActionBuildOrLevelUp.ProgressExecuting.State == StateProgress.Active);
 
-                if (ActionBuildOrLevelUp.ProgressExecuting.PassedMilliTicks > 0)
-                    State = StateConstruction.Build;// Стройка идет
-                else
-                    State = StateConstruction.InQueueBuild;// В очереди на строительство
+                State = StateConstruction.Build;// Стройка идет
             }
             else if (Level == 0)
-                State = StateConstruction.NotBuild;// Сооружение не построено
+            {
+                if (ActionBuildOrLevelUp.ProgressExecuting.State == StateProgress.WaitBuilders)
+                    State = StateConstruction.InQueueBuild;// В очереди на строительство
+                else
+                    State = StateConstruction.NotBuild;// Сооружение не построено
+            }
             else if (InRepair)
                 State = StateConstruction.Repair;// Идет ремонт
             else if (CurrentDurability == MaxDurability)
