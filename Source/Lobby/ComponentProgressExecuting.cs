@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Свойства для расчета прогресса
-        internal int TotalMilliTicks { get; }// Всего миллитиков для выполнения действия
+        internal int TotalMilliTicks { get; private set; }// Всего миллитиков для выполнения действия
         internal int PassedMilliTicks { get; private set; }// Прошло миллитиков
         internal int RestMilliTicks { get; private set; }// Осталось миллитиков
         internal int MilliTicksPerTick { get; private set; }// Количество миллитиков в одном тике
@@ -39,18 +39,25 @@ namespace Fantasy_Kingdoms_Battle
         internal void CalcTick(int addMilliTicks)
         {
             Assert(State == StateProgress.Active);
-            Assert(PassedMilliTicks < TotalMilliTicks);
-            Assert(addMilliTicks > 0);
-            Assert(InQueue);
-            Assert(((NeedBuilders > 0) && (UsedBuilders == NeedBuilders)) || ((NeedBuilders == 0) && (UsedBuilders == 0)));
+            if (TotalMilliTicks > 0)
+            {
+                Assert(PassedMilliTicks < TotalMilliTicks);
+                Assert(addMilliTicks > 0);
+                Assert(InQueue);
+                Assert(((NeedBuilders > 0) && (UsedBuilders == NeedBuilders)) || ((NeedBuilders == 0) && (UsedBuilders == 0)));
 
-            PassedMilliTicks += addMilliTicks;
-            if (PassedMilliTicks > TotalMilliTicks)
-                PassedMilliTicks = TotalMilliTicks;
+                PassedMilliTicks += addMilliTicks;
+                if (PassedMilliTicks > TotalMilliTicks)
+                    PassedMilliTicks = TotalMilliTicks;
 
-            RestMilliTicks = TotalMilliTicks - PassedMilliTicks;
+                RestMilliTicks = TotalMilliTicks - PassedMilliTicks;
 
-            MilliTicksPerTick = addMilliTicks;
+                MilliTicksPerTick = addMilliTicks;
+            }
+            else
+            {
+                Assert(PassedMilliTicks == 0);
+            }
         }
 
         internal void UpdateRestTimeExecuting()
@@ -58,6 +65,15 @@ namespace Fantasy_Kingdoms_Battle
             // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
             RestTimeExecuting = (int)Math.Truncate(RestMilliTicks * 1.00000 / (MilliTicksPerTick * FormMain.Config.TicksInSecond) + 0.99);
             Assert(RestTimeExecuting > 0);
+        }
+
+        internal void RefreshProgress(int seconds, int milliTicksPerTicks)
+        {
+            TotalMilliTicks = seconds * FormMain.Config.TicksInSecond * 1000;
+            RestMilliTicks = TotalMilliTicks;
+            MilliTicksPerTick = milliTicksPerTicks;
+            PassedMilliTicks = 0;
+            RestTimeExecuting = -1;
         }
     }
 }
