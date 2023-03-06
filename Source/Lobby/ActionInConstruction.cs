@@ -586,6 +586,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void DoTick()
         {
+            Assert(Construction.CurrentDurability < Construction.MaxDurability);
+
             // Пересчитывать параметры ремонта надо каждый тик, т.к. между прибавлениями единиц прочности могут нанести повреждение, а также может поменяться скорость ремонта
             // Сколько миллитиков необходимо для увеличения прочности на 1 единицу. Для простоты берем прочность и время стройки первого уровня
             // !!! Бонусы и штрафы не учитываются !!!
@@ -674,6 +676,8 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void BeforeAddToQueue()
         {
+            Assert(Construction.CurrentDurability < Construction.MaxDurability);
+
             base.BeforeAddToQueue();
 
             Construction.InRepair = true;
