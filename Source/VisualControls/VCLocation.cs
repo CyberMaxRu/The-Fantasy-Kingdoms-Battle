@@ -95,7 +95,6 @@ namespace Fantasy_Kingdoms_Battle
             imgTypeLocation.TextCaption.Text = location.Settings.Name;
 
             pbScout.Position = location.PercentScoutedArea / 10;
-            pbScout.PositionPotential = (location.PercentScoutedArea + location.PercentScoutAreaToday) / 10;
             pbScout.Text = Utils.FormatPercent(location.PercentScoutedArea) + (location.PercentScoutAreaToday > 0 ? $"+{Utils.FormatPercent(location.PercentScoutAreaToday)}" : "");
             lblDanger.Text = Utils.FormatPercent(location.Danger);
 

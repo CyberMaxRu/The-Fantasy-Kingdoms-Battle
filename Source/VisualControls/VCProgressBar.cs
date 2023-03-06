@@ -11,7 +11,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCProgressBar : VCBitmapBand
     {
         private VCProgressBarBack ppbBack;
-        private VCProgressBarFore ppfForePotential;
         private VCProgressBarFore ppfFore;
         private VCLabel lblText;
 
@@ -26,7 +25,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Max { get; set; }
         internal int Position { get; set; }
-        internal int PositionPotential { get; set; }
         internal string Text { get; set; } = "";
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandProgressBar;
         internal Color ColorProgress { get; set; } = Color.Transparent;
@@ -45,12 +43,6 @@ namespace Fantasy_Kingdoms_Battle
             Utils.Assert(Position >= 0);
             Utils.Assert(Position <= Max);
 
-            if (PositionPotential > 0)
-            {
-                Utils.Assert(PositionPotential >= Position);
-                Utils.Assert(PositionPotential <= Max);
-            }
-
             if ((ppbBack is null) || (ppbBack.Width + 18 != Width))
             {
                 ppbBack?.Dispose();
@@ -66,29 +58,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 int length = (ppbBack.Width - 1) * Position / Max;
 
-                // Определяем длину потенциального прогресса
-                if ((PositionPotential > 0) && (PositionPotential > Position))
-                {
-                    int lengthPotential = (ppbBack.Width - 1) * PositionPotential / Max;
-                    if (lengthPotential > length)
-                    {
-                        Color colorPotential = Color.FromArgb(ColorProgress.A, Convert.ToByte(ColorProgress.R * 0.5), Convert.ToByte(ColorProgress.G * 0.5), Convert.ToByte(ColorProgress.B * 0.5));
-
-                        if ((ppfForePotential is null) || (ppfForePotential.Width != lengthPotential) || (ppfForePotential.Color != colorPotential))
-                        {
-                            ppfForePotential?.Dispose();
-
-                            ppfForePotential = new VCProgressBarFore(this, 11, 5);
-                            ppfForePotential.TruncateLeft = true;
-                            ppfForePotential.Width = lengthPotential;
-                            ppfForePotential.Color = colorPotential;
-                            ppfForePotential.Visible = false;
-                            ArrangeControl(ppfForePotential);
-                        }
-
-                        ppfForePotential.Draw(g);
-                    }
-                }
                 // Определяем длину прогресса
                 if (length > 0)
                 {
