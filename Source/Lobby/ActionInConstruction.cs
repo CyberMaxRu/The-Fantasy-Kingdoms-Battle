@@ -448,16 +448,12 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool ConstructionMustMeConstructed() => false;
         protected override string GetTextForLevel() => Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
-        internal override string GetText()
-        {
-            return "";// ProgressExecuting.State == StateProgress.WaitBuilders;
-        }
 
         internal override Color GetColorText()
         {
             if (GetImageIsEnabled())
             {
-                if ((Construction.Level + 1 == Descriptor.Number))
+                if (Construction.Level + 1 == Descriptor.Number)
                     return FormMain.Config.CommonCost;
                 else
                     return Color.LimeGreen;
