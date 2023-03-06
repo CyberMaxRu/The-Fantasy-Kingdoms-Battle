@@ -162,21 +162,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void DoTick()
         {
-            if ((ProgressExecuting != null) && ProgressExecuting.InQueue)
+            if ((ProgressExecuting != null) && ProgressExecuting.State == StateProgress.Active)
             {
                 if (ProgressExecuting.PassedMilliTicks == 0)
                     StartProgress();
 
-                Assert(ProgressExecuting.State != StateProgress.WaitForQueue);
-                if (ProgressExecuting.State == StateProgress.Active)
-                {
-                    ProgressExecuting.CalcTick(Construction.Player.GetMilliTicksForAction());
+                ProgressExecuting.CalcTick(Construction.Player.GetMilliTicksForAction());
 
-                    // Если прогресс завершен, выполняем действие
-                    if (ProgressExecuting.RestMilliTicks == 0)
-                    {
-                        Execute();
-                    }
+                // Если прогресс завершен, выполняем действие
+                if (ProgressExecuting.RestMilliTicks == 0)
+                {
+                    Execute();
                 }
             }
         }
