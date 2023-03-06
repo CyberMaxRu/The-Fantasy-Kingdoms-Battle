@@ -1593,6 +1593,9 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 DoException("Неопределенное состояние сооружения");
+
+            if ((CurrentDurability == MaxDurability) && (ActionRepair != null))
+                ActionRepair = null;
         }
 
         internal void DoDamage(int damage)
