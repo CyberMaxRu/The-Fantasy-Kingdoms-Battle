@@ -73,11 +73,14 @@ namespace Fantasy_Kingdoms_Battle
         protected virtual string GetTextForLevel() => "";
         protected abstract void Execute();
 
-        protected void RemoveSelf()
+        protected void RemoveSelf(bool withDestroy)
         {
             Debug.Assert(Construction.Actions.IndexOf(this) != -1);
-            Destroyed = true;
-            //Construction.Actions.Remove(this);
+            if (withDestroy)
+            {
+                Destroyed = true;
+                Construction.Actions.Remove(this);
+            }
             Construction.Player.Lobby.Layer.UpdateMenu();
         }
 
@@ -246,7 +249,7 @@ namespace Fantasy_Kingdoms_Battle
                 Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.Research);
             }
 
-            RemoveSelf();
+            RemoveSelf(true);
             Construction.Player.RemoveFromQueueExecuting(this, true);
             Program.formMain.SetNeedRedrawFrame();
         }
@@ -288,7 +291,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            RemoveSelf();
+            RemoveSelf(true);
 
             ConstructionService cs = new ConstructionService(Construction, Entity);
             Construction.AddService(cs);
@@ -824,7 +827,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            RemoveSelf();
+            RemoveSelf(true);
 
             ConstructionExtension ce = new ConstructionExtension(Construction, Entity);
             Construction.AddExtension(ce);
@@ -869,7 +872,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            RemoveSelf();
+            RemoveSelf(true);
 
             ConstructionImprovement ce = new ConstructionImprovement(Construction, Entity);
             Construction.AddImprovement(ce);
