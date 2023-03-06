@@ -1524,35 +1524,6 @@ namespace Fantasy_Kingdoms_Battle
             RestResearchPoints = ResearchPoints;
         }
 
-        internal void UpdateTime()
-        {
-            AssertNotDestroyed();
-
-            /*if (ActionRepair != null)
-            {
-                if (CurrentDurability.Value == MaxDurability1000)
-                {
-                    if (!Actions.Remove(ActionRepair))
-                        EntityDoException("Не смог убрать кнопку окончания ремонта");
-
-                    ActionRepair = null;
-                }
-                else
-                    ActionRepair.DaysForRepair = Player.CalcDaysForEndConstruction(CurrentDurability, MaxDurability);
-            }
-            */
-            foreach (ActionInConstruction cm in Actions)
-            {
-                cm.UpdateTime();
-                if (cm is CellMenuConstructionLevelUp cml)
-                {
-                    Debug.Assert(cml.Descriptor.Number > Level);// Не должно быть действия на постройку уже построенного уровня
-                }
-            }
-            
-            TuneActionLevelUp();// Если кнопка ремонта была удалена, надо обновить действия
-        }
-
         // Подготовка строительства сооружения
         // Вызывается у городских сооружений сразу
         
@@ -1800,7 +1771,17 @@ namespace Fantasy_Kingdoms_Battle
             ValidateActions();
             CalcPurchasesInActions();
             UpdateState();
-            UpdateTime();
+
+            foreach (ActionInConstruction cm in Actions)
+            {
+                cm.UpdateTime();
+                if (cm is CellMenuConstructionLevelUp cml)
+                {
+                    Debug.Assert(cml.Descriptor.Number > Level);// Не должно быть действия на постройку уже построенного уровня
+                }
+            }
+
+            TuneActionLevelUp();// Если кнопка ремонта была удалена, надо обновить действия
         }
 
         internal void ValidateActions()
