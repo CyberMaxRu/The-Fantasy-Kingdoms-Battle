@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
             TuneByCreate();
 
             if (dc.DefaultLevel == 1)
-                Build(false);
+                Build(false, true);
 
             // Восстановить
             //if (Construction.HasTreasury)
@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
                 InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
 
             if (Descriptor.DefaultLevel == 1)
-                Build(false);
+                Build(false, true);
 
             TuneConstructAfterCreate();
         }
@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
             TuneByCreate();
 
             if (level == 1)
-                Build(false);
+                Build(false, true);
 
             if (typeNotice != TypeNoticeForPlayer.None)
                 Player.AddNoticeForPlayer(this, typeNotice);
@@ -109,7 +109,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Постройка/ремонт
         internal int[] TurnLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
-        //internal bool InConstructing { get; set; }// Сооружение строится
+        internal bool InLevelUp { get; set; }// Сооружение строится/улучшается
         internal bool InRepair { get; set; }// Сооружение ремонтируется
 
         // Исследования
@@ -274,24 +274,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateMaxDurability()
         {
-            if (Level == 0)
-            {
-                if (ActionBuildOrLevelUp.ProgressExecuting.PassedMilliTicks == 0)
-                {
-                    MaxDurability = Descriptor.Levels[1].Durability;
-                }
-            }
-            else
-            {
-                MaxDurability = Descriptor.Levels[Level].Durability;// Здесь надо считать через улучшения
-                CurrentDurability = Descriptor.Levels[Level].Durability;
-            }
+            int newMaxDurability = Descriptor.Levels[Level + 1].Durability;
+            Assert(newMaxDurability > 0);
+            Assert(newMaxDurability > MaxDurability);
 
-            UpdateState();
+            MaxDurability = newMaxDurability;
         }
 
-        internal void Build(bool needNotice)
+        internal void Build(bool needNotice, bool instant)
         {
+            InLevelUp = true;
+
             if (!Lobby.InPrepareTurn && (Lobby.CurrentPlayer?.GetTypePlayer() == TypePlayer.Human))
                 Program.formMain.PlayConstructionComplete();
 
@@ -320,8 +313,17 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            // Если у сооружения есть прочность, обновляем её
+            if ((Descriptor.Levels[Level + 1].Durability > 0) && instant)
+            {
+                UpdateMaxDurability();
+                currentDurability = MaxDurability;
+            }
+
             Level++;
             TurnLevelConstructed[Level] = Player.Lobby.CounterDay;
+
+            InLevelUp = false;
             //InConstructing = false;
 
             if (Level == 1)
@@ -329,10 +331,6 @@ namespace Fantasy_Kingdoms_Battle
                 ValidateHeroes();
                 //PrepareTurn();
             }
-
-            // Если у сооружения есть прочность, обновляем её
-            if (Descriptor.Levels[1].Durability > 0)
-                UpdateMaxDurability();
 
             CreateProducts();
 

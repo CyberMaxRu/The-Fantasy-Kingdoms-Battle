@@ -472,7 +472,7 @@ namespace Fantasy_Kingdoms_Battle
         protected override void Execute()
         {
             Assert(Construction.CurrentDurability == Construction.MaxDurability);
-            Construction.Build(true);
+            Construction.Build(true, false);
             Construction.Player.RemoveFromQueueExecuting(this, true);
         }
 
@@ -520,7 +520,10 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(ProgressExecuting.InQueue);
 
                 if ((Descriptor.Number == 1) && (ProgressExecuting.PassedMilliTicks == 0))
+                {
+                    Construction.InLevelUp = true;
                     Construction.UpdateMaxDurability();
+                }
 
                 elapsedMilliTicks += Construction.Player.GetMilliTicksForAction();
                 if (elapsedMilliTicks >= milliTicksForOneDurability)

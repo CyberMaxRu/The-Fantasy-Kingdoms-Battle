@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             // Покупаем гильдии и нанимаем героев. На этом пока всё
             if (Lobby.Turn == 1)
             {
-                GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildWarrior")).Build(false);
+                GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildWarrior")).Build(false, false);
                 HireHeroes(GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildWarrior")), 4);
             }
             else if (Lobby.Turn == 2)
@@ -48,12 +48,12 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if (Lobby.Turn == 3)
             {
-                GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildHunter")).Build(false);
+                GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildHunter")).Build(false, false);
                 HireHeroes(GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildHunter")), 4);
             }
             else if (Lobby.Turn == 4)
             {
-                GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildCleric")).Build(false);
+                GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildCleric")).Build(false, false);
                 HireHeroes(GetPlayerConstruction(FormMain.Descriptors.FindConstruction("GuildCleric")), 4);
             }
             /*else if (Lobby.Day == 4)
