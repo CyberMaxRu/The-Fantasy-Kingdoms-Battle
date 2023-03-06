@@ -1719,7 +1719,8 @@ namespace Fantasy_Kingdoms_Battle
 
             cmc.ProgressExecuting.InQueue = false;
             cmc.ProgressExecuting.State = StateProgress.Inactive;
-            cmc.Destroyed = true;
+            if (!forCancel)
+                cmc.Destroyed = true;
 
             UpdateFirstAction();
 
@@ -1728,10 +1729,10 @@ namespace Fantasy_Kingdoms_Battle
             //if (forCancel)
             //    Player.RebuildQueueBuilding();
 
-            /*if (forCancel)
+            if (forCancel)
             {
                 Program.formMain.layerGame.UpdateMenu();
-            }*/
+            }
         }
 
         internal void CalcPurchasesInActions()

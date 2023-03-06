@@ -54,8 +54,10 @@ namespace Fantasy_Kingdoms_Battle
             btnQueue1.Click += BtnQueue1_Click;
             bmpQueue2 = new VCEntityInQueue(this, btnQueue1.NextLeft(), btnQueue1.ShiftY);
             bmpQueue2.StateRestTime = StateRestTime.Pause;
+            bmpQueue2.Click += BmpQueue2_Click;
             bmpQueue3 = new VCEntityInQueue(this, bmpQueue2.NextLeft(), btnQueue1.ShiftY);
             bmpQueue3.StateRestTime = StateRestTime.Pause;
+            bmpQueue3.Click += BmpQueue3_Click;
 
             btnMainAction = new VCIconButton48(this, imgMapObject.NextLeft(), pbDurability.NextTop(), FormMain.Config.Gui48_Build);
             btnMainAction.Click += BtnBuildOrUpgrade_Click;
@@ -98,8 +100,26 @@ namespace Fantasy_Kingdoms_Battle
             Click += ImgLair_Click;
         }
 
+        private void BmpQueue3_Click(object sender, EventArgs e)
+        {
+            RemoveFromQueue(2);
+        }
+
+        private void BmpQueue2_Click(object sender, EventArgs e)
+        {
+            RemoveFromQueue(1);
+        }
+
         private void BtnQueue1_Click(object sender, EventArgs e)
         {
+            RemoveFromQueue(0);
+        }
+
+        private void RemoveFromQueue(int index)
+        {
+            if (Construction.QueueExecuting[index] != null)
+                if (Construction.QueueExecuting[index].ProgressExecuting.PassedMilliTicks == 0)
+                    Construction.Player.RemoveFromQueueExecuting(Construction.QueueExecuting[index], false);
         }
 
         private void BtnQueue1_ShowHint(object sender, EventArgs e)
