@@ -53,7 +53,9 @@ namespace Fantasy_Kingdoms_Battle
             btnQueue1.ShowBorder = false;
             btnQueue1.Click += BtnQueue1_Click;
             bmpQueue2 = new VCEntityInQueue(this, btnQueue1.NextLeft(), btnQueue1.ShiftY);
+            bmpQueue2.StateRestTime = StateRestTime.Pause;
             bmpQueue3 = new VCEntityInQueue(this, bmpQueue2.NextLeft(), btnQueue1.ShiftY);
+            bmpQueue3.StateRestTime = StateRestTime.Pause;
 
             btnMainAction = new VCIconButton48(this, imgMapObject.NextLeft(), pbDurability.NextTop(), FormMain.Config.Gui48_Build);
             btnMainAction.Click += BtnBuildOrUpgrade_Click;

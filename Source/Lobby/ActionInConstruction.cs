@@ -135,6 +135,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal override StateRestTime GetStateRestTime()
+        {
+            if ((ProgressExecuting.State == StateProgress.Inactive) || (ProgressExecuting.State == StateProgress.Active))
+                return StateRestTime.Active;
+
+            return StateRestTime.Pause;
+        }
+
         internal override void Click()
         {
             if (ProgressExecuting != null)
