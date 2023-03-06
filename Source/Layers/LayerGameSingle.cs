@@ -16,8 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorMission mission;
 
         // Главные страницы игры
-        private readonly VCPageControl pageControl;
-        private readonly VCPageButton pageResultTurn;
+        private readonly VCPageControl pageControl;        
         private readonly VCPageButton pageFinance;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
@@ -58,6 +57,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal readonly VisualControl MainControl;
         internal readonly VCBitmap bmpCurtain;
+        internal readonly VisualControl panelNotices;// Панель извещений
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
@@ -270,8 +270,6 @@ namespace Fantasy_Kingdoms_Battle
             // Страницы игры
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
-            pageResultTurn = pageControl.AddPage(Config.Gui48_Mail, "Итоги хода", "Сводка", null);
-            pageResultTurn.Hint = "Итоги хода";
             //pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", null);
             //pageFinance.Hint = "Финансовая информация";
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
@@ -308,7 +306,6 @@ namespace Fantasy_Kingdoms_Battle
             // Создаем массив из страниц, линий и позиций
             panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
 
-
             DrawPageConstructions();
             //DrawPageFinance();
             DrawHeroes();
@@ -316,6 +313,12 @@ namespace Fantasy_Kingdoms_Battle
             DrawPageTournament();
             DrawPageLocation();
             DrawPageRealMap();
+
+            panelNotices = new VisualControl(MainControl, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            panelNotices.Width = 160;
+            panelNotices.Height = 200;
+            panelNotices.IsActiveControl = false;
+            panelNotices.ShowBorder = false;
 
             // Вычисляем максимальный размер страниц
             pageControl.ApplyMaxSize();
@@ -339,7 +342,7 @@ namespace Fantasy_Kingdoms_Battle
             // Все контролы созданы, устанавливаем размеры bitmapMenu
             MainControl.Width = vcRightPanel.ShiftX + vcRightPanel.Width;
 
-            MainControl.Height = pageResultTurn.ShiftY + maxHeightControls + (Config.GridSize * 2);
+            MainControl.Height = pageHeroes.ShiftY + maxHeightControls + (Config.GridSize * 2);
 
             Adjust2();
 
@@ -368,7 +371,7 @@ namespace Fantasy_Kingdoms_Battle
 
             MakePagesBackground();
 
-            pageControl.ActivatePage(pageResultTurn);
+            pageControl.ActivatePage(pagesCapital[0]);
             UpdateNameCurrentPage();
         }
 
@@ -391,7 +394,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void MakePagesBackground()
         {
-            pageResultTurn.PageImage = MainControlbackground("Paper");
             //pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
@@ -499,12 +501,6 @@ namespace Fantasy_Kingdoms_Battle
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<Entity>());
         }
 
-        internal void ActivatePageResultTurn()
-        {
-            pageControl.ActivatePage(pageResultTurn);
-            UpdateNameCurrentPage();
-        }
-
         private void DrawPageFinance()
         {
             VCLabel l = new VCLabel(pageFinance.Page, 0, 0, Program.formMain.fontParagraph, Color.White, 16, "Уровень налогов:");
@@ -583,14 +579,14 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (VCEvent e in p.ListEvents)
             {
-                e.SetParent(pageResultTurn.Page);
+                e.SetParent(panelNotices);
                 e.ShiftX = 0;
                 e.ShiftY = top;
 
                 top = e.NextTop();
             }
 
-            pageResultTurn.Page.ArrangeControls();
+            panelNotices.ArrangeControls();
         }
 
         private void DrawPageConstructions()
@@ -922,7 +918,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.ExchangeLayer(Program.formMain.layerMainMenu, this);
             }
 
-            pageControl.ActivatePage(pageResultTurn);
+            pageControl.ActivatePage(pagesCapital[0]);
             PageControl_PageChanged(null, new EventArgs());
             ShowCurrentPlayerLobby();
 
@@ -1028,8 +1024,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
                 {
-                    while (pageResultTurn.Page.Controls.Count > 0)
-                        pageResultTurn.Page.RemoveControl(pageResultTurn.Page.Controls[0]);
+                    while (panelNotices.Controls.Count > 0)
+                        panelNotices.RemoveControl(panelNotices.Controls[0]);
 
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
@@ -1118,23 +1114,27 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowPlayerNotices()
         {
-            pageResultTurn.Quantity = curAppliedPlayer.ListNoticesForPlayer.Count;
-
+            if (curAppliedPlayer != null)
             if (curAppliedPlayer.ListNoticesForPlayer.Count > 0)
             {
+                panelNotices.Visible = true;
                 int nextY = 0;
 
                 foreach (VCNoticeForPlayer ep in curAppliedPlayer.ListNoticesForPlayer)
                 {
                     ep.ShiftY = nextY;
                     ep.Visible = true;
-                    if ((ep.Parent is null) || (ep.Parent != pageResultTurn.Page))
-                        pageResultTurn.Page.AddControl(ep);
+                    if ((ep.Parent is null) || (ep.Parent != panelNotices))
+                        panelNotices.AddControl(ep);
 
-                    pageResultTurn.Page.ArrangeControl(ep);
+                    panelNotices.ArrangeControl(ep);
                     nextY = ep.NextTop();
                 }
+
+                panelNotices.ApplyMaxSize();
             }
+            else
+                panelNotices.Visible = false;
         }
 
         internal void UpdateListHeroes()
@@ -1442,7 +1442,7 @@ namespace Fantasy_Kingdoms_Battle
             // По вертикали 2 расстояния
             // Вообще надо переделать на константы из конфиги
             horInterval = (MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (panels[0, 0, 0].Width * 4)) / 5;
-            verInterval = (MainControl.Height - pageResultTurn.Page.ShiftY - (panels[0, 0, 0].Height * 3) - (Config.GridSize * 2)) / 2;
+            verInterval = (MainControl.Height - pageHeroes.Page.ShiftY - (panels[0, 0, 0].Height * 3) - (Config.GridSize * 2)) / 2;
 
             for (int z = 0; z < panels.GetLength(0); z++)
                 for (int y = 0; y < panels.GetLength(1); y++)

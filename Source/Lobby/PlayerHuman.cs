@@ -87,8 +87,6 @@ namespace Fantasy_Kingdoms_Battle
                 AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенный найм", Color.Orange);
 
             base.PrepareTurn(beginOfDay);
-
-            Lobby.Layer.ActivatePageResultTurn();
         }
 
         internal override void DoTurn()

@@ -1608,6 +1608,7 @@ namespace Fantasy_Kingdoms_Battle
             if (GetTypePlayer() == TypePlayer.Human)
             {
                 ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeNotice, addParam));
+                Program.formMain.layerGame.ShowPlayerNotices();
             }
         }
 
@@ -1716,7 +1717,6 @@ namespace Fantasy_Kingdoms_Battle
             PlayerQuest q = new PlayerQuest(this, quest);
             AddNoticeForPlayer(q, TypeNoticeForPlayer.AddQuest);
 
-            Program.formMain.layerGame.ShowPlayerNotices();
             Program.formMain.ShowFrame(true);// SetNeedRedraw не работает
 
             Quests.Add(q);
