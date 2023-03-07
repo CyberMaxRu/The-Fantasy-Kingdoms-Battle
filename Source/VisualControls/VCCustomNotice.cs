@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
+using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -22,8 +23,11 @@ namespace Fantasy_Kingdoms_Battle
             CellEntity = new VCCellSimple(this, CellOwner.NextLeft(), 0);
 
             lblCaption = new VCLabel(this, CellEntity.NextLeft() + 2, 0, Program.formMain.fontParagraphC, Color.White, 16, "");
+            lblCaption.StringFormat.Alignment = StringAlignment.Near;
 
             lblText = new VCLabel(this, lblCaption.ShiftX, 24, Program.formMain.fontParagraphC, Color.White, 16, "");
+            lblText.StringFormat.Alignment = StringAlignment.Near;
+            lblText.TruncLongText = true;
             Height = CellEntity.Height;
             Width = width;
         }
@@ -83,8 +87,8 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpBackground = PrepareBackground(Width - lblCaption.ShiftX + 2);
 
-            lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
-            lblText.Width = lblText.Font.WidthText(lblText.Text);
+            lblCaption.Width = Width - lblCaption.ShiftX;
+            lblText.Width = Width - lblText.ShiftX;
         }
     }
 }
