@@ -313,9 +313,9 @@ namespace Fantasy_Kingdoms_Battle
             DrawPageLocation();
             DrawPageRealMap();
 
-            panelNotices = new VisualControl(MainControl, FormMain.Config.GridSize, FormMain.Config.GridSize);
-            panelNotices.Width = 160;
-            panelNotices.Height = 200;
+            panelNotices = new VisualControl(vcRightPanel, 0, 0);
+            panelNotices.Width = vcRightPanel.Width - Config.GridSize;
+            panelNotices.Height = vcRightPanel.Height;
             panelNotices.IsActiveControl = false;
             panelNotices.ShowBorder = false;
 
@@ -1409,6 +1409,8 @@ namespace Fantasy_Kingdoms_Battle
             panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
             vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
             vcRightPanel.ShiftX = MainControl.Width - vcRightPanel.Width;
+
+            panelNotices.Height = vcRightPanel.Height;
 
             bmpObjectMenu.ShiftX = vcRightPanel.Width - bmpObjectMenu.Width;
             bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
