@@ -1449,7 +1449,7 @@
     <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Pos>4,2</Pos>
+    <Pos>1,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -1528,7 +1528,7 @@
     <TypeConstruction>WarGuild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Pos>4,3</Pos>
+    <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -3123,7 +3123,7 @@
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Pos>4,1</Pos>
+    <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <SoundSelect>workshop_select.wav</SoundSelect>
@@ -4537,7 +4537,7 @@
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Power</Page>
-    <Pos>4,1</Pos>
+    <Pos>2,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <SoundSelect>townhall_select.wav</SoundSelect>
@@ -4667,7 +4667,7 @@
     <ImageIndex>138</ImageIndex>
     <TypeConstruction>Military</TypeConstruction>
     <Category>Military</Category>
-    <Page>Economic</Page>
+    <Page>Power</Page>
     <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -4865,8 +4865,8 @@
     <ImageIndex>149</ImageIndex>
     <TypeConstruction>Military</TypeConstruction>
     <Category>Military</Category>
-    <Page>Economic</Page>
-    <Pos>3,2</Pos>
+    <Page>Power</Page>
+    <Pos>2,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <SoundSelect>hospital_select.wav</SoundSelect>
@@ -5058,8 +5058,8 @@
     <ImageIndex>152</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
     <Category>Military</Category>
-    <Page>Economic</Page>
-    <Pos>4,2</Pos>
+    <Page>Power</Page>
+    <Pos>3,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <SoundSelect>dungeon_select.wav</SoundSelect>
@@ -5617,7 +5617,7 @@
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Pos>4,3</Pos>
+    <Pos>3,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <SoundSelect>gambling_hall_select.wav</SoundSelect>
