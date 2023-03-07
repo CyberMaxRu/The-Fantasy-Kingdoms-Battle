@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (typeNotice != TypeNoticeForPlayer.ReceivedBaseResource)
             {
+                CellOwner.Click += Cell_Click;
                 CellEntity.Click += Cell_Click;
                 CellEntity.HighlightUnderMouse = true;
             }
