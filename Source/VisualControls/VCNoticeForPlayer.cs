@@ -38,30 +38,30 @@ namespace Fantasy_Kingdoms_Battle
             switch (TypeNotice)
             {
                 case TypeNoticeForPlayer.Build:
-                    nameNotice = "Строительство завершено:";
+                    nameNotice = "Построено:";
                     nameText = (Entity as Construction).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.LevelUp:
-                    nameNotice = "Сооружение улучшено:";
+                    nameNotice = "Улучшено:";
                     nameText = (Entity as Construction).GetName() + " Уровень " + (Entity as Construction).Level.ToString();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Research:
                     imageIndexOwner = (Entity as EntityForConstruction).Construction.GetImageIndex();
-                    nameNotice = "Исследование завершено:";
+                    nameNotice = "Исследовано:";
                     nameText = (Entity as EntityForConstruction).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Extension:
                     imageIndexOwner = (Entity as ConstructionExtension).Construction.GetImageIndex();
-                    nameNotice = "Дополнительное сооружение построено:";
+                    nameNotice = "Построено:";
                     nameText = (Entity as ConstructionExtension).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Improvement:
                     imageIndexOwner = (Entity as ConstructionImprovement).Construction.GetImageIndex();
-                    nameNotice = "Улучшение завершено:";
+                    nameNotice = "Улучшено:";
                     nameText = (Entity as ConstructionImprovement).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
@@ -73,25 +73,25 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.MassEventBegin:
                     imageIndexOwner = (Entity as ConstructionEvent).Construction.GetImageIndex();
-                    nameNotice = "Мероприятие начато:";
+                    nameNotice = "Мероприятие:";
                     nameText = (Entity as ConstructionEvent).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.MassEventEnd:
                     imageIndexOwner = (Entity as ConstructionEvent).Construction.GetImageIndex();
-                    nameNotice = "Мероприятие завершено:";
+                    nameNotice = "Завершено:";
                     nameText = (Entity as ConstructionEvent).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.TournamentBegin:
                     imageIndexOwner = (Entity as ConstructionTournament).Construction.GetImageIndex();
-                    nameNotice = "Турнир начат:";
+                    nameNotice = "Турнир:";
                     nameText = (Entity as ConstructionTournament).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.TournamentEnd:
                     imageIndexOwner = (Entity as ConstructionTournament).Construction.GetImageIndex();
-                    nameNotice = "Турнир завершен:";
+                    nameNotice = "Завершено:";
                     nameText = (Entity as ConstructionTournament).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
@@ -129,18 +129,18 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.ConstructionDamaged:
                     Debug.Assert(addParam > 0);
-                    nameNotice = $"Сооружение повреждено ({-addParam}):";
+                    nameNotice = $"Повреждено ({-addParam}):";
                     nameText = (Entity as Construction).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.ConstructionRepaired:
-                    nameNotice = "Сооружение отремонтировано:";
+                    nameNotice = "Отремонтировано:";
                     nameText = (Entity as Construction).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.AddQuest:
                     imageIndexOwner = (Entity as PlayerQuest).Player.GetImageIndex();
-                    nameNotice = "Получено новое задание:";
+                    nameNotice = "Новое задание:";
                     nameText = (Entity as PlayerQuest).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
