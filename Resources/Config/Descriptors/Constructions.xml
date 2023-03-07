@@ -4876,7 +4876,7 @@
         <Number>1</Number>
         <Durability>400</Durability>
         <Creating>
-          <Time>60</Time>
+          <Time>10</Time>
           <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
@@ -4888,7 +4888,7 @@
         <Number>2</Number>
         <Durability>450</Durability>
         <Creating>
-          <Time>20</Time>
+          <Time>10</Time>
           <Builders>1</Builders>
           <Cost>
             <Gold>3000</Gold>
@@ -4913,7 +4913,7 @@
         <ID>ProductHospitalHerbs</ID>
         <Entity>HospitalHerbs</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>5</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4930,7 +4930,7 @@
         <ID>ProductHospitalHealthPotion</ID>
         <Entity>HospitalHealthPotion</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>5</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4947,7 +4947,7 @@
         <ID>ProductElixirAntipoison</ID>
         <Entity>ElixirAntipoison</Entity>
         <Creating>
-          <Time>30</Time>
+          <Time>5</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
