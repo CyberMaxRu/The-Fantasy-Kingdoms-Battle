@@ -229,7 +229,7 @@ namespace Fantasy_Kingdoms_Battle
             cellObjectMenu.ShowHint += CellObjectMenu_ShowHint;
 
             // Панель со всеми героями
-            panelCombatHeroes = new PanelWithPanelEntity(4, false, 12, 12);
+            panelCombatHeroes = new PanelWithPanelEntity(5, false, 12, 12);
             panelCombatHeroes.Click += PanelCombatHeroes_Click;
             vcRightPanel.AddControl(panelCombatHeroes);
 
@@ -300,7 +300,7 @@ namespace Fantasy_Kingdoms_Battle
             labelCaptionPage = new VCLabel(pageControl, pageMap.NextLeft() + FormMain.Config.GridSize * 2, 0, Program.formMain.fontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
             labelCaptionPage.ShiftY = (48 - labelCaptionPage.Font.MaxHeightSymbol) / 2;
-            labelCaptionPage.Width = 320;
+            labelCaptionPage.Width = 280;
 
             // Создаем массив из страниц, линий и позиций
             panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
