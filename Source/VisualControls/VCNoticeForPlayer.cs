@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
-        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam) : base(52 + 399)
+        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam) : base(56 + 399)
         {
             Debug.Assert(entity != null);
             Debug.Assert(typeNotice != TypeNoticeForPlayer.None);
@@ -23,14 +23,15 @@ namespace Fantasy_Kingdoms_Battle
             TypeNotice = typeNotice;
 
             Visible = false;
-            Cell.RightClick += Cell_RightClick;
+            CellEntity.RightClick += Cell_RightClick;
 
             if (typeNotice != TypeNoticeForPlayer.ReceivedBaseResource)
             {
-                Cell.Click += Cell_Click;
-                Cell.HighlightUnderMouse = true;
+                CellEntity.Click += Cell_Click;
+                CellEntity.HighlightUnderMouse = true;
             }
 
+            int imageIndexOwner = -1;
             string nameNotice;
             string nameText = "";
             Color colorNameEntity;
@@ -47,41 +48,49 @@ namespace Fantasy_Kingdoms_Battle
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Research:
+                    imageIndexOwner = (Entity as EntityForConstruction).Construction.GetImageIndex();
                     nameNotice = "Исследование завершено:";
                     nameText = (Entity as EntityForConstruction).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Extension:
+                    imageIndexOwner = (Entity as ConstructionExtension).Construction.GetImageIndex();
                     nameNotice = "Дополнительное сооружение построено:";
                     nameText = (Entity as ConstructionExtension).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Improvement:
+                    imageIndexOwner = (Entity as ConstructionImprovement).Construction.GetImageIndex();
                     nameNotice = "Улучшение завершено:";
                     nameText = (Entity as ConstructionImprovement).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.HireHero:
+                    imageIndexOwner = (Entity as Creature).Construction.GetImageIndex();
                     nameNotice = "Герой нанят:";
                     nameText = (Entity as Creature).GetNameHero();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.MassEventBegin:
+                    imageIndexOwner = (Entity as ConstructionEvent).Construction.GetImageIndex();
                     nameNotice = "Мероприятие начато:";
                     nameText = (Entity as ConstructionEvent).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.MassEventEnd:
+                    imageIndexOwner = (Entity as ConstructionEvent).Construction.GetImageIndex();
                     nameNotice = "Мероприятие завершено:";
                     nameText = (Entity as ConstructionEvent).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.TournamentBegin:
+                    imageIndexOwner = (Entity as ConstructionTournament).Construction.GetImageIndex();
                     nameNotice = "Турнир начат:";
                     nameText = (Entity as ConstructionTournament).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.TournamentEnd:
+                    imageIndexOwner = (Entity as ConstructionTournament).Construction.GetImageIndex();
                     nameNotice = "Турнир завершен:";
                     nameText = (Entity as ConstructionTournament).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
@@ -130,6 +139,7 @@ namespace Fantasy_Kingdoms_Battle
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.AddQuest:
+                    imageIndexOwner = (Entity as PlayerQuest).Player.GetImageIndex();
                     nameNotice = "Получено новое задание:";
                     nameText = (Entity as PlayerQuest).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
@@ -140,12 +150,12 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(nameText.Length > 0);
 
-            SetNotice(Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
+            SetNotice(imageIndexOwner, Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
         }
 
-        public VCNoticeForPlayer(int imageIndex, string caption, string text, Color color) : base(52 + 399)
+        public VCNoticeForPlayer(int imageIndexOwner, int imageIndexEnity, string caption, string text, Color color) : base(52 + 399)
         {
-            SetNotice(imageIndex, caption, text, color);
+            SetNotice(imageIndexOwner, imageIndexEnity, caption, text, color);
         }
 
         private void CloseSelf()

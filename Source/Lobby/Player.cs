@@ -1612,11 +1612,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddNoticeForPlayer(int imageIndex, string caption, string text, Color color)
+        internal void AddNoticeForPlayer(int imageIndexOwner, int imageIndexEntity, string caption, string text, Color color)
         {
             if (GetTypePlayer() == TypePlayer.Human)
             {
-                ListNoticesForPlayer.Add(new VCNoticeForPlayer(imageIndex, caption, text, color));
+                ListNoticesForPlayer.Add(new VCNoticeForPlayer(imageIndexOwner, imageIndexEntity, caption, text, color));
             }
         }
 

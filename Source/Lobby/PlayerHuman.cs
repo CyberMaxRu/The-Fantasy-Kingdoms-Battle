@@ -76,15 +76,15 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareTurn(bool beginOfDay)
         {
             if (CheatingIgnoreBaseResources)
-                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать основные ресурсы", Color.Orange);
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать основные ресурсы", Color.Orange);
             if (CheatingIgnoreRequirements)
-                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать требования", Color.Orange);
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать требования", Color.Orange);
             if (CheatingInstantlyBuilding)
-                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенная постройка", Color.Orange);
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенная постройка", Color.Orange);
             if (CheatingInstantlyResearch)
-                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенное исследование", Color.Orange);
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенное исследование", Color.Orange);
             if (CheatingInstantlyHire)
-                AddNoticeForPlayer(FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенный найм", Color.Orange);
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенный найм", Color.Orange);
 
             base.PrepareTurn(beginOfDay);
         }

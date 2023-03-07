@@ -14,28 +14,28 @@ namespace Fantasy_Kingdoms_Battle
 
         protected readonly VCLabel lblCaption;
         protected readonly VCLabel lblText;
-        private readonly Bitmap bmpBackground;
+        private Bitmap bmpBackground;
 
         public VCCustomNotice(int width) : base()
         {
-            Cell = new VCCellSimple(this, 0, 0);
+            CellOwner = new VCCellSimple(this, 0, 0);
+            CellEntity = new VCCellSimple(this, CellOwner.NextLeft(), 0);
 
-            lblCaption = new VCLabel(this, Cell.NextLeft(), 0, Program.formMain.fontParagraphC, Color.White, 16, "");
+            lblCaption = new VCLabel(this, CellEntity.NextLeft() + 2, 0, Program.formMain.fontParagraphC, Color.White, 16, "");
 
             lblText = new VCLabel(this, lblCaption.ShiftX, 24, Program.formMain.fontParagraphC, Color.White, 16, "");
-            Height = Cell.Height;
+            Height = CellEntity.Height;
             Width = width;
-
-            bmpBackground = PrepareBackground(width - 52);
         }
 
-        internal VCCellSimple Cell { get; }
+        internal VCCellSimple CellOwner { get; }
+        internal VCCellSimple CellEntity { get; }
 
         internal override void DrawBackground(Graphics g)
         {
             base.DrawBackground(g);
 
-            g.DrawImageUnscaled(bmpBackground, Left + 52, Top);
+            g.DrawImageUnscaled(bmpBackground, CellEntity.Left + CellEntity.Width + FormMain.Config.GridSize, Top);
         }
 
         private Bitmap PrepareBackground(int width)
@@ -62,12 +62,24 @@ namespace Fantasy_Kingdoms_Battle
             return bmp;
         }
 
-        internal void SetNotice(int imageIndex, string caption, string text, Color colorText)
+        internal void SetNotice(int imageIndexOwner, int imageIndexEntity, string caption, string text, Color colorText)
         {
-            Cell.ImageIndex = imageIndex;
+            CellOwner.ImageIndex = imageIndexOwner;
+            CellEntity.ImageIndex = imageIndexEntity;
             lblCaption.Text = caption;
             lblText.Text = text;
             lblText.Color = colorText;
+
+            if (CellOwner.ImageIndex == -1)
+            {
+                int shift = CellEntity.ShiftX - CellOwner.ShiftX;
+                CellOwner.Visible = false;
+                CellEntity.ShiftX -= shift;
+                lblCaption.ShiftX -= shift;
+                lblText.ShiftX -= shift;
+            }
+
+            bmpBackground = PrepareBackground(Width - lblCaption.ShiftX + 2);
 
             lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
             lblText.Width = lblText.Font.WidthText(lblText.Text);
