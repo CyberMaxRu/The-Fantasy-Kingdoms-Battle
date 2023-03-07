@@ -596,7 +596,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     parent = pagesCapital[tck.Page.Index].Page;
 
-                    Debug.Assert(panels[tck.Page.Index, tck.CoordInPage.Y, tck.CoordInPage.X] == null);
+                    Assert(panels[tck.Page.Index, tck.CoordInPage.Y, tck.CoordInPage.X] == null);
 
                     if (parent != null)
                     {
@@ -1436,8 +1436,8 @@ namespace Fantasy_Kingdoms_Battle
             // Мы достоверно знаем, что на страницах столицы 3 промежутка между сооружениями и надо еще 2 по краям по горизонтали
             // По вертикали 2 расстояния
             // Вообще надо переделать на константы из конфиги
-            horInterval = (MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (panels[0, 0, 0].Width * 4)) / 5;
-            verInterval = (MainControl.Height - pageHeroes.Page.ShiftY - (panels[0, 0, 0].Height * 3) - (Config.GridSize * 2)) / 2;
+            horInterval = (MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (panels[0, 0, 0].Width * FormMain.Config.ConstructionMaxPos)) / (FormMain.Config.ConstructionMaxPos + 1);
+            verInterval = (MainControl.Height - pageHeroes.Page.ShiftY - (panels[0, 0, 0].Height * FormMain.Config.ConstructionMaxLines) - (Config.GridSize * 2)) / (FormMain.Config.ConstructionMaxLines - 1);
 
             for (int z = 0; z < panels.GetLength(0); z++)
                 for (int y = 0; y < panels.GetLength(1); y++)
