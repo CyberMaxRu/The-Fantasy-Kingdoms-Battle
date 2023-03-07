@@ -59,6 +59,8 @@ namespace Fantasy_Kingdoms_Battle
                     bmp.SetPixel(x, y, Color.FromArgb(Math.Max(0, Convert.ToInt32(beginAlpha - (x / stepAlpha))), Color.SkyBlue));
                 }
 
+            cacheBackground.Add(bmp);
+
             return bmp;
         }
 
