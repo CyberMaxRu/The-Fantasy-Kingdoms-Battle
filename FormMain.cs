@@ -859,6 +859,13 @@ namespace Fantasy_Kingdoms_Battle
             // настройка происходит в методе Draw
             if (VisualControl.PanelHint.Visible && !(controlWithHint is null) && controlWithHint.Visible)
             {
+                // Необходимо перерисовывать подсказку, т.к. после тика могли появиться деньги, выполниться условия
+                if (VisualControl.PanelHint.Visible)
+                {
+                    VisualControl.PanelHint.Clear();
+                    controlWithHint.DoShowHint();
+                    VisualControl.PanelHint.DrawHint();
+                }
                 VisualControl.PanelHint.Paint(gfxRenderFrame);
             }
 

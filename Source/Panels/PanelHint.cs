@@ -285,7 +285,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ExistHint { get; set; }
         internal VisualControl ForControl { get; private set; }// Подсказка для этого контрола
 
-        private void Clear()
+        internal void Clear()
         {
             ExistHint = false;
             lblHeader.Text = "";
