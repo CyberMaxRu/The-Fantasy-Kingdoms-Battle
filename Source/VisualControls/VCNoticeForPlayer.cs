@@ -159,7 +159,7 @@ namespace Fantasy_Kingdoms_Battle
             SetNotice(imageIndexOwner, imageIndexEnity, caption, text, color);
         }
 
-        private void CloseSelf()
+        internal void CloseSelf()
         {
             Debug.Assert(Visible);
 

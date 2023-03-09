@@ -39,8 +39,8 @@
     </Construction>
   </GlobalSettings>
   <Notice>
-    <SecondsBeforeHide>5</SecondsBeforeHide>
-    <SecondsHide>2</SecondsHide>
+    <SecondsBeforeHide>10</SecondsBeforeHide>
+    <SecondsHide>3</SecondsHide>
   </Notice>
   <Colors>
     <Common>

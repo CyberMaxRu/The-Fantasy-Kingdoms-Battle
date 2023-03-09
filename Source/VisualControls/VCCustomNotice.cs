@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         protected readonly VCLabel lblCaption;
         protected readonly VCLabel lblText;
         private Bitmap bmpBackground;
+        private int tickForHide;
 
         public VCCustomNotice(int width) : base()
         {
@@ -34,12 +35,21 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCCellSimple CellOwner { get; }
         internal VCCellSimple CellEntity { get; }
+        internal int CounterForBeginHide { get; set; }// Счетчик до начала скрытия
+        internal int CounterForRemove { get; set; }// Счетчик до удаления
 
         internal override void DrawBackground(Graphics g)
         {
+            if (CounterForBeginHide == 0)
+            {
+                double alphaPerTick = 255.0 / tickForHide;
+                byte opacity = Convert.ToByte(CounterForRemove * alphaPerTick);
+                Opacity = opacity;
+            }
+
             base.DrawBackground(g);
 
-            g.DrawImageUnscaled(bmpBackground, CellEntity.Left + CellEntity.Width + FormMain.Config.GridSize, Top);
+            DrawImage(g, bmpBackground, CellEntity.Left + CellEntity.Width + FormMain.Config.GridSize, Top);
         }
 
         private Bitmap PrepareBackground(int width)
@@ -89,6 +99,10 @@ namespace Fantasy_Kingdoms_Battle
 
             lblCaption.Width = Width - lblCaption.ShiftX;
             lblText.Width = Width - lblText.ShiftX;
+
+            CounterForBeginHide = FormMain.Config.NoticeSecondsBeforeHide * FormMain.Config.TicksInSecond;
+            CounterForRemove = FormMain.Config.NoticeSecondsHide * FormMain.Config.TicksInSecond;
+            tickForHide = CounterForRemove;
         }
     }
 }

@@ -375,6 +375,25 @@ namespace Fantasy_Kingdoms_Battle
                 c.DoTick();
             }
 
+            // Делаем тик у извещений
+            for (int i = 0; i < ListNoticesForPlayer.Count;)
+            {
+                if (ListNoticesForPlayer[i].CounterForBeginHide > 0)
+                {
+                    ListNoticesForPlayer[i].CounterForBeginHide--;
+                    i++;
+                }
+                else if (ListNoticesForPlayer[i].CounterForRemove > 0)
+                {
+                    ListNoticesForPlayer[i].CounterForRemove--;
+                    i++;
+                }
+                else
+                {
+                    ListNoticesForPlayer[i].CloseSelf();
+                }
+            }
+            
             List<Construction> lc = new List<Construction>();
             lc.AddRange(Constructions);
             foreach (Construction pc in lc)// Коллекция меняется при замене объекта
