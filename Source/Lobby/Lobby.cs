@@ -219,6 +219,7 @@ namespace Fantasy_Kingdoms_Battle
             CounterTicksOfTurn++;
             if (CounterTicksOfTurn > FormMain.Config.TicksInTurn)
             {
+                Turn++;
                 CounterTicksOfTurn = 0;
 
                 Day++;
