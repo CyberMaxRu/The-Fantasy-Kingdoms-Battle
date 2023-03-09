@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
+using System.IO.Ports;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -263,9 +264,16 @@ namespace Fantasy_Kingdoms_Battle
             return array[imageIndex];
         }
 
-        internal void DrawImage(Graphics g, int imageIndex, bool enabled, bool over, int x, int y)
+        internal void DrawImage(Graphics g, int imageIndex, bool enabled, bool over, int x, int y, byte opacity = 255)
         {
-            g.DrawImageUnscaled(GetImage(imageIndex, enabled, over), x, y);
+            if (opacity < 255)
+            {
+                Bitmap tmp = GuiUtils.ApplyDisappearance(GetImage(imageIndex, enabled, over), opacity, 255);
+                g.DrawImageUnscaled(tmp, x, y);
+                tmp.Dispose();
+            }
+            else
+                g.DrawImageUnscaled(GetImage(imageIndex, enabled, over), x, y);
         }
 
         internal void NullFromIndex(int fromIndex, int count)

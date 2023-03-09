@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PaintBorder(Graphics g)
         {
-            g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
+            DrawImage(g, Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
 
             Entity?.CustomDraw(g, Left, Top, DrawState);
         }
@@ -120,7 +120,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                 }
                 else
-                    g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
+                    DrawImage(g, Program.formMain.bmpEmptyEntity, Left, Top);
             }
         }
 

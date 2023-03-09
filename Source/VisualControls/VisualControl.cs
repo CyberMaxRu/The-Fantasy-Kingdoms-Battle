@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private int width;// Ширина контрола
         private int height;// Высота контрола
         private bool _visible;
+        private byte opacity = 255;// Непрозрачность
 
         private Entity entity;
         private bool _disposed = false;
@@ -92,6 +93,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Bitmap BackgroundImage { get; set; }// Фоновое изображение
 
+        internal byte Opacity { get => opacity; set { opacity = value; foreach (VisualControl vc in Controls) { vc.Opacity = opacity; } } }// Непрозрачность
+
         internal int Tag { get; set; }
         // Защищенные свойства
         internal bool MouseOver { get; private set; }// Курсор мыши находится над контролом
@@ -138,6 +141,18 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        protected void DrawImage(Graphics g, Bitmap bmp, int left, int top)
+        {
+            if (Opacity < 255)
+            {
+                Bitmap tmp = GuiUtils.ApplyDisappearance(bmp, Opacity, 255);
+                g.DrawImageUnscaled(tmp, left, top);
+                tmp.Dispose();
+            }
+            else
+                g.DrawImageUnscaled(bmp, left, top);
+        }
+
         // Метод для рисования фона - то есть то, что будет перекрываться изображением через Draw
         internal virtual void DrawBackground(Graphics g)
         { 
@@ -146,7 +161,7 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(width == BackgroundImage.Width);
                 //Debug.Assert(height == BackgroundImage.Height);
 
-                g.DrawImageUnscaled(BackgroundImage, Left, Top);
+                DrawImage(g, BackgroundImage, Left, Top);
             }
 
             if (Selected())

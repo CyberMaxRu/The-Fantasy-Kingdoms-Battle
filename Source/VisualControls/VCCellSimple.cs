@@ -28,13 +28,13 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             if (ImageIndex == -1)
-                g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
+                DrawImage(g, Program.formMain.bmpEmptyEntity, Left, Top);
         }
 
         internal override void PaintBorder(Graphics g)
         {
             if (ImageIndex != -1)
-                g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
+                DrawImage(g, Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
                 color = Color;
             }
 
-            g.DrawImageUnscaled(bmpForDraw, Left, Top);
+            DrawImage(g, bmpForDraw, Left, Top);
         }
 
         protected static Bitmap GetBand(Bitmap bmpBand, int width, int widthCap, bool truncateLeft, Color color)

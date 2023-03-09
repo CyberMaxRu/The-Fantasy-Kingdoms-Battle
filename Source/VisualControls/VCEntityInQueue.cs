@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             if (Visible)
-                g.DrawImageUnscaled(Program.formMain.bmpBackgroundEntityInQueue, Left - 1, Top - 1);
+                DrawImage(g, Program.formMain.bmpBackgroundEntityInQueue, Left - 1, Top - 1);
 
             ImageIndex = Action != null ? Action.GetImageIndex() : -1;
             RestTimeExecuting = Action != null ? Action.GetExtInfo() : "";

@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
 
-            g.DrawImageUnscaled(bmp, Left, Top);
+            DrawImage(g, bmp, Left, Top);
         }
     }
 }

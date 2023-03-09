@@ -42,9 +42,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PaintBorder(Graphics g)
         {
             if (BorderWithoutProgressBar)
-                g.DrawImageUnscaled(Program.formMain.bmpBorderBig, Left - 2, Top - 2);
+                DrawImage(g, Program.formMain.bmpBorderBig, Left - 2, Top - 2);
             else 
-                g.DrawImageUnscaled(Program.formMain.bmpBorderBigForProgressBar, Left - 2, Top - 2);
+                DrawImage(g, Program.formMain.bmpBorderBigForProgressBar, Left - 2, Top - 2);
         }
 
         internal override void Draw(Graphics g)

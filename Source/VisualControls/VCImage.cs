@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if ((Visible || ManualDraw) && (ImageIndex != -1))
             {
-                BitmapList.DrawImage(g, ImageIndex, /*UseFilter*/ ImageIsEnabled, HighlightUnderMouse && MouseOver && !MouseClicked, Left, Top);
+                BitmapList.DrawImage(g, ImageIndex, /*UseFilter*/ ImageIsEnabled, HighlightUnderMouse && MouseOver && !MouseClicked, Left, Top, Opacity);
 
                 // Дней выполнения
                 if (RestTimeExecuting.Length > 0)

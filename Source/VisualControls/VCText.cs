@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(y >= Top);
                     Debug.Assert(b.Width <= Width - Padding.Left - Padding.Right);
 
-                    g.DrawImageUnscaled(b, x, y);
+                    DrawImage(g, b, x, y);
 
                     y += b.Height;
                 }
