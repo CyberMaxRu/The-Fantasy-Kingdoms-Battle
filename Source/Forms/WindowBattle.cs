@@ -595,9 +595,9 @@ namespace Fantasy_Kingdoms_Battle
             btnIncSpeed.ImageIsEnabled = false;
         }
 
-        protected override void BeforeClose()
+        protected override void BeforeClose(DialogAction da)
         {
-            base.BeforeClose();
+            base.BeforeClose(da);
 
             Program.formMain.Settings.BattlefieldShowGrid = chkbShowGrid.Checked;
             Program.formMain.Settings.BattlefieldShowPath = chkbShowPath.Checked;

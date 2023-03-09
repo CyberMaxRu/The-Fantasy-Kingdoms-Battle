@@ -126,9 +126,7 @@ namespace Fantasy_Kingdoms_Battle
             btnDefault.Click += BtnDefault_Click;
 
             btnOk.Caption = "Принять";
-            btnOk.Click += BtnAccept_Click;
             btnCancel.Caption = "Отмена";
-            btnCancel.Click += BtnCancel_Click;
 
             ClientControl.Width = vcPanelInterface.Width;
             ClientControl.Height = btnDefault.NextTop() + btnOk.Height;
@@ -195,38 +193,40 @@ namespace Fantasy_Kingdoms_Battle
             ApplySettings(settings);
         }
 
-        private void BtnCancel_Click(object sender, EventArgs e)
+        protected override void BeforeClose(DialogAction da)
         {
-            settings.LoadSettings();
-            ApplySettings(settings);
+            base.BeforeClose(da);
 
-            CloseForm(DialogAction.None);
-        }
-
-        private void BtnAccept_Click(object sender, EventArgs e)
-        {
-            settings.ShowSplashVideo = chkbShowSplashVideo.Checked;
-            settings.FullScreenMode = chkbFullscreenMode.Checked;
-            settings.StretchControlsInFSMode = chkbStretchControlsInFSMode.Checked;
-            settings.CheckUpdateOnStartup = chkbCheckUpdates.Checked;
-            settings.BattlefieldShowPath = chkbShowPath.Checked;
-            settings.BattlefieldShowGrid = chkbShowGrid.Checked;
-            settings.PlaySound = chkbPlaySound.Checked;
-            settings.PlayMusic = chkbPlayMusic.Checked;
-            settings.VolumeSound = tbVolumeSound.Position;
-            settings.VolumeMusic = tbVolumeMusic.Position;
-            settings.MusicFromMajesty1 = chkbMusicFromMajesty1.Checked;
-            settings.MusicFromMajesty2 = chkbMusicFromMajesty2.Checked;
-            settings.ShowShortNames = chkbShowShortNames.Checked;
-            settings.ShowTimeForExecuting = chkbShowTimeForExecuting.Checked;
-            settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
-            settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
-            settings.ShowNameConstruction = chkbShowNameConstruction.Checked;
-            settings.ShowExtraHint = chkbShowExtraHint.Checked;
-            settings.AllowCheating = chkbAllowCheating.Checked;
-            settings.SaveSettings();
-
-            CloseForm(DialogAction.OK);
+            if (da == DialogAction.None)
+            {
+                settings.LoadSettings();
+                ApplySettings(settings);
+            }
+            else if(da == DialogAction.OK)
+            {
+                settings.ShowSplashVideo = chkbShowSplashVideo.Checked;
+                settings.FullScreenMode = chkbFullscreenMode.Checked;
+                settings.StretchControlsInFSMode = chkbStretchControlsInFSMode.Checked;
+                settings.CheckUpdateOnStartup = chkbCheckUpdates.Checked;
+                settings.BattlefieldShowPath = chkbShowPath.Checked;
+                settings.BattlefieldShowGrid = chkbShowGrid.Checked;
+                settings.PlaySound = chkbPlaySound.Checked;
+                settings.PlayMusic = chkbPlayMusic.Checked;
+                settings.VolumeSound = tbVolumeSound.Position;
+                settings.VolumeMusic = tbVolumeMusic.Position;
+                settings.MusicFromMajesty1 = chkbMusicFromMajesty1.Checked;
+                settings.MusicFromMajesty2 = chkbMusicFromMajesty2.Checked;
+                settings.ShowShortNames = chkbShowShortNames.Checked;
+                settings.ShowTimeForExecuting = chkbShowTimeForExecuting.Checked;
+                settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
+                settings.HideFulfilledRequirements = chkbHideFulfilledRequirements.Checked;
+                settings.ShowNameConstruction = chkbShowNameConstruction.Checked;
+                settings.ShowExtraHint = chkbShowExtraHint.Checked;
+                settings.AllowCheating = chkbAllowCheating.Checked;
+                settings.SaveSettings();
+            }
+            else
+                Utils.DoException("Неизвестный результат диалога");
         }
     }
 }

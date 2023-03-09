@@ -82,14 +82,14 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        protected virtual void BeforeClose()
+        protected virtual void BeforeClose(DialogAction da)
         {
 
         }
 
         internal void CloseForm(DialogAction dr)
         {
-            BeforeClose();
+            BeforeClose(dr);
 
             dialogResult = dr;
             Program.formMain.RemoveLayer(this);
