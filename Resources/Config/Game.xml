@@ -29,15 +29,19 @@
     <FramesAnimationBanner>30</FramesAnimationBanner>
   </MainMenu>
   <GlobalSettings>
-    <SecondsInTurn>45</SecondsInTurn>
-    <SecondsInDay>30</SecondsInDay>
-    <SecondsInNight>15</SecondsInNight>
+    <SecondsInTurn>5</SecondsInTurn>
+    <SecondsInDay>3</SecondsInDay>
+    <SecondsInNight>2</SecondsInNight>
     <TicksInSecond>50</TicksInSecond>
     <Construction>
       <DefaultResearchPoints>100</DefaultResearchPoints>
       <MaxLengthQueue>3</MaxLengthQueue>
     </Construction>
   </GlobalSettings>
+  <Notice>
+    <SecondsBeforeHide>5</SecondsBeforeHide>
+    <SecondsHide>2</SecondsHide>
+  </Notice>
   <Colors>
     <Common>
       <Border>Black</Border>

@@ -168,6 +168,8 @@ namespace Fantasy_Kingdoms_Battle
             LengthTicksInMSec = 1000 / TicksInSecond;
             Debug.Assert(LengthTicksInMSec * TicksInSecond == 1000);
 
+            TicksInTurn = TicksInSecond * SecondsInTurn;
+
             // MainMenu
             MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
             MainMenuFramesAnimationBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/FramesAnimationBanner").InnerText);
@@ -248,6 +250,15 @@ namespace Fantasy_Kingdoms_Battle
             HintParameter = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Parameter").InnerText);
             HintRequirementsMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsMet").InnerText);
             HintRequirementsNotMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsNotMet").InnerText);
+
+
+            NoticeSecondsBeforeHide = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Notice/SecondsBeforeHide").InnerText);
+            Debug.Assert(NoticeSecondsBeforeHide >= 1);
+            Debug.Assert(NoticeSecondsBeforeHide <= 300);
+            NoticeSecondsHide = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Notice/SecondsHide").InnerText);
+            Debug.Assert(NoticeSecondsHide >= 1);
+            Debug.Assert(NoticeSecondsHide <= 300);
+
 
             BattlefieldSystemInfo = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/SystemInfo").InnerText);
             BattlefieldPlayerName = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerName").InnerText);
@@ -387,6 +398,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int SecondsInNight { get; set; }// Сколько реальных секунд длится одна игровая ночь
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
         internal int LengthTicksInMSec { get; set; }// Длительность одного тика игры в миллисекундах
+        internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
 
         internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
         internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера
@@ -435,6 +447,10 @@ namespace Fantasy_Kingdoms_Battle
         internal Color HintParameter { get; private set; }
         internal Color HintRequirementsMet { get; private set; }
         internal Color HintRequirementsNotMet { get; private set; }
+
+        internal int NoticeSecondsBeforeHide { get; private set; }
+        internal int NoticeSecondsHide { get; private set; }
+
 
         internal Color BattlefieldSystemInfo { get; private set; }
         internal Color BattlefieldPlayerName { get; private set; }

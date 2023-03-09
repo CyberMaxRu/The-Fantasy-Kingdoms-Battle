@@ -105,12 +105,12 @@ namespace Fantasy_Kingdoms_Battle
         // Поддержка ходов
         internal int Turn { get; private set; }// Текущий ход лобби
         internal int CounterTicks { get; private set; }// Сколько тиков прошло
+        internal int CounterTicksOfTurn { get; private set; }// Сколько тиков прошло
 
         private DescriptorTimeOfDay TimeOfDay { get; set; }// Время суток
         internal int Day { get; private set; }// День
         internal int Week { get; private set; }// Неделя
         internal int Month { get; private set; }// Месяц
-        internal int CounterDay { get => Turn; }// Текущий день с начала игры
 
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
@@ -214,14 +214,28 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoTicks()
         {
+            // Прибавляем тик кол времени
+            CounterTicks++;
+            CounterTicksOfTurn++;
+            if (CounterTicksOfTurn > FormMain.Config.TicksInTurn)
+            {
+                CounterTicksOfTurn = 0;
+
+                Day++;
+                if (Day == 8)
+                {
+                    Day = 1;
+                    Week++;
+                }
+                if (Week == 5)
+                    Month++;
+            }
+
             // Ходим игроками
             for (int i = 0; i < Players.Length; i++)
             {
                 Players[i].DoTick();
             }
-
-            // Увеличиваем количество прошедших тиков
-            CounterTicks++;
         }
 
         internal void Start()
@@ -398,21 +412,6 @@ namespace Fantasy_Kingdoms_Battle
             // Делаем начало хода
             Turn++;
             TimeOfDay = descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1];
-            if (TimeOfDay.Index < descriptors.TimesOfDay.Count - 1)
-                TimeOfDay = descriptors.TimesOfDay[TimeOfDay.Index + 1];
-            else
-            {
-                TimeOfDay = descriptors.TimesOfDay[0];
-
-                Day++;
-                if (Day == 8)
-                {
-                    Day = 1;
-                    Week++;
-                }
-                if (Week == 5)
-                    Month++;
-            }
 
             CurrentPlayer = null;
 

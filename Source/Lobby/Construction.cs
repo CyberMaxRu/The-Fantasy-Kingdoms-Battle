@@ -321,7 +321,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Level++;
-            TurnLevelConstructed[Level] = Player.Lobby.CounterDay;
+            TurnLevelConstructed[Level] = Player.Lobby.Turn;
 
             InLevelUp = false;
             //InConstructing = false;
