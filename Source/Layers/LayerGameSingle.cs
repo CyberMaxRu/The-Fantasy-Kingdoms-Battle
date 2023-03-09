@@ -1069,6 +1069,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+
+
         internal void ShowNamePlayer(string name)
         {
             Debug.Assert(name.Length > 0);
@@ -1084,8 +1086,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void ShowDataPlayer()
         {
             Debug.Assert(lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human);
-
-            labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
@@ -1294,6 +1294,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((lobby != null) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
+                labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelBuilders.Text = $"{curAppliedPlayer.CurrentBuilders}/{curAppliedPlayer.MaxBuilders}"
                     + (curAppliedPlayer.FreeBuilders > 0 ? $" ({curAppliedPlayer.FreeBuilders})" : "");
