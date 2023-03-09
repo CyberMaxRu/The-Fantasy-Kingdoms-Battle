@@ -1029,7 +1029,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            ShowFrame(true);
+            //ShowFrame(true);
 
             return;
 
