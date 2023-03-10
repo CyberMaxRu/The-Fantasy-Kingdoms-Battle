@@ -151,15 +151,9 @@ namespace Fantasy_Kingdoms_Battle
 
             DurationFrame = 1_000 / FramesPerSecond;
 
-            SecondsInDay = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/SecondsInDay").InnerText);
-            Debug.Assert(SecondsInDay >= 0);
-            Debug.Assert(SecondsInDay <= 60);
-            SecondsInNight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/SecondsInNight").InnerText);
-            Debug.Assert(SecondsInNight >= 0);
-            Debug.Assert(SecondsInNight <= 60);
             SecondsInTurn = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/SecondsInTurn").InnerText);
-            Debug.Assert(SecondsInTurn == SecondsInDay + SecondsInNight);
             Debug.Assert(SecondsInTurn > 0);
+            Debug.Assert(SecondsInTurn < 600);
 
             TicksInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/TicksInSecond").InnerText);
             Debug.Assert(TicksInSecond >= 10);
@@ -394,8 +388,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int FramesPerSecond { get; set; }// Отрисовка количества кадров в секунду
         internal int DurationFrame { get; set; }// Длительность кадра в миллисекундах
         internal int SecondsInTurn { get; set; }// Сколько реальных секунд длятся одни игровые сутки
-        internal int SecondsInDay { get; set; }// Сколько реальных секунд длится один игровой день
-        internal int SecondsInNight { get; set; }// Сколько реальных секунд длится одна игровая ночь
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
         internal int LengthTicksInMSec { get; set; }// Длительность одного тика игры в миллисекундах
         internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
