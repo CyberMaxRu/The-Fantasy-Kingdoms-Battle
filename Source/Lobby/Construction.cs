@@ -181,6 +181,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListBaseResources InitialQuantityBaseResources { get; }// Исходные значения базовых ресурсов
         internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
         internal bool ProvideBaseResources { get; private set; }// Сооружение поставляет ресурсы
+        internal ListBaseResources IncomeResources { get; } = new ListBaseResources();// Собрано ресурсов (для зачета для игрока в текущем тике)
 
         internal override string GetIDEntity(DescriptorEntity descriptor)
         {
@@ -1763,7 +1764,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (startNewDay)
             {
-                
+                if (Level > 0)
+                    if (Descriptor.Levels[Level].IncomeResources != null)
+                    {
+                        // Подготавливаем сбор ресурсов за ход
+                        Assert(!IncomeResources.ExistsResources());
+                        IncomeResources.AddResources(Descriptor.Levels[Level].IncomeResources);
+                    }
             }
 
             tempListActions.Clear();

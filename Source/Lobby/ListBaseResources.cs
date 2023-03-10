@@ -89,6 +89,14 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
+        internal void ToZero()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                this[i] = 0;
+            }
+        }
+
         public override bool Equals(object obj)
         {
             ListBaseResources qbr = obj as ListBaseResources;

@@ -373,6 +373,12 @@ namespace Fantasy_Kingdoms_Battle
             foreach (Construction c in Constructions)
             {
                 c.DoTick(startNewDay);
+
+                if (c.IncomeResources.ExistsResources())
+                {
+                    ReceivedResource(c.IncomeResources);
+                    c.IncomeResources.ToZero();
+                }
             }
 
             // Делаем тик у извещений
