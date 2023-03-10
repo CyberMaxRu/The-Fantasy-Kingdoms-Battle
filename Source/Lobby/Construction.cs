@@ -1759,8 +1759,13 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Новые методы для реал-таймового режима
-        internal void DoTick()
+        internal void DoTick(bool startNewDay)
         {
+            if (startNewDay)
+            {
+                
+            }
+
             tempListActions.Clear();
             tempListActions.AddRange(Actions);
 

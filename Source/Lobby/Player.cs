@@ -353,7 +353,7 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract void DoTurn();
 
         // Ход любого игрока. Сначала делаем все расчеты тика, а потом включается ИИ или сам игрок
-        internal virtual void DoTick()
+        internal virtual void DoTick(bool startNewDay)
         {
             // Двигаем прогресс в очереди действий
             // Делаем это из игрока, так как нам нужна строгая последовательность действий (одно может зависеть от другого)
@@ -369,10 +369,10 @@ namespace Fantasy_Kingdoms_Battle
             // Вызываем диспетчер очереди, чтобы он распределил строителей по заданиям
             DispatcherQueue();
 
-            // Делаем тик у сооружений
+            // Делаем тик у сооружений            
             foreach (Construction c in Constructions)
             {
-                c.DoTick();
+                c.DoTick(startNewDay);
             }
 
             // Делаем тик у извещений

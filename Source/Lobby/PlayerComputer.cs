@@ -97,9 +97,9 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal override void DoTick()
+        internal override void DoTick(bool startNewDay)
         {
-            base.DoTick();
+            base.DoTick(startNewDay);
         }
     }
 }

@@ -156,9 +156,9 @@ namespace Fantasy_Kingdoms_Battle
             WindowInfo.ShowInfo("ПОБЕДА!", $"Поздравлям, вы победитель!");
         }
 
-        internal override void DoTick()
+        internal override void DoTick(bool startNewDay)
         {
-            base.DoTick();
+            base.DoTick(startNewDay);
 
         }
     }

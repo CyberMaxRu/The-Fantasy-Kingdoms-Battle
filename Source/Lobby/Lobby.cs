@@ -215,12 +215,14 @@ namespace Fantasy_Kingdoms_Battle
         internal void DoTicks()
         {
             // Прибавляем тик кол времени
+            bool startNewDay = false;
             CounterTicks++;
             CounterTicksOfTurn++;
             if (CounterTicksOfTurn > FormMain.Config.TicksInTurn)
             {
                 Turn++;
                 CounterTicksOfTurn = 0;
+                startNewDay = true;
 
                 Day++;
                 if (Day == 8)
@@ -235,7 +237,7 @@ namespace Fantasy_Kingdoms_Battle
             // Ходим игроками
             for (int i = 0; i < Players.Length; i++)
             {
-                Players[i].DoTick();
+                Players[i].DoTick(startNewDay);
             }
         }
 
