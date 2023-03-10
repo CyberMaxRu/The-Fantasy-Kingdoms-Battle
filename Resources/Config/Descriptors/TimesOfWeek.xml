@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
-  <TimeOfDay>
+  <TimeOfWeek>
     <ID>Day</ID>
     <Name>День</Name>
     <ImageIndex>41</ImageIndex>
     <Description>Днём силы Света сильнее, а силы Тьмы - слабее.//Можно заниматься строительством.</Description>
-    <ImageBackground>TimeOfDayDay</ImageBackground>
-  </TimeOfDay>
-  <TimeOfDay>
+    <ImageBackground>TimeOfWeekDay</ImageBackground>
+  </TimeOfWeek>
+  <TimeOfWeek>
     <ID>Night</ID>
     <Name>Ночь</Name>
     <ImageIndex>42</ImageIndex>
     <Description>Ночью силы Тьмы сильнее, а силы Света - слабее.//Нельзя строить.</Description>
-    <ImageBackground>TimeOfDayNight</ImageBackground>
-  </TimeOfDay>
+    <ImageBackground>TimeOfWeekNight</ImageBackground>
+  </TimeOfWeek>
 </Descriptors>

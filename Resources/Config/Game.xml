@@ -29,7 +29,7 @@
     <FramesAnimationBanner>30</FramesAnimationBanner>
   </MainMenu>
   <GlobalSettings>
-    <SecondsInTurn>30</SecondsInTurn>
+    <SecondsInTurn>15</SecondsInTurn>
     <TicksInSecond>50</TicksInSecond>
     <Construction>
       <DefaultResearchPoints>100</DefaultResearchPoints>

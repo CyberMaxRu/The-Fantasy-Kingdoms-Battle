@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             Day = 0;
             Week = 1;
             Month = 1;
-            TimeOfDay = descriptors.TimesOfDay[0];
+            TimeOfWeek = descriptors.TimesOfWeek[0];
 
             // Создание игроков
             if ((Mission != null) && false)
@@ -106,8 +106,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Turn { get; private set; }// Текущий ход лобби
         internal int CounterTicks { get; private set; }// Сколько тиков прошло
         internal int CounterTicksOfTurn { get; private set; }// Сколько тиков прошло
+        private int IndexTimeOfWeek { get; set; }// Индекс текущего времени недели
+        internal DescriptorTimeOfWeek TimeOfWeek { get; private set; }// Время недели
 
-        private DescriptorTimeOfDay TimeOfDay { get; set; }// Время суток
         internal int Day { get; private set; }// День
         internal int Week { get; private set; }// Неделя
         internal int Month { get; private set; }// Месяц
@@ -215,9 +216,9 @@ namespace Fantasy_Kingdoms_Battle
         internal void DoTicks()
         {
             // Прибавляем тик кол времени
-            bool startNewDay = false;
             CounterTicks++;
             CounterTicksOfTurn++;
+            bool startNewDay = false;
             if (CounterTicksOfTurn > FormMain.Config.TicksInTurn)
             {
                 Turn++;
@@ -229,6 +230,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Day = 1;
                     Week++;
+
+                    IndexTimeOfWeek++;
+                    if (IndexTimeOfWeek == FormMain.Descriptors.TimesOfWeek.Count)
+                        IndexTimeOfWeek = 0;
+
+                    TimeOfWeek = FormMain.Descriptors.TimesOfWeek[IndexTimeOfWeek];
                 }
                 if (Week == 5)
                     Month++;
@@ -258,7 +265,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Подготавливаем новый день каждого игрока
                 // Чтобы при начале хода все были в консистентном состоянии
-                if (TimeOfDay == descriptors.TimesOfDay[0])
+                if (TimeOfWeek == descriptors.TimesOfWeek[0])
                 {
                     InPrepareTurn = true;
 
@@ -283,7 +290,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         SetPlayerAsCurrent(i);
                         InPrepareTurn = true;
-                        Players[i].PrepareTurn(TimeOfDay == descriptors.TimesOfDay[0]);
+                        Players[i].PrepareTurn(TimeOfWeek == descriptors.TimesOfWeek[0]);
                         InPrepareTurn = false;
                         Layer.ShowCurrentPlayerLobby();
 
@@ -414,7 +421,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Делаем начало хода
             Turn++;
-            TimeOfDay = descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1];
+            TimeOfWeek = descriptors.TimesOfWeek[descriptors.TimesOfWeek.Count - 1];
 
             CurrentPlayer = null;
 

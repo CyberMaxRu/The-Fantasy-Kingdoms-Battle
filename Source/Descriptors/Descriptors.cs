@@ -44,10 +44,10 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка времен суток
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TimesOfDay.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TimeOfDay"))
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TimesOfWeek.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TimeOfWeek"))
             {
-                TimesOfDay.Add(new DescriptorTimeOfDay(n));
+                TimesOfWeek.Add(new DescriptorTimeOfWeek(n));
             }
 
             // Загрузка типов ландшафта
@@ -357,7 +357,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<DescriptorTimeOfDay> TimesOfDay { get; } = new List<DescriptorTimeOfDay>();
+        internal List<DescriptorTimeOfWeek> TimesOfWeek { get; } = new List<DescriptorTimeOfWeek>();
         internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();

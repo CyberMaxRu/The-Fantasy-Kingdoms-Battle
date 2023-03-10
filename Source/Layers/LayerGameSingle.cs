@@ -133,7 +133,7 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.Click += MainControl_Click;
 
             // Метки с информацией о Королевстве
-            labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.GUI_16_DAY);
+            labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.Descriptors.TimesOfWeek[0].ImageIndex);
             labelDay.StringFormat.Alignment = StringAlignment.Near;
             labelDay.Click += LabelDay_Click;
             labelDay.ShowHint += LabelDay_ShowHint;
@@ -1284,8 +1284,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             PanelHint.AddStep2Header($"Ход игры: {lobby.Turn}");
             PanelHint.AddStep5Description(
-                $"Месяц: {lobby.Month}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}День: {lobby.Day}{Environment.NewLine}");
-            PanelHint.AddStep21Tooltip($"В неделе 7 дней.{Environment.NewLine}В месяце 4 недели.{Environment.NewLine}");
+                $"Месяц: {lobby.Month}{Environment.NewLine}Неделя: {lobby.Week} ({lobby.TimeOfWeek.Name}){Environment.NewLine}День: {lobby.Day}{Environment.NewLine}");
+            PanelHint.AddStep21Tooltip($"В неделе 7 суток.{Environment.NewLine}В месяце 4 недели.{Environment.NewLine}");
         }
 
         internal override void Draw(Graphics g)
@@ -1295,6 +1295,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((lobby != null) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
                 labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
+                labelDay.Image.ImageIndex = lobby.TimeOfWeek.ImageIndex;
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelBuilders.Text = $"{curAppliedPlayer.CurrentBuilders}/{curAppliedPlayer.MaxBuilders}"
                     + (curAppliedPlayer.FreeBuilders > 0 ? $" ({curAppliedPlayer.FreeBuilders})" : "");

@@ -9,13 +9,13 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    sealed internal class DescriptorTimeOfDay : DescriptorVisual
+    sealed internal class DescriptorTimeOfWeek : DescriptorVisual
     {
         private string nameImageBackground;
 
-        public DescriptorTimeOfDay(XmlNode n): base(n)
+        public DescriptorTimeOfWeek(XmlNode n): base(n)
         {
-            Index = Descriptors.TimesOfDay.Count;
+            Index = Descriptors.TimesOfWeek.Count;
             nameImageBackground = GetStringNotNull(n, "ImageBackground");
         }
 
