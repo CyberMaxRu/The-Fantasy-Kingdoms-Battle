@@ -52,8 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.TypePlayer == TypePlayer.Computer)   
                 BaseResources.Gold = 100_000;
 
-            CityParameters = new ListSettlementParameters();
-            //CityParameters.
+            CityParameters = new ListSettlementParameters(lobby.TypeLobby.BaseSettlementParameters);
 
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
@@ -280,10 +279,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CalcCityParameters()
         {
-            CityParameters.Zeroing();
+            //CityParameters.Zeroing();
 
-            foreach (Construction c in Constructions)
-                CityParameters.AddParameters(c.SettlementParameters);
+            //foreach (Construction c in Constructions)
+            //    CityParameters.AddParameters(c.SettlementParameters);
         }
 
         internal void ReceiveResources()

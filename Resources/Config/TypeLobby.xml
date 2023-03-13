@@ -23,6 +23,10 @@
       <Food>10000</Food>
       <Citizens>1000</Citizens>
     </BaseSettlementParameters>
+    <ChangeSettlementParametersPerTurn>
+      <Rats>20</Rats>
+      <Citizens>20</Citizens>
+    </ChangeSettlementParametersPerTurn>
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>
     <MaxQuantityFlags>7</MaxQuantityFlags>

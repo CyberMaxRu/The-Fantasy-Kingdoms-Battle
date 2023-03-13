@@ -36,6 +36,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        public ListSettlementParameters(ListSettlementParameters list) : base(FormMain.Descriptors.SettlementParameters.Count)
+        {
+            for (int i = 0; i < list.Count; i++)
+                Add(list[i]);
+
+            Utils.Assert(Count == Capacity);
+        }
+
         internal void Zeroing()
         {
             for (int i = 0; i < Count; i++)
