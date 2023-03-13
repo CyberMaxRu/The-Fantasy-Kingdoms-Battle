@@ -1029,7 +1029,6 @@ namespace Fantasy_Kingdoms_Battle
                     labelKnowledge.Visible = true;
                     labelTraditions.Visible = true;
                     //labelPeople.Visible = true;
-                    ShowResoures(true);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = true;
                     labelCorruption.Visible = false;
@@ -1043,7 +1042,6 @@ namespace Fantasy_Kingdoms_Battle
                     labelKnowledge.Visible = false;
                     labelTraditions.Visible = false;
                     //labelPeople.Visible = false;
-                    ShowResoures(false);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = false;
                     labelCorruption.Visible = false;
@@ -1057,19 +1055,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain.ShowFrame(true);
 
-            void ShowResoures(bool visible)
-            {
-                foreach (VCToolLabelSettlementParameter sp in labelCityParameters)
-                    sp.Visible = visible;
-
-                foreach (VCToolLabelResource l in labelsResources)
-                {
-                    l.Visible = visible;
-                }
-            }
         }
-
-
 
         internal void ShowNamePlayer(string name)
         {
