@@ -25,7 +25,7 @@
     </BaseSettlementParameters>
     <ChangeSettlementParametersPerTurn>
       <Rats>20</Rats>
-      <Citizens>20</Citizens>
+      <Citizens>25</Citizens>
     </ChangeSettlementParametersPerTurn>
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>

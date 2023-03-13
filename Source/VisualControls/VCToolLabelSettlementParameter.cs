@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
             : base(parent, shiftX, shiftY, "", parameter.ImageIndex16)
         {
             Parameter = parameter;
-            Width = 72;
+            Width = 120;
             ShowHint += VCToolLabelSettlementParameter_ShowHint;
         }
 
@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateData(Player p)
         {
             Text = Utils.FormatDecimal100(p.CityParameters[Parameter.Index]);
+            Text += $" ({Utils.FormatDecimal100(p.ChangeCityParametersPerTurn[Parameter.Index], true)})";
         }
     }
 }

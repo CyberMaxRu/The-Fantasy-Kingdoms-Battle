@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
             : base(parent, shiftX, shiftY, "", resource.ImageIndex16)
         {
             Resource = resource;
-            Width = 96;
+            Width = 80;
             ShowHint += VCToolLabelResource_ShowHint;
         }
 
