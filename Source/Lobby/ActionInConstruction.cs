@@ -856,6 +856,7 @@ namespace Fantasy_Kingdoms_Battle
             ConstructionExtension ce = new ConstructionExtension(Construction, Entity);
             Construction.AddExtension(ce);
 
+            Construction.Player.RemoveFromQueueExecuting(this, true);
             Program.formMain.SetNeedRedrawFrame();
 
             Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Extension);
