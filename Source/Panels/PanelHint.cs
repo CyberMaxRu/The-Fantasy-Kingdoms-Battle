@@ -568,7 +568,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep9SettlementParameters(ListSettlementParameters list)
+        internal void AddStep9CityParameters(ListCityParameters list)
         {
             if (list != null)
             {
@@ -590,7 +590,7 @@ namespace Fantasy_Kingdoms_Battle
                         lbl.Visible = true;
                         lbl.Color = list[i] > 0 ? Color.Green : Color.Red;
                         lbl.Text = FormatDecimal100(list[i], true);
-                        lbl.Image.ImageIndex = FormMain.Descriptors.SettlementParameters[i].ImageIndex16;
+                        lbl.Image.ImageIndex = FormMain.Descriptors.CityParameters[i].ImageIndex16;
                         lbl.ShiftX = nextLeft;
                         lbl.ShiftY = nextTop;
 

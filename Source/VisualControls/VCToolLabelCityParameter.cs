@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class VCToolLabelSettlementParameter : VCToolLabel
+    internal class VCToolLabelCityParameter : VCToolLabel
     {
-        public VCToolLabelSettlementParameter(VisualControl parent, int shiftX, int shiftY, DescriptorSettlementParameter parameter)
+        public VCToolLabelCityParameter(VisualControl parent, int shiftX, int shiftY, DescriptorCityParameter parameter)
             : base(parent, shiftX, shiftY, "", parameter.ImageIndex16)
         {
             Parameter = parameter;
@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             PanelHint.AddStep5Description(Parameter.Description);
         }
 
-        internal DescriptorSettlementParameter Parameter { get; }
+        internal DescriptorCityParameter Parameter { get; }
 
         internal void UpdateData(Player p)
         {

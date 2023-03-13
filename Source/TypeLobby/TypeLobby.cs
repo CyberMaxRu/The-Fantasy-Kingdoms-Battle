@@ -96,8 +96,8 @@ namespace Fantasy_Kingdoms_Battle
 
 
             // Загружаем базовые параметры города
-            BaseSettlementParameters = new ListSettlementParameters(n.SelectSingleNode("BaseSettlementParameters"));
-            ChangeSettlementParametersPerTurn = new ListSettlementParameters(n.SelectSingleNode("ChangeSettlementParametersPerTurn"));
+            BaseCityParameters = new ListCityParameters(n.SelectSingleNode("BaseCityParameters"));
+            ChangeCityParametersPerTurn = new ListCityParameters(n.SelectSingleNode("ChangeCityParametersPerTurn"));
 
             // Загружаем настройки логов
             XmlNode nodeLairSettings = n.SelectSingleNode("Locations");
@@ -170,8 +170,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int MapHeight { get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
-        internal ListSettlementParameters BaseSettlementParameters { get; }
-        internal ListSettlementParameters ChangeSettlementParametersPerTurn { get; }// Изменение параметров города за ход
+        internal ListCityParameters BaseCityParameters { get; }
+        internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
         internal TypeLobbyLocationSettings[,] Locations { get; }
         //internal TypeLobbyLocationSettings[,] Locations { get; }
 

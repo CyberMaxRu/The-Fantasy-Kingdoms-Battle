@@ -68,14 +68,14 @@ namespace Fantasy_Kingdoms_Battle
             BaseResources.Capacity = BaseResources.Count;
 
             // Загрузка конфигурации параметров населенных пунктов
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\SettlementParameters.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/SettlementParameter"))
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\CityParameters.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/CityParameter"))
             {
-                SettlementParameters.Add(new DescriptorSettlementParameter(n));
+                CityParameters.Add(new DescriptorCityParameter(n));
             }
 
-            Debug.Assert(SettlementParameters.Count > 0);
-            SettlementParameters.Capacity = SettlementParameters.Count;
+            Debug.Assert(CityParameters.Count > 0);
+            CityParameters.Capacity = CityParameters.Count;
 
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
@@ -370,7 +370,7 @@ namespace Fantasy_Kingdoms_Battle
         // Списки описателей
         internal SortedList<string, DescriptorEntity> Entities { get; } = new SortedList<string, DescriptorEntity>();// Список всех сущностей
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
-        internal List<DescriptorSettlementParameter> SettlementParameters { get; } = new List<DescriptorSettlementParameter>();
+        internal List<DescriptorCityParameter> CityParameters { get; } = new List<DescriptorCityParameter>();
 
         // Товары в сооружениях
         internal List<DescriptorProduct> ConstructionProducts { get; } = new List<DescriptorProduct>();
@@ -518,15 +518,15 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Базовый ресурс {ID} не найден.");
         }
 
-        internal DescriptorSettlementParameter FindSettlementParameter(string ID)
+        internal DescriptorCityParameter FindCityParameter(string ID)
         {
-            foreach (DescriptorSettlementParameter sp in SettlementParameters)
+            foreach (DescriptorCityParameter sp in CityParameters)
             {
                 if (sp.ID == ID)
                     return sp;
             }
 
-            throw new Exception($"Параметр населенного пункта {ID} не найден.");
+            throw new Exception($"Параметр города {ID} не найден.");
         }
 
         internal DescriptorTypeConstruction FindTypeConstruction(string ID)

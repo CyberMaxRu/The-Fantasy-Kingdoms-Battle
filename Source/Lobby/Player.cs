@@ -52,8 +52,8 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.TypePlayer == TypePlayer.Computer)   
                 BaseResources.Gold = 100_000;
 
-            CityParameters = new ListSettlementParameters(lobby.TypeLobby.BaseSettlementParameters);
-            ChangeCityParametersPerTurn = new ListSettlementParameters(lobby.TypeLobby.ChangeSettlementParametersPerTurn);
+            CityParameters = new ListCityParameters(lobby.TypeLobby.BaseCityParameters);
+            ChangeCityParametersPerTurn = new ListCityParameters(lobby.TypeLobby.ChangeCityParametersPerTurn);
 
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
@@ -281,7 +281,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CalcCityParameters()
         {
             ChangeCityParametersPerTurn.Zeroing();
-            ChangeCityParametersPerTurn.AddParameters(Lobby.TypeLobby.ChangeSettlementParametersPerTurn);
+            ChangeCityParametersPerTurn.AddParameters(Lobby.TypeLobby.ChangeCityParametersPerTurn);
 
             //foreach (Construction c in Constructions)
             //    CityParameters.AddParameters(c.SettlementParameters);
@@ -745,8 +745,8 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature SelectedBonusTempleHero { get; set; }
 
         //
-        internal ListSettlementParameters CityParameters { get; }// Параметры города
-        internal ListSettlementParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
+        internal ListCityParameters CityParameters { get; }// Параметры города
+        internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
 
         //
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока

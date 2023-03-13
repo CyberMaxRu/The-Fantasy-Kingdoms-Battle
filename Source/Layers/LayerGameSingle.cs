@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabelResource[] labelsResources;
         private readonly VisualControl panelCityParameters;
-        private readonly VCToolLabelSettlementParameter[] labelCityParameters;
+        private readonly VCToolLabelCityParameter[] labelCityParameters;
         private readonly VCToolLabel labelKnowledge;
         private readonly VCToolLabel labelTraditions;
         //private readonly VCToolLabel labelPeople;
@@ -163,12 +163,12 @@ namespace Fantasy_Kingdoms_Battle
             labelGreatness.Width = 112;
 
             panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, labelDay.ShiftY);
-            labelCityParameters = new VCToolLabelSettlementParameter[Descriptors.SettlementParameters.Count];
+            labelCityParameters = new VCToolLabelCityParameter[Descriptors.CityParameters.Count];
 
             int nextLeft = 0;
-            foreach (DescriptorSettlementParameter sp in Descriptors.SettlementParameters)
+            foreach (DescriptorCityParameter sp in Descriptors.CityParameters)
             {
-                VCToolLabelSettlementParameter lblParam = new VCToolLabelSettlementParameter(panelCityParameters, nextLeft, 0, sp);
+                VCToolLabelCityParameter lblParam = new VCToolLabelCityParameter(panelCityParameters, nextLeft, 0, sp);
                 nextLeft = lblParam.NextLeft();
                 labelCityParameters[sp.Index] = lblParam;
             }
@@ -1295,7 +1295,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
 
-                foreach (VCToolLabelSettlementParameter sp in labelCityParameters)
+                foreach (VCToolLabelCityParameter sp in labelCityParameters)
                 {
                     sp.UpdateData(curAppliedPlayer);
                 }

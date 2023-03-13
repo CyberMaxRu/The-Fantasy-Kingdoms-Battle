@@ -27,8 +27,8 @@
             <Gold>550</Gold>
           </Cost>
         </Creating>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
       </Level>
       <Level>
         <ID>LevelGuildWarrior2</ID>
@@ -50,8 +50,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
       </Level>
       <Level>
         <ID>LevelGuildWarrior3</ID>
@@ -66,8 +66,8 @@
             <Gold>1000</Gold>
           </Cost>
         </Creating>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
       </Level>
     </Levels>
     <Products>
@@ -456,8 +456,8 @@
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
       </Level>
       <Level>
         <ID>LevelGuildCleric2</ID>
@@ -479,8 +479,8 @@
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
       </Level>
       <Level>
         <ID>LevelGuildCleric3</ID>
@@ -495,8 +495,8 @@
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
       </Level>
     </Levels>
     <Products>
@@ -1176,8 +1176,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
         <IncomeResources>
           <Iron>50</Iron>
         </IncomeResources>
@@ -1755,8 +1755,8 @@
             <Gold>0</Gold>
           </Cost>
         </Creating>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
         <IncomeResources>
           <Gold>1000</Gold>
           <Wood>50</Wood>
@@ -1809,8 +1809,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
         <IncomeResources>
           <Gold>1500</Gold>
           <Wood>50</Wood>
@@ -1860,8 +1860,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <SettlementParameters>
-        </SettlementParameters>
+        <CityParameters>
+        </CityParameters>
         <IncomeResources>
           <Gold>2000</Gold>
           <Wood>50</Wood>

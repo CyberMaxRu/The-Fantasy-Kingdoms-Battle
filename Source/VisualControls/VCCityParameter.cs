@@ -8,11 +8,11 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class VCSettlementParameter : VCIconAndDigitValue
+    internal class VCCityParameter : VCIconAndDigitValue
     {
         private CreatureProperty property;
 
-        public VCSettlementParameter(VisualControl parent, int shiftX, int shiftY, int width)
+        public VCCityParameter(VisualControl parent, int shiftX, int shiftY, int width)
             : base(parent, shiftX, shiftY, width, 0)
         {
 

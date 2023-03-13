@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
-  <SettlementParameter>
+  <CityParameter>
     <ID>Rats</ID>
     <Name>Популяция крыс</Name>
     <Description>Чем больше крыс, тем хуже живется в городе.</Description>
     <ImageIndex>312</ImageIndex>
     <ImageIndex16>59</ImageIndex16>
-  </SettlementParameter>
-  <SettlementParameter>
+  </CityParameter>
+  <CityParameter>
     <ID>Food</ID>
     <Name>Еда</Name>
     <Description>Каждый горожанин съедает 10 единиц еды в сутки.</Description>
     <ImageIndex>302</ImageIndex>
     <ImageIndex16>50</ImageIndex16>
-  </SettlementParameter>
-  <SettlementParameter>
+  </CityParameter>
+  <CityParameter>
     <ID>Citizens</ID>
     <Name>Горожане</Name>
     <Description>Чем больше горожан, тем больше доход.</Description>
     <ImageIndex>305</ImageIndex>
     <ImageIndex16>53</ImageIndex16>
-  </SettlementParameter>
+  </CityParameter>
 </Descriptors>

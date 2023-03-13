@@ -9,14 +9,14 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс параметра населенного пункта
-    internal sealed class DescriptorSettlementParameter : DescriptorSmallEntity
+    internal sealed class DescriptorCityParameter : DescriptorSmallEntity
     {
-        public DescriptorSettlementParameter(XmlNode n) : base(n)
+        public DescriptorCityParameter(XmlNode n) : base(n)
         {
             ImageIndex16 = XmlUtils.GetIntegerNotNull(n, "ImageIndex16");
-            Index = Descriptors.SettlementParameters.Count;
+            Index = Descriptors.CityParameters.Count;
 
-            foreach (DescriptorSettlementParameter sp in Descriptors.SettlementParameters)
+            foreach (DescriptorCityParameter sp in Descriptors.CityParameters)
             {
                 Debug.Assert(sp.ID != ID);
                 Debug.Assert(sp.Name != Name);

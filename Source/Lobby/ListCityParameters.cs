@@ -8,26 +8,26 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class ListSettlementParameters : List<int>
+    internal class ListCityParameters : List<int>
     {
-        public ListSettlementParameters() : base(FormMain.Descriptors.SettlementParameters.Count)
+        public ListCityParameters() : base(FormMain.Descriptors.CityParameters.Count)
         {
-            for (int i = 0; i < FormMain.Descriptors.SettlementParameters.Count; i++)
+            for (int i = 0; i < FormMain.Descriptors.CityParameters.Count; i++)
                 Add(0);
         }
 
-        public ListSettlementParameters(XmlNode n) : base(FormMain.Descriptors.SettlementParameters.Count)
+        public ListCityParameters(XmlNode n) : base(FormMain.Descriptors.CityParameters.Count)
         {
-            for (int i = 0; i < FormMain.Descriptors.SettlementParameters.Count; i++)
+            for (int i = 0; i < FormMain.Descriptors.CityParameters.Count; i++)
                 Add(0);
 
             if (n != null)
             {
-                DescriptorSettlementParameter sp;
+                DescriptorCityParameter sp;
                 for (int i = 0; i < n.ChildNodes.Count; i++)
                 {
                     int value = Convert.ToInt32(n.ChildNodes[i].InnerText);
-                    sp = FormMain.Descriptors.FindSettlementParameter(n.ChildNodes[i].Name);
+                    sp = FormMain.Descriptors.FindCityParameter(n.ChildNodes[i].Name);
                     Debug.Assert(this[sp.Index] == 0);
                     //Debug.Assert(value >= 0);
 
@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public ListSettlementParameters(ListSettlementParameters list) : base(FormMain.Descriptors.SettlementParameters.Count)
+        public ListCityParameters(ListCityParameters list) : base(FormMain.Descriptors.CityParameters.Count)
         {
             for (int i = 0; i < list.Count; i++)
                 Add(list[i]);
@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
                 this[i] = 0;
         }
 
-        internal void AddParameters(ListSettlementParameters list)
+        internal void AddParameters(ListCityParameters list)
         {
             for (int i = 0; i < Count; i++)
                 this[i] += list[i];

@@ -164,7 +164,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
 
         // Изменение параметров населенного пункта
-        internal ListSettlementParameters SettlementParameters { get; } = new ListSettlementParameters();
+        internal ListCityParameters ChangeCityParameters { get; } = new ListCityParameters();
 
         // Действия
         internal ActionInConstruction ActionMain { get; private set; }// Основное действие, которое отображается в панели сооружения
@@ -635,7 +635,7 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep6Income(Income());
                     panelHint.AddStep8Greatness(0, GreatnessPerDay());
                     panelHint.AddStep9PlusBuilders(BuildersPerDay());
-                    panelHint.AddStep9SettlementParameters(SettlementParameters);
+                    panelHint.AddStep9CityParameters(ChangeCityParameters);
                     panelHint.AddStep9Interest(GetInterest(), false);
                     panelHint.AddStep9ListNeeds(SatisfactionNeeds);
                 }
@@ -1542,24 +1542,24 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneConstructAfterCreate()
         {
-            UpdateSettlementParameters();
+            UpdateCityParameters();
             UpdateCurrentIncomeResources();
             TuneActionLevelUp();
             UpdateSelectedColor();
             UpdateState();
         }
 
-        private void UpdateSettlementParameters()
+        private void UpdateCityParameters()
         {
-            if ((Level > 0) && (Descriptor.Levels[Level].SettlementParameters != null))
+            if ((Level > 0) && (Descriptor.Levels[Level].CityParameters != null))
             {
-                for (int i = 0; i < Descriptor.Levels[Level].SettlementParameters.Count; i++)
+                for (int i = 0; i < Descriptor.Levels[Level].CityParameters.Count; i++)
                 {
-                    SettlementParameters[i] = Descriptor.Levels[Level].SettlementParameters[i];
+                    ChangeCityParameters[i] = Descriptor.Levels[Level].CityParameters[i];
                 }
             }
             else
-                SettlementParameters.Zeroing();
+                ChangeCityParameters.Zeroing();
         }
 
         internal void UpdateState()
