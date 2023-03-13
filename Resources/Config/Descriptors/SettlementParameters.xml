@@ -1,38 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <SettlementParameter>
-    <ID>Health</ID>
-    <Name>Санитария</Name>
-    <Description>Чем выше уровень санитарии, тем меньше вероятности болезней и счастливее население.</Description>
-    <ImageIndex>297</ImageIndex>
-    <ImageIndex16>46</ImageIndex16>
+    <ID>Rats</ID>
+    <Name>Популяция крыс</Name>
+    <Description>Чем больше крыс, тем хуже живется в городе.</Description>
+    <ImageIndex>312</ImageIndex>
+    <ImageIndex16>59</ImageIndex16>
   </SettlementParameter>
   <SettlementParameter>
-    <ID>Crime</ID>
-    <Name>Преступность</Name>
-    <Description>Чем ниже преступность, тем счастливее население и больше доход.</Description>
-    <ImageIndex>310</ImageIndex>
-    <ImageIndex16>12</ImageIndex16>
+    <ID>Food</ID>
+    <Name>Еда</Name>
+    <Description>Каждый горожанин съедает 10 единиц еды в сутки.</Description>
+    <ImageIndex>302</ImageIndex>
+    <ImageIndex16>50</ImageIndex16>
   </SettlementParameter>
   <SettlementParameter>
-    <ID>Happiness</ID>
-    <Name>Счастье</Name>
-    <Description>Чем выше уровень счастья, тем лучше трудится население.</Description>
-    <ImageIndex>299</ImageIndex>
-    <ImageIndex16>48</ImageIndex16>
-  </SettlementParameter>
-  <SettlementParameter>
-    <ID>PublicOrder</ID>
-    <Name>Общественный порядок</Name>
-    <Description>Чем выше порядок, тем меньше вероятность протестов, бунтов и мятежей.</Description>
-    <ImageIndex>306</ImageIndex>
-    <ImageIndex16>54</ImageIndex16>
-  </SettlementParameter>
-  <SettlementParameter>
-    <ID>PopulationGrowth</ID>
-    <Name>Рост населения</Name>
-    <Description>Чем выше рост населения, тем быстрее появляется новый житель.</Description>
-    <ImageIndex>307</ImageIndex>
-    <ImageIndex16>55</ImageIndex16>
+    <ID>Citizens</ID>
+    <Name>Горожане</Name>
+    <Description>Чем больше горожан, тем больше доход.</Description>
+    <ImageIndex>305</ImageIndex>
+    <ImageIndex16>53</ImageIndex16>
   </SettlementParameter>
 </Descriptors>

@@ -28,7 +28,6 @@
           </Cost>
         </Creating>
         <SettlementParameters>
-          <PublicOrder>100</PublicOrder>
         </SettlementParameters>
       </Level>
       <Level>
@@ -52,7 +51,6 @@
           </Requirements>
         </Creating>
         <SettlementParameters>
-          <PublicOrder>150</PublicOrder>
         </SettlementParameters>
       </Level>
       <Level>
@@ -69,7 +67,6 @@
           </Cost>
         </Creating>
         <SettlementParameters>
-          <PublicOrder>200</PublicOrder>
         </SettlementParameters>
       </Level>
     </Levels>
@@ -460,7 +457,6 @@
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
         <SettlementParameters>
-          <Health>100</Health>
         </SettlementParameters>
       </Level>
       <Level>
@@ -484,7 +480,6 @@
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
         <SettlementParameters>
-          <Health>150</Health>
         </SettlementParameters>
       </Level>
       <Level>
@@ -501,7 +496,6 @@
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
         <SettlementParameters>
-          <Health>200</Health>
         </SettlementParameters>
       </Level>
     </Levels>
@@ -1183,8 +1177,6 @@
           </Requirements>
         </Creating>
         <SettlementParameters>
-          <Health>-100</Health>
-          <Happiness>-200</Happiness>
         </SettlementParameters>
         <IncomeResources>
           <Iron>50</Iron>
@@ -1764,10 +1756,6 @@
           </Cost>
         </Creating>
         <SettlementParameters>
-          <Crime>-100</Crime>
-          <Happiness>100</Happiness>
-          <PublicOrder>200</PublicOrder>
-          <PopulationGrowth>50</PopulationGrowth>
         </SettlementParameters>
         <IncomeResources>
           <Gold>1000</Gold>
@@ -1822,10 +1810,6 @@
           </Requirements>
         </Creating>
         <SettlementParameters>
-          <Crime>-150</Crime>
-          <Happiness>150</Happiness>
-          <PublicOrder>250</PublicOrder>
-          <PopulationGrowth>10</PopulationGrowth>
         </SettlementParameters>
         <IncomeResources>
           <Gold>1500</Gold>
@@ -1877,10 +1861,6 @@
           </Requirements>
         </Creating>
         <SettlementParameters>
-          <Crime>-200</Crime>
-          <Happiness>200</Happiness>
-          <PublicOrder>300</PublicOrder>
-          <PopulationGrowth>150</PopulationGrowth>
         </SettlementParameters>
         <IncomeResources>
           <Gold>2000</Gold>
