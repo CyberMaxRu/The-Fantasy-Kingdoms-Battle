@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ImageIndex16 = XmlUtils.GetIntegerNotNull(n, "ImageIndex16");
             Index = Descriptors.CityParameters.Count;
+            PositiveIsGood = XmlUtils.GetBooleanNotNull(n, "PositiveIsGood");
 
             foreach (DescriptorCityParameter sp in Descriptors.CityParameters)
             {
@@ -26,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Index { get; }
         internal int ImageIndex16 { get; }
+        internal bool PositiveIsGood { get; }
 
         protected override int ShiftImageIndex()
         {
@@ -34,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity()
         {
-            return "Параметр насел. пункта";
+            return "Параметр города";
         }
 
         internal override void TuneLinks()

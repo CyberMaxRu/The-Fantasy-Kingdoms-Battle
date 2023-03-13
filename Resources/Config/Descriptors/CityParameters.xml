@@ -6,6 +6,7 @@
     <Description>Чем больше крыс, тем хуже живется в городе.</Description>
     <ImageIndex>312</ImageIndex>
     <ImageIndex16>59</ImageIndex16>
+    <PositiveIsGood>false</PositiveIsGood>
   </CityParameter>
   <CityParameter>
     <ID>Food</ID>
@@ -13,6 +14,7 @@
     <Description>Каждый горожанин съедает 10 единиц еды в сутки.</Description>
     <ImageIndex>302</ImageIndex>
     <ImageIndex16>50</ImageIndex16>
+    <PositiveIsGood>true</PositiveIsGood>
   </CityParameter>
   <CityParameter>
     <ID>Citizens</ID>
@@ -20,5 +22,6 @@
     <Description>Чем больше горожан, тем больше доход.</Description>
     <ImageIndex>305</ImageIndex>
     <ImageIndex16>53</ImageIndex16>
+    <PositiveIsGood>true</PositiveIsGood>
   </CityParameter>
 </Descriptors>

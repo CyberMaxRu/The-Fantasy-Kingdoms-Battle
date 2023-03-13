@@ -588,7 +588,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         lbl = GetLabel(i);
                         lbl.Visible = true;
-                        lbl.Color = list[i] > 0 ? Color.Green : Color.Red;
+                        lbl.Color = FormMain.Descriptors.CityParameters[i].PositiveIsGood ? (list[i] > 0 ? Color.Green : Color.Red) : (list[i] < 0 ? Color.Green : Color.Red);
                         lbl.Text = FormatDecimal100(list[i], true);
                         lbl.Image.ImageIndex = FormMain.Descriptors.CityParameters[i].ImageIndex16;
                         lbl.ShiftX = nextLeft;
