@@ -10,6 +10,7 @@
       <Brick>250</Brick>
       <Stone>500</Stone>
       <Iron>100</Iron>
+      <Gems>50</Gems>
     </BaseResources>
     <MaxBaseResources>
       <Gold>1000000</Gold>
@@ -17,6 +18,7 @@
       <Brick>10000</Brick>
       <Stone>50000</Stone>
       <Iron>5000</Iron>
+      <Gems>5000</Gems>
     </MaxBaseResources>
     <BaseCityParameters>
       <Rats>150</Rats>

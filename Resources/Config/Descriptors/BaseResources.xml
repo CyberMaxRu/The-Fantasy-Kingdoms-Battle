@@ -10,7 +10,7 @@
   <BaseResource>
     <ID>Wood</ID>
     <Name>Дерево</Name>
-    <Descriptions>Используется для строительства деревенских сооружений</Descriptions>
+    <Descriptions>Используется для строительства сооружений</Descriptions>
     <ImageIndex>262</ImageIndex>
     <ImageIndex16>26</ImageIndex16>
     <ConstructionForMining>Lumberjack</ConstructionForMining>
@@ -18,25 +18,32 @@
   <BaseResource>
     <ID>Brick</ID>
     <Name>Кирпич</Name>
-    <Descriptions>Используется для строительства городских сооружений</Descriptions>
+    <Descriptions>Используется для строительства сооружений</Descriptions>
     <ImageIndex>294</ImageIndex>
     <ImageIndex16>44</ImageIndex16>
     <ConstructionForMining>BrickKiln</ConstructionForMining>
   </BaseResource>
   <BaseResource>
+    <ID>Stone</ID>
+    <Name>Камень</Name>
+    <Descriptions>Используется для строительства сооружений</Descriptions>
+    <ImageIndex>264</ImageIndex>
+    <ImageIndex16>28</ImageIndex16>
+    <ConstructionForMining>StoneQuarry</ConstructionForMining>
+  </BaseResource>
+  <BaseResource>
     <ID>Iron</ID>
     <Name>Железо</Name>
-    <Descriptions>Используется для строительства оружия, доспехов</Descriptions>
+    <Descriptions>Используется для изготовления оружия, доспехов</Descriptions>
     <ImageIndex>263</ImageIndex>
     <ImageIndex16>27</ImageIndex16>
     <ConstructionForMining>Foundry</ConstructionForMining>
   </BaseResource>
   <BaseResource>
-    <ID>Stone</ID>
-    <Name>Камень</Name>
-    <Descriptions>Основной материал для строительства сооружений</Descriptions>
-    <ImageIndex>264</ImageIndex>
-    <ImageIndex16>28</ImageIndex16>
-    <ConstructionForMining>StoneQuarry</ConstructionForMining>
+    <ID>Gems</ID>
+    <Name>Самоцветы</Name>
+    <Descriptions>Используются для изготовления магических предметов</Descriptions>
+    <ImageIndex>313</ImageIndex>
+    <ImageIndex16>60</ImageIndex16>
   </BaseResource>
 </Descriptors>
