@@ -4227,6 +4227,9 @@
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
+        <CityParametersPerTurn>
+          <Rats>-10</Rats>
+        </CityParametersPerTurn>
         <Visit>
           <ID>TownSquareVisit1</ID>
           <Name>Прогулка по городской площади (1)</Name>
@@ -4259,6 +4262,9 @@
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
+        <CityParametersPerTurn>
+          <Rats>-10</Rats>
+        </CityParametersPerTurn>
         <Visit>
           <ID>TownSquareVisit2</ID>
           <Name>Прогулка по городской площади (2)</Name>
@@ -4291,6 +4297,9 @@
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
+        <CityParametersPerTurn>
+          <Rats>-10</Rats>
+        </CityParametersPerTurn>
         <Visit>
           <ID>TownSquareVisit3</ID>
           <Name>Прогулка по городской площади (3)</Name>
@@ -4313,13 +4322,16 @@
         <Durability>200</Durability>
         <Interest>5</Interest>
         <Creating>
-          <Time>30</Time>
+          <Time>5</Time>
           <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
           </Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
+        <CityParametersPerTurn>
+          <Rats>-10</Rats>
+        </CityParametersPerTurn>
         <Needs>
           <Rest>10</Rest>
         </Needs>

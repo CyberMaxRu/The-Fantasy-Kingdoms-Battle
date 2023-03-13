@@ -878,6 +878,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
+            panelHint.AddStep9CityParameters(Entity.ChangeCityParametersPerTurn);
             panelHint.AddStep9Interest(Entity.ModifyInterest, true);
             panelHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);

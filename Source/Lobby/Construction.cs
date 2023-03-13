@@ -1774,6 +1774,9 @@ namespace Fantasy_Kingdoms_Battle
             if ((Level > 0) && (Descriptor.Levels[Level].ChangeCityParametersPerTurn != null))
             {
                 ChangeCityParameters.FromList(Descriptor.Levels[Level].ChangeCityParametersPerTurn);
+
+                foreach (ConstructionExtension ce in Extensions)
+                    ChangeCityParameters.AddParameters(ce.Descriptor.ChangeCityParametersPerTurn);
             }
             else
                 ChangeCityParameters.Zeroing();

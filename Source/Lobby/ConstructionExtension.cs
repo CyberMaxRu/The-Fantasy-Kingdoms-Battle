@@ -24,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             panelHint.AddStep2Descriptor(Descriptor);
             panelHint.AddStep5Description(Descriptor.Description);
+            panelHint.AddStep9CityParameters(Descriptor.ChangeCityParametersPerTurn);
             panelHint.AddStep9ListNeeds(Descriptor.ListNeeds, true);
             panelHint.AddStep9Interest(Descriptor.ModifyInterest, true);
         }

@@ -16,10 +16,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ModifyInterest >= 0);
             Debug.Assert(ModifyInterest <= 100);
 
+            XmlNode nsp = n.SelectSingleNode("CityParametersPerTurn");
+            if (nsp != null)
+                ChangeCityParametersPerTurn = new ListCityParameters(nsp);
             ModifyInterest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
         }
 
+        internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города
         internal int ModifyInterest { get; }// Изменение интереса к сооружению
         internal ListNeeds ListNeeds { get; }// Изменение удовлетворения потребностей героев
 
