@@ -53,7 +53,8 @@ namespace Fantasy_Kingdoms_Battle
                 BaseResources.Gold = 100_000;
 
             CityParameters = new ListCityParameters(lobby.TypeLobby.BaseCityParameters);
-            ChangeCityParametersPerTurn = new ListCityParameters(lobby.TypeLobby.ChangeCityParametersPerTurn);
+            ChangeCityParametersPerTurn = new ListCityParameters();
+            ChangeCityParametersPerTurnByConstructions = new ListCityParameters();
             for (int i = 0; i < CityParameters.Count; i++)
                 ChangeCityParametersPerTurnInTicks.Add(0);
 
@@ -285,8 +286,11 @@ namespace Fantasy_Kingdoms_Battle
             ChangeCityParametersPerTurn.Zeroing();
             ChangeCityParametersPerTurn.AddParameters(Lobby.TypeLobby.ChangeCityParametersPerTurn);
 
+            ChangeCityParametersPerTurnByConstructions.Zeroing();
             foreach (Construction c in Constructions)
-                ChangeCityParametersPerTurn.AddParameters(c.ChangeCityParameters);
+                ChangeCityParametersPerTurnByConstructions.AddParameters(c.ChangeCityParameters);
+
+            ChangeCityParametersPerTurn.AddParameters(ChangeCityParametersPerTurnByConstructions);
         }
 
         internal void ReceiveResources()
@@ -784,6 +788,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal ListCityParameters CityParameters { get; }// Параметры города
         internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
+        internal ListCityParameters ChangeCityParametersPerTurnByConstructions { get; }// Изменение параметров города за ход за счет сооружений
         internal List<double>ChangeCityParametersPerTurnInTicks { get; } = new List<double>();// Изменение параметров города за ход
 
         //
