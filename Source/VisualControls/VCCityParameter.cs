@@ -10,30 +10,67 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class VCCityParameter : VCIconAndDigitValue
     {
-        private CreatureProperty property;
+        private Construction construction;
+        private HintListCustomCells listForHint = new HintListCustomCells();
 
-        public VCCityParameter(VisualControl parent, int shiftX, int shiftY, int width)
-            : base(parent, shiftX, shiftY, width, 0)
+        public VCCityParameter(VisualControl parent, int shiftX, int shiftY, DescriptorCityParameter parameter)
+            : base(parent, shiftX, shiftY, 72, 0)
         {
-
+            Parameter = parameter;
         }
+
+        internal DescriptorCityParameter Parameter { get; }
 
         internal override void Draw(Graphics g)
         {
-            Image.ImageIndex = property.Property.ImageIndex;
+            Image.ImageIndex = Parameter.ImageIndex16;
 
             base.Draw(g);
         }
 
+        internal void UpdateData(Construction c)
+        {
+            construction = c;
+
+            if (construction.Level > 0)
+            {
+                Color = Color.White;
+
+                if (c.ChangeCityParameters[Parameter.Index] != 0)
+                    Text = FormatDecimal100(c.ChangeCityParameters[Parameter.Index], true);
+                else
+                    Text = "";
+            }
+            else
+            {
+                Color = Color.Silver;
+                if ((c.Descriptor.Levels[1].ChangeCityParametersPerTurn != null) && (c.Descriptor.Levels[1].ChangeCityParametersPerTurn[Parameter.Index] != 0))
+                    Text = FormatDecimal100(c.Descriptor.Levels[1].ChangeCityParametersPerTurn[Parameter.Index], true);
+                else
+                    Text = "";
+            }
+        }
+
         internal override bool PrepareHint()
         {
-            PanelHint.AddStep2Header(property.Property.Name);
-            PanelHint.AddStep3Type("Основная характеристика");
-            PanelHint.AddStep4Level($"{property.Property.Name}: {FormatDecimal100(property.Value)}");
-            PanelHint.AddStep5Description(property.Property.Description);
-            if (property.ListSource.Count > 0)
+            PanelHint.AddStep2Descriptor(Parameter);
+            PanelHint.AddStep5Description(Parameter.Description);
+
+            if (construction.Level > 0)
             {
-                PanelHint.AddStep19Perks(property.ListSource, property.Property.Index);
+                listForHint.Clear();
+                int change = construction.Descriptor.Levels[construction.Level].ChangeCityParametersPerTurn[Parameter.Index];
+                if (change != 0)
+                    listForHint.Add((construction.GetCellImageIndex(), FormatDecimal100(change), Color.White));
+
+                foreach (ConstructionExtension ce in construction.Extensions)
+                {
+                    change = ce.Descriptor.ChangeCityParametersPerTurn[Parameter.Index];
+                    if (change != 0)
+                        listForHint.Add((ce.GetImageIndex(), FormatDecimal100(change), Color.White));
+                }
+
+                PanelHint.AddStep21ListCustomCells(listForHint);
             }
 
             return true;

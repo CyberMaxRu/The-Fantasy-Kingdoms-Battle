@@ -22,6 +22,13 @@ namespace Fantasy_Kingdoms_Battle
         internal string Text { get; }
     }
 
+
+
+    internal sealed class HintListCustomCells : List<(int ImageIndex, string Text, Color Color)>
+    {
+
+    }
+
     // Панель подсказки
     internal sealed class PanelHint : VisualControl
     {
@@ -68,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCText lblTooltip;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
+        private readonly List<(VCCellSimple, VCLabel)> listCustomCells = new List<(VCCellSimple, VCLabel)>();
         private readonly List<VCCellSimple> listCellBaseResources = new List<VCCellSimple>();
         private readonly VCLabel lblDamageMelee;
         private readonly VCLabel lblDamageArcher;
@@ -341,6 +349,12 @@ namespace Fantasy_Kingdoms_Battle
                 cell.Visible = false;
 
             foreach ((VCCellSimple, VCLabel) cp in listPerks)
+            {
+                cp.Item1.Visible = false;
+                cp.Item2.Visible = false;
+            }
+
+            foreach ((VCCellSimple, VCLabel) cp in listCustomCells)
             {
                 cp.Item1.Visible = false;
                 cp.Item2.Visible = false;
@@ -1105,6 +1119,46 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal void AddStep21ListCustomCells(HintListCustomCells list)
+        {
+            if (list.Count > 0)
+            {
+                (VCCellSimple, VCLabel) cell = (null, null);
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    cell = GetCell(i);
+                    cell.Item1.Visible = true;
+                    cell.Item1.ImageIndex = list[i].ImageIndex;
+                    cell.Item1.ShiftY = nextTop;
+
+                    cell.Item2.Visible = true;
+                    cell.Item2.Text = list[i].Text;
+                    cell.Item2.Color = list[i].Color;                        
+                    cell.Item2.ShiftY = cell.Item1.ShiftY;
+
+                    nextTop = cell.Item1.NextTop();
+                }
+
+                (VCCellSimple, VCLabel) GetCell(int index)
+                {
+                    if (index < listCell.Count)
+                        return listCustomCells[index];
+                    else
+                    {
+                        (VCCellSimple, VCLabel) c = (new VCCellSimple(this, FormMain.Config.GridSize, 0), new VCLabel(this, 0, 0, Program.formMain.fontParagraphC, Color.White, 48, ""));
+                        c.Item2.ShiftX = c.Item1.NextLeft();
+                        c.Item2.Width = Width - c.Item2.ShiftX - FormMain.Config.GridSize;
+                        c.Item2.StringFormat.Alignment = StringAlignment.Near;
+                        c.Item2.StringFormat.LineAlignment = StringAlignment.Center;
+                        listCustomCells.Add(c);
+                        return c;
+                    }
+                }
+            }
+        }
+
 
 
         internal void AddStep21Tooltip(string text)

@@ -230,6 +230,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Панель со всеми героями
             panelCombatHeroes = new PanelWithPanelEntity(5, false, 12, 12);
+            panelCombatHeroes.Width += FormMain.Config.GridSize * 2;
             panelCombatHeroes.Click += PanelCombatHeroes_Click;
             vcRightPanel.AddControl(panelCombatHeroes);
 
