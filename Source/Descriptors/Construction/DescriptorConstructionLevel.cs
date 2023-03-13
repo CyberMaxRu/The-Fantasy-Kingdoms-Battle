@@ -66,9 +66,9 @@ namespace Fantasy_Kingdoms_Battle
             if (nm != null)
                 Mining = new ListCoefMining(nm);
 
-            XmlNode nsp = n.SelectSingleNode("CityParameters");
+            XmlNode nsp = n.SelectSingleNode("CityParametersPerTurn");
             if (nsp != null)
-                CityParameters = new ListCityParameters(nsp);
+                ChangeCityParametersPerTurn = new ListCityParameters(nsp);
             
             XmlNode nir = n.SelectSingleNode("IncomeResources");
             if (nir != null)
@@ -122,7 +122,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
         internal ListDefaultProperties Properties { get; }// Список характеристик
         internal ListCoefMining Mining { get; }// Коэффициенты добычи ресурса
-        internal ListCityParameters CityParameters { get; }// Изменение параметров города
+        internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
         internal ListBaseResources IncomeResources { get; }// Сколько и каких ресурсов приносит сооружение в день
 
 

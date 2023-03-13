@@ -50,6 +50,12 @@ namespace Fantasy_Kingdoms_Battle
                 this[i] = 0;
         }
 
+        internal void FromList(ListCityParameters list)
+        {
+            for (int i = 0; i < Count; i++)
+                this[i] = list[i];
+        }
+
         internal void AddParameters(ListCityParameters list)
         {
             for (int i = 0; i < Count; i++)

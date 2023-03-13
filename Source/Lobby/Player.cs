@@ -54,6 +54,8 @@ namespace Fantasy_Kingdoms_Battle
 
             CityParameters = new ListCityParameters(lobby.TypeLobby.BaseCityParameters);
             ChangeCityParametersPerTurn = new ListCityParameters(lobby.TypeLobby.ChangeCityParametersPerTurn);
+            for (int i = 0; i < CityParameters.Count; i++)
+                ChangeCityParametersPerTurnInTicks.Add(0);
 
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
@@ -283,8 +285,8 @@ namespace Fantasy_Kingdoms_Battle
             ChangeCityParametersPerTurn.Zeroing();
             ChangeCityParametersPerTurn.AddParameters(Lobby.TypeLobby.ChangeCityParametersPerTurn);
 
-            //foreach (Construction c in Constructions)
-            //    CityParameters.AddParameters(c.SettlementParameters);
+            foreach (Construction c in Constructions)
+                ChangeCityParametersPerTurn.AddParameters(c.ChangeCityParameters);
         }
 
         internal void ReceiveResources()
@@ -369,6 +371,28 @@ namespace Fantasy_Kingdoms_Battle
 
             // Вызываем диспетчер очереди, чтобы он распределил строителей по заданиям
             DispatcherQueue();
+
+            // Прибавляем миллитики к изменениям параметров города
+            ApplyChangeCityParameters();
+
+            // Если начался новый ход, применяем получившуюся дельту
+            if (startNewDay)
+            {
+                for (int i = 0; i < ChangeCityParametersPerTurn.Count; i++)
+                {
+                    if (ChangeCityParametersPerTurn[i] != 0)
+                    {
+                        if (Math.Abs(ChangeCityParametersPerTurnInTicks[i]) >= 1)
+                        {
+                            ChangeCityParametersPerTurnInTicks[i] += ChangeCityParametersPerTurnInTicks[i] >= 0 ? 0.5 : -0.5;
+                            int inc = (int)Math.Truncate(ChangeCityParametersPerTurnInTicks[i]);
+                            CityParameters[i] += inc;
+                            // Дробные части, возникающие из-за погрешности, обнуляем
+                            ChangeCityParametersPerTurnInTicks[i] = 0;
+                        }
+                    }
+                }
+            }
 
             // Делаем тик у сооружений            
             foreach (Construction c in Constructions)
@@ -470,6 +494,19 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     a.ProgressExecuting.State = StateProgress.WaitInQueue;
+            }
+        }
+
+        private void ApplyChangeCityParameters()
+        {
+            for (int i = 0; i < ChangeCityParametersPerTurn.Count; i++)
+            { 
+                if (ChangeCityParametersPerTurn[i] != 0)
+                {
+                    // Переводим изменение в дельту за миллитик
+                    double delta = (double)ChangeCityParametersPerTurn[i] / FormMain.Config.TicksInTurn;
+                    ChangeCityParametersPerTurnInTicks[i] += delta;
+                }
             }
         }
 
@@ -747,6 +784,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal ListCityParameters CityParameters { get; }// Параметры города
         internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
+        internal List<double>ChangeCityParametersPerTurnInTicks { get; } = new List<double>();// Изменение параметров города за ход
 
         //
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока

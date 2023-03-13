@@ -490,7 +490,7 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep55Durability(Construction.DurabilityForLevel(Descriptor.Number));
             panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
             panelHint.AddStep8Greatness(Construction.GreatnesAddForLevel(Descriptor.Number), Construction.GreatnesPerDayForLevel(Descriptor.Number));
-            panelHint.AddStep9CityParameters(Descriptor.CityParameters);
+            panelHint.AddStep9CityParameters(Descriptor.ChangeCityParametersPerTurn);
             panelHint.AddStep9PlusBuilders(Descriptor.AddConstructionPoints);
             if (Descriptor.DescriptorVisit != null)
             {

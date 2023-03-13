@@ -27,8 +27,8 @@
             <Gold>550</Gold>
           </Cost>
         </Creating>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildWarrior2</ID>
@@ -50,8 +50,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildWarrior3</ID>
@@ -66,8 +66,8 @@
             <Gold>1000</Gold>
           </Cost>
         </Creating>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
       </Level>
     </Levels>
     <Products>
@@ -456,8 +456,8 @@
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildCleric2</ID>
@@ -479,8 +479,8 @@
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildCleric3</ID>
@@ -495,8 +495,8 @@
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
       </Level>
     </Levels>
     <Products>
@@ -1176,8 +1176,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
         <IncomeResources>
           <Iron>50</Iron>
         </IncomeResources>
@@ -1755,8 +1755,8 @@
             <Gold>0</Gold>
           </Cost>
         </Creating>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
         <IncomeResources>
           <Gold>1000</Gold>
           <Wood>50</Wood>
@@ -1809,8 +1809,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
         <IncomeResources>
           <Gold>1500</Gold>
           <Wood>50</Wood>
@@ -1860,8 +1860,8 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParameters>
-        </CityParameters>
+        <CityParametersPerTurn>
+        </CityParametersPerTurn>
         <IncomeResources>
           <Gold>2000</Gold>
           <Wood>50</Wood>
@@ -2054,6 +2054,9 @@
         <IncomeResources>
           <Gold>175</Gold>
         </IncomeResources>
+        <CityParametersPerTurn>
+          <Rats>100</Rats>
+        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelMarket2</ID>
@@ -2076,6 +2079,9 @@
         <IncomeResources>
           <Gold>300</Gold>
         </IncomeResources>
+        <CityParametersPerTurn>
+          <Rats>200</Rats>
+        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelMarket3</ID>
@@ -2098,6 +2104,9 @@
         <IncomeResources>
           <Gold>525</Gold>
         </IncomeResources>
+        <CityParametersPerTurn>
+          <Rats>300</Rats>
+        </CityParametersPerTurn>
       </Level>
     </Levels>
     <Events>

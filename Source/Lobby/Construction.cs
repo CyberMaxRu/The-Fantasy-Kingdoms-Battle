@@ -1542,24 +1542,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneConstructAfterCreate()
         {
-            UpdateCityParameters();
             UpdateCurrentIncomeResources();
             TuneActionLevelUp();
             UpdateSelectedColor();
             UpdateState();
-        }
-
-        private void UpdateCityParameters()
-        {
-            if ((Level > 0) && (Descriptor.Levels[Level].CityParameters != null))
-            {
-                for (int i = 0; i < Descriptor.Levels[Level].CityParameters.Count; i++)
-                {
-                    ChangeCityParameters[i] = Descriptor.Levels[Level].CityParameters[i];
-                }
-            }
-            else
-                ChangeCityParameters.Zeroing();
+            UpdateCityParameters();
         }
 
         internal void UpdateState()
@@ -1782,6 +1769,16 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        private void UpdateCityParameters()
+        {
+            if ((Level > 0) && (Descriptor.Levels[Level].ChangeCityParametersPerTurn != null))
+            {
+                ChangeCityParameters.FromList(Descriptor.Levels[Level].ChangeCityParametersPerTurn);
+            }
+            else
+                ChangeCityParameters.Zeroing();
+        }
+
         internal void UpdateAfterTick()
         {
             ValidateActions();
@@ -1798,6 +1795,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             TuneActionLevelUp();// Если кнопка ремонта была удалена, надо обновить действия
+            UpdateCityParameters();// Обновляем изменения за ход
         }
 
         internal void ValidateActions()
