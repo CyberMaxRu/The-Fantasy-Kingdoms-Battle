@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Раздел "Выполнение"
         private readonly VCSeparator sepExecuting;
-        private readonly VCLabel lblNameExecuting;
+        private readonly VCText lblNameExecuting;
 
         // Подраздел "Стоимость"
         private readonly VCLabel lblChapterCost;
@@ -164,8 +164,7 @@ namespace Fantasy_Kingdoms_Battle
             sepExecuting = new VCSeparator(this, FormMain.Config.GridSize, lblInterest.NextTop());
             sepExecuting.Width = widthControl;
 
-            lblNameExecuting = new VCLabel(this, FormMain.Config.GridSize, sepExecuting.NextTop(), Program.formMain.fontMedCaptionC, Color.PaleTurquoise, Program.formMain.fontMedCaptionC.MaxHeightSymbol, "");
-            lblNameExecuting.Width = widthControl;
+            lblNameExecuting = new VCText(this, FormMain.Config.GridSize, sepExecuting.NextTop(), Program.formMain.fontMedCaptionC, Color.PaleTurquoise, widthControl);
             lblNameExecuting.StringFormat.Alignment = StringAlignment.Near;
 
             lblChapterCost = new VCLabel(this, FormMain.Config.GridSize, lblNameExecuting.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Стоимость:");
@@ -420,7 +419,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowEntity(entity.GetName(), entity.GetTypeEntity(), entity.GetImageIndex(), entity.ProperName());   
         }
 
-        private void ShowEntity(string name, string typeEntity, int imageIndex, bool properName)
+        internal void ShowEntity(string name, string typeEntity, int imageIndex, bool properName)
         {
             Debug.Assert(lblHeader.Text.Length == 0);
 
@@ -771,6 +770,7 @@ namespace Fantasy_Kingdoms_Battle
                 sepExecuting.ShiftY = nextTop;
                 sepExecuting.Visible = true;
                 lblNameExecuting.Text = nameExecuting;
+                lblNameExecuting.Height = lblNameExecuting.MinHeigth();
                 lblNameExecuting.ShiftY = sepExecuting.NextTop();
                 lblNameExecuting.Visible = true;
                 lblChapterCost.Visible = true;
