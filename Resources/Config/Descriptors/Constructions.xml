@@ -4532,7 +4532,7 @@
   </Construction>
   <Construction>
     <ID>TownHall</ID>
-    <Name>Ратуша</Name>
+    <Name>Городской совет</Name>
     <Description>- Когда город разрастается, можно дать ему самоуправление</Description>
     <ImageIndex>193</ImageIndex>
     <TypeConstruction>Power</TypeConstruction>
@@ -4540,15 +4540,16 @@
     <Page>Power</Page>
     <Pos>2,3</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>2</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <SoundSelect>townhall_select.wav</SoundSelect>
     <Levels>
       <Level>
         <ID>LevelTownHall1</ID>
+        <Name>Городской совет</Name>
         <Number>1</Number>
         <Durability>500</Durability>
         <Creating>
-          <Time>60</Time>
+          <Time>5</Time>
           <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
@@ -4559,13 +4560,29 @@
       </Level>
       <Level>
         <ID>LevelTownHall2</ID>
+        <Name>Ратуша</Name>
         <Number>2</Number>
         <Durability>600</Durability>
         <Creating>
-          <Time>30</Time>
-          <Builders>2</Builders>
+          <Time>5</Time>
+          <Builders>1</Builders>
           <Cost>
             <Gold>500</Gold>
+          </Cost>
+        </Creating>
+        <GreatnessByConstruction>200</GreatnessByConstruction>
+        <GreatnessPerDay>10</GreatnessPerDay>
+      </Level>
+      <Level>
+        <ID>LevelTownHall3</ID>
+        <Name>Магистрат</Name>
+        <Number>3</Number>
+        <Durability>1000</Durability>
+        <Creating>
+          <Time>5</Time>
+          <Builders>1</Builders>
+          <Cost>
+            <Gold>5000</Gold>
           </Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
@@ -4580,6 +4597,10 @@
       <CellMenu>
         <Pos>1,2</Pos>
         <Entity>LevelTownHall2</Entity>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Entity>LevelTownHall3</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>

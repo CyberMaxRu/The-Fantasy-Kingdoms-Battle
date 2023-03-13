@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
 using static Fantasy_Kingdoms_Battle.Utils;
+using System.Windows.Input;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -110,6 +111,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!((Mining != null) && (IncomeResources != null)));
         }
 
+        internal bool NewName { get; private set; } = false;// У сооружения для уровня новое имя
         internal int Number { get; }
         internal int MaxInhabitant { get; }
         internal int Tax { get; }// Процент налога с дохода членов гильдии
@@ -128,6 +130,13 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override string GetName(XmlNode n)
         {
+            XmlNode nodeNameLevel = n.SelectSingleNode("Name");
+            if (nodeNameLevel != null)
+            {
+                NewName = true;
+                return nodeNameLevel.InnerText;
+            }
+
             return "Уровень " + GetIntegerNotNull(n, "Number");
         }
 

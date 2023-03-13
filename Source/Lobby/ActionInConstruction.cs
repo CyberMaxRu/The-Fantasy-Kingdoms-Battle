@@ -484,7 +484,9 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.Number > Construction.Descriptor.MaxLevel)
                 return;// Убрать это
 
-            panelHint.AddStep2Entity(Construction);
+            //panelHint.AddStep2Entity(Construction);
+            string nameCurrent = Descriptor.Number > 1 ? Construction.GetNameForLevel(Descriptor.Number - 1) : Construction.GetNameForLevel(Descriptor.Number);
+            panelHint.ShowEntity(nameCurrent, Construction.GetTypeEntity(), Construction.GetImageIndex(), Construction.ProperName());
             //panelHint.AddStep4Level(Descriptor.Number == 1 ? "Уровень 1" : $"Улучшить строение ({Descriptor.Number} ур.)");
             panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.ActiveEntity.Description : "");
             panelHint.AddStep55Durability(Construction.DurabilityForLevel(Descriptor.Number));
@@ -497,7 +499,8 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
-            panelHint.AddStep12CostExecuting(Descriptor.Number == 1 ? "Построить" : $"Улучшить до {Descriptor.Number} ур.", Descriptor.ComponentCreating.CostResources, ProgressExecuting.RestTimeExecuting, Descriptor.ComponentCreating.Builders, GetTextRequirements());
+            string nameNextLevel = Descriptor.NewName ? $"Улучшить до {Descriptor.Name} ({Descriptor.Number} ур.)" : $"Улучшить до {Descriptor.Number} ур.";
+            panelHint.AddStep12CostExecuting(Descriptor.Number == 1 ? "Построить" : nameNextLevel, Descriptor.ComponentCreating.CostResources, ProgressExecuting.RestTimeExecuting, Descriptor.ComponentCreating.Builders, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }

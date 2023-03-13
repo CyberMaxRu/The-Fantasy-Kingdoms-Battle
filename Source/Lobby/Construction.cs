@@ -827,6 +827,14 @@ namespace Fantasy_Kingdoms_Battle
         }
 
 
+        internal string GetNameForLevel(int level)
+        {
+            if (Descriptor.Levels[level].NewName)
+                return Descriptor.Levels[level].Name;
+
+            return Descriptor.Name;
+        }
+
         internal override string GetName()
         {
             AssertNotDestroyed();
@@ -834,7 +842,12 @@ namespace Fantasy_Kingdoms_Battle
             if (ComponentObjectOfMap.Visible)
             {
                 if (NextLocation is null)
+                {
+                    if ((Level > 0) && Descriptor.Levels[Level].NewName)
+                        return Descriptor.Levels[Level].Name;
+
                     return Descriptor.Name;
+                }
                 else
                     return "Путь в " + NextLocation.Settings.Name;
             }

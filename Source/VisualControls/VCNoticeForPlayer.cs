@@ -45,7 +45,11 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.LevelUp:
                     nameNotice = "Улучшено:";
-                    nameText = (Entity as Construction).GetName() + " Уровень " + (Entity as Construction).Level.ToString();
+
+                    if ((Entity as Construction).Descriptor.Levels[(Entity as Construction).Level].NewName)
+                        nameText = (Entity as Construction).GetNameForLevel((Entity as Construction).Level - 1) + " до " + (Entity as Construction).GetName() + " (Ур. " + (Entity as Construction).Level.ToString() + ")";
+                    else
+                        nameText = (Entity as Construction).GetName() + " Уровень " + (Entity as Construction).Level.ToString();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.Research:
