@@ -94,6 +94,10 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");
             }
 
+
+            // Загружаем базовые параметры города
+            BaseSettlementParameters = new ListSettlementParameters(n.SelectSingleNode("BaseSettlementParameters"));
+
             // Загружаем настройки логов
             XmlNode nodeLairSettings = n.SelectSingleNode("Locations");
             Debug.Assert(nodeLairSettings != null);
@@ -165,6 +169,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MapHeight { get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
+        internal ListSettlementParameters BaseSettlementParameters { get; }
         internal TypeLobbyLocationSettings[,] Locations { get; }
         //internal TypeLobbyLocationSettings[,] Locations { get; }
 

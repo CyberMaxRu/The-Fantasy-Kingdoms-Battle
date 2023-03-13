@@ -18,6 +18,11 @@
       <Stone>50000</Stone>
       <Iron>5000</Iron>
     </MaxBaseResources>
+    <BaseSettlementParameters>
+      <Rats>150</Rats>
+      <Food>10000</Food>
+      <Citizens>1000</Citizens>
+    </BaseSettlementParameters>
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>
     <MaxQuantityFlags>7</MaxQuantityFlags>
