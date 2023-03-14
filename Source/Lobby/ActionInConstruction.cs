@@ -500,7 +500,20 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep9ListNeeds(Descriptor.DescriptorVisit.ListNeeds, false);
             }
             string nameNextLevel = Descriptor.NewName ? $"Улучшить до {Descriptor.Name} ({Descriptor.Number} ур.)" : $"Улучшить до {Descriptor.Number} ур.";
-            panelHint.AddStep12CostExecuting(Descriptor.Number == 1 ? "Построить" : nameNextLevel, Descriptor.ComponentCreating.CostResources, ProgressExecuting.RestTimeExecuting, Descriptor.ComponentCreating.Builders, GetTextRequirements());
+            string nameExecuting = "";
+            if (!ProgressExecuting.InQueue)
+                nameExecuting = Descriptor.Number == 1 ? "Построить" : nameNextLevel;
+            else
+            {
+                if (ProgressExecuting.State == StateProgress.WaitBuilders)
+                    nameExecuting = "Ожидание строителей";
+                else if (ProgressExecuting.State == StateProgress.WaitInQueue)
+                    nameExecuting = "Ожидание очереди";
+                else
+                    DoException($"Неизвестное состояние {ProgressExecuting.State}");
+            }
+
+            panelHint.AddStep12CostExecuting(nameExecuting, Descriptor.ComponentCreating.CostResources, ProgressExecuting.RestTimeExecuting, Descriptor.ComponentCreating.Builders, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
