@@ -785,7 +785,7 @@ namespace Fantasy_Kingdoms_Battle
                 lblBuilders.ShiftY = nextTop;
                 if (builders > 0)
                 {
-                    //lblBuilders.Color = ColorRequirements(constructionPoint);
+                    lblBuilders.Color = ColorRequirements(builders <= Player.MaxBuilders);
                     lblBuilders.Text = builders.ToString();
                     lblBuilders.Visible = true;
                     AdjustCell(lblBuilders, lblCostGold, FormMain.Config.GridSize, nextTop);

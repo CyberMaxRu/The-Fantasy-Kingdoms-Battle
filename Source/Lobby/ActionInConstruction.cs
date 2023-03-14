@@ -426,8 +426,8 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            //if (!Player.CheckRequireBuilders(Descriptor.Levels[level].GetCreating().ConstructionPoints(Player)))
-            //    return false;
+            if (Construction.Player.MaxBuilders < Descriptor.ComponentCreating.Builders)
+                return false;
 
             // Проверяем, что нет события или турнира
             if (Construction.CurrentMassEvent != null)
