@@ -515,7 +515,10 @@ namespace Fantasy_Kingdoms_Battle
                     DoException($"Неизвестное состояние {ProgressExecuting.State}");
             }
 
-            panelHint.AddStep12CostExecuting(nameExecuting, Descriptor.ComponentCreating.CostResources, ProgressExecuting.RestTimeExecuting, Descriptor.ComponentCreating.Builders, GetTextRequirements());
+            if (ProgressExecuting.InQueue)
+                panelHint.AddStep12CostExecuting(nameExecuting, null);
+            else
+                panelHint.AddStep12CostExecuting(nameExecuting, Descriptor.ComponentCreating.CostResources, ProgressExecuting.RestTimeExecuting, Descriptor.ComponentCreating.Builders, GetTextRequirements());
             //panelHint.AddStep12Gold(Player.BaseResources, Descriptor.Levels[requiredLevel].GetCreating().CostResources);
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
