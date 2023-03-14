@@ -832,6 +832,12 @@ namespace Fantasy_Kingdoms_Battle
                                 nextTop = lr.NextTop();
                             }
                         }
+
+                        if (listRequirements.Count == 0)
+                        {
+                            lblTextForRequirement.Visible = false;
+                            nextTop = lblTextForRequirement.ShiftY;
+                        }
                     }
                 }
             }
