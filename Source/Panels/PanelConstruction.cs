@@ -165,6 +165,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
                 btnQueue1.HighlightUnderMouse = Construction.QueueExecuting[0].ProgressExecuting.PassedMilliTicks == 0;
+                btnQueue1.PlaySoundOnClick = Construction.QueueExecuting[0].ProgressExecuting.State != StateProgress.Active;
                 bmpQueue2.Visible = true;
                 bmpQueue2.Action = Construction.QueueExecuting.Count >= 2 ? Construction.QueueExecuting[1] : null;
                 bmpQueue3.Visible = true;
