@@ -505,7 +505,9 @@ namespace Fantasy_Kingdoms_Battle
                 nameExecuting = Descriptor.Number == 1 ? "Построить" : nameNextLevel;
             else
             {
-                if (ProgressExecuting.State == StateProgress.WaitBuilders)
+                if (ProgressExecuting.State == StateProgress.Active)
+                    nameExecuting = Descriptor.Number == 1 ? "Строится" : "Улучшается";
+                else if (ProgressExecuting.State == StateProgress.WaitBuilders)
                     nameExecuting = "Ожидание строителей";
                 else if (ProgressExecuting.State == StateProgress.WaitInQueue)
                     nameExecuting = "Ожидание очереди";
