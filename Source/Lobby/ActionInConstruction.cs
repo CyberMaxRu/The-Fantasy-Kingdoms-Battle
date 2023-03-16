@@ -154,7 +154,7 @@ namespace Fantasy_Kingdoms_Battle
                         Construction.Player.SpendResource(PurchaseValue);
                         Program.formMain.PlayPushButton();
                         BeforeAddToQueue();
-                        Construction.Player.AddActionToQueue(this);
+                        Construction.Player.AddActionToQueue(ActionForAddToQueue());
                         Construction.Player.Lobby.Layer.UpdateMenu();
                     }
                 }
@@ -168,6 +168,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal virtual ActionInConstruction ActionForAddToQueue() => this;
 
         internal virtual void StartProgress() { }// Вызывается перед началом выполнения действия
 
@@ -743,6 +745,66 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Player.CompPurchase(Descriptor.CreatedEntity.ComponentCreating.CostResources, PurchaseValue, TypeCreating.Hire);
         }
         
+        protected override string GetTextForLevel() => "р";
+
+        internal override int GetImageIndex()
+        {
+            return Creature.ImageIndex;
+        }
+
+        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        {
+            base.UpdateTextRequirements(list);
+
+            if ((Construction.Level > 0) && (Construction.Heroes.Count == Construction.MaxHeroes()))
+                list.Add(new TextRequirement(false, Construction.Descriptor.GetTextConstructionIsFull()));
+
+            if (Construction.MaxHeroesAtPlayer())
+                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев в королевстве"));
+        }
+
+        internal override void PrepareHint(PanelHint panelHint)
+        {
+            /*panelHint.AddStep2Header(TypeConstruction.TrainedHero.Name);
+            panelHint.AddStep5Description(TypeConstruction.TrainedHero.Description);
+            if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
+                panelHint.AddStep11Requirement(GetTextRequirementsHire());
+            panelHint.AddStep12Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
+            */
+            panelHint.AddStep2Descriptor(Creature);
+            panelHint.AddStep5Description(Creature.Description);
+            panelHint.AddStep75Salary(Creature.CostOfHiring);
+            //panelHint.AddStep10DaysBuilding(InQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
+            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue, 0, 0, GetTextRequirements());
+        }
+    }
+
+    internal sealed class CellMenuConstructionCreatingCreature : ActionInConstruction
+    {
+        public CellMenuConstructionCreatingCreature(Construction c, DescriptorActionForEntity d) : base(c, d)
+        {
+            Creature = d.CreatedEntity as DescriptorCreature;
+        }
+
+        internal DescriptorCreature Creature { get; private set; }
+
+        protected override void Execute()
+        {
+            Creature h = Construction.HireHero(Creature, PurchaseValue);
+
+            Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
+        }
+
+        internal override bool CheckRequirements()
+        {
+            return base.CheckRequirements() && Construction.AllowHire();
+        }
+
+        internal override void UpdatePurchase()
+        {
+            Construction.Player.CompPurchase(Descriptor.CreatedEntity.ComponentCreating.CostResources, PurchaseValue, TypeCreating.Hire);
+        }
+
         protected override string GetTextForLevel() => "р";
 
         internal override int GetImageIndex()
