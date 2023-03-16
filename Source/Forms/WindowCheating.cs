@@ -20,10 +20,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCButton btnCancel;
 
         private VCCheckBox chkbIgnoreRequirements;
-        private VCCheckBox chkbIgnoreResources;
-        private VCCheckBox chkbInstantlyBuilding;
-        private VCCheckBox chkbInstantlyResearch;
-        private VCCheckBox chkbInstantlyHire;
+        private VCCheckBox chkbSpeedUpProgressBy10;
+        private VCCheckBox chkbReduceCostBy10;
 
         public WindowCheating(Player p) : base()
         {
@@ -33,26 +31,18 @@ namespace Fantasy_Kingdoms_Battle
             windowCaption.Caption = "Настройка читинга";
 
             chkbIgnoreRequirements = new VCCheckBox(ClientControl, 0, 0, "Игнорировать требования к наличию сооружений и прочего");
-            chkbIgnoreRequirements.Hint = "Игнорировать требования к наличию сооружений, исследований (кроме золота, строителей и тому подобного)";
+            chkbIgnoreRequirements.Hint = "Игнорировать требования к наличию сооружений, исследований (кроме ресурсов и строителей)";
             chkbIgnoreRequirements.Checked = player.CheatingIgnoreRequirements;
 
-            chkbIgnoreResources = new VCCheckBox(ClientControl, 0, chkbIgnoreRequirements.NextTop(), "Игнорировать требования базовых ресурсов");
-            chkbIgnoreResources.Hint = "Игнорировать требования к наличию достаточного количества базовых ресурсов и не тратить их";
-            chkbIgnoreResources.Checked = player.CheatingIgnoreBaseResources;
+            chkbSpeedUpProgressBy10 = new VCCheckBox(ClientControl, 0, chkbIgnoreRequirements.NextTop(), "Ускорить прогресс в 10 раз");
+            chkbSpeedUpProgressBy10.Hint = "Прогресс действий (строительство, исследования, найм и т.д.) ускоряется в 10 раз";
+            chkbSpeedUpProgressBy10.Checked = player.CheatingSpeedUpProgressBy10;
 
-            chkbInstantlyBuilding = new VCCheckBox(ClientControl, 0, chkbIgnoreResources.NextTop(), "Мгновенная постройка сооружений");
-            chkbInstantlyBuilding.Hint = "Сооружения строятся сразу же, минуя очередь и процесс постройки";
-            chkbInstantlyBuilding.Checked = player.CheatingInstantlyBuilding;
+            chkbReduceCostBy10 = new VCCheckBox(ClientControl, 0, chkbSpeedUpProgressBy10.NextTop(), "Стоимость действий уменьшается в 10 раз");
+            chkbReduceCostBy10.Hint = "Стоимость (золото, ресурсы) действий (строительство, исследования, найм и т.д.) уменьшается в 10 раз";
+            chkbReduceCostBy10.Checked = player.CheatingReduceCostBy10;
 
-            chkbInstantlyResearch = new VCCheckBox(ClientControl, 0, chkbInstantlyBuilding.NextTop(), "Мгновенное исследование в сооружении");
-            chkbInstantlyResearch.Hint = "Исследования в сооружении происходят сразу же";
-            chkbInstantlyResearch.Checked = player.CheatingInstantlyResearch;
-
-            chkbInstantlyHire = new VCCheckBox(ClientControl, 0, chkbInstantlyResearch.NextTop(), "Мгновенный найм");
-            chkbInstantlyHire.Hint = "Найм героев и иных существ происходит сразу же";
-            chkbInstantlyHire.Checked = player.CheatingInstantlyHire;
-
-            btnShowAll = new VCButton(ClientControl, 0, chkbInstantlyHire.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
+            btnShowAll = new VCButton(ClientControl, 0, chkbReduceCostBy10.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
             btnShowAll.Width = 240;
             btnShowAll.Click += BtnShowAll_Click;
 
@@ -80,10 +70,8 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Height = btnCancel.NextTop();
 
             chkbIgnoreRequirements.Width = ClientControl.Width;
-            chkbIgnoreResources.Width = ClientControl.Width;
-            chkbInstantlyBuilding.Width = ClientControl.Width;
-            chkbInstantlyResearch.Width = ClientControl.Width;
-            chkbInstantlyHire.Width = ClientControl.Width;
+            chkbSpeedUpProgressBy10.Width = ClientControl.Width;
+            chkbReduceCostBy10.Width = ClientControl.Width;
 
             ApplyMaxSize();
         }
@@ -102,10 +90,8 @@ namespace Fantasy_Kingdoms_Battle
         private void SetAll(bool check)
         {
             chkbIgnoreRequirements.Checked = check;
-            chkbIgnoreResources.Checked = check;
-            chkbInstantlyBuilding.Checked = check;
-            chkbInstantlyResearch.Checked = check;
-            chkbInstantlyHire.Checked = check;
+            chkbSpeedUpProgressBy10.Checked = check;
+            chkbReduceCostBy10.Checked = check;
         }
 
         private void BtnResetAll_Click(object sender, EventArgs e)
@@ -121,24 +107,12 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnAccept_Click(object sender, EventArgs e)
         {
             player.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
-            player.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
-            player.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
-            player.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
-            player.CheatingInstantlyHire = chkbInstantlyHire.Checked;
-
-            if ((Program.formMain.CurrentHumanPlayer.CheatingInstantlyBuilding != player.CheatingInstantlyBuilding) || (Program.formMain.CurrentHumanPlayer.CheatingInstantlyResearch != player.CheatingInstantlyResearch))
-            {
-                player.CalcDaysExecutingInActions();
-
-                //if (player.CheatingInstantlyBuilding || player.CheatingInstantlyResearch)
-                //    player.RebuildQueueBuilding();
-            }
+            player.CheatingSpeedUpProgressBy10 = chkbSpeedUpProgressBy10.Checked;
+            player.CheatingReduceCostBy10 = chkbReduceCostBy10.Checked;
 
             Program.formMain.CurrentHumanPlayer.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
-            Program.formMain.CurrentHumanPlayer.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
-            Program.formMain.CurrentHumanPlayer.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
-            Program.formMain.CurrentHumanPlayer.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
-            Program.formMain.CurrentHumanPlayer.CheatingInstantlyHire = chkbInstantlyHire.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingSpeedUpProgressBy10 = chkbSpeedUpProgressBy10.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingReduceCostBy10 = chkbReduceCostBy10.Checked;
             FormMain.Descriptors.SaveHumanPlayers();
 
             CloseForm(DialogAction.OK);

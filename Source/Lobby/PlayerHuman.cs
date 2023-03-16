@@ -19,12 +19,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(player.TypePlayer == TypePlayer.Human);
 
-            CheatingIgnoreBaseResources = player.CheatingIgnoreBaseResources;
             CheatingIgnoreRequirements = player.CheatingIgnoreRequirements;
-            CheatingInstantlyBuilding = player.CheatingInstantlyBuilding;
-            CheatingInstantlyResearch = player.CheatingInstantlyResearch;
-            CheatingInstantlyHire = player.CheatingInstantlyHire;
+            CheatingSpeedUpProgressBy10 = player.CheatingSpeedUpProgressBy10;
+            CheatingReduceCostBy10 = player.CheatingReduceCostBy10;
 
+/*            if (CheatingIgnoreRequirements)
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать требования", Color.Orange);
+            if (CheatingSpeedUpProgressBy10)
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Ускорение прогресса в 10 раз", Color.Orange);
+            if (CheatingReduceCostBy10)
+                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Стоимость меньше в 10 раз", Color.Orange);
+*/
             frame = new DispatcherFrame();
         }
 
@@ -75,16 +80,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareTurn(bool beginOfDay)
         {
-            if (CheatingIgnoreBaseResources)
-                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать основные ресурсы", Color.Orange);
-            if (CheatingIgnoreRequirements)
-                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать требования", Color.Orange);
-            if (CheatingInstantlyBuilding)
-                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенная постройка", Color.Orange);
-            if (CheatingInstantlyResearch)
-                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенное исследование", Color.Orange);
-            if (CheatingInstantlyHire)
-                AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Мгновенный найм", Color.Orange);
 
             base.PrepareTurn(beginOfDay);
         }

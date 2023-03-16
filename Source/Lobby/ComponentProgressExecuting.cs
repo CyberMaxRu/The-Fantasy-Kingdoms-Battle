@@ -60,10 +60,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void UpdateRestTimeExecuting()
+        // В метод передаем текущее количество миллитиков в тике, иначе если действие не выполняется,
+        // а стартовое значение MilliTicksPerTick больше не меняется и время не пересчитывается
+        internal void UpdateRestTimeExecuting(int milliTicksPerTick)
         {
             // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
-            RestTimeExecuting = (int)Math.Truncate(RestMilliTicks * 1.00000 / (MilliTicksPerTick * FormMain.Config.TicksInSecond) + 0.99);
+            RestTimeExecuting = (int)Math.Truncate((double)RestMilliTicks / (milliTicksPerTick * FormMain.Config.TicksInSecond) + 0.99);
             Assert(RestTimeExecuting > 0);
         }
 

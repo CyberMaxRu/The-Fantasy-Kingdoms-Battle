@@ -57,26 +57,25 @@ namespace Fantasy_Kingdoms_Battle
             this[0] = gold;
         }
 
-        internal void AddResources(ListBaseResources qbr)
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                this[i] += qbr[i];
-            }
-        }
-
-        internal bool ExistsResources()
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                if (this[i] != 0)
-                    return true;
-            }
-
-            return false;
-        }
-
         internal int Gold { get => this[0]; set { this[0] = value; } }
+
+        public override bool Equals(object obj)
+        {
+            ListBaseResources qbr = obj as ListBaseResources;
+
+            for (int i = 0; i < Count; i++)
+            {
+                if (this[i] != qbr[i])
+                    return false;
+            }
+
+            return true;
+        }
+
+        public override string ToString()
+        {
+            throw new Exception("Нельзя список преобразовать в строку.");
+        }
 
         internal bool ResourcesEnough(ListBaseResources listOther)
         {
@@ -97,22 +96,31 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public override bool Equals(object obj)
+        internal void AddResources(ListBaseResources qbr)
         {
-            ListBaseResources qbr = obj as ListBaseResources;
-
             for (int i = 0; i < Count; i++)
             {
-                if (this[i] != qbr[i])
-                    return false;
+                this[i] += qbr[i];
             }
-
-            return true;
         }
 
-        public override string ToString()
+        internal void SetFromList(ListBaseResources qbr)
         {
-            throw new Exception("Нельзя список преобразовать в строку.");
+            for (int i = 0; i < Count; i++)
+            {
+                this[i] = qbr[i];
+            }
+        }
+
+        internal bool ExistsResources()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (this[i] != 0)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

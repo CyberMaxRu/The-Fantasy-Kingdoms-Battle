@@ -6,7 +6,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс описателя с информацией о создании сущности
-    internal enum TypeCreating { Building, Research, Hire };
+    internal enum TypeCreating { Building, Research, Hire, MassEvent, Tournament, Extra };
 
     internal sealed class DescriptorComponentCreating : Descriptor
     {

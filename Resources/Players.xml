@@ -7,11 +7,9 @@
     <ImageIndex>1</ImageIndex>
     <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
     <Cheating>
-      <IgnoreBaseResources>False</IgnoreBaseResources>
       <IgnoreRequirements>False</IgnoreRequirements>
-      <InstantlyBuilding>False</InstantlyBuilding>
-      <InstantlyResearch>False</InstantlyResearch>
-      <InstantlyHire>False</InstantlyHire>
+      <CheatingSpeedUpProgressBy10>False</CheatingSpeedUpProgressBy10>
+      <CheatingReduceCostBy10>True</CheatingReduceCostBy10>
     </Cheating>
     <TournamentSettings>
       <Tournament>

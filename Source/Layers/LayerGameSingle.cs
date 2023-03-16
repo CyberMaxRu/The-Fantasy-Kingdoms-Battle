@@ -1091,7 +1091,7 @@ namespace Fantasy_Kingdoms_Battle
             AdjustPageTournament();
             UpdateNeighborhoods();
             //AdjustNeighborhood();
-            ShowPlayerNotices();
+            //ShowPlayerNotices();
         }
 
         internal void ShowPlayerNotices()
@@ -1305,6 +1305,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     l.UpdateData(curAppliedPlayer);
                 }
+
+                ShowPlayerNotices();
             }
         }
 

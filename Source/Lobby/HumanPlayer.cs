@@ -36,11 +36,9 @@ namespace Fantasy_Kingdoms_Battle
             DisableComputerPlayerByAvatar();
 
             //
-            CheatingIgnoreBaseResources = GetBoolean(n, "Cheating/IgnoreBaseResources", false);
             CheatingIgnoreRequirements = GetBoolean(n, "Cheating/IgnoreRequirements", false);
-            CheatingInstantlyBuilding = GetBoolean(n, "Cheating/InstantlyBuilding", false);
-            CheatingInstantlyResearch = GetBoolean(n, "Cheating/InstantlyResearch", false);
-            CheatingInstantlyHire = GetBoolean(n, "Cheating/InstantlyHire", false);
+            CheatingSpeedUpProgressBy10 = GetBoolean(n, "Cheating/CheatingSpeedUpProgressBy10", false);
+            CheatingReduceCostBy10 = GetBoolean(n, "Cheating/CheatingReduceCostBy10", false);
 
             // Создаем настройки всех типов лобби
             Assert(Descriptors.TypeLobbies.Count > 0);
@@ -74,10 +72,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal bool CheatingIgnoreRequirements { get; set; }
-        internal bool CheatingIgnoreBaseResources { get; set; }
-        internal bool CheatingInstantlyBuilding { get; set; }
-        internal bool CheatingInstantlyResearch { get; set; }
-        internal bool CheatingInstantlyHire { get; set; }
+        internal bool CheatingSpeedUpProgressBy10 { get; set; }
+        internal bool CheatingReduceCostBy10 { get; set; }
 
         internal string DirectoryAvatar { get; set; }
         internal LobbySettings[] TournamentSettings { get; }
@@ -122,11 +118,9 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("DirectoryAvatar", DirectoryAvatar);
 
             writer.WriteStartElement("Cheating");
-            writer.WriteElementString("IgnoreBaseResources", CheatingIgnoreBaseResources.ToString());
             writer.WriteElementString("IgnoreRequirements", CheatingIgnoreRequirements.ToString());
-            writer.WriteElementString("InstantlyBuilding", CheatingInstantlyBuilding.ToString());
-            writer.WriteElementString("InstantlyResearch", CheatingInstantlyResearch.ToString());
-            writer.WriteElementString("InstantlyHire", CheatingInstantlyHire.ToString());
+            writer.WriteElementString("CheatingSpeedUpProgressBy10", CheatingSpeedUpProgressBy10.ToString());
+            writer.WriteElementString("CheatingReduceCostBy10", CheatingReduceCostBy10.ToString());
             writer.WriteEndElement();
 
             writer.WriteStartElement("TournamentSettings");

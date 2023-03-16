@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorActionForEntity Descriptor { get; }
         internal BigEntity BigEntity { get; }
-        internal ListBaseResources PurchaseValue { get; private protected set; }// Стоимость покупки
+        internal ListBaseResources PurchaseValue { get; } = new ListBaseResources();// Стоимость покупки
 
         internal bool Destroyed { get; set; }// Действие необходимо удалить
         internal abstract int GetImageIndex();

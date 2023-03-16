@@ -27,8 +27,6 @@ namespace Fantasy_Kingdoms_Battle
 
     sealed internal class CellMenuLocationScout : CellMenuLocation
     {
-        private readonly ListBaseResources cost = new ListBaseResources();
-
         public CellMenuLocationScout(Location l, DescriptorActionForEntity d) : base(l, d)
         {
         }
@@ -41,11 +39,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Location.StateMenu = 1;
             Program.formMain.layerGame.UpdateMenu();
-        }
-
-        internal override void UpdatePurchase()
-        {
-            PurchaseValue = cost;
         }
 
         internal override int GetImageIndex()
@@ -61,8 +54,6 @@ namespace Fantasy_Kingdoms_Battle
 
     sealed internal class CellMenuLocationAddScoutHero : CellMenuLocation
     {
-        private readonly ListBaseResources cost = new ListBaseResources();
-
         public CellMenuLocationAddScoutHero(Location l, DescriptorActionForEntity d) : base(l, d)
         {
 
@@ -79,11 +70,6 @@ namespace Fantasy_Kingdoms_Battle
                 Location.StateMenu = 2;
                 Program.formMain.layerGame.UpdateMenu();
             }
-        }
-
-        internal override void UpdatePurchase()
-        {
-            PurchaseValue = cost;
         }
 
         internal override int GetImageIndex()
@@ -133,8 +119,6 @@ namespace Fantasy_Kingdoms_Battle
 
     sealed internal class CellMenuLocationReturn : CellMenuLocation
     {
-        private readonly ListBaseResources cost = new ListBaseResources();
-
         public CellMenuLocationReturn(Location l, DescriptorActionForEntity d) : base(l, d)
         {
 
@@ -146,11 +130,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Location.StateMenu--;
             Program.formMain.layerGame.UpdateMenu();
-        }
-
-        internal override void UpdatePurchase()
-        {
-            PurchaseValue = cost;
         }
 
         internal override int GetImageIndex()
@@ -166,10 +145,12 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuLocationSpell : CellMenuLocation
     {
+        private ListBaseResources cost;
         public CellMenuLocationSpell(Location forLocation, ConstructionSpell spell) : base(forLocation, new DescriptorActionForEntity(spell.DescriptorSpell.Coord))
         {
             Spell = spell;
             Entity = spell.DescriptorSpell;
+            PurchaseValue.Gold = Entity.Selling.Gold;
         }
 
         internal ConstructionSpell Spell { get; }
@@ -188,11 +169,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep4Level($"Осталось: {Spell.Selling.RestQuantity}");
             panelHint.AddStep5Description(Entity.Description);
             panelHint.AddStep12CostExecuting("Применить заклинание", PurchaseValue);
-        }
-
-        internal override void UpdatePurchase()
-        {
-            PurchaseValue = new ListBaseResources(Entity.Selling.Gold);
         }
 
         internal override void Click()

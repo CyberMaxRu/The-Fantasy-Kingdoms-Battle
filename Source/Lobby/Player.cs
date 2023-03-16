@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using static Fantasy_Kingdoms_Battle.Utils;
+using System.Windows.Media.Animation;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -38,6 +39,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<ActionInConstruction> queueExecuting = new List<ActionInConstruction>();// Очередь выполнения действий
         private readonly List<CellMenuConstructionRepair> queueRepair = new List<CellMenuConstructionRepair>();// Очередь ремонта
         private readonly List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
+
+        private bool cheatingIgnoreRequirements;
+        private bool cheatingSpeedUpProgressBy10;
+        private bool cheatingReduceCostBy10;
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby, null)
         {
@@ -854,11 +859,45 @@ namespace Fantasy_Kingdoms_Battle
         internal Construction FlagAttackToOpponent { get; private set; }
 
         // Читинг
-        internal bool CheatingIgnoreRequirements { get; set; }
-        internal bool CheatingIgnoreBaseResources { get; set; }
-        internal bool CheatingInstantlyBuilding { get; set; }
-        internal bool CheatingInstantlyResearch { get; set; }
-        internal bool CheatingInstantlyHire { get; set; }
+        internal bool CheatingIgnoreRequirements
+        {
+            get => cheatingIgnoreRequirements;
+            set
+            {
+                if (cheatingIgnoreRequirements != value)
+                {
+                    cheatingIgnoreRequirements = value;
+                    AddNoticeForPlayer(-1, cheatingIgnoreRequirements ? FormMain.Config.Gui48_Cheating : FormMain.Config.Gui48_NoCheating,
+                        cheatingIgnoreRequirements ? "Применен читинг:" : "Отменен читинг:", "Игнорировать требования", Color.Orange);
+                }
+            }
+        }
+        internal bool CheatingSpeedUpProgressBy10
+        {
+            get => cheatingSpeedUpProgressBy10;
+            set
+            {
+                if (cheatingSpeedUpProgressBy10 != value)
+                {
+                    cheatingSpeedUpProgressBy10 = value;
+                    AddNoticeForPlayer(-1, cheatingSpeedUpProgressBy10 ? FormMain.Config.Gui48_Cheating : FormMain.Config.Gui48_NoCheating,
+                        cheatingSpeedUpProgressBy10 ? "Применен читинг:" : "Отменен читинг:", "Ускорение прогресса в 10 раз", Color.Orange);
+                }
+            }
+        }
+        internal bool CheatingReduceCostBy10
+        {
+            get => cheatingReduceCostBy10;
+            set
+            {
+                if (cheatingReduceCostBy10 != value)
+                {
+                    cheatingReduceCostBy10 = value;
+                    AddNoticeForPlayer(-1, cheatingReduceCostBy10 ? FormMain.Config.Gui48_Cheating : FormMain.Config.Gui48_NoCheating,
+                        cheatingReduceCostBy10 ? "Применен читинг:" : "Отменен читинг:", "Стоимость меньше в 10 раз", Color.Orange);
+                }
+            }
+        }
 
         private void UpdateOpponent()
         {
@@ -1094,14 +1133,6 @@ namespace Fantasy_Kingdoms_Battle
             return pi;
         }
 
-        internal bool CheckRequiredResources(ListBaseResources reqResources)
-        {
-            if (CheatingIgnoreBaseResources)
-                return true;
-
-            return BaseResources.ResourcesEnough(reqResources);
-        }
-
         internal bool CheckRequirements(List<DescriptorRequirement> list)
         {
             foreach (DescriptorRequirement r in list)
@@ -1315,8 +1346,8 @@ namespace Fantasy_Kingdoms_Battle
 
             startBonusApplied = true;
 
-            if (GetTypePlayer() == TypePlayer.Human)
-                Lobby.Layer.ShowPlayerNotices();
+            //if (GetTypePlayer() == TypePlayer.Human)
+            //    Lobby.Layer.ShowPlayerNotices();
         }
 
         internal void AddLose()
@@ -1356,16 +1387,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (res != null)
             {
-                if (!CheatingIgnoreBaseResources)
+                for (int i = 0; i < BaseResources.Count; i++)
                 {
-                    for (int i = 0; i < BaseResources.Count; i++)
-                    {
-                        Debug.Assert(BaseResources[i] >= 0);
-                        Debug.Assert(BaseResources[i] >= res[i]);
-                        Debug.Assert(res[i] >= 0);
+                    Debug.Assert(BaseResources[i] >= 0);
+                    Debug.Assert(BaseResources[i] >= res[i]);
+                    Debug.Assert(res[i] >= 0);
 
-                        BaseResources[i] -= res[i];
-                    }
+                    BaseResources[i] -= res[i];
                 }
 
                 UpdateResourceInCastle();
@@ -1378,12 +1406,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (gold > 0)
             {
-                if (!CheatingIgnoreBaseResources)
-                {
-                    Debug.Assert(BaseResources.Gold >= 0);
-                    Debug.Assert(BaseResources.Gold >= gold);
-                    BaseResources.Gold -= gold;
-                }
+                Debug.Assert(BaseResources.Gold >= 0);
+                Debug.Assert(BaseResources.Gold >= gold);
+                BaseResources.Gold -= gold;
 
                 UpdateResourceInCastle();
             }
@@ -1395,28 +1420,22 @@ namespace Fantasy_Kingdoms_Battle
 
             if (gold > 0)
             {
-                if (!CheatingIgnoreBaseResources)
-                {
-                    Debug.Assert(BaseResources.Gold >= 0);
-                    Debug.Assert(BaseResources.Gold >= gold);
-                    BaseResources.Gold += gold;// Здесь нужен тест на превышение суммы лимита золота
-                }
+                Debug.Assert(BaseResources.Gold >= 0);
+                Debug.Assert(BaseResources.Gold >= gold);
+                BaseResources.Gold += gold;// Здесь нужен тест на превышение суммы лимита золота
 
                 UpdateResourceInCastle();
             }
         }
         internal void ReturnResource(ListBaseResources res)
         {
-            if (!CheatingIgnoreBaseResources)
+            for (int i = 0; i < BaseResources.Count; i++)
             {
-                for (int i = 0; i < BaseResources.Count; i++)
-                {
-                    Debug.Assert(BaseResources[i] >= 0);
-                    Debug.Assert(BaseResources[i] <= Lobby.TypeLobby.MaxBaseResources[i]);
-                    Debug.Assert(res[i] >= 0);
+                Debug.Assert(BaseResources[i] >= 0);
+                Debug.Assert(BaseResources[i] <= Lobby.TypeLobby.MaxBaseResources[i]);
+                Debug.Assert(res[i] >= 0);
 
-                    BaseResources[i] += AllowAddBaseResource(i, res[i]);
-                }
+                BaseResources[i] += AllowAddBaseResource(i, res[i]);
             }
 
             UpdateResourceInCastle();
@@ -1678,7 +1697,7 @@ namespace Fantasy_Kingdoms_Battle
             if (GetTypePlayer() == TypePlayer.Human)
             {
                 ListNoticesForPlayer.Add(new VCNoticeForPlayer(Program.formMain.layerGame.panelNotices.Width, entity, typeNotice, addParam));
-                Program.formMain.layerGame.ShowPlayerNotices();
+                //Program.formMain.layerGame.ShowPlayerNotices();
             }
         }
 
@@ -1770,9 +1789,9 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        internal int GetMilliTicksForAction()
+        internal int GetMilliTicksForAction(/*TypeCreating typeCreating*/)
         {
-            return 1000;
+            return CheatingSpeedUpProgressBy10 ? 10_000 : 1_000;
         }
 
         internal void AddConstruction(Construction c)
@@ -1841,6 +1860,19 @@ namespace Fantasy_Kingdoms_Battle
         internal double CoefficientExecuting(TypeCreating typeCreating)
         {
             return 1;
+        }
+
+        internal void CompPurchase(ListBaseResources originCost, ListBaseResources curCost, TypeCreating typeCreating)
+        {
+            if (CheatingReduceCostBy10)
+            {
+                for (int i = 0; i < originCost.Count; i++)
+                {
+                    curCost[i] = originCost[i] / 10;
+                }
+            }
+            else
+                curCost.SetFromList(originCost);
         }
 
         internal void UpdateBuilderInfo()

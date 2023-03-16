@@ -75,12 +75,11 @@ namespace Fantasy_Kingdoms_Battle
 
     sealed internal class CellMenuCreaturePage : ActionForEntity
     {
-        private ListBaseResources resources;
         private int quantityPerPage = FormMain.Config.PlateWidth * (FormMain.Config.PlateHeight - 1);
 
         public CellMenuCreaturePage(BigEntity forEntity, DescriptorActionForEntity d) : base(forEntity, d)
         {
-            resources = new ListBaseResources();
+            //resources = new ListBaseResources();
         }
 
         internal int Pages { get; private set; }
@@ -98,11 +97,6 @@ namespace Fantasy_Kingdoms_Battle
                 ChangePage = true;
                 Program.formMain.layerGame.UpdateMenu();
             }
-        }
-
-        internal override void UpdatePurchase()
-        {
-            PurchaseValue = resources;
         }
 
         internal override int GetImageIndex()
