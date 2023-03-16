@@ -18,7 +18,7 @@
         <ID>LevelGuildWarrior1</ID>
         <Number>1</Number>
         <Durability>400</Durability>
-        <MaxInhabitant>10</MaxInhabitant>
+        <MaxInhabitant>4</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
           <Time>20</Time>
@@ -34,7 +34,7 @@
         <ID>LevelGuildWarrior2</ID>
         <Number>2</Number>
         <Durability>500</Durability>
-        <MaxInhabitant>20</MaxInhabitant>
+        <MaxInhabitant>5</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
           <Time>25</Time>
@@ -57,7 +57,7 @@
         <ID>LevelGuildWarrior3</ID>
         <Number>3</Number>
         <Durability>600</Durability>
-        <MaxInhabitant>30</MaxInhabitant>
+        <MaxInhabitant>6</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
           <Time>25</Time>
