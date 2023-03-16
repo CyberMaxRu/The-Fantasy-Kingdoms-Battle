@@ -763,18 +763,22 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int time, int builders, List<TextRequirement> requirement)
         {
+            Assert(nameExecuting.Length > 0);
+
+            sepExecuting.ShiftY = nextTop;
+            sepExecuting.Visible = true;
+            lblNameExecuting.Text = nameExecuting;
+            lblNameExecuting.Height = lblNameExecuting.MinHeigth();
+            lblNameExecuting.ShiftY = sepExecuting.NextTop();
+            lblNameExecuting.Visible = true;
+            nextTop = lblNameExecuting.NextTop();
+
             if (costResources != null)
             {
                 Assert(costResources.Gold > 0);
 
-                sepExecuting.ShiftY = nextTop;
-                sepExecuting.Visible = true;
-                lblNameExecuting.Text = nameExecuting;
-                lblNameExecuting.Height = lblNameExecuting.MinHeigth();
-                lblNameExecuting.ShiftY = sepExecuting.NextTop();
-                lblNameExecuting.Visible = true;
                 lblChapterCost.Visible = true;
-                lblChapterCost.ShiftY = lblNameExecuting.NextTop();
+                lblChapterCost.ShiftY = nextTop;
                 nextTop = lblChapterCost.NextTop();
 
                 lblCostGold.ShiftY = nextTop;
