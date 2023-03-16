@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCMenuCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
-            PlaySoundOnClick = true;
+            PlaySoundOnClick = false;// Звук клика выключаем, т.к. при клике на активном действии он проигрывается через Action
 
             lblBanner = new VCLabel(this, 0, 0, Program.formMain.fontBigCaptionC, Color.White, Height, "");
             lblBanner.StringFormat.LineAlignment = StringAlignment.Center;
