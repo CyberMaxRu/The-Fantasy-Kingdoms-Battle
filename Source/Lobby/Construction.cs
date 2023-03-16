@@ -169,6 +169,7 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal List<Creature> Recruits { get; } = new List<Creature>();// Рекруты, готовые к найму
+        internal List<CellMenuConstructionCreatingCreature> CreaturesInQueue = new List<CellMenuConstructionCreatingCreature>();// Существа в очереди выполнения
 
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
@@ -554,24 +555,39 @@ namespace Fantasy_Kingdoms_Battle
             return Level < Descriptor.MaxLevel ? GreatnesPerDayForLevel(Level + 1) : 0;
         }
 
+        internal int MaxHeroes()
+        {
+            return Level > 0 ? Descriptor.Levels[Level].MaxInhabitant : 0;
+        }
+
+        internal bool MaxCreaturesInConstruction()
+        {
+            return Level > 0 ? Heroes.Count + CreaturesInQueue.Count == MaxHeroes() : false;
+        }
+
+        internal bool MaxHeroesAtPlayer()
+        {
+            return Player.CombatHeroes.Count == Player.Lobby.TypeLobby.MaxHeroes;
+        }
+
         internal bool AllowHire()
         {
             if (Level == 0)
                 return false;
 
-            if ((Level > 0) && (Heroes.Count == MaxHeroes()))
+            if (MaxCreaturesInConstruction())
                 return false;
 
             if (MaxHeroesAtPlayer())
                 return false;
 
             return true;
-
         }
 
         internal Creature HireHero(DescriptorCreature th, ListBaseResources cost)
         {
-            Debug.Assert(Heroes.Count < MaxHeroes());
+            Debug.Assert(!MaxCreaturesInConstruction());
+            Debug.Assert(!MaxHeroesAtPlayer());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
             //Debug.Assert(Player.Gold >= TypeConstruction.TrainedHero.Cost);
 
@@ -599,16 +615,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Heroes.Add(ph);
             Player.AddHero(ph);
-        }
-
-        internal bool MaxHeroesAtPlayer()
-        {
-            return Player.CombatHeroes.Count == Player.Lobby.TypeLobby.MaxHeroes;
-        }
-
-        internal int MaxHeroes()
-        {
-            return Level > 0 ? Descriptor.Levels[Level].MaxInhabitant : 0;
         }
 
         internal override void PrepareHint(PanelHint panelHint)

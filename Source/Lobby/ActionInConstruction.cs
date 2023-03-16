@@ -759,20 +759,21 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override ActionInConstruction ActionForAddToQueue()
         {
-            ActionInConstruction a = new CellMenuConstructionCreatingCreature(Construction, Descriptor); ;
-            Construction.Actions.Add(a);
-            return a;
+            CellMenuConstructionCreatingCreature cc = new CellMenuConstructionCreatingCreature(Construction, Descriptor);
+            Construction.Actions.Add(cc);
+            Construction.CreaturesInQueue.Add(cc);
+            return cc;
         }
 
         protected override void UpdateTextRequirements(List<TextRequirement> list)
         {
             base.UpdateTextRequirements(list);
 
-            if ((Construction.Level > 0) && (Construction.Heroes.Count == Construction.MaxHeroes()))
+            if (Construction.MaxCreaturesInConstruction())
                 list.Add(new TextRequirement(false, Construction.Descriptor.GetTextConstructionIsFull()));
 
             if (Construction.MaxHeroesAtPlayer())
-                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев в королевстве"));
+                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев"));
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -802,6 +803,8 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
+            Assert(Construction.CreaturesInQueue.IndexOf(this) != -1);
+            Construction.CreaturesInQueue.Remove(this);
             Creature h = Construction.HireHero(Creature, null);// Обучение уже оплачено
             Construction.Player.RemoveFromQueueExecuting(this, true);
             Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
