@@ -43,6 +43,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (Construction.Level == 0)
                         return false;
 
+            // Проверяем, не заполнена ли очередь
             if ((ProgressExecuting != null) && !ProgressExecuting.InQueue)
                 if (Construction.QueueExecuting.Count >= Config.MaxLengthQueue)
                     return false;
@@ -103,6 +104,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 Construction.Player.TextRequirements(Descriptor.CreatedEntity.ComponentCreating.Requirements, list, Construction);
             }
+
+            // Проверяем, не заполнена ли очередь
+            if ((ProgressExecuting != null) && !ProgressExecuting.InQueue)
+                if (Construction.QueueExecuting.Count >= Config.MaxLengthQueue)
+                    list.Add(new TextRequirement(false, "Очередь заполнена"));
         }
 
         internal static ActionInConstruction Create(Construction c, DescriptorActionForEntity d)
