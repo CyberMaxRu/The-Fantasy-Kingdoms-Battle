@@ -95,10 +95,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxHeroForSelectBonus >= 1);
             Debug.Assert(MaxHeroForSelectBonus <= 5);
 
-            DefaultResearchPoints = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/Construction/DefaultResearchPoints").InnerText);
-            Debug.Assert(DefaultResearchPoints >= 100);
-            Debug.Assert(DefaultResearchPoints <= 1000);
-
             MaxLengthQueue = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/Construction/MaxLengthQueue").InnerText);
             Debug.Assert(MaxLengthQueue >= 1);
             Debug.Assert(MaxLengthQueue <= 10);
@@ -413,7 +409,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
         internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса
         internal int MaxHeroForSelectBonus { get; private set; }// Максимальное количество типов героев для выбора постоянного бонуса
-        internal int DefaultResearchPoints { get; private set; }// Очков исследования по умолчанию у сооружения
         internal int MaxLengthQueue { get; private set; }// Максимальная длина очереди
 
         // Состояния существ

@@ -112,11 +112,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool InLevelUp { get; set; }// Сооружение строится/улучшается
         internal bool InRepair { get; set; }// Сооружение ремонтируется
 
-        // Исследования
-        internal int ResearchPoints { get; private set; }// Всего очков исследования на этот ход
-        internal int RestResearchPoints { get; private set; }// Осталось очков исследования
-        internal int UsedResearchPoints { get; private set; }// Использовано очков исследования
-
         // Прочность
         internal int CurrentDurability// Текущая прочность сооружения
         {
@@ -1527,15 +1522,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 1; i < TurnLevelConstructed.Length; i++)
                 TurnLevelConstructed[i] = -1;
 
-            UpdatePointsResearch();
-
             Player.AddConstruction(this);
-        }
-
-        private void UpdatePointsResearch()
-        {
-            ResearchPoints = FormMain.Config.DefaultResearchPoints;
-            RestResearchPoints = ResearchPoints;
         }
 
         // Подготовка строительства сооружения
