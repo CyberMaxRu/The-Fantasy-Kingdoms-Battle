@@ -25,10 +25,12 @@ namespace Fantasy_Kingdoms_Battle
 
             lblCaption = new VCLabel(this, CellEntity.NextLeft() + 2, 0, Program.formMain.fontParagraphC, Color.White, 16, "");
             lblCaption.StringFormat.Alignment = StringAlignment.Near;
+            lblCaption.IsActiveControl = false;
 
             lblText = new VCLabel(this, lblCaption.ShiftX, 24, Program.formMain.fontParagraphC, Color.White, 16, "");
             lblText.StringFormat.Alignment = StringAlignment.Near;
             lblText.TruncLongText = true;
+            lblCaption.IsActiveControl = false;
             Height = CellEntity.Height;
             Width = width;
         }

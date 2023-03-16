@@ -316,7 +316,12 @@ namespace Fantasy_Kingdoms_Battle
             Assert(Visible);
 
             if (AllowClick())
-                RightClick?.Invoke(this, new EventArgs());
+            {
+                if (IsActiveControl)
+                    RightClick?.Invoke(this, new EventArgs());
+                else
+                    Parent.RightButtonClick();
+            }
         }
 
         internal virtual void KeyPress(KeyPressEventArgs e)

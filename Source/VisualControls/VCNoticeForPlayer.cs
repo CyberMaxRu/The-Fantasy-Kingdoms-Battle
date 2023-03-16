@@ -24,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Visible = false;
             CellEntity.RightClick += Cell_RightClick;
+            RightClick += Cell_RightClick;
 
             if (typeNotice != TypeNoticeForPlayer.ReceivedBaseResource)
             {
@@ -161,6 +162,9 @@ namespace Fantasy_Kingdoms_Battle
         public VCNoticeForPlayer(int imageIndexOwner, int imageIndexEnity, string caption, string text, Color color) : base(Program.formMain.layerGame.panelNotices.Width)
         {
             SetNotice(imageIndexOwner, imageIndexEnity, caption, text, color);
+
+            CellEntity.RightClick += Cell_RightClick;
+            RightClick += Cell_RightClick;
         }
 
         internal void CloseSelf()
