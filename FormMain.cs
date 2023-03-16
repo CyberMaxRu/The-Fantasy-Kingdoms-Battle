@@ -1019,15 +1019,17 @@ namespace Fantasy_Kingdoms_Battle
                     if (IsDisposed)
                         return;
                 }
-                else if (e.Button == MouseButtons.Right)
+            }
+
+            if (e.Button == MouseButtons.Right)
+            {
+                if (controlWithHint != null)
                 {
-                    if (controlWithHint != null)
-                    {
-                        Debug.Assert(controlWithHint.Visible);
-                        controlWithHint.RightButtonClick();
-                    }
+                    Debug.Assert(controlWithHint.Visible);
+                    controlWithHint.RightButtonClick();
                 }
             }
+
 
             //ShowFrame(true);
 
