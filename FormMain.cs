@@ -965,11 +965,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnMouseDown(e);
 
-            // Если кликнули на контрол, не показываем подсказку.
-            // Во-первых, потому что это считается за действие
-            // Во-вторых, во время клика меню может поменяться, в том числе пропасть кнопка, поэтому подсказку нельзя показывать до отработки клика
-            VisualControl.PanelHint.HideHint();
-
             if (e.Button == MouseButtons.Left)
             {
                 if (controlWithHint != null)
