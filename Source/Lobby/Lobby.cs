@@ -223,13 +223,18 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Turn++;
                 CounterTicksOfTurn = 0;
-                startNewDay = true;
+                startNewDay = true; 
 
                 Day++;
                 if (Day == 8)
                 {
                     Day = 1;
                     Week++;
+                    if (Week == 5)
+                    {
+                        Week = 1;
+                        Month++;
+                    }
 
                     IndexTimeOfWeek++;
                     if (IndexTimeOfWeek == FormMain.Descriptors.TimesOfWeek.Count)
@@ -237,8 +242,6 @@ namespace Fantasy_Kingdoms_Battle
 
                     TimeOfWeek = FormMain.Descriptors.TimesOfWeek[IndexTimeOfWeek];
                 }
-                if (Week == 5)
-                    Month++;
             }
 
             // Ходим игроками
