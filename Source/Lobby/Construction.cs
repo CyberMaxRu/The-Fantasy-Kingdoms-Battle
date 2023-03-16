@@ -584,7 +584,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (th.CategoryCreature != CategoryCreature.Citizen)
             {
-                if (gold > 0)
+                if (cost != null)
                 {
                     Player.SpendResource(cost);
                     if (Player.Descriptor.TypePlayer == TypePlayer.Human)

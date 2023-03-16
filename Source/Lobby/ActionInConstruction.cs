@@ -23,7 +23,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Creating != null)
                     if (Creating.Time > 0)
-                        ProgressExecuting = new ComponentProgressExecuting(Creating.Time, Creating.Builders, Construction.Player.GetMilliTicksForAction());
+
+                ProgressExecuting = new ComponentProgressExecuting(Creating.Time, Creating.Builders, Construction.Player.GetMilliTicksForAction());
             }
         }
 
@@ -169,7 +170,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal virtual ActionInConstruction ActionForAddToQueue() => this;
+        protected virtual ActionInConstruction ActionForAddToQueue() => this;
 
         internal virtual void StartProgress() { }// Вызывается перед началом выполнения действия
 
@@ -730,9 +731,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            Creature h = Construction.HireHero(Creature, PurchaseValue);
-
-            Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
+            DoException("Действие не может быть выполнено");
         }
 
         internal override bool CheckRequirements()
@@ -750,6 +749,13 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Creature.ImageIndex;
+        }
+
+        protected override ActionInConstruction ActionForAddToQueue()
+        {
+            ActionInConstruction a = new CellMenuConstructionCreatingCreature(Construction, Descriptor); ;
+            Construction.Actions.Add(a);
+            return a;
         }
 
         protected override void UpdateTextRequirements(List<TextRequirement> list)
@@ -790,37 +796,14 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            Creature h = Construction.HireHero(Creature, PurchaseValue);
-
+            Creature h = Construction.HireHero(Creature, null);// Обучение уже оплачено
+            Construction.Player.RemoveFromQueueExecuting(this, true);
             Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
         }
-
-        internal override bool CheckRequirements()
-        {
-            return base.CheckRequirements() && Construction.AllowHire();
-        }
-
-        internal override void UpdatePurchase()
-        {
-            Construction.Player.CompPurchase(Descriptor.CreatedEntity.ComponentCreating.CostResources, PurchaseValue, TypeCreating.Hire);
-        }
-
-        protected override string GetTextForLevel() => "р";
 
         internal override int GetImageIndex()
         {
             return Creature.ImageIndex;
-        }
-
-        protected override void UpdateTextRequirements(List<TextRequirement> list)
-        {
-            base.UpdateTextRequirements(list);
-
-            if ((Construction.Level > 0) && (Construction.Heroes.Count == Construction.MaxHeroes()))
-                list.Add(new TextRequirement(false, Construction.Descriptor.GetTextConstructionIsFull()));
-
-            if (Construction.MaxHeroesAtPlayer())
-                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев в королевстве"));
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -833,9 +816,9 @@ namespace Fantasy_Kingdoms_Battle
             */
             panelHint.AddStep2Descriptor(Creature);
             panelHint.AddStep5Description(Creature.Description);
-            panelHint.AddStep75Salary(Creature.CostOfHiring);
+            //panelHint.AddStep75Salary(Creature.CostOfHiring);
             //panelHint.AddStep10DaysBuilding(InQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Рекрутировать", PurchaseValue, 0, 0, GetTextRequirements());
+            panelHint.AddStep12CostExecuting("Обучение", null);
         }
     }
 
