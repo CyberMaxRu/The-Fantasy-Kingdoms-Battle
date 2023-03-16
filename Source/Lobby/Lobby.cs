@@ -230,17 +230,17 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Day = 1;
                     Week++;
+                    if (Week == 5)
+                    {
+                        Week = 1;
+                        Month++;
+                    }
 
                     IndexTimeOfWeek++;
                     if (IndexTimeOfWeek == FormMain.Descriptors.TimesOfWeek.Count)
                         IndexTimeOfWeek = 0;
 
                     TimeOfWeek = FormMain.Descriptors.TimesOfWeek[IndexTimeOfWeek];
-                }
-                if (Week == 5)
-                {
-                    Week = 1;
-                    Month++;
                 }
             }
 
