@@ -158,7 +158,7 @@ namespace Fantasy_Kingdoms_Battle
             SetNotice(imageIndexOwner, Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
         }
 
-        public VCNoticeForPlayer(int imageIndexOwner, int imageIndexEnity, string caption, string text, Color color) : base(52 + 399)
+        public VCNoticeForPlayer(int imageIndexOwner, int imageIndexEnity, string caption, string text, Color color) : base(Program.formMain.layerGame.panelNotices.Width)
         {
             SetNotice(imageIndexOwner, imageIndexEnity, caption, text, color);
         }
