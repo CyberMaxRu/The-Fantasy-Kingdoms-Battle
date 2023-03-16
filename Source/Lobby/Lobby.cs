@@ -238,7 +238,10 @@ namespace Fantasy_Kingdoms_Battle
                     TimeOfWeek = FormMain.Descriptors.TimesOfWeek[IndexTimeOfWeek];
                 }
                 if (Week == 5)
+                {
+                    Week = 1;
                     Month++;
+                }
             }
 
             // Ходим игроками
