@@ -69,9 +69,10 @@ namespace Fantasy_Kingdoms_Battle
             btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutProgram.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
             btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
 
-            timerAnimation = new Timer();
-            timerAnimation.Interval = Config.DurationFrame;
-            timerAnimation.Enabled = true;
+            timerAnimation = new Timer
+            {
+                Interval = Config.DurationFrame
+            };
             timerAnimation.Tick += TimerAnimation_Tick;
         }
 
@@ -201,6 +202,11 @@ namespace Fantasy_Kingdoms_Battle
 
             bitmapLogo = Program.formMain.CollectionBackgroundImage.GetBitmap("MainMenu", Program.formMain.Size);
             ArrangeControls();
+        }
+
+        internal void StartAnimation()
+        {
+            timerAnimation.Start();
         }
     }
 }
