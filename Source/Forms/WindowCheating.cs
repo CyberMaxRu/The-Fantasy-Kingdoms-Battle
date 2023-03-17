@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         private Player player;
 
         private VCButton btnShowAll;
+        private VCButton btnGiveHeroesGold;
 
         private VCButton btnAccept;
         private VCButton btnSetAll;
@@ -46,6 +47,10 @@ namespace Fantasy_Kingdoms_Battle
             btnShowAll.Width = 240;
             btnShowAll.Click += BtnShowAll_Click;
 
+            btnGiveHeroesGold = new VCButton(ClientControl, btnShowAll.NextLeft(), btnShowAll.ShiftY, "Дать героям 1000 золота");
+            btnGiveHeroesGold.Width = 256;
+            btnGiveHeroesGold.Click += BtnGiveHeroesGold_Click;
+
             // Кнопки
             btnAccept = new VCButton(ClientControl, 0, btnShowAll.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
             btnAccept.Width = 160;
@@ -74,6 +79,17 @@ namespace Fantasy_Kingdoms_Battle
             chkbReduceCostBy10.Width = ClientControl.Width;
 
             ApplyMaxSize();
+        }
+
+        private void BtnGiveHeroesGold_Click(object sender, EventArgs e)
+        {
+            foreach (Creature c in player.CombatHeroes)
+            {
+                if (c.IsLive)
+                {
+                    c.AddGold(1000);
+                }
+            }
         }
 
         private void BtnShowAll_Click(object sender, EventArgs e)
