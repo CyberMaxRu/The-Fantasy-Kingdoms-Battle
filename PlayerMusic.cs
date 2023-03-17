@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.IO;
 using System.Diagnostics;
+using System.Windows;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -106,6 +107,18 @@ namespace Fantasy_Kingdoms_Battle
                 musicFromMajesty2 = Settings.MusicFromMajesty2;
 
                 playlistFull.Clear();
+
+                if (!Directory.Exists(Program.FolderResources + @"Music\Music\M1"))
+                {
+                    MessageBox.Show($"Папка {Program.FolderResources + @"Music\Music\M1"} не найдена.");
+                    return;
+                }
+                if (!Directory.Exists(Program.FolderResources + @"Music\Music\M2"))
+                {
+                    MessageBox.Show($"Папка {Program.FolderResources + @"Music\Music\M2"} не найдена.");
+                    return;
+                }
+
                 if (musicFromMajesty1)
                     playlistFull.AddRange(Directory.GetFiles(Program.FolderResources + @"Music\Music\M1"));
                 if (musicFromMajesty2)
