@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Участники миссии
     internal sealed class DescriptorMissionMember : DescriptorEntity
     {
-        public DescriptorMissionMember(XmlNode n) : base(n)
+        public DescriptorMissionMember(XmlNode n) : base(n, false)
         {
             Title = GetStringNotNull(n, "Title");
 

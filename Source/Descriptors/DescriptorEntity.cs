@@ -8,13 +8,14 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый описатель для всех сущностей - сооружений, существ, умений, предметов и т.д.
     internal abstract class DescriptorEntity : DescriptorVisual
     {
-        public DescriptorEntity(XmlNode n) : base(n)
+        public DescriptorEntity(XmlNode n, bool useInGlobal = true) : base(n)
         {
             string soundSelect = GetString(n, "SoundSelect");
             if (soundSelect.Length > 0)
                 UriSoundSelect = new Uri(Program.FolderResources + @"Sound\Interface\ConstructionSelect\" + soundSelect);
 
-            Descriptors.AddEntity(this);
+            if (useInGlobal)
+                Descriptors.AddEntity(this);
         }
 
         public DescriptorEntity(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
