@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public CustomWindow()
         {
-            Program.formMain.AddLayer(this, ToString());
+            Program.formMain.AddLayer(this);
         }
 
         internal bool ShowButtonClose// Показывать крестик в правом верхнем углу

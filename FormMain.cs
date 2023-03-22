@@ -666,7 +666,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddLayer(LayerCustom vc, string name)
+        internal void AddLayer(LayerCustom vc)
         {
             Debug.Assert(Layers.Count <= 5);
             Debug.Assert(currentLayer.Controls.Count > 0);
