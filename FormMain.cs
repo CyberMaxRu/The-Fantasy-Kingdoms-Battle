@@ -49,9 +49,6 @@ namespace Fantasy_Kingdoms_Battle
         internal BitmapList BmpListMenuCellFilters { get; }
         internal BitmapList BmpListCheckBox { get; }
 
-        internal Brush brushQuantity;
-        internal Brush brushCost;
-
         // Контролы главного меню
         private Point mousePos;
         private VisualControl controlWithHint;
@@ -323,9 +320,6 @@ namespace Fantasy_Kingdoms_Battle
             fontSmallBC = new M2Font("_small_b_c");
             fontParagraph = new M2Font("paragraph");
             fontParagraphC = new M2Font("paragraph_c");
-
-            brushQuantity = new SolidBrush(Config.CommonQuantity);
-            brushCost = new SolidBrush(Config.CommonCost);
 
             SelectHumanPlayer(Descriptors.HumanPlayers[0]);
 
