@@ -131,7 +131,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DrawBackground(g);
 
-            g.DrawImageUnscaled(bitmapLogo, 0, 0);
+            DrawImage(g, bitmapLogo, 0, 0);
         }
 
         internal override void Draw(Graphics g)
