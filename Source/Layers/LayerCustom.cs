@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class LayerCustom : VisualControl
     {
-        private bool _enabled = true;
+        private bool enabled = true;
 
         public LayerCustom() : base()
         {
@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static Config Config { get; set; }
         internal static Descriptors Descriptors { get; set; }
-        internal bool Enabled { get => _enabled; set { if (_enabled != value) { _enabled = value; OnEnabledChanged(); } } }
+        internal bool Enabled { get => enabled; set { if (enabled != value) { enabled = value; OnEnabledChanged(); } } }
 
         internal virtual void ApplyCurrentWindowSize()
         {
