@@ -48,9 +48,6 @@ namespace Fantasy_Kingdoms_Battle
         private Graphics gfxRenderFrame;// Graphics кадра
         private Graphics gfxRenderClientArea;// Graphics клиентской области
 
-        internal const int MAX_LAIRS_WIDTH = 4;
-        internal const int MAX_LAIRS_HEIGHT = 3;
-
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
         internal const int GUI_PARAMETER_MAGIC = 8;
