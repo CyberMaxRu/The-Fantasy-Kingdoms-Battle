@@ -29,8 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRepaintFrame = false;
         private bool inMouseClick;
 
-        // Проигрывание звуков и музыки
-        internal readonly PlayerMusic playerMusic;
+        // Проигрывание звуков
         private readonly System.Windows.Media.MediaPlayer mpSoundSelect;
         private readonly System.Windows.Media.MediaPlayer mpSelectButton;
         private readonly System.Windows.Media.MediaPlayer mpPushButton;
@@ -415,7 +414,7 @@ namespace Fantasy_Kingdoms_Battle
             SetStage("Прибираем после строителей");
 
             //
-            playerMusic = new PlayerMusic(Settings);
+            PlayerMusic = new PlayerMusic(Settings);
             mpSoundSelect = new System.Windows.Media.MediaPlayer();
             mpSelectButton = new System.Windows.Media.MediaPlayer();
             mpSelectButton.Open(new Uri(Program.FolderResources + @"Sound\Interface\Button\SelectButton.wav"));
@@ -439,7 +438,7 @@ namespace Fantasy_Kingdoms_Battle
             //MediaElement me = new MediaElement()
             //me.Parent = this;
 
-            playerMusic.PlayMainTheme();
+            PlayerMusic.PlayMainTheme();
             layerMainMenu.StartAnimation();
 
             //ImportNames();// Однократная операция
@@ -476,12 +475,15 @@ namespace Fantasy_Kingdoms_Battle
         internal M2Font FontParagraph { get; }
         internal M2Font FontParagraphC { get; }
 
+        // Проигрывание музыки
+        internal PlayerMusic PlayerMusic { get; }
+
 
         internal HumanPlayer CurrentHumanPlayer { get; private set; }
 
         private void Settings_VolumeMusicChanged(object sender, EventArgs e)
         {
-            playerMusic.UpdateVolumeSound();
+            PlayerMusic.UpdateVolumeSound();
         }
 
         private void Settings_VolumeSoundChanged(object sender, EventArgs e)
@@ -499,7 +501,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void Settings_PlayMusicChanged(object sender, EventArgs e)
         {
-            playerMusic.TogglePlayMusic();
+            PlayerMusic.TogglePlayMusic();
         }
 
         protected override void OnShown(EventArgs e)
@@ -642,7 +644,7 @@ namespace Fantasy_Kingdoms_Battle
             w.ApplySettings(Settings);
             if (w.ShowDialog() == DialogAction.OK)
             {
-                playerMusic.RefreshPlayList();
+                PlayerMusic.RefreshPlayList();
                 /*if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
                 {
                     lobby.CurrentPlayer.Name = Settings.NamePlayer;

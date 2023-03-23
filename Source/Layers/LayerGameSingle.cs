@@ -922,7 +922,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Program.formMain.currentLayer != this)
             {
-                Program.formMain.playerMusic.PlayMusic();
+                Program.formMain.PlayerMusic.PlayMusic();
                 Program.formMain.ExchangeLayer(Program.formMain.layerMainMenu, this);
             }
 
@@ -1018,7 +1018,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
                 Program.formMain.ShowFrame(true);
-                Program.formMain.playerMusic.PlayMainTheme();
+                Program.formMain.PlayerMusic.PlayMainTheme();
             }
         }
 
