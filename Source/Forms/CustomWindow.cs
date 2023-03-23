@@ -29,8 +29,10 @@ namespace Fantasy_Kingdoms_Battle
                 showButtonClose = value;
                 if (showButtonClose && (imgClose is null))
                 {
-                    imgClose = new VCImage(this, 0, 0, Program.formMain.BmpListGui32, FormMain.GUI_32_CLOSE);
-                    imgClose.HighlightUnderMouse = true;
+                    imgClose = new VCImage(this, 0, 0, Program.formMain.BmpListGui32, FormMain.GUI_32_CLOSE)
+                    {
+                        HighlightUnderMouse = true
+                    };
                     imgClose.Click += ImgClose_Click;
                 }
                 else if (!showButtonClose && (imgClose != null))
@@ -38,7 +40,6 @@ namespace Fantasy_Kingdoms_Battle
                     imgClose.Dispose();
                     imgClose = null;
                 }
-
             }
         }
 
