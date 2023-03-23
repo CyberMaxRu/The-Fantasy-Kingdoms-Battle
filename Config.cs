@@ -160,6 +160,13 @@ namespace Fantasy_Kingdoms_Battle
 
             TicksInTurn = TicksInSecond * SecondsInTurn;
 
+            DaysInWeek = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/DaysInWeek").InnerText);
+            Assert(DaysInWeek > 1);
+            Assert(DaysInWeek < 10);
+            WeeksInMonth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/WeeksInMonth").InnerText);
+            Assert(WeeksInMonth > 1);
+            Assert(WeeksInMonth < 10);
+
             // MainMenu
             MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
             MainMenuFramesAnimationBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/FramesAnimationBanner").InnerText);
@@ -388,7 +395,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
         internal int LengthTicksInMSec { get; set; }// Длительность одного тика игры в миллисекундах
         internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
-
+        internal int DaysInWeek { get; private set; }// Дней в неделе
+        internal int WeeksInMonth { get; private set; }// Недель в месяце
+        
         internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
         internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера
 

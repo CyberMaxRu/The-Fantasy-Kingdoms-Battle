@@ -226,11 +226,11 @@ namespace Fantasy_Kingdoms_Battle
                 startNewDay = true;
 
                 Day++;
-                if (Day == 8)
+                if (Day > FormMain.Config.DaysInWeek)
                 {
                     Day = 1;
                     Week++;
-                    if (Week == 5)
+                    if (Week > FormMain.Config.WeeksInMonth)
                     {
                         Week = 1;
                         Month++;

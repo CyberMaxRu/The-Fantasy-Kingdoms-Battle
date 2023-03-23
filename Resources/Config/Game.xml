@@ -31,6 +31,8 @@
   <GlobalSettings>
     <SecondsInTurn>15</SecondsInTurn>
     <TicksInSecond>50</TicksInSecond>
+    <DaysInWeek>7</DaysInWeek>
+    <WeeksInMonth>4</WeeksInMonth>
     <Construction>
       <MaxLengthQueue>3</MaxLengthQueue>
     </Construction>
