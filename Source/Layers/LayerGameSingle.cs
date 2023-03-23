@@ -185,12 +185,12 @@ namespace Fantasy_Kingdoms_Battle
             labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
             labelNamePlayer.Width = 16;
 
-            btnInGameMenu = Program.formMain.CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, null);
+            btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, null);
             btnInGameMenu.HighlightUnderMouse = true;
             btnInGameMenu.ShowBorder = false;
             btnInGameMenu.Hint = "Меню";
             btnInGameMenu.HintDescription = "Показать внутриигровое меню";
-            btnCheating = Program.formMain.CreateButton(bmpTopPanel, Config.Gui48_Cheating, btnInGameMenu.NextLeft(), btnInGameMenu.ShiftY, BtnCheating_Click, null);
+            btnCheating = CreateButton(bmpTopPanel, Config.Gui48_Cheating, btnInGameMenu.NextLeft(), btnInGameMenu.ShiftY, BtnCheating_Click, null);
             btnCheating.HighlightUnderMouse = true;
             btnCheating.Hint = "Читинг";
             btnCheating.HintDescription = "Открыть настройки читинга";
@@ -380,6 +380,16 @@ namespace Fantasy_Kingdoms_Battle
 
             lobby?.DoTicks();
         }
+
+        private VCIconButton48 CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
+        {
+            VCIconButton48 b = new VCIconButton48(parent, left, top, imageIndex);
+            b.Click += click;
+            b.ShowHint += showHint;
+
+            return b;
+        }
+
 
         private void LabelKnowledge_ShowHint(object sender, EventArgs e)
         {

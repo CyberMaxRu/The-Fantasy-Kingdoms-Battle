@@ -920,15 +920,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal VCIconButton48 CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
-        {
-            VCIconButton48 b = new VCIconButton48(parent, left, top, imageIndex);
-            b.Click += click;
-            b.ShowHint += showHint;
-
-            return b;
-        }
-
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             base.OnKeyPress(e);
