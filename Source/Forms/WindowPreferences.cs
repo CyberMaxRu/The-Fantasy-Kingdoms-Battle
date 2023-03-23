@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             vcPanelGame = new VisualControl(ClientControl, 0, 0);
             vcPanelGame.ShowBorder = true;
-            lblCaptionPanelGame = new VCLabel(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Общие настройки:");
+            lblCaptionPanelGame = new VCLabel(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.FontMedCaption, Color.MediumTurquoise, 24, "Общие настройки:");
             lblCaptionPanelGame.StringFormat.Alignment = StringAlignment.Near;
             chkbShowSplashVideo = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, lblCaptionPanelGame.NextTop(), "Показывать видео-заставку");
             chkbFullscreenMode = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, chkbShowSplashVideo.NextTop(), "Полноэкранный режим");
@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
 
             vcPanelBatttlefield = new VisualControl(ClientControl, 0, vcPanelGame.NextTop());
             vcPanelBatttlefield.ShowBorder = true;
-            lblCaptionPanelBattlefield = new VCLabel(vcPanelBatttlefield, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Настройки битвы:");
+            lblCaptionPanelBattlefield = new VCLabel(vcPanelBatttlefield, FormMain.Config.GridSize, 8, Program.formMain.FontMedCaption, Color.MediumTurquoise, 24, "Настройки битвы:");
             lblCaptionPanelBattlefield.StringFormat.Alignment = StringAlignment.Near;
             chkbShowPath = new VCCheckBox(vcPanelBatttlefield, FormMain.Config.GridSize, lblCaptionPanelBattlefield.NextTop(), "Показывать путь юнитов");
             chkbShowGrid = new VCCheckBox(vcPanelBatttlefield, FormMain.Config.GridSize, chkbShowPath.NextTop(), "Показывать сетку");
@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
 
             vcPanelSound = new VisualControl(ClientControl, 0, vcPanelBatttlefield.NextTop());
             vcPanelSound.ShowBorder = true;
-            lblCaptionPanelSound = new VCLabel(vcPanelSound, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Настройки звука:");
+            lblCaptionPanelSound = new VCLabel(vcPanelSound, FormMain.Config.GridSize, 8, Program.formMain.FontMedCaption, Color.MediumTurquoise, 24, "Настройки звука:");
             lblCaptionPanelSound.StringFormat.Alignment = StringAlignment.Near;
             chkbPlaySound = new VCCheckBox(vcPanelSound, FormMain.Config.GridSize, lblCaptionPanelSound.NextTop(), "Звуки");
             chkbPlaySound.Width = 104;
@@ -82,10 +82,10 @@ namespace Fantasy_Kingdoms_Battle
             chkbPlayMusic = new VCCheckBox(vcPanelSound, FormMain.Config.GridSize, chkbPlaySound.NextTop(), "Музыка");
             chkbPlayMusic.Width = 104;
             chkbPlayMusic.Click += ChkbPlayMusic_Click;
-            lblVolumeSound = new VCLabel(vcPanelSound, chkbPlayMusic.NextLeft(), chkbPlaySound.ShiftY, Program.formMain.fontMedCaptionC, Color.White, 24, "");
+            lblVolumeSound = new VCLabel(vcPanelSound, chkbPlayMusic.NextLeft(), chkbPlaySound.ShiftY, Program.formMain.FontMedCaptionC, Color.White, 24, "");
             lblVolumeSound.StringFormat.Alignment = StringAlignment.Far;
             lblVolumeSound.Width = 44;
-            lblVolumeMusic = new VCLabel(vcPanelSound, lblVolumeSound.ShiftX, chkbPlayMusic.ShiftY, Program.formMain.fontMedCaptionC, Color.White, 24, "");
+            lblVolumeMusic = new VCLabel(vcPanelSound, lblVolumeSound.ShiftX, chkbPlayMusic.ShiftY, Program.formMain.FontMedCaptionC, Color.White, 24, "");
             lblVolumeMusic.StringFormat.Alignment = StringAlignment.Far;
             lblVolumeMusic.Width = 44;
             tbVolumeSound = new VCHorizTrackBar(vcPanelSound, lblVolumeSound.NextLeft(), chkbPlaySound.ShiftY);
@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
 
             vcPanelInterface = new VisualControl(ClientControl, 0, vcPanelSound.NextTop());
             vcPanelInterface.ShowBorder = true;
-            lblCaptionPanelInterface = new VCLabel(vcPanelInterface, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Интерфейс:");
+            lblCaptionPanelInterface = new VCLabel(vcPanelInterface, FormMain.Config.GridSize, 8, Program.formMain.FontMedCaption, Color.MediumTurquoise, 24, "Интерфейс:");
             lblCaptionPanelInterface.StringFormat.Alignment = StringAlignment.Near;
             chkbShowShortNames = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, lblCaptionPanelInterface.NextTop(), "Наименования на иконках умений и предметов");
             chkbShowShortNames.Width = 520;

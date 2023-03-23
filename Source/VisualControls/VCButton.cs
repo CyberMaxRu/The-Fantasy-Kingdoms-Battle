@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             PlaySoundOnEnter = true;
             PlaySoundOnClick = true;
 
-            labelCaption = new VCLabel(this, WidthCap, 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
+            labelCaption = new VCLabel(this, WidthCap, 1, Program.formMain.FontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaption.IsActiveControl = false;
         }

@@ -181,7 +181,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelsResources[br.Number] = lblRes;
             }
 
-            labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.fontMedCaptionC, Color.White, Program.formMain.fontMedCaptionC.MaxHeightSymbol, "");
+            labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, Program.formMain.FontMedCaptionC.MaxHeightSymbol, "");
             labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
             labelNamePlayer.Width = 16;
 
@@ -201,10 +201,10 @@ namespace Fantasy_Kingdoms_Battle
 
             // Отладочная информация
             vcDebugInfo = new VisualControl();
-            labelTimeDrawFrame = new VCLabel(vcDebugInfo, btnCheating.NextLeft(), Config.GridSize, Program.formMain.fontParagraph, Color.White, 16, "");
+            labelTimeDrawFrame = new VCLabel(vcDebugInfo, btnCheating.NextLeft(), Config.GridSize, Program.formMain.FontParagraph, Color.White, 16, "");
             labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
             labelTimeDrawFrame.Width = 300;
-            labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Program.formMain.fontParagraph, Color.White, 16, "Layers");
+            labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Program.formMain.FontParagraph, Color.White, 16, "Layers");
             labelLayers.StringFormat.Alignment = StringAlignment.Near;
             labelLayers.Width = 300;
             vcDebugInfo.ApplyMaxSize();
@@ -298,7 +298,7 @@ namespace Fantasy_Kingdoms_Battle
 
             listBtnLevelTax = new List<VCIconButton48>();
 
-            labelCaptionPage = new VCLabel(pageControl, pageMap.NextLeft() + FormMain.Config.GridSize * 2, 0, Program.formMain.fontMedCaptionC, Color.White, 48, "");
+            labelCaptionPage = new VCLabel(pageControl, pageMap.NextLeft() + FormMain.Config.GridSize * 2, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
             labelCaptionPage.ShiftY = (48 - labelCaptionPage.Font.MaxHeightSymbol) / 2;
             labelCaptionPage.Width = 280;
@@ -511,7 +511,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageFinance()
         {
-            VCLabel l = new VCLabel(pageFinance.Page, 0, 0, Program.formMain.fontParagraph, Color.White, 16, "Уровень налогов:");
+            VCLabel l = new VCLabel(pageFinance.Page, 0, 0, Program.formMain.FontParagraph, Color.White, 16, "Уровень налогов:");
             l.Width = l.Font.WidthText(l.Text);
 
             int nextLeft = 0;

@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             panelInhabitants = new PanelWithPanelEntity(4);
             panelVisitors = new PanelWithPanelEntity(4);
 
-            lblTypeConstruction = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontParagraph, Color.White, 16, "");
+            lblTypeConstruction = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.FontParagraph, Color.White, 16, "");
             lblTypeConstruction.StringFormat.Alignment = StringAlignment.Near;
             lblTypeConstruction.Hint = "Тип сооружения";
 
@@ -88,29 +88,29 @@ namespace Fantasy_Kingdoms_Battle
             btnVisitors = pageControl.AddTab("Посетители", FormMain.Config.Gui48_Exit, panelVisitors);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
-            lblSectionProperty = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Основные характеристики:");
+            lblSectionProperty = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Основные характеристики:");
             lblSectionProperty.StringFormat.Alignment = StringAlignment.Near;
             listProperties = new List<VCCreatureProperty>();
             for (int i = 0; i < FormMain.Descriptors.PropertiesCreature.Count; i++)
                 listProperties.Add(new VCCreatureProperty(tabProducts, 0, 0, 51));
 
-            lblSectionVisits = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Посещение:");
+            lblSectionVisits = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Посещение:");
             lblSectionVisits.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionSpells = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Заклинания:");
+            lblSectionSpells = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Заклинания:");
             lblSectionSpells.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Доп. сооружения:");
+            lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Доп. сооружения:");
             lblSectionExtensions.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionImprovements = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Улучшения:");
+            lblSectionImprovements = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Улучшения:");
             lblSectionImprovements.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionBaseResources = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Базовые ресурсы:");
+            lblSectionBaseResources = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Базовые ресурсы:");
             lblSectionBaseResources.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionResources = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Ресурсы:");
+            lblSectionResources = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Ресурсы:");
             lblSectionResources.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionServices = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Услуги:");
+            lblSectionServices = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Услуги:");
             lblSectionServices.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionGoods = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Товары:");
+            lblSectionGoods = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Товары:");
             lblSectionGoods.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionAbilities = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Умения:");
+            lblSectionAbilities = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Умения:");
             lblSectionAbilities.StringFormat.Alignment = StringAlignment.Near;
 
             panelVisits = new PanelWithPanelEntity(4, false);

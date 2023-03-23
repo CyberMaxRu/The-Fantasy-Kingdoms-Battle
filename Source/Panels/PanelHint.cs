@@ -102,25 +102,25 @@ namespace Fantasy_Kingdoms_Battle
 
             widthControl = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
 
-            lblHeader = new VCText(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, widthControl);
+            lblHeader = new VCText(this, FormMain.Config.GridSize, 4, Program.formMain.FontMedCaptionC, Color.Yellow, widthControl);
             lblHeader.StringFormat.Alignment = StringAlignment.Near;
             lblHeader.StringFormat.LineAlignment = StringAlignment.Near;
 
             imgCell = new VCCellSimple(this, FormMain.Config.GridSize, lblHeader.NextTop());
 
-            lblType = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontParagraphC, Color.DarkKhaki, widthControl);
+            lblType = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.FontParagraphC, Color.DarkKhaki, widthControl);
             lblType.StringFormat.Alignment = StringAlignment.Near;
             lblType.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblAction = new VCText(this, FormMain.Config.GridSize, lblType.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
+            lblAction = new VCText(this, FormMain.Config.GridSize, lblType.NextTop(), Program.formMain.FontMedCaptionC, FormMain.Config.HintAction, widthControl);
             lblAction.StringFormat.Alignment = StringAlignment.Near;
             lblAction.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblState = new VCText(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
+            lblState = new VCText(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.FontMedCaptionC, FormMain.Config.HintAction, widthControl);
             lblState.StringFormat.Alignment = StringAlignment.Near;
             lblState.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblDescription = new VCText(this, FormMain.Config.GridSize, lblState.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, widthControl);
+            lblDescription = new VCText(this, FormMain.Config.GridSize, lblState.NextTop(), Program.formMain.FontSmallC, FormMain.Config.HintDescription, widthControl);
             lblDescription.StringFormat.Alignment = StringAlignment.Near;
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
@@ -145,7 +145,7 @@ namespace Fantasy_Kingdoms_Battle
             lblBuildersPerDay.Width = widthControl;
 
             //
-            lblSettlementParameters = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Параметры города/деревни:");
+            lblSettlementParameters = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.FontSmallC, Color.White, 16, "Параметры города/деревни:");
             lblSettlementParameters.Width = widthControl;
             lblSettlementParameters.StringFormat.Alignment = StringAlignment.Near;
 
@@ -164,10 +164,10 @@ namespace Fantasy_Kingdoms_Battle
             sepExecuting = new VCSeparator(this, FormMain.Config.GridSize, lblInterest.NextTop());
             sepExecuting.Width = widthControl;
 
-            lblNameExecuting = new VCText(this, FormMain.Config.GridSize, sepExecuting.NextTop(), Program.formMain.fontMedCaptionC, Color.PaleTurquoise, widthControl);
+            lblNameExecuting = new VCText(this, FormMain.Config.GridSize, sepExecuting.NextTop(), Program.formMain.FontMedCaptionC, Color.PaleTurquoise, widthControl);
             lblNameExecuting.StringFormat.Alignment = StringAlignment.Near;
 
-            lblChapterCost = new VCLabel(this, FormMain.Config.GridSize, lblNameExecuting.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Стоимость:");
+            lblChapterCost = new VCLabel(this, FormMain.Config.GridSize, lblNameExecuting.NextTop(), Program.formMain.FontSmallC, Color.White, 16, "Стоимость:");
             lblChapterCost.Width = widthControl;
             lblChapterCost.StringFormat.Alignment = StringAlignment.Near;
 
@@ -180,19 +180,19 @@ namespace Fantasy_Kingdoms_Battle
             lblTimeExecuting = CreateLabelValue(4);
             lblTimeExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
 
-            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Требуется:");
+            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.FontSmallC, Color.White, 16, "Требуется:");
             lblTextForRequirement.Width = widthControl;
             lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
 
             //
-            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.FontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
 
             lblSeparateTooltip = new VCSeparator(this, FormMain.Config.GridSize, lblSigner.NextTop());
             lblSeparateTooltip.Width = widthControl;
 
-            lblTooltip = new VCText(this, FormMain.Config.GridSize, lblSeparateTooltip.NextTop(), Program.formMain.fontSmallC, Color.White, widthControl);
+            lblTooltip = new VCText(this, FormMain.Config.GridSize, lblSeparateTooltip.NextTop(), Program.formMain.FontSmallC, Color.White, widthControl);
 
             /*            lblDamageMelee = new Label()
                         {
@@ -826,7 +826,7 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             if (!(Program.formMain.Settings.HideFulfilledRequirements && tr.Performed))
                             {
-                                lr = new VCText(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
+                                lr = new VCText(this, FormMain.Config.GridSize, nextTop, Program.formMain.FontSmallC, ColorRequirements(tr.Performed), widthControl - FormMain.Config.GridSize * 3);
                                 lr.StringFormat.Alignment = StringAlignment.Near;
                                 lr.Text = tr.Text;
                                 lr.Height = lr.MinHeigth();
@@ -1079,7 +1079,7 @@ namespace Fantasy_Kingdoms_Battle
                         return listPerks[index];
                     else
                     {
-                        (VCCellSimple, VCLabel) c = (new VCCellSimple(this, FormMain.Config.GridSize, 0), new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, 48, ""));
+                        (VCCellSimple, VCLabel) c = (new VCCellSimple(this, FormMain.Config.GridSize, 0), new VCLabel(this, 0, 0, Program.formMain.FontSmallC, Color.White, 48, ""));
                         c.Item2.ShiftX = c.Item1.NextLeft();
                         c.Item2.Width = Width - c.Item2.ShiftX - FormMain.Config.GridSize;
                         c.Item2.StringFormat.Alignment = StringAlignment.Near;
@@ -1157,7 +1157,7 @@ namespace Fantasy_Kingdoms_Battle
                         return listCustomCells[index];
                     else
                     {
-                        (VCCellSimple, VCLabel) c = (new VCCellSimple(this, FormMain.Config.GridSize, 0), new VCLabel(this, 0, 0, Program.formMain.fontParagraphC, Color.White, 48, ""));
+                        (VCCellSimple, VCLabel) c = (new VCCellSimple(this, FormMain.Config.GridSize, 0), new VCLabel(this, 0, 0, Program.formMain.FontParagraphC, Color.White, 48, ""));
                         c.Item2.ShiftX = c.Item1.NextLeft();
                         c.Item2.Width = Width - c.Item2.ShiftX - FormMain.Config.GridSize;
                         c.Item2.StringFormat.Alignment = StringAlignment.Near;

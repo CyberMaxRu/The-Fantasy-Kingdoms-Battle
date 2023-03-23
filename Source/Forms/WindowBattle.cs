@@ -86,18 +86,18 @@ namespace Fantasy_Kingdoms_Battle
             };
 
             // Создаем контролы
-            lblSystemInfo = new VCLabel(ClientControl, 0, FormMain.Config.GridSize, Program.formMain.fontParagraph, FormMain.Config.BattlefieldSystemInfo, 24, "");
+            lblSystemInfo = new VCLabel(ClientControl, 0, FormMain.Config.GridSize, Program.formMain.FontParagraph, FormMain.Config.BattlefieldSystemInfo, 24, "");
             lblSystemInfo.Width = 560;
             lblSystemInfo.StringFormat.Alignment = StringAlignment.Near;
             lblSystemInfo.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblPlayer1 = new VCText(ClientControl, FormMain.Config.GridSize, lblSystemInfo.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.BmpListObjects128.Size.Width);
+            lblPlayer1 = new VCText(ClientControl, FormMain.Config.GridSize, lblSystemInfo.NextTop(), Program.formMain.FontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.BmpListObjects128.Size.Width);
             lblPlayer1.Height = 48;
             lblPlayer1.StringFormat.Alignment = StringAlignment.Center;
             lblPlayer1.StringFormat.LineAlignment = StringAlignment.Far;
             lblPlayer1.Text = battle.Player1.GetName();
 
-            lblPlayer2 = new VCText(ClientControl, ClientControl.Width - Program.formMain.BmpListObjects128.Size.Width - FormMain.Config.GridSize, lblPlayer1.ShiftY, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.BmpListObjects128.Size.Width);
+            lblPlayer2 = new VCText(ClientControl, ClientControl.Width - Program.formMain.BmpListObjects128.Size.Width - FormMain.Config.GridSize, lblPlayer1.ShiftY, Program.formMain.FontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.BmpListObjects128.Size.Width);
             lblPlayer2.Height = 48;
             lblPlayer2.StringFormat.Alignment = StringAlignment.Center;
             lblPlayer2.StringFormat.LineAlignment = StringAlignment.Far;
@@ -128,24 +128,24 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowPath.Checked = Program.formMain.Settings.BattlefieldShowPath;
 
             lblStateBattle = new VCLabel(ClientControl, 0, imgAvatarParticipant1.ShiftX,
-                Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, 32, "Идет бой");
+                Program.formMain.FontMedCaptionC, FormMain.Config.BattlefieldPlayerName, 32, "Идет бой");
             lblStateBattle.Width = 160;
             lblStateBattle.ShiftX = (ClientControl.Width - lblStateBattle.Width) / 2;
             lblStateBattle.StringFormat.Alignment = StringAlignment.Center;
             lblStateBattle.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblTimer = new VCLabel(ClientControl, lblStateBattle.ShiftX, lblStateBattle.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, 32, "");
+            lblTimer = new VCLabel(ClientControl, lblStateBattle.ShiftX, lblStateBattle.NextTop(), Program.formMain.FontMedCaptionC, FormMain.Config.BattlefieldPlayerName, 32, "");
             lblTimer.Width = lblStateBattle.Width;
             lblTimer.StringFormat.Alignment = StringAlignment.Center;
             lblTimer.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblDamagePlayer1 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.BmpListGui24);
+            lblDamagePlayer1 = new VCLabel(ClientControl, 0, 0, Program.formMain.FontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.BmpListGui24);
             lblDamagePlayer1.Image.ImageIndex = FormMain.GUI_24_STAR;
             lblDamagePlayer1.Width = 64;
             lblDamagePlayer1.StringFormat.Alignment = StringAlignment.Far;
             lblDamagePlayer1.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblDamagePlayer2 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.BmpListGui24);
+            lblDamagePlayer2 = new VCLabel(ClientControl, 0, 0, Program.formMain.FontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.BmpListGui24);
             lblDamagePlayer2.Image.ImageIndex = FormMain.GUI_24_STAR;
             lblDamagePlayer2.Width = 64;
             lblDamagePlayer2.StringFormat.Alignment = StringAlignment.Far;

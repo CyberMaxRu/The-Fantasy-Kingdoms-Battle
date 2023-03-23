@@ -32,15 +32,15 @@ namespace Fantasy_Kingdoms_Battle
 
             int nextTop;
 
-            lblEconomic = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.MediumTurquoise, 16, "Выберите экономический бонус:");
+            lblEconomic = new VCLabel(ClientControl, 0, 0, Program.formMain.FontParagraph, Color.MediumTurquoise, 16, "Выберите экономический бонус:");
             lblEconomic.StringFormat.Alignment = StringAlignment.Center;
             nextTop = lblEconomic.NextTop();
             DrawLine(0, p.VariantPersistentBonus[0]);
-            lblMilitary = new VCLabel(ClientControl, 0, nextTop + FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.MediumTurquoise, 16, "Выберите военный бонус:");
+            lblMilitary = new VCLabel(ClientControl, 0, nextTop + FormMain.Config.GridSize, Program.formMain.FontParagraph, Color.MediumTurquoise, 16, "Выберите военный бонус:");
             lblMilitary.StringFormat.Alignment = StringAlignment.Center;
             nextTop = lblMilitary.NextTop();
             DrawLine(1, p.VariantPersistentBonus[1]);
-            lblOther = new VCLabel(ClientControl, 0, nextTop + FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.MediumTurquoise, 16, "Выберите дополнительный бонус:");
+            lblOther = new VCLabel(ClientControl, 0, nextTop + FormMain.Config.GridSize, Program.formMain.FontParagraph, Color.MediumTurquoise, 16, "Выберите дополнительный бонус:");
             lblOther.StringFormat.Alignment = StringAlignment.Center;
             nextTop = lblOther.NextTop();
             DrawLine(2, p.VariantPersistentBonus[2]);
@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 for (int x = 0; x < arrayBonuses.GetLength(1); x++)
                 {
-                    VCText text = new VCText(ClientControl, nextLeft2, nextTop, Program.formMain.fontParagraph, Color.MediumTurquoise, 200);
+                    VCText text = new VCText(ClientControl, nextLeft2, nextTop, Program.formMain.FontParagraph, Color.MediumTurquoise, 200);
                     text.StringFormat.LineAlignment = StringAlignment.Center;
                     text.Padding = new System.Windows.Forms.Padding(FormMain.Config.GridSize);
                     text.Color = Color.White;
@@ -71,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = arrayBonuses[line, 0].NextTop();
             }
 
-            lblSelectSimpleHero = new VCLabel(ClientControl, 0, nextTop, Program.formMain.fontParagraph, Color.MediumTurquoise, 16, "Выберите бонус обычного героя:");
+            lblSelectSimpleHero = new VCLabel(ClientControl, 0, nextTop, Program.formMain.FontParagraph, Color.MediumTurquoise, 16, "Выберите бонус обычного героя:");
             lblSelectSimpleHero.SetWidthByText();
             lblSelectSimpleHero.StringFormat.Alignment = StringAlignment.Center;
             nextTop = lblSelectSimpleHero.NextTop();
@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
                 nextLeft = arraySimpleHeroes[i].NextLeft();
             }
 
-            lblSelectTempleHero = new VCLabel(ClientControl, 0, lblSelectSimpleHero.ShiftY, Program.formMain.fontParagraph, Color.MediumTurquoise, 16, "Выберите бонус храмовника:");
+            lblSelectTempleHero = new VCLabel(ClientControl, 0, lblSelectSimpleHero.ShiftY, Program.formMain.FontParagraph, Color.MediumTurquoise, 16, "Выберите бонус храмовника:");
             lblSelectTempleHero.SetWidthByText();
             lblSelectTempleHero.StringFormat.Alignment = StringAlignment.Center;
 

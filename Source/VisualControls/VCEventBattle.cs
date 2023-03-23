@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             im1.ShiftY = im1.ShiftY + ((cellPlayer1.Height - im1.Height) / 2);
             im1.Hint = b.Winner == b.Player1 ? "Победитель" : "Проигравший";
 
-            VCLabel textVersus = new VCLabel(this, im1.NextLeft(), cellPlayer1.ShiftY, Program.formMain.fontBigCaptionC, Color.White, cellPlayer1.Height, "vs");
+            VCLabel textVersus = new VCLabel(this, im1.NextLeft(), cellPlayer1.ShiftY, Program.formMain.FontBigCaptionC, Color.White, cellPlayer1.Height, "vs");
             textVersus.StringFormat.Alignment = StringAlignment.Center;
             textVersus.StringFormat.LineAlignment = StringAlignment.Center;
             textVersus.Width = textVersus.Font.WidthText(textVersus.Text);

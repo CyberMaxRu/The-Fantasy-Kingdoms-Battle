@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = BitmapList.Size.Width;
             Height = BitmapList.Size.Height;
 
-            lblRestTtimeExecuting = new VCLabel(this, 4, 1, Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblRestTtimeExecuting = new VCLabel(this, 4, 1, Program.formMain.FontSmallC, Color.SkyBlue, 16, "");
             lblRestTtimeExecuting.StringFormat.LineAlignment = StringAlignment.Near;
             lblRestTtimeExecuting.StringFormat.Alignment = StringAlignment.Near;
             lblRestTtimeExecuting.Width = Width - 4;

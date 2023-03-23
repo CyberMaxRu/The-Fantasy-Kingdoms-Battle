@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 bmpTarget.Click += BmpTarget_Click;
             }
-            textColon = new VCLabel(this, bmpTarget.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.fontBigCaptionC, Color.White, bmpTypeFlag.Height, ":");
+            textColon = new VCLabel(this, bmpTarget.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.FontBigCaptionC, Color.White, bmpTypeFlag.Height, ":");
             textColon.StringFormat.Alignment = StringAlignment.Center;
             textColon.StringFormat.LineAlignment = StringAlignment.Center;
             textColon.Width = textColon.Font.WidthText(textColon.Text);

@@ -17,13 +17,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             ShowBorder = true;
 
-            labelLevel = new VCLabel(this, 0, FormMain.Config.GridSizeHalf, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, ""); ;
+            labelLevel = new VCLabel(this, 0, FormMain.Config.GridSizeHalf, Program.formMain.FontMedCaptionC, FormMain.Config.CommonLevel, 16, ""); ;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.Width = 32;
             labelLevel.ShiftX = Width - labelLevel.Width - 6;
 
-            TextCaption = new VCText(this, 4, 0, Program.formMain.fontSmallC, FormMain.Config.CommonCost, Width - FormMain.Config.GridSize);
+            TextCaption = new VCText(this, 4, 0, Program.formMain.FontSmallC, FormMain.Config.CommonCost, Width - FormMain.Config.GridSize);
             TextCaption.IsActiveControl = false;
             TextCaption.Visible = false;
         }

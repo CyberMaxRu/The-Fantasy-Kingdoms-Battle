@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             PlaySoundOnClick = false;// Звук клика выключаем, т.к. при клике на активном действии он проигрывается через Action
 
-            lblBanner = new VCLabel(this, 0, 0, Program.formMain.fontBigCaptionC, Color.White, Height, "");
+            lblBanner = new VCLabel(this, 0, 0, Program.formMain.FontBigCaptionC, Color.White, Height, "");
             lblBanner.StringFormat.LineAlignment = StringAlignment.Center;
             lblBanner.Width = Width;
             lblBanner.Visible = false;

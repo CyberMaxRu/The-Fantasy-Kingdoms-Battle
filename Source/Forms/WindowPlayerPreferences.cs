@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             editName.CursorToEnd();
 
             sprTop = new VCSeparator(ClientControl, 0, editName.NextTop());
-            lblTextForAvatar = new VCLabel(ClientControl, 0, sprTop.NextTop() - FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.White, 20, "Аватар:");
+            lblTextForAvatar = new VCLabel(ClientControl, 0, sprTop.NextTop() - FormMain.Config.GridSize, Program.formMain.FontParagraph, Color.White, 20, "Аватар:");
             lblTextForAvatar.StringFormat.Alignment = StringAlignment.Near;
             lblTextForAvatar.StringFormat.LineAlignment = StringAlignment.Near;
             imgAvatar = new VCImage128(ClientControl, FormMain.Config.GridSize, lblTextForAvatar.NextTop());

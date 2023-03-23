@@ -165,16 +165,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandProgressBarFore;
         internal readonly Bitmap bmpBandProgressBarBack;
 
-        internal readonly M2Font fontSmall;
-        internal readonly M2Font fontSmallC;
-        internal readonly M2Font fontMedCaptionC;
-        internal readonly M2Font fontMedCaption;
-        internal readonly M2Font fontBigCaptionC;
-        internal readonly M2Font fontBigCaption;
-        internal readonly M2Font fontSmallBC;
-        internal readonly M2Font fontParagraph;
-        internal readonly M2Font fontParagraphC;
-
         internal Size sizeGamespace { get; set; }
         internal Size MinSizeGamespace { get; set; }
         private Point topLeftFrame;
@@ -295,15 +285,15 @@ namespace Fantasy_Kingdoms_Battle
             SetStage("Изучаем справочник");
             _ = new Descriptors(this);
 
-            fontSmall = new M2Font("small");
-            fontSmallC = new M2Font("small_c");
-            fontMedCaptionC = new M2Font("med_caption_c");
-            fontMedCaption = new M2Font("med_caption");
-            fontBigCaptionC = new M2Font("big_caption_c");
-            fontBigCaption = new M2Font("big_caption");
-            fontSmallBC = new M2Font("_small_b_c");
-            fontParagraph = new M2Font("paragraph");
-            fontParagraphC = new M2Font("paragraph_c");
+            FontSmall = new M2Font("small");
+            FontSmallC = new M2Font("small_c");
+            FontMedCaptionC = new M2Font("med_caption_c");
+            FontMedCaption = new M2Font("med_caption");
+            FontBigCaptionC = new M2Font("big_caption_c");
+            FontBigCaption = new M2Font("big_caption");
+            FontSmallBC = new M2Font("_small_b_c");
+            FontParagraph = new M2Font("paragraph");
+            FontParagraphC = new M2Font("paragraph_c");
 
             SelectHumanPlayer(Descriptors.HumanPlayers[0]);
 
@@ -474,6 +464,17 @@ namespace Fantasy_Kingdoms_Battle
         internal BitmapList BmpListStateHero { get; }
         internal BitmapList BmpListMenuCellFilters { get; }
         internal BitmapList BmpListCheckBox { get; }
+
+        // Шрифты
+        internal M2Font FontSmall { get; }
+        internal M2Font FontSmallC { get; }
+        internal M2Font FontSmallBC { get; }
+        internal M2Font FontMedCaption { get; }
+        internal M2Font FontMedCaptionC { get; }
+        internal M2Font FontBigCaption { get; }
+        internal M2Font FontBigCaptionC { get; }
+        internal M2Font FontParagraph { get; }
+        internal M2Font FontParagraphC { get; }
 
 
         internal HumanPlayer CurrentHumanPlayer { get; private set; }

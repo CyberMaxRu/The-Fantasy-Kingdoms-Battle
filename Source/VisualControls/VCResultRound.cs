@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         public VCResultRound(VisualControl parent, int shiftX, int shiftY, int players) : base(parent, shiftX, shiftY)
         {
             Visible = false;
-            lblDay = new VCText(this, 0, 0, Program.formMain.fontSmallC, Color.White, 48);
+            lblDay = new VCText(this, 0, 0, Program.formMain.FontSmallC, Color.White, 48);
             lblDay.Height = lblDay.Width;
             lblDay.ShowBorder = true;
             lblDay.StringFormat.Alignment = StringAlignment.Center;

@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         private Pen penCursor = new Pen(Color.White);
 
         public VCEdit(VisualControl parent, int shiftX, int shiftY, string text, int maxLength)
-            : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text)
+            : base(parent, shiftX, shiftY, Program.formMain.FontMedCaption, Color.White, 26, text)
         {
             Debug.Assert(maxLength >= 0);
             Debug.Assert(maxLength <= 255);

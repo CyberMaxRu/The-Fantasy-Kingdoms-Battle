@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             btnTypePlayer = new VCIconButton48(this, 0, 0, 1);
             btnTypePlayer.Click += BtnTypePlayer_Click;
             btnAvatar = new VCIconButton48(this, btnTypePlayer.NextLeft(), 0, 2);
-            lblName = new VCLabel(this, btnAvatar.NextLeft(), 0, Program.formMain.fontMedCaptionC, Color.White, btnTypePlayer.Height, "");
+            lblName = new VCLabel(this, btnAvatar.NextLeft(), 0, Program.formMain.FontMedCaptionC, Color.White, btnTypePlayer.Height, "");
             lblName.StringFormat.LineAlignment = StringAlignment.Center;
             lblName.Width = 240;
             lblName.ShowBorder = true;

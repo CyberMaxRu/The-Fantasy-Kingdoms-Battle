@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowButtonClose = true;
 
             imgAvatar = new VCImage128(ClientControl, 0, 0);
-            txtMain = new VCText(ClientControl, imgAvatar.NextLeft(), 0, Program.formMain.fontMedCaption, Color.White, 120);
+            txtMain = new VCText(ClientControl, imgAvatar.NextLeft(), 0, Program.formMain.FontMedCaption, Color.White, 120);
             txtMain.StringFormat.Alignment = StringAlignment.Near;
 
             btnPrior = new VCButton(ClientControl, 0, 0, "Назад");

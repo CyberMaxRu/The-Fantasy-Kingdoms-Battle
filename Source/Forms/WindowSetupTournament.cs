@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             btnCancel.Caption = "Отмена";
 
 
-            lblNameTypeLobby = new VCLabel(ClientControl, 0, 0, Program.formMain.fontMedCaption, Color.Turquoise, 24, ls.TypeLobby.Name);
+            lblNameTypeLobby = new VCLabel(ClientControl, 0, 0, Program.formMain.FontMedCaption, Color.Turquoise, 24, ls.TypeLobby.Name);
             lblNameTypeLobby.Width = ClientControl.Width;
 
             panelPlayers = new VisualControl(ClientControl, 0, lblNameTypeLobby.NextTop());
@@ -55,19 +55,19 @@ namespace Fantasy_Kingdoms_Battle
             btnLocation = new VCIconButton48(panelSettings, FormMain.Config.GridSize, FormMain.Config.GridSize, -1);
             btnLocation.Click += BtnLocation_Click;
             btnLocation.Tag = lobbySettings.TypeLandscape != null ? lobbySettings.TypeLandscape.Index : -1;
-            lblNameLocation = new VCLabel(panelSettings, btnLocation.NextLeft(), btnLocation.ShiftY, Program.formMain.fontSmall, Color.White, btnLocation.Height, "");
+            lblNameLocation = new VCLabel(panelSettings, btnLocation.NextLeft(), btnLocation.ShiftY, Program.formMain.FontSmall, Color.White, btnLocation.Height, "");
             lblNameLocation.StringFormat.Alignment = StringAlignment.Near;
             lblNameLocation.StringFormat.LineAlignment = StringAlignment.Center;
             lblNameLocation.Width = 24;
-            VCLabel lblGold = new VCLabel(panelSettings, FormMain.Config.GridSize, btnLocation.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Золота на старте: {ls.TypeLobby.BaseResources.Gold}");
+            VCLabel lblGold = new VCLabel(panelSettings, FormMain.Config.GridSize, btnLocation.NextTop(), Program.formMain.FontSmall, Color.White, 16, $"Золота на старте: {ls.TypeLobby.BaseResources.Gold}");
             lblGold.SetWidthByText();
-            VCLabel lblMaxHeroes = new VCLabel(panelSettings, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Максимум героев: {ls.TypeLobby.MaxHeroes}");
+            VCLabel lblMaxHeroes = new VCLabel(panelSettings, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.FontSmall, Color.White, 16, $"Максимум героев: {ls.TypeLobby.MaxHeroes}");
             lblMaxHeroes.SetWidthByText();
-            VCLabel lblDayStartBattles = new VCLabel(panelSettings, FormMain.Config.GridSize, lblMaxHeroes.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Ход начала битв между игроками: {ls.TypeLobby.DayStartBattleBetweenPlayers}");
+            VCLabel lblDayStartBattles = new VCLabel(panelSettings, FormMain.Config.GridSize, lblMaxHeroes.NextTop(), Program.formMain.FontSmall, Color.White, 16, $"Ход начала битв между игроками: {ls.TypeLobby.DayStartBattleBetweenPlayers}");
             lblDayStartBattles.SetWidthByText();
-            VCLabel lblDaysBetweenBattles = new VCLabel(panelSettings, FormMain.Config.GridSize, lblDayStartBattles.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Ходов перед следующей битвой: {ls.TypeLobby.DaysBeforeNextBattleBetweenPlayers}");
+            VCLabel lblDaysBetweenBattles = new VCLabel(panelSettings, FormMain.Config.GridSize, lblDayStartBattles.NextTop(), Program.formMain.FontSmall, Color.White, 16, $"Ходов перед следующей битвой: {ls.TypeLobby.DaysBeforeNextBattleBetweenPlayers}");
             lblDaysBetweenBattles.SetWidthByText();
-            VCLabel lblMaxLoses = new VCLabel(panelSettings, FormMain.Config.GridSize, lblDaysBetweenBattles.NextTop(), Program.formMain.fontSmall, Color.White, 16, $"Максимум поражений: {ls.TypeLobby.MaxLoses}");
+            VCLabel lblMaxLoses = new VCLabel(panelSettings, FormMain.Config.GridSize, lblDaysBetweenBattles.NextTop(), Program.formMain.FontSmall, Color.White, 16, $"Максимум поражений: {ls.TypeLobby.MaxLoses}");
             lblMaxLoses.SetWidthByText();
 
             panelSettings.ApplyMaxSize();

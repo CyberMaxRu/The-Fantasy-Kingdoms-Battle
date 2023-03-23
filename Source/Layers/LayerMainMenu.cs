@@ -46,9 +46,9 @@ namespace Fantasy_Kingdoms_Battle
                 arrayBitmapNameGame[i] = GuiUtils.ApplyDisappearance(bitmapNameGame.Bitmap, alpha, 255);
             }
 
-            labelVersionName = new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol, $"({FormMain.VERSION_POSTFIX})");
+            labelVersionName = new VCLabel(this, 0, 0, Program.formMain.FontSmallC, Color.White, Program.formMain.FontSmall.MaxHeightSymbol, $"({FormMain.VERSION_POSTFIX})");
             labelVersionName.SetWidthByText();
-            labelVersion = new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, Program.formMain.fontSmall.MaxHeightSymbol,
+            labelVersion = new VCLabel(this, 0, 0, Program.formMain.FontSmallC, Color.White, Program.formMain.FontSmall.MaxHeightSymbol,
                 $"Сборка {FormMain.VERSION} от {FormMain.DATE_VERSION}");
             labelVersion.SetWidthByText();
 

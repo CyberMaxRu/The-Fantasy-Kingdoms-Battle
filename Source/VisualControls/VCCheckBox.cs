@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             PlaySoundOnEnter = true;
             PlaySoundOnClick = true;
 
-            label = new VCLabel(this, BitmapList.Size.Width + FormMain.Config.GridSize, 0, Program.formMain.fontParagraph, Color.PaleTurquoise, 24, text);
+            label = new VCLabel(this, BitmapList.Size.Width + FormMain.Config.GridSize, 0, Program.formMain.FontParagraph, Color.PaleTurquoise, 24, text);
             label.StringFormat.Alignment = StringAlignment.Near;
             label.StringFormat.LineAlignment = StringAlignment.Center;
             label.SetWidthByText();

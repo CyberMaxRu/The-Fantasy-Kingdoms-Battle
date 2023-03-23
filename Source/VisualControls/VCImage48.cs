@@ -18,26 +18,26 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.BmpListObjects48, imageIndex)
         {
-            labelHighText = new VCLabel(this, 0, 2, Program.formMain.fontSmallC, Color, 16, "");
+            labelHighText = new VCLabel(this, 0, 2, Program.formMain.FontSmallC, Color, 16, "");
             labelHighText.StringFormat.LineAlignment = StringAlignment.Near;
             labelHighText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
             labelHighText.ManualDraw = true;
             labelHighText.Width = Width;
 
-            labelLowText = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, Color, 16, "");
+            labelLowText = new VCLabel(this, 0, Height - 16, Program.formMain.FontSmallC, Color, 16, "");
             labelLowText.StringFormat.LineAlignment = StringAlignment.Far;
             labelLowText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
             labelLowText.ManualDraw = true;
             labelLowText.Width = Width;
 
-            labelLevel = new VCLabel(this, 0, 1, Program.formMain.fontSmallC, FormMain.Config.CommonLevel, 16, "");
+            labelLevel = new VCLabel(this, 0, 1, Program.formMain.FontSmallC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
             labelLevel.ManualDraw = true;
             labelLevel.Width = Width - 4;
 
-            labelQuantity = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, FormMain.Config.CommonQuantity, 16, "");
+            labelQuantity = new VCLabel(this, 0, Height - 16, Program.formMain.FontSmallC, FormMain.Config.CommonQuantity, 16, "");
             labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;

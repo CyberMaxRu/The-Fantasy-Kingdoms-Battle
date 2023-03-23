@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (StartBonus sb in listStartBonuses)
             {
                 VisualControl text = new VisualControl(ClientControl, nextLeft, FormMain.Config.GridSize);
-                VCLabel lblCaption = new VCLabel(text, 0, 4, Program.formMain.fontParagraphC, Color.MediumTurquoise, 24, $"Вариант {idx}");
+                VCLabel lblCaption = new VCLabel(text, 0, 4, Program.formMain.FontParagraphC, Color.MediumTurquoise, 24, $"Вариант {idx}");
                 lblCaption.StringFormat.LineAlignment = StringAlignment.Center;
                 text.PlaySoundOnEnter = true;
                 text.PlaySoundOnClick = true;

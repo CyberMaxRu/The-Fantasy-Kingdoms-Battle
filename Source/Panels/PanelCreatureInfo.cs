@@ -70,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpStateBackground.ShowHint += BmpState_ShowHint;
             bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.BmpListStateHero.GetImage(0, true, false));
             bmpState.IsActiveControl = false;
-            labelNameState = new VCLabel(bmpStateBackground, 36, 8, Program.formMain.fontSmallC, Color.White, 16, "");
+            labelNameState = new VCLabel(bmpStateBackground, 36, 8, Program.formMain.FontSmallC, Color.White, 16, "");
             labelNameState.StringFormat.Alignment = StringAlignment.Near;
             labelNameState.StringFormat.LineAlignment = StringAlignment.Center;
             labelNameState.IsActiveControl = false;
@@ -103,7 +103,7 @@ namespace Fantasy_Kingdoms_Battle
             separSecSkills = new VCSeparator(panelAbilitiesAndSecSkills, 0, 0);
 
             // Основные характеристики
-            lblProperties = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Основные характеристики:");
+            lblProperties = new VCLabel(panelStatistics, 0, 0, Program.formMain.FontSmall, Color.White, 16, "Основные характеристики:");
             lblProperties.StringFormat.Alignment = StringAlignment.Near;
 
             listProperties = new List<VCCreatureProperty>();
@@ -111,7 +111,7 @@ namespace Fantasy_Kingdoms_Battle
                 listProperties.Add(new VCCreatureProperty(panelStatistics, 0, 0, 51));
 
             // Потребности
-            lblNeeds = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
+            lblNeeds = new VCLabel(panelStatistics, 0, 0, Program.formMain.FontSmall, Color.White, 16, "Потребности:");
             lblNeeds.StringFormat.Alignment = StringAlignment.Near;
 
             listNeeds = new List<VCCreatureNeed>();
@@ -119,7 +119,7 @@ namespace Fantasy_Kingdoms_Battle
                 listNeeds.Add(new VCCreatureNeed(panelStatistics, 0, 0, 51));
 
             // Интересы
-            lblInterests = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Интересы:");
+            lblInterests = new VCLabel(panelStatistics, 0, 0, Program.formMain.FontSmall, Color.White, 16, "Интересы:");
             lblInterests.StringFormat.Alignment = StringAlignment.Near;
 
             listInterests = new List<VCCreatureInterest>();

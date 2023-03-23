@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             windowCaption.Caption = caption;
 
-            lblText = new VCText(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
+            lblText = new VCText(ClientControl, 0, 0, Program.formMain.FontParagraph, Color.White, ClientControl.Width);
             lblText.Text = text;
             lblText.Height = lblText.MinHeigth();
 

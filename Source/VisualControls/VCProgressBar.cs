@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCProgressBar(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, 17)
         {
-            lblText = new VCLabel(this, 0, 2, Program.formMain.fontSmallC, Color.White, 16, "");
+            lblText = new VCLabel(this, 0, 2, Program.formMain.FontSmallC, Color.White, 16, "");
             lblText.Visible = false;
             lblText.ManualDraw = true;
             lblText.StringFormat.Alignment = StringAlignment.Center;

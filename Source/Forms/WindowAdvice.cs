@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             imgAdvisor = new VCImage128(ClientControl, 0, 0);
             imgAdvisor.ImageIndex = FormMain.Descriptors.FindCreature(FormMain.Config.IDHeroAdvisor).ImageIndex;
 
-            textAdvice = new VCText(ClientControl, imgAdvisor.NextLeft(), imgAdvisor.ShiftY, Program.formMain.fontParagraph, Color.White, 200);
+            textAdvice = new VCText(ClientControl, imgAdvisor.NextLeft(), imgAdvisor.ShiftY, Program.formMain.FontParagraph, Color.White, 200);
             textAdvice.Height = 160;
             textAdvice.StringFormat.Alignment = StringAlignment.Near;
 
