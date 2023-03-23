@@ -29,25 +29,12 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRepaintFrame = false;
         private bool inMouseClick;
 
-
         // Проигрывание звуков и музыки
         internal readonly PlayerMusic playerMusic;
         private readonly System.Windows.Media.MediaPlayer mpSoundSelect;
         private readonly System.Windows.Media.MediaPlayer mpSelectButton;
         private readonly System.Windows.Media.MediaPlayer mpPushButton;
         private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
-
-        // ImageList'ы
-        internal BitmapList BmpListObjects32 { get; }
-        internal BitmapList BmpListObjects48 { get; }
-        internal BitmapList BmpListObjects128 { get; }
-        internal BitmapList BmpListGui16 { get; }
-        internal BitmapList BmpListGui24 { get; }
-        internal BitmapList BmpListGui32 { get; }
-        internal BitmapList BmpListParameters { get; }
-        internal BitmapList BmpListStateHero { get; }
-        internal BitmapList BmpListMenuCellFilters { get; }
-        internal BitmapList BmpListCheckBox { get; }
 
         // Контролы главного меню
         private Point mousePos;
@@ -478,6 +465,19 @@ namespace Fantasy_Kingdoms_Battle
             }
 
         }
+
+        // ImageList'ы
+        internal BitmapList BmpListObjects32 { get; }
+        internal BitmapList BmpListObjects48 { get; }
+        internal BitmapList BmpListObjects128 { get; }
+        internal BitmapList BmpListGui16 { get; }
+        internal BitmapList BmpListGui24 { get; }
+        internal BitmapList BmpListGui32 { get; }
+        internal BitmapList BmpListParameters { get; }
+        internal BitmapList BmpListStateHero { get; }
+        internal BitmapList BmpListMenuCellFilters { get; }
+        internal BitmapList BmpListCheckBox { get; }
+
 
         internal HumanPlayer CurrentHumanPlayer { get; private set; }
 
