@@ -802,7 +802,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Debug.Assert(ClientSize.Equals(bmpRenderClientArea.Size));
+            Assert(ClientSize.Equals(bmpRenderClientArea.Size));
 
             base.OnPaint(e);
             
