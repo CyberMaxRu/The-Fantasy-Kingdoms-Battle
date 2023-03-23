@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCLabel labelLevel;
 
-        public VCImage128(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.imListObjects128, -1)
+        public VCImage128(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.BmpListObjects128, -1)
         {
             ShowBorder = true;
 

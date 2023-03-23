@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс контрола - кнопка в очереди строительства/исследования
     internal sealed class VCEntityInQueue : VCImage
     {
-        public VCEntityInQueue(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.imListObjects32, -1)
+        public VCEntityInQueue(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.BmpListObjects32, -1)
         {
 
         }

@@ -309,7 +309,7 @@ namespace Fantasy_Kingdoms_Battle
         private void DoCustomDraw(Graphics g, int x, int y, bool drawState)
         {
             if (drawState && (Construction.Descriptor.ID != "Castle"))
-                Program.formMain.ilStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
+                Program.formMain.BmpListStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
         }
 
         internal void SetState(NameStateCreature state)

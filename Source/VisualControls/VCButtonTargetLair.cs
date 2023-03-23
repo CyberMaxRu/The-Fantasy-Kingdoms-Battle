@@ -117,7 +117,7 @@ namespace Fantasy_Kingdoms_Battle
                         throw new Exception($"Неизвестный тип флага: {Lair.ComponentObjectOfMap.TypeFlag}.");
                 }
 
-                DrawImage(g, Program.formMain.ilGui16.GetImage(imageIndex, true, false), Left - (Program.formMain.ilGui16.Size.Width / 2) + 4, Top - (Program.formMain.ilGui16.Size.Height / 2) + 4);
+                DrawImage(g, Program.formMain.BmpListGui16.GetImage(imageIndex, true, false), Left - (Program.formMain.BmpListGui16.Size.Width / 2) + 4, Top - (Program.formMain.BmpListGui16.Size.Height / 2) + 4);
             }
         }
 

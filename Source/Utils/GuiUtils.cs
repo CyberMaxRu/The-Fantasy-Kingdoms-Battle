@@ -87,7 +87,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (bmpRaw.Width != bmpRaw.Height)
                     throw new Exception($"Аватар должен быть квадратный (текущий размер {bmpRaw.Size}).");
 
-                Bitmap newAvatar = new Bitmap(Program.formMain.imListObjects128.Size.Width, Program.formMain.imListObjects128.Size.Height);
+                Bitmap newAvatar = new Bitmap(Program.formMain.BmpListObjects128.Size.Width, Program.formMain.BmpListObjects128.Size.Height);
 
                 Graphics gAvatar = Graphics.FromImage(newAvatar);
                 gAvatar.InterpolationMode = InterpolationMode.High;

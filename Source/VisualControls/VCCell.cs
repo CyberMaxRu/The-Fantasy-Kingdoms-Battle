@@ -92,7 +92,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (img24 is null)
                     {
-                        img24 = new VCImage(this, (Width - Program.formMain.ilGui24.Size.Width) / 2, (Height - Program.formMain.ilGui24.Size.Height) / 2, Program.formMain.ilGui24, ImageIndex24);
+                        img24 = new VCImage(this, (Width - Program.formMain.BmpListGui24.Size.Width) / 2, (Height - Program.formMain.BmpListGui24.Size.Height) / 2, Program.formMain.BmpListGui24, ImageIndex24);
                         img24.IsActiveControl = false;
                         ArrangeControl(img24);
                     }

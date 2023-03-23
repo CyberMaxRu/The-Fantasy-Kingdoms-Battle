@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         private const int IMAGE_INDEX_FLAG = 4;
         private const int IMAGE_INDEX_UNCHECKED_DISABLED = 5;
 
-        public VCCheckBox(VisualControl parent, int shiftX, int shiftY, string text) : base(parent, shiftX, shiftY, Program.formMain.blCheckBox, 0)
+        public VCCheckBox(VisualControl parent, int shiftX, int shiftY, string text) : base(parent, shiftX, shiftY, Program.formMain.BmpListCheckBox, 0)
         {
             HighlightUnderMouse = true;
             PlaySoundOnEnter = true;

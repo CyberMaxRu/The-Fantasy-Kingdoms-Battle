@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCLabelValue : VCLabel
     {
         public VCLabelValue(VisualControl parent, int shiftX, int shiftY, Color foreColor, bool showBackground)
-            : base(parent, shiftX, shiftY, Program.formMain.fontParagraph, foreColor, showBackground ? 24 : 16, "", Program.formMain.ilGui16)
+            : base(parent, shiftX, shiftY, Program.formMain.fontParagraph, foreColor, showBackground ? 24 : 16, "", Program.formMain.BmpListGui16)
         {
             StringFormat.Alignment = StringAlignment.Near;
             ShowBackground = showBackground;

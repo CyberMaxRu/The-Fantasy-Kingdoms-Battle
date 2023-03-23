@@ -106,14 +106,14 @@ namespace Fantasy_Kingdoms_Battle
                 if (ManualDraw || research.GetImageIsEnabled())
                 {
                     if (MouseClicked && MouseOver)
-                        DrawImage(g, Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Press, true, false), Left, Top);
+                        DrawImage(g, Program.formMain.BmpListMenuCellFilters.GetImage((int)MenuCellFilter.Press, true, false), Left, Top);
                     else if (MouseOver)
-                        DrawImage(g, Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Select, true, false), Left, Top);
+                        DrawImage(g, Program.formMain.BmpListMenuCellFilters.GetImage((int)MenuCellFilter.Select, true, false), Left, Top);
                     else
-                        DrawImage(g, Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Active, true, false), Left, Top);
+                        DrawImage(g, Program.formMain.BmpListMenuCellFilters.GetImage((int)MenuCellFilter.Active, true, false), Left, Top);
                 }
                 else
-                    DrawImage(g, Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Disabled, true, false), Left, Top);
+                    DrawImage(g, Program.formMain.BmpListMenuCellFilters.GetImage((int)MenuCellFilter.Disabled, true, false), Left, Top);
             }
         }
     }

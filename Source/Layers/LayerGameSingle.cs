@@ -196,8 +196,8 @@ namespace Fantasy_Kingdoms_Battle
             btnCheating.HintDescription = "Открыть настройки читинга";
 
             panelLairWithFlags = new VisualControl(MainControl, 0, Config.GridSize);
-            panelLairWithFlags.Width = Program.formMain.imListObjects48.Size.Width;
-            panelLairWithFlags.Height = Program.formMain.imListObjects48.Size.Height;
+            panelLairWithFlags.Width = Program.formMain.BmpListObjects48.Size.Width;
+            panelLairWithFlags.Height = Program.formMain.BmpListObjects48.Size.Height;
 
             // Отладочная информация
             vcDebugInfo = new VisualControl();
@@ -222,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
             CellsMenu = new VCMenuCell[FormMain.PANEL_MENU_CELLS.Height, FormMain.PANEL_MENU_CELLS.Width];
             for (int y = 0; y < FormMain.PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < FormMain.PANEL_MENU_CELLS.Width; x++)
-                    CellsMenu[y, x] = new VCMenuCell(bmpObjectMenu, addShift + (x * (Program.formMain.imListObjects48.Size.Width + FormMain.DISTANCE_BETWEEN_CELLS)), 95 + (y * (Program.formMain.imListObjects48.Size.Height + FormMain.DISTANCE_BETWEEN_CELLS)));
+                    CellsMenu[y, x] = new VCMenuCell(bmpObjectMenu, addShift + (x * (Program.formMain.BmpListObjects48.Size.Width + FormMain.DISTANCE_BETWEEN_CELLS)), 95 + (y * (Program.formMain.BmpListObjects48.Size.Height + FormMain.DISTANCE_BETWEEN_CELLS)));
 
             cellObjectMenu = new VCMenuCell(bmpObjectMenu, addShift + 4, 40);
             cellObjectMenu.ManualDraw = true;

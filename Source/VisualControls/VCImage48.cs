@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel labelLevel;
         protected VCLabel labelQuantity;
 
-        public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
+        public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.BmpListObjects48, imageIndex)
         {
             labelHighText = new VCLabel(this, 0, 2, Program.formMain.fontSmallC, Color, 16, "");
             labelHighText.StringFormat.LineAlignment = StringAlignment.Near;

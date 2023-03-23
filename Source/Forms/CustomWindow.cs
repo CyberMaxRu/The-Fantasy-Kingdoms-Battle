@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
                 showButtonClose = value;
                 if (showButtonClose && (imgClose is null))
                 {
-                    imgClose = new VCImage(this, 0, 0, Program.formMain.ilGui32, FormMain.GUI_32_CLOSE);
+                    imgClose = new VCImage(this, 0, 0, Program.formMain.BmpListGui32, FormMain.GUI_32_CLOSE);
                     imgClose.HighlightUnderMouse = true;
                     imgClose.Click += ImgClose_Click;
                 }

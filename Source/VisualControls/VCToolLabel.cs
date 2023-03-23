@@ -6,7 +6,7 @@ namespace Fantasy_Kingdoms_Battle
     internal class VCToolLabel : VCLabel
     {
         public VCToolLabel(VisualControl parent, int shiftX, int shiftY, string text, int imageIndex)
-            : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text, Program.formMain.ilGui16)
+            : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text, Program.formMain.BmpListGui16)
         {
             StringFormat.Alignment = StringAlignment.Far;
             StringFormat.LineAlignment = StringAlignment.Near;

@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.bmpBandStateCreature);
             bmpStateBackground.ShowHint += BmpState_ShowHint;
-            bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.ilStateHero.GetImage(0, true, false));
+            bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.BmpListStateHero.GetImage(0, true, false));
             bmpState.IsActiveControl = false;
             labelNameState = new VCLabel(bmpStateBackground, 36, 8, Program.formMain.fontSmallC, Color.White, 16, "");
             labelNameState.StringFormat.Alignment = StringAlignment.Near;
@@ -200,7 +200,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             imgIcon.Level = Creature.GetLevel();
-            bmpState.Bitmap = Program.formMain.ilStateHero.GetImage(Creature.StateCreature.ImageIndex, true, false);
+            bmpState.Bitmap = Program.formMain.BmpListStateHero.GetImage(Creature.StateCreature.ImageIndex, true, false);
             labelNameState.Text = Creature.StateCreature.Name;
 
             panelSpecialization.Entity = Creature.Specialization;// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;

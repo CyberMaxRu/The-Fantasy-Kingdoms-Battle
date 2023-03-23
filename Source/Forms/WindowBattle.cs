@@ -91,13 +91,13 @@ namespace Fantasy_Kingdoms_Battle
             lblSystemInfo.StringFormat.Alignment = StringAlignment.Near;
             lblSystemInfo.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblPlayer1 = new VCText(ClientControl, FormMain.Config.GridSize, lblSystemInfo.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjects128.Size.Width);
+            lblPlayer1 = new VCText(ClientControl, FormMain.Config.GridSize, lblSystemInfo.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.BmpListObjects128.Size.Width);
             lblPlayer1.Height = 48;
             lblPlayer1.StringFormat.Alignment = StringAlignment.Center;
             lblPlayer1.StringFormat.LineAlignment = StringAlignment.Far;
             lblPlayer1.Text = battle.Player1.GetName();
 
-            lblPlayer2 = new VCText(ClientControl, ClientControl.Width - Program.formMain.imListObjects128.Size.Width - FormMain.Config.GridSize, lblPlayer1.ShiftY, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjects128.Size.Width);
+            lblPlayer2 = new VCText(ClientControl, ClientControl.Width - Program.formMain.BmpListObjects128.Size.Width - FormMain.Config.GridSize, lblPlayer1.ShiftY, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.BmpListObjects128.Size.Width);
             lblPlayer2.Height = 48;
             lblPlayer2.StringFormat.Alignment = StringAlignment.Center;
             lblPlayer2.StringFormat.LineAlignment = StringAlignment.Far;
@@ -110,8 +110,8 @@ namespace Fantasy_Kingdoms_Battle
             imgAvatarParticipant2.ShiftX = lblPlayer2.ShiftX;
             imgAvatarParticipant2.ImageIndex = b.Player2.GetImageIndexAvatar();
 
-            rectBandHealthPlayer1 = new Rectangle(imgAvatarParticipant1.ShiftX, imgAvatarParticipant2.ShiftY + Program.formMain.imListObjects128.Size.Width + 2, Program.formMain.imListObjects128.Size.Height, 6);
-            rectBandHealthPlayer2 = new Rectangle(imgAvatarParticipant2.ShiftX, imgAvatarParticipant1.ShiftY + Program.formMain.imListObjects128.Size.Width + 2, Program.formMain.imListObjects128.Size.Height, 6);
+            rectBandHealthPlayer1 = new Rectangle(imgAvatarParticipant1.ShiftX, imgAvatarParticipant2.ShiftY + Program.formMain.BmpListObjects128.Size.Width + 2, Program.formMain.BmpListObjects128.Size.Height, 6);
+            rectBandHealthPlayer2 = new Rectangle(imgAvatarParticipant2.ShiftX, imgAvatarParticipant1.ShiftY + Program.formMain.BmpListObjects128.Size.Width + 2, Program.formMain.BmpListObjects128.Size.Height, 6);
 
             topLeftGrid = new Point(FormMain.Config.GridSize, rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize);
             topLeftCells = new Point(topLeftGrid.X + FormMain.Config.GridSize + 1, topLeftGrid.Y + FormMain.Config.GridSize + 1);
@@ -139,13 +139,13 @@ namespace Fantasy_Kingdoms_Battle
             lblTimer.StringFormat.Alignment = StringAlignment.Center;
             lblTimer.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblDamagePlayer1 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.ilGui24);
+            lblDamagePlayer1 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.BmpListGui24);
             lblDamagePlayer1.Image.ImageIndex = FormMain.GUI_24_STAR;
             lblDamagePlayer1.Width = 64;
             lblDamagePlayer1.StringFormat.Alignment = StringAlignment.Far;
             lblDamagePlayer1.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblDamagePlayer2 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.ilGui24);
+            lblDamagePlayer2 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "", Program.formMain.BmpListGui24);
             lblDamagePlayer2.Image.ImageIndex = FormMain.GUI_24_STAR;
             lblDamagePlayer2.Width = 64;
             lblDamagePlayer2.StringFormat.Alignment = StringAlignment.Far;
@@ -153,7 +153,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnEndBattle = new VCButton(ClientControl, 0, lblTimer.NextTop(), "Завершить бой");
             btnEndBattle.Width = 192;
-            btnEndBattle.ShiftX = imgAvatarParticipant1.ShiftX + Program.formMain.imListObjects128.Size.Width + (((imgAvatarParticipant2.ShiftX - imgAvatarParticipant1.ShiftX - Program.formMain.imListObjects128.Size.Width) - btnEndBattle.Width) / 2);
+            btnEndBattle.ShiftX = imgAvatarParticipant1.ShiftX + Program.formMain.BmpListObjects128.Size.Width + (((imgAvatarParticipant2.ShiftX - imgAvatarParticipant1.ShiftX - Program.formMain.BmpListObjects128.Size.Width) - btnEndBattle.Width) / 2);
             btnEndBattle.Click += BtnEndBattle_Click;
 
             btnPlayPause = new VCButton(ClientControl, btnEndBattle.ShiftX, btnEndBattle.NextTop(), "Скорость");
@@ -175,7 +175,7 @@ namespace Fantasy_Kingdoms_Battle
             maxHealthPlayer2 = CalcHealthPlayer(b.Player2);
 
             //
-            lblDamagePlayer1.ShiftX = imgAvatarParticipant1.ShiftX + Program.formMain.imListObjects128.Size.Width + FormMain.Config.GridSize;
+            lblDamagePlayer1.ShiftX = imgAvatarParticipant1.ShiftX + Program.formMain.BmpListObjects128.Size.Width + FormMain.Config.GridSize;
             lblDamagePlayer1.ShiftY = btnEndBattle.ShiftY;
             lblDamagePlayer1.Visible = false;
             lblDamagePlayer2.ShiftX = imgAvatarParticipant2.ShiftX - FormMain.Config.GridSize - 80;
@@ -187,8 +187,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ArrangeControls();
 
-            rectBandHealthPlayer1 = new Rectangle(imgAvatarParticipant1.Left, imgAvatarParticipant1.Top + Program.formMain.imListObjects128.Size.Width + 2, Program.formMain.imListObjects128.Size.Height, 6);
-            rectBandHealthPlayer2 = new Rectangle(imgAvatarParticipant2.Left, imgAvatarParticipant2.Top + Program.formMain.imListObjects128.Size.Width + 2, Program.formMain.imListObjects128.Size.Height, 6);
+            rectBandHealthPlayer1 = new Rectangle(imgAvatarParticipant1.Left, imgAvatarParticipant1.Top + Program.formMain.BmpListObjects128.Size.Width + 2, Program.formMain.BmpListObjects128.Size.Height, 6);
+            rectBandHealthPlayer2 = new Rectangle(imgAvatarParticipant2.Left, imgAvatarParticipant2.Top + Program.formMain.BmpListObjects128.Size.Width + 2, Program.formMain.BmpListObjects128.Size.Height, 6);
 
             topLeftGrid = new Point(FormMain.Config.GridSize, rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize);
             topLeftCells = new Point(topLeftGrid.X + FormMain.Config.GridSize + 1, topLeftGrid.Y + FormMain.Config.GridSize + 1);

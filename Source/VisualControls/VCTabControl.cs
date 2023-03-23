@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ActivePage = -1;
 
-            lblCaptionPage = new VCLabel(this, 0, Program.formMain.imListObjects48.Size.Width + FormMain.Config.GridSize, Program.formMain.fontSmallBC, FormMain.Config.CommonCaptionPage, 24, "");
+            lblCaptionPage = new VCLabel(this, 0, Program.formMain.BmpListObjects48.Size.Width + FormMain.Config.GridSize, Program.formMain.fontSmallBC, FormMain.Config.CommonCaptionPage, 24, "");
             lblCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
             lblCaptionPage.ShowBorder = true;
             lblCaptionPage.Color = Color.LightGreen;

@@ -38,16 +38,16 @@ namespace Fantasy_Kingdoms_Battle
         private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
 
         // ImageList'ы
-        internal readonly BitmapList imListObjects128;
-        internal BitmapList imListObjects48 { get; }
-        internal BitmapList imListObjects32 { get; }
-        internal readonly BitmapList ilGui16;
-        internal readonly BitmapList ilGui24;
-        internal readonly BitmapList ilGui32;
-        internal readonly BitmapList ilParameters;
-        internal readonly BitmapList ilStateHero;
-        internal readonly BitmapList ilMenuCellFilters;
-        internal readonly BitmapList blCheckBox;
+        internal BitmapList BmpListObjects32 { get; }
+        internal BitmapList BmpListObjects48 { get; }
+        internal BitmapList BmpListObjects128 { get; }
+        internal BitmapList BmpListGui16 { get; }
+        internal BitmapList BmpListGui24 { get; }
+        internal BitmapList BmpListGui32 { get; }
+        internal BitmapList BmpListParameters { get; }
+        internal BitmapList BmpListStateHero { get; }
+        internal BitmapList BmpListMenuCellFilters { get; }
+        internal BitmapList BmpListCheckBox { get; }
 
         internal Brush brushQuantity;
         internal Brush brushCost;
@@ -338,22 +338,22 @@ namespace Fantasy_Kingdoms_Battle
             bmpMaskSmall = LoadBitmap("MaskSmall.png");// Нужна ли еще?
 
             // Иконки игровых объектов. Также включает встроенные аватары игроков и пул пустых иконок под внешние аватары
-            imListObjects128 = new BitmapList(LoadBitmap("Objects.png"), new Size(128, 128), true, true);
+            BmpListObjects128 = new BitmapList(LoadBitmap("Objects.png"), new Size(128, 128), true, true);
             // Добавляем места под внешние аватары
-            imListObjects128.AddEmptySlots(Config.MaxQuantityExternalAvatars);
-            imListObjects48 = new BitmapList(imListObjects128, new Size(48, 48), Config.BorderInBigIcons, bmpMaskSmall);
+            BmpListObjects128.AddEmptySlots(Config.MaxQuantityExternalAvatars);
+            BmpListObjects48 = new BitmapList(BmpListObjects128, new Size(48, 48), Config.BorderInBigIcons, bmpMaskSmall);
             LoadBitmapObjects();
 
-            imListObjects48.AddBitmap(LoadBitmap("Gui48.png"));
-            imListObjects32 = new BitmapList(imListObjects48, new Size(32, 32), 0, null);
+            BmpListObjects48.AddBitmap(LoadBitmap("Gui48.png"));
+            BmpListObjects32 = new BitmapList(BmpListObjects48, new Size(32, 32), 0, null);
 
-            ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), new Size(16, 16), true, false);
-            ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), new Size(24, 24), true, true);
-            ilGui32 = new BitmapList(LoadBitmap("Gui32.png"), new Size(32, 32), true, true);
-            ilParameters = new BitmapList(LoadBitmap("Parameters.png"), new Size(24, 24), true, false);
-            ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), new Size(24, 24), true, false);
-            ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), new Size(48, 48), true, false);
-            blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), new Size(24, 24), true, true);
+            BmpListGui16 = new BitmapList(LoadBitmap("Gui16.png"), new Size(16, 16), true, false);
+            BmpListGui24 = new BitmapList(LoadBitmap("Gui24.png"), new Size(24, 24), true, true);
+            BmpListGui32 = new BitmapList(LoadBitmap("Gui32.png"), new Size(32, 32), true, true);
+            BmpListParameters = new BitmapList(LoadBitmap("Parameters.png"), new Size(24, 24), true, false);
+            BmpListStateHero = new BitmapList(LoadBitmap("StateCreature.png"), new Size(24, 24), true, false);
+            BmpListMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), new Size(48, 48), true, false);
+            BmpListCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), new Size(24, 24), true, true);
 
             //MakeAlpha();
 
@@ -1264,16 +1264,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void LoadBitmapObjects()
         {
-            imListObjects128.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
-            imListObjects48.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
+            BmpListObjects128.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
+            BmpListObjects48.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
 
             // Загружаем внешние аватары
             Bitmap bmpAvatar;
             for (int i = 0; i < Config.ExternalAvatars.Count; i++)
             {
                 bmpAvatar = GuiUtils.PrepareAvatar(Program.FolderResources + @"ExternalAvatars\" + Config.ExternalAvatars[i]);
-                imListObjects128.ReplaceImage(bmpAvatar, Config.ImageIndexExternalAvatar + i);
-                imListObjects48.ReplaceImageWithResize(imListObjects128, Config.ImageIndexExternalAvatar + i, 1, bmpMaskSmall);
+                BmpListObjects128.ReplaceImage(bmpAvatar, Config.ImageIndexExternalAvatar + i);
+                BmpListObjects48.ReplaceImageWithResize(BmpListObjects128, Config.ImageIndexExternalAvatar + i, 1, bmpMaskSmall);
             }
 
             Config.UpdateDataAboutAvatar();
