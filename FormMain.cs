@@ -934,7 +934,6 @@ namespace Fantasy_Kingdoms_Battle
             base.OnKeyPress(e);
 
             currentLayer.KeyPress(e);
-            ShowFrame(false);
         }
 
         protected override void OnKeyUp(KeyEventArgs e)
@@ -942,7 +941,6 @@ namespace Fantasy_Kingdoms_Battle
             base.OnKeyUp(e);
 
             currentLayer.KeyUp(e);
-            ShowFrame(false);
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
