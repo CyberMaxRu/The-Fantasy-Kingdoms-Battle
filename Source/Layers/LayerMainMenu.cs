@@ -129,6 +129,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void DrawBackground(Graphics g)
         {
+            Assert(Program.formMain.Size == bitmapLogo.Size);
+
             base.DrawBackground(g);
 
             DrawImage(g, bitmapLogo, 0, 0);
