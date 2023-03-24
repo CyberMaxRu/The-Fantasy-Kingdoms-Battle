@@ -27,9 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private LayerEditorConquest layerEditor;
 
-        private readonly Timer timerAnimation;
-        private int idxAnimation = 0;
-        private bool inDraw;
+        private int idxAnimation;
 
         public LayerMainMenu() : base()
         {
@@ -68,27 +66,6 @@ namespace Fantasy_Kingdoms_Battle
             btnAboutProgram = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "О программе", BtnAboutProgram_Click);
             btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutProgram.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
             btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
-
-            timerAnimation = new Timer
-            {
-                Interval = Config.DurationFrame
-            };
-            timerAnimation.Tick += TimerAnimation_Tick;
-        }
-
-        protected override void OnEnabledChanged()
-        {
-            base.OnEnabledChanged();
-
-            timerAnimation.Enabled = Enabled;
-        }
-
-        private void TimerAnimation_Tick(object sender, EventArgs e)
-        {
-            Assert(!inDraw);
-            inDraw = true;
-            Program.formMain.ShowFrame(true);
-            inDraw = false;
         }
 
         private void BtnSingleMission_Click(object sender, EventArgs e)
@@ -147,7 +124,6 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
-
         internal override void KeyUp(KeyEventArgs e)
         {
             base.KeyUp(e);
@@ -204,11 +180,6 @@ namespace Fantasy_Kingdoms_Battle
 
             bitmapLogo = Program.formMain.CollectionBackgroundImage.GetBitmap("MainMenu", Program.formMain.Size);
             ArrangeControls();
-        }
-
-        internal void StartAnimation()
-        {
-            //timerAnimation.Start();
         }
     }
 }

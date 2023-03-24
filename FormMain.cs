@@ -439,7 +439,6 @@ namespace Fantasy_Kingdoms_Battle
             //me.Parent = this;
 
             PlayerMusic.PlayMainTheme();
-            layerMainMenu.StartAnimation();
 
             //ImportNames();// Однократная операция
 
