@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             if (VisualLayer.Active && !swFlash.IsRunning)
                 swFlash.Start();
 
-            bool cursorShow = (swFlash.ElapsedMilliseconds % 800) < 400;
+            bool cursorShow = (swFlash.ElapsedMilliseconds % (FormMain.Config.FlashCursorTime * 2)) < FormMain.Config.FlashCursorTime;
 
             if (cursorShow)
             {

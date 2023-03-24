@@ -24,6 +24,7 @@
     <FramesPerSecond>25</FramesPerSecond>
     <FramesPerSecond>25</FramesPerSecond>
     <PanelHintWidth>296</PanelHintWidth>
+    <FlashCursorTime>500</FlashCursorTime>
   </Interface>
   <MainMenu>
     <MinAlphaBanner>100</MinAlphaBanner>

@@ -109,6 +109,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PanelHintWidth >= 200);
             Debug.Assert(PanelHintWidth <= 1000);
 
+            FlashCursorTime = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/FlashCursorTime").InnerText);
+            Debug.Assert(FlashCursorTime > 100);
+            Debug.Assert(FlashCursorTime <= 5_000);
+
             ObjectMenuWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ObjectMenuWidth").InnerText);
             Debug.Assert(ObjectMenuWidth >= 50);
             Debug.Assert(ObjectMenuWidth <= 500);
@@ -393,6 +397,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxValueProperty { get; private set; }// 
         internal int MouseHoverTime { get; set; }// Через сколько миллисекунд после наведения курсора на контрол отображается подсказка
         internal int PanelHintWidth { get; set; }// Ширина панели с подсказкой
+        internal int FlashCursorTime { get; set; }// Cколько миллисекунд отображается/не отображается текстовый курсор 
         internal int ObjectMenuWidth { get; set; }
         internal int ShiftXButtonsInMenu { get; set; }
 
