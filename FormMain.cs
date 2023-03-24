@@ -533,6 +533,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (ProgramState == ProgramState.NeedQuit)
                     break;
                 ShowFrame(true);
+                Refresh();// Отображаем кадр
 
                 TimeSpan ts = DateTime.Now - curTime;
                 int delta = Config.MaxDurationFrame - ts.Milliseconds;
@@ -831,8 +832,6 @@ namespace Fantasy_Kingdoms_Battle
             if (force && (WindowState != FormWindowState.Minimized))
             {
                 DrawFrame();// Готовим кадр
-
-                Refresh();// Сразу же рисуем кадр
             }
         }
 
