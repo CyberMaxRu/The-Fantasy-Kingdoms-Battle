@@ -160,8 +160,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             WindowAboutProgram w = new WindowAboutProgram();
             w.ShowDialog();
-            w.Dispose();
-            Program.formMain.ShowFrame(true);
         }
 
         private void BtnExitToWindows_Click(object sender, EventArgs e)

@@ -71,11 +71,6 @@ namespace Fantasy_Kingdoms_Battle
                     DoException("Неизвестный тип бонуса.");
                     break;
             }
-
-            if (Program.formMain.ProgramState != ProgramState.NeedQuit)
-            {
-                Program.formMain.ShowFrame(true);// Чтобы обновились данные в тулбаре (золото, величие)
-            }
         }
 
         internal override void PrepareTurn(bool beginOfDay)

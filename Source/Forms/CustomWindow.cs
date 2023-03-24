@@ -119,7 +119,6 @@ namespace Fantasy_Kingdoms_Battle
 
             AdjustSize();
             ToCentre();
-            Program.formMain.LayerChanged();
 
             //frame = new DispatcherFrame();
             // Если использовать DispatcherFrame, то при выходе курсора за пределы клиентской области он не меняется на системный.

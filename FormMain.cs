@@ -514,8 +514,7 @@ namespace Fantasy_Kingdoms_Battle
             // При старте игры в полноэкранном режиме, если курсор находится на пустом пространстве, окно игры состоит из белого фона
             // Показ кадра при старте отрисовывает окно
             ValidateFrame();
-
-            //ShowFrame(true);
+            DrawFrame();
 
             while (true)
             {
@@ -539,8 +538,11 @@ namespace Fantasy_Kingdoms_Battle
                 currentLayer.PrepareFrame();
 
                 // Формируем и показываем кадр
-                ShowFrame(true);
-                Refresh();
+                if (WindowState != FormWindowState.Minimized)
+                {
+                    DrawFrame();
+                    Refresh();
+                }
 
                 TimeSpan ts = DateTime.Now - curTime;
                 int delta = Config.MaxDurationFrame - ts.Milliseconds;
@@ -599,8 +601,6 @@ namespace Fantasy_Kingdoms_Battle
 
             ApplyFullScreen(true);
             gameStarted = true;
-
-            ShowFrame(true);
         }
 
         private void ValidateFrame()
@@ -632,9 +632,6 @@ namespace Fantasy_Kingdoms_Battle
 
             layerMainMenu.ApplyCurrentWindowSize(sizeGamespace);
             layerGame.ApplyCurrentWindowSize(sizeGamespace);
-
-            if (gameStarted)
-                ShowFrame(true);
         }
 
         internal void ApplyFullScreen(bool force)
@@ -663,7 +660,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 //panelPlayers.Visible = false;
                 //MainControl.Visible = false;
-                //ShowFrame();
                 //panelPlayers.Visible = true;
                 //MainControl.Visible = true;
                 //Application.DoEvents();
@@ -768,11 +764,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void LayerChanged()
-        {
-            ShowFrame(true);
-        }
-
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             axWindowsMediaPlayer1.Ctlcontrols.stop();
@@ -832,14 +823,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             e.Graphics.DrawImage(bmpRenderClientArea, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
-        }
-
-        internal void ShowFrame(bool force)
-        {
-            if (force && (WindowState != FormWindowState.Minimized))
-            {
-                DrawFrame();// Готовим кадр
-            }
         }
 
         // Рисование кадра главной формы
@@ -964,9 +947,6 @@ namespace Fantasy_Kingdoms_Battle
             base.OnMouseLeave(e);
 
             ControlForHintLeave();
-
-            // Если мышь покидает пределы окна, надо отрисовать его, т.к. теряется фокус у активного контрола
-            ShowFrame(true);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -982,8 +962,6 @@ namespace Fantasy_Kingdoms_Battle
                     clickedControl = controlWithHint;
                     clickedControl.MouseDown();
                 }
-
-                ShowFrame(true);
             }
             else if (e.Button == MouseButtons.Right)
             {
@@ -993,8 +971,6 @@ namespace Fantasy_Kingdoms_Battle
 
                     controlWithHint.MouseRightDown(MousePosToControl(controlWithHint));
                 }
-
-                ShowFrame(true);
             }
         }
 
@@ -1105,11 +1081,7 @@ namespace Fantasy_Kingdoms_Battle
                     controlWithHint = curControl;
                     controlWithHint.MouseEnter(leftDown);
                 }
-
-                //SetNeedRedrawFrame();
             }
-
-            //ShowFrame(true);
         }
 
         private void ControlForHintLeave()
@@ -1132,11 +1104,6 @@ namespace Fantasy_Kingdoms_Battle
             clickedControl = null;
 
             VisualControl.PanelHint.HideHint();
-
-            // Клик в меню вызывает скрытие подсказки, а потом досрочную перерисовку
-            // Поэтому, если сейчас клик мышкой, ничего не делаем - потом все равно перерисуется кадр
-            if (!inMouseClick)
-                ShowFrame(false);
         }
 
         internal void NeedRedrawFrame()

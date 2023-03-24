@@ -401,7 +401,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 ApplyStep();
 
-                Program.formMain.ShowFrame(true);
+                //Program.formMain.ShowFrame(true);
             }
             //else
             //    System.Threading.Thread.Sleep((FormMain.Config.MaxDurationFrame - (int)timeBetweenFrames.ElapsedMilliseconds));

@@ -930,41 +930,6 @@ namespace Fantasy_Kingdoms_Battle
             firstFrameOfSecond = DateTime.Now;
             internalTimer = new Stopwatch();
             internalTimer.Start();
-
-            return;
-            while (true)
-            {
-                DateTime curTime = DateTime.Now;
-                TimeSpan delta1 = curTime - firstFrameOfSecond;
-                if (delta1.TotalMilliseconds >= 1000)
-                {
-                    firstFrameOfSecond = DateTime.Now;
-                    framesPerSecond = countFrames;
-                    ticksPerSecond = countTicks;
-                    countFrames = 0;
-                    countTicks = 0;
-                }
-
-                Application.DoEvents();
-                // Догоняем по внутреннему таймеру тики
-                long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.DurationTickInMilliSeconds;
-                while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
-                {
-                    lobby.DoTicks();
-                    countTicks++;
-                }
-
-                countFrames++;
-                Program.formMain.ShowFrame(true);
-
-                TimeSpan ts = DateTime.Now - curTime;
-                int delta = 40 - ts.Milliseconds;
-                if (delta > 0)
-                    System.Threading.Thread.Sleep(delta);
-
-                if (lobby is null)
-                    break;
-            }
         }
 
         internal override void PrepareFrame()
@@ -1046,7 +1011,6 @@ namespace Fantasy_Kingdoms_Battle
             if (Program.formMain.ProgramState != ProgramState.NeedQuit)
             {
                 Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
-                Program.formMain.ShowFrame(true);
                 Program.formMain.PlayerMusic.PlayMainTheme();
             }
         }
@@ -1092,9 +1056,6 @@ namespace Fantasy_Kingdoms_Battle
                     ShowNamePlayer(lobby.CurrentPlayer.Descriptor.Name);
                 }
             }
-
-            Program.formMain.ShowFrame(true);
-
         }
 
         internal void ShowNamePlayer(string name)
@@ -1285,7 +1246,6 @@ namespace Fantasy_Kingdoms_Battle
             debugMode = !debugMode;
             labelTimeDrawFrame.Visible = debugMode;
             labelLayers.Visible = debugMode;
-            Program.formMain.ShowFrame(true);
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
@@ -1386,9 +1346,6 @@ namespace Fantasy_Kingdoms_Battle
                 default:
                     throw new Exception($"Неизвестное действие: {dr}.");
             }
-
-            if (Program.formMain.ProgramState != ProgramState.NeedQuit)
-                Program.formMain.ShowFrame(true);
         }
 
         internal override void KeyUp(KeyEventArgs e)

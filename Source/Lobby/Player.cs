@@ -1806,8 +1806,6 @@ namespace Fantasy_Kingdoms_Battle
             PlayerQuest q = new PlayerQuest(this, quest);
             AddNoticeForPlayer(q, TypeNoticeForPlayer.AddQuest);
 
-            Program.formMain.ShowFrame(true);// SetNeedRedraw не работает
-
             Quests.Add(q);
         }
 
