@@ -691,6 +691,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Layers.Add(vc);
             currentLayer.Deactivated();
+            ControlForHintLeave();// Убираем активный контрол, если он был
             currentLayer = vc;
             currentLayer.Activated();
         }
@@ -726,10 +727,10 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(false, $"Последний слой не равен удаляемому (всего слоев {Layers.Count}, слои [{layers}], удаляется {nameLayer})");
             }
             currentLayer.Deactivated();
+            ControlForHintLeave();// Убираем активный контрол, если он был
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];
             currentLayer.Activated();
-            VisualControl.PanelHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
