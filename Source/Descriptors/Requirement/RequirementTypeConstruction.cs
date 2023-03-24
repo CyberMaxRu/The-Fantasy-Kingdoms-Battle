@@ -34,6 +34,6 @@ namespace Fantasy_Kingdoms_Battle
             nameTypeConstruction = "";
         }
 
-        internal override TextRequirement GetTextRequirement(Player p, Construction inConstruction = null) => new TextRequirement(CheckRequirement(p), $"Сооружение с типом \"{typeConstruction.Name}\": {quantity} шт.");
+        internal override (bool, string) GetTextRequirement(Player p, Construction inConstruction = null) => (CheckRequirement(p), $"Сооружение с типом \"{typeConstruction.Name}\": {quantity} шт.");
     }
 }

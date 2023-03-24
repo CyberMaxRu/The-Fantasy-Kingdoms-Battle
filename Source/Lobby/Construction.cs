@@ -888,11 +888,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<TextRequirement> GetRequirements()
+        internal ListTextRequirement GetRequirements()
         {
             AssertNotDestroyed();
 
-            List<TextRequirement> list = new List<TextRequirement>();
+            ListTextRequirement list = new ListTextRequirement();
 
             return list;
         }

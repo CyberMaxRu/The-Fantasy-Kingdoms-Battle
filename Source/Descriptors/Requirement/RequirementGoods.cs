@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool CheckRequirement(Player p) => base.CheckRequirement(p) || p.FindConstruction(construction.ID).GoodsAvailabled(goods);
-        internal override TextRequirement GetTextRequirement(Player p, Construction inConstruction = null) => new TextRequirement(CheckRequirement(p), $"{goods.Name} ({construction.Name})");
+        internal override (bool, string) GetTextRequirement(Player p, Construction inConstruction = null) => (CheckRequirement(p), $"{goods.Name} ({construction.Name})");
 
         internal override void TuneLinks()
         {

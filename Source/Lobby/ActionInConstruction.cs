@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected virtual bool ConstructionMustMeConstructed() => true;
 
-        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        protected override void UpdateTextRequirements(ListTextRequirement list)
         {
             base.UpdateTextRequirements(list);
 
@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (Construction.Level == 0)
                 {
                     if ((Descriptor.CreatedEntity.ComponentCreating.Requirements != null) && (Descriptor.CreatedEntity.ComponentCreating.Requirements.RequirementOurConstruction is null))
-                        list.Add(new TextRequirement(false, "Построить сооружение"));
+                        list.Add((false, "Построить сооружение"));
                 }
 
                 Construction.Player.TextRequirements(Descriptor.CreatedEntity.ComponentCreating.Requirements, list, Construction);
@@ -108,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
             // Проверяем, не заполнена ли очередь
             if ((ProgressExecuting != null) && !ProgressExecuting.InQueue)
                 if (Construction.QueueExecuting.Count >= Config.MaxLengthQueue)
-                    list.Add(new TextRequirement(false, "Очередь заполнена"));
+                    list.Add((false, "Очередь заполнена"));
         }
 
         internal static ActionInConstruction Create(Construction c, DescriptorActionForEntity d)
@@ -527,17 +527,17 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep13Builders(Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player), Player.RestConstructionPoints >= Descriptor.Levels[requiredLevel].GetCreating().ConstructionPoints(Player));
         }
 
-        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        protected override void UpdateTextRequirements(ListTextRequirement list)
         {
             base.UpdateTextRequirements(list);
 
             Construction.Player.TextRequirements(Descriptor.ComponentCreating.Requirements, list, Construction);
 
             if (Construction.CurrentMassEvent != null)
-                list.Add(new TextRequirement(false, "В сооружении идет мероприятие"));
+                list.Add((false, "В сооружении идет мероприятие"));
 
             if (Construction.CurrentTournament != null)
-                list.Add(new TextRequirement(false, "В сооружении идет турнир"));
+                list.Add((false, "В сооружении идет турнир"));
         }
 
 
@@ -760,15 +760,15 @@ namespace Fantasy_Kingdoms_Battle
             return cc;
         }
 
-        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        protected override void UpdateTextRequirements(ListTextRequirement list)
         {
             base.UpdateTextRequirements(list);
 
             if (Construction.MaxCreaturesInConstruction())
-                list.Add(new TextRequirement(false, Construction.Descriptor.GetTextConstructionIsFull()));
+                list.Add((false, Construction.Descriptor.GetTextConstructionIsFull()));
 
             if (Construction.MaxHeroesAtPlayer())
-                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев"));
+                list.Add((false, "Достигнуто максимальное количество героев"));
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -856,14 +856,14 @@ namespace Fantasy_Kingdoms_Battle
             return (cp is null) && (Cooldown == 0) && base.CheckRequirements() && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
         }
 
-        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        protected override void UpdateTextRequirements(ListTextRequirement list)
         {
             base.UpdateTextRequirements(list);
 
             Debug.Assert(!((cp != null) && (Cooldown > 0)));
 
             if (Construction.Level > 1)
-                list.Add(new TextRequirement((cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
+                list.Add(((cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
                     ? "Событие можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
         }
 
@@ -1028,12 +1028,12 @@ namespace Fantasy_Kingdoms_Battle
             return (ct is null) && base.CheckRequirements() && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
         }
 
-        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        protected override void UpdateTextRequirements(ListTextRequirement list)
         {
             base.UpdateTextRequirements(list);
 
             if (Construction.Level > 1)
-                list.Add(new TextRequirement((ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
+                list.Add(((ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
                     ? "Турнир можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : $"Осталось подождать дней: {1}"));
         }
 
@@ -1083,10 +1083,10 @@ namespace Fantasy_Kingdoms_Battle
             return (Counter == 0) && base.CheckRequirements();
         }
 
-        protected override void UpdateTextRequirements(List<TextRequirement> list)
+        protected override void UpdateTextRequirements(ListTextRequirement list)
         {
             base.UpdateTextRequirements(list);
-            list.Add(new TextRequirement(Counter == 0, Counter == 0 ? "Покупка доступна" : "Дней до новой покупки: " + Counter.ToString()));
+            list.Add((Counter == 0, Counter == 0 ? "Покупка доступна" : "Дней до новой покупки: " + Counter.ToString()));
         }
 
         protected override void Execute()

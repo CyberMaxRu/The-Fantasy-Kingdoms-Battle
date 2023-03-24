@@ -53,9 +53,9 @@ namespace Fantasy_Kingdoms_Battle
             Extension.UseForResearch.Add(ForEntity as DescriptorSmallEntity);
         }
 
-        internal override TextRequirement GetTextRequirement(Player p, Construction inConstruction = null)
+        internal override (bool, string) GetTextRequirement(Player p, Construction inConstruction = null)
         {
-            return new TextRequirement(CheckRequirement(p), $"{Extension.Name} ({Construction.Name})");
+            return (CheckRequirement(p), $"{Extension.Name} ({Construction.Name})");
         }
     }
 }

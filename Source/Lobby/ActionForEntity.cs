@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class ActionForEntity
     {
-        private List<TextRequirement> textRequirements = new List<TextRequirement>();
+        private ListTextRequirement textRequirements = new ListTextRequirement();
 
         static ActionForEntity()
         {
@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         protected virtual int GetTimeExecuting() => -1;
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
-        internal List<TextRequirement> GetTextRequirements()
+        internal ListTextRequirement GetTextRequirements()
         {
             textRequirements.Clear();
             UpdateTextRequirements(textRequirements);
@@ -54,6 +54,6 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract void Click();
 
         internal virtual void UpdatePurchase() { }// Обновление стоимости покупки
-        protected virtual void UpdateTextRequirements(List<TextRequirement> list) { }
+        protected virtual void UpdateTextRequirements(ListTextRequirement list) { }
     }
 }

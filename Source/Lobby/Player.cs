@@ -1144,7 +1144,7 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        internal void TextRequirements(List<DescriptorRequirement> listReq, List<TextRequirement> listTextReq, Construction inConstruction = null)
+        internal void TextRequirements(List<DescriptorRequirement> listReq, ListTextRequirement listTextReq, Construction inConstruction = null)
         {
             foreach (DescriptorRequirement r in listReq)
             {
@@ -1514,9 +1514,9 @@ namespace Fantasy_Kingdoms_Battle
             return g;
         }
 
-        internal List<TextRequirement> GetTextRequirementsBuildTypeConstruction(DescriptorConstruction type)
+        internal ListTextRequirement GetTextRequirementsBuildTypeConstruction(DescriptorConstruction type)
         {
-            List<TextRequirement> list = new List<TextRequirement>();
+            ListTextRequirement list = new ListTextRequirement();
 
             TextRequirements(type.Levels[1].ComponentCreating.Requirements, list);
 

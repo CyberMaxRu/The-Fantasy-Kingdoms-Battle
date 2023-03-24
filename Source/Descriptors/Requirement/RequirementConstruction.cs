@@ -82,13 +82,13 @@ namespace Fantasy_Kingdoms_Battle
                 return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild));
         }
 
-        internal override TextRequirement GetTextRequirement(Player p, Construction inConstruction = null)
+        internal override (bool, string) GetTextRequirement(Player p, Construction inConstruction = null)
         {
             Construction needConstruction = p.GetPlayerConstruction(construction);
             if ((inConstruction != null) && (needConstruction == inConstruction))
-                return new TextRequirement(CheckRequirement(p), Level == 1 ? "Построить сооружение" : Level.ToString() + "-й уровень сооружения");
+                return (CheckRequirement(p), Level == 1 ? "Построить сооружение" : Level.ToString() + "-й уровень сооружения");
             else
-                return new TextRequirement(CheckRequirement(p), needConstruction.Descriptor.Name + (Level > 1 ? " " + Level + " уровня" : ""));
+                return (CheckRequirement(p), needConstruction.Descriptor.Name + (Level > 1 ? " " + Level + " уровня" : ""));
         }
     }
 

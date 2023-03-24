@@ -10,19 +10,9 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class TextRequirement
+    internal sealed class ListTextRequirement : List<(bool Performed, string Text)>
     {
-        public TextRequirement(bool performed, string text)
-        {
-            Performed = performed;
-            Text = text;
-        }
-
-        internal bool Performed { get; }
-        internal string Text { get; }
     }
-
-
 
     internal sealed class HintListCustomCells : List<(int ImageIndex, string Text, Color Color)>
     {
@@ -752,7 +742,7 @@ namespace Fantasy_Kingdoms_Battle
             AddStep12CostExecuting(nameExecuting, costResources, 0, 0, null);
         }
 
-        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int time, int builders, List<TextRequirement> requirement)
+        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int time, int builders, ListTextRequirement requirement)
         {
             Assert(nameExecuting.Length > 0);
 
@@ -813,7 +803,7 @@ namespace Fantasy_Kingdoms_Battle
                         nextTop = lblTextForRequirement.NextTop();
 
                         VCText lr;
-                        foreach (TextRequirement tr in requirement)
+                        foreach ((bool Performed, string Text) tr in requirement)
                         {
                             if (!(Program.formMain.Settings.HideFulfilledRequirements && tr.Performed))
                             {
