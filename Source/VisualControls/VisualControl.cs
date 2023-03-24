@@ -549,7 +549,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(parent != this);
 
             parent.AddControl(this);
-            VisualLayer = parent.VisualLayer;
+            if (parent is LayerCustom)
+            {
+                Assert(parent.VisualLayer is null);
+                VisualLayer = parent as LayerCustom;
+            }
+            else
+                VisualLayer = parent.VisualLayer;
 
             foreach (VisualControl vc in Controls)
                 vc.VisualLayer = VisualLayer;
