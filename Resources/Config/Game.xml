@@ -25,8 +25,8 @@
     <FramesPerSecond>25</FramesPerSecond>
   </Interface>
   <MainMenu>
-    <MinAlphaBanner>130</MinAlphaBanner>
-    <FramesAnimationBanner>30</FramesAnimationBanner>
+    <MinAlphaBanner>100</MinAlphaBanner>
+    <FramesAnimationBanner>75</FramesAnimationBanner>
   </MainMenu>
   <GlobalSettings>
     <SecondsInTurn>15</SecondsInTurn>
