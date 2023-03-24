@@ -504,6 +504,11 @@ namespace Fantasy_Kingdoms_Battle
             PlayerMusic.TogglePlayMusic();
         }
 
+        internal TimeSpan durationDrawFrame;
+        internal DateTime firstFrameOfSecond;
+        internal int countFrames;
+        internal int framesPerSecond;
+
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -513,6 +518,31 @@ namespace Fantasy_Kingdoms_Battle
             ValidateFrame();
 
             //ShowFrame(true);
+
+            while (true)
+            {
+                DateTime curTime = DateTime.Now;
+                TimeSpan delta1 = curTime - firstFrameOfSecond;
+                if (delta1.TotalMilliseconds >= 1000)
+                {
+                    firstFrameOfSecond = DateTime.Now;
+                    framesPerSecond = countFrames;
+                    countFrames = 0;
+                }
+
+                Application.DoEvents();
+                currentLayer.PrepareFrame();
+                if (ProgramState == ProgramState.NeedQuit)
+                    break;
+                ShowFrame(true);
+
+                TimeSpan ts = DateTime.Now - curTime;
+                int delta = Config.MaxDurationFrame - ts.Milliseconds;
+                if (delta > 0)
+                    System.Threading.Thread.Sleep(delta);
+            }
+
+            Close();
         }
 
         internal bool CheckForNewVersion()
@@ -1364,8 +1394,8 @@ namespace Fantasy_Kingdoms_Battle
         internal void StartNewLobby(DescriptorMission m)
         {
             layerGame.StartNewLobby(m);
-            if (layerGame.CurrentLobby != null)
-                layerGame.ReturnFromLobby();
+            //if (layerGame.CurrentLobby != null)
+            //    layerGame.ReturnFromLobby();
         }
     }
 }

@@ -208,7 +208,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void StartAnimation()
         {
-            timerAnimation.Start();
+            //timerAnimation.Start();
         }
     }
 }

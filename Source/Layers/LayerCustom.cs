@@ -39,6 +39,11 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        internal virtual void PrepareFrame()
+        {
+
+        }
+
         internal virtual void PreferencesChanged() { }
     }
 }

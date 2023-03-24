@@ -7,6 +7,7 @@ using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -935,6 +936,7 @@ namespace Fantasy_Kingdoms_Battle
             internalTimer = new Stopwatch();
             internalTimer.Start();
 
+            return;
             while (true)
             {
                 DateTime curTime = DateTime.Now;
@@ -968,6 +970,34 @@ namespace Fantasy_Kingdoms_Battle
                 if (lobby is null)
                     break;
             }
+        }
+
+        internal override void PrepareFrame()
+        {
+            base.PrepareFrame();
+
+            DateTime curTime = DateTime.Now;
+            TimeSpan delta1 = curTime - firstFrameOfSecond;
+            if (delta1.TotalMilliseconds >= 1000)
+            {
+                firstFrameOfSecond = DateTime.Now;
+                framesPerSecond = countFrames;
+                ticksPerSecond = countTicks;
+                countFrames = 0;
+                countTicks = 0;
+            }
+
+            // Догоняем по внутреннему таймеру тики
+            long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.LengthTicksInMSec;
+            while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
+            {
+                lobby.DoTicks();
+                countTicks++;
+            }
+
+            countFrames++;
+            if (lobby is null)
+                Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
         }
 
         private void Map_Click(object sender, EventArgs e)
