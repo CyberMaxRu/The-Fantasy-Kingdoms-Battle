@@ -745,27 +745,21 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnFormClosing(e);
 
-            if (ProgramState == ProgramState.NeedQuit)
+            switch (ProgramState)
             {
-                Debug.Assert(layerGame.CurrentLobby is null);
-                return;
+                case ProgramState.ConfirmQuit:
+                    e.Cancel = true;
+                    break;
+                case ProgramState.NeedQuit:
+                    if (Program.formMain.layerGame.CurrentLobby != null)
+                        Program.formMain.layerGame.EndLobby();
+                    break;
+                default:
+                    WindowConfirmExit f = new WindowConfirmExit();
+                    f.ShowDialog();
+                    e.Cancel = true;
+                    break;
             }
-
-            if (ProgramState == ProgramState.Started)
-            {
-                ProgramState = ProgramState.ConfirmQuit;
-                WindowConfirmExit f = new WindowConfirmExit();
-                ProgramState = f.ShowDialog() == DialogAction.OK ? ProgramState.NeedQuit : ProgramState.Started;
-                e.Cancel = ProgramState == ProgramState.Started;
-
-                ShowFrame(true);
-
-                if (!e.Cancel)
-                    if (layerGame.CurrentLobby != null)
-                        layerGame.EndLobby();
-            }
-            else
-                e.Cancel = true;
         }
 
         internal void LayerChanged()
