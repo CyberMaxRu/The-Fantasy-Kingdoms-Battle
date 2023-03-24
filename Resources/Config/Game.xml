@@ -23,6 +23,7 @@
     <ShiftXButtonsInMenu>80</ShiftXButtonsInMenu>
     <FramesPerSecond>25</FramesPerSecond>
     <FramesPerSecond>25</FramesPerSecond>
+    <PanelHintWidth>296</PanelHintWidth>
   </Interface>
   <MainMenu>
     <MinAlphaBanner>100</MinAlphaBanner>

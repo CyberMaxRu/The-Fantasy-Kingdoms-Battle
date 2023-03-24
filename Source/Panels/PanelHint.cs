@@ -90,12 +90,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly Stopwatch swHover = new Stopwatch();// Секундомер для отсчета показа подсказки
 
-        private const int PANEL_WIDTH = 296;
-
         public PanelHint() : base()
         {
             ShowBorder = true;
-            Width = PANEL_WIDTH;
+            Width = FormMain.Config.PanelHintWidth;
             Visible = false;
 
             colorBackground = Color.FromArgb(192, 0, 0, 0);
@@ -386,7 +384,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lblHeader.Text.Length == 0);
 
-            Width = PANEL_WIDTH;
+            Width = FormMain.Config.PanelHintWidth;
             ExistHint = true;
 
             if (header.Length > 0)
@@ -416,7 +414,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lblHeader.Text.Length == 0);
 
-            Width = PANEL_WIDTH;
+            Width = FormMain.Config.PanelHintWidth;
             ExistHint = true;
 
             lblHeader.Color = properName ? Color.SteelBlue : Color.Yellow;

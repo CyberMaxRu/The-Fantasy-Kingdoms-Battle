@@ -104,7 +104,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MouseHoverTime <= 10_000);
             if (MouseHoverTime == 0)
                 MouseHoverTime = SystemInformation.MouseHoverTime;
-            
+
+            PanelHintWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PanelHintWidth").InnerText);
+            Debug.Assert(PanelHintWidth >= 200);
+            Debug.Assert(PanelHintWidth <= 1000);
+
             ObjectMenuWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ObjectMenuWidth").InnerText);
             Debug.Assert(ObjectMenuWidth >= 50);
             Debug.Assert(ObjectMenuWidth <= 500);
@@ -387,7 +391,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
         internal int MaxValueProperty { get; private set; }// 
-        internal int MouseHoverTime { get; set; }
+        internal int MouseHoverTime { get; set; }// Через сколько миллисекунд после наведения курсора на контрол отображается подсказка
+        internal int PanelHintWidth { get; set; }// Ширина панели с подсказкой
         internal int ObjectMenuWidth { get; set; }
         internal int ShiftXButtonsInMenu { get; set; }
 
