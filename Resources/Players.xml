@@ -8,7 +8,7 @@
     <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
     <Cheating>
       <IgnoreRequirements>False</IgnoreRequirements>
-      <CheatingSpeedUpProgressBy10>True</CheatingSpeedUpProgressBy10>
+      <CheatingSpeedUpProgressBy10>False</CheatingSpeedUpProgressBy10>
       <CheatingReduceCostBy10>True</CheatingReduceCostBy10>
     </Cheating>
     <TournamentSettings>

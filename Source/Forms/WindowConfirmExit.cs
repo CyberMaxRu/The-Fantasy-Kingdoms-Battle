@@ -6,5 +6,17 @@
             Program.formMain.layerGame.CurrentLobby is null ? "Выйти из программы?": "Выход приведет к потере текущей игры.\r\nПродолжить?")
         {
         }
+
+        protected override void AfterClose(DialogAction da)
+        {
+            base.AfterClose(da);
+
+            if (da == DialogAction.OK)
+            {
+                Program.formMain.layerGame.EndLobby();
+                Program.formMain.SetProgrameState(ProgramState.NeedQuit);
+                Program.formMain.Close();
+            }
+        }
     }
 }
