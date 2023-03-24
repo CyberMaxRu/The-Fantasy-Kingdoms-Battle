@@ -76,7 +76,6 @@ namespace Fantasy_Kingdoms_Battle
                     Text += e.KeyChar;
                     posCursor++;
                     CalcShiftCursor();
-                    Program.formMain.NeedRedrawFrame();
                 }
             }
         }
@@ -92,7 +91,6 @@ namespace Fantasy_Kingdoms_Battle
                     Text = Text.Remove(posCursor - 1, 1);
                     posCursor--;
                     CalcShiftCursor();
-                    Program.formMain.NeedRedrawFrame();
                 }
             }
             else if (e.KeyData == Keys.Left)
@@ -101,7 +99,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     posCursor--;
                     CalcShiftCursor();
-                    Program.formMain.NeedRedrawFrame();
                 }
             }
             else if (e.KeyData == Keys.Right)
@@ -110,21 +107,18 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     posCursor++;
                     CalcShiftCursor();
-                    Program.formMain.NeedRedrawFrame();
                 }
             }
             else if (e.KeyData == Keys.Home)
             {
                 posCursor = 0;
                 CalcShiftCursor();
-                Program.formMain.NeedRedrawFrame();
 
             }
             else if (e.KeyData == Keys.End)
             {
                 posCursor = Text.Length;
                 CalcShiftCursor();
-                Program.formMain.NeedRedrawFrame();
             }
         }
 

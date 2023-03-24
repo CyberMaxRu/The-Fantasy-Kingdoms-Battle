@@ -173,8 +173,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Visible = false;
             Program.formMain.layerGame.CurrentLobby.CurrentPlayer.RemoveNoticeForPlayer(this);
-            //Program.formMain.layerGame.ShowPlayerNotices();
-            Program.formMain.NeedRedrawFrame();
             Dispose();
         }
 

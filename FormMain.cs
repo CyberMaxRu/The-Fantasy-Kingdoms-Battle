@@ -1106,11 +1106,6 @@ namespace Fantasy_Kingdoms_Battle
             VisualControl.PanelHint.HideHint();
         }
 
-        internal void NeedRedrawFrame()
-        {
-            //needRedrawFrame = true;
-        }
-
         protected override void OnDeactivate(EventArgs e)
         {
             base.OnDeactivate(e);

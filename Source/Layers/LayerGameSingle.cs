@@ -1325,27 +1325,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowInGameMenu()
         {
-            WindowMenuInGame w = new WindowMenuInGame(CurrentLobby);
-            DialogAction dr = w.ShowDialog();
-            switch (dr)
-            {
-                case DialogAction.None:
-                    break;
-                case DialogAction.Quit:
-                    Program.formMain.SetProgrameState(ProgramState.NeedQuit);
-                    if (!(lobby is null))
-                        EndLobby();
-                    Program.formMain.Close();
-                    break;
-                case DialogAction.MainMenu:
-                    EndLobby();
-                    break;
-                case DialogAction.RestartGame:
-                    RestartLobby();
-                    break;
-                default:
-                    throw new Exception($"Неизвестное действие: {dr}.");
-            }
+            WindowMenuInGame w = new WindowMenuInGame(this, CurrentLobby);
+            w.ShowDialog();
         }
 
         internal override void KeyUp(KeyEventArgs e)
@@ -1356,7 +1337,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ShowInGameMenu();
             }
-
         }
 
         internal override void ArrangeControls()

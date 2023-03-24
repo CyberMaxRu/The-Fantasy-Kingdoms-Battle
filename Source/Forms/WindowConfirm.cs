@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             textConfirm.SetMinHeight();
         }
 
-        internal static bool ShowConfirm(string caption, string text)
+        internal static bool ShowConfirm(string caption, string text, even)
         {
             WindowConfirm wc = new WindowConfirm(caption, text);
             bool res = wc.ShowDialog() == DialogAction.OK;

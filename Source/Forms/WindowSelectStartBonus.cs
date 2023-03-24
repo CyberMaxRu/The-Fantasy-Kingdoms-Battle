@@ -114,8 +114,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (listBoxes[i].ManualSelected)
                     SelectedBonus = list[i];
             }
-
-            Program.formMain.NeedRedrawFrame();
         }
 
         internal override void AdjustSize()

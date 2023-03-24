@@ -79,8 +79,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 if ((activePage != null) && (activePage.ContextPage != null))
                     activePage.ContextPage.Visible = true;
-
-                Program.formMain.NeedRedrawFrame();
             }
         }
 

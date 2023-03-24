@@ -9,6 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     sealed class WindowMenuInGame : CustomWindow
     {
+        private readonly LayerGameSingle layerGame;
         private Lobby lobby;
         private VCBitmap bmpMenu;
         private readonly VCButtonForMenu btnBackToGame;
@@ -18,8 +19,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonForMenu btnExitToMainMenu;
         private readonly VCButtonForMenu btnExitToWindows;
 
-        public WindowMenuInGame(Lobby lobby)
+        public WindowMenuInGame(LayerGameSingle layerGame, Lobby lobby)
         {
+            this.layerGame = layerGame;
             this.lobby = lobby;
             bmpMenu = new VCBitmap(this, 0, 0, Program.formMain.bmpMenuInGame);
             Width = bmpMenu.Width;
@@ -67,6 +69,28 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.SetProgrameState(ProgramState.NeedQuit);
                 CloseForm(DialogAction.Quit);
+            }
+        }
+
+        protected override void AfterClose(DialogAction da)
+        {
+            base.AfterClose(da);
+
+            switch (da)
+            {
+                case DialogAction.None:
+                    break;
+                case DialogAction.Quit:
+                    Program.formMain.SetProgrameState(ProgramState.NeedQuit);
+                    break;
+                case DialogAction.MainMenu:
+                    layerGame.EndLobby();
+                    break;
+                case DialogAction.RestartGame:
+                    layerGame.RestartLobby();
+                    break;
+                default:
+                    throw new Exception($"Неизвестное действие: {da}.");
             }
         }
 
