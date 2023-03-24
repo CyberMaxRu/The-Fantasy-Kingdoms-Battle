@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
         private int widthControl;
 
-        private readonly Timer timerHover;// Таймер для показывания подсказки
+        private readonly Stopwatch swHover = new Stopwatch();// Секундомер для отсчета показа подсказки
 
         private const int PANEL_WIDTH = 296;
 
@@ -279,13 +279,6 @@ namespace Fantasy_Kingdoms_Battle
                         };*/
 
             Clear();
-
-            timerHover = new Timer()
-            {
-                Interval = FormMain.Config.MouseHoverTime == 0 ? SystemInformation.MouseHoverTime : FormMain.Config.MouseHoverTime,
-                Enabled = false
-            };
-            timerHover.Tick += TimerHover_Tick;
         }
 
         internal Player Player { get; set; }// 
@@ -1195,7 +1188,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(c != this);
 
             ForControl = c;
-            timerHover.Start();
+            swHover.Restart();
         }
 
         internal void HideHint()
@@ -1203,37 +1196,17 @@ namespace Fantasy_Kingdoms_Battle
             if (Visible)
             {
                 Visible = false;
-                timerHover.Stop();
+                swHover.Stop();
                 ForControl = null;
                 Clear();
                 Program.formMain.SetNeedRedrawFrame();
                 //Program.formMain.ShowFrame(false);
             }
-            else if (timerHover.Enabled)
+            else if (swHover.IsRunning)
             {
-                timerHover.Stop();
+                swHover.Stop();
                 ForControl = null;
                 Clear();
-            }
-        }
-
-        private void TimerHover_Tick(object sender, EventArgs e)
-        {
-            timerHover.Stop();
-
-            Assert(ForControl != null);
-            Assert(ForControl.Visible);
-
-            ForControl.DoShowHint();
-            if (ExistHint)
-            {
-                DrawHint();
-                Visible = true;
-
-                Program.formMain.SetNeedRedrawFrame();
-                Program.formMain.ShowFrame(false);
-
-                Assert(ForControl.Visible);
             }
         }
 
@@ -1271,6 +1244,31 @@ namespace Fantasy_Kingdoms_Battle
             g.Dispose();
 
             ArrangeControls();
+        }
+
+        internal void CheckHover()
+        {
+            if (!Visible)
+            {
+                if (swHover.IsRunning && (swHover.ElapsedMilliseconds >= FormMain.Config.MouseHoverTime))
+                {
+                    swHover.Stop();
+                    Assert(ForControl != null);
+                    Assert(ForControl.Visible);
+
+                    ForControl.DoShowHint();
+                    if (ExistHint)
+                    {
+                        DrawHint();
+                        Visible = true;
+
+                        Program.formMain.SetNeedRedrawFrame();
+                        Program.formMain.ShowFrame(false);
+
+                        Assert(ForControl.Visible);
+                    }
+                }
+            }
         }
 
         internal override void Draw(Graphics g)

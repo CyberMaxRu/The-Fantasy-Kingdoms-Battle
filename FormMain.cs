@@ -877,16 +877,19 @@ namespace Fantasy_Kingdoms_Battle
             // Здесь исправляется баг - если после клика надо заново отрисовать подсказку, то во время рисования подсказки
             // контрол может оставаться видимым, а после отрисовки кадра - невидимым, так как в некоторых классах
             // настройка происходит в методе Draw
-            if (VisualControl.PanelHint.Visible && !(controlWithHint is null) && controlWithHint.Visible)
+            if (!(controlWithHint is null) && controlWithHint.Visible)
             {
+                if (!VisualControl.PanelHint.Visible)
+                    VisualControl.PanelHint.CheckHover();
+
                 // Необходимо перерисовывать подсказку, т.к. после тика могли появиться деньги, выполниться условия
                 if (VisualControl.PanelHint.Visible)
                 {
                     VisualControl.PanelHint.Clear();
                     controlWithHint.DoShowHint();
                     VisualControl.PanelHint.DrawHint();
+                    VisualControl.PanelHint.Paint(gfxRenderFrame);
                 }
-                VisualControl.PanelHint.Paint(gfxRenderFrame);
             }
 
             if (layerGame.debugMode)

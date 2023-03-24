@@ -102,7 +102,9 @@ namespace Fantasy_Kingdoms_Battle
             MouseHoverTime = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MouseHoverTime").InnerText);
             Debug.Assert(MouseHoverTime >= 0);
             Debug.Assert(MouseHoverTime <= 10_000);
-
+            if (MouseHoverTime == 0)
+                MouseHoverTime = SystemInformation.MouseHoverTime;
+            
             ObjectMenuWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ObjectMenuWidth").InnerText);
             Debug.Assert(ObjectMenuWidth >= 50);
             Debug.Assert(ObjectMenuWidth <= 500);
