@@ -87,8 +87,6 @@ namespace Fantasy_Kingdoms_Battle
             windowCaption.Caption = be.GetName();
             imgAvatar.ImageIndex = be.GetImageIndex();
             txtMain.Text = message.Parts[currPart].Text;
-
-            Program.formMain.SetNeedRedrawFrame();
         }
     }
 }

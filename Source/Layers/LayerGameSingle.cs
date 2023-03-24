@@ -665,8 +665,6 @@ namespace Fantasy_Kingdoms_Battle
             panelLairWithFlags.ShiftX = MainControl.Width - left;
             panelLairWithFlags.Width = left;
             MainControl.ArrangeControl(panelLairWithFlags);
-
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         private void AdjustPanelLoses()
@@ -710,8 +708,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 panelCombatHeroes.Visible = curAppliedPlayer.CombatHeroes.Count > 0;
                 panelCombatHeroes.ApplyList(curAppliedPlayer.CombatHeroes);
-
-                Program.formMain.SetNeedRedrawFrame();
             }
         }
 
@@ -799,7 +795,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 UpdateMenu();
-                Program.formMain.SetNeedRedrawFrame();
             }
         }
 

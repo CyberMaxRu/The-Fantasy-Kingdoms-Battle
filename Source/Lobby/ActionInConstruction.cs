@@ -268,7 +268,6 @@ namespace Fantasy_Kingdoms_Battle
 
             RemoveSelf(true);
             Construction.Player.RemoveFromQueueExecuting(this, true);
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override int GetImageIndex()
@@ -313,8 +312,6 @@ namespace Fantasy_Kingdoms_Battle
             ConstructionService cs = new ConstructionService(Construction, Entity);
             Construction.AddService(cs);
             Construction.Player.AddNoticeForPlayer(cs, TypeNoticeForPlayer.Research);
-
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override int GetImageIndex()
@@ -381,8 +378,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Construction.Player.GetTypePlayer() == TypePlayer.Human)
                 Program.formMain.layerGame.UpdateNeighborhoods();
-
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void UpdatePurchase()
@@ -936,8 +931,6 @@ namespace Fantasy_Kingdoms_Battle
             Construction.AddExtension(ce);
 
             Construction.Player.RemoveFromQueueExecuting(this, true);
-            Program.formMain.SetNeedRedrawFrame();
-
             Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Extension);
         }
 
@@ -981,9 +974,6 @@ namespace Fantasy_Kingdoms_Battle
 
             ConstructionImprovement ce = new ConstructionImprovement(Construction, Entity);
             Construction.AddImprovement(ce);
-
-            Program.formMain.SetNeedRedrawFrame();
-
             Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Improvement);
         }
 
@@ -1121,8 +1111,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Counter = Descriptor.DaysCooldown;
-
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void UpdatePurchase()

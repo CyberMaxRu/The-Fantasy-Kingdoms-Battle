@@ -39,16 +39,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseEnter(leftButtonDown);
 
-            Program.formMain.SetNeedRedrawFrame();
             if (PlaySelectSound())
                 Program.formMain.PlaySelectButton();
-        }
-
-        internal override void MouseLeave()
-        {
-            base.MouseLeave();
-
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void Draw(Graphics g)

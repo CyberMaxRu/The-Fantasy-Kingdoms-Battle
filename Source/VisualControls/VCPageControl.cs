@@ -95,8 +95,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 Program.formMain.layerGame?.SelectPlayerObject(CurrentPage.SelectedPlayerObject);
 
-                Program.formMain.SetNeedRedrawFrame();
-
                 PageChanged?.Invoke(this, new EventArgs());
             }
         }

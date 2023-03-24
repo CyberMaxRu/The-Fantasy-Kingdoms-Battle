@@ -127,17 +127,14 @@ namespace Fantasy_Kingdoms_Battle
             if ((posAtTrackband >= -shiftTracker) && (posAtTrackband < 0))
             {
                 Position = Min;
-                Program.formMain.SetNeedRedrawFrame();
             }
             else if ((posAtTrackband > widthTrackband) && (posAtTrackband <= widthTrackband + shiftTracker))
             {
                 Position = Max;
-                Program.formMain.SetNeedRedrawFrame();
             }
             else if ((posAtTrackband >= 0) && (posAtTrackband <= widthTrackband))
             {
                 Position = posAtTrackband * 100 / widthTrackband;
-                Program.formMain.SetNeedRedrawFrame();
             }
         }
 
@@ -156,27 +153,19 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Position = (Max - Min) * posAtTrackband / widthTrackband;
                 }
-
-                Program.formMain.SetNeedRedrawFrame();
             }
         }
 
         private void BtnRight_Click(object sender, EventArgs e)
         {
             if (Position < Max)
-            {
                 Position++;
-                Program.formMain.SetNeedRedrawFrame();
-            }
         }
 
         private void BtnLeft_Click(object sender, EventArgs e)
         {
             if (Position > Min)
-            {
                 Position--;
-                Program.formMain.SetNeedRedrawFrame();
-            }
         }
     }
 }

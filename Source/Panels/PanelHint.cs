@@ -1197,8 +1197,6 @@ namespace Fantasy_Kingdoms_Battle
                 swHover.Stop();
                 ForControl = null;
                 Clear();
-                Program.formMain.SetNeedRedrawFrame();
-                //Program.formMain.ShowFrame(false);
             }
             else if (swHover.IsRunning)
             {
@@ -1259,9 +1257,6 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         DrawHint();
                         Visible = true;
-
-                        Program.formMain.SetNeedRedrawFrame();
-                        Program.formMain.ShowFrame(false);
 
                         Assert(ForControl.Visible);
                     }

@@ -596,11 +596,7 @@ namespace Fantasy_Kingdoms_Battle
             if (th.CategoryCreature != CategoryCreature.Citizen)
             {
                 if (cost != null)
-                {
                     Player.SpendResource(cost);
-                    if (Player.Descriptor.TypePlayer == TypePlayer.Human)
-                        Program.formMain.SetNeedRedrawFrame();
-                }
             }
 
             AddHero(h);

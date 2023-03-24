@@ -168,7 +168,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Size MinSizeGamespace { get; set; }
         private Point topLeftFrame;
         private bool inDrawFrame = false;
-        private bool needRedrawFrame;
 
         private readonly List<LayerCustom> Layers;
         internal readonly LayerMainMenu layerMainMenu;
@@ -738,8 +737,6 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = Layers[Layers.Count - 1];
             currentLayer.Activated();
             VisualControl.PanelHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
-             
-            SetNeedRedrawFrame();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -793,11 +790,6 @@ namespace Fantasy_Kingdoms_Battle
         internal static Config Config { get; set; }
         internal static Descriptors Descriptors { get; set; }
 
-        internal void SetNeedRedrawFrame()
-        {
-            needRedrawFrame = true;
-        }
-
         private void MakeAlpha()
         {
             //Bitmap b = new Bitmap(ilItems.Images[1]);
@@ -836,10 +828,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowFrame(bool force)
         {
-            if ((force || needRedrawFrame) && (WindowState != FormWindowState.Minimized))
+            if (force && (WindowState != FormWindowState.Minimized))
             {
-                needRedrawFrame = false;
-
                 DrawFrame();// Готовим кадр
 
                 Refresh();// Сразу же рисуем кадр

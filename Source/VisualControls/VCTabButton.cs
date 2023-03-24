@@ -21,7 +21,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain.PlayPushButton();
             (Parent as VCTabControl).ActivatePage(IndexPage);
-            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void Draw(Graphics g)
