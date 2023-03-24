@@ -9,9 +9,12 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class LayerCustom : VisualControl
     {
         private bool enabled = true;
+        private LayerCustom parentLayer;
 
         public LayerCustom() : base()
         {
+            parentLayer = Program.formMain.currentLayer;
+
             if (Program.formMain.sizeGamespace.Width > 0)
             {
                 Width = Program.formMain.sizeGamespace.Width;
@@ -41,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PrepareFrame()
         {
-
+            parentLayer?.PrepareFrame();
         }
 
         internal virtual void PreferencesChanged() { }
