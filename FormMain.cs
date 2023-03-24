@@ -701,6 +701,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Layers[0] == oldLayer);
             Debug.Assert(currentLayer == oldLayer);
 
+            // Слой меняется, поэтому тут же делаем выход контрола старого слоя
+            ControlForHintLeave();
+
             Layers[0] = newLayer;
             currentLayer = newLayer;
         }
