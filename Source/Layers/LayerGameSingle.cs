@@ -1412,14 +1412,14 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
         }
 
-        internal override void ApplyCurrentWindowSize()
+        internal override void ApplyCurrentWindowSize(Size size)
         {
-            base.ApplyCurrentWindowSize();
+            base.ApplyCurrentWindowSize(size);
 
-            if ((MainControl.Width != Program.formMain.sizeGamespace.Width) || (MainControl.Height != Program.formMain.sizeGamespace.Height - MainControl.ShiftY))
+            if ((MainControl.Width != size.Width) || (MainControl.Height != size.Height - MainControl.ShiftY))
             {
-                MainControl.Width = Program.formMain.sizeGamespace.Width;
-                MainControl.Height = Program.formMain.sizeGamespace.Height - MainControl.ShiftY;
+                MainControl.Width = size.Width;
+                MainControl.Height = size.Height - MainControl.ShiftY;
 
                 Adjust2();
                 ArrangeControls();

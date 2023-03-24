@@ -170,9 +170,9 @@ namespace Fantasy_Kingdoms_Battle
             f.ShowDialog();
         }
 
-        internal override void ApplyCurrentWindowSize()
+        internal override void ApplyCurrentWindowSize(Size size)
         {
-            base.ApplyCurrentWindowSize();
+            base.ApplyCurrentWindowSize(size);
 
             bitmapLogo = Program.formMain.CollectionBackgroundImage.GetBitmap("MainMenu", Program.formMain.Size);
             ArrangeControls();
