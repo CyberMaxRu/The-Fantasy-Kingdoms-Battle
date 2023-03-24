@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
         internal static PanelHint PanelHint { get; }
 
         internal VisualControl Parent { get; private set; }
-        internal VisualControl VisualLayer { get; private set; }
+        internal LayerCustom VisualLayer { get; private set; }
         internal int Left { get { return left; } private set { left = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Top { get { return top; } private set { top = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; ValidateRectangle(); } }
