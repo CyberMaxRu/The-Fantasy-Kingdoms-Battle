@@ -26,6 +26,8 @@ namespace Fantasy_Kingdoms_Battle
             CancelButton = btnCancel;
         }
 
+        internal event EventHandler OnClose;
+
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             CloseForm(DialogAction.None);
@@ -43,6 +45,14 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.ShiftY = ClientControl.Height - btnOk.Height;
             btnCancel.ShiftX = ClientControl.Width - btnCancel.Width;
             btnCancel.ShiftY = btnOk.ShiftY;
+        }
+
+        protected override void AfterClose(DialogAction da)
+        {
+            base.AfterClose(da);
+
+            if (da == DialogAction.OK)
+                OnClose?.Invoke(this, EventArgs.Empty);
         }
     }
 }

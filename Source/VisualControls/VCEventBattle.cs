@@ -64,8 +64,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnViewResult_Click(object sender, EventArgs e)
         {
             WindowResultBattle w = new WindowResultBattle(Battle);
-            w.ShowDialog();
-            w.Dispose();
+            w.Show();
         }
     }
 }

@@ -113,26 +113,12 @@ namespace Fantasy_Kingdoms_Battle
             ArrangeControls();
         }
 
-        internal DialogAction ShowDialog()
+        internal void Show()
         {
             PanelHint.HideHint();
 
             AdjustSize();
             ToCentre();
-
-            //frame = new DispatcherFrame();
-            // Если использовать DispatcherFrame, то при выходе курсора за пределы клиентской области он не меняется на системный.
-            // И чтобы закрыть окно, надо кликнуть 2 раза на крестике - сначала для активации окна, потом для действия
-            // Переход на свой цикл устраняет эту проблему
-            //Dispatcher.PushFrame(frame);
-
-            /*while (frame.Continue)
-            {
-                System.Threading.Thread.Sleep(1);
-                Application.DoEvents();
-            }*/
-
-            return dialogResult;
         }
     }
 }

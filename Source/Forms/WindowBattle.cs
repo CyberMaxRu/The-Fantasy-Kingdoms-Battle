@@ -637,7 +637,7 @@ namespace Fantasy_Kingdoms_Battle
             timerStep.Tick += TimerStep_Tick;
             timerStep.Start();
 
-            ShowDialog();
+            Show();
         }
 
         private int CalcHealthPlayer(BattleParticipant p)

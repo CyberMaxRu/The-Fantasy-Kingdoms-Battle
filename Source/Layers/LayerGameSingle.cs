@@ -1169,12 +1169,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCheating_Click(object sender, EventArgs e)
         {
-            Pause();
-
             WindowCheating w = new WindowCheating(curAppliedPlayer);
-            w.ShowDialog();
-
-            Continue();
+            w.Show();
         }
 
         private void LabelCorruption_ShowHint(object sender, EventArgs e)
@@ -1326,7 +1322,7 @@ namespace Fantasy_Kingdoms_Battle
         private void ShowInGameMenu()
         {
             WindowMenuInGame w = new WindowMenuInGame(this, CurrentLobby);
-            w.ShowDialog();
+            w.Show();
         }
 
         internal override void KeyUp(KeyEventArgs e)

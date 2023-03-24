@@ -47,6 +47,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbAllowCheating;
 
         private Settings settings;
+        private ScreenMode oldScreenMode;
+
 
         public WindowPreferences() : base("Настройки игры")
         {
@@ -204,6 +206,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if(da == DialogAction.OK)
             {
+                oldScreenMode = settings.ScreenMode();
                 settings.ShowSplashVideo = chkbShowSplashVideo.Checked;
                 settings.FullScreenMode = chkbFullscreenMode.Checked;
                 settings.StretchControlsInFSMode = chkbStretchControlsInFSMode.Checked;
@@ -227,6 +230,25 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 Utils.DoException("Неизвестный результат диалога");
+        }
+
+        protected override void AfterClose(DialogAction da)
+        {
+            base.AfterClose(da);
+
+            Program.formMain.PlayerMusic.RefreshPlayList();
+            /*if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
+            {
+                lobby.CurrentPlayer.Name = Settings.NamePlayer;
+            }*/
+
+            Program.formMain.ApplyFullScreen(oldScreenMode != settings.ScreenMode());
+
+            foreach (LayerCustom l in Program.formMain.Layers)
+            {
+                l.PreferencesChanged();
+            }
+
         }
     }
 }

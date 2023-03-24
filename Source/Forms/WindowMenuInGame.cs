@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
         {
             WindowPlayerPreferences w = new WindowPlayerPreferences(lobby);
-            w.ShowDialog();
+            w.Show();
         }
 
         private void BtnNewGame_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnExitToWindows_Click(object sender, EventArgs e)
         {
             WindowConfirmExit f = new WindowConfirmExit();
-            f.ShowDialog();
+            f.Show();
         }
 
         protected override void AfterClose(DialogAction da)

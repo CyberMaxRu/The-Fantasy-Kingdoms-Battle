@@ -21,21 +21,11 @@ namespace Fantasy_Kingdoms_Battle
             textConfirm.SetMinHeight();
         }
 
-        internal event EventHandler OnClose;
-
-        protected override void AfterClose(DialogAction da)
-        {
-            base.AfterClose(da);
-
-            if (da == DialogAction.OK)
-                 OnClose?.Invoke(this, EventArgs.Empty);
-        }
-
         internal static void ShowConfirm(string caption, string text, EventHandler onClose)
         {
             WindowConfirm wc = new WindowConfirm(caption, text);
             wc.OnClose += onClose;
-            wc.ShowDialog();
+            wc.Show();
         }
     }
 }

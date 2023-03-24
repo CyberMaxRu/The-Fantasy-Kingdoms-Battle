@@ -45,8 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         internal static void ShowInfo(string caption, string text)
         {
             WindowInfo wc = new WindowInfo(caption, text);
-            wc.ShowDialog();
-            wc.Dispose();
+            wc.Show();
         }
     }
 }

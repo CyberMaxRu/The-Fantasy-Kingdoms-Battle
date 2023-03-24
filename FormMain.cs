@@ -169,7 +169,7 @@ namespace Fantasy_Kingdoms_Battle
         private Point topLeftFrame;
         private bool inDrawFrame = false;
 
-        private readonly List<LayerCustom> Layers;
+        internal readonly List<LayerCustom> Layers;
         internal readonly LayerMainMenu layerMainMenu;
         internal readonly LayerGameSingle layerGame;
         internal LayerCustom currentLayer { get; set; }
@@ -674,21 +674,7 @@ namespace Fantasy_Kingdoms_Battle
             ScreenMode sm = Settings.ScreenMode();
             WindowPreferences w = new WindowPreferences();
             w.ApplySettings(Settings);
-            if (w.ShowDialog() == DialogAction.OK)
-            {
-                PlayerMusic.RefreshPlayList();
-                /*if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
-                {
-                    lobby.CurrentPlayer.Name = Settings.NamePlayer;
-                }*/
-
-                ApplyFullScreen(sm != Settings.ScreenMode());
-
-                foreach (LayerCustom l in Layers)
-                {
-                    l.PreferencesChanged();
-                }
-            }
+            w.Show();
         }
 
         internal void AddLayer(LayerCustom vc)
@@ -758,7 +744,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 default:
                     WindowConfirmExit f = new WindowConfirmExit();
-                    f.ShowDialog();
+                    f.Show();
                     e.Cancel = true;
                     break;
             }

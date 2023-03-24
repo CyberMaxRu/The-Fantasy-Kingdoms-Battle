@@ -44,8 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case TypeSelectBonus.Manual:
                     WindowSelectPersistentBonuses wpb = new WindowSelectPersistentBonuses(this);
-                    wpb.ShowDialog();
-                    wpb.Dispose();
+                    wpb.Show();
                     break;
                 case TypeSelectBonus.Random:
                     SelectRandomPersistentBonus();
@@ -60,9 +59,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case TypeSelectBonus.Manual:
                     WindowSelectStartBonus w = new WindowSelectStartBonus(this, VariantsStartBonuses);
-                    w.ShowDialog();
+                    w.Show();
                     ApplyStartBonus(w.SelectedBonus);
-                    w.Dispose();
                     break;
                 case TypeSelectBonus.Random:
                     ApplyStartBonus(GetRandomStartBonus());
@@ -103,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     WindowMessage wm = new WindowMessage();
                     wm.SetMessage(this, m);
-                    wm.ShowDialog();
+                    wm.Show();
                     wm.Dispose();
                     m.DoAction(this);
                     m.Showed = true;

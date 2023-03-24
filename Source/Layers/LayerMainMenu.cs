@@ -147,8 +147,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
         {
             WindowPlayerPreferences w = new WindowPlayerPreferences(null);
-            w.ShowDialog();
-            w.Dispose();
+            w.Show();
         }
 
         private void BtnPreferences_Click(object sender, EventArgs e)
@@ -159,13 +158,13 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnAboutProgram_Click(object sender, EventArgs e)
         {
             WindowAboutProgram w = new WindowAboutProgram();
-            w.ShowDialog();
+            w.Show();
         }
 
         private void BtnExitToWindows_Click(object sender, EventArgs e)
         {
             WindowConfirmExit f = new WindowConfirmExit();
-            f.ShowDialog();
+            f.Show();
         }
 
         internal override void ApplyCurrentWindowSize(Size size)
