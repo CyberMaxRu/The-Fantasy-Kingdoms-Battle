@@ -79,7 +79,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain.CurrentHumanPlayer.TournamentSettings[0] = ls;
             FormMain.Descriptors.SaveHumanPlayers();
-            Program.formMain.StartNewLobby(m);
+            Program.formMain.layerGame.StartNewLobby(m);
         }
 
         private void BtnEditorConquest_Click(object sender, EventArgs e)
