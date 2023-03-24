@@ -11,7 +11,7 @@ using System.Windows.Threading;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class LayerGameSingle : LayerCustom
+    internal sealed class LayerGameSingle : LayerScene
     {
         //
         private DescriptorMission mission;

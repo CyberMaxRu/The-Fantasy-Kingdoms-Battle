@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -11,8 +12,9 @@ namespace Fantasy_Kingdoms_Battle
     {
         private LayerCustom parentLayer;
 
-        public LayerCustom() : base()
+        public LayerCustom(bool active = false) : base()
         {
+            Active = active;
             parentLayer = Program.formMain.currentLayer;
 
             if (Program.formMain.sizeGamespace.Width > 0)
@@ -24,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static Config Config { get; set; }
         internal static Descriptors Descriptors { get; set; }
+        internal bool Active { get; private set; }// Слой активен
 
         internal virtual void ApplyCurrentWindowSize(Size size)
         {
@@ -31,8 +34,17 @@ namespace Fantasy_Kingdoms_Battle
             Height = size.Height;
         }
 
-        internal virtual void Deactivated() { }// Вызывается при деактивации слоя
-        internal virtual void Activated() { }// Вызывается при активации слоя
+        internal virtual void Deactivated()// Вызывается при деактивации слоя
+        {
+            Assert(Active);
+            Active = false;
+        }
+
+        internal virtual void Activated()// Вызывается при активации слоя
+        {
+            Assert(!Active);
+            Active = true;
+        }
 
         internal virtual void PrepareFrame()
         {

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class LayerMainMenu : LayerCustom
+    internal sealed class LayerMainMenu : LayerScene
     {
         private Bitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;

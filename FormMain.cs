@@ -692,6 +692,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Layers.Count <= 5);
             Debug.Assert(currentLayer.Controls.Count > 0);
+            Debug.Assert(!vc.Active);
 
             // Так как переходим к новом слою, выходим мышью из контрола текущего слоя
             // При клике есть только controlClicked, его и смотрим
