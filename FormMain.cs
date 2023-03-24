@@ -528,12 +528,19 @@ namespace Fantasy_Kingdoms_Battle
                     countFrames = 0;
                 }
 
+                // Обрабатываем события - клики мышью, нажатия клавиатуры
                 Application.DoEvents();
-                currentLayer.PrepareFrame();
+
+                // Если был подтвержден выход из программы, выходим
                 if (ProgramState == ProgramState.NeedQuit)
                     break;
+
+                // Расчет перед кадром
+                currentLayer.PrepareFrame();
+
+                // Формируем и показываем кадр
                 ShowFrame(true);
-                Refresh();// Отображаем кадр
+                Refresh();
 
                 TimeSpan ts = DateTime.Now - curTime;
                 int delta = Config.MaxDurationFrame - ts.Milliseconds;
