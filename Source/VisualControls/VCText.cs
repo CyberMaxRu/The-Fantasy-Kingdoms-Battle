@@ -55,6 +55,11 @@ namespace Fantasy_Kingdoms_Battle
             return Padding.Left + w + Padding.Right;
         }
 
+        internal void SetMinHeight()
+        {
+            Height = MinHeigth();
+        }
+
         internal void DrawText()
         {
             foreach (Bitmap b in listBitmapPreparedText)
