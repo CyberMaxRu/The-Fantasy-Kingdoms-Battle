@@ -14,9 +14,11 @@ namespace Fantasy_Kingdoms_Battle
 
         public WindowConfirm(string caption, string text) : base(caption)
         {
-            textConfirm = new VCText(ClientControl, 0, 0, Program.formMain.FontParagraph, Color.White, ClientControl.Width);
-            textConfirm.Text = text;
-            textConfirm.Height = textConfirm.MinHeigth();
+            textConfirm = new VCText(ClientControl, 0, 0, Program.formMain.FontParagraph, Color.White, ClientControl.Width)
+            {
+                Text = text
+            };
+            textConfirm.SetMinHeight();
         }
 
         internal static bool ShowConfirm(string caption, string text)
