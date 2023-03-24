@@ -952,7 +952,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 Application.DoEvents();
                 // Догоняем по внутреннему таймеру тики
-                long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.LengthTicksInMSec;
+                long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.DurationTickInMilliSeconds;
                 while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
                 {
                     lobby.DoTicks();
@@ -988,7 +988,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Догоняем по внутреннему таймеру тики
-            long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.LengthTicksInMSec;
+            long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.DurationTickInMilliSeconds;
             while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
             {
                 lobby.DoTicks();

@@ -155,8 +155,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TicksInSecond >= 10);
             Debug.Assert(TicksInSecond <= 200);
 
-            LengthTicksInMSec = 1000 / TicksInSecond;
-            Debug.Assert(LengthTicksInMSec * TicksInSecond == 1000);
+            DurationTickInMilliSeconds = 1000 / TicksInSecond;
+            Debug.Assert(DurationTickInMilliSeconds * TicksInSecond == 1000);
 
             TicksInTurn = TicksInSecond * SecondsInTurn;
 
@@ -393,7 +393,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DurationFrame { get; set; }// Длительность кадра в миллисекундах
         internal int SecondsInTurn { get; set; }// Сколько реальных секунд длятся одни игровые сутки
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
-        internal int LengthTicksInMSec { get; set; }// Длительность одного тика игры в миллисекундах
+        internal int DurationTickInMilliSeconds { get; set; }// Длительность одного тика игры в миллисекундах
         internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
         internal int DaysInWeek { get; private set; }// Дней в неделе
         internal int WeeksInMonth { get; private set; }// Недель в месяце
