@@ -31,6 +31,9 @@ namespace Fantasy_Kingdoms_Battle
             Height = size.Height;
         }
 
+        internal virtual void Deactivated() { }// Вызывается при деактивации слоя
+        internal virtual void Activated() { }// Вызывается при активации слоя
+
         internal virtual void PrepareFrame()
         {
             parentLayer?.PrepareFrame();

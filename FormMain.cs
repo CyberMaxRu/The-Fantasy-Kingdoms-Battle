@@ -700,7 +700,9 @@ namespace Fantasy_Kingdoms_Battle
             controlClicked = null;
 
             Layers.Add(vc);
+            currentLayer.Deactivated();
             currentLayer = vc;
+            currentLayer.Activated();
         }
 
         internal void ExchangeLayer(LayerCustom oldLayer, LayerCustom newLayer)
@@ -730,8 +732,10 @@ namespace Fantasy_Kingdoms_Battle
                 string nameLayer = vl is VCForm vlf ? vlf.GetCaption() : vl.ToString();
                 Debug.Assert(false, $"Последний слой не равен удаляемому (всего слоев {Layers.Count}, слои [{layers}], удаляется {nameLayer})");
             }
+            currentLayer.Deactivated();
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];
+            currentLayer.Activated();
             VisualControl.PanelHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
              
             SetNeedRedrawFrame();

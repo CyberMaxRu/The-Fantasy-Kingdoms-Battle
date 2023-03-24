@@ -976,28 +976,32 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.PrepareFrame();
 
-            DateTime curTime = DateTime.Now;
-            TimeSpan delta1 = curTime - firstFrameOfSecond;
-            if (delta1.TotalMilliseconds >= 1000)
+            if (internalTimer.IsRunning)
             {
-                firstFrameOfSecond = DateTime.Now;
-                framesPerSecond = countFrames;
-                ticksPerSecond = countTicks;
-                countFrames = 0;
-                countTicks = 0;
-            }
 
-            // Догоняем по внутреннему таймеру тики
-            long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.DurationTickInMilliSeconds;
-            while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
-            {
-                lobby.DoTicks();
-                countTicks++;
-            }
+                DateTime curTime = DateTime.Now;
+                TimeSpan delta1 = curTime - firstFrameOfSecond;
+                if (delta1.TotalMilliseconds >= 1000)
+                {
+                    firstFrameOfSecond = DateTime.Now;
+                    framesPerSecond = countFrames;
+                    ticksPerSecond = countTicks;
+                    countFrames = 0;
+                    countTicks = 0;
+                }
 
-            countFrames++;
-            if (lobby is null)
-                Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
+                // Догоняем по внутреннему таймеру тики
+                long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.DurationTickInMilliSeconds;
+                while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
+                {
+                    lobby.DoTicks();
+                    countTicks++;
+                }
+
+                countFrames++;
+                if (lobby is null)
+                    Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
+            }
         }
 
         private void Map_Click(object sender, EventArgs e)
@@ -1366,8 +1370,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowInGameMenu()
         {
-            Pause();
-
             WindowMenuInGame w = new WindowMenuInGame(CurrentLobby);
             DialogAction dr = w.ShowDialog();
             switch (dr)
@@ -1392,8 +1394,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Program.formMain.ProgramState != ProgramState.NeedQuit)
                 Program.formMain.ShowFrame(true);
-
-            Continue();
         }
 
         internal override void KeyUp(KeyEventArgs e)
@@ -1410,6 +1410,20 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ArrangeControls()
         {
             base.ArrangeControls();
+        }
+
+        internal override void Deactivated()
+        {
+            base.Deactivated();
+
+            Pause();
+        }
+
+        internal override void Activated()
+        {
+            base.Activated();
+
+            Continue();
         }
 
         internal override void ApplyCurrentWindowSize(Size size)
