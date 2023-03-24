@@ -39,10 +39,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnExitToMainMenu_Click(object sender, EventArgs e)
         {
-            if (WindowConfirm.ShowConfirm("Подтверждение", "Текущая игра будет потеряна.\n\rПродолжить?"))
-            {
-                CloseForm(DialogAction.MainMenu);
-            }
+            WindowConfirm.ShowConfirm("Подтверждение", "Текущая игра будет потеряна.\n\rПродолжить?", ExitToMainMenu);
+        }
+
+        private void ExitToMainMenu(object sender, EventArgs e)
+        {
+            CloseForm(DialogAction.MainMenu);
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
@@ -53,8 +55,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnNewGame_Click(object sender, EventArgs e)
         {
-            if (WindowConfirm.ShowConfirm("Подтверждение", "Будет начата новая игра.\n\rТекущая игра будет потеряна.\n\rПродолжить?"))
-                CloseForm(DialogAction.RestartGame);
+            WindowConfirm.ShowConfirm("Подтверждение", "Будет начата новая игра.\n\rТекущая игра будет потеряна.\n\rПродолжить?", NewGame);
+        }
+
+        private void NewGame(object sender, EventArgs e)
+        {
+            CloseForm(DialogAction.RestartGame);
         }
 
         private void BtnSettings_Click(object sender, EventArgs e)
@@ -65,11 +71,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnExitToWindows_Click(object sender, EventArgs e)
         {
             WindowConfirmExit f = new WindowConfirmExit();
-            if (f.ShowDialog() == DialogAction.OK)
-            {
-                Program.formMain.SetProgrameState(ProgramState.NeedQuit);
-                CloseForm(DialogAction.Quit);
-            }
+            f.ShowDialog();
         }
 
         protected override void AfterClose(DialogAction da)
