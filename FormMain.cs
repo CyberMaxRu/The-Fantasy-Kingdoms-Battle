@@ -709,10 +709,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Layers[0] == oldLayer);
             Debug.Assert(currentLayer == oldLayer);
 
-            oldLayer.Enabled = false;
             Layers[0] = newLayer;
             currentLayer = newLayer;
-            newLayer.Enabled = true;
         }
 
         internal void RemoveLayer(LayerCustom vl)

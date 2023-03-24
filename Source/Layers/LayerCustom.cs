@@ -24,17 +24,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static Config Config { get; set; }
         internal static Descriptors Descriptors { get; set; }
-        internal bool Enabled { get => enabled; set { if (enabled != value) { enabled = value; OnEnabledChanged(); } } }
 
         internal virtual void ApplyCurrentWindowSize()
         {
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
-        }
-
-        protected virtual void OnEnabledChanged()
-        {
-
         }
 
         internal virtual void BeforeDrawFrame()
