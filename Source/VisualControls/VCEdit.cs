@@ -12,10 +12,9 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - поле для ввода текста
     internal sealed class VCEdit : VCLabel
     {
-        private Timer timerCursor;
+        private readonly Stopwatch swFlash = new Stopwatch();
         private int posCursor;
         private int shiftCursor;
-        private bool cursorShow;
         private Pen penCursor = new Pen(Color.White);
 
         public VCEdit(VisualControl parent, int shiftX, int shiftY, string text, int maxLength)
@@ -30,23 +29,6 @@ namespace Fantasy_Kingdoms_Battle
             Width = 80;
             TopMargin = 1;
             LeftMargin = 6;
-
-            timerCursor = new Timer();
-            timerCursor.Interval = 400;
-            timerCursor.Tick += TimerCursor_Tick;
-            timerCursor.Start();
-        }
-
-        private void TimerCursor_Tick(object sender, EventArgs e)
-        {
-            cursorShow = !cursorShow;
-
-            if (cursorShow)
-            {
-                CalcShiftCursor();
-            }
-
-            Program.formMain.ShowFrame(true);
         }
 
         private void CalcShiftCursor()
@@ -65,8 +47,16 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.Draw(g);
 
+            if (!VisualLayer.Active && swFlash.IsRunning)
+                swFlash.Stop();
+            if (VisualLayer.Active && !swFlash.IsRunning)
+                swFlash.Start();
+
+            bool cursorShow = (swFlash.ElapsedMilliseconds % 800) < 400;
+
             if (cursorShow)
             {
+                CalcShiftCursor();
                 g.DrawLine(penCursor, Left + shiftCursor, Top + 2, Left + shiftCursor, Top + Height - 6);
             }
         }
