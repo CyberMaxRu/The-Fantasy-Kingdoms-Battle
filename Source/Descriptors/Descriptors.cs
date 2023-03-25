@@ -50,6 +50,13 @@ namespace Fantasy_Kingdoms_Battle
                 TimesOfWeek.Add(new DescriptorTimeOfWeek(n));
             }
 
+            // Загрузка типов традиций
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeTraditions.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeTradition"))
+            {
+                TypeTraditions.Add(new DescriptorTypeTradition(n));
+            }
+
             // Загрузка типов ландшафта
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeLandscapes.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeLandscape"))
@@ -358,6 +365,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal List<DescriptorTimeOfWeek> TimesOfWeek { get; } = new List<DescriptorTimeOfWeek>();
+        internal List<DescriptorTypeTradition> TypeTraditions { get; } = new List<DescriptorTypeTradition>();
         internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();

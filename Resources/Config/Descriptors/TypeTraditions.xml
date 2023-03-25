@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <TypeTradition>
+    <ID>TypeTraditionWar</ID>
+    <Name>Военные</Name>
+    <Description>Военные традиции увеличивают эффективность героев военных гильдий</Description>
+    <ImageIndex>316</ImageIndex>
+  </TypeTradition>
+  <TypeTradition>
+    <ID>TypeTraditionCity</ID>
+    <Name>Городские</Name>
+    <Description>Городские традиции улучшают жизнь в городе</Description>
+    <ImageIndex>317</ImageIndex>
+  </TypeTradition>
+  <TypeTradition>
+    <ID>TypeTraditionVillage</ID>
+    <Name>Сельские</Name>
+    <Description>Сельские традиции увеличивают эффективность крестьян</Description>
+    <ImageIndex>318</ImageIndex>
+  </TypeTradition>
+  <TypeTradition>
+    <ID>TypeTraditionMiningAndProduction</ID>
+    <Name>Добыча ресурсов и производство</Name>
+    <Description>Традиции добычи ресурсов и производства увеличивают эффективность добычи ресурсов и мастерских</Description>
+    <ImageIndex>319</ImageIndex>
+  </TypeTradition>
+  <TypeTradition>
+    <ID>TypeTraditionBuilding</ID>
+    <Name>Строительство</Name>
+    <Description>Традиции строительства увеличивают эффективность строителей и построенных сооружений</Description>
+    <ImageIndex>320</ImageIndex>
+  </TypeTradition>
+  <TypeTradition>
+    <ID>TypeTraditionEconomic</ID>
+    <Name>Экономические</Name>
+    <Description>Экономические традиции увеличивают эффективность экономики и сбора золота</Description>
+    <ImageIndex>321</ImageIndex>
+  </TypeTradition>
+</Descriptors>
