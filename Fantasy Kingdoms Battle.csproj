@@ -65,6 +65,7 @@
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionStructure.cs" />
     <Compile Include="Source\Descriptors\DescriptorParameterCity.cs" />
     <Compile Include="Source\Descriptors\DescriptorTimeOfWeek.cs" />
+    <Compile Include="Source\Descriptors\DescriptorTradition.cs" />
     <Compile Include="Source\Descriptors\DescriptorTypeTradition.cs" />
     <Compile Include="Source\Forms\WindowMessage.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />
@@ -356,6 +357,7 @@
     <Content Include="Resources\Config\Descriptors\Specializations.xml" />
     <Content Include="Resources\Config\Descriptors\LevelTaxes.xml" />
     <Content Include="Resources\Config\Descriptors\TimesOfWeek.xml" />
+    <Content Include="Resources\Config\Descriptors\Traditions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAbilities.xml" />
     <Content Include="Resources\Config\Descriptors\TypeConstructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeLandscapes.xml" />

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <Tradition>
+    <ID>TraditionDamageMelee</ID>
+    <Name>Урон ближнего боя</Name>
+    <TypeTradition>TypeTraditionBattle</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionDefenceMelee</ID>
+    <Name>Защита ближнего боя</Name>
+    <TypeTradition>TypeTraditionBattle</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionSpeedAttack</ID>
+    <Name>Скорость атаки</Name>
+    <TypeTradition>TypeTraditionHero</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionIncreaseExperience</ID>
+    <Name>Увеличенный боевой опыт</Name>
+    <TypeTradition>TypeTraditionHero</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionContraUndead</ID>
+    <Name>Увеличение урона и защиты против нежити</Name>
+    <TypeTradition>TypeTraditionConfrontation</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionContraBeast</ID>
+    <Name>Увеличение урона и защиты против зверей</Name>
+    <TypeTradition>TypeTraditionConfrontation</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionHarvestWheat</ID>
+    <Name>Увеличение урожая пшеницы</Name>
+    <TypeTradition>TypeTraditionVillage</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionGrowthPeasant</ID>
+    <Name>Увеличение прироста крестьян</Name>
+    <TypeTradition>TypeTraditionVillage</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionIncSpeedMiningBuildingResource</ID>
+    <Name>Увеличение скорости добычи строительных ресурсов</Name>
+    <TypeTradition>TypeTraditionMiningAndProduction</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionIncSpeedMiningGold</ID>
+    <Name>Увеличение скорости добычи золота</Name>
+    <TypeTradition>TypeTraditionMiningAndProduction</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionDecConsumptionFood</ID>
+    <Name>Уменьшение еды горожанами</Name>
+    <TypeTradition>TypeTraditionCity</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionDecGrowthRats</ID>
+    <Name>Уменьшение прироста крыс от горожан</Name>
+    <TypeTradition>TypeTraditionCity</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionIncSpeedBuilding</ID>
+    <Name>Увеличение скорости строительства</Name>
+    <TypeTradition>TypeTraditionBuilding</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionIncDurability</ID>
+    <Name>Увеличение прочности сооружений</Name>
+    <TypeTradition>TypeTraditionBuilding</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionDecCostTrade</ID>
+    <Name>Уменьшение стоимости товаров при покупке на рынке</Name>
+    <TypeTradition>TypeTraditionEconomic</TypeTradition>
+  </Tradition>
+  <Tradition>
+    <ID>TraditionIncQuantityGoods</ID>
+    <Name>Увеличение количества товаров на рынке</Name>
+s    <TypeTradition>TypeTraditionEconomic</TypeTradition>
+  </Tradition>
+</Descriptors>

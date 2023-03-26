@@ -581,6 +581,17 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Перк {ID} не найден.");
         }
 
+        internal DescriptorTypeTradition FindTypeTradition(string ID)
+        {
+            foreach (DescriptorTypeTradition tt in TypeTraditions)
+            {
+                if (tt.ID == ID)
+                    return tt;
+            }
+
+            throw new Exception("Тип традиций " + ID + " не найден.");
+        }
+
         internal DescriptorAbility FindAbility(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorAbility a in Abilities)
