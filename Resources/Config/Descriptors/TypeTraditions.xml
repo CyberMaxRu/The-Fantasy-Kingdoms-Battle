@@ -1,9 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <TypeTradition>
-    <ID>TypeTraditionWar</ID>
-    <Name>Военные</Name>
-    <Description>Военные традиции увеличивают эффективность героев военных гильдий</Description>
+    <ID>TypeTraditionBattle</ID>
+    <Name>Боевые</Name>
+    <Description>Боевые традиции увеличивают урон и защиту героев военных гильдий</Description>
+    <ImageIndex>316</ImageIndex>
+  </TypeTradition>
+  <TypeTradition>
+    <ID>TypeTraditionHero</ID>
+    <Name>Героев</Name>
+    <Description>Традиции героев увеличивают различные параметры героев военных гильдий</Description>
+    <ImageIndex>322</ImageIndex>
+  </TypeTradition>
+  <TypeTradition>
+    <ID>TypeTraditionConfrontation</ID>
+    <Name>Противостояния</Name>
+    <Description>Традиции противостояния увеличивают атаку и защиту против различных типов существ</Description>
     <ImageIndex>316</ImageIndex>
   </TypeTradition>
   <TypeTradition>
