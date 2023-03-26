@@ -849,6 +849,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int CurrentBuilders { get; private set; }// Текущее количество строителей
         internal int FreeBuilders { get; private set; }// Свободных строителей
 
+        // Традиции
+        internal List<DescriptorTradition> ListTraditions { get; } = new List<DescriptorTradition>();// Принятые традиции
+        internal int PointsTraditions { get; private set; }// Очков традиций (умноженное на 1000)
+        internal int PointsForNextTradition { get; private set; }// Очков до принятия следующей традиции
+        internal DescriptorTradition NextTradition { get; private set; }// Принимаемая традиция
 
         // Статистика
         internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();

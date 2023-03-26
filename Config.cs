@@ -177,6 +177,13 @@ namespace Fantasy_Kingdoms_Battle
             Assert(WeeksInMonth > 1);
             Assert(WeeksInMonth < 10);
 
+            CostFirstTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/CostFirstTradition").InnerText);
+            Assert(CostFirstTradition >= 1);
+            Assert(CostFirstTradition <= 1000);
+            CoefForNextTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/CoefForNextTradition").InnerText);
+            Assert(CoefForNextTradition > 1);
+            Assert(CoefForNextTradition < 1000);
+
             // MainMenu
             MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
             MainMenuFramesAnimationBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/FramesAnimationBanner").InnerText);
@@ -409,7 +416,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
         internal int DaysInWeek { get; private set; }// Дней в неделе
         internal int WeeksInMonth { get; private set; }// Недель в месяце
-        
+
+        // Традиции
+        internal int CostFirstTradition { get; private set; }// Стоимость принятия первой традиции
+        internal int CoefForNextTradition { get; private set; }// Коэффициент для стоимости второй и последующих традиций
+
         internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
         internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера
 

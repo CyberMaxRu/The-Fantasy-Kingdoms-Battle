@@ -37,8 +37,12 @@
     <WeeksInMonth>4</WeeksInMonth>
     <Construction>
       <MaxLengthQueue>3</MaxLengthQueue>
-    </Construction>
+    </Construction>    
   </GlobalSettings>
+  <Traditions>
+    <CostFirstTradition>10</CostFirstTradition>
+    <CoefForNextTradition>131</CoefForNextTradition>
+  </Traditions>
   <Notice>
     <SecondsBeforeHide>10</SecondsBeforeHide>
     <SecondsHide>3</SecondsHide>
