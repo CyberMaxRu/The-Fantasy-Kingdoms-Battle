@@ -1102,7 +1102,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelNotices.Visible = true;
                 int nextY = 0;
 
-                foreach (VCNoticeForPlayer ep in curAppliedPlayer.ListNoticesForPlayer)
+                foreach (VCCustomNotice ep in curAppliedPlayer.ListNoticesForPlayer)
                 {
                     ep.ShiftY = nextY;
                     ep.Visible = true;

@@ -124,7 +124,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(frame.Continue);
 
-            foreach (VCNoticeForPlayer e in ListNoticesForPlayer)
+            foreach (VCCustomNotice e in ListNoticesForPlayer)
             {
                 e.Dispose();
             }
