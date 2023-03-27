@@ -39,7 +39,9 @@
       <MaxLengthQueue>3</MaxLengthQueue>
     </Construction>    
   </GlobalSettings>
-  <Traditions>
+  <Traditions>    
+    <MaxLevelTradition>5</MaxLevelTradition>
+    <MaxTraditions>6</MaxTraditions>
     <CostFirstTradition>10</CostFirstTradition>
     <CoefForNextTradition>131</CoefForNextTradition>
   </Traditions>

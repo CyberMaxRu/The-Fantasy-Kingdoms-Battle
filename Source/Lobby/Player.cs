@@ -385,12 +385,15 @@ namespace Fantasy_Kingdoms_Battle
             ApplyChangeCityParameters();
 
             // Обработка традиции
-            if (NextTradition is null)
+            if ((NextTradition is null) && AcceptTraditionsAllowed)
             {
+                if (ListVariantsTraditions.Count == 0)
+                    GenerateVariantsTraditions();
+
                 // Если нет выбранной традиции, извещаем об этом игрока
                 if (NoticeForTradition is null)
                 {
-                    NoticeForTradition = new VCNoticeSelectTradition();
+                    NoticeForTradition = new VCNoticeSelectTradition(this);
                     AddNoticeForPlayer(NoticeForTradition);
                 }
             }
@@ -467,6 +470,48 @@ namespace Fantasy_Kingdoms_Battle
 
             UpdateBuilderInfo();
             CalcCityParameters();
+        }
+
+        // Определяет варианты выбора следующей традиции
+        private void GenerateVariantsTraditions()
+        {
+            Assert(AcceptTraditionsAllowed);
+
+            ListVariantsTraditions.Clear();
+            List<DescriptorTradition> tempList = new List<DescriptorTradition>();
+            int level;
+
+            // Сначала заполняем список всеми возможными вариантами
+            foreach (DescriptorTradition td in FormMain.Descriptors.Traditions)
+            {
+                level = 1;
+
+                // Если уровень традиции достигнут максимального, пропускаем её
+                if (ListTraditions.ContainsKey(td))
+                    if (ListTraditions[td] < FormMain.Config.MaxLevelTradition)
+                        level = ListTraditions[td] + 1;
+                    else
+                        continue;
+
+                ListVariantsTraditions.Add(td, level);
+                tempList.Add(td);
+            }
+
+            // Если нельзя принять больше традиций, ставим флаг и выходим
+            if (ListVariantsTraditions.Count == 0)
+            {
+                AcceptTraditionsAllowed = false;
+                return;
+            }
+
+            // Удаляем случайные традиции, оставляя 6 для выбора
+            int i;
+            while (ListVariantsTraditions.Count > 6)
+            {
+                i = Lobby.Rnd.Next(tempList.Count);
+                ListVariantsTraditions.Remove(tempList[i]);
+                tempList.RemoveAt(i);
+            }
         }
 
         private void DispatcherQueue()
@@ -866,11 +911,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int FreeBuilders { get; private set; }// Свободных строителей
 
         // Традиции
-        internal List<DescriptorTradition> ListTraditions { get; } = new List<DescriptorTradition>();// Принятые традиции
-        internal int PointsTraditions { get; private set; }// Очков традиций (умноженное на 1000)
+        internal Dictionary<DescriptorTradition, int> ListTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Принятые традиции
+        internal int PointsTraditions { get; private set; }// Очки традиции (умноженные на 1000)
         internal int PointsForNextTradition { get; private set; }// Очков до принятия следующей традиции
         internal DescriptorTradition NextTradition { get; private set; }// Принимаемая традиция
+        internal int NextTraditionLevel { get; private set; }// Уровень принимаемой традиции
+        internal Dictionary<DescriptorTradition, int> ListVariantsTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Варианты традиций для выбора
         internal VCNoticeSelectTradition NoticeForTradition { get; private set; }// Извещение о необходимости выбора традиции
+        internal bool AcceptTraditionsAllowed { get; private set; } = true;// Можно еще принять традиции
 
         // Статистика
         internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();
@@ -1906,6 +1954,40 @@ namespace Fantasy_Kingdoms_Battle
         {
             MaxBuilders = GuildofBuilders.Descriptor.Levels[GuildofBuilders.Level].MaxInhabitant;
             CurrentBuilders = GuildofBuilders.Heroes.Count;
+        }
+
+        internal void SelectTradition(DescriptorTradition td, int level)
+        {
+            Assert(td != null);
+            Assert(level > 0);
+
+            NextTradition = td;
+            NextTraditionLevel = level;
+        }
+
+        internal void AcceptTradition()
+        {
+            Assert(NextTradition != null);
+            Assert(NextTraditionLevel != 0);
+
+            if (ListTraditions.ContainsKey(NextTradition))
+            {
+                Assert(ListTraditions[NextTradition] < FormMain.Config.MaxLevelTradition);
+                Assert(ListTraditions[NextTradition] == NextTraditionLevel - 1);
+
+                ListTraditions[NextTradition] = NextTraditionLevel;
+            }
+            else
+            {
+                Assert(NextTraditionLevel == 1);
+
+                ListTraditions.Add(NextTradition, NextTraditionLevel);
+            }
+
+            AddNoticeForPlayer(-1, FormMain.Config.Gui48_Tradition, "Принята традиция", NextTradition.Name + $" ({NextTraditionLevel} ур.)", Color.Orange);
+
+            NextTradition = null;
+            NextTraditionLevel = 0;
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;

@@ -13,5 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorTypeTradition(XmlNode n) : base(n)
         {
         }
+
+        protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
     }
 }

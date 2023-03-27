@@ -177,6 +177,12 @@ namespace Fantasy_Kingdoms_Battle
             Assert(WeeksInMonth > 1);
             Assert(WeeksInMonth < 10);
 
+            MaxTraditions = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/MaxTraditions").InnerText);
+            Assert(MaxTraditions >= 3);
+            Assert(MaxTraditions <= 64);
+            MaxLevelTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/MaxLevelTradition").InnerText);
+            Assert(MaxLevelTradition > 1);
+            Assert(MaxLevelTradition <= 50);
             CostFirstTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/CostFirstTradition").InnerText);
             Assert(CostFirstTradition >= 1);
             Assert(CostFirstTradition <= 1000);
@@ -419,6 +425,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int WeeksInMonth { get; private set; }// Недель в месяце
 
         // Традиции
+        internal int MaxTraditions { get; private set; }// Максимальное количество традиций у игрока
+        internal int MaxLevelTradition { get; private set; }// Максимальный уровень традиций
         internal int CostFirstTradition { get; private set; }// Стоимость принятия первой традиции
         internal int CoefForNextTradition { get; private set; }// Коэффициент для стоимости второй и последующих традиций
 
