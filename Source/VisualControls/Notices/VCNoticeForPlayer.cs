@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
-        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam) : base(width)
+        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam) : base()
         {
             Debug.Assert(entity != null);
             Debug.Assert(typeNotice != TypeNoticeForPlayer.None);
@@ -159,7 +159,7 @@ namespace Fantasy_Kingdoms_Battle
             SetNotice(imageIndexOwner, Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
         }
 
-        public VCNoticeForPlayer(int imageIndexOwner, int imageIndexEnity, string caption, string text, Color color) : base(Program.formMain.layerGame.panelNotices.Width)
+        public VCNoticeForPlayer(int imageIndexOwner, int imageIndexEnity, string caption, string text, Color color) : base()
         {
             SetNotice(imageIndexOwner, imageIndexEnity, caption, text, color);
 

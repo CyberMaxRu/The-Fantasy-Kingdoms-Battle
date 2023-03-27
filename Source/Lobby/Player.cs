@@ -1701,7 +1701,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (GetTypePlayer() == TypePlayer.Human)
             {
-                ListNoticesForPlayer.Add(new VCNoticeForPlayer(Program.formMain.layerGame.panelNotices.Width, entity, typeNotice, addParam));
+                ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeNotice, addParam));
                 //Program.formMain.layerGame.ShowPlayerNotices();
             }
         }
