@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
-        public VCNoticeForPlayer(int width, Entity entity, TypeNoticeForPlayer typeNotice, int addParam) : base(width)
+        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam) : base(width)
         {
             Debug.Assert(entity != null);
             Debug.Assert(typeNotice != TypeNoticeForPlayer.None);

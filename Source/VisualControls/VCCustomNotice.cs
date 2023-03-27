@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
         private int tickForHide;
 
-        public VCCustomNotice(int width) : base()
+        public VCCustomNotice() : base()
         {
             CellOwner = new VCCellSimple(this, 0, 0);
             CellEntity = new VCCellSimple(this, CellOwner.NextLeft(), 0);
@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             lblText.TruncLongText = true;
             lblCaption.IsActiveControl = false;
             Height = CellEntity.Height;
-            Width = width;
+            Width = Program.formMain.layerGame.panelNotices.Width;
         }
 
         internal VCCellSimple CellOwner { get; }
