@@ -257,7 +257,7 @@
     <Compile Include="Source\VisualControls\VCProgressBar.cs" />
     <Compile Include="Source\VisualControls\VCQuest.cs" />
     <Compile Include="Source\VisualControls\VCResultRound.cs" />
-    <Compile Include="Source\VisualControls\VCNoticeForPlayer.cs" />
+    <Compile Include="Source\VisualControls\Notices\VCNoticeForPlayer.cs" />
     <Compile Include="Source\VisualControls\VCCityParameter.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
