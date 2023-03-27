@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
         protected readonly VCButton btnOk;
         protected readonly VCButton btnCancel;
 
-        public WindowOkCancel(string caption) : base()
+        public WindowOkCancel(string caption, bool deactivatePriorWindow = true) : base(deactivatePriorWindow)
         {
             windowCaption.Caption = caption;
 

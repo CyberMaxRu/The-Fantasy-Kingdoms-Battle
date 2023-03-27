@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonForMenu btnExitToMainMenu;
         private readonly VCButtonForMenu btnExitToWindows;
 
-        public WindowMenuInGame(LayerGameSingle layerGame, Lobby lobby)
+        public WindowMenuInGame(LayerGameSingle layerGame, Lobby lobby) : base(true)
         {
             this.layerGame = layerGame;
             this.lobby = lobby;

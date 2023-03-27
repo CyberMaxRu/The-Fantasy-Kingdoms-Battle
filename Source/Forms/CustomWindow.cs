@@ -16,9 +16,9 @@ namespace Fantasy_Kingdoms_Battle
         private bool showButtonClose;
         private VCImage imgClose;
 
-        public CustomWindow() : base()
+        public CustomWindow(bool deactivatePriorWindow) : base()
         {
-            Program.formMain.AddLayer(this);
+            Program.formMain.AddLayer(this, deactivatePriorWindow);
         }
 
         internal bool ShowButtonClose// Показывать крестик в правом верхнем углу

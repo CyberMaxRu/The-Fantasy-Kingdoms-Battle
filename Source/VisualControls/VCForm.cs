@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         protected readonly VCWindowCaption windowCaption;
         private DialogResult dialogResult;
 
-        public VCForm() : base()
+        public VCForm(bool deactivatePriorWindow = true) : base(deactivatePriorWindow)
         {
             ClientControl = new VisualControl(this, 14, 13 + 24);
             ClientControl.Width = 440;

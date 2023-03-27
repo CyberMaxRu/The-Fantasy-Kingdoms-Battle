@@ -677,7 +677,7 @@ namespace Fantasy_Kingdoms_Battle
             w.Show();
         }
 
-        internal void AddLayer(LayerCustom vc)
+        internal void AddLayer(LayerCustom vc, bool deactivateLayer = true)
         {
             Debug.Assert(Layers.Count <= 5);
             Debug.Assert(currentLayer.Controls.Count > 0);
@@ -690,7 +690,8 @@ namespace Fantasy_Kingdoms_Battle
             controlClicked = null;
 
             Layers.Add(vc);
-            currentLayer.Deactivated();
+            if (deactivateLayer)
+                currentLayer.Deactivated();
             ControlForHintLeave();// Убираем активный контрол, если он был
             currentLayer = vc;
             currentLayer.Activated();
@@ -730,7 +731,8 @@ namespace Fantasy_Kingdoms_Battle
             ControlForHintLeave();// Убираем активный контрол, если он был
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];
-            currentLayer.Activated();
+            if (!currentLayer.Active)
+                currentLayer.Activated();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
