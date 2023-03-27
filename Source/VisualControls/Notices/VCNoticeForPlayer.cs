@@ -167,15 +167,6 @@ namespace Fantasy_Kingdoms_Battle
             RightClick += Cell_RightClick;
         }
 
-        internal void CloseSelf()
-        {
-            Debug.Assert(Visible);
-
-            Visible = false;
-            Program.formMain.layerGame.CurrentLobby.CurrentPlayer.RemoveNoticeForPlayer(this);
-            Dispose();
-        }
-
         private void Cell_RightClick(object sender, EventArgs e)
         {
             CloseSelf();

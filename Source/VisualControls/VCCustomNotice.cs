@@ -106,5 +106,14 @@ namespace Fantasy_Kingdoms_Battle
             CounterForRemove = FormMain.Config.NoticeSecondsHide * FormMain.Config.TicksInSecond;
             tickForHide = CounterForRemove;
         }
+
+        internal void CloseSelf()
+        {
+            Debug.Assert(Visible);
+
+            Visible = false;
+            Program.formMain.layerGame.CurrentLobby.CurrentPlayer.RemoveNoticeForPlayer(this);
+            Dispose();
+        }
     }
 }
