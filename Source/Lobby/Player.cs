@@ -798,7 +798,7 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока
-        internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий во владении
+        internal List<VCCustomNotice> ListNoticesForPlayer { get; } = new List<VCCustomNotice>();// Список событий во владении
 
         // Локации
         internal Location[,] Locations { get; }// Карта локаций
@@ -1714,7 +1714,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void RemoveNoticeForPlayer(VCNoticeForPlayer e)
+        internal void RemoveNoticeForPlayer(VCCustomNotice e)
         {
             Debug.Assert(ListNoticesForPlayer.IndexOf(e) != -1);
 

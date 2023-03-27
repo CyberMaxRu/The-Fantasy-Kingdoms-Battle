@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(text != null);
 
-                VCCustomNotice evnt = new VCCustomNotice(216);
+                VCCustomNotice evnt = new VCCustomNotice();
                 parent.AddControl(evnt);
                 evnt.ShiftX = FormMain.Config.GridSize;
                 evnt.ShiftY = nextTop;
