@@ -384,6 +384,17 @@ namespace Fantasy_Kingdoms_Battle
             // Прибавляем миллитики к изменениям параметров города
             ApplyChangeCityParameters();
 
+            // Обработка традиции
+            if (NextTradition is null)
+            {
+                // Если нет выбранной традиции, извещаем об этом игрока
+                if (NoticeForTradition is null)
+                {
+                    NoticeForTradition = new VCNoticeSelectTradition();
+                    AddNoticeForPlayer(NoticeForTradition);
+                }
+            }
+
             // Если начался новый ход, применяем получившуюся дельту
             if (startNewDay)
             {
@@ -416,22 +427,27 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Делаем тик у извещений
-            for (int i = 0; i < ListNoticesForPlayer.Count;)
+            for (int i = 0; i < ListNoticesForPlayer.Count; )
             {
-                if (ListNoticesForPlayer[i].CounterForBeginHide > 0)
+                if (ListNoticesForPlayer[i].AutoHide)
                 {
-                    ListNoticesForPlayer[i].CounterForBeginHide--;
-                    i++;
-                }
-                else if (ListNoticesForPlayer[i].CounterForRemove > 0)
-                {
-                    ListNoticesForPlayer[i].CounterForRemove--;
-                    i++;
+                    if (ListNoticesForPlayer[i].CounterForBeginHide > 0)
+                    {
+                        ListNoticesForPlayer[i].CounterForBeginHide--;
+                        i++;
+                    }
+                    else if (ListNoticesForPlayer[i].CounterForRemove > 0)
+                    {
+                        ListNoticesForPlayer[i].CounterForRemove--;
+                        i++;
+                    }
+                    else
+                    {
+                        ListNoticesForPlayer[i].CloseSelf();
+                    }
                 }
                 else
-                {
-                    ListNoticesForPlayer[i].CloseSelf();
-                }
+                    i++;
             }
             
             List<Construction> lc = new List<Construction>();
@@ -854,6 +870,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointsTraditions { get; private set; }// Очков традиций (умноженное на 1000)
         internal int PointsForNextTradition { get; private set; }// Очков до принятия следующей традиции
         internal DescriptorTradition NextTradition { get; private set; }// Принимаемая традиция
+        internal VCNoticeSelectTradition NoticeForTradition { get; private set; }// Извещение о необходимости выбора традиции
 
         // Статистика
         internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();
@@ -1697,6 +1714,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void AddNoticeForPlayer(VCCustomNotice notice)
+        {
+            if (GetTypePlayer() == TypePlayer.Human)
+            {
+                ListNoticesForPlayer.Add(notice);
+            }
+        }
         internal void AddNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice, int addParam = 0)
         {
             if (GetTypePlayer() == TypePlayer.Human)

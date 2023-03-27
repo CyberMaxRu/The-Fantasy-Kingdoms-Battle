@@ -87,7 +87,7 @@ namespace Fantasy_Kingdoms_Battle
                 parent.AddControl(evnt);
                 evnt.ShiftX = FormMain.Config.GridSize;
                 evnt.ShiftY = nextTop;
-                evnt.SetNotice(player.GetCellImageIndex(), imageIndex, caption, text, Color.DarkGoldenrod);
+                evnt.SetNotice(player.GetCellImageIndex(), imageIndex, caption, text, Color.DarkGoldenrod, true);
                 evnt.IsActiveControl = false;
                 evnt.CellEntity.IsActiveControl = false;
 

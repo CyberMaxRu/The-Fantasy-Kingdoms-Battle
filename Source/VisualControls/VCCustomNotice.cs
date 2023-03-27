@@ -37,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCCellSimple CellOwner { get; }
         internal VCCellSimple CellEntity { get; }
+        internal bool AutoHide { get; private set; }// Автоскрытие извещения
         internal int CounterForBeginHide { get; set; }// Счетчик до начала скрытия
         internal int CounterForRemove { get; set; }// Счетчик до удаления
 
@@ -80,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
             return bmp;
         }
 
-        internal void SetNotice(int imageIndexOwner, int imageIndexEntity, string caption, string text, Color colorText)
+        internal void SetNotice(int imageIndexOwner, int imageIndexEntity, string caption, string text, Color colorText, bool autoHide)
         {
             CellOwner.ImageIndex = imageIndexOwner;
             CellEntity.ImageIndex = imageIndexEntity;
@@ -102,6 +103,7 @@ namespace Fantasy_Kingdoms_Battle
             lblCaption.Width = Width - lblCaption.ShiftX;
             lblText.Width = Width - lblText.ShiftX;
 
+            AutoHide = autoHide;
             CounterForBeginHide = FormMain.Config.NoticeSecondsBeforeHide * FormMain.Config.TicksInSecond;
             CounterForRemove = FormMain.Config.NoticeSecondsHide * FormMain.Config.TicksInSecond;
             tickForHide = CounterForRemove;

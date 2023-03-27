@@ -171,5 +171,6 @@
     <ComputerPlayer>288</ComputerPlayer>
     <HumanPlayer>289</HumanPlayer>
     <Quest>191</Quest>
+    <Tradition>310</Tradition>
   </Gui48>
 </Game>

@@ -156,12 +156,12 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(nameText.Length > 0);
 
-            SetNotice(imageIndexOwner, Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
+            SetNotice(imageIndexOwner, Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity, true);
         }
 
         public VCNoticeForPlayer(int imageIndexOwner, int imageIndexEnity, string caption, string text, Color color) : base()
         {
-            SetNotice(imageIndexOwner, imageIndexEnity, caption, text, color);
+            SetNotice(imageIndexOwner, imageIndexEnity, caption, text, color, true);
 
             CellEntity.RightClick += Cell_RightClick;
             RightClick += Cell_RightClick;
