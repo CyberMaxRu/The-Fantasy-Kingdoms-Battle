@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
         private readonly VCPageButton pageQuest;
+        private readonly VCPageButton pageTraditions;
         private readonly List<VCPageButton> pagesCapital;
         private readonly VCPageButton pageRealMap;
         private readonly VCPageButton pageMap;
@@ -145,7 +146,7 @@ namespace Fantasy_Kingdoms_Battle
             labelKnowledge.Width = 80;*/
             labelTraditions = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_TRADITIONS);
             //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
-            labelTraditions.Width = 160;
+            labelTraditions.Width = 120;
             //labelPeople = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_PEOPLE);
             //labelPeople.ShowHint += LabelKnowledge_ShowHint;
             //labelPeople.Width = 72;
@@ -276,6 +277,7 @@ namespace Fantasy_Kingdoms_Battle
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageQuest = pageControl.AddPage(Config.Gui48_Quest, "Задания", "Здесь квесты", PageQuest_ShowHint);
+            pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
             //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
             //pageRealMap.Hint = "Карта Ардании";
             pageControl.Separate();
@@ -407,6 +409,7 @@ namespace Fantasy_Kingdoms_Battle
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
             pageQuest.PageImage = MainControlbackground("Quest");
+            pageTraditions.PageImage = MainControlbackground("Traditions");
             pageMap.PageImage = MainControlbackground("Map");
 
             for (int i = 0; i < Descriptors.CapitalPages.Count; i++)
@@ -1281,7 +1284,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelBuilders.Text = $"{curAppliedPlayer.CurrentBuilders}/{curAppliedPlayer.MaxBuilders}"
                     + (curAppliedPlayer.FreeBuilders > 0 ? $" ({curAppliedPlayer.FreeBuilders})" : "");
-                labelTraditions.Text = $"{Math.Truncate(curAppliedPlayer.PointsTraditions)}/{curAppliedPlayer.PointsForNextTradition} ({curAppliedPlayer.ListTraditions.Count})";
+                labelTraditions.Text = $"{Math.Truncate(curAppliedPlayer.PointsTraditions)}/{curAppliedPlayer.PointsForNextTradition}";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
@@ -1291,6 +1294,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
+                pageTraditions.Quantity = curAppliedPlayer.ListTraditions.Count;
 
                 foreach (VCToolLabelCityParameter sp in labelCityParameters)
                 {
