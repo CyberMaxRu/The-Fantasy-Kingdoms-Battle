@@ -113,6 +113,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(FlashCursorTime > 100);
             Debug.Assert(FlashCursorTime <= 5_000);
 
+            TraditionsPerColumn = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/TraditionsPerColumn").InnerText);
+            Debug.Assert(TraditionsPerColumn > 1);
+            Debug.Assert(TraditionsPerColumn <= 20);
+
             ObjectMenuWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ObjectMenuWidth").InnerText);
             Debug.Assert(ObjectMenuWidth >= 50);
             Debug.Assert(ObjectMenuWidth <= 500);
@@ -416,6 +420,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MouseHoverTime { get; set; }// Через сколько миллисекунд после наведения курсора на контрол отображается подсказка
         internal int PanelHintWidth { get; set; }// Ширина панели с подсказкой
         internal int FlashCursorTime { get; set; }// Cколько миллисекунд отображается/не отображается текстовый курсор 
+        internal int TraditionsPerColumn { get; set; }// Сколько традиций отображать в одной колонке на вкладке "Традиции"
         internal int ObjectMenuWidth { get; set; }
         internal int ShiftXButtonsInMenu { get; set; }
 

@@ -25,6 +25,7 @@
     <FramesPerSecond>25</FramesPerSecond>
     <PanelHintWidth>296</PanelHintWidth>
     <FlashCursorTime>500</FlashCursorTime>
+    <TraditionsPerColumn>8</TraditionsPerColumn>
   </Interface>
   <MainMenu>
     <MinAlphaBanner>100</MinAlphaBanner>
@@ -41,9 +42,9 @@
   </GlobalSettings>
   <Traditions>    
     <MaxLevelTradition>5</MaxLevelTradition>
-    <MaxTraditions>6</MaxTraditions>
+    <MaxTraditions>16</MaxTraditions>
     <CostFirstTradition>100</CostFirstTradition>
-    <CoefForNextTradition>131</CoefForNextTradition>
+    <CoefForNextTradition>103</CoefForNextTradition>
   </Traditions>
   <Notice>
     <SecondsBeforeHide>10</SecondsBeforeHide>

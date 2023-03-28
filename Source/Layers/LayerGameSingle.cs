@@ -8,6 +8,7 @@ using static Fantasy_Kingdoms_Battle.Utils;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using Fantasy_Kingdoms_Battle.Source;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -23,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageTournament;
         private readonly VCPageButton pageQuest;
         private readonly VCPageButton pageTraditions;
+        private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
         private readonly List<VCPageButton> pagesCapital;
         private readonly VCPageButton pageRealMap;
         private readonly VCPageButton pageMap;
@@ -374,6 +376,26 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ActivatePage(pagesCapital[0]);
             UpdateNameCurrentPage();
+
+            // Сразу создаем контролы под традиции. Они все равно обязательно пригодятся
+            nextLeft = 0;
+            int nextTop = 0;
+            for (int i = 1; i <= FormMain.Config.MaxTraditions; i++)
+            {
+                VCAcceptedTradition at = new VCAcceptedTradition(pageTraditions.Page, nextLeft, nextTop);
+                at.Visible = false;
+                listAcceptedTraditions.Add(at);
+
+                if (i % FormMain.Config.TraditionsPerColumn > 0)
+                {
+                    nextTop = at.NextTop();
+                }
+                else
+                {
+                    nextLeft = at.NextLeft();
+                    nextTop = 0;
+                }
+            }
         }
 
         // Сейчас будет рисоваться кадр. Делаем расчеты тактов игры
@@ -1307,6 +1329,22 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 ShowPlayerNotices();
+
+                // Показываем страницу традиций
+                if (pageControl.CurrentPage == pageTraditions)
+                {
+                    int i = 0;
+
+                    foreach (KeyValuePair<DescriptorTradition, int> t in curAppliedPlayer.ListTraditions)
+                    {
+                        listAcceptedTraditions[i].CellTypeTradition.ImageIndex = t.Key.TypeTradition.ImageIndex;
+                        listAcceptedTraditions[i].TextName.Text = t.Key.Name;
+                        listAcceptedTraditions[i].LblLevel.Text = t.Value.ToString();
+                        listAcceptedTraditions[i].Visible = true;
+
+                        i++;
+                    }
+                }
             }
         }
 
