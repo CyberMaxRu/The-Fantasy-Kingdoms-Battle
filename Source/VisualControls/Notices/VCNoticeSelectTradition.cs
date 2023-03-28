@@ -11,6 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCNoticeSelectTradition : VCCustomNotice
     {
         private Player player;
+
         public VCNoticeSelectTradition(Player p)
         {
             player = p;
@@ -23,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CellEntity_Click(object sender, EventArgs e)
         {
-            WindowSelectTradition w = new WindowSelectTradition(player);
+            WindowSelectTradition w = new WindowSelectTradition(this, player);
             w.Show();
         }
     }

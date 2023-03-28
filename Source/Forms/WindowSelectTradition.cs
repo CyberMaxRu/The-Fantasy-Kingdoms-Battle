@@ -49,12 +49,14 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class WindowSelectTradition : WindowOkCancel
     {
         private List<VCSelectTradition> listBoxes;
+        private VCCustomNotice notice;
         private Player player;
 
-        public WindowSelectTradition(Player p) : base("Выбор традиции", false)
+        public WindowSelectTradition(VCCustomNotice n, Player p) : base("Выбор традиции", false)
         {
             Assert(p.ListVariantsTraditions.Count > 1);
 
+            notice = n;
             player = p;
 
             btnOk.Caption = "Выбрать";
