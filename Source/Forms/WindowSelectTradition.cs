@@ -84,6 +84,8 @@ namespace Fantasy_Kingdoms_Battle
                 st.LblNameTypeTradition.Hint = t.Key.TypeTradition.Description;
                 st.Text.Text = t.Key.Name;
                 st.Level.Text = t.Value.ToString() + " уровень";
+                st.CellTypeTradition.Click += St_Click;
+                st.LblNameTypeTradition.Click += St_Click;
                 st.Click += St_Click;
 
                 x++;
@@ -111,9 +113,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             btnOk.Enabled = true;
 
+            VisualControl vc = sender as VisualControl;
+            if (!(vc is VCSelectTradition))
+                vc = vc.Parent;
+
             for (int i = 0; i < listBoxes.Count; i++)
             {
-                listBoxes[i].ManualSelected = listBoxes[i] == sender;
+                listBoxes[i].ManualSelected = listBoxes[i] == vc;
                 if (listBoxes[i].ManualSelected)
                 {
                     SelectedTradition = listBoxes[i].Tradition;
@@ -131,6 +137,7 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(SelectedTradition != null);
 
                 player.SelectTradition(SelectedTradition, SelectedTraditionLevel);
+                notice.CloseSelf();
             }
         }
     }
