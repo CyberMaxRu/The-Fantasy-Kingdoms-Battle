@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbIgnoreRequirements;
         private VCCheckBox chkbSpeedUpProgressBy10;
         private VCCheckBox chkbReduceCostBy10;
+        private VCCheckBox chkbPointsTraditionMore10Times;
 
         public WindowCheating(Player p) : base()
         {
@@ -43,7 +44,11 @@ namespace Fantasy_Kingdoms_Battle
             chkbReduceCostBy10.Hint = "Стоимость (золото, ресурсы) действий (строительство, исследования, найм и т.д.) уменьшается в 10 раз";
             chkbReduceCostBy10.Checked = player.CheatingReduceCostBy10;
 
-            btnShowAll = new VCButton(ClientControl, 0, chkbReduceCostBy10.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
+            chkbPointsTraditionMore10Times = new VCCheckBox(ClientControl, 0, chkbReduceCostBy10.NextTop(), "Прирост очков традиции увеличивается в 10 раз");
+            chkbPointsTraditionMore10Times.Hint = "Количество очков для принятия традиции увеличивается в 10 раз";
+            chkbPointsTraditionMore10Times.Checked = player.CheatingPointsTraditionMore10Times;
+
+            btnShowAll = new VCButton(ClientControl, 0, chkbPointsTraditionMore10Times.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
             btnShowAll.Width = 240;
             btnShowAll.Click += BtnShowAll_Click;
 
@@ -77,6 +82,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreRequirements.Width = ClientControl.Width;
             chkbSpeedUpProgressBy10.Width = ClientControl.Width;
             chkbReduceCostBy10.Width = ClientControl.Width;
+            chkbPointsTraditionMore10Times.Width = ClientControl.Width;
 
             ApplyMaxSize();
         }
@@ -125,10 +131,12 @@ namespace Fantasy_Kingdoms_Battle
             player.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
             player.CheatingSpeedUpProgressBy10 = chkbSpeedUpProgressBy10.Checked;
             player.CheatingReduceCostBy10 = chkbReduceCostBy10.Checked;
+            player.CheatingPointsTraditionMore10Times = chkbPointsTraditionMore10Times.Checked;
 
             Program.formMain.CurrentHumanPlayer.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
             Program.formMain.CurrentHumanPlayer.CheatingSpeedUpProgressBy10 = chkbSpeedUpProgressBy10.Checked;
             Program.formMain.CurrentHumanPlayer.CheatingReduceCostBy10 = chkbReduceCostBy10.Checked;
+            Program.formMain.CurrentHumanPlayer.CheatingPointsTraditionMore10Times = chkbPointsTraditionMore10Times.Checked;
             FormMain.Descriptors.SaveHumanPlayers();
 
             CloseForm(DialogAction.OK);

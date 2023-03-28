@@ -43,6 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool cheatingIgnoreRequirements;
         private bool cheatingSpeedUpProgressBy10;
         private bool cheatingReduceCostBy10;
+        private bool cheatingPointTraditionMore10Times;
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(player, lobby, null)
         {
@@ -404,6 +405,8 @@ namespace Fantasy_Kingdoms_Battle
             if (AcceptTraditionsAllowed)
             {
                 PointsTraditionPerTurn = (int)Math.Truncate(CityParameters[FormMain.Descriptors.IndexCityParameterCitizens] / 100.0) * 10;
+                if (cheatingPointTraditionMore10Times)
+                    PointsTraditionPerTurn *= 10;
                 Assert(PointsTraditionPerTurn > 0);
 
                 // Прибавляем очки традиций
@@ -991,6 +994,20 @@ namespace Fantasy_Kingdoms_Battle
                     cheatingReduceCostBy10 = value;
                     AddNoticeForPlayer(-1, cheatingReduceCostBy10 ? FormMain.Config.Gui48_Cheating : FormMain.Config.Gui48_NoCheating,
                         cheatingReduceCostBy10 ? "Применен читинг:" : "Отменен читинг:", "Стоимость меньше в 10 раз", Color.Orange);
+                }
+            }
+        }
+
+        internal bool CheatingPointsTraditionMore10Times
+        {
+            get => cheatingPointTraditionMore10Times;
+            set
+            {
+                if (cheatingPointTraditionMore10Times != value)
+                {
+                    cheatingPointTraditionMore10Times = value;
+                    AddNoticeForPlayer(-1, cheatingReduceCostBy10 ? FormMain.Config.Gui48_Cheating : FormMain.Config.Gui48_NoCheating,
+                        cheatingPointTraditionMore10Times ? "Применен читинг:" : "Отменен читинг:", "Прирост очков традиций больше в 10 раз", Color.Orange);
                 }
             }
         }

@@ -39,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             CheatingIgnoreRequirements = GetBoolean(n, "Cheating/IgnoreRequirements", false);
             CheatingSpeedUpProgressBy10 = GetBoolean(n, "Cheating/CheatingSpeedUpProgressBy10", false);
             CheatingReduceCostBy10 = GetBoolean(n, "Cheating/CheatingReduceCostBy10", false);
+            CheatingPointsTraditionMore10Times = GetBoolean(n, "Cheating/CheatingPointsTraditionMore10Times", false);
 
             // Создаем настройки всех типов лобби
             Assert(Descriptors.TypeLobbies.Count > 0);
@@ -74,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheatingIgnoreRequirements { get; set; }
         internal bool CheatingSpeedUpProgressBy10 { get; set; }
         internal bool CheatingReduceCostBy10 { get; set; }
+        internal bool CheatingPointsTraditionMore10Times { get; set; }
 
         internal string DirectoryAvatar { get; set; }
         internal LobbySettings[] TournamentSettings { get; }
@@ -121,6 +123,7 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("IgnoreRequirements", CheatingIgnoreRequirements.ToString());
             writer.WriteElementString("CheatingSpeedUpProgressBy10", CheatingSpeedUpProgressBy10.ToString());
             writer.WriteElementString("CheatingReduceCostBy10", CheatingReduceCostBy10.ToString());
+            writer.WriteElementString("CheatingPointsTraditionMore10Times", CheatingPointsTraditionMore10Times.ToString());
             writer.WriteEndElement();
 
             writer.WriteStartElement("TournamentSettings");
