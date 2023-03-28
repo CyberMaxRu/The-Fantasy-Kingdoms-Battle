@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             CheatingIgnoreRequirements = player.CheatingIgnoreRequirements;
             CheatingSpeedUpProgressBy10 = player.CheatingSpeedUpProgressBy10;
             CheatingReduceCostBy10 = player.CheatingReduceCostBy10;
+            CheatingPointsTraditionMore10Times = player.CheatingPointsTraditionMore10Times;
 
 /*            if (CheatingIgnoreRequirements)
                 AddNoticeForPlayer(-1, FormMain.Config.Gui48_Cheating, "Применен читинг:", "Игнорировать требования", Color.Orange);
