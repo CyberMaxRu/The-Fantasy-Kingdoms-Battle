@@ -42,7 +42,7 @@
   <Traditions>    
     <MaxLevelTradition>5</MaxLevelTradition>
     <MaxTraditions>6</MaxTraditions>
-    <CostFirstTradition>10</CostFirstTradition>
+    <CostFirstTradition>100</CostFirstTradition>
     <CoefForNextTradition>131</CoefForNextTradition>
   </Traditions>
   <Notice>
@@ -124,6 +124,9 @@
     <CityGraveyard>CityGraveyard</CityGraveyard>
     <GuildOfBuilders>GuildOfBuilders</GuildOfBuilders>
     <ReasonOfDeathInBattle>InBattle</ReasonOfDeathInBattle>
+    <CityParameters>
+      <Citizens>Citizens</Citizens>
+    </CityParameters>
   </Links>
   <Warehouse>
     <Width>10</Width>

@@ -360,6 +360,9 @@ namespace Fantasy_Kingdoms_Battle
             IndexPropertyScout = FindPropertyCreature("CreatureScout").Index;
 
             //
+            IndexCityParameterCitizens = FindCityParameter(FormMain.Config.CityParameterCitizens).Index;
+
+            //
             StateCreatureDoFlagScout = FindStateCreature(FormMain.Config.StateCreatureDoScoutFlag);
 
             // Вспомогательные методы
@@ -431,6 +434,9 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal int IndexPropertyScout { get; }
+
+        //
+        internal int IndexCityParameterCitizens { get; }
 
         //
         internal DescriptorStateCreature StateCreatureDoFlagScout { get; }

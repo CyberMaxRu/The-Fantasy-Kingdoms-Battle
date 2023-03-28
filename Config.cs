@@ -189,6 +189,7 @@ namespace Fantasy_Kingdoms_Battle
             CoefForNextTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/CoefForNextTradition").InnerText);
             Assert(CoefForNextTradition > 1);
             Assert(CoefForNextTradition < 1000);
+            CoefForNextTradition = CoefForNextTradition / 100;
 
             // MainMenu
             MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
@@ -236,6 +237,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IDReasonOfDeathInBattle.Length > 0);
             NameDefaultLevelTax = xmlDoc.SelectSingleNode("Game/Interface/DefaultLevelTax").InnerText;
             Debug.Assert(NameDefaultLevelTax.Length > 0);
+
+            CityParameterCitizens = xmlDoc.SelectSingleNode("Game/Links/CityParameters/Citizens").InnerText;
+            Debug.Assert(CityParameterCitizens.Length > 0);
 
 
             WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
@@ -428,7 +432,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxTraditions { get; private set; }// Максимальное количество традиций у игрока
         internal int MaxLevelTradition { get; private set; }// Максимальный уровень традиций
         internal int CostFirstTradition { get; private set; }// Стоимость принятия первой традиции
-        internal int CoefForNextTradition { get; private set; }// Коэффициент для стоимости второй и последующих традиций
+        internal double CoefForNextTradition { get; private set; }// Коэффициент для стоимости второй и последующих традиций
 
         internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
         internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера
@@ -451,6 +455,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса
         internal int MaxHeroForSelectBonus { get; private set; }// Максимальное количество типов героев для выбора постоянного бонуса
         internal int MaxLengthQueue { get; private set; }// Максимальная длина очереди
+
+        internal string CityParameterCitizens { get; private set; }// Параметр города - количество горожан
 
         // Состояния существ
         internal string StateCreatureDoScoutFlag { get; private set; }// Выполняет флаг разведеи

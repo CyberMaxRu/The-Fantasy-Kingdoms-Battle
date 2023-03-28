@@ -137,6 +137,8 @@ namespace Fantasy_Kingdoms_Battle
                 Assert(SelectedTradition != null);
 
                 player.SelectTradition(SelectedTradition, SelectedTraditionLevel);
+                player.NoticeForTradition = null;
+                player.ListVariantsTraditions.Clear();
                 notice.CloseSelf();
             }
         }

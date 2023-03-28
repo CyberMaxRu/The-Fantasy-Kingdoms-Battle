@@ -215,7 +215,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoTicks()
         {
-            // Прибавляем тик кол времени
+            // Прибавляем тик ко времени
             CounterTicks++;
             CounterTicksOfTurn++;
             bool startNewDay = false;

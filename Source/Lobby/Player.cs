@@ -63,6 +63,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < CityParameters.Count; i++)
                 ChangeCityParametersPerTurnInTicks.Add(0);
 
+            PointsForNextTradition = FormMain.Config.CostFirstTradition;
+
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
@@ -397,6 +399,29 @@ namespace Fantasy_Kingdoms_Battle
                     AddNoticeForPlayer(NoticeForTradition);
                 }
             }
+
+            // Делаем расчет, сколько очков традиций должно прибавиться за ход
+            if (AcceptTraditionsAllowed)
+            {
+                PointsTraditionPerTurn = (int)Math.Truncate(CityParameters[FormMain.Descriptors.IndexCityParameterCitizens] / 100.0) * 10;
+                Assert(PointsTraditionPerTurn > 0);
+
+                // Прибавляем очки традиций
+                Assert(PointsTraditionPerTurn > 0);
+                double pointsTraditionPerTick = (double)PointsTraditionPerTurn / FormMain.Config.TicksInTurn;
+                PointsTraditions += pointsTraditionPerTick;
+
+                // Если очков хватает на следующую традицию и она выбрана, принимаем её
+                if ((PointsTraditions >= PointsForNextTradition) && (NextTradition != null))
+                {
+                    PointsTraditions = Math.Truncate(PointsTraditions - PointsForNextTradition);
+                    PointsForNextTradition = (int)Math.Truncate(PointsForNextTradition * FormMain.Config.CoefForNextTradition);
+
+                    AcceptTradition();
+                }
+            }
+            else
+                PointsTraditionPerTurn = 0;
 
             // Если начался новый ход, применяем получившуюся дельту
             if (startNewDay)
@@ -912,12 +937,13 @@ namespace Fantasy_Kingdoms_Battle
 
         // Традиции
         internal Dictionary<DescriptorTradition, int> ListTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Принятые традиции
-        internal int PointsTraditions { get; private set; }// Очки традиции (умноженные на 1000)
+        internal double PointsTraditions { get; private set; }// Очки традиции
+        internal int PointsTraditionPerTurn { get; private set; }// Сколько очков традиций должно прибавиться за сутки (ход)
         internal int PointsForNextTradition { get; private set; }// Очков до принятия следующей традиции
         internal DescriptorTradition NextTradition { get; private set; }// Принимаемая традиция
         internal int NextTraditionLevel { get; private set; }// Уровень принимаемой традиции
         internal Dictionary<DescriptorTradition, int> ListVariantsTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Варианты традиций для выбора
-        internal VCNoticeSelectTradition NoticeForTradition { get; private set; }// Извещение о необходимости выбора традиции
+        internal VCNoticeSelectTradition NoticeForTradition { get; set; }// Извещение о необходимости выбора традиции
         internal bool AcceptTraditionsAllowed { get; private set; } = true;// Можно еще принять традиции
 
         // Статистика

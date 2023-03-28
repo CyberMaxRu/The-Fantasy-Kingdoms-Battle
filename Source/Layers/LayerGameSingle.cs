@@ -140,12 +140,12 @@ namespace Fantasy_Kingdoms_Battle
             labelDay.ShowHint += LabelDay_ShowHint;
             labelDay.Width = 72;
 
-            labelKnowledge = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_KNOWLEDGE);
+            /*labelKnowledge = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_KNOWLEDGE);
             labelKnowledge.ShowHint += LabelKnowledge_ShowHint;
-            labelKnowledge.Width = 80;
-            labelTraditions = new VCToolLabel(bmpPreparedToolbar, labelKnowledge.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_TRADITIONS);
+            labelKnowledge.Width = 80;*/
+            labelTraditions = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_TRADITIONS);
             //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
-            labelTraditions.Width = 56;
+            labelTraditions.Width = 160;
             //labelPeople = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_PEOPLE);
             //labelPeople.ShowHint += LabelKnowledge_ShowHint;
             //labelPeople.Width = 72;
@@ -1030,7 +1030,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
-                    labelKnowledge.Visible = true;
+                    //labelKnowledge.Visible = true;
                     labelTraditions.Visible = true;
                     //labelPeople.Visible = true;
                     labelGreatness.Visible = false;
@@ -1043,7 +1043,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     labelDay.Visible = false;
                     labelBuilders.Visible = false;
-                    labelKnowledge.Visible = false;
+                    //labelKnowledge.Visible = false;
                     labelTraditions.Visible = false;
                     //labelPeople.Visible = false;
                     labelGreatness.Visible = false;
@@ -1281,6 +1281,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelBuilders.Text = $"{curAppliedPlayer.CurrentBuilders}/{curAppliedPlayer.MaxBuilders}"
                     + (curAppliedPlayer.FreeBuilders > 0 ? $" ({curAppliedPlayer.FreeBuilders})" : "");
+                labelTraditions.Text = $"{Math.Truncate(curAppliedPlayer.PointsTraditions)}/{curAppliedPlayer.PointsForNextTradition} ({curAppliedPlayer.ListTraditions.Count})";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
