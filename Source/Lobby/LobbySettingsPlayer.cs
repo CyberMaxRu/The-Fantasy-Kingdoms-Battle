@@ -57,6 +57,9 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorPlayer Player { get; set; }
         internal TypeSelectBonus TypeSelectPersistentBonus { get; set; }
         internal TypeSelectBonus TypeSelectStartBonus { get; set; }
+        internal DescriptorTypeTradition TypeTradition1 { get; set; }
+        internal DescriptorTypeTradition TypeTradition2 { get; set; }
+        internal DescriptorTypeTradition TypeTradition3 { get; set; }
 
         internal void SetDefault()
         {

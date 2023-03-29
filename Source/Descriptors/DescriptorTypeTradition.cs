@@ -12,8 +12,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorTypeTradition(XmlNode n) : base(n)
         {
+            Index = FormMain.Descriptors.TypeTraditions.Count;
         }
 
+        internal int Index { get; }
         protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
     }
 }

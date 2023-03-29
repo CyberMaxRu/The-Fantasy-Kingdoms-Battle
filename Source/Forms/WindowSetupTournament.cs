@@ -25,7 +25,6 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.Caption = "ОК";
             btnCancel.Caption = "Отмена";
 
-
             lblNameTypeLobby = new VCLabel(ClientControl, 0, 0, Program.formMain.FontMedCaption, Color.Turquoise, 24, ls.TypeLobby.Name);
             lblNameTypeLobby.Width = ClientControl.Width;
 
