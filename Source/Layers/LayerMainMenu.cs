@@ -25,6 +25,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonForMenu btnAboutProgram;
         private readonly VCButtonForMenu btnExitToWindows;
 
+        private DescriptorMission descriptorMission;
+        private LobbySettings mission;
+        private WindowSetupMission wsm;
+
         private LayerEditorConquest layerEditor;
 
         private int idxAnimation;
@@ -68,18 +72,35 @@ namespace Fantasy_Kingdoms_Battle
             btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
         }
 
+        internal override void Focused(DialogAction da)
+        {
+            base.Focused(da);
+
+            if (mission != null)
+            {
+                if (da == DialogAction.OK)
+                {
+                    Program.formMain.CurrentHumanPlayer.TournamentSettings[0] = mission;
+                    FormMain.Descriptors.SaveHumanPlayers();
+                    Program.formMain.layerGame.StartNewLobby(descriptorMission);
+                }
+
+                mission = null;
+                descriptorMission = null;
+            }
+        }
+
         private void BtnSingleMission_Click(object sender, EventArgs e)
         {
-            DescriptorMission m = new DescriptorMission(Program.WorkFolder + @"SinglePlayer\Missions\DemoMission1.xml");
-            m.TuneLinks();
+            Assert(mission is null);
+            Assert(descriptorMission is null);
 
-            LobbySettings ls = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
-            //WindowSetupTournament w = new WindowSetupTournament(ls);
-            //if (w.ShowDialog() == DialogAction.OK)
+            descriptorMission = new DescriptorMission(Program.WorkFolder + @"SinglePlayer\Missions\DemoMission1.xml");
+            descriptorMission.TuneLinks();
 
-            Program.formMain.CurrentHumanPlayer.TournamentSettings[0] = ls;
-            FormMain.Descriptors.SaveHumanPlayers();
-            Program.formMain.layerGame.StartNewLobby(m);
+            mission = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
+            wsm = new WindowSetupMission(mission);
+            wsm.Show();
         }
 
         private void BtnEditorConquest_Click(object sender, EventArgs e)

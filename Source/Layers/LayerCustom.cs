@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
@@ -44,6 +45,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(!Active);
             Active = true;
+        }
+
+        internal virtual void Focused(DialogAction da)// Вызывается при получении управления
+        {
+
         }
 
         internal virtual void PrepareFrame()

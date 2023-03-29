@@ -15,7 +15,7 @@ using static Fantasy_Kingdoms_Battle.Utils;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum ProgramState { Started, ConfirmQuit, NeedQuit };
-    internal enum DialogAction { None, OK, MainMenu, RestartGame, Quit };
+    internal enum DialogAction { None, OK, MainMenu, NewMission, RestartGame, Quit };
 
     public partial class FormMain : Form
     {
@@ -710,7 +710,7 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = newLayer;
         }
 
-        internal void RemoveLayer(LayerCustom vl)
+        internal void RemoveLayer(LayerCustom vl, DialogAction da)
         {
             Debug.Assert(Layers.Count > 1);
             if (Layers[Layers.Count - 1] != vl)
@@ -733,6 +733,7 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = Layers[Layers.Count - 1];
             if (!currentLayer.Active)
                 currentLayer.Activated();
+            currentLayer.Focused(da);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

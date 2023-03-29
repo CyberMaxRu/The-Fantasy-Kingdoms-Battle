@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
             BeforeClose(dr);
 
             dialogResult = dr;
-            Program.formMain.RemoveLayer(this);
+            Program.formMain.RemoveLayer(this, dr);
             if (frame != null)
                 frame.Continue = false;
 

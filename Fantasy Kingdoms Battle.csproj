@@ -70,6 +70,7 @@
     <Compile Include="Source\Forms\WindowMessage.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />
     <Compile Include="Source\Forms\WindowSelectTradition.cs" />
+    <Compile Include="Source\Forms\WindowSetupMission.cs" />
     <Compile Include="Source\Forms\WindowSetupTournament.cs" />
     <Compile Include="Source\Layers\LayerScene.cs" />
     <Compile Include="Source\Lobby\ComponentProgressExecuting.cs" />
