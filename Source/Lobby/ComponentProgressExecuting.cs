@@ -64,9 +64,7 @@ namespace Fantasy_Kingdoms_Battle
         // а стартовое значение MilliTicksPerTick больше не меняется и время не пересчитывается
         internal void UpdateRestTimeExecuting(int milliTicksPerTick)
         {
-            // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
-            RestTimeExecuting = (int)Math.Truncate((double)RestMilliTicks / (milliTicksPerTick * FormMain.Config.TicksInSecond) + 0.99);
-            Assert(RestTimeExecuting > 0);
+            RestTimeExecuting = Program.formMain.CalcRestTime(RestMilliTicks, milliTicksPerTick);
         }
 
         internal void RefreshProgress(int seconds, int milliTicksPerTicks)

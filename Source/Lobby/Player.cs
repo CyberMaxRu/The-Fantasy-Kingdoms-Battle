@@ -422,9 +422,17 @@ namespace Fantasy_Kingdoms_Battle
 
                     AcceptTradition();
                 }
+
+                if (PointsForNextTradition > (int)PointsTraditions)
+                    RestTimeForNextTradition = Program.formMain.CalcRestTime(PointsForNextTradition * 1000 - (int)PointsTraditions * 1000, (int)(pointsTraditionPerTick * 1000));
+                else
+                    RestTimeForNextTradition = 0;
             }
             else
+            {
                 PointsTraditionPerTurn = 0;
+                RestTimeForNextTradition = -1;
+            }
 
             // Если начался новый ход, применяем получившуюся дельту
             if (startNewDay)
@@ -948,6 +956,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Dictionary<DescriptorTradition, int> ListVariantsTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Варианты традиций для выбора
         internal VCNoticeSelectTradition NoticeForTradition { get; set; }// Извещение о необходимости выбора традиции
         internal bool AcceptTraditionsAllowed { get; private set; } = true;// Можно еще принять традиции
+        internal int RestTimeForNextTradition { get; private set; }// Сколько секунд осталось до принятия традиции
 
         // Статистика
         internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();

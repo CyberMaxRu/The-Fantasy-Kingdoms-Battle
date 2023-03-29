@@ -10,7 +10,7 @@
       <IgnoreRequirements>False</IgnoreRequirements>
       <CheatingSpeedUpProgressBy10>False</CheatingSpeedUpProgressBy10>
       <CheatingReduceCostBy10>True</CheatingReduceCostBy10>
-      <CheatingPointsTraditionMore10Times>True</CheatingPointsTraditionMore10Times>
+      <CheatingPointsTraditionMore10Times>False</CheatingPointsTraditionMore10Times>
     </Cheating>
     <TournamentSettings>
       <Tournament>

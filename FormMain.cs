@@ -1339,5 +1339,14 @@ namespace Fantasy_Kingdoms_Battle
 
             CurrentHumanPlayer = hp;
         }
+
+        internal int CalcRestTime(int restMilliTicks, int milliTicksPerTick)
+        {
+            // Прибавляем секунду, чтобы когда оставалось менее 1 секунды, индикатор не становился 0, а продолжал показывать 1
+            int restTimeExecuting = (int)Math.Truncate((double)restMilliTicks / (milliTicksPerTick * Config.TicksInSecond) + 0.99);
+            Assert(restTimeExecuting > 0);
+
+            return restTimeExecuting;
+        }
     }
 }

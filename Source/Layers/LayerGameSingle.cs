@@ -1316,6 +1316,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
+                pageTraditions.RestTimeExecuting = curAppliedPlayer.RestTimeForNextTradition >= 0 ? curAppliedPlayer.RestTimeForNextTradition.ToString() : "";
                 pageTraditions.Quantity = curAppliedPlayer.ListTraditions.Count;
 
                 foreach (VCToolLabelCityParameter sp in labelCityParameters)
