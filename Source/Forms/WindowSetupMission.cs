@@ -168,7 +168,6 @@ namespace Fantasy_Kingdoms_Battle
                 int nextLeft = FormMain.Config.GridSize;
                 int nextTop = FormMain.Config.GridSize;
                 panelTypeTraditions = new PanelDropDown();
-                panelTypeTraditions.ShowBorder = true;
 
                 foreach (DescriptorTypeTradition tt in FormMain.Descriptors.TypeTraditions)
                 {
