@@ -131,8 +131,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private LobbySettingsPlayer setting;
 
-        private bool dropDown;
-        private VisualControl panelTypeTraditions;
+        private PanelDropDown panelTypeTraditions;
 
         public VCLineSetupPlayerMission(VisualControl parent, int shiftX, int shiftY, LobbySettingsPlayer lsp) : base(parent, shiftX, shiftY)
         {
@@ -160,44 +159,51 @@ namespace Fantasy_Kingdoms_Battle
             UpdateData();
         }
 
+        private static DescriptorTypeTradition SelectedTradition { get; set; }
+
         private void BtnTypeTradition1_Click(object sender, EventArgs e)
         {
-            if (!dropDown)
+            if (panelTypeTraditions is null)
             {
-                if (panelTypeTraditions is null)
+                int nextLeft = FormMain.Config.GridSize;
+                int nextTop = FormMain.Config.GridSize;
+                panelTypeTraditions = new PanelDropDown();
+                panelTypeTraditions.ShowBorder = true;
+
+                foreach (DescriptorTypeTradition tt in FormMain.Descriptors.TypeTraditions)
                 {
-                    int nextLeft = FormMain.Config.GridSize;
-                    int nextTop = FormMain.Config.GridSize;
-                    panelTypeTraditions = new VisualControl(btnTypeTradition1, ShiftX, ShiftY + Height);
-                    panelTypeTraditions.ShowBorder = true;
+                    VCCellSimple cell = new VCCellSimple(panelTypeTraditions, nextLeft, nextTop);
+                    cell.HighlightUnderMouse = true;
+                    cell.ImageIndex = tt.ImageIndex;
+                    cell.Hint = tt.Description;
+                    cell.Descriptor = tt;
+                    cell.Click += Cell_Click;
 
-                    foreach (DescriptorTypeTradition tt in FormMain.Descriptors.TypeTraditions)
+                    if ((tt.Index + 1) % 3 > 0)
                     {
-                        VCCellSimple cell = new VCCellSimple(panelTypeTraditions, nextLeft, nextTop);
-                        cell.ImageIndex = tt.ImageIndex;
-                        cell.Hint = tt.Description;
-
-                        if ((tt.Index + 1) % 3 > 0)
-                        {
-                            nextLeft = cell.NextLeft();
-                        }
-                        else
-                        {
-                            nextLeft = 0;
-                            nextTop = cell.NextTop();
-                        }
+                        nextLeft = cell.NextLeft();
                     }
-
-                    panelTypeTraditions.ApplyMaxSize();
-                    panelTypeTraditions.Width += FormMain.Config.GridSize;
-                    panelTypeTraditions.Height += FormMain.Config.GridSize;
-                    panelTypeTraditions.Parent.ArrangeControl(panelTypeTraditions);
+                    else
+                    {
+                        nextLeft = FormMain.Config.GridSize;
+                        nextTop = cell.NextTop();
+                    }
                 }
 
+                panelTypeTraditions.ApplyMaxSize();
+                panelTypeTraditions.Width += FormMain.Config.GridSize;
+                panelTypeTraditions.Height += FormMain.Config.GridSize;
             }
-            dropDown = !dropDown;
 
-            panelTypeTraditions.Visible = dropDown;
+            panelTypeTraditions.ShowDropDown(btnTypeTradition1.Left, btnTypeTradition1.Top + btnTypeTradition1.Height);
+        }
+
+        private void Cell_Click(object sender, EventArgs e)
+        {
+            Assert(SelectedTradition is null);
+
+            SelectedTradition = ((VCCellSimple)sender).Descriptor as DescriptorTypeTradition;
+            panelTypeTraditions.CloseForm(DialogAction.OK);
         }
 
         private void BtnStartBonus_Click(object sender, EventArgs e)

@@ -67,6 +67,7 @@
     <Compile Include="Source\Descriptors\DescriptorTimeOfWeek.cs" />
     <Compile Include="Source\Descriptors\DescriptorTradition.cs" />
     <Compile Include="Source\Descriptors\DescriptorTypeTradition.cs" />
+    <Compile Include="Source\Forms\PanelDropDown.cs" />
     <Compile Include="Source\Forms\WindowMessage.cs" />
     <Compile Include="Source\Forms\WindowOkCancel.cs" />
     <Compile Include="Source\Forms\WindowSelectTradition.cs" />

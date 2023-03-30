@@ -15,10 +15,11 @@ namespace Fantasy_Kingdoms_Battle
         private DialogAction dialogResult;
         private bool showButtonClose;
         private VCImage imgClose;
+        private bool deactivatePriorWindow;
 
         public CustomWindow(bool deactivatePriorWindow) : base()
         {
-            Program.formMain.AddLayer(this, deactivatePriorWindow);
+            this.deactivatePriorWindow = deactivatePriorWindow;
         }
 
         internal bool ShowButtonClose// Показывать крестик в правом верхнем углу
@@ -58,6 +59,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected VCButton AcceptButton { get; set; }
         protected VCButton CancelButton { get; set; }
+        internal bool IsDropDown { get; set; }
 
         internal override void KeyUp(KeyEventArgs e)
         {
@@ -119,6 +121,7 @@ namespace Fantasy_Kingdoms_Battle
 
             AdjustSize();
             ToCentre();
+            Program.formMain.AddLayer(this, deactivatePriorWindow);
         }
     }
 }

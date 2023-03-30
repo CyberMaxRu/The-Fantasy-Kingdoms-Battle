@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
         }
 
-        internal DescriptorEntity Descriptor { get; set; }
+        internal DescriptorVisual Descriptor { get; set; }
 
         internal override void Draw(Graphics g)
         {

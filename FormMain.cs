@@ -992,6 +992,14 @@ namespace Fantasy_Kingdoms_Battle
                         return;
                 }
             }
+            else
+            {
+                if (currentLayer is CustomWindow cw)
+                    if (cw.IsDropDown)
+                    {
+                        cw.CloseForm(DialogAction.None);
+                    }
+            }
 
             if (e.Button == MouseButtons.Right)
             {
