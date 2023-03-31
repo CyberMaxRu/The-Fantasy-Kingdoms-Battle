@@ -66,6 +66,14 @@ namespace Fantasy_Kingdoms_Battle
 
             PointsForNextTradition = FormMain.Config.CostFirstTradition;
 
+            TypeTradition1 = Lobby.Settings.Players[playerIndex].TypeTradition1;
+            TypeTradition2 = Lobby.Settings.Players[playerIndex].TypeTradition2;
+            TypeTradition3 = Lobby.Settings.Players[playerIndex].TypeTradition3;
+
+            AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition1.ImageIndex, "Первый тип традиций", TypeTradition1.Name, Color.Orange);
+            AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition2.ImageIndex, "Второй тип традиций", TypeTradition2.Name, Color.Orange);
+            AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition3.ImageIndex, "Третий тип традиций", TypeTradition3.Name, Color.Orange);
+
             // Настраиваем игрока согласно настройкам лобби
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
@@ -957,6 +965,10 @@ namespace Fantasy_Kingdoms_Battle
         internal VCNoticeSelectTradition NoticeForTradition { get; set; }// Извещение о необходимости выбора традиции
         internal bool AcceptTraditionsAllowed { get; private set; } = true;// Можно еще принять традиции
         internal int RestTimeForNextTradition { get; private set; }// Сколько секунд осталось до принятия традиции
+
+        internal DescriptorTypeTradition TypeTradition1 { get; private set; }// Главная традиция
+        internal DescriptorTypeTradition TypeTradition2 { get; private set; }// Второстепенная традиция
+        internal DescriptorTypeTradition TypeTradition3 { get; private set; }// Третьестепенная традиция
 
         // Статистика
         internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();
