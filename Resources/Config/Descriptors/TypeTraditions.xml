@@ -16,7 +16,7 @@
     <ID>TypeTraditionConfrontation</ID>
     <Name>Противостояния</Name>
     <Description>Традиции противостояния увеличивают атаку и защиту против различных типов существ</Description>
-    <ImageIndex>316</ImageIndex>
+    <ImageIndex>323</ImageIndex>
   </TypeTradition>
   <TypeTradition>
     <ID>TypeTraditionCity</ID>
