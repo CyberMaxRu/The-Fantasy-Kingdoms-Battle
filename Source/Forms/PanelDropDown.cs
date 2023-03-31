@@ -37,10 +37,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowDropDown(int left, int top)
         {
-            PanelHint.HideHint();
-
             SetPos(left, top);
             Program.formMain.AddLayer(this, true);
+
+            PanelHint.HideHint();
         }
     }
 }

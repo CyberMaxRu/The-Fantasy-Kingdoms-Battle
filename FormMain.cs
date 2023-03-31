@@ -685,9 +685,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!vc.Active);
 
             // Если новый слой - выпадающий, то запоминаем, на какой контроле выпало окно
-            if ((currentLayer is CustomWindow cw) && cw.IsDropDown)
+            if ((vc is CustomWindow cw) && cw.IsDropDown)
             {
-                controlWithDropDown = controlClicked;
+                Assert(controlWithDropDown is null);
+                controlWithDropDown = clickedControl;
                 Assert(controlWithDropDown != null);
             }
 
@@ -744,7 +745,10 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer.Focused(da);
 
             if (controlWithDropDown != null)
+            {
                 controlWithDropDown.ResultFromDropDown(da);
+                controlWithDropDown = null;
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
