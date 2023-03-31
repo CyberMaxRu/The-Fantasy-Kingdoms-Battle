@@ -45,6 +45,9 @@
     <MaxTraditions>16</MaxTraditions>
     <CostFirstTradition>100</CostFirstTradition>
     <CoefForNextTradition>103</CoefForNextTradition>
+    <PercentCostFirstTypeTradition>50</PercentCostFirstTypeTradition>
+    <PercentCostSecondTypeTradition>75</PercentCostSecondTypeTradition>
+    <PercentCostThirdTypeTradition>90</PercentCostThirdTypeTradition>
   </Traditions>
   <Notice>
     <SecondsBeforeHide>10</SecondsBeforeHide>

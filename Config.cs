@@ -195,6 +195,19 @@ namespace Fantasy_Kingdoms_Battle
             Assert(CoefForNextTradition < 1000);
             CoefForNextTradition = CoefForNextTradition / 100;
 
+            PercentCostFirstTypeTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/PercentCostFirstTypeTradition").InnerText);
+            Assert(PercentCostFirstTypeTradition > 0);
+            Assert(PercentCostFirstTypeTradition < 100);
+            PercentCostSecondTypeTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/PercentCostSecondTypeTradition").InnerText);
+            Assert(PercentCostSecondTypeTradition > 0);
+            Assert(PercentCostSecondTypeTradition < 100);
+            PercentCostThirdTypeTradition = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/PercentCostThirdTypeTradition").InnerText);
+            Assert(PercentCostThirdTypeTradition > 0);
+            Assert(PercentCostThirdTypeTradition < 100);
+
+            Assert(PercentCostFirstTypeTradition < PercentCostSecondTypeTradition);
+            Assert(PercentCostSecondTypeTradition < PercentCostThirdTypeTradition);
+
             // MainMenu
             MainMenuMinAlphaBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/MinAlphaBanner").InnerText);
             MainMenuFramesAnimationBanner = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/MainMenu/FramesAnimationBanner").InnerText);
@@ -438,6 +451,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxLevelTradition { get; private set; }// Максимальный уровень традиций
         internal int CostFirstTradition { get; private set; }// Стоимость принятия первой традиции
         internal double CoefForNextTradition { get; private set; }// Коэффициент для стоимости второй и последующих традиций
+        internal int PercentCostFirstTypeTradition { get; private set; }// Процент от полного количества очков для первого типа традиции
+        internal int PercentCostSecondTypeTradition { get; private set; }// Процент от полного количества очков для первого типа традиции
+        internal int PercentCostThirdTypeTradition { get; private set; }// Процент от полного количества очков для первого типа традиции
 
         internal int MainMenuMinAlphaBanner { get; set; }// Минимальная прозрачность баннера с названием игры
         internal int MainMenuFramesAnimationBanner { get; set; }// Количество кадров анимации баннера
