@@ -22,6 +22,10 @@ namespace Fantasy_Kingdoms_Battle
             Height = 176;
 
             CellTypeTradition = new VCCellSimple(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            LblPercentCost = new VCLabel(CellTypeTradition, 0, 0, Program.formMain.FontMedCaptionC, Color.PaleGreen, CellTypeTradition.Height, "");
+            LblPercentCost.Width = CellTypeTradition.Width;
+            LblPercentCost.StringFormat.Alignment = StringAlignment.Center;
+            LblPercentCost.StringFormat.LineAlignment = StringAlignment.Center;
             LblNameTypeTradition = new VCText(this, CellTypeTradition.NextLeft(), CellTypeTradition.ShiftY, Program.formMain.FontParagraph, Color.DarkKhaki, Width - CellTypeTradition.NextLeft() - FormMain.Config.GridSize);
             LblNameTypeTradition.Height = CellTypeTradition.Height;
             LblNameTypeTradition.StringFormat.Alignment = StringAlignment.Near;
@@ -38,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal VCCellSimple CellTypeTradition { get; }
+        internal VCLabel LblPercentCost { get; }
         internal VCText LblNameTypeTradition { get; }
         internal VCText Text { get; }
         internal VCLabel Level { get; }
@@ -80,6 +85,7 @@ namespace Fantasy_Kingdoms_Battle
                 st.LevelTradition = t.Value;
                 st.CellTypeTradition.ImageIndex = t.Key.TypeTradition.ImageIndex;
                 st.CellTypeTradition.Hint = t.Key.TypeTradition.Description;
+                st.LblPercentCost.Text = CalcPercent(t.Key.TypeTradition);
                 st.LblNameTypeTradition.Text = t.Key.TypeTradition.Name;
                 st.LblNameTypeTradition.Hint = t.Key.TypeTradition.Description;
                 st.Text.Text = t.Key.Name;
@@ -104,6 +110,21 @@ namespace Fantasy_Kingdoms_Battle
             ApplyMaxSize();
 
             ArrangeControls();
+
+            string CalcPercent(DescriptorTypeTradition tt)
+            {
+                int percent;
+                if (tt == player.TypeTradition1)
+                    percent = FormMain.Config.PercentCostFirstTypeTradition;
+                else if (tt == player.TypeTradition2)
+                    percent = FormMain.Config.PercentCostSecondTypeTradition;
+                else if (tt == player.TypeTradition3)
+                    percent = FormMain.Config.PercentCostThirdTypeTradition;
+                else
+                    percent = 100;
+
+                return percent == 100 ? "" : percent.ToString() + "%";
+            }
         }
 
         internal DescriptorTradition SelectedTradition { get; set; }
