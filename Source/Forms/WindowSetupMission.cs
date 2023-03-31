@@ -282,7 +282,16 @@ namespace Fantasy_Kingdoms_Battle
         }
 
 
-        internal DescriptorTypeTradition SelectedTradition { get => selectedTradition; set { selectedTradition = value; ImageIndex = selectedTradition != null ? selectedTradition.ImageIndex : FormMain.Config.Gui48_RandomSelect; } }
+        internal DescriptorTypeTradition SelectedTradition
+        {
+            get => selectedTradition;
+            set
+            {
+                selectedTradition = value; 
+                ImageIndex = selectedTradition != null ? selectedTradition.ImageIndex : FormMain.Config.Gui48_RandomSelect;
+                Hint = selectedTradition != null ? selectedTradition.Name : "Случайная";
+            }
+        }
 
         internal override void ResultFromDropDown(DialogAction da)
         {
