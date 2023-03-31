@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
 using System.Windows.Media.TextFormatting;
+using System.Windows.Shapes;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -126,9 +127,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblName;
         private readonly VCIconButton48 btnPersistentBonus;
         private readonly VCIconButton48 btnStartBonus;
-        private readonly VCButtonSelectTradition btnTypeTradition1;
-        private readonly VCButtonSelectTradition btnTypeTradition2;
-        private readonly VCButtonSelectTradition btnTypeTradition3;
+        internal readonly VCButtonSelectTradition btnTypeTradition1;
+        internal readonly VCButtonSelectTradition btnTypeTradition2;
+        internal readonly VCButtonSelectTradition btnTypeTradition3;
 
         private LobbySettingsPlayer setting;
 
@@ -297,6 +298,16 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ResultFromDropDown(da);
 
+            if (selectedTradition != null)
+            {
+                VCLineSetupPlayerMission line = Parent as VCLineSetupPlayerMission;
+                if ((line.btnTypeTradition1 != this) && (line.btnTypeTradition1.SelectedTradition == SelectedTradition))
+                    line.btnTypeTradition1.SelectedTradition = null;
+                if ((line.btnTypeTradition2 != this) && (line.btnTypeTradition2.SelectedTradition == SelectedTradition))
+                    line.btnTypeTradition2.SelectedTradition = null;
+                if ((line.btnTypeTradition3 != this) && (line.btnTypeTradition3.SelectedTradition == SelectedTradition))
+                    line.btnTypeTradition3.SelectedTradition = null;
+            }
         }
 
         private void Cell_Click(object sender, EventArgs e)
