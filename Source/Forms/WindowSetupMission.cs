@@ -125,13 +125,11 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblName;
         private readonly VCIconButton48 btnPersistentBonus;
         private readonly VCIconButton48 btnStartBonus;
-        private readonly VCIconButton48 btnTypeTradition1;
-        private readonly VCIconButton48 btnTypeTradition2;
-        private readonly VCIconButton48 btnTypeTradition3;
+        private readonly VCButtonSelectTradition btnTypeTradition1;
+        private readonly VCButtonSelectTradition btnTypeTradition2;
+        private readonly VCButtonSelectTradition btnTypeTradition3;
 
         private LobbySettingsPlayer setting;
-
-        private PanelDropDown panelTypeTraditions;
 
         public VCLineSetupPlayerMission(VisualControl parent, int shiftX, int shiftY, LobbySettingsPlayer lsp) : base(parent, shiftX, shiftY)
         {
@@ -148,61 +146,17 @@ namespace Fantasy_Kingdoms_Battle
             btnPersistentBonus.Click += BtnPersistentBonus_Click;
             btnStartBonus = new VCIconButton48(this, btnPersistentBonus.NextLeft(), 0, 4);
             btnStartBonus.Click += BtnStartBonus_Click;
-            btnTypeTradition1 = new VCIconButton48(this, btnStartBonus.NextLeft(), 0, 4);
-            btnTypeTradition1.Click += BtnTypeTradition1_Click;
-            btnTypeTradition2 = new VCIconButton48(this, btnTypeTradition1.NextLeft(), 0, 4);
-            btnTypeTradition3 = new VCIconButton48(this, btnTypeTradition2.NextLeft(), 0, 4);
+            btnTypeTradition1 = new VCButtonSelectTradition(this, btnStartBonus.NextLeft(), 0);
+            btnTypeTradition1.Level = "1";
+            btnTypeTradition2 = new VCButtonSelectTradition(this, btnTypeTradition1.NextLeft(), 0);
+            btnTypeTradition2.Level = "2";
+            btnTypeTradition3 = new VCButtonSelectTradition(this, btnTypeTradition2.NextLeft(), 0);
+            btnTypeTradition3.Level = "3";
 
             Height = btnTypePlayer.Height;
             Width = btnTypeTradition3.EndLeft();
 
             UpdateData();
-        }
-
-        private static DescriptorTypeTradition SelectedTradition { get; set; }
-
-        private void BtnTypeTradition1_Click(object sender, EventArgs e)
-        {
-            if (panelTypeTraditions is null)
-            {
-                int nextLeft = FormMain.Config.GridSize;
-                int nextTop = FormMain.Config.GridSize;
-                panelTypeTraditions = new PanelDropDown();
-
-                foreach (DescriptorTypeTradition tt in FormMain.Descriptors.TypeTraditions)
-                {
-                    VCCellSimple cell = new VCCellSimple(panelTypeTraditions, nextLeft, nextTop);
-                    cell.HighlightUnderMouse = true;
-                    cell.ImageIndex = tt.ImageIndex;
-                    cell.Hint = tt.Description;
-                    cell.Descriptor = tt;
-                    cell.Click += Cell_Click;
-
-                    if ((tt.Index + 1) % 3 > 0)
-                    {
-                        nextLeft = cell.NextLeft();
-                    }
-                    else
-                    {
-                        nextLeft = FormMain.Config.GridSize;
-                        nextTop = cell.NextTop();
-                    }
-                }
-
-                panelTypeTraditions.ApplyMaxSize();
-                panelTypeTraditions.Width += FormMain.Config.GridSize;
-                panelTypeTraditions.Height += FormMain.Config.GridSize;
-            }
-
-            panelTypeTraditions.ShowDropDown(btnTypeTradition1.Left, btnTypeTradition1.Top + btnTypeTradition1.Height);
-        }
-
-        private void Cell_Click(object sender, EventArgs e)
-        {
-            Assert(SelectedTradition is null);
-
-            SelectedTradition = ((VCCellSimple)sender).Descriptor as DescriptorTypeTradition;
-            panelTypeTraditions.CloseForm(DialogAction.OK);
         }
 
         private void BtnStartBonus_Click(object sender, EventArgs e)
@@ -271,9 +225,9 @@ namespace Fantasy_Kingdoms_Battle
             btnPersistentBonus.ImageIsEnabled = setting.TypePlayer == TypePlayer.Human;
             btnStartBonus.ImageIndex = GetImageIndexBonus(setting.TypeSelectStartBonus);
             btnStartBonus.ImageIsEnabled = setting.TypePlayer == TypePlayer.Human;
-            btnTypeTradition1.ImageIndex = GetImageIndexTypeTradition(setting.TypeTradition1);
-            btnTypeTradition2.ImageIndex = GetImageIndexTypeTradition(setting.TypeTradition2);
-            btnTypeTradition3.ImageIndex = GetImageIndexTypeTradition(setting.TypeTradition3);
+            btnTypeTradition1.SelectedTradition = setting.TypeTradition1;
+            btnTypeTradition2.SelectedTradition = setting.TypeTradition2;
+            btnTypeTradition3.SelectedTradition = setting.TypeTradition3;
 
             switch (setting.TypeSelectStartBonus)
             {
@@ -313,11 +267,70 @@ namespace Fantasy_Kingdoms_Battle
 
                 return imageIndex;
             }
+        }
+    }
 
-            int GetImageIndexTypeTradition(DescriptorTypeTradition tt)
+    internal sealed class VCButtonSelectTradition : VCIconButton48
+    {
+        private DescriptorTypeTradition selectedTradition;
+        private PanelDropDown panelTypeTraditions;
+
+        public VCButtonSelectTradition(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
+        {
+            Click += VCCellSelectTradition_Click;
+        }
+
+
+        internal DescriptorTypeTradition SelectedTradition { get => selectedTradition; set { selectedTradition = value; ImageIndex = selectedTradition != null ? selectedTradition.ImageIndex : FormMain.Config.Gui48_RandomSelect; } }
+
+        internal override void ResultFromDropDown(DialogAction da)
+        {
+            base.ResultFromDropDown(da);
+
+        }
+
+        private void Cell_Click(object sender, EventArgs e)
+        {
+            SelectedTradition = ((VCCellSimple)sender).Descriptor as DescriptorTypeTradition;
+            panelTypeTraditions.CloseForm(DialogAction.OK);
+        }
+
+        private void VCCellSelectTradition_Click(object sender, EventArgs e)
+        {
+            if (panelTypeTraditions is null)
             {
-                return tt != null ? tt.ImageIndex : FormMain.Config.Gui48_RandomSelect;
+                int nextLeft = FormMain.Config.GridSize;
+                int nextTop = FormMain.Config.GridSize;
+                panelTypeTraditions = new PanelDropDown();
+
+                foreach (DescriptorTypeTradition tt in FormMain.Descriptors.TypeTraditions)
+                {
+                    VCCellSimple cell = new VCCellSimple(panelTypeTraditions, nextLeft, nextTop);
+                    cell.HighlightUnderMouse = true;
+                    cell.ImageIndex = tt.ImageIndex;
+                    cell.Hint = tt.Description;
+                    cell.Descriptor = tt;
+                    cell.Click += Cell_Click;
+                    cell.PlaySoundOnClick = true;
+                    cell.PlaySoundOnEnter = true;
+
+                    if ((tt.Index + 1) % 3 > 0)
+                    {
+                        nextLeft = cell.NextLeft();
+                    }
+                    else
+                    {
+                        nextLeft = FormMain.Config.GridSize;
+                        nextTop = cell.NextTop();
+                    }
+                }
+
+                panelTypeTraditions.ApplyMaxSize();
+                panelTypeTraditions.Width += FormMain.Config.GridSize;
+                panelTypeTraditions.Height += FormMain.Config.GridSize;
             }
+
+            panelTypeTraditions.ShowDropDown(Left, Top + Height);
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl controlWithHint;
         private VisualControl controlClicked;
         private VisualControl clickedControl;
+        private VisualControl controlWithDropDown;
 
         // Рендеринг
         private Bitmap bmpRenderClientArea;// Фон клиентской области, на который налагается кадр
@@ -683,6 +684,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(currentLayer.Controls.Count > 0);
             Debug.Assert(!vc.Active);
 
+            // Если новый слой - выпадающий, то запоминаем, на какой контроле выпало окно
+            if ((currentLayer is CustomWindow cw) && cw.IsDropDown)
+            {
+                controlWithDropDown = controlClicked;
+                Assert(controlWithDropDown != null);
+            }
+
             // Так как переходим к новом слою, выходим мышью из контрола текущего слоя
             // При клике есть только controlClicked, его и смотрим
             // В некоторых случаях его может не быть - например, при выходе по Alt+F4 или крестик на окне
@@ -734,6 +742,9 @@ namespace Fantasy_Kingdoms_Battle
             if (!currentLayer.Active)
                 currentLayer.Activated();
             currentLayer.Focused(da);
+
+            if (controlWithDropDown != null)
+                controlWithDropDown.ResultFromDropDown(da);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

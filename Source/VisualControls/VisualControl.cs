@@ -189,6 +189,8 @@ namespace Fantasy_Kingdoms_Battle
                 PaintBorder(g);
         }
 
+        internal virtual void ResultFromDropDown(DialogAction da) { }// Метод вызывается после закрытия выпадающего окна
+
         protected virtual bool Selected() => ManualSelected;
         protected virtual bool AllowClick() => true;
 
