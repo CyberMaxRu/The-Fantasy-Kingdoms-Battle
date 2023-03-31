@@ -24,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageTournament;
         private readonly VCPageButton pageQuest;
         private readonly VCPageButton pageTraditions;
+        private readonly VCPageButton pageSpell;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
         private readonly List<VCPageButton> pagesCapital;
         private readonly VCPageButton pageRealMap;
@@ -280,6 +281,7 @@ namespace Fantasy_Kingdoms_Battle
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageQuest = pageControl.AddPage(Config.Gui48_Quest, "Задания", "Здесь квесты", PageQuest_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
+            pageSpell = pageControl.AddPage(Config.Gui48_Magic, "Магия", "Здесь колдуют заклинания", null);
             //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
             //pageRealMap.Hint = "Карта Ардании";
             pageControl.Separate();
@@ -432,6 +434,7 @@ namespace Fantasy_Kingdoms_Battle
             pageTournament.PageImage = MainControlbackground("Tournament");
             pageQuest.PageImage = MainControlbackground("Quest");
             pageTraditions.PageImage = MainControlbackground("Traditions");
+            pageSpell.PageImage = MainControlbackground("Spell");
             pageMap.PageImage = MainControlbackground("Map");
 
             for (int i = 0; i < Descriptors.CapitalPages.Count; i++)

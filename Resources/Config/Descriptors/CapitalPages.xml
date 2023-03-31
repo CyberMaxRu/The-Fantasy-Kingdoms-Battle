@@ -21,4 +21,11 @@
     <Description>В гильдиях нанимаются герои</Description>
     <NameTexture>Guilds</NameTexture>
   </CapitalPage>
+  <CapitalPage>
+    <ID>Magic</ID>
+    <Name>Магические сооружения</Name>
+    <ImageIndex>324</ImageIndex>
+    <Description>Здесь все, чтобы колдовать</Description>
+    <NameTexture>Magic</NameTexture>
+  </CapitalPage>
 </Descriptors>
