@@ -522,7 +522,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(AcceptTraditionsAllowed);
 
             ListVariantsTraditions.Clear();
-            List<DescriptorTradition> tempList = new List<DescriptorTradition>();
+            List<(DescriptorTradition, int)> listAllVariants = new List<(DescriptorTradition, int)>();
             int level;
 
             // Сначала заполняем список всеми возможными вариантами
@@ -537,24 +537,45 @@ namespace Fantasy_Kingdoms_Battle
                     else
                         continue;
 
-                ListVariantsTraditions.Add(td, level);
-                tempList.Add(td);
+                listAllVariants.Add((td, level));
             }
 
-            // Если нельзя принять больше традиций, ставим флаг и выходим
-            if (ListVariantsTraditions.Count == 0)
+            // Если нельзя принять больше традиций, ставим флаг об окончании доступных традиций и выходим
+            if (listAllVariants.Count == 0)
             {
                 AcceptTraditionsAllowed = false;
                 return;
             }
 
-            // Удаляем случайные традиции, оставляя 6 для выбора
+            // Всегда добавляем варианты для трех основных традиций города
+            ApplyTypeTradition(TypeTradition1);
+            ApplyTypeTradition(TypeTradition2);
+            ApplyTypeTradition(TypeTradition3);
+
+            // Добиваем варианты до 6 позиций
             int i;
-            while (ListVariantsTraditions.Count > 6)
+            while ((ListVariantsTraditions.Count < 6) && (listAllVariants.Count > 0))
             {
-                i = Lobby.Rnd.Next(tempList.Count);
-                ListVariantsTraditions.Remove(tempList[i]);
-                tempList.RemoveAt(i);
+                i = Lobby.Rnd.Next(listAllVariants.Count);
+                ListVariantsTraditions.Add(listAllVariants[i].Item1, listAllVariants[i].Item2);
+                listAllVariants.RemoveAt(i);
+            }
+
+            void ApplyTypeTradition(DescriptorTypeTradition tt)
+            {
+                List<(DescriptorTradition, int)> traditions = new List<(DescriptorTradition, int)>();
+                foreach ((DescriptorTradition, int) t in listAllVariants)
+                {
+                    if (t.Item1.TypeTradition == tt)
+                        traditions.Add((t.Item1, t.Item2));
+                }
+
+                if (traditions.Count == 0)
+                    return;
+
+                int j = Lobby.Rnd.Next(traditions.Count);
+                ListVariantsTraditions.Add(traditions[j].Item1, traditions[j].Item2);
+                listAllVariants.Remove((traditions[j].Item1, traditions[j].Item2));
             }
         }
 
