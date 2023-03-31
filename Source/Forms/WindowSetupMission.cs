@@ -7,6 +7,7 @@ using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -91,6 +92,19 @@ namespace Fantasy_Kingdoms_Battle
             btnCancel.ShiftX = btnOk.NextLeft();
             lblNameLocation.Width = lblNameLocation.Parent.Width - lblNameLocation.ShiftX - FormMain.Config.GridSize;
             lblNameTypeLobby.Width = ClientControl.Width;
+        }
+
+        protected override void BeforeClose(DialogAction da)
+        {
+            base.BeforeClose(da);
+
+            if (da == DialogAction.OK)
+            {
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    mission.Players[i].SetTypeTraditions(lines[i].btnTypeTradition1.SelectedTradition, lines[i].btnTypeTradition2.SelectedTradition, lines[i].btnTypeTradition3.SelectedTradition);
+                }
+            }
         }
 
         private void BtnLocation_Click(object sender, EventArgs e)

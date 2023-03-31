@@ -57,9 +57,9 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorPlayer Player { get; set; }
         internal TypeSelectBonus TypeSelectPersistentBonus { get; set; }
         internal TypeSelectBonus TypeSelectStartBonus { get; set; }
-        internal DescriptorTypeTradition TypeTradition1 { get; set; }
-        internal DescriptorTypeTradition TypeTradition2 { get; set; }
-        internal DescriptorTypeTradition TypeTradition3 { get; set; }
+        internal DescriptorTypeTradition TypeTradition1 { get; private set; }
+        internal DescriptorTypeTradition TypeTradition2 { get; private set; }
+        internal DescriptorTypeTradition TypeTradition3 { get; private set; }
 
         internal void SetDefault()
         {
@@ -83,6 +83,60 @@ namespace Fantasy_Kingdoms_Battle
                 Player = FormMain.Descriptors.FindPlayer(idPlayer);
             else
                 TypePlayer = TypePlayer.Computer;
+        }
+
+        internal void SetTypeTraditions(DescriptorTypeTradition type1, DescriptorTypeTradition type2, DescriptorTypeTradition type3)
+        {
+            List<DescriptorTypeTradition> listAccepted = new List<DescriptorTypeTradition>();
+            List<DescriptorTypeTradition> listCandidates = new List<DescriptorTypeTradition>();
+            listCandidates.AddRange(FormMain.Descriptors.TypeTraditions);
+
+            ApplyType(type1);
+            ApplyType(type2);
+            ApplyType(type3);
+
+            MakeExistType(ref type1);
+            MakeExistType(ref type2);
+            MakeExistType(ref type3);
+
+            Assert(type1 != null);
+            Assert(type2 != null);
+            Assert(type3 != null);
+            Assert(type1 != type2);
+            Assert(type1 != type3);
+            Assert(type2 != type3);
+
+            TypeTradition1 = type1;
+            TypeTradition2 = type2;
+            TypeTradition3 = type3;
+
+            void ApplyType(DescriptorTypeTradition t)
+            {
+                if (t != null)
+                {
+                    Assert(listAccepted.IndexOf(t) == -1);
+                    listAccepted.Add(t);
+
+                    Assert(listCandidates.IndexOf(t) != -1);
+                    listCandidates.Remove(t);
+                }
+
+            }
+
+            void MakeExistType(ref DescriptorTypeTradition t)
+            {
+                if (t is null)
+                {
+                    t = GenerateRandomTypeTradition();
+                    ApplyType(t);
+                }
+            }
+
+            DescriptorTypeTradition GenerateRandomTypeTradition()
+            {
+                Random r = new Random();
+                return listCandidates[r.Next(listCandidates.Count)];
+            }
         }
 
         internal void SaveToXml(XmlWriter writer)
