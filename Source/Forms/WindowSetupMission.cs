@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using static Fantasy_Kingdoms_Battle.Utils;
+using System.Windows.Media.TextFormatting;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -301,29 +302,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 int nextLeft = FormMain.Config.GridSize;
                 int nextTop = FormMain.Config.GridSize;
+                int count = 0;
                 panelTypeTraditions = new PanelDropDown();
 
                 foreach (DescriptorTypeTradition tt in FormMain.Descriptors.TypeTraditions)
                 {
-                    VCCellSimple cell = new VCCellSimple(panelTypeTraditions, nextLeft, nextTop);
-                    cell.HighlightUnderMouse = true;
-                    cell.ImageIndex = tt.ImageIndex;
-                    cell.Hint = tt.Description;
-                    cell.Descriptor = tt;
-                    cell.Click += Cell_Click;
-                    cell.PlaySoundOnClick = true;
-                    cell.PlaySoundOnEnter = true;
-
-                    if ((tt.Index + 1) % 3 > 0)
-                    {
-                        nextLeft = cell.NextLeft();
-                    }
-                    else
-                    {
-                        nextLeft = FormMain.Config.GridSize;
-                        nextTop = cell.NextTop();
-                    }
+                    CreateCell(ref count, ref nextLeft, ref nextTop, tt);
                 }
+
+                CreateCell(ref count, ref nextLeft, ref nextTop, null);
+
 
                 panelTypeTraditions.ApplyMaxSize();
                 panelTypeTraditions.Width += FormMain.Config.GridSize;
@@ -331,6 +319,40 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             panelTypeTraditions.ShowDropDown(Left, Top + Height);
+
+            void  CreateCell(ref int count, ref int nextLeft, ref int nextTop, DescriptorTypeTradition tt)
+            {
+                VCCellSimple cell = new VCCellSimple(panelTypeTraditions, nextLeft, nextTop);
+                cell.HighlightUnderMouse = true;
+
+                if (tt != null)
+                {
+                    cell.ImageIndex = tt.ImageIndex;
+                    cell.Hint = tt.Description;
+                    cell.Descriptor = tt;
+                }
+                else
+                {
+                    cell.ImageIndex = FormMain.Config.Gui48_RandomSelect;
+                    cell.Hint = "Случайная традиция";
+                    cell.Descriptor = null;
+                }
+                cell.Click += Cell_Click;
+                cell.PlaySoundOnClick = true;
+                cell.PlaySoundOnEnter = true;
+
+                if ((count + 1) % 3 > 0)
+                {
+                    nextLeft = cell.NextLeft();
+                }
+                else
+                {
+                    nextLeft = FormMain.Config.GridSize;
+                    nextTop = cell.NextTop();
+                }
+
+                count++;
+            }
         }
     }
 }
