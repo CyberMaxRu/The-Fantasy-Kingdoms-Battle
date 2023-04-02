@@ -311,8 +311,6 @@ namespace Fantasy_Kingdoms_Battle
                                 Players[i].SelectStartBonus();
                         }
 
-                        Players[i].DoTurn();
-
                         // Если игрок-человек вылетел и больше нет игроков-людей, выходим из лобби
                         if (Players[i].GetTypePlayer() == TypePlayer.Human)
                             if (!ExistsOtherHumanPlayer(i + 1))
@@ -615,7 +613,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ExitFromLobby()
         {
-            CurrentPlayer.EndTurn();
             stopLobby = true;
         }
 

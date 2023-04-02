@@ -373,8 +373,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool ProperName() => true;
         internal override string GetTypeEntity() => Descriptor.GetTypeEntity();
 
-        internal abstract void DoTurn();
-
         // Ход любого игрока. Сначала делаем все расчеты тика, а потом включается ИИ или сам игрок
         internal virtual void DoTick(bool startNewDay)
         {

@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
             base.PrepareTurn(beginOfDay);
         }
 
-        internal override void DoTurn()
+        internal void DoTurn()
         {
             Debug.Assert(Descriptor.TypePlayer == TypePlayer.Human);
             Debug.Assert(IsLive || (DayOfEndGame == Lobby.Turn - 1));
@@ -108,10 +108,6 @@ namespace Fantasy_Kingdoms_Battle
                     m.Showed = true;
                 }
             }
-
-            //frame.Continue = true;
-            //Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(ExitFrame), frame);
-            //Dispatcher.PushFrame(frame);
         }
 
         internal void AddEvent(VCEvent e)
