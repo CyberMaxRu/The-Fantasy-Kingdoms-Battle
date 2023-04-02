@@ -107,6 +107,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_BUILDER = 58;
         internal const int GUI_16_PEOPLE = 53;
         internal const int GUI_16_TRADITIONS = 57;
+        internal const int GUI_16_MANA = 61;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;

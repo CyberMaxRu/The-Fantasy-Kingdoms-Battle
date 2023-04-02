@@ -181,6 +181,7 @@
     <HumanPlayer>289</HumanPlayer>
     <Quest>191</Quest>
     <Tradition>310</Tradition>
-    <Magic>325</Magic>
+    <CastSpell>325</CastSpell>
+    <Mana>325</Mana>
   </Gui48>
 </Game>

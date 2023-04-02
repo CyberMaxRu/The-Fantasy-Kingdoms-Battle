@@ -75,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnCheating;
 
         // Контролы тулбара
+        private readonly VCToolLabel labelMana;
         private readonly VCToolLabelResource[] labelsResources;
         private readonly VisualControl panelCityParameters;
         private readonly VCToolLabelCityParameter[] labelCityParameters;
@@ -141,7 +142,8 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.Click += MainControl_Click;
 
             // Метки с информацией о Королевстве
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.GUI_16_BUILDER);
+            labelMana = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.GUI_16_MANA);
+            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelMana.NextLeft() - Config.GridSizeHalf, labelMana.ShiftY, "", FormMain.GUI_16_BUILDER);
             labelBuilders.ShowHint += LabelBuilders_ShowHint;
             labelBuilders.Width = 112;
             labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_CORRUPTION);
@@ -286,7 +288,7 @@ namespace Fantasy_Kingdoms_Battle
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageQuest = pageControl.AddPage(Config.Gui48_Quest, "Задания", "Здесь квесты", PageQuest_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
-            pageSpell = pageControl.AddPage(Config.Gui48_Magic, "Магия", "Здесь колдуют заклинания", null);
+            pageSpell = pageControl.AddPage(Config.Gui48_CastSpell, "Заклинания", "Здесь колдуют заклинания", null);
             //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
             //pageRealMap.Hint = "Карта Ардании";
             pageControl.Separate();
@@ -1310,7 +1312,7 @@ namespace Fantasy_Kingdoms_Battle
                 pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
                 pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);
                 if (curAppliedPlayer.NextTradition is null)
-                    pbTraditions.Text = "е выбрана";
+                    pbTraditions.Text = "Не выбрана";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
