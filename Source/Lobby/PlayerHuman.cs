@@ -121,19 +121,6 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal override void EndTurn()
-        {
-            Debug.Assert(frame.Continue);
-
-            foreach (VCCustomNotice e in ListNoticesForPlayer)
-            {
-                e.Dispose();
-            }
-            ListNoticesForPlayer.Clear();
-
-            frame.Continue = false;
-        }
-
         internal void AddEvent(VCEvent e)
         {
             ListEvents.Add(e);

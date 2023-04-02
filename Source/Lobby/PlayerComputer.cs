@@ -87,11 +87,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void EndTurn()
-        {
-
-        }
-
         internal override void PlayerIsWin()
         {
 

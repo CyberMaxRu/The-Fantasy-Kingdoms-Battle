@@ -645,7 +645,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal abstract void EndTurn();
         internal virtual void CalcDay()
         {
             queueShopping.Clear();
