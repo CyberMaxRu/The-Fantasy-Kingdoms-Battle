@@ -73,7 +73,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelKnowledge;
         private readonly VCToolLabel labelTraditions;
         //private readonly VCToolLabel labelPeople;
-        private readonly VCToolLabel labelHeroes;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
@@ -154,10 +153,7 @@ namespace Fantasy_Kingdoms_Battle
             //labelPeople.ShowHint += LabelKnowledge_ShowHint;
             //labelPeople.Width = 72;
 
-            labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_HEROES);
-            labelHeroes.ShowHint += LabelHeroes_ShowHint;
-            labelHeroes.Width = 80;
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
+            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
             labelBuilders.ShowHint += LabelBuilders_ShowHint;
             labelBuilders.Width = 112;
             labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
@@ -1062,7 +1058,6 @@ namespace Fantasy_Kingdoms_Battle
                     labelTraditions.Visible = true;
                     //labelPeople.Visible = true;
                     labelGreatness.Visible = false;
-                    labelHeroes.Visible = true;
                     labelCorruption.Visible = false;
                     MainControl.Visible = true;
                     ShowDataPlayer();
@@ -1075,7 +1070,6 @@ namespace Fantasy_Kingdoms_Battle
                     labelTraditions.Visible = false;
                     //labelPeople.Visible = false;
                     labelGreatness.Visible = false;
-                    labelHeroes.Visible = false;
                     labelCorruption.Visible = false;
                     MainControl.Visible = false;
                     //foreach (VCImageLose il in listBtnLoses)
@@ -1208,13 +1202,6 @@ namespace Fantasy_Kingdoms_Battle
                 + $"Изменение за день: {curAppliedPlayer.ChangeCorruption}");
         }
 
-        private void LabelHeroes_ShowHint(object sender, EventArgs e)
-        {
-            PanelHint.AddStep2Header("Герои");
-            PanelHint.AddStep5Description($"Нанято героев: {curAppliedPlayer.CombatHeroes.Count}" + Environment.NewLine
-                + $"Максимум героев: {curAppliedPlayer.Lobby.TypeLobby.MaxHeroes}");
-        }
-
         private void UpdateNameCurrentPage()
         {
             labelCaptionPage.Text = pageControl.CurrentPage.Caption;
@@ -1314,7 +1301,6 @@ namespace Fantasy_Kingdoms_Battle
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
                     //+ curAppliedPlayer.PointGreatnessForNextLevel.ToString();
-                labelHeroes.Text = curAppliedPlayer.CombatHeroes.Count.ToString() + "/" + curAppliedPlayer.Lobby.TypeLobby.MaxHeroes.ToString();
                 labelCorruption.Text = $"{curAppliedPlayer.PercentCorruption}% ({(curAppliedPlayer.ChangeCorruption > 0 ? "+" : "")}{curAppliedPlayer.ChangeCorruption}%)";
 
                 pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
