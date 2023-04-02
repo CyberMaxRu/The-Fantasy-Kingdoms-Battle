@@ -177,23 +177,23 @@ namespace Fantasy_Kingdoms_Battle
             labelNamePlayer.Width = 16;
 
             // Контролы над тулбаром
-            labelDay = new VCLabelValue(bmpTopPanel, Config.GridSize, Config.GridSizeHalf, Color.White, true);
+            labelDay = new VCLabelValue(bmpTopPanel, Config.GridSize, Config.GridSize, Color.White, true);
             labelDay.StringFormat.Alignment = StringAlignment.Far;
             labelDay.Click += LabelDay_Click;
             labelDay.ShowHint += LabelDay_ShowHint;
             labelDay.Width = 72;
             labelDay.RightMargin = 2;
-            pbDay = new VCProgressBar(bmpTopPanel, labelDay.NextLeft(), labelDay.ShiftY);
+            pbDay = new VCProgressBar(bmpTopPanel, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY);
             pbDay.Max = Config.TicksInTurn;
             pbDay.Width = 160;
 
-            labelTraditions = new VCLabelValue(bmpTopPanel, Config.GridSize, labelDay.NextTop() - Config.GridSizeHalf, Color.White, true);
+            labelTraditions = new VCLabelValue(bmpTopPanel, labelDay.ShiftX, labelDay.NextTop() - Config.GridSize, Color.White, true);
             labelTraditions.Image.ImageIndex = FormMain.GUI_16_TRADITIONS;
             labelTraditions.StringFormat.Alignment = StringAlignment.Far;
             labelTraditions.RightMargin = 2;
             //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
             labelTraditions.Width = labelDay.Width;
-            pbTraditions = new VCProgressBar(bmpTopPanel, labelTraditions.NextLeft(), labelTraditions.ShiftY);
+            pbTraditions = new VCProgressBar(bmpTopPanel, pbDay.ShiftX, labelTraditions.ShiftY);
             pbTraditions.Width = pbDay.Width;
 
 
