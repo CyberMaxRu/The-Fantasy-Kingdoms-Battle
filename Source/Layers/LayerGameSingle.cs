@@ -65,21 +65,25 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
+        // Контролы над тулбаром
+        private readonly VCLabelValue labelDay;
+        private readonly VCProgressBar pbDay;
+        private readonly VCLabelValue labelTraditions;
+        private readonly VCProgressBar pbTraditions;
+
+        private readonly VCIconButton48 btnInGameMenu;
+        private readonly VCIconButton48 btnCheating;
+
         // Контролы тулбара
-        private readonly VCToolLabel labelDay;
         private readonly VCToolLabelResource[] labelsResources;
         private readonly VisualControl panelCityParameters;
         private readonly VCToolLabelCityParameter[] labelCityParameters;
         private readonly VCToolLabel labelKnowledge;
-        private readonly VCToolLabel labelTraditions;
         //private readonly VCToolLabel labelPeople;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
-
-        private readonly VCIconButton48 btnInGameMenu;
-        private readonly VCIconButton48 btnCheating;
 
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
@@ -137,33 +141,17 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.Click += MainControl_Click;
 
             // Метки с информацией о Королевстве
-            labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.Descriptors.TimesOfWeek[0].ImageIndex);
-            labelDay.StringFormat.Alignment = StringAlignment.Near;
-            labelDay.Click += LabelDay_Click;
-            labelDay.ShowHint += LabelDay_ShowHint;
-            labelDay.Width = 72;
-
-            /*labelKnowledge = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_KNOWLEDGE);
-            labelKnowledge.ShowHint += LabelKnowledge_ShowHint;
-            labelKnowledge.Width = 80;*/
-            labelTraditions = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_TRADITIONS);
-            //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
-            labelTraditions.Width = 120;
-            //labelPeople = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_PEOPLE);
-            //labelPeople.ShowHint += LabelKnowledge_ShowHint;
-            //labelPeople.Width = 72;
-
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelTraditions.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_BUILDER);
+            labelBuilders = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.GUI_16_BUILDER);
             labelBuilders.ShowHint += LabelBuilders_ShowHint;
             labelBuilders.Width = 112;
-            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_CORRUPTION);
+            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_CORRUPTION);
             labelCorruption.ShowHint += LabelCorruption_ShowHint;
             labelCorruption.Width = 112;
-            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY, "", FormMain.GUI_16_GREATNESS);
+            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_GREATNESS);
             labelGreatness.ShowHint += LabelGreatness_ShowHint;
             labelGreatness.Width = 112;
 
-            panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, labelDay.ShiftY);
+            panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, labelBuilders.ShiftY);
             labelCityParameters = new VCToolLabelCityParameter[Descriptors.CityParameters.Count];
 
             int nextLeft = 0;
@@ -178,13 +166,34 @@ namespace Fantasy_Kingdoms_Battle
             labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
-                VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelDay.ShiftY, br);
+                VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelBuilders.ShiftY, br);
                 labelsResources[br.Number] = lblRes;
             }
 
             labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, Program.formMain.FontMedCaptionC.MaxHeightSymbol, "");
             labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
             labelNamePlayer.Width = 16;
+
+            // Контролы над тулбаром
+            labelDay = new VCLabelValue(bmpTopPanel, Config.GridSize, Config.GridSizeHalf, Color.White, true);
+            labelDay.StringFormat.Alignment = StringAlignment.Far;
+            labelDay.Click += LabelDay_Click;
+            labelDay.ShowHint += LabelDay_ShowHint;
+            labelDay.Width = 72;
+            labelDay.RightMargin = 2;
+            pbDay = new VCProgressBar(bmpTopPanel, labelDay.NextLeft(), labelDay.ShiftY);
+            pbDay.Max = Config.TicksInTurn;
+            pbDay.Width = 160;
+
+            labelTraditions = new VCLabelValue(bmpTopPanel, Config.GridSize, labelDay.NextTop() - Config.GridSizeHalf, Color.White, true);
+            labelTraditions.Image.ImageIndex = FormMain.GUI_16_TRADITIONS;
+            labelTraditions.StringFormat.Alignment = StringAlignment.Far;
+            labelTraditions.RightMargin = 2;
+            //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
+            labelTraditions.Width = labelDay.Width;
+            pbTraditions = new VCProgressBar(bmpTopPanel, labelTraditions.NextLeft(), labelTraditions.ShiftY);
+            pbTraditions.Width = pbDay.Width;
+
 
             btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, null);
             btnInGameMenu.HighlightUnderMouse = true;
@@ -1293,10 +1302,15 @@ namespace Fantasy_Kingdoms_Battle
             {
                 labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
                 labelDay.Image.ImageIndex = lobby.TimeOfWeek.ImageIndex;
+                pbDay.Position = lobby.CounterTicksOfTurn;
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelBuilders.Text = $"{curAppliedPlayer.CurrentBuilders}/{curAppliedPlayer.MaxBuilders}"
                     + (curAppliedPlayer.FreeBuilders > 0 ? $" ({curAppliedPlayer.FreeBuilders})" : "");
-                labelTraditions.Text = $"{Math.Truncate(curAppliedPlayer.PointsTraditions)}/{curAppliedPlayer.PointsForNextTradition}";
+                labelTraditions.Text = $"{curAppliedPlayer.PointsForNextTradition}";
+                pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
+                pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);
+                if (curAppliedPlayer.NextTradition is null)
+                    pbTraditions.Text = "е выбрана";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
