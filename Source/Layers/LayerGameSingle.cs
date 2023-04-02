@@ -1454,6 +1454,9 @@ namespace Fantasy_Kingdoms_Battle
             AdjustNamePlayer();
             MakePagesBackground();
 
+            btnInGameMenu.ShiftX = btnInGameMenu.Parent.Width - btnInGameMenu.Width - Config.GridSize;
+            btnCheating.ShiftX = btnInGameMenu.ShiftX - btnCheating.Width - Config.GridSize;
+
             // Выравниваем страницы столицы
             // Мы достоверно знаем, что на страницах столицы 3 промежутка между сооружениями и надо еще 2 по краям по горизонтали
             // По вертикали 2 расстояния
