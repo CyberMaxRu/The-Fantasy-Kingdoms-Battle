@@ -56,4 +56,8 @@
     <ID>ResourceExtraction</ID>
     <Name>Добыча ресурса</Name>
   </TypeConstruction>
+  <TypeConstruction>
+    <ID>Magic</ID>
+    <Name>Магия</Name>
+  </TypeConstruction>
 </Descriptors>
