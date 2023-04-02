@@ -114,13 +114,6 @@ namespace Fantasy_Kingdoms_Battle
             //Dispatcher.PushFrame(frame);
         }
 
-        public object ExitFrame(object f)
-        {
-            ((DispatcherFrame)f).Continue = false;
-
-            return null;
-        }
-
         internal void AddEvent(VCEvent e)
         {
             ListEvents.Add(e);
