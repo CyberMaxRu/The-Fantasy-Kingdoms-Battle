@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnOk = new VCButton(ClientControl, 0, 100, "Да");
             btnOk.Width = 160;
+            btnOk.Default = true;
             btnOk.Click += BtnOk_Click;
             btnCancel = new VCButton(ClientControl, 200, 100, "Нет");
             btnCancel.Width = 160;
