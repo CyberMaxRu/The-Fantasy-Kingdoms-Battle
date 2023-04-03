@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelConstruction : VisualControl
     {
         private Bitmap bmpBackground;
+        private readonly VCLabel lblName;
         private readonly VCImage128 imgMapObject;
         private readonly VCProgressBar pbDurability;
         private readonly VCProgressBar pbProgressAction;
@@ -34,7 +35,10 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
             Visible = false;
 
-            imgMapObject = new VCImage128(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 2, Program.formMain.FontSmallC, FormMain.Config.CommonCost, 16, "");
+
+            imgMapObject = new VCImage128(this, FormMain.Config.GridSize, lblName.NextTop());
+            imgMapObject.BitmapList = Program.formMain.BmpListObjects96;
             imgMapObject.HighlightUnderMouse = true;
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.BorderWithoutProgressBar = false;
@@ -65,7 +69,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpQueue3.StateRestTime = StateRestTime.Pause;
             bmpQueue3.Click += BmpQueue3_Click;
 
-            btnMainAction = new VCIconButton48(this, imgMapObject.NextLeft(), pbProgressAction.NextTop(), FormMain.Config.Gui48_Build);
+            btnMainAction = new VCIconButton48(this, bmpQueue3.NextLeft(), pbProgressAction.NextTop(), FormMain.Config.Gui48_Build);
             btnMainAction.Click += BtnBuildOrUpgrade_Click;
 
             lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Color.Green, true);
@@ -98,10 +102,11 @@ namespace Fantasy_Kingdoms_Battle
             lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
-            Width = lblIncome.NextLeft();
+            Width = btnMainAction.NextLeft();
             Height = btnMainAction.NextTop();
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
+            lblName.Width = Width;
 
             Click += ImgLair_Click;
         }
@@ -156,11 +161,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            lblName.Text = Program.formMain.Settings.ShowNameConstruction ? Construction.GetName() : "";
+            lblName.Color = Construction.GetColorCaption();
             imgMapObject.ImageIndex = Construction.GetImageIndex();
             imgMapObject.ImageIsEnabled = Construction.GetNormalImage();
             imgMapObject.Level = Construction.GetLevel();
-            imgMapObject.TextCaption.Text = Program.formMain.Settings.ShowNameConstruction ? Construction.GetName() : "";
-            imgMapObject.TextCaption.Color = Construction.GetColorCaption();
 
             btnMainAction.MenuCell = null;
             pbDurability.Visible = false;
