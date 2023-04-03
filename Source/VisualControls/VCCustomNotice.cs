@@ -20,10 +20,14 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCCustomNotice() : base()
         {
-            CellOwner = new VCCellSimple(this, 0, 0);
-            CellEntity = new VCCellSimple(this, CellOwner.NextLeft(), 0);
+            Width = Program.formMain.layerGame.panelNotices.Width;
 
-            lblCaption = new VCLabel(this, CellEntity.NextLeft() + 2, 0, Program.formMain.FontParagraphC, Color.White, 16, "");
+            CellOwner = new VCCellSimple(this, 0, 0);
+            CellOwner.ShiftX = Width - CellOwner.Width;
+            CellEntity = new VCCellSimple(this, 0, 0);
+            CellEntity.ShiftX = CellOwner.ShiftX - CellEntity.Width - FormMain.Config.GridSize;
+
+            lblCaption = new VCLabel(this, 2, 0, Program.formMain.FontParagraphC, Color.White, 16, "");
             lblCaption.StringFormat.Alignment = StringAlignment.Near;
             lblCaption.IsActiveControl = false;
 
@@ -31,8 +35,8 @@ namespace Fantasy_Kingdoms_Battle
             lblText.StringFormat.Alignment = StringAlignment.Near;
             lblText.TruncLongText = true;
             lblCaption.IsActiveControl = false;
+
             Height = CellEntity.Height;
-            Width = Program.formMain.layerGame.panelNotices.Width;
         }
 
         internal VCCellSimple CellOwner { get; }
@@ -52,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
 
             base.DrawBackground(g);
 
-            DrawImage(g, bmpBackground, CellEntity.Left + CellEntity.Width + FormMain.Config.GridSize, Top);
+            DrawImage(g, bmpBackground, Left, Top);
         }
 
         private Bitmap PrepareBackground(int width)
@@ -91,17 +95,13 @@ namespace Fantasy_Kingdoms_Battle
 
             if (CellOwner.ImageIndex == -1)
             {
-                int shift = CellEntity.ShiftX - CellOwner.ShiftX;
                 CellOwner.Visible = false;
-                CellEntity.ShiftX -= shift;
-                lblCaption.ShiftX -= shift;
-                lblText.ShiftX -= shift;
+                CellEntity.ShiftX = CellOwner.ShiftX;
             }
 
-            bmpBackground = PrepareBackground(Width - lblCaption.ShiftX + 2);
-
-            lblCaption.Width = Width - lblCaption.ShiftX;
-            lblText.Width = Width - lblText.ShiftX;
+            lblCaption.Width = CellEntity.ShiftX - 6 - lblCaption.ShiftX;
+            lblText.Width = lblCaption.Width;
+            bmpBackground = PrepareBackground(CellEntity.ShiftX - 6);
 
             AutoHide = autoHide;
             CounterForBeginHide = FormMain.Config.NoticeSecondsBeforeHide * FormMain.Config.TicksInSecond;
