@@ -1311,8 +1311,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelTraditions.Text = $"{curAppliedPlayer.PointsForNextTradition}";
                 pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
                 pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);
-                if (curAppliedPlayer.NextTradition is null)
-                    pbTraditions.Text = "Не выбрана";
+                pbTraditions.Text = curAppliedPlayer.NextTradition is null ? "Не выбрана" : "";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
