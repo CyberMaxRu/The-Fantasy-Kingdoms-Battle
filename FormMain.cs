@@ -149,7 +149,9 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly BitmapBorder bbIcon16;
         internal readonly Bitmap bmpBorderBig;
         internal readonly Bitmap bmpBorderBigForProgressBar;
+        internal readonly Bitmap bmpBorder96ForProgressBar;
         internal readonly Bitmap bmpMaskBig;
+        internal readonly Bitmap bmpMask96;
         internal readonly Bitmap bmpMaskSmall;
         internal readonly Bitmap bmpToolbar;
         internal readonly Bitmap bmpToolbarBorder;
@@ -302,7 +304,9 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpBorderBig = LoadBitmap("BorderBig.png");
             bmpBorderBigForProgressBar = LoadBitmap("BorderBigWithPB.png");
+            bmpBorder96ForProgressBar = LoadBitmap("BorderBigOrigin.png");
             bmpMaskBig = LoadBitmap("MaskBig.png");
+            bmpMask96 = LoadBitmap("Mask96.png");
             bmpMaskSmall = LoadBitmap("MaskSmall.png");// Нужна ли еще?
 
             // Иконки игровых объектов. Также включает встроенные аватары игроков и пул пустых иконок под внешние аватары
@@ -310,6 +314,7 @@ namespace Fantasy_Kingdoms_Battle
             // Добавляем места под внешние аватары
             BmpListObjects128.AddEmptySlots(Config.MaxQuantityExternalAvatars);
             BmpListObjects48 = new BitmapList(BmpListObjects128, new Size(48, 48), Config.BorderInBigIcons, bmpMaskSmall);
+            BmpListObjects96 = new BitmapList(BmpListObjects128, new Size(96, 96), Config.BorderInBigIcons, bmpMask96);
             LoadBitmapObjects();
 
             BmpListObjects48.AddBitmap(LoadBitmap("Gui48.png"));
@@ -455,6 +460,7 @@ namespace Fantasy_Kingdoms_Battle
         // ImageList'ы
         internal BitmapList BmpListObjects32 { get; }
         internal BitmapList BmpListObjects48 { get; }
+        internal BitmapList BmpListObjects96 { get; }
         internal BitmapList BmpListObjects128 { get; }
         internal BitmapList BmpListGui16 { get; }
         internal BitmapList BmpListGui24 { get; }
