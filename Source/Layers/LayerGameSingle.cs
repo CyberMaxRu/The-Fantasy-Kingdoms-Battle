@@ -182,7 +182,7 @@ namespace Fantasy_Kingdoms_Battle
             labelDay.Click += LabelDay_Click;
             labelDay.ShowHint += LabelDay_ShowHint;
             labelDay.Width = 72;
-            labelDay.RightMargin = 2;
+            labelDay.RightMargin = 6;
             pbDay = new VCProgressBar(bmpTopPanel, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY);
             pbDay.Max = Config.TicksInTurn;
             pbDay.Width = 160;
@@ -190,7 +190,7 @@ namespace Fantasy_Kingdoms_Battle
             labelTraditions = new VCLabelValue(bmpTopPanel, labelDay.ShiftX, labelDay.NextTop() - Config.GridSize, Color.White, true);
             labelTraditions.Image.ImageIndex = FormMain.GUI_16_TRADITIONS;
             labelTraditions.StringFormat.Alignment = StringAlignment.Far;
-            labelTraditions.RightMargin = 2;
+            labelTraditions.RightMargin = 6;
             //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
             labelTraditions.Width = labelDay.Width;
             pbTraditions = new VCProgressBar(bmpTopPanel, pbDay.ShiftX, labelTraditions.ShiftY);
