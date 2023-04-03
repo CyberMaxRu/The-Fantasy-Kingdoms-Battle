@@ -21,9 +21,8 @@ namespace Fantasy_Kingdoms_Battle
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.Width = 32;
-            labelLevel.ShiftX = Width - labelLevel.Width - 6;
 
-            TextCaption = new VCText(this, 4, 0, Program.formMain.FontSmallC, FormMain.Config.CommonCost, Width - FormMain.Config.GridSize);
+            TextCaption = new VCText(this, FormMain.Config.GridSizeHalf, 0, Program.formMain.FontSmallC, FormMain.Config.CommonCost, Width - FormMain.Config.GridSize);
             TextCaption.IsActiveControl = false;
             TextCaption.Visible = false;
         }
@@ -41,10 +40,22 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PaintBorder(Graphics g)
         {
-            if (BorderWithoutProgressBar)
-                DrawImage(g, Program.formMain.bmpBorderBig, Left - 2, Top - 2);
-            else 
-                DrawImage(g, Program.formMain.bmpBorderBigForProgressBar, Left - 2, Top - 2);
+            if ((Width == 128) && (Height == 128))
+            {
+                if (BorderWithoutProgressBar)
+                    DrawImage(g, Program.formMain.bmpBorderBig, Left - 2, Top - 2);
+                else
+                    DrawImage(g, Program.formMain.bmpBorderBigForProgressBar, Left - 2, Top - 2);
+            }
+            else if ((Width == 96) && (Height == 96))
+            {
+                if (BorderWithoutProgressBar)
+                    Utils.DoException("Бордюр не поддерживается");
+                else
+                    DrawImage(g, Program.formMain.bmpBorder96ForProgressBar, Left, Top);
+            }
+            else
+                Utils.DoException($"Неизвестный размер: Width = {Width}, Height = {Height}");
         }
 
         internal override void Draw(Graphics g)
@@ -62,6 +73,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             base.Draw(g);
+        }
+
+        protected override void ValidateRectangle()
+        {
+            base.ValidateRectangle();
+
+            if (labelLevel != null)
+            {
+                labelLevel.ShiftX = Width - labelLevel.Width - 6;
+                TextCaption.Width = Width - FormMain.Config.GridSize;
+            }
         }
     }
 }
