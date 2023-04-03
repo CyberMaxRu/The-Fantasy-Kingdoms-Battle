@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Caption { get; set; }
         internal bool Enabled { get => enabled; set { enabled = value; PlaySoundOnEnter = enabled; } }
+        internal bool Default { get; set; }
         protected override Bitmap GetBitmap() => !Enabled ? Program.formMain.bmpBandButtonDisabled : MouseOver && MouseClicked ? Program.formMain.bmpBandButtonPressed : MouseOver ? Program.formMain.bmpBandButtonHot : Program.formMain.bmpBandButtonNormal;
         protected override bool AllowClick() => Enabled;
 
@@ -45,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(bmpPressed != null);
 
             labelCaption.Text = Caption;
-            labelCaption.Color = !enabled ? Color.DarkGray : MouseOver ? Color.Gold : Color.PaleTurquoise;
+            labelCaption.Color = !enabled ? Color.DarkGray : MouseOver ? Color.Gold : Default ? Color.YellowGreen : Color.PaleTurquoise;
 
             base.Draw(g);
         }
