@@ -1373,5 +1373,13 @@ namespace Fantasy_Kingdoms_Battle
 
             return restTimeExecuting;
         }
+
+        internal int CalcPercentExecuting(int passedMilliTicks, int totalMilliTicks)
+        {
+            int percent = (int)Math.Truncate(passedMilliTicks * 100.0 / totalMilliTicks + 0.99);
+            Assert(percent >= 0);
+            Assert(percent <= 100);
+            return percent;
+        }
     }
 }

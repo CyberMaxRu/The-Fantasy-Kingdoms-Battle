@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
         private readonly VCImage128 imgMapObject;
         private readonly VCProgressBar pbDurability;
+        private readonly VCProgressBar pbProgressAction;
         private readonly VCIconButton48 btnHeroes;
         private readonly VCIconButton48 btnMainAction;
         private readonly VCLabelValue lblIncome;
@@ -43,12 +44,17 @@ namespace Fantasy_Kingdoms_Battle
             pbDurability.Width = imgMapObject.Width + 4;
             pbDurability.Max = 100;
 
+            pbProgressAction = new VCProgressBar(this, pbDurability.ShiftX, pbDurability.ShiftY + pbDurability.Height - 1);
+            pbProgressAction.Width = pbDurability.Width;
+            pbProgressAction.ColorProgress = Color.Fuchsia;
+            pbProgressAction.Max = 100;
+
             btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnHeroes.Click += BtnHeroes_Click;
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
             btnHeroes.Visible = false;
 
-            btnQueue1 = new VCIconButton48(this, imgMapObject.ShiftX, pbDurability.NextTop(), 0);
+            btnQueue1 = new VCIconButton48(this, imgMapObject.ShiftX, pbProgressAction.NextTop(), 0);
             btnQueue1.ShowHint += BtnQueue1_ShowHint;
             btnQueue1.ShowBorder = false;
             btnQueue1.Click += BtnQueue1_Click;
@@ -59,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpQueue3.StateRestTime = StateRestTime.Pause;
             bmpQueue3.Click += BmpQueue3_Click;
 
-            btnMainAction = new VCIconButton48(this, imgMapObject.NextLeft(), pbDurability.NextTop(), FormMain.Config.Gui48_Build);
+            btnMainAction = new VCIconButton48(this, imgMapObject.NextLeft(), pbProgressAction.NextTop(), FormMain.Config.Gui48_Build);
             btnMainAction.Click += BtnBuildOrUpgrade_Click;
 
             lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Color.Green, true);
@@ -189,64 +195,66 @@ namespace Fantasy_Kingdoms_Battle
 
                 if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && !(Construction.FirstActionInQueue is CellMenuConstructionRepair) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
                 {
-                    int percent = Construction.FirstActionInQueue.ProgressExecuting.PassedMilliTicks * 100 / Construction.FirstActionInQueue.ProgressExecuting.TotalMilliTicks;
+                    int percent = Program.formMain.CalcPercentExecuting(Construction.FirstActionInQueue.ProgressExecuting.PassedMilliTicks, Construction.FirstActionInQueue.ProgressExecuting.TotalMilliTicks);
 
-                    pbDurability.Text = percent.ToString() + "%";
-                    pbDurability.Max = 100;
-                    pbDurability.Position = percent;
-                    pbDurability.ColorProgress = Color.Fuchsia;
+                    pbProgressAction.Text = percent.ToString() + "%";
+                    pbProgressAction.Position = percent;
                 }
                 else
                 {
-                    switch (Construction.State)
-                    {
-                        case StateConstruction.Work:
-                            pbDurability.Text = Construction.CurrentDurability.ToString();
-                            pbDurability.Max = Construction.MaxDurability;
-                            pbDurability.Position = Construction.CurrentDurability;
-                            break;
-                        case StateConstruction.NotBuild:
-                        case StateConstruction.InQueueBuild:
-                            pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
-                            pbDurability.Max = Construction.MaxDurability;
-                            pbDurability.Position = 0;
-                            break;
-                        case StateConstruction.Build:
-                        case StateConstruction.NeedRepair:
-                        case StateConstruction.Repair:
-                            pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
-                            pbDurability.Max = Construction.MaxDurability;
-                            pbDurability.Position = Construction.CurrentDurability;
-                            break;
-                        default:
-                            throw new Exception($"Неизвестное состояние {Construction.State}");
-                    }
-
-                    switch (Construction.State)
-                    {
-                        case StateConstruction.Work:
-                            pbDurability.ColorProgress = Color.Lime;
-                            break;
-                        case StateConstruction.NotBuild:
-                        case StateConstruction.InQueueBuild:
-                            break;
-                        case StateConstruction.Build:
-                            pbDurability.ColorProgress = Color.PaleTurquoise;
-                            break;
-                        case StateConstruction.NeedRepair:
-                        case StateConstruction.Repair:
-                            int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
-                            if (percent >= 60)
-                                pbDurability.ColorProgress = Color.Lime;
-                            else if (percent >= 50)
-                                pbDurability.ColorProgress = Color.Yellow;
-                            else
-                                pbDurability.ColorProgress = Color.Red;
-                            break;
-                        default:
-                            throw new Exception($"Неизвестное состояние {Construction.State}");
-                    }
+                    pbProgressAction.Text = "";
+                    pbProgressAction.Position = 0;
                 }
+
+                switch (Construction.State)
+                {
+                    case StateConstruction.Work:
+                        pbDurability.Text = Construction.CurrentDurability.ToString();
+                        pbDurability.Max = Construction.MaxDurability;
+                        pbDurability.Position = Construction.CurrentDurability;
+                        break;
+                    case StateConstruction.NotBuild:
+                    case StateConstruction.InQueueBuild:
+                        pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
+                        pbDurability.Max = Construction.MaxDurability;
+                        pbDurability.Position = 0;
+                        break;
+                    case StateConstruction.Build:
+                    case StateConstruction.NeedRepair:
+                    case StateConstruction.Repair:
+                        pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
+                        pbDurability.Max = Construction.MaxDurability;
+                        pbDurability.Position = Construction.CurrentDurability;
+                        break;
+                    default:
+                        throw new Exception($"Неизвестное состояние {Construction.State}");
+                }
+
+                switch (Construction.State)
+                {
+                    case StateConstruction.Work:
+                        pbDurability.ColorProgress = Color.Lime;
+                        break;
+                    case StateConstruction.NotBuild:
+                    case StateConstruction.InQueueBuild:
+                        break;
+                    case StateConstruction.Build:
+                        pbDurability.ColorProgress = Color.PaleTurquoise;
+                        break;
+                    case StateConstruction.NeedRepair:
+                    case StateConstruction.Repair:
+                        int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
+                        if (percent >= 60)
+                            pbDurability.ColorProgress = Color.Lime;
+                        else if (percent >= 50)
+                            pbDurability.ColorProgress = Color.Yellow;
+                        else
+                            pbDurability.ColorProgress = Color.Red;
+                        break;
+                    default:
+                        throw new Exception($"Неизвестное состояние {Construction.State}");
+                }
+            
 
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
                 if (income > 0)
