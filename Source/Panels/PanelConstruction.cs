@@ -73,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
             btnMainAction.Click += BtnBuildOrUpgrade_Click;
 
             lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Color.Green, true);
-            lblIncome.Width = 72;
+            lblIncome.Width = 104;
             lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
@@ -102,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
             lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
-            Width = btnMainAction.NextLeft();
+            Width = Math.Max(btnMainAction.NextLeft(), lblIncome.NextLeft());
             Height = btnMainAction.NextTop();
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;

@@ -70,18 +70,18 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCProgressBar pbDay;
         private readonly VCLabelValue labelTraditions;
         private readonly VCProgressBar pbTraditions;
+        private readonly VCLabelValue labelMana;
+        private readonly VCLabelValue labelBuilders;
 
         private readonly VCIconButton48 btnInGameMenu;
         private readonly VCIconButton48 btnCheating;
 
         // Контролы тулбара
-        private readonly VCToolLabel labelMana;
         private readonly VCToolLabelResource[] labelsResources;
         private readonly VisualControl panelCityParameters;
         private readonly VCToolLabelCityParameter[] labelCityParameters;
         private readonly VCToolLabel labelKnowledge;
         //private readonly VCToolLabel labelPeople;
-        private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
@@ -142,18 +142,7 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.Click += MainControl_Click;
 
             // Метки с информацией о Королевстве
-            labelMana = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", FormMain.GUI_16_MANA);
-            labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelMana.NextLeft() - Config.GridSizeHalf, labelMana.ShiftY, "", FormMain.GUI_16_BUILDER);
-            labelBuilders.ShowHint += LabelBuilders_ShowHint;
-            labelBuilders.Width = 112;
-            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_CORRUPTION);
-            labelCorruption.ShowHint += LabelCorruption_ShowHint;
-            labelCorruption.Width = 112;
-            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_GREATNESS);
-            labelGreatness.ShowHint += LabelGreatness_ShowHint;
-            labelGreatness.Width = 112;
-
-            panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, labelBuilders.ShiftY);
+            panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, 6);
             labelCityParameters = new VCToolLabelCityParameter[Descriptors.CityParameters.Count];
 
             int nextLeft = 0;
@@ -168,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
             labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
-                VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, labelBuilders.ShiftY, br);
+                VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, 6, br);
                 labelsResources[br.Number] = lblRes;
             }
 
@@ -195,6 +184,21 @@ namespace Fantasy_Kingdoms_Battle
             labelTraditions.Width = labelDay.Width;
             pbTraditions = new VCProgressBar(bmpTopPanel, pbDay.ShiftX, labelTraditions.ShiftY);
             pbTraditions.Width = pbDay.Width;
+
+            labelMana = new VCLabelValue(bmpTopPanel, pbDay.NextLeft(), labelDay.ShiftY, Color.White, true);
+            labelMana.Image.ImageIndex = FormMain.GUI_16_MANA;
+            labelMana.Width = 112;
+            labelBuilders = new VCLabelValue(bmpTopPanel, pbTraditions.NextLeft(), labelTraditions.ShiftY, Color.White, true);
+            labelBuilders.Image.ImageIndex = FormMain.GUI_16_BUILDER;
+            labelBuilders.ShowHint += LabelBuilders_ShowHint;
+            labelBuilders.Width = 112;
+            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_CORRUPTION);
+            labelCorruption.ShowHint += LabelCorruption_ShowHint;
+            labelCorruption.Width = 112;
+            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_GREATNESS);
+            labelGreatness.ShowHint += LabelGreatness_ShowHint;
+            labelGreatness.Width = 112;
+
 
 
             btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, null);
@@ -312,9 +316,9 @@ namespace Fantasy_Kingdoms_Battle
 
             listBtnLevelTax = new List<VCIconButton48>();
 
-            labelCaptionPage = new VCLabel(pageControl, pageMap.NextLeft() + FormMain.Config.GridSize * 2, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
-            labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
-            labelCaptionPage.ShiftY = (48 - labelCaptionPage.Font.MaxHeightSymbol) / 2;
+            labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
+            labelCaptionPage.StringFormat.Alignment = StringAlignment.Center;
+            labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaptionPage.Width = 280;
 
             // Создаем массив из страниц, линий и позиций
@@ -355,10 +359,12 @@ namespace Fantasy_Kingdoms_Battle
 
             // Все контролы созданы, устанавливаем размеры bitmapMenu
             MainControl.Width = vcRightPanel.ShiftX + vcRightPanel.Width;
-
             MainControl.Height = pageHeroes.ShiftY + maxHeightControls + (Config.GridSize * 2);
 
             Adjust2();
+
+            labelCaptionPage.ShiftX = (labelCaptionPage.Parent.Width - labelCaptionPage.Width) / 2;
+            labelCaptionPage.Height = labelCaptionPage.Parent.Height;
 
             PreferencesChanged();
 
@@ -1436,8 +1442,6 @@ namespace Fantasy_Kingdoms_Battle
             bmpObjectMenu.ShiftX = vcRightPanel.Width - bmpObjectMenu.Width;
             bmpObjectMenu.ShiftY = vcRightPanel.Height - bmpObjectMenu.Height;
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
-
-            panelCityParameters.ShiftX = (MainControl.Width - panelCityParameters.Width) / 2;
 
             int shift0 = MainControl.Width - Config.GridSizeHalf;
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
