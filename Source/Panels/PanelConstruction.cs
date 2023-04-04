@@ -106,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             Height = btnMainAction.NextTop();
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
-            lblName.Width = Width;
+            lblName.Width = Width - (FormMain.Config.GridSize * 2);
 
             Click += ImgLair_Click;
         }
