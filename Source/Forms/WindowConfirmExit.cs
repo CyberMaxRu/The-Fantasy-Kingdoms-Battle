@@ -2,8 +2,7 @@
 {
     internal sealed class WindowConfirmExit : WindowConfirm
     {
-        public WindowConfirmExit() : base("Выход из программы",
-            Program.formMain.layerGame.CurrentLobby is null ? "Выйти из программы?": "Выход приведет к потере текущей игры.\r\nПродолжить?")
+        public WindowConfirmExit() : base("Выход из игры", Program.formMain.layerGame.CurrentLobby is null ? "Выйти из игры?": "Выход приведет к потере текущей игры.\r\nПродолжить?")
         {
             Program.formMain.SetProgrameState(ProgramState.ConfirmQuit);
         }
