@@ -304,7 +304,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 selectedTradition = value; 
                 ImageIndex = selectedTradition != null ? selectedTradition.ImageIndex : FormMain.Config.Gui48_RandomSelect;
-                Hint = selectedTradition != null ? selectedTradition.Name : "Случайная";
+                Hint = selectedTradition != null ? selectedTradition.Name : "Случайная традиция";
             }
         }
 
