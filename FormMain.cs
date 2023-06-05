@@ -772,8 +772,7 @@ namespace Fantasy_Kingdoms_Battle
                         Program.formMain.layerGame.EndLobby();
                     break;
                 default:
-                    WindowConfirmExit f = new WindowConfirmExit();
-                    f.Show();
+                    WindowConfirmExit.ConfirmExit();
                     e.Cancel = true;
                     break;
             }

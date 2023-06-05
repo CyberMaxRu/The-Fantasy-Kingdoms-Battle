@@ -24,7 +24,8 @@ namespace Fantasy_Kingdoms_Battle
         internal static void ShowConfirm(string caption, string text, EventHandler onClose)
         {
             WindowConfirm wc = new WindowConfirm(caption, text);
-            wc.OnClose += onClose;
+            if (onClose != null)
+                wc.OnClose += onClose;
             wc.Show();
         }
     }

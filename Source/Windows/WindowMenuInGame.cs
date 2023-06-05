@@ -70,8 +70,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnExitToWindows_Click(object sender, EventArgs e)
         {
-            WindowConfirmExit f = new WindowConfirmExit();
-            f.Show();
+            WindowConfirmExit.ConfirmExit();
         }
 
         protected override void AfterClose(DialogAction da)
