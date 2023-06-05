@@ -1387,5 +1387,7 @@ namespace Fantasy_Kingdoms_Battle
             Assert(percent <= 100);
             return percent;
         }
+
+        internal bool InGame() => layerGame.CurrentLobby != null;
     }
 }
