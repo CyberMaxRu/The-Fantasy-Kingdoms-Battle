@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class LayerMainMenu : LayerScene
     {
         private Bitmap bitmapLogo;
-        private readonly VCBitmap bitmapNameGame;
+        private readonly VCBitmap bmpNameGame;
         private readonly Bitmap[] arrayBitmapNameGame;
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
@@ -35,19 +35,15 @@ namespace Fantasy_Kingdoms_Battle
 
         public LayerMainMenu() : base()
         {
-            // Фон
-            bitmapNameGame = new VCBitmap(this, 0, 0, LoadBitmap("NameGame.png"));
+            // Мигающий баннер с названием игры
+            bmpNameGame = new VCBitmap(this, 0, 0, LoadBitmap("NameGame.png"));
 
-            int minAlpha = Config.MainMenuMinAlphaBanner;
-            int frames = Config.MainMenuFramesAnimationBanner;
-            double deltaRad = Math.PI / frames;
-            arrayBitmapNameGame = new Bitmap[frames];
+            double deltaRad = Math.PI / Config.MainMenuFramesAnimationBanner;
+            arrayBitmapNameGame = new Bitmap[Config.MainMenuFramesAnimationBanner];
             for (int i = 0; i < arrayBitmapNameGame.Length; i++)
-            {
-                int alpha = minAlpha + (int)((255 - minAlpha) * Math.Sin(deltaRad * i));
-                arrayBitmapNameGame[i] = GuiUtils.ApplyDisappearance(bitmapNameGame.Bitmap, alpha, 255);
-            }
+                arrayBitmapNameGame[i] = GuiUtils.ApplyDisappearance(bmpNameGame.Bitmap, Config.MainMenuMinAlphaBanner + (int)((255 - Config.MainMenuMinAlphaBanner) * Math.Sin(deltaRad * i)), 255);
 
+            //
             labelVersionName = new VCLabel(this, 0, 0, Program.formMain.FontSmallC, Color.White, Program.formMain.FontSmall.MaxHeightSymbol, $"({FormMain.VERSION_POSTFIX})");
             labelVersionName.SetWidthByText();
             labelVersion = new VCLabel(this, 0, 0, Program.formMain.FontSmallC, Color.White, Program.formMain.FontSmall.MaxHeightSymbol,
@@ -113,8 +109,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ArrangeControls()
         {
-            bitmapNameGame.ShiftX = (Width - bitmapNameGame.Width) / 2;
-            bitmapNameGame.ShiftY = 32;//(bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
+            bmpNameGame.ShiftX = (Width - bmpNameGame.Width) / 2;
+            bmpNameGame.ShiftY = 32;//(bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
             labelVersionName.ShiftX = labelVersionName.Parent.Width - labelVersionName.Width - FormMain.Config.GridSize;
             labelVersionName.ShiftY = labelVersionName.Parent.Height - labelVersionName.Height - FormMain.Config.GridSize;
             labelVersion.ShiftX = labelVersion.Parent.Width - labelVersion.Width - FormMain.Config.GridSize;
@@ -140,7 +136,7 @@ namespace Fantasy_Kingdoms_Battle
             if (idxAnimation == arrayBitmapNameGame.Length)
                 idxAnimation = 0;
 
-            bitmapNameGame.Bitmap = arrayBitmapNameGame[idxAnimation];
+            bmpNameGame.Bitmap = arrayBitmapNameGame[idxAnimation];
 
             base.Draw(g);
         }
