@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonForMenu btnEditorConquest;
         private readonly VCButtonForMenu btnPlayerPreferences;
         private readonly VCButtonForMenu btnGamePreferences;
-        private readonly VCButtonForMenu btnAboutProgram;
+        private readonly VCButtonForMenu btnAboutGame;
         private readonly VCButtonForMenu btnExitToWindows;
 
         private DescriptorMission descriptorMission;
@@ -67,8 +67,8 @@ namespace Fantasy_Kingdoms_Battle
             btnEditorConquest.Click += BtnEditorConquest_Click;*/
 
             btnExitToWindows = new VCButtonForMenu(bmpMainMenu, bmpMainMenu.Height - 96, "Выход", BtnExitToWindows_Click);
-            btnAboutProgram = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "О программе", BtnAboutProgram_Click);
-            btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutProgram.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
+            btnAboutGame = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "Об игре", BtnAboutGame_Click);
+            btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutGame.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
             btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
         }
 
@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.ShowWindowPreferences();
         }
 
-        private void BtnAboutProgram_Click(object sender, EventArgs e)
+        private void BtnAboutGame_Click(object sender, EventArgs e)
         {
             WindowAboutProgram w = new WindowAboutProgram();
             w.Show();
