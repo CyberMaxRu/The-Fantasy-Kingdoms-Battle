@@ -73,7 +73,7 @@
     <Compile Include="Source\Windows\WindowSelectTradition.cs" />
     <Compile Include="Source\Windows\WindowSetupMission.cs" />
     <Compile Include="Source\Windows\WindowSetupTournament.cs" />
-    <Compile Include="Source\Layers\LayerScene.cs" />
+    <Compile Include="Source\Common\Layers\LayerScene.cs" />
     <Compile Include="Source\Lobby\ComponentProgressExecuting.cs" />
     <Compile Include="Source\Lobby\ComponentObjectOfMap.cs" />
     <Compile Include="Source\Lobby\ConstructionBaseResource.cs" />
@@ -127,10 +127,10 @@
     <Compile Include="Source\Descriptors\Requirement\RequirementTypeConstruction.cs" />
     <Compile Include="Source\Windows\WindowCheating.cs" />
     <Compile Include="Source\Windows\WindowSelectPersistentBonuses.cs" />
-    <Compile Include="Source\Layers\LayerCustom.cs" />
-    <Compile Include="Source\Layers\LayerEditorConquest.cs" />
-    <Compile Include="Source\Layers\LayerGameSingle.cs" />
-    <Compile Include="Source\Layers\LayerMainMenu.cs" />
+    <Compile Include="Source\Common\Layers\LayerCustom.cs" />
+    <Compile Include="Source\Conquest\LayerEditorConquest.cs" />
+    <Compile Include="Source\FantasyKingdomSim\LayerGameSingle.cs" />
+    <Compile Include="Source\Common\Layers\LayerMainMenu.cs" />
     <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\ActionForEntity.cs" />
@@ -454,6 +454,8 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Source\Battlegrounds\Layers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
