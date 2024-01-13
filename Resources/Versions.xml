@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.22</ActualVersion>
+  <ActualVersion>0.3.23</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -599,6 +599,13 @@
     <DateBuild>12.09.2022</DateBuild>
     <Description>
       <Line>[+] Начало реализации одиночной миссии.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.223/Number>
+    <DateBuild>06.06.2023</DateBuild>
+    <Description>
+      <Line>[!] Последний билд как RTS. Далее будут выпускаться "Битвы Ардании".</Line>
     </Description>
   </Version>
 </Versions>

@@ -20,8 +20,8 @@ namespace Fantasy_Kingdoms_Battle
     public partial class FormMain : Form
     {
         internal const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
-        internal const string VERSION = "0.3.22";
-        internal const string DATE_VERSION = "12.09.2022";
+        internal const string VERSION = "0.3.23";
+        internal const string DATE_VERSION = "06.06.2023";
         internal const string VERSION_POSTFIX = "developer build";
 
         internal ProgramState ProgramState { get; private set; } = ProgramState.Started;
