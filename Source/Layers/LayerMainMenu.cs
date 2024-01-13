@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCLabel labelVersionName;
+        private readonly VCButtonForMenu btnBattlegrounds;
         private readonly VCButtonForMenu btnWarOfLords;
         private readonly VCButtonForMenu btnSingleMission;
         private readonly VCButtonForMenu btnEditorConquest;
@@ -56,7 +57,10 @@ namespace Fantasy_Kingdoms_Battle
             //btnWarOfLords = new VCButtonForMenu(bmpMainMenu, 88, "Война лордов", BtnTournament_Click);
             //btnWarOfLords.Enabled = false;
 
-            btnSingleMission = new VCButtonForMenu(bmpMainMenu, 88, "Одиночная игра", BtnSingleMission_Click);
+            btnBattlegrounds = new VCButtonForMenu(bmpMainMenu, 88, "Поля сражений", btnBattlegrounds_Click);
+            btnBattlegrounds.Hint = "Режим игры, в котором восемь игроков сражаются друг с другом 'на вылет' до победы";
+            btnSingleMission = new VCButtonForMenu(bmpMainMenu, 128, "Ardania Sim", BtnSingleMission_Click);
+            btnSingleMission.Hint = "Одиночной игра про Арданию в режиме RTS. Только демонстрация геймплея.";
 
             /*btnEditorConquest = new VCButtonForMenu(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
@@ -66,6 +70,11 @@ namespace Fantasy_Kingdoms_Battle
             btnAboutGame = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "Об игре", BtnAboutGame_Click);
             btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutGame.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
             btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
+        }
+
+        private void btnBattlegrounds_Click(object sender, EventArgs e)
+        {
+            
         }
 
         internal override void Focused(DialogAction da)
