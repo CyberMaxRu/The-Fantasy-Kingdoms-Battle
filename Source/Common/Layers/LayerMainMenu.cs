@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCLabel labelVersionName;
-        private readonly VCButtonForMenu btnBattlegrounds;
+        private readonly VCButtonForMenu btnBattlesOfArdania;
         private readonly VCButtonForMenu btnWarOfLords;
         private readonly VCButtonForMenu btnSingleMission;
         private readonly VCButtonForMenu btnEditorConquest;
@@ -57,8 +57,8 @@ namespace Fantasy_Kingdoms_Battle
             //btnWarOfLords = new VCButtonForMenu(bmpMainMenu, 88, "Война лордов", BtnTournament_Click);
             //btnWarOfLords.Enabled = false;
 
-            btnBattlegrounds = new VCButtonForMenu(bmpMainMenu, 88, "Битвы Ардании", btnBattlegrounds_Click);
-            btnBattlegrounds.Hint = "Режим игры, в котором восемь игроков сражаются друг с другом 'на вылет' до победы";
+            btnBattlesOfArdania = new VCButtonForMenu(bmpMainMenu, 88, "Битвы Ардании", btnBattlegrounds_Click);
+            btnBattlesOfArdania.Hint = "Режим игры, в котором восемь игроков сражаются друг с другом 'на вылет' до победы";
             btnSingleMission = new VCButtonForMenu(bmpMainMenu, 128, "Ardania Sim (demo)", BtnSingleMission_Click);
             btnSingleMission.Hint = "Одиночной игра про Арданию в режиме RTS. Только демонстрация геймплея.";
 
