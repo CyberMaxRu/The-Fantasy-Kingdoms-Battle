@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
             txtAboutProject = new VCText(ClientControl, 0, 0, Program.formMain.FontParagraph, Color.White, ClientControl.Width);
             txtAboutProject.ShowBorder = true;
-            txtAboutProject.Text = "Автобаттлер на основе \"Majesty 2: The Fantasy Kingdom Sim\".\n\rПроект разрабатывается для проверки концепции автобаттлера во вселенной Majesty и бесплатен для использования."
+            txtAboutProject.Text = "Симулятор Ардании на основе \"Majesty 2: The Fantasy Kingdom Sim\".\n\rПроект бесплатен для использования."
                 + "\n\rВ игре использованы графические и звуковые ресурсы из Majesty 2 (разработчик Ino-Co при участии Paradox Interactive)."
                 + $"\n\rСборка {FormMain.VERSION} от {FormMain.DATE_VERSION}.\n\r \n\r";
             txtAboutProject.Padding = new Padding(4);
