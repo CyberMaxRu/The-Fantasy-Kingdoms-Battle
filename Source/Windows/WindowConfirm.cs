@@ -21,6 +21,13 @@ namespace Fantasy_Kingdoms_Battle
             textConfirm.SetMinHeight();
         }
 
+        internal override void AdjustSize()
+        {
+            base.AdjustSize();
+
+            textConfirm.ShiftY = (InnerRectangle.Height - textConfirm.Height) / 2;
+        }
+
         internal static void ShowConfirm(string caption, string text, EventHandler onClose)
         {
             WindowConfirm wc = new WindowConfirm(caption, text);

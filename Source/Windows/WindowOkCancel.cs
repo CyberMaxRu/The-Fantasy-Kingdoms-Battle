@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         protected readonly VCButton btnOk;
         protected readonly VCButton btnCancel;
-
+        
         public WindowOkCancel(string caption, bool deactivatePriorWindow = true) : base(deactivatePriorWindow)
         {
             windowCaption.Caption = caption;
@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             CancelButton = btnCancel;
         }
 
+        internal Rectangle InnerRectangle { get; private set; }
         internal event EventHandler OnClose;
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -47,6 +48,8 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.ShiftY = ClientControl.Height - btnOk.Height;
             btnCancel.ShiftX = ClientControl.Width - btnCancel.Width;
             btnCancel.ShiftY = btnOk.ShiftY;
+
+            InnerRectangle = new Rectangle(0, 0, ClientControl.Width, ClientControl.Height - btnOk.Height - Config.GridSize);
         }
 
         protected override void AfterClose(DialogAction da)
