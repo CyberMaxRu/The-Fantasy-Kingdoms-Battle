@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCLabel labelVersionName;
-        private readonly VCButtonForMenu btnSingleMission;
+        private readonly VCButtonForMenu btnRandomMission;
         private readonly VCButtonForMenu btnEditorConquest;
         private readonly VCButtonForMenu btnPlayerPreferences;
         private readonly VCButtonForMenu btnGamePreferences;
@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             // Главное меню
             bmpMainMenu = new VCBitmap(this, 0, 0, LoadBitmap("MenuMain.png"));
 
-            btnSingleMission = new VCButtonForMenu(bmpMainMenu, 88, "Случайный сценарий", BtnRandomMission_Click);
+            btnRandomMission = new VCButtonForMenu(bmpMainMenu, 88, "Случайный сценарий", BtnRandomMission_Click);
 
             /*btnEditorConquest = new VCButtonForMenu(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
