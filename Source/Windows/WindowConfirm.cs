@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             if (onClose != null)
                 wc.OnClose += onClose;
             wc.Show();
+            wc.Dispose();
         }
     }
 }
