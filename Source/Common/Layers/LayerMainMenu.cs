@@ -17,8 +17,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpMainMenu;
         private readonly VCLabel labelVersion;
         private readonly VCLabel labelVersionName;
-        private readonly VCButtonForMenu btnBattlesOfArdania;
-        private readonly VCButtonForMenu btnWarOfLords;
         private readonly VCButtonForMenu btnSingleMission;
         private readonly VCButtonForMenu btnEditorConquest;
         private readonly VCButtonForMenu btnPlayerPreferences;
@@ -54,13 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             // Главное меню
             bmpMainMenu = new VCBitmap(this, 0, 0, LoadBitmap("MenuMain.png"));
 
-            //btnWarOfLords = new VCButtonForMenu(bmpMainMenu, 88, "Война лордов", BtnTournament_Click);
-            //btnWarOfLords.Enabled = false;
-
-            btnBattlesOfArdania = new VCButtonForMenu(bmpMainMenu, 88, "Битвы Ардании", btnBattlegrounds_Click);
-            btnBattlesOfArdania.Hint = "Режим игры, в котором восемь игроков сражаются друг с другом 'на вылет' до победы";
-            btnSingleMission = new VCButtonForMenu(bmpMainMenu, 128, "Ardania Sim (demo)", BtnSingleMission_Click);
-            btnSingleMission.Hint = "Одиночной игра про Арданию в режиме RTS. Только демонстрация геймплея.";
+            btnSingleMission = new VCButtonForMenu(bmpMainMenu, 88, "Случайный сценарий", BtnRandomMission_Click);
 
             /*btnEditorConquest = new VCButtonForMenu(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
             btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
@@ -70,11 +62,6 @@ namespace Fantasy_Kingdoms_Battle
             btnAboutGame = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "Об игре", BtnAboutGame_Click);
             btnGamePreferences = new VCButtonForMenu(bmpMainMenu, btnAboutGame.ShiftY - 40, "Настройки игры", BtnPreferences_Click);
             btnPlayerPreferences = new VCButtonForMenu(bmpMainMenu, btnGamePreferences.ShiftY - 40, "Настройки игрока", BtnPlayerPreferences_Click);
-        }
-
-        private void btnBattlegrounds_Click(object sender, EventArgs e)
-        {
-            
         }
 
         internal override void Focused(DialogAction da)
@@ -95,7 +82,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void BtnSingleMission_Click(object sender, EventArgs e)
+        private void BtnRandomMission_Click(object sender, EventArgs e)
         {
             Assert(mission is null);
             Assert(descriptorMission is null);
