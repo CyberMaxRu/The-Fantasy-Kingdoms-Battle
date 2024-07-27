@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Threading;
 using System.IO;
 
 namespace Fantasy_Kingdoms_Battle
@@ -36,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 WorkFolder += @"\";
 
-            FolderResources = Directory.Exists(WorkFolder + @"User_mods\Main") ? WorkFolder + @"User_mods\Main\" : WorkFolder + @"Resources\";
+            FolderResources = WorkFolder + @"Resources\";
             if (debugMode)
             {
                 new FormMain();
