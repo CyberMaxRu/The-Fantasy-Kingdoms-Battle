@@ -159,7 +159,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (CheckRequirements())
                     {
                         Construction.Player.SpendResource(PurchaseValue);
-                        Program.formMain.PlayPushButton();
+                        Program.formMain.PlayPressButton();
                         BeforeAddToQueue();
                         Construction.Player.AddActionToQueue(ActionForAddToQueue());
                         Construction.Player.Lobby.Layer.UpdateMenu();
@@ -169,7 +169,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (ProgressExecuting.PassedMilliTicks == 0)
                     {
-                        Program.formMain.PlayPushButton();
+                        Program.formMain.PlayPressButton();
                         Construction.Player.RemoveFromQueueExecuting(this, false);
                     }
                 }

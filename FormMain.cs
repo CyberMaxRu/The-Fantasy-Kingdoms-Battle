@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         // Проигрывание звуков
         private readonly System.Windows.Media.MediaPlayer mpSoundSelect;
         private readonly System.Windows.Media.MediaPlayer mpSelectButton;
-        private readonly System.Windows.Media.MediaPlayer mpPushButton;
+        private readonly System.Windows.Media.MediaPlayer mpPressButton;
         private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
 
         // Контролы главного меню
@@ -424,8 +424,8 @@ namespace Fantasy_Kingdoms_Battle
             mpSoundSelect = new System.Windows.Media.MediaPlayer();
             mpSelectButton = new System.Windows.Media.MediaPlayer();
             mpSelectButton.Open(new Uri(Program.FolderResources + @"Sound\Interface\Button\SelectButton.wav"));
-            mpPushButton = new System.Windows.Media.MediaPlayer();
-            mpPushButton.Open(new Uri(Program.FolderResources + @"Sound\Interface\Button\PushButton.wav"));
+            mpPressButton = new System.Windows.Media.MediaPlayer();
+            mpPressButton.Open(new Uri(Program.FolderResources + @"Sound\Interface\Button\PushButton.wav"));
             mpConstructionComplete = new System.Windows.Media.MediaPlayer();
             mpConstructionComplete.Open(new Uri(Program.FolderResources + @"Sound\Interface\Construction\ConstructionComplete.wav"));
             UpdateVolumeSound();
@@ -501,7 +501,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             mpSoundSelect.Volume = (float)Settings.VolumeSound / 100;
             mpSelectButton.Volume = mpSoundSelect.Volume;
-            mpPushButton.Volume = mpSoundSelect.Volume;
+            mpPressButton.Volume = mpSoundSelect.Volume;
             mpConstructionComplete.Volume = mpSoundSelect.Volume;
         }
 
@@ -1165,12 +1165,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void PlayPushButton()
+        internal void PlayPressButton()
         {
-            mpPushButton.Stop();
+            mpPressButton.Stop();
             if (Settings.PlaySound)
             {
-                mpPushButton.Play();
+                mpPressButton.Play();
             }
         }
 

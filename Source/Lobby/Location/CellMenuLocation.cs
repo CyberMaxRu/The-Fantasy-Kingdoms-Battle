@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (CheckRequirements())
             {
-                Program.formMain.PlayPushButton();
+                Program.formMain.PlayPressButton();
             }
         }
     }

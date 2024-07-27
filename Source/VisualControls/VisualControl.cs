@@ -301,13 +301,13 @@ namespace Fantasy_Kingdoms_Battle
             if (IsActiveControl)
             {
                 if (PlaySoundOnClick)
-                    Program.formMain.PlayPushButton();
+                    Program.formMain.PlayPressButton();
                 Click?.Invoke(this, new EventArgs());
             }
             else
             {
                 if (PlaySoundOnClick)
-                    Program.formMain.PlayPushButton();
+                    Program.formMain.PlayPressButton();
                 Parent.DoClick();
             }
         }

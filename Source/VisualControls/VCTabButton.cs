@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            Program.formMain.PlayPushButton();
+            Program.formMain.PlayPressButton();
             (Parent as VCTabControl).ActivatePage(IndexPage);
         }
 

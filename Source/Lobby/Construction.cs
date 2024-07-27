@@ -1506,7 +1506,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ComponentObjectOfMap.Visible)
                 base.PlaySoundSelect();
             else
-                Program.formMain.PlayPushButton();
+                Program.formMain.PlayPressButton();
         }
 
         // Настройка сооружения при создании
