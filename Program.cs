@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Text;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -16,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             bool debugMode = false;
 
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Настройка переменной с папкой ресурсов
@@ -23,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (WorkFolder.Contains("Debug"))
             {
-                WorkFolder = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
+                WorkFolder = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9 - 15);
                 debugMode = true;
             }
             else if (WorkFolder.Contains("Release"))

@@ -218,7 +218,7 @@ namespace Updater
 
         public void AddFileSecurity(string fileName, string account, FileSystemRights rights, AccessControlType controlType)
         {
-
+            /*
             // Get a FileSecurity object that represents the
             // current security settings.
             FileSecurity fSecurity = File.GetAccessControl(fileName);
@@ -228,11 +228,12 @@ namespace Updater
 
             // Set the new access settings.
             File.SetAccessControl(fileName, fSecurity);
+            */
         }
 
         public void AddDirectorySecurity(string dirName, string account, FileSystemRights rights, AccessControlType controlType)
         {
-
+            /*
             // Get a FileSecurity object that represents the
             // current security settings.
             DirectorySecurity dSecurity = Directory.GetAccessControl(dirName);
@@ -242,6 +243,7 @@ namespace Updater
 
             // Set the new access settings.
             Directory.SetAccessControl(dirName, dSecurity);
+            */
         }
 
         private void DoUpdate()
