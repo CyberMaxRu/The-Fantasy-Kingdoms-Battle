@@ -392,7 +392,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowFrame()
         {
-            if (timeBetweenFrames.ElapsedMilliseconds >= FormMain.Config.MaxDurationFrame)
+            if (timeBetweenFrames.ElapsedMilliseconds >= FormMain.Config.DurationFrame)
             {
                 timeBetweenFrames.Restart();
 

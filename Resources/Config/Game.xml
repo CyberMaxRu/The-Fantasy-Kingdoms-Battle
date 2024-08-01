@@ -22,7 +22,6 @@
     <ObjectMenuWidth>247</ObjectMenuWidth>
     <ShiftXButtonsInMenu>80</ShiftXButtonsInMenu>
     <FramesPerSecond>25</FramesPerSecond>
-    <FramesPerSecond>25</FramesPerSecond>
     <PanelHintWidth>296</PanelHintWidth>
     <FlashCursorTime>500</FlashCursorTime>
     <TraditionsPerColumn>8</TraditionsPerColumn>
@@ -107,10 +106,8 @@
     <MaxSecondarySkills>8</MaxSecondarySkills>
   </Heroes>
   <Battle>
-    <StepsInSecond>50</StepsInSecond>
     <MaxDurationBattleWithMonster>60</MaxDurationBattleWithMonster>
     <MaxDurationBattleWithPlayer>120</MaxDurationBattleWithPlayer>
-    <MaxFramesPerSecond>50</MaxFramesPerSecond>
   </Battle>
   <Battlefield>
     <HeroRows>5</HeroRows>

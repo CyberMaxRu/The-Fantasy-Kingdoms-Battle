@@ -548,12 +548,12 @@ namespace Fantasy_Kingdoms_Battle
                 // Формируем и показываем кадр
                 if (WindowState != FormWindowState.Minimized)
                 {
-                    DrawFrame();
+                    DrawFrame();                    
                     Refresh();
                 }
 
                 TimeSpan ts = DateTime.Now - curTime;
-                int delta = Config.MaxDurationFrame - ts.Milliseconds;
+                int delta = Config.DurationFrame - ts.Milliseconds;
                 if (delta > 0)
                     System.Threading.Thread.Sleep(delta);
             }

@@ -149,12 +149,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxDurationBattleWithPlayer >= 30);
             Debug.Assert(MaxDurationBattleWithPlayer <= 3600);
 
-            MaxFramesPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxFramesPerSecond").InnerText);
-            Debug.Assert(MaxFramesPerSecond >= 5);
-            Debug.Assert(MaxFramesPerSecond <= 100);
-
-            MaxDurationFrame = 1_000 / MaxFramesPerSecond;
-
             FramesPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/FramesPerSecond").InnerText);
             Debug.Assert(FramesPerSecond >= 5);
             Debug.Assert(FramesPerSecond <= 100);
@@ -421,8 +415,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int StepInMSec { get; private set; }// Время шага в миллисекундах
         internal int MaxDurationBattleWithMonster { get; private set; }// Максимальная длительность боя c монстрами в секундах
         internal int MaxDurationBattleWithPlayer { get; private set; }// Максимальная длительность боя с другим игроком в секундах
-        internal int MaxFramesPerSecond { get; private set; }// Максимальная частота перерисовки кадров
-        internal int MaxDurationFrame { get; private set; }// Максимальная длительность кадра
         internal int MaxStatPointPerLevel { get; private set; }
         internal int StepsHeroInTumbstone { get; private set; }// Сколько шагов герой в могиле перед исчезновением
         internal int UnitStepsTimeToDisappearance { get; private set; }// Сколько шагов могила юнита исчезает
