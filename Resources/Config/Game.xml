@@ -106,6 +106,7 @@
     <MaxSecondarySkills>8</MaxSecondarySkills>
   </Heroes>
   <Battle>
+    <StepsInSecond>50</StepsInSecond>
     <MaxDurationBattleWithMonster>60</MaxDurationBattleWithMonster>
     <MaxDurationBattleWithPlayer>120</MaxDurationBattleWithPlayer>
   </Battle>

@@ -547,6 +547,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SetParent(VisualControl parent)
         {
+            if (parent == null)
+                return;
+
             Debug.Assert(parent != null);
             Debug.Assert(parent != this);
 
