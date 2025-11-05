@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         internal const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
         internal const string VERSION = "0.4.00";
-        internal const string DATE_VERSION = "27.07.2024";
+        internal const string DATE_VERSION = "05.11.2025";
         internal const string VERSION_POSTFIX = "developer build";
 
         internal ProgramState ProgramState { get; private set; } = ProgramState.Started;
