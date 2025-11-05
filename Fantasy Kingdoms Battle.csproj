@@ -16,6 +16,7 @@
   <PropertyGroup>
     <ApplicationIcon>FKB.ico</ApplicationIcon>
     <NeutralLanguage>ru-RU</NeutralLanguage>
+    <Nullable>warnings</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="FKB.ico" />
