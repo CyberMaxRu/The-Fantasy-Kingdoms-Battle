@@ -71,16 +71,6 @@ namespace Fantasy_Kingdoms_Battle
                 TypeLandscapes.Add(new DescriptorTypeLandscape(n));
             }
 
-            // Загрузка конфигурации базовых ресурсов
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\BaseResources.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/BaseResource"))
-            {
-                BaseResources.Add(new DescriptorBaseResource(n));
-            }
-
-            Debug.Assert(BaseResources.Count > 0);
-            BaseResources.Capacity = BaseResources.Count;
-
             // Загрузка конфигурации параметров населенных пунктов
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\CityParameters.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/CityParameter"))
@@ -326,9 +316,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCreature tc in Creatures)
                 tc.TuneLinks();
 
-            foreach (DescriptorBaseResource br in BaseResources)
-                br.TuneLinks();
-
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
                 tc.TuneLinks();
 
@@ -388,7 +375,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Списки описателей
         internal SortedList<string, DescriptorEntity> Entities { get; } = new SortedList<string, DescriptorEntity>();// Список всех сущностей
-        internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
         internal List<DescriptorCityParameter> CityParameters { get; } = new List<DescriptorCityParameter>();
 
         // Товары в сооружениях
@@ -527,17 +513,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип атаки " + ID + " не найден.");
-        }
-
-        internal DescriptorBaseResource FindBaseResource(string ID)
-        {
-            foreach (DescriptorBaseResource br in BaseResources)
-            {
-                if (br.ID == ID)
-                    return br;
-            }
-
-            throw new Exception($"Базовый ресурс {ID} не найден.");
         }
 
         internal DescriptorCityParameter FindCityParameter(string ID)

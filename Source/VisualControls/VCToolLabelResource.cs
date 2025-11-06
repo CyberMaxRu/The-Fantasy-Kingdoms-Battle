@@ -8,8 +8,8 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class VCToolLabelResource : VCToolLabel
     {
-        public VCToolLabelResource(VisualControl parent, int shiftX, int shiftY, DescriptorBaseResource resource)
-            : base(parent, shiftX, shiftY, "", resource.ImageIndex16)
+        public VCToolLabelResource(VisualControl parent, int shiftX, int shiftY, int resource)
+            : base(parent, shiftX, shiftY, "", -1)
         {
             Resource = resource;
             Width = 80;
@@ -18,15 +18,15 @@ namespace Fantasy_Kingdoms_Battle
 
         private void VCToolLabelResource_ShowHint(object sender, EventArgs e)
         {
-            PanelHint.AddStep2Descriptor(Resource);
+            //PanelHint.AddStep2Descriptor(Resource);
             PanelHint.AddStep5Description("Количество ресурса");
         }
 
-        internal DescriptorBaseResource Resource { get; }
+        internal int Resource { get; }
 
         internal void UpdateData(Player p)
         {
-            Text = p.BaseResources[Resource.Number].ToString();
+            //Text = p.BaseResources[Resource.Number].ToString();
         }
     }
 }

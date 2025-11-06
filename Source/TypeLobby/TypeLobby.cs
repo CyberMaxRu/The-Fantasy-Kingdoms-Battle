@@ -18,8 +18,8 @@ namespace Fantasy_Kingdoms_Battle
             Index = index;
             Name = XmlUtils.GetString(n, "Name");
             QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
-            BaseResources = new ListBaseResources(n.SelectSingleNode("BaseResources"));
-            MaxBaseResources = new ListBaseResources(n.SelectSingleNode("MaxBaseResources"));
+            Gold = XmlUtils.GetInteger(n, "Gold");
+            MaxGold = XmlUtils.GetInteger(n, "MaxGold");
             MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
             StartQuantityFlags = XmlUtils.GetInteger(n, "StartQuantityFlags");
             MaxQuantityFlags = XmlUtils.GetInteger(n, "MaxQuantityFlags");
@@ -80,13 +80,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(LairsHeight >= 1);
             Debug.Assert(LairsHeight <= 4);
 
-            for (int i = 0; i < BaseResources.Count; i++)
-            {
-                Debug.Assert(BaseResources[i] >= 0);
-                Debug.Assert(MaxBaseResources[i] >= 1_000);
-                Debug.Assert(MaxBaseResources[i] <= 1_000_000);
-                Debug.Assert(BaseResources[i] <= MaxBaseResources[i]);
-            }
+            Debug.Assert(Gold >= 0);
+            Debug.Assert(MaxGold >= 1_000);
+            Debug.Assert(MaxGold <= 1_000_000);
+            Debug.Assert(Gold <= MaxGold);
 
             foreach (TypeLobby t in FormMain.Descriptors.TypeLobbies)
             {
@@ -151,8 +148,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Index { get; }
         internal string Name { get; }
         internal int QuantityPlayers { get; }
-        internal ListBaseResources BaseResources { get; }
-        internal ListBaseResources MaxBaseResources { get; }
+        internal int Gold { get; }
+        internal int MaxGold { get; }
         internal int MaxHeroes { get; }
         internal int StartQuantityFlags { get; }
         internal int MaxQuantityFlags { get; }

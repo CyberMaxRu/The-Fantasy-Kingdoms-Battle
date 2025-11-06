@@ -42,11 +42,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = lblCaption.NextTop();
 
-                for (int i = 0; i < sb.BaseResources.Count; i++)
+                /*for (int i = 0; i < sb.BaseResources.Count; i++)
                 {
                     if (sb.BaseResources[i] > 0)
                         AddBonus(text, FormMain.Descriptors.BaseResources[i].ImageIndex, FormMain.Descriptors.BaseResources[i].Name, $"+{sb.BaseResources[i]}");
-                }
+                }*/
                 if (sb.Builders > 0)
                     AddBonus(text, FormMain.Config.Gui48_Build, "Строители", $"+{sb.Builders}");
                 if (sb.PeasantHouse > 0)

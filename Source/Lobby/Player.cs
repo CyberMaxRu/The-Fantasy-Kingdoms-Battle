@@ -54,9 +54,9 @@ namespace Fantasy_Kingdoms_Battle
             Initialization = true;
 
             //
-            BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
+            Gold = lobby.TypeLobby.Gold;
             if (Descriptor.TypePlayer == TypePlayer.Computer)   
-                BaseResources.Gold = 100_000;
+                Gold = 100_000;
 
             CityParameters = new ListCityParameters(lobby.TypeLobby.BaseCityParameters);
             ChangeCityParametersPerTurn = new ListCityParameters();
@@ -209,11 +209,11 @@ namespace Fantasy_Kingdoms_Battle
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
 
-            Creature king = Castle.HireHero(FormMain.Descriptors.FindCreature("King"), null);
-            Creature advisor = Castle.HireHero(FormMain.Descriptors.FindCreature("Advisor"), null);
-            Creature captain = Castle.HireHero(FormMain.Descriptors.FindCreature("Captain"), null);
-            Creature treasurer = Castle.HireHero(FormMain.Descriptors.FindCreature("Treasurer"), null);
-            GuildofBuilders.HireHero(FormMain.Descriptors.FindCreature("Builder"), null);
+            Creature king = Castle.HireHero(FormMain.Descriptors.FindCreature("King"), 0);
+            Creature advisor = Castle.HireHero(FormMain.Descriptors.FindCreature("Advisor"), 0);
+            Creature captain = Castle.HireHero(FormMain.Descriptors.FindCreature("Captain"), 0);
+            Creature treasurer = Castle.HireHero(FormMain.Descriptors.FindCreature("Treasurer"), 0);
+            GuildofBuilders.HireHero(FormMain.Descriptors.FindCreature("Builder"), 0);
 
             UpdateBuilderInfo();
             FreeBuilders = CurrentBuilders;
@@ -311,6 +311,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ReceiveResources()
         {
+            /*
             // Получаем ресурсы с добычи
             ListBaseResources lbs = new ListBaseResources();
             List<Construction> lc = new List<Construction>();
@@ -325,7 +326,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            ReceivedResource(lbs);
+            ReceivedResource(lbs);*/
         }
 
         internal virtual void PrepareTurn(bool beginOfDay)
@@ -464,10 +465,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 c.DoTick(startNewDay);
 
-                if (c.IncomeResources.ExistsResources())
+                if (c.IncomeResources > 0)
                 {
                     ReceivedResource(c.IncomeResources);
-                    c.IncomeResources.ToZero();
+                    c.IncomeResources = 0;
                 }
             }
 
@@ -903,10 +904,8 @@ namespace Fantasy_Kingdoms_Battle
         internal Dictionary<string, BigEntity> Entities { get; } = new Dictionary<string, BigEntity>();// Все сущности игрока
 
         internal DescriptorLevelTax CurrentLevelTax { get; set; }// Текущий уровень налогов
-        internal int Gold { get => BaseResources.Gold; }// Текущее количество золота
+        internal int Gold { get; set; }// Текущее количество золота
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
-        internal ListBaseResources BaseResources { get; }// Базовые ресурсы
-        internal ListBaseResources BaseResourcesCollected { get; } = new ListBaseResources();// Собрано базовых ресурсов
 
         internal List<DescriptorCreature> VariantsBonusedTypeSimpleHero { get; }// Варианты типов простых героев для выбора постоянного бонуса
         internal List<DescriptorCreature> VariantsBonusedTypeTempleHero { get; }// Варианты храмовников для выбора постоянного бонуса
@@ -1465,6 +1464,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ApplyReward(Construction l)
         {
+            /*
             if (l.Descriptor.Reward != null)
             {
                 ReceivedResource(l.Descriptor.Reward.Cost);
@@ -1476,12 +1476,13 @@ namespace Fantasy_Kingdoms_Battle
                 ReceivedResource(l.Descriptor.HiddenReward.Cost);
                 AddGreatness(l.Descriptor.HiddenReward.Greatness);
             }
+            */
         }
 
         protected void ApplyStartBonus(StartBonus sb)
         {
-            BaseResources.AddResources(sb.BaseResources);
-            for (int i = 0; i < sb.BaseResources.Count; i++)
+            Gold += sb.Gold;
+/*            for (int i = 0; i < sb.BaseResources.Count; i++)
             {
                 if (sb.BaseResources[i] > 0)
                 {
@@ -1489,7 +1490,7 @@ namespace Fantasy_Kingdoms_Battle
                     bs.Quantity = sb.BaseResources[i];
                     AddNoticeForPlayer(bs, TypeNoticeForPlayer.ReceivedBaseResource);
                 }
-            }
+            }*/
 
             CreateExternalConstructions(FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse, TypeNoticeForPlayer.Build);
             DescriptorConstruction holyPlace = FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace);
@@ -1535,18 +1536,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SpendResource(ListBaseResources res)
+        internal void SpendResource(int res)
         {
-            if (res != null)
+            if (res != 0)
             {
-                for (int i = 0; i < BaseResources.Count; i++)
-                {
-                    Debug.Assert(BaseResources[i] >= 0);
-                    Debug.Assert(BaseResources[i] >= res[i]);
-                    Debug.Assert(res[i] >= 0);
-
-                    BaseResources[i] -= res[i];
-                }
+                Gold -= res;
 
                 UpdateResourceInCastle();
             }
@@ -1558,9 +1552,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (gold > 0)
             {
-                Debug.Assert(BaseResources.Gold >= 0);
-                Debug.Assert(BaseResources.Gold >= gold);
-                BaseResources.Gold -= gold;
+                Debug.Assert(Gold >= 0);
+                Debug.Assert(Gold >= gold);
+                Gold -= gold;
 
                 UpdateResourceInCastle();
             }
@@ -1572,52 +1566,36 @@ namespace Fantasy_Kingdoms_Battle
 
             if (gold > 0)
             {
-                Debug.Assert(BaseResources.Gold >= 0);
-                Debug.Assert(BaseResources.Gold >= gold);
-                BaseResources.Gold += gold;// Здесь нужен тест на превышение суммы лимита золота
+                Debug.Assert(Gold >= 0);
+                Debug.Assert(Gold >= gold);
+                Gold += gold;// Здесь нужен тест на превышение суммы лимита золота
 
                 UpdateResourceInCastle();
             }
         }
-        internal void ReturnResource(ListBaseResources res)
+        internal void ReturnResource(int res)
         {
-            for (int i = 0; i < BaseResources.Count; i++)
-            {
-                Debug.Assert(BaseResources[i] >= 0);
-                Debug.Assert(BaseResources[i] <= Lobby.TypeLobby.MaxBaseResources[i]);
-                Debug.Assert(res[i] >= 0);
+            Debug.Assert(Gold >= 0);
+            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
 
-                BaseResources[i] += AllowAddBaseResource(i, res[i]);
-            }
+            Gold += res;
 
             UpdateResourceInCastle();
         }
 
-        internal void ReceivedResource(ListBaseResources res)
+        internal void ReceivedResource(int res)
         {
-            for (int i = 0; i < BaseResources.Count; i++)
-            {
-                Debug.Assert(BaseResources[i] >= 0);
-                Debug.Assert(BaseResources[i] <= Lobby.TypeLobby.MaxBaseResources[i]);
-                Debug.Assert(res[i] >= 0, $"Поступление ресурса {FormMain.Descriptors.BaseResources[i].ID}: {res[i]}");
-
-                int addValue = AllowAddBaseResource(i, res[i]);
-                BaseResources[i] += addValue;
-                BaseResourcesCollected[i] += addValue;
-            }
+            Debug.Assert(Gold >= 0);
+            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
+            Gold += res;
 
             UpdateResourceInCastle();
-        }
-
-        private int AllowAddBaseResource(int idx, int quantity)
-        {
-            return BaseResources[idx] + quantity <= Lobby.TypeLobby.MaxBaseResources[idx] ? quantity : Lobby.TypeLobby.MaxBaseResources[idx] - quantity;
         }
 
         private void UpdateResourceInCastle()
         {
             if (Castle != null)
-                Castle.Gold = BaseResources.Gold;
+                Castle.Gold = Gold;
         }
 
         internal void AddGreatness(int greatness)
@@ -2019,10 +1997,12 @@ namespace Fantasy_Kingdoms_Battle
             return 1;
         }
 
-        internal void CompPurchase(ListBaseResources originCost, ListBaseResources curCost, TypeCreating typeCreating)
+        internal void CompPurchase(int originCost, int curCost, TypeCreating typeCreating)
         {
+            /*
             if (CheatingReduceCostBy10)
             {
+
                 for (int i = 0; i < originCost.Count; i++)
                 {
                     curCost[i] = originCost[i] / 10;
@@ -2030,6 +2010,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 curCost.SetFromList(originCost);
+            */
         }
 
         internal void UpdateBuilderInfo()

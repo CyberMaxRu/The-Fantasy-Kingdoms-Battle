@@ -58,9 +58,6 @@ namespace Fantasy_Kingdoms_Battle
 
             TuneByCreate();
 
-            if (ls.Resources != null)
-                InitialQuantityBaseResources = new ListBaseResources(ls.Resources);
-
             if (Descriptor.DefaultLevel == 1)
                 Build(false, true);
 
@@ -68,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются в процессе игры
-        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, ListBaseResources initQ = null) : base(dc, p.Lobby, p)
+        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
         {
             Assert(!dc.IsInternalConstruction);
             Assert((dc.Category == CategoryConstruction.Lair) || (dc.Category == CategoryConstruction.External) || (dc.Category == CategoryConstruction.Temple)
@@ -82,7 +79,6 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
             IsEnemy = isEnemy;
-            InitialQuantityBaseResources = initQ;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
             TuneByCreate();
@@ -151,7 +147,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionVisit> Visits { get; } = new List<ConstructionVisit>();//
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
         internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
-        internal ConstructionListBaseResources IncomeBaseResources { get; private set; }// Поступление базовых ресурсов
+        internal int IncomeBaseResources { get; set; }// Поступление базовых ресурсов
         internal List<ConstructionResource> Resources { get; } = new List<ConstructionResource>();// Ресурсы
         internal List<ConstructionService> Services { get; } = new List<ConstructionService>();// Услуги, доступные в строении
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
@@ -174,10 +170,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
         // 
-        internal ListBaseResources InitialQuantityBaseResources { get; }// Исходные значения базовых ресурсов
         internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
         internal bool ProvideBaseResources { get; private set; }// Сооружение поставляет ресурсы
-        internal ListBaseResources IncomeResources { get; } = new ListBaseResources();// Собрано ресурсов (для зачета для игрока в текущем тике)
+        internal int IncomeResources { get; set; } = 0;// Собрано ресурсов (для зачета для игрока в текущем тике)
 
         internal override string GetIDEntity(DescriptorEntity descriptor)
         {
@@ -225,6 +220,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void UpdateCurrentIncomeResources()
         {
+            /*
             if (Level > 0)
             {
                 MiningBaseResources = false;
@@ -252,21 +248,18 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Debug.Assert(Descriptor.Levels[Level].Mining is null);
 
-                    if (Descriptor.Levels[Level].IncomeResources != null)
+                    if (Descriptor.Levels[Level].IncomeResources != 0)
                     {
                         ProvideBaseResources = true;
                         int q = 0;
 
-                        for (int i = 0; i < Descriptor.Levels[Level].IncomeResources.Count; i++)
-                        {
-                            IncomeBaseResources[i].Quantity = Descriptor.Levels[Level].IncomeResources[i];
-                            q += Descriptor.Levels[Level].IncomeResources[i];
-                        }
+                        q += Descriptor.Levels[Level].IncomeResources;
 
                         Debug.Assert(q > 0);
                     }
                 }
             }
+            */
         }
 
         internal void UpdateMaxDurability()
@@ -507,7 +500,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Income()
         {
-            return (Level > 0) ? IncomeBaseResources.Gold : 0;
+            return (Level > 0) ? IncomeBaseResources : 0;
         }
 
         internal int DurabilityForLevel(int level)
@@ -517,7 +510,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int IncomeForLevel(int level)
         {
-            return Descriptor.Levels[level].IncomeResources != null ? Descriptor.Levels[level].IncomeResources.Gold : 0;
+            return Descriptor.Levels[level].IncomeResources != 0 ? Descriptor.Levels[level].IncomeResources : 0;
         }
 
         internal int GreatnesAddForLevel(int level)
@@ -584,7 +577,7 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        internal Creature HireHero(DescriptorCreature th, ListBaseResources cost)
+        internal Creature HireHero(DescriptorCreature th, int cost)
         {
             Debug.Assert(!MaxCreaturesInConstruction());
             Debug.Assert(!MaxHeroesAtPlayer());
@@ -595,7 +588,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (th.CategoryCreature != CategoryCreature.Citizen)
             {
-                if (cost != null)
+                if (cost != 0)
                     Player.SpendResource(cost);
             }
 
@@ -651,7 +644,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         if (Descriptor.Reward != null)
                         {
-                            panelHint.AddStep7Reward(Descriptor.Reward.Cost.Gold);
+                            panelHint.AddStep7Reward(Descriptor.Reward.Cost);
                             panelHint.AddStep8Greatness(Descriptor.Reward.Greatness, 0);
                         }
                     }
@@ -788,12 +781,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal ListBaseResources CostScout()
+        internal int CostScout()
         {
             Debug.Assert(!ComponentObjectOfMap.Visible);
             AssertNotDestroyed();
 
-            return new ListBaseResources(0);
+            return 0;
            //return PriorityFlag < PriorityExecution.Exclusive ?
            //     new ListBaseResources(Location.Settings.CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
@@ -803,22 +796,22 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ComponentObjectOfMap.Visible, $"Логово {Descriptor.ID} игрока {Player.GetName()} скрыто.");
         }
 
-        internal ListBaseResources CostAttack()
+        internal int CostAttack()
         {
             AssertNotHidden();
             AssertNotDestroyed();
 
-            return new ListBaseResources(0);
+            return 0;
             //return PriorityFlag < PriorityExecution.Exclusive ?
             //    new ListBaseResources(Location.Settings.CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
-        internal ListBaseResources CostDefense()
+        internal int CostDefense()
         {
             AssertNotHidden();
             AssertNotDestroyed();
 
-            return new ListBaseResources(0);
+            return 0;
             //return PriorityFlag < PriorityExecution.Exclusive ?
             //    new ListBaseResources(Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
@@ -871,7 +864,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal ListBaseResources RequiredGold()
+        internal int RequiredGold()
         {
             AssertNotDestroyed();
 
@@ -1518,7 +1511,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
                 CreateMonsters();
 
-            IncomeBaseResources = new ConstructionListBaseResources(this);
+            IncomeBaseResources = 0;
 
             TurnLevelConstructed = new int[Descriptor.Levels.Length + 1];
             for (int i = 1; i < TurnLevelConstructed.Length; i++)
@@ -1611,11 +1604,6 @@ namespace Fantasy_Kingdoms_Battle
                 UpdateState();
                 TuneActionLevelUp();
             }
-        }
-
-        internal ListBaseResources CompCostRepair(int durability)
-        {
-            return new ListBaseResources(durability);
         }
 
         internal (string, Color) GetDataState()
@@ -1757,8 +1745,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (Descriptor.Levels[Level].IncomeResources != null)
                     {
                         // Подготавливаем сбор ресурсов за ход
-                        Assert(!IncomeResources.ExistsResources());
-                        IncomeResources.AddResources(Descriptor.Levels[Level].IncomeResources);
+                        Assert(IncomeResources == 0);
+                        IncomeResources += Descriptor.Levels[Level].IncomeResources;
                     }
             }
 

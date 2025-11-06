@@ -145,12 +145,12 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuLocationSpell : CellMenuLocation
     {
-        private ListBaseResources cost;
+        private int cost;
         public CellMenuLocationSpell(Location forLocation, ConstructionSpell spell) : base(forLocation, new DescriptorActionForEntity(spell.DescriptorSpell.Coord))
         {
             Spell = spell;
             Entity = spell.DescriptorSpell;
-            PurchaseValue.Gold = Entity.Selling.Gold;
+            PurchaseValue = Entity.Selling.Gold;
         }
 
         internal ConstructionSpell Spell { get; }

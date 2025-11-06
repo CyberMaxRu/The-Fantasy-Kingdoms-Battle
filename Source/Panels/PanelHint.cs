@@ -737,12 +737,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources)
+        internal void AddStep12CostExecuting(string nameExecuting, int costResources)
         {
             AddStep12CostExecuting(nameExecuting, costResources, 0, 0, null);
         }
 
-        internal void AddStep12CostExecuting(string nameExecuting, ListBaseResources costResources, int time, int builders, ListTextRequirement requirement)
+        internal void AddStep12CostExecuting(string nameExecuting, int costResources, int time, int builders, ListTextRequirement requirement)
         {
             Assert(nameExecuting.Length > 0);
 
@@ -756,15 +756,15 @@ namespace Fantasy_Kingdoms_Battle
 
             if (costResources != null)
             {
-                Assert(costResources.Gold > 0);
+                Assert(costResources > 0);
 
                 lblChapterCost.Visible = true;
                 lblChapterCost.ShiftY = nextTop;
                 nextTop = lblChapterCost.NextTop();
 
                 lblCostGold.ShiftY = nextTop;
-                lblCostGold.Text = costResources.Gold.ToString();
-                lblCostGold.Color = ColorRequirements(Player.BaseResources.Gold >= costResources.Gold);
+                lblCostGold.Text = costResources.ToString();
+                lblCostGold.Color = ColorRequirements(Player.Gold >= costResources);
                 lblCostGold.Visible = true;
 
                 lblBuilders.ShiftY = nextTop;
@@ -785,7 +785,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 nextTop = lblCostGold.NextTop();
-                AddCostResources(Player.BaseResources, costResources);
+                AddCostResources(Player.Gold, costResources);
 
                 if (requirement != null)
                 {
@@ -830,13 +830,14 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Assert(time == 0);
                 Assert(builders == 0);
-                Assert(costResources is null);
+                Assert(costResources == 0);
             }
         }
 
-        private void AddCostResources(ListBaseResources ownRes, ListBaseResources costResources)
+        private void AddCostResources(int ownRes, int costResources)
         {
-            if ((costResources != null) && costResources.ExistsResources())
+            /*
+            if ((costResources != 0) && (costResources > 0))
             {
                 VCLabelValue lbl = null;
                 int nextLeft = FormMain.Config.GridSize;
@@ -878,6 +879,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
+            */
         }
 
         internal void AddStep14PlayerItem(Item pi)
@@ -1072,8 +1074,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep21BaseResources(List<ConstructionBaseResource> list, bool canMining)
+        internal void AddStep21BaseResources(int list, bool canMining)
         {
+            /*
             if (list.Count > 0)
             {
                 VCCellSimple cell = null;
@@ -1109,6 +1112,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
+            */
         }
 
         internal void AddStep21ListCustomCells(HintListCustomCells list)

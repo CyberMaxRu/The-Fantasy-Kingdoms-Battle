@@ -63,17 +63,11 @@ namespace Fantasy_Kingdoms_Battle
             if (Number > 1)
                 ComponentCreating.Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1, ComponentCreating.Requirements));
 
-            XmlNode nm = n.SelectSingleNode("Mining");
-            if (nm != null)
-                Mining = new ListCoefMining(nm);
-
             XmlNode nsp = n.SelectSingleNode("CityParametersPerTurn");
             if (nsp != null)
                 ChangeCityParametersPerTurn = new ListCityParameters(nsp);
             
-            XmlNode nir = n.SelectSingleNode("IncomeResources");
-            if (nir != null)
-                IncomeResources = new ListBaseResources(nir);
+            IncomeResources = GetInteger(n, "Income");
 
             // Указываем, на сколько увеличится прочность сооружения
             if (Durability > 0)
@@ -106,9 +100,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(Tax == 0);
             }
-
-            // Нельзя давать ресурсы и одновременно добывать их
-            Debug.Assert(!((Mining != null) && (IncomeResources != null)));
         }
 
         internal bool NewName { get; private set; } = false;// У сооружения для уровня новое имя
@@ -123,9 +114,8 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionVisitSimple DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
         internal ListDefaultProperties Properties { get; }// Список характеристик
-        internal ListCoefMining Mining { get; }// Коэффициенты добычи ресурса
         internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
-        internal ListBaseResources IncomeResources { get; }// Сколько и каких ресурсов приносит сооружение в день
+        internal int IncomeResources { get; }// Сколько золота приносит сооружение в день
 
 
         protected override string GetName(XmlNode n)

@@ -338,7 +338,7 @@ namespace Fantasy_Kingdoms_Battle
                     btnAction.ImageIsEnabled = true;// Construction.Player.ExistsFreeFlag();
                     int level = 1;
                     btnAction.Level = level == 0 ? "" : level.ToString();
-                    btnAction.LowText = Construction.RequiredGold().Gold.ToString();
+                    btnAction.LowText = Construction.RequiredGold().ToString();
                 }
 
                 if (btnAction.Visible)
@@ -375,10 +375,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (btnAttackHeroes.Visible)
                     btnAttackHeroes.LowText = $"{Construction.ComponentObjectOfMap.ListHeroesForFlag.Count}/{Construction.ComponentObjectOfMap.MaxHeroesForFlag()}";
 
-                lblRewardGold.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Cost.Gold > 0);
+                lblRewardGold.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Cost > 0);
                 if (lblRewardGold.Visible)
                 {
-                    lblRewardGold.Text = Construction.Descriptor.Reward.Cost.Gold.ToString();
+                    lblRewardGold.Text = Construction.Descriptor.Reward.Cost.ToString();
                 }
 
                 lblRewardGreatness.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Greatness > 0);

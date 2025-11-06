@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
             Entity = entity;
             Time = GetIntegerNotNull(n, "Time");
             Builders = GetInteger(n, "Builders");
-            CostResources = new ListBaseResources(n.SelectSingleNode("Cost"));
+            Cost = GetInteger(n, "Cost");
             Requirements = new ListDescriptorRequirements(entity, n.SelectSingleNode("Requirements"));
 
             Assert(Time > 0, $"ID: {entity.ID}, Time: {Time}");
@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeCreating TypeCreating { get; }// Тип создаваемой сущности
         internal int Time { get; }//Время создания (в секундах)
         internal int Builders { get; }//Количество одновременно требуемых строителей
-        internal ListBaseResources CostResources { get; }// Стоимость (в базовых ресурсах)
+        internal int Cost { get; }// Стоимость
         internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
 
         internal override void TuneLinks()

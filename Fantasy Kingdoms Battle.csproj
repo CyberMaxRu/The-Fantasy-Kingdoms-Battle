@@ -21,7 +21,6 @@
   <ItemGroup>
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\ComputerPlayers.xml" />
-    <Content Include="Resources\Config\Descriptors\BaseResources.xml" />
     <Content Include="Resources\Config\Descriptors\CapitalPages.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
     <Content Include="Resources\Config\Descriptors\CityParameters.xml" />

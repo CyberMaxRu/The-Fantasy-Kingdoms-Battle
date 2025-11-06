@@ -1751,9 +1751,7 @@
         <Creating>
           <Time>60</Time>
           <Builders>0</Builders>
-          <Cost>
-            <Gold>0</Gold>
-          </Cost>
+          <Cost>0</Cost>
         </Creating>
         <CityParametersPerTurn>
         </CityParametersPerTurn>
@@ -1779,13 +1777,7 @@
         <Creating>
           <Time>120</Time>
           <Builders>2</Builders>
-          <Cost>
-            <Gold>2000</Gold>
-            <Wood>200</Wood>
-            <Brick>300</Brick>
-            <Stone>500</Stone>
-            <Iron>100</Iron>
-          </Cost>
+          <Cost>2000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
@@ -1832,11 +1824,7 @@
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
-          <Cost>
-            <Gold>4000</Gold>
-            <Brick>750</Brick>
-            <Stone>1000</Stone>
-          </Cost>
+          <Cost>4000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
@@ -1888,9 +1876,7 @@
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>5000</Gold>
-          </Cost>
+          <Cost>5000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2010,9 +1996,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2047,9 +2031,7 @@
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>175</Gold>
@@ -2065,9 +2047,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2090,9 +2070,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2122,9 +2100,7 @@
         <NameGoods>Посетить ярмарку</NameGoods>
         <Creating>
           <Time>60</Time>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2158,9 +2134,7 @@
         <Entity>Apple</Entity>
         <Creating>
           <Time>10</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -2175,9 +2149,7 @@
         <Entity>Wheat</Entity>
         <Creating>
           <Time>15</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -2192,9 +2164,7 @@
         <Entity>Meat</Entity>
         <Creating>
           <Time>20</Time>
-          <Cost>
-            <Gold>750</Gold>
-          </Cost>
+          <Cost>750</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -2209,9 +2179,7 @@
         <Entity>GingerRoot</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2233,9 +2201,7 @@
         <Entity>Amanita</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2257,9 +2223,7 @@
         <Entity>CornedBeef</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2340,9 +2304,7 @@
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -2355,9 +2317,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2377,9 +2337,7 @@
         <Creating>
           <Time>45</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2399,9 +2357,7 @@
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2423,9 +2379,7 @@
         <ImageIndex>234</ImageIndex>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2442,9 +2396,7 @@
         <ImageIndex>235</ImageIndex>
         <Creating>
           <Time>45</Time>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2461,9 +2413,7 @@
         <ImageIndex>236</ImageIndex>
         <Creating>
           <Time>20</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
       </Improvement>
       <Improvement>
@@ -2473,9 +2423,7 @@
         <ImageIndex>237</ImageIndex>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2492,9 +2440,7 @@
         <Entity>GroupArmourMetal1</Entity>
         <Creating>
           <Time>15</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -2509,9 +2455,7 @@
         <Entity>GroupArmourMetal2</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2533,9 +2477,7 @@
         <Entity>GroupArmourMetal3</Entity>
         <Creating>
           <Time>45</Time>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2557,9 +2499,7 @@
         <Entity>GroupArmourMetal4</Entity>
         <Creating>
           <Time>60</Time>
-          <Cost>
-            <Gold>3500</Gold>
-          </Cost>
+          <Cost>3500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2586,9 +2526,7 @@
         <Entity>GroupWeaponMelee1</Entity>
         <Creating>
           <Time>15</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -2603,16 +2541,14 @@
         <Entity>GroupWeaponMelee2</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>100</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
               <Construction>Smithy</Construction>
               <Level>2</Level>
             </Requirement>
-          </Requirements> 
+          </Requirements>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -2627,9 +2563,7 @@
         <Entity>GroupWeaponMelee3</Entity>
         <Creating>
           <Time>45</Time>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2651,9 +2585,7 @@
         <Entity>GroupWeaponMelee4</Entity>
         <Creating>
           <Time>60</Time>
-          <Cost>
-            <Gold>3500</Gold>
-          </Cost>
+          <Cost>3500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2675,9 +2607,7 @@
         <Entity>GroupArmourLeather1</Entity>
         <Creating>
           <Time>15</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -2692,9 +2622,7 @@
         <Entity>GroupArmourLeather2</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2716,9 +2644,7 @@
         <Entity>GroupArmourLeather3</Entity>
         <Creating>
           <Time>45</Time>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2740,9 +2666,7 @@
         <Entity>GroupArmourLeather4</Entity>
         <Creating>
           <Time>60</Time>
-          <Cost>
-            <Gold>3500</Gold>
-          </Cost>
+          <Cost>3500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2863,9 +2787,7 @@
         <Creating>
           <Time>25</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <IncomeResources>
           <Gold>100</Gold>
@@ -2889,9 +2811,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2922,9 +2842,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2962,9 +2880,7 @@
         <NameGoods>Участвовать в пире</NameGoods>
         <Creating>
           <Time>120</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3002,9 +2918,7 @@
         <Entity>TavernSoup</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3019,9 +2933,7 @@
         <Entity>TavernMeat</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3048,9 +2960,7 @@
         <Entity>TavernBeer</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3124,9 +3034,7 @@
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3146,9 +3054,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2500</Gold>
-          </Cost>
+          <Cost>2500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>250</Gold>
@@ -3161,9 +3067,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2500</Gold>
-          </Cost>
+          <Cost>2500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>350</Gold>
@@ -3176,9 +3080,7 @@
         <Entity>AmuletOfRegeneration</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3193,9 +3095,7 @@
         <Entity>RingOfProtection</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3217,9 +3117,7 @@
         <Entity>ImpAmuletOfProtection</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3241,9 +3139,7 @@
         <Entity>Quiver</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3258,9 +3154,7 @@
         <Entity>SmallBag</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3282,9 +3176,7 @@
         <Entity>GroupWeaponRange1</Entity>
         <Creating>
           <Time>15</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3299,9 +3191,7 @@
         <Entity>GroupWeaponRange2</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3323,9 +3213,7 @@
         <Entity>GroupWeaponRange3</Entity>
         <Creating>
           <Time>45</Time>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3347,9 +3235,7 @@
         <Entity>GroupWeaponRange4</Entity>
         <Creating>
           <Time>60</Time>
-          <Cost>
-            <Gold>3500</Gold>
-          </Cost>
+          <Cost>3500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3371,9 +3257,7 @@
         <Entity>GroupArmourMage1</Entity>
         <Creating>
           <Time>15</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3388,9 +3272,7 @@
         <Entity>GroupArmourMage2</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3412,9 +3294,7 @@
         <Entity>GroupArmourMage3</Entity>
         <Creating>
           <Time>45</Time>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3436,9 +3316,7 @@
         <Entity>GroupArmourMage4</Entity>
         <Creating>
           <Time>60</Time>
-          <Cost>
-            <Gold>3500</Gold>
-          </Cost>
+          <Cost>3500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3460,9 +3338,7 @@
         <Entity>GroupWeaponMage1</Entity>
         <Creating>
           <Time>15</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3477,9 +3353,7 @@
         <Entity>GroupWeaponMage2</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3501,9 +3375,7 @@
         <Entity>GroupWeaponMage3</Entity>
         <Creating>
           <Time>45</Time>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3525,9 +3397,7 @@
         <Entity>GroupWeaponMage4</Entity>
         <Creating>
           <Time>60</Time>
-          <Cost>
-            <Gold>3500</Gold>
-          </Cost>
+          <Cost>3500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3648,9 +3518,7 @@
         <Creating>
           <Time>50</Time>
           <Builders>0</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>200</Gold>
@@ -3663,9 +3531,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>0</Builders>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
         </Creating>
         <IncomeResources>
           <Gold>300</Gold>
@@ -3678,9 +3544,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>0</Builders>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
         </Creating>
         <IncomeResources>
           <Gold>500</Gold>
@@ -3693,9 +3557,7 @@
         <Entity>PotionOfHealth</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>150</Gold>
-          </Cost>
+          <Cost>150</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3710,9 +3572,7 @@
         <Entity>PotionOfMana</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>300</Gold>
-          </Cost>
+          <Cost>300</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3727,9 +3587,7 @@
         <Entity>PotionOfCheerfulness</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>200</Gold>
-          </Cost>
+          <Cost>200</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -3744,9 +3602,7 @@
         <Entity>ElixirMeleeProt</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3768,9 +3624,7 @@
         <Entity>ElixirRangeProt</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3792,9 +3646,7 @@
         <Entity>ElixirMagicProt</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3816,9 +3668,7 @@
         <Entity>ElixirStrength</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3840,9 +3690,7 @@
         <Entity>ElixirAccuracy</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3864,9 +3712,7 @@
         <Entity>ElixirWisdom</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -3955,9 +3801,7 @@
         <Creating>
           <Time>120</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>25</Gold>
@@ -3981,9 +3825,7 @@
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -4007,9 +3849,7 @@
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>75</Gold>
@@ -4037,9 +3877,7 @@
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
         <Interest>5</Interest>
@@ -4059,9 +3897,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -4087,9 +3923,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -4115,9 +3949,7 @@
         <Creating>
           <Time>40</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -4143,9 +3975,7 @@
         <Creating>
           <Time>45</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2500</Gold>
-          </Cost>
+          <Cost>2500</Cost>
           <DaysProcessing>3</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -4221,9 +4051,7 @@
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4249,9 +4077,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4284,9 +4110,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4324,9 +4148,7 @@
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
         <CityParametersPerTurn>
@@ -4347,9 +4169,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <DaysProcessing>1</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -4374,9 +4194,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -4398,9 +4216,7 @@
         <Entity>LuckyCoins</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>ExtensionInConstruction</TypeRequirement>
@@ -4422,16 +4238,14 @@
         <Entity>Herald</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
               <Construction>TownSquare</Construction>
               <Level>3</Level>
             </Requirement>
-          </Requirements>          
+          </Requirements>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -4497,9 +4311,7 @@
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4511,9 +4323,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4551,9 +4361,7 @@
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4566,9 +4374,7 @@
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4581,9 +4387,7 @@
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>5000</Gold>
-          </Cost>
+          <Cost>5000</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4624,9 +4428,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>0</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4639,9 +4441,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4654,9 +4454,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>2</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4702,9 +4500,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>0</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
@@ -4717,9 +4513,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4732,9 +4526,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>2</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
@@ -4776,9 +4568,7 @@
         <Creating>
           <Time>45</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
         </Creating>
         <IncomeResources>
           <Gold>25</Gold>
@@ -4801,9 +4591,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -4826,9 +4614,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
         </Creating>
         <IncomeResources>
           <Gold>75</Gold>
@@ -4856,9 +4642,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -4878,9 +4662,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4907,9 +4689,7 @@
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>2000</Gold>
-          </Cost>
+          <Cost>2000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4925,7 +4705,7 @@
           <DaysProcessing>5</DaysProcessing>
           <IntervalRefresh>Day</IntervalRefresh>
         </Selling>
-      </Tournament>    
+      </Tournament>
     </Tournaments>
     <CellsMenu>
       <CellMenu>
@@ -4974,9 +4754,7 @@
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
         </Creating>
       </Level>
       <Level>
@@ -4986,9 +4764,7 @@
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>3000</Gold>
-          </Cost>
+          <Cost>3000</Cost>
         </Creating>
       </Level>
       <Level>
@@ -4998,9 +4774,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>5000</Gold>
-          </Cost>
+          <Cost>5000</Cost>
         </Creating>
       </Level>
     </Levels>
@@ -5010,9 +4784,7 @@
         <Entity>HospitalHerbs</Entity>
         <Creating>
           <Time>5</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -5027,9 +4799,7 @@
         <Entity>HospitalHealthPotion</Entity>
         <Creating>
           <Time>5</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -5044,9 +4814,7 @@
         <Entity>ElixirAntipoison</Entity>
         <Creating>
           <Time>5</Time>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5068,9 +4836,7 @@
         <Entity>ElixirRegeneration</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5092,9 +4858,7 @@
         <Entity>HospitalPowerTherapy</Entity>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>2500</Gold>
-          </Cost>
+          <Cost>2500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5167,9 +4931,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
         </Creating>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
@@ -5180,9 +4942,7 @@
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>2500</Gold>
-          </Cost>
+          <Cost>2500</Cost>
         </Creating>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
@@ -5222,9 +4982,7 @@
         <Creating>
           <Time>45</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>50</Gold>
@@ -5248,9 +5006,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>100</Gold>
@@ -5274,9 +5030,7 @@
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
-          <Cost>          
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
         </Creating>
         <IncomeResources>
           <Gold>150</Gold>
@@ -5306,9 +5060,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <DaysProcessing>1</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -5334,9 +5086,7 @@
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>500</Gold>
-          </Cost>
+          <Cost>500</Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
         <Needs>
@@ -5355,9 +5105,7 @@
         <Creating>
           <Time>25</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1500</Gold>
-          </Cost>
+          <Cost>1500</Cost>
           <DaysProcessing>3</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -5391,9 +5139,7 @@
         </Heroes>        
         <Creating>
           <Time>20</Time>
-          <Cost>
-            <Gold>2500</Gold>
-          </Cost>
+          <Cost>2500</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5419,9 +5165,7 @@
         <NameGoods>Посетить концерт эльфийской музыки</NameGoods>
         <Creating>
           <Time>30</Time>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -5503,9 +5247,7 @@
         <Creating>
           <Time>90</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <IncomeResources>
           <Gold>25</Gold>
@@ -5518,9 +5260,7 @@
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
-          <Cost>
-            <Gold>1000</Gold>
-          </Cost>
+          <Cost>1000</Cost>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>

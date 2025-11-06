@@ -19,9 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             nameEntity = GetStringNotNull(n, "Entity");
 
-            XmlNode nir = n.SelectSingleNode("IncomeResources");
-            if (nir != null)
-                IncomeBaseResources = new ListBaseResources(nir);
+            Income = GetInteger(n, "Income");
 
             foreach (DescriptorProduct pd in Descriptors.ConstructionProducts)
             {
@@ -32,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorSmallEntity SmallEntity { get; private set; }
-        internal ListBaseResources IncomeBaseResources { get; }
+        internal int Income { get; }
 
         protected override string GetName(XmlNode n)
         {

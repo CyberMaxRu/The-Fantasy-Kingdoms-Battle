@@ -102,9 +102,9 @@ namespace Fantasy_Kingdoms_Battle
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.ReceivedBaseResource:
-                    BaseResource br = Entity as BaseResource;
-                    nameNotice = $"Поступил ресурс:";
-                    nameText = $"+{br.Quantity}";
+/*                    BaseResource br = Entity as BaseResource;*/
+                    nameNotice = $"Поступило золото:";
+                    nameText = $"+{0}";
                     colorNameEntity = Color.LimeGreen;
                     break;
                 case TypeNoticeForPlayer.Explore:

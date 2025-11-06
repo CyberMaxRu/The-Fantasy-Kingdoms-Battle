@@ -4,22 +4,8 @@
     <ID>WarOf8Lords</ID>
     <Name>Война 8 лордов</Name>
     <QuantityPlayers>8</QuantityPlayers>
-    <BaseResources>
-      <Gold>8000</Gold>
-      <Wood>200</Wood>
-      <Brick>250</Brick>
-      <Stone>500</Stone>
-      <Iron>100</Iron>
-      <Gems>50</Gems>
-    </BaseResources>
-    <MaxBaseResources>
-      <Gold>1000000</Gold>
-      <Wood>10000</Wood>
-      <Brick>10000</Brick>
-      <Stone>50000</Stone>
-      <Iron>5000</Iron>
-      <Gems>5000</Gems>
-    </MaxBaseResources>
+    <Gold>8000</Gold>
+    <MaxGold>8000</MaxGold>
     <BaseCityParameters>
       <Rats>150</Rats>
       <Food>10000</Food>

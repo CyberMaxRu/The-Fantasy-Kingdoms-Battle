@@ -154,12 +154,12 @@ namespace Fantasy_Kingdoms_Battle
             }
             panelCityParameters.ApplyMaxSize();
 
-            labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
+            /*labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, 6, br);
                 labelsResources[br.Number] = lblRes;
-            }
+            }*/
 
             labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, Program.formMain.FontMedCaptionC.MaxHeightSymbol, "");
             labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
@@ -1334,10 +1334,10 @@ namespace Fantasy_Kingdoms_Battle
                     sp.UpdateData(curAppliedPlayer);
                 }
 
-                foreach (VCToolLabelResource l in labelsResources)
+                /*foreach (VCToolLabelResource l in labelsResources)
                 {
                     l.UpdateData(curAppliedPlayer);
-                }
+                }*/
 
                 ShowPlayerNotices();
 
@@ -1444,10 +1444,10 @@ namespace Fantasy_Kingdoms_Battle
             panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
             int shift0 = MainControl.Width - Config.GridSizeHalf;
-            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
+            /*foreach (DescriptorBaseResource br in Descriptors.BaseResources)
             {
                 labelsResources[br.Number].ShiftX = shift0 - (labelsResources[br.Number].Width + Config.GridSizeHalf) * (Descriptors.BaseResources.Count - br.Number);
-            }
+            }*/
 
             panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
             panelLairInfo.Height = panelConstructionInfo.Height;
