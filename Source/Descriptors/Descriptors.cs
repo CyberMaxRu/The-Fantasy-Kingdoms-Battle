@@ -156,14 +156,6 @@ namespace Fantasy_Kingdoms_Battle
                 ReasonsOfDeath.Add(new DescriptorReasonOfDeath(n));
             }
 
-            // Загрузка конфигурации ядов
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Poisons.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Poison"))
-            {
-                Poisons.Add(new DescriptorPoison(n));
-            }
-
             // Загрузка конфигурации типов атаки
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeAttacks.xml");
 
@@ -253,9 +245,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем связи
-            foreach (DescriptorPoison p in Poisons)
-                p.TuneLinks();
-
             foreach (DescriptorTypeAbility ta in TypeAbilities)
                 ta.TuneLinks();
 
@@ -353,7 +342,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Существа
         internal List<DescriptorReasonOfDeath> ReasonsOfDeath { get; } = new List<DescriptorReasonOfDeath>();
-        internal List<DescriptorPoison> Poisons { get; } = new List<DescriptorPoison>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();
         internal List<DescriptorTypeAbility> TypeAbilities { get; } = new List<DescriptorTypeAbility>();
