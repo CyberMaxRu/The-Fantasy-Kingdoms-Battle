@@ -24,7 +24,6 @@
     <Content Include="Resources\Config\Descriptors\CapitalPages.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
     <Content Include="Resources\Config\Descriptors\PersistentBonuses.xml" />
-    <Content Include="Resources\Config\Descriptors\Resources.xml" />
     <Content Include="Resources\Config\Descriptors\InterestCreature.xml" />
     <Content Include="Resources\Config\Descriptors\NeedsCreature.xml" />
     <Content Include="Resources\Config\Descriptors\PropertiesCreature.xml" />

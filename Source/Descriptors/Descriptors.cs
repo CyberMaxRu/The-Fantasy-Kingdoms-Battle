@@ -124,14 +124,6 @@ namespace Fantasy_Kingdoms_Battle
                 Constructions.Add(dc);
             }
 
-            // Загрузка ресурсов
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Resources.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Resource"))
-            {
-                Resources.Add(new DescriptorResource(n));
-            }
-
             // Загрузка групп предметов
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\GroupItems.xml");
 
@@ -249,9 +241,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorSecondarySkill ss in SecondarySkills)
                 ss.TuneLinks();
 
-            foreach (DescriptorResource dr in Resources)
-                dr.TuneLinks();
-
             foreach (DescriptorItem i in Items)
                 i.TuneLinks();
 
@@ -343,7 +332,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorTypeCreature> TypeCreatures { get; } = new List<DescriptorTypeCreature>();
         internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
-        internal List<DescriptorResource> Resources { get; } = new List<DescriptorResource>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
         internal int MaxLevelSkill { get; }
 
@@ -391,20 +379,6 @@ namespace Fantasy_Kingdoms_Battle
             }
             if (mustBeExists)
                 throw new Exception("Сооружение " + ID + " не найдено.");
-
-            return null;
-        }
-
-        internal DescriptorResource FindResource(string ID, bool mustBeExists = true)
-        {
-            foreach (DescriptorResource r in Resources)
-            {
-                if (r.ID == ID)
-                    return r;
-            }
-
-            if (mustBeExists)
-                throw new Exception("Ресурс " + ID + " не найден.");
 
             return null;
         }

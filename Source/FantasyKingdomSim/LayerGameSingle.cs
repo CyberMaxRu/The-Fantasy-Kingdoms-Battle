@@ -75,7 +75,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnCheating;
 
         // Контролы тулбара
-        private readonly VCToolLabelResource[] labelsResources;
         private readonly VCToolLabel labelKnowledge;
         //private readonly VCToolLabel labelPeople;
         private readonly VCToolLabel labelCorruption;

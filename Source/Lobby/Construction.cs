@@ -148,7 +148,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
         internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
         internal int IncomeBaseResources { get; set; }// Поступление базовых ресурсов
-        internal List<ConstructionResource> Resources { get; } = new List<ConstructionResource>();// Ресурсы
         internal List<ConstructionService> Services { get; } = new List<ConstructionService>();// Услуги, доступные в строении
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
@@ -390,8 +389,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (se is DescriptorConstructionExtension dce)
                     AddExtension(new ConstructionExtension(this, dce));
-                else if (se is DescriptorResource dr)
-                    AddResource(new ConstructionResource(this, dr)); 
                 //else if (se is DescriptorItem di)
                 //    AddProduct(new ConstructionProduct(this, di));
                 else
@@ -1183,12 +1180,6 @@ namespace Fantasy_Kingdoms_Battle
             Improvements.Add(improvement);
         }
 
-        internal void AddResource(ConstructionResource resource)
-        {
-            AddEntity(resource);
-            Resources.Add(resource);
-        }
-
         internal void AddAbility(ConstructionAbility ca)
         {
             AddEntity(ca);
@@ -1275,11 +1266,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (!Extensions.Remove(ce))
                     Debug.Fail($"Не смог удалить доп. сооружение {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
-            }
-            else if (entity is ConstructionResource cr)
-            {
-                if (!Resources.Remove(cr))
-                    Debug.Fail($"Не смог удалить ресурс {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
             }
             else if (entity is ConstructionEvent cev)
             {

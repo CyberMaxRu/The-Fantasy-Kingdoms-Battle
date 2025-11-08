@@ -1936,7 +1936,6 @@
           <Gold>50</Gold>
         </IncomeResources>
         <Entities>
-          <Entity>ResourceWheat</Entity>
           <Entity>FieldOfWheat</Entity>
         </Entities>
       </Level>
@@ -7242,9 +7241,6 @@
             <Entertainment>30</Entertainment>
           </Needs>
         </Visit>
-        <Entities>
-          <Entity>ResourceMountainLakeFish</Entity>
-        </Entities>
       </Level>
     </Levels>
   </Construction>
