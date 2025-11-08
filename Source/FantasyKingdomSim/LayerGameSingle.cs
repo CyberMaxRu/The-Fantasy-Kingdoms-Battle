@@ -14,15 +14,11 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class LayerGameSingle : LayerScene
     {
-        //
-        private DescriptorMission mission;
-
         // Главные страницы игры
         private readonly VCPageControl pageControl;        
         private readonly VCPageButton pageFinance;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
-        private readonly VCPageButton pageQuest;
         private readonly VCPageButton pageTraditions;
         private readonly VCPageButton pageSpell;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
@@ -251,7 +247,6 @@ namespace Fantasy_Kingdoms_Battle
             //pageFinance.Hint = "Финансовая информация";
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
-            pageQuest = pageControl.AddPage(Config.Gui48_Quest, "Задания", "Здесь квесты", PageQuest_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
             pageSpell = pageControl.AddPage(Config.Gui48_CastSpell, "Заклинания", "Здесь колдуют заклинания", null);
             //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
@@ -391,7 +386,6 @@ namespace Fantasy_Kingdoms_Battle
             //pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
-            pageQuest.PageImage = MainControlbackground("Quest");
             pageTraditions.PageImage = MainControlbackground("Traditions");
             pageSpell.PageImage = MainControlbackground("Spell");
 
@@ -716,13 +710,11 @@ namespace Fantasy_Kingdoms_Battle
             ListHeroesChanged();
         }
 
-        internal void StartNewLobby(DescriptorMission m)
+        internal void StartNewLobby()
         {
             Debug.Assert(lobby == null);
 
-            mission = m;
-
-            lobby = new Lobby(Descriptors.TypeLobbies[0], Program.formMain.CurrentHumanPlayer.TournamentSettings[0], this, FormMain.Descriptors, mission);
+            lobby = new Lobby(Descriptors.TypeLobbies[0], Program.formMain.CurrentHumanPlayer.TournamentSettings[0], this, FormMain.Descriptors);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
@@ -786,7 +778,7 @@ namespace Fantasy_Kingdoms_Battle
             lobby.ExitFromLobby();
             lobby = null;
 
-            StartNewLobby(mission);
+            StartNewLobby();
         }
 
         internal void EndLobby()
@@ -1017,11 +1009,6 @@ namespace Fantasy_Kingdoms_Battle
             PanelHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
-        private void PageQuest_ShowHint(object sender, EventArgs e)
-        {
-            PanelHint.AddSimpleHint("Задания");
-        }
-
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddStep2Header("Турнир");
@@ -1045,7 +1032,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
                 pbDay.Position = lobby.CounterTicksOfTurn;
-                pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelTraditions.Text = $"{curAppliedPlayer.PointsForNextTradition}";
                 pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
                 pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);

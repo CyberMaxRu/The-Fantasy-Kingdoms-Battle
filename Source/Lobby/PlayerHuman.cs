@@ -94,20 +94,6 @@ namespace Fantasy_Kingdoms_Battle
                 WindowInfo.ShowInfo("ПОРАЖЕНИЕ", $"Вы заняли {PositionInLobby} место.");
                 return;
             }
-
-            // Показываем сообщения
-            foreach (DescriptorMissionMessage m in Lobby.Mission.Messages)
-            {
-                if ((m.Turn <= Lobby.Turn) && !m.Showed && CheckRequirements(m.StartRequirements))
-                {
-                    WindowMessage wm = new WindowMessage();
-                    wm.SetMessage(this, m);
-                    wm.Show();
-                    wm.Dispose();
-                    m.DoAction(this);
-                    m.Showed = true;
-                }
-            }
         }
 
         internal void AddEvent(VCEvent e)

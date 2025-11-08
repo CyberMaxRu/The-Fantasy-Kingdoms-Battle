@@ -738,7 +738,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature SelectedBonusTempleHero { get; set; }
 
         //
-        internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока
         internal List<VCCustomNotice> ListNoticesForPlayer { get; } = new List<VCCustomNotice>();// Список событий во владении
 
         // Информация о поражениях и вылете из лобби
@@ -1557,14 +1556,6 @@ namespace Fantasy_Kingdoms_Battle
             Assert(Constructions.IndexOf(c) == -1);
 
             Constructions.Add(c);
-        }
-
-        internal void AddQuest(DescriptorMissionQuest quest)
-        {
-            PlayerQuest q = new PlayerQuest(this, quest);
-            AddNoticeForPlayer(q, TypeNoticeForPlayer.AddQuest);
-
-            Quests.Add(q);
         }
 
         internal void AddEntity(BigEntity e)

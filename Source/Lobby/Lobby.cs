@@ -18,14 +18,13 @@ namespace Fantasy_Kingdoms_Battle
         private bool stopLobby = false;
         private Descriptors descriptors;
 
-        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d, DescriptorMission m)
+        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d)
         {
             BigEntity.ResetNumerate();
 
             ID = generation++;
             TypeLobby = tl;
             Settings = settings;
-            Mission = m;
             descriptors = d;
             Layer = layer;
 
@@ -37,37 +36,12 @@ namespace Fantasy_Kingdoms_Battle
             Week = 1;
             Month = 1;
 
-            // Создание игроков
-            if ((Mission != null) && false)
-            {
-                Players = new Player[m.Players.Count];
+            Players = new Player[tl.QuantityPlayers];
+            Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
 
-                foreach (DescriptorMissionPlayer p in m.Players)
-                {
-                    if (p.TypePlayer == TypePlayer.Human)
-                        Players[p.Index] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, p.Index);
-                    //else
-                    //    Players[p.Index] = new PlayerComputer(this, )
-                }
+            // Подбираем компьютерных игроков из пула доступных
+            GenerateComputerPlayers();
 
-                foreach (DescriptorMissionMember dm in m.Members)
-                {
-                    Members.Add(new MissionMember(this, dm));
-                }
-            }
-            else
-            {
-                Players = new Player[tl.QuantityPlayers];
-                Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
-
-                // Подбираем компьютерных игроков из пула доступных
-                GenerateComputerPlayers();
-
-                foreach (DescriptorMissionMember dm in m.Members)
-                {
-                    Members.Add(new MissionMember(this, dm));
-                }
-            }
             CalcDayNextBattleBetweenPlayers();
 
             SetPlayerAsCurrent(0);
@@ -95,11 +69,9 @@ namespace Fantasy_Kingdoms_Battle
         internal LayerGameSingle Layer { get; }
         internal int ID { get; }// Уникальный код лобби
         internal TypeLobby TypeLobby { get; }// Тип лобби
-        internal DescriptorMission Mission { get; }// Описатель миссии
         internal LobbySettings Settings { get; }
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
-        internal List<MissionMember> Members { get; } = new List<MissionMember>();
 
         // Поддержка ходов
         internal int Turn { get; private set; }// Текущий ход лобби

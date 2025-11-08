@@ -124,12 +124,6 @@ namespace Fantasy_Kingdoms_Battle
                     nameText = (Entity as Construction).GetName();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
-                case TypeNoticeForPlayer.AddQuest:
-                    imageIndexOwner = (Entity as PlayerQuest).Player.GetImageIndex();
-                    nameNotice = "Новое задание:";
-                    nameText = (Entity as PlayerQuest).GetName();
-                    colorNameEntity = Color.DarkGoldenrod;
-                    break;
                 default:
                     throw new Exception($"Неизвестный тип события: {TypeNotice}.");
             }

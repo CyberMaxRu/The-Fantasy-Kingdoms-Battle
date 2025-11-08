@@ -97,7 +97,6 @@
     <Content Include="Resources\Music\Music\M2\WM.mp3" />
     <Content Include="Resources\Players.xml" />
     <Content Include="Resources\Versions.xml" />
-    <Content Include="SinglePlayer\Missions\DemoMission1.xml" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
@@ -136,5 +135,8 @@
     <Compile Remove="Updater\Properties\Settings.Designer.cs" />
     <EmbeddedResource Remove="Updater\Form1.resx" />
     <EmbeddedResource Remove="Updater\Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SinglePlayer\" />
   </ItemGroup>
 </Project>

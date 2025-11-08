@@ -23,7 +23,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonForMenu btnAboutGame;
         private readonly VCButtonForMenu btnExitToWindows;
 
-        private DescriptorMission descriptorMission;
         private LobbySettings mission;
         private WindowSetupMission wsm;
 
@@ -67,21 +66,16 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Program.formMain.CurrentHumanPlayer.TournamentSettings[0] = mission;
                     FormMain.Descriptors.SaveHumanPlayers();
-                    Program.formMain.layerGame.StartNewLobby(descriptorMission);
+                    Program.formMain.layerGame.StartNewLobby();
                 }
 
                 mission = null;
-                descriptorMission = null;
             }
         }
 
         private void BtnRandomMission_Click(object sender, EventArgs e)
         {
             Assert(mission is null);
-            Assert(descriptorMission is null);
-
-            descriptorMission = new DescriptorMission(Program.WorkFolder + @"SinglePlayer\Missions\DemoMission1.xml");
-            descriptorMission.TuneLinks();
 
             mission = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
             wsm = new WindowSetupMission(mission);
