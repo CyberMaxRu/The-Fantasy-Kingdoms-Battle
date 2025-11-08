@@ -592,7 +592,6 @@ namespace Fantasy_Kingdoms_Battle
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     panelHint.AddStep55Durability(MaxDurability);
                     panelHint.AddStep6Income(Income());
-                    panelHint.AddStep8Greatness(0, GreatnessPerDay());
                     panelHint.AddStep9PlusBuilders(BuildersPerDay());
                     panelHint.AddStep9Interest(GetInterest(), false);
                     panelHint.AddStep9ListNeeds(SatisfactionNeeds);
@@ -609,12 +608,6 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         panelHint.AddStep2Entity(this);
                         panelHint.AddStep5Description(Descriptor.Description);
-
-                        if (Descriptor.Reward != null)
-                        {
-                            panelHint.AddStep7Reward(Descriptor.Reward.Cost);
-                            panelHint.AddStep8Greatness(Descriptor.Reward.Greatness, 0);
-                        }
                     }
                 }
 

@@ -31,7 +31,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabelValue lblDurability;
         private readonly VCLabelValue lblIncome;
         private readonly VCLabelValue lblSalary;
-        private readonly VCLabelValue lblGreatnessAdd;
         private readonly VCLabelValue lblBuildersPerDay;
 
         // Изменение параметров населенного пункта
@@ -123,11 +122,7 @@ namespace Fantasy_Kingdoms_Battle
             lblSalary.Image.ImageIndex = FormMain.GUI_16_PURSE;
             lblSalary.Width = widthControl;
 
-            lblGreatnessAdd = new VCLabelValue(this, FormMain.Config.GridSize, lblSalary.NextTop(), FormMain.Config.HintIncome, false);
-            lblGreatnessAdd.Image.ImageIndex = FormMain.GUI_16_GREATNESS;
-            lblGreatnessAdd.Width = widthControl;
-
-            lblBuildersPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessAdd.NextTop(), FormMain.Config.HintIncome, false);
+            lblBuildersPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblSalary.NextTop(), FormMain.Config.HintIncome, false);
             lblBuildersPerDay.Image.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuildersPerDay.Width = widthControl;
 
@@ -282,7 +277,6 @@ namespace Fantasy_Kingdoms_Battle
             lblDurability.Visible = false;
             lblIncome.Visible = false;
             lblSalary.Visible = false;
-            lblGreatnessAdd.Visible = false;
             lblBuildersPerDay.Visible = false;
 
             //
@@ -497,22 +491,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep7Reward(int reward)
-        {
-            Debug.Assert(reward >= 0);
-
-            if (reward > 0)
-            {
-                Debug.Assert(!lblIncome.Visible);
-
-                lblIncome.ShiftY = nextTop;
-                lblIncome.Text = reward.ToString();
-                lblIncome.Visible = true;
-
-                nextTop = lblIncome.NextTop();
-            }
-        }
-
         internal void AddStep75Salary(int salary)
         {
             Debug.Assert(salary >= 0);
@@ -526,20 +504,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblSalary.Visible = true;
 
                 nextTop = lblSalary.NextTop();
-            }
-        }
-
-        internal void AddStep8Greatness(int addGreatness, int greatnessPerDay)
-        {
-            Debug.Assert(addGreatness >= 0);
-            Debug.Assert(greatnessPerDay >= 0);
-
-            if ((addGreatness > 0) || (greatnessPerDay > 0))
-            {
-                lblGreatnessAdd.ShiftY = nextTop;
-                lblGreatnessAdd.Visible = true;
-                lblGreatnessAdd.Text = Utils.FormatGreatness(addGreatness, greatnessPerDay);
-                nextTop = lblGreatnessAdd.NextTop();
             }
         }
 

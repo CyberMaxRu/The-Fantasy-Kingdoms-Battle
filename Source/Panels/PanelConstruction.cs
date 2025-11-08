@@ -25,8 +25,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCEntityInQueue bmpQueue3;
 
         private readonly VCIconButton48 btnInhabitants;
-        private readonly VCLabelValue lblRewardGold;
-        private readonly VCLabelValue lblRewardGreatness;
 
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -79,18 +77,6 @@ namespace Fantasy_Kingdoms_Battle
             btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnInhabitants.Click += BtnInhabitants_Click;
             btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
-
-            lblRewardGold = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), FormMain.Config.HintIncome, true);
-            lblRewardGold.Width = imgMapObject.NextLeft() - FormMain.Config.GridSize - lblRewardGold.ShiftX;
-            lblRewardGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
-            lblRewardGold.StringFormat.Alignment = StringAlignment.Near;
-            lblRewardGold.Hint = "Награда золотом за уничтожение";
-
-            lblRewardGreatness = new VCLabelValue(this, lblRewardGold.ShiftX, lblRewardGold.NextTop() - FormMain.Config.GridSizeHalf, FormMain.Config.HintIncome, true);
-            lblRewardGreatness.Width = lblRewardGold.Width;
-            lblRewardGreatness.Image.ImageIndex = FormMain.GUI_16_GREATNESS;
-            lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
-            lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
             Width = Math.Max(btnMainAction.NextLeft(), lblIncome.NextLeft());
             Height = btnMainAction.NextTop();
@@ -183,9 +169,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
             {
-                lblRewardGold.Visible = false;
-                lblRewardGreatness.Visible = false;
-
                 pbDurability.Visible = true;
 
                 if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && !(Construction.FirstActionInQueue is CellMenuConstructionRepair) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
@@ -321,18 +304,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 lblIncome.Visible = false;
                 btnHeroes.Visible = false;
-
-                lblRewardGold.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Cost > 0);
-                if (lblRewardGold.Visible)
-                {
-                    lblRewardGold.Text = Construction.Descriptor.Reward.Cost.ToString();
-                }
-
-                lblRewardGreatness.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Greatness > 0);
-                if (lblRewardGreatness.Visible)
-                {
-                    lblRewardGreatness.Text = Construction.Descriptor.Reward.Greatness.ToString();
-                }
             }
 
             base.Draw(g);

@@ -695,8 +695,6 @@ namespace Fantasy_Kingdoms_Battle
                 panelHint.AddStep2Entity(this);
                 panelHint.AddStep4Level($"Уровень {Level}");
                 panelHint.AddStep5Description(TypeCreature.Description);
-                panelHint.AddStep7Reward(TypeCreature.TypeReward.Cost);
-                panelHint.AddStep8Greatness(TypeCreature.TypeReward.Greatness, 0);
             }
             else
             {

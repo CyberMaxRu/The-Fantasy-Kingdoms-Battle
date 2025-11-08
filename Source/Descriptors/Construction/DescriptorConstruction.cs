@@ -200,12 +200,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            // Информация о награде
-            if (n.SelectSingleNode("Reward") != null)
-                Reward = new DescriptorReward(n.SelectSingleNode("Reward"));
-            if (n.SelectSingleNode("HiddenReward") != null)
-                HiddenReward = new DescriptorReward(n.SelectSingleNode("HiddenReward"));
-
             if (IsInternalConstruction)
             {
                 Debug.Assert(DefaultLevel >= 0);
@@ -272,8 +266,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Свойства, относящиеся к логовам монстров
         internal List<DescriptorConstructionLevelLair> Monsters { get; } = new List<DescriptorConstructionLevelLair>();
-        internal DescriptorReward Reward { get; }// Награда за зачистку логова
-        internal DescriptorReward HiddenReward { get; }// Скрытая награда за зачистку логова
         internal DescriptorConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
 
         internal override void TuneLinks()

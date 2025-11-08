@@ -230,9 +230,6 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(QuantityArrows == 0);
             }
 
-            // Загружаем награду
-            TypeReward = new DescriptorReward(n.SelectSingleNode("Reward"));
-
             // Загружаем приоритеты обхода сооружений для покупок
             XmlNode priorityConstr = n.SelectSingleNode("ConstructionsForShopping");
             if (priorityConstr != null)
@@ -288,7 +285,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorItem DefaultWeaponMelee { get; private set; }// Рукопашное оружие
         internal DescriptorItem DefaultWeaponRanged { get; private set; }// Стрелковое оружие
         internal DescriptorItem DefaultArmour { get; private set; }// Доспех по умолчанию
-        internal DescriptorReward TypeReward { get; }// Награда за убийство существа
         internal List<PriorityConstructionForShopping> PriorityConstructionForShoppings { get; } = new List<PriorityConstructionForShopping>();
         //internal (string, int)[] PriorityConstructionsForBuy;
         internal bool CanBuild { get; }
