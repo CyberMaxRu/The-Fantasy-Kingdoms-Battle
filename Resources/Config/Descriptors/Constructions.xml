@@ -17,7 +17,6 @@
       <Level>
         <ID>LevelGuildWarrior1</ID>
         <Number>1</Number>
-        <Durability>400</Durability>
         <MaxInhabitant>4</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -33,7 +32,6 @@
       <Level>
         <ID>LevelGuildWarrior2</ID>
         <Number>2</Number>
-        <Durability>500</Durability>
         <MaxInhabitant>5</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -56,7 +54,6 @@
       <Level>
         <ID>LevelGuildWarrior3</ID>
         <Number>3</Number>
-        <Durability>600</Durability>
         <MaxInhabitant>6</MaxInhabitant>
         <Tax>50</Tax>
         <Creating>
@@ -213,7 +210,6 @@
       <Level>
         <ID>LevelGuildHunter1</ID>
         <Number>1</Number>
-        <Durability>1500</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -227,7 +223,6 @@
       <Level>
         <ID>LevelGuildHunter2</ID>
         <Number>2</Number>
-        <Durability>2350</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -248,7 +243,6 @@
       <Level>
         <ID>LevelGuildHunter3</ID>
         <Number>3</Number>
-        <Durability>3400</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -443,7 +437,6 @@
       <Level>
         <ID>LevelGuildCleric1</ID>
         <Number>1</Number>
-        <Durability>3300</Durability>
         <Creating>
           <Time>40</Time>
           <Builders>1</Builders>
@@ -459,7 +452,6 @@
       <Level>
         <ID>LevelGuildCleric2</ID>
         <Number>2</Number>
-        <Durability>6450</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -482,7 +474,6 @@
       <Level>
         <ID>LevelGuildCleric3</ID>
         <Number>3</Number>
-        <Durability>9700</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -639,7 +630,6 @@
       <Level>
         <ID>LevelGuildMage1</ID>
         <Number>1</Number>
-        <Durability>400</Durability>
         <Creating>
           <Time>45</Time>
           <Builders>0</Builders>
@@ -660,7 +650,6 @@
       <Level>
         <ID>LevelGuildMage2</ID>
         <Number>2</Number>
-        <Durability>450</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>0</Builders>
@@ -686,7 +675,6 @@
       <Level>
         <ID>LevelGuildMage3</ID>
         <Number>3</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>0</Builders>
@@ -711,7 +699,6 @@
         <Name>Библиотека</Name>
         <Description>Построить библиотеку. Повышает ум и знания героев.</Description>
         <ImageIndex>254</ImageIndex>
-        <Durability>100</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>15</Time>
@@ -896,7 +883,6 @@
     <Levels>
       <Level>
         <ID>LevelGuildElf1</ID>
-        <Durability>800</Durability>
         <Number>1</Number>
         <Creating>
           <Time>60</Time>
@@ -918,7 +904,6 @@
       <Level>
         <ID>LevelGuildElf2</ID>
         <Number>2</Number>
-        <Durability>1000</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>2</Builders>
@@ -944,7 +929,6 @@
       <Level>
         <ID>LevelGuildElf3</ID>
         <Number>3</Number>
-        <Durability>1200</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>2</Builders>
@@ -1158,7 +1142,6 @@
       <Level>
         <ID>LevelGuildDwarf1</ID>
         <Number>1</Number>
-        <Durability>1200</Durability>
         <Creating>
           <Time>90</Time>
           <Builders>2</Builders>
@@ -1185,7 +1168,6 @@
       <Level>
         <ID>LevelGuildDwarf2</ID>
         <Number>2</Number>
-        <Durability>1400</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>2</Builders>
@@ -1215,7 +1197,6 @@
       <Level>
         <ID>LevelGuildDwarf3</ID>
         <Number>3</Number>
-        <Durability>1600</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>2</Builders>
@@ -1249,7 +1230,6 @@
         <Name>Кузница гномов</Name>
         <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
         <ImageIndex>226</ImageIndex>
-        <Durability>500</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>30</Time>
@@ -1447,7 +1427,6 @@
       <Level>
         <ID>LevelGuardBarrack1</ID>
         <Number>1</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -1461,7 +1440,6 @@
       <Level>
         <ID>LevelGuardBarrack2</ID>
         <Number>2</Number>
-        <Durability>600</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -1475,7 +1453,6 @@
       <Level>
         <ID>LevelGuardBarrack3</ID>
         <Number>3</Number>
-        <Durability>700</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -1519,7 +1496,6 @@
       <Level>
         <ID>LevelGuildRogue1</ID>
         <Number>1</Number>
-        <Durability>250</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -1540,7 +1516,6 @@
       <Level>
         <ID>LevelGuildRogue2</ID>
         <Number>2</Number>
-        <Durability>300</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -1561,7 +1536,6 @@
       <Level>
         <ID>LevelGuildRogue3</ID>
         <Number>3</Number>
-        <Durability>350</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -1736,7 +1710,6 @@
     <Levels>
       <Level>
         <ID>LevelCastle1</ID>
-        <Durability>2000</Durability>
         <Number>1</Number>
         <Creating>
           <Time>60</Time>
@@ -1763,7 +1736,6 @@
       <Level>
         <ID>LevelCastle2</ID>
         <Number>2</Number>
-        <Durability>3000</Durability>
         <Creating>
           <Time>120</Time>
           <Builders>2</Builders>
@@ -1810,7 +1782,6 @@
       <Level>
         <ID>LevelCastle3</ID>
         <Number>3</Number>
-        <Durability>4000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -1861,7 +1832,6 @@
         <Name>Трон</Name>
         <Description>Трон покажет величие Короля</Description>
         <ImageIndex>260</ImageIndex>
-        <Durability>200</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>5</Time>
@@ -1921,7 +1891,6 @@
       <Level>
         <ID>LevelMarket1</ID>
         <Number>1</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
@@ -1937,7 +1906,6 @@
       <Level>
         <ID>LevelMarket2</ID>
         <Number>2</Number>
-        <Durability>700</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -1960,7 +1928,6 @@
       <Level>
         <ID>LevelMarket3</ID>
         <Number>3</Number>
-        <Durability>900</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -2194,7 +2161,6 @@
       <Level>
         <ID>LevelSmithy1</ID>
         <Number>1</Number>
-        <Durability>800</Durability>
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
@@ -2207,7 +2173,6 @@
       <Level>
         <ID>LevelSmithy2</ID>
         <Number>2</Number>
-        <Durability>1000</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -2227,7 +2192,6 @@
       <Level>
         <ID>LevelSmithy3</ID>
         <Number>3</Number>
-        <Durability>1250</Durability>
         <Creating>
           <Time>45</Time>
           <Builders>1</Builders>
@@ -2247,7 +2211,6 @@
       <Level>
         <ID>LevelSmithy4</ID>
         <Number>4</Number>
-        <Durability>1500</Durability>
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
@@ -2677,7 +2640,6 @@
       <Level>
         <ID>LevelTavern1</ID>
         <Number>1</Number>
-        <Durability>250</Durability>
         <Creating>
           <Time>25</Time>
           <Builders>1</Builders>
@@ -2701,7 +2663,6 @@
       <Level>
         <Number>2</Number>
         <ID>LevelTavern2</ID>
-        <Durability>300</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -2732,7 +2693,6 @@
       <Level>
         <ID>LevelTavern3</ID>
         <Number>3</Number>
-        <Durability>400</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -2924,7 +2884,6 @@
       <Level>
         <ID>LevelWorkshop1</ID>
         <Number>1</Number>
-        <Durability>800</Durability>
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
@@ -2944,7 +2903,6 @@
       <Level>
         <ID>LevelWorkshop2</ID>
         <Number>2</Number>
-        <Durability>900</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -2957,7 +2915,6 @@
       <Level>
         <ID>LevelWorkshop3</ID>
         <Number>3</Number>
-        <Durability>1000</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -3408,7 +3365,6 @@
       <Level>
         <ID>LevelAlchemistHut1</ID>
         <Number>1</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>50</Time>
           <Builders>0</Builders>
@@ -3421,7 +3377,6 @@
       <Level>
         <ID>LevelAlchemistHut2</ID>
         <Number>2</Number>
-        <Durability>550</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>0</Builders>
@@ -3434,7 +3389,6 @@
       <Level>
         <ID>LevelAlchemistHut3</ID>
         <Number>3</Number>
-        <Durability>600</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>0</Builders>
@@ -3691,7 +3645,6 @@
       <Level>
         <ID>LevelPark1</ID>
         <Number>1</Number>
-        <Durability>200</Durability>
         <Creating>
           <Time>120</Time>
           <Builders>1</Builders>
@@ -3715,7 +3668,6 @@
       <Level>
         <ID>LevelPark2</ID>
         <Number>2</Number>
-        <Durability>250</Durability>
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
@@ -3739,7 +3691,6 @@
       <Level>
         <ID>LevelPark3</ID>
         <Number>3</Number>
-        <Durability>300</Durability>
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
@@ -3767,7 +3718,6 @@
         <Name>Беседки</Name>
         <Description>Беседки увеличат популярность {Парка}</Description>
         <ImageIndex>215</ImageIndex>
-        <Durability>150</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -3785,7 +3735,6 @@
         <Name>Водопад</Name>
         <Description>Водопад увеличит популярность {Парка}</Description>
         <ImageIndex>246</ImageIndex>
-        <Durability>250</Durability>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -3811,7 +3760,6 @@
         <Name>Аллея</Name>
         <Description>Аллея увеличит популярность {Парка}</Description>
         <ImageIndex>214</ImageIndex>
-        <Durability>400</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -3838,7 +3786,6 @@
         <Description>Лабиринт увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>255</ImageIndex>
         <Interest>20</Interest>
-        <Durability>300</Durability>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
           <Time>40</Time>
@@ -3863,7 +3810,6 @@
         <Name>Пруд</Name>
         <Description>Пруд увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>256</ImageIndex>
-        <Durability>300</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -3941,7 +3887,6 @@
       <Level>
         <ID>LevelTownSquare1</ID>
         <Number>1</Number>
-        <Durability>200</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -3967,7 +3912,6 @@
       <Level>
         <ID>LevelTownSquare2</ID>
         <Number>2</Number>
-        <Durability>250</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -4000,7 +3944,6 @@
       <Level>
         <ID>LevelTownSquare3</ID>
         <Number>3</Number>
-        <Durability>300</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -4037,7 +3980,6 @@
         <Name>Мощение</Name>
         <Description>Мощение плиткой увеличит популярность {Площади}</Description>
         <ImageIndex>247</ImageIndex>
-        <Durability>200</Durability>
         <Interest>5</Interest>
         <Creating>
           <Time>5</Time>
@@ -4058,7 +4000,6 @@
         <Name>Фонтан</Name>
         <Description>Фонтан увеличит популярность {Площади}</Description>
         <ImageIndex>213</ImageIndex>
-        <Durability>200</Durability>
         <Interest>10</Interest>
         <Creating>
           <Time>15</Time>
@@ -4083,7 +4024,6 @@
         <Name>Статуя Короля</Name>
         <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
         <ImageIndex>231</ImageIndex>
-        <Durability>400</Durability>
         <Interest>15</Interest>
         <Creating>
           <Time>15</Time>
@@ -4201,7 +4141,6 @@
       <Level>
         <ID>LevelTreasureDepartment1</ID>
         <Number>1</Number>
-        <Durability>300</Durability>
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
@@ -4213,7 +4152,6 @@
       <Level>
         <ID>LevelTreasureDepartment2</ID>
         <Number>2</Number>
-        <Durability>400</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -4251,7 +4189,6 @@
         <ID>LevelTownHall1</ID>
         <Name>Городской совет</Name>
         <Number>1</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
@@ -4264,7 +4201,6 @@
         <ID>LevelTownHall2</ID>
         <Name>Ратуша</Name>
         <Number>2</Number>
-        <Durability>600</Durability>
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
@@ -4277,7 +4213,6 @@
         <ID>LevelTownHall3</ID>
         <Name>Магистрат</Name>
         <Number>3</Number>
-        <Durability>1000</Durability>
         <Creating>
           <Time>5</Time>
           <Builders>1</Builders>
@@ -4318,7 +4253,6 @@
       <Level>
         <ID>LevelArena1</ID>
         <Number>1</Number>
-        <Durability>300</Durability>
         <Creating>
           <Time>45</Time>
           <Builders>1</Builders>
@@ -4341,7 +4275,6 @@
       <Level>
         <ID>LevelArena2</ID>
         <Number>2</Number>
-        <Durability>400</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -4364,7 +4297,6 @@
       <Level>
         <ID>LevelArena3</ID>
         <Number>3</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -4416,7 +4348,6 @@
       <Level>
         <ID>LevelHospital1</ID>
         <Number>1</Number>
-        <Durability>400</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -4426,7 +4357,6 @@
       <Level>
         <ID>LevelHospital2</ID>
         <Number>2</Number>
-        <Durability>450</Durability>
         <Creating>
           <Time>10</Time>
           <Builders>1</Builders>
@@ -4436,7 +4366,6 @@
       <Level>
         <ID>LevelHospital3</ID>
         <Number>3</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -4593,7 +4522,6 @@
       <Level>
         <ID>LevelGarden1</ID>
         <Number>1</Number>
-        <Durability>100</Durability>
         <Creating>
           <Time>45</Time>
           <Builders>1</Builders>
@@ -4617,7 +4545,6 @@
       <Level>
         <ID>LevelGarden2</ID>
         <Number>2</Number>
-        <Durability>150</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -4641,7 +4568,6 @@
       <Level>
         <ID>LevelGarden3</ID>
         <Number>3</Number>
-        <Durability>200</Durability>
         <Creating>
           <Time>15</Time>
           <Builders>1</Builders>
@@ -4669,7 +4595,6 @@
         <Name>Цветники</Name>
         <Description>Цветники увеличит популярность {Сада}</Description>
         <ImageIndex>257</ImageIndex>
-        <Durability>300</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -4695,7 +4620,6 @@
         <Name>Фруктовые деревья</Name>
         <Description>Увеличат популярность {Сада}</Description>
         <ImageIndex>258</ImageIndex>
-        <Durability>300</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -4714,7 +4638,6 @@
         <Name>Оранжерея</Name>
         <Description>Увеличит популярность {Сада}</Description>
         <ImageIndex>259</ImageIndex>
-        <Durability>400</Durability>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
@@ -4858,7 +4781,6 @@
       <Level>
         <ID>LevelMenagerie1</ID>
         <Number>1</Number>
-        <Durability>300</Durability>
         <Creating>
           <Time>90</Time>
           <Builders>1</Builders>
@@ -4871,7 +4793,6 @@
       <Level>
         <ID>LevelMenagerie2</ID>
         <Number>2</Number>
-        <Durability>400</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -4891,7 +4812,6 @@
       <Level>
         <ID>LevelMenagerie3</ID>
         <Number>3</Number>
-        <Durability>500</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -5054,7 +4974,6 @@
       <Level>
         <ID>LevelGamblingHall1</ID>
         <Number>1</Number>
-        <Durability>300</Durability>
         <Creating>
           <Time>60</Time>
           <Builders>1</Builders>
@@ -5080,7 +4999,6 @@
       <Level>
         <ID>LevelGamblingHall2</ID>
         <Number>2</Number>
-        <Durability>350</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -5113,7 +5031,6 @@
       <Level>
         <ID>LevelGamblingHall3</ID>
         <Number>3</Number>
-        <Durability>400</Durability>
         <Creating>
           <Time>30</Time>
           <Builders>1</Builders>
@@ -5298,7 +5215,6 @@
       <Level>
         <ID>LevelTempleDarkPriest1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5346,7 +5262,6 @@
       <Level>
         <ID>LevelTemplePriest1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5394,7 +5309,6 @@
       <Level>
         <ID>LevelTemplePaladin1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5442,7 +5356,6 @@
       <Level>
         <ID>LevelTempleBlademaster1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5490,7 +5403,6 @@
       <Level>
         <ID>LevelTempleBeastmaster1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5538,7 +5450,6 @@
       <Level>
         <ID>LevelTempleMarksman1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5586,7 +5497,6 @@
       <Level>
         <ID>LevelTempleIceMage1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5634,7 +5544,6 @@
       <Level>
         <ID>LevelTempleDeathKnight1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>
@@ -5682,7 +5591,6 @@
       <Level>
         <ID>LevelTempleFireMage1</ID>
         <Number>1</Number>
-        <Durability>5000</Durability>
         <Creating>
           <Time>180</Time>
           <Builders>3</Builders>

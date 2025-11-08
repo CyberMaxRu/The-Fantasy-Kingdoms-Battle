@@ -376,11 +376,6 @@ namespace Fantasy_Kingdoms_Battle
             return (Level > 0) ? IncomeBaseResources : 0;
         }
 
-        internal int DurabilityForLevel(int level)
-        {
-            return Descriptor.Levels[level].Durability;
-        }
-
         internal int IncomeForLevel(int level)
         {
             return Descriptor.Levels[level].IncomeResources != 0 ? Descriptor.Levels[level].IncomeResources : 0;

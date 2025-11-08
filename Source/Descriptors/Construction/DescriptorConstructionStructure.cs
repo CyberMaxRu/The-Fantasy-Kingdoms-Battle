@@ -12,10 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorConstructionStructure(DescriptorConstruction forConstruction, XmlNode n) : base(forConstruction, n)
         {
-            Durability = GetIntegerNotNull(n, "Durability", ID, 0, 1_000_000);
         }
-
-        internal int Durability { get; }// Прочность сооружения
-        internal int IncreaseDurability { get; set; }// Увеличение прочности по сравнению с предыдущим уровнем
     }
 }

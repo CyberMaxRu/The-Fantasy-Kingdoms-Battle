@@ -385,14 +385,11 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionLevelUp : ActionInConstruction
     {
-        private int milliTicksForOneDurability;// Сколько миллитиков необходимо для увеличения прочности на 1 единицу
         private int elapsedMilliTicks;// Сколько миллитиков прошло с последнего увеличения прочности
 
         public CellMenuConstructionLevelUp(Construction c, DescriptorActionForEntity d) : base(c, d)
         {
             Descriptor = d.CreatedEntity as DescriptorConstructionLevel;
-
-            milliTicksForOneDurability = Descriptor.ComponentCreating.Time * FormMain.Config.TicksInSecond * 1000 / Descriptor.IncreaseDurability;
         }
 
         internal new DescriptorConstructionLevel Descriptor { get; }
@@ -517,11 +514,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 elapsedMilliTicks += Construction.Player.GetMilliTicksForAction();
-                if (elapsedMilliTicks >= milliTicksForOneDurability)
-                {
-                    int incDurability = elapsedMilliTicks / milliTicksForOneDurability;
-                    elapsedMilliTicks -= milliTicksForOneDurability * incDurability;
-                }
             }
 
             base.DoTick();
