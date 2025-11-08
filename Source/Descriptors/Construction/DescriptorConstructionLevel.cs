@@ -24,7 +24,6 @@ namespace Fantasy_Kingdoms_Battle
             Capacity = GetInteger(n, "Capacity");
             GreatnessByConstruction = GetInteger(n, "GreatnessByConstruction");
             GreatnessPerDay = GetInteger(n, "GreatnessPerDay");
-            AddConstructionPoints = GetInteger(n, "AddConstructionPoints");
 
             // Посещение
             XmlNode nv = n.SelectSingleNode("Visit");
@@ -81,7 +80,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Capacity <= 100);
             Debug.Assert(GreatnessByConstruction >= 0);
             Debug.Assert(GreatnessPerDay >= 0);
-            Debug.Assert(AddConstructionPoints >= 0);
 
             if ((forConstruction.Category != CategoryConstruction.Guild) && (forConstruction.Category != CategoryConstruction.Temple))
             {
@@ -96,7 +94,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Capacity { get; }
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
-        internal int AddConstructionPoints { get; }// Дополнительное количество очков строительства в день
         internal ListSmallEntity Extensions { get; }// Сущности, относящиеся к уровню
         internal DescriptorConstructionVisitSimple DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения

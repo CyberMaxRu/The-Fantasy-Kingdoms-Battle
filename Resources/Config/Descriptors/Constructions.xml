@@ -1161,7 +1161,6 @@
         <IncomeResources>
           <Iron>50</Iron>
         </IncomeResources>
-        <AddConstructionPoints>100</AddConstructionPoints>
         <MaxInhabitant>10</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1190,7 +1189,6 @@
         <IncomeResources>
           <Iron>100</Iron>
         </IncomeResources>
-        <AddConstructionPoints>200</AddConstructionPoints>
         <MaxInhabitant>20</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1219,7 +1217,6 @@
         <IncomeResources>
           <Iron>150</Iron>
         </IncomeResources>
-        <AddConstructionPoints>300</AddConstructionPoints>
         <MaxInhabitant>30</MaxInhabitant>
         <Tax>50</Tax>
       </Level>
@@ -1727,7 +1724,6 @@
         </IncomeResources>
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <AddConstructionPoints>0</AddConstructionPoints>
         <MaxInhabitant>15</MaxInhabitant>
         <Perks>
           <Perk>PerkSubject1</Perk>
@@ -1773,7 +1769,6 @@
         </IncomeResources>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
-        <AddConstructionPoints>250</AddConstructionPoints>
         <MaxInhabitant>25</MaxInhabitant>
         <Perks>
           <Perk>PerkSubject2</Perk>
@@ -1819,7 +1814,6 @@
         </IncomeResources>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
-        <AddConstructionPoints>500</AddConstructionPoints>
         <MaxInhabitant>30</MaxInhabitant>
         <Perks>
           <Perk>PerkSubject3</Perk>

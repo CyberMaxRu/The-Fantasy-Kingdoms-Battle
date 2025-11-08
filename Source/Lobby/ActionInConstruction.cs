@@ -377,7 +377,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(TypeConstruction);
             //panelHint.AddStep4Level("Уровень 1");
             //panelHint.AddStep6Income(type.Levels[1].Income);
-            panelHint.AddStep9PlusBuilders(TypeConstruction.Levels[1].AddConstructionPoints);
             //panelHint.AddStep10DaysBuilding(-1, );
             panelHint.AddStep12CostExecuting("Построить", TypeConstruction.Levels[1].ComponentCreating.Cost, TypeConstruction.Levels[1].ComponentCreating.Time, TypeConstruction.Levels[1].ComponentCreating.Builders, Construction.Player.GetTextRequirementsBuildTypeConstruction(TypeConstruction));
         }
@@ -462,7 +461,6 @@ namespace Fantasy_Kingdoms_Battle
             //panelHint.AddStep4Level(Descriptor.Number == 1 ? "Уровень 1" : $"Улучшить строение ({Descriptor.Number} ур.)");
             panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.ActiveEntity.Description : "");
             panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
-            panelHint.AddStep9PlusBuilders(Descriptor.AddConstructionPoints);
             if (Descriptor.DescriptorVisit != null)
             {
                 panelHint.AddStep9Interest(Descriptor.DescriptorVisit.Interest, false);

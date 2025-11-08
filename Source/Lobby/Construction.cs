@@ -401,11 +401,6 @@ namespace Fantasy_Kingdoms_Battle
             return Level > 0 ? Descriptor.Levels[Level].GreatnessPerDay : 0;
         }
 
-        internal int BuildersPerDay()
-        {
-            return Level > 0 ? Descriptor.Levels[Level].AddConstructionPoints : 0;
-        }
-
         internal int GreatnessAddNextLevel()
         {
             return Level < Descriptor.MaxLevel ? GreatnesAddForLevel(Level + 1) : 0;
@@ -484,7 +479,6 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep5Description(Descriptor.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     panelHint.AddStep6Income(Income());
-                    panelHint.AddStep9PlusBuilders(BuildersPerDay());
                     panelHint.AddStep9Interest(GetInterest(), false);
                     panelHint.AddStep9ListNeeds(SatisfactionNeeds);
                 }

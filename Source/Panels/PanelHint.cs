@@ -470,21 +470,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep9PlusBuilders(int buildersPerDay)
-        {
-            Debug.Assert(buildersPerDay >= 0);
-
-            if (buildersPerDay > 0)
-            {
-                lblBuildersPerDay.ShiftY = nextTop;
-                lblBuildersPerDay.Text = $"+{buildersPerDay}";
-                lblBuildersPerDay.Visible = true;
-
-                nextTop = lblBuildersPerDay.NextTop();
-            }
-        }
-
-
         VCLabelValue GetLabel(int index)
         {
             if (index < listSettlementParameters.Count)
