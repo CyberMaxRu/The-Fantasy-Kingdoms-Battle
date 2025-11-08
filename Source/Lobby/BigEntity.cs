@@ -13,7 +13,6 @@ namespace Fantasy_Kingdoms_Battle
         private List<CellMenuCreature> listCellMenuCreatures;
         private List<Creature> listCreature;
         private EventHandler creatureEventHandler;
-        private ModeTextForCreature modeTextForCreature;
         private static Dictionary<string, int> dictNextNumber;
 
         protected CellMenuCreaturePage cmPageCreatures;
@@ -144,7 +143,7 @@ namespace Fantasy_Kingdoms_Battle
             PerksChanged();
         }
 
-        internal void ShowHeroesInMenu(VCMenuCell[,] menu, List<Creature> list, EventHandler onClick, ModeTextForCreature modeTextForCreature)
+        internal void ShowHeroesInMenu(VCMenuCell[,] menu, List<Creature> list, EventHandler onClick)
         {
             // Создаем действия меню
             if (listCellMenuCreatures is null)
@@ -165,7 +164,6 @@ namespace Fantasy_Kingdoms_Battle
             cmPageCreatures.SetQuantity(list.Count);
             listCreature = list;
             creatureEventHandler = onClick;
-            this.modeTextForCreature = modeTextForCreature;
 
             UpdateListCreatures(menu, list);
         }
@@ -194,7 +192,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (i + shift >= list.Count)
                     break;
                 listCellMenuCreatures[i].Creature = list[i + shift];
-                listCellMenuCreatures[i].ModeText = modeTextForCreature;
                 Debug.Assert(listCellMenuCreatures[i].Creature != null);
                 listCellMenuCreatures[i].OnClick = creatureEventHandler;
                 menu[listCellMenuCreatures[i].Descriptor.Coord.Y, listCellMenuCreatures[i].Descriptor.Coord.X].Research = listCellMenuCreatures[i];

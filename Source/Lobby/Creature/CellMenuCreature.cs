@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ModeTextForCreature { Hire, Scout, };
 
     sealed internal class CellMenuCreature : ActionForEntity
     {
@@ -14,41 +13,17 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal ModeTextForCreature ModeText { get; set; }
         internal EventHandler OnClick { get; set; }
 
         internal Creature Creature { get; set; }
         internal override string GetLevel() => Creature != null ? Creature.GetLevel() : "";
-        internal override string GetExtInfo()
-        {
-            switch (ModeText)
-            {
-                case ModeTextForCreature.Hire:
-                    return "";
-                case ModeTextForCreature.Scout:
-                    return Creature != null ? Utils.FormatPercent(Creature.PercentLocationForScout) : "";
-                default:
-                    return "";
-            }
-        }
 
         internal override string GetText()
         {
-            switch (ModeText)
-            {
-                case ModeTextForCreature.Hire:
-                    if ((Creature != null) && (Creature is Creature h))
-                        return h.CostOfHiring().ToString();
-                    else
-                        return "";
-                case ModeTextForCreature.Scout:
-                    if ((Creature != null) && (Creature is Creature h2))
-                        return h2.PayForHire.ToString();
-                    else
-                        return "";
-                default:
-                    return "";
-            }
+            if ((Creature != null) && (Creature is Creature h))
+                return h.CostOfHiring().ToString();
+            else
+                return "";
         }
 
         internal override void Click()

@@ -160,9 +160,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти
 
-        // Действия
-        internal int PercentLocationForScout { get; set; }// Сколько процентов локации будет разведано
-
 
         // Повышение уровня
         private void LevelUp()
