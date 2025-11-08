@@ -69,17 +69,19 @@ namespace Fantasy_Kingdoms_Battle
             Construction requiredConstruction = p.GetPlayerConstruction(construction);
 
             if (ForEntity is DescriptorConstructionLevel dcl)
-            {               
+            {
                 Construction ownerConstruction = p.GetPlayerConstruction(dcl.ActiveEntity as DescriptorConstruction, false);
                 // Отдельно обрабатываем случай, когда здание зависит от самого себя - это левелап и читинг в этом случае не допускается,
                 // чтобы нельзя было строить новый уровень без построенного предыдущего
-                if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
-                    return (requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild);
-                else
-                    return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild));
+                //if ((ownerConstruction != null) && (ownerConstruction == requiredConstruction))
+                //    return (requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild);
+                //else
+                //    return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild));
+                return true;
             }
             else
-                return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild));
+                return true;
+                //return allowCheating || ((requiredConstruction.Level >= Level) && (p.Lobby.Turn - requiredConstruction.TurnLevelConstructed[Level] >= skipTurnsFromBuild));t
         }
 
         internal override (bool, string) GetTextRequirement(Player p, Construction inConstruction = null)

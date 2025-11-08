@@ -20,9 +20,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnHeroes;
         private readonly VCIconButton48 btnMainAction;
         private readonly VCLabelValue lblIncome;
-        private readonly VCIconButton48 btnQueue1;
-        private readonly VCEntityInQueue bmpQueue2;
-        private readonly VCEntityInQueue bmpQueue3;
 
         private readonly VCIconButton48 btnInhabitants;
 
@@ -54,18 +51,7 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
             btnHeroes.Visible = false;
 
-            btnQueue1 = new VCIconButton48(this, imgMapObject.ShiftX, pbProgressAction.NextTop(), 0);
-            btnQueue1.ShowHint += BtnQueue1_ShowHint;
-            btnQueue1.ShowBorder = false;
-            btnQueue1.Click += BtnQueue1_Click;
-            bmpQueue2 = new VCEntityInQueue(this, btnQueue1.NextLeft(), btnQueue1.ShiftY);
-            bmpQueue2.StateRestTime = StateRestTime.Pause;
-            bmpQueue2.Click += BmpQueue2_Click;
-            bmpQueue3 = new VCEntityInQueue(this, bmpQueue2.NextLeft(), btnQueue1.ShiftY);
-            bmpQueue3.StateRestTime = StateRestTime.Pause;
-            bmpQueue3.Click += BmpQueue3_Click;
-
-            btnMainAction = new VCIconButton48(this, bmpQueue3.NextLeft(), pbProgressAction.NextTop(), FormMain.Config.Gui48_Build);
+            btnMainAction = new VCIconButton48(this, imgMapObject.ShiftX, pbProgressAction.NextTop(), FormMain.Config.Gui48_Build);
             btnMainAction.Click += BtnBuildOrUpgrade_Click;
 
             lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Color.Green, true);
@@ -85,30 +71,6 @@ namespace Fantasy_Kingdoms_Battle
             lblName.Width = Width - (FormMain.Config.GridSize * 2);
 
             Click += ImgLair_Click;
-        }
-
-        private void BmpQueue3_Click(object sender, EventArgs e)
-        {
-            RemoveFromQueue(2);
-        }
-
-        private void BmpQueue2_Click(object sender, EventArgs e)
-        {
-            RemoveFromQueue(1);
-        }
-
-        private void BtnQueue1_Click(object sender, EventArgs e)
-        {
-            RemoveFromQueue(0);
-        }
-
-        private void RemoveFromQueue(int index)
-        {
-        }
-
-        private void BtnQueue1_ShowHint(object sender, EventArgs e)
-        {
-            Construction.QueueExecuting[0].PrepareHint(PanelHint);
         }
 
         private void BtnHeroes_Click(object sender, EventArgs e)
@@ -144,42 +106,12 @@ namespace Fantasy_Kingdoms_Battle
             pbDurability.Visible = false;
             btnHeroes.Visible = false;
 
-            btnQueue1.Visible = Construction.QueueExecuting.Count >= 1;
-            if (btnQueue1.Visible)
-            {
-                btnQueue1.MenuCell = btnQueue1.Visible ? Construction.QueueExecuting[0] : null;
-                btnQueue1.HighlightUnderMouse = Construction.QueueExecuting[0].ProgressExecuting.PassedMilliTicks == 0;
-                btnQueue1.PlaySoundOnClick = Construction.QueueExecuting[0].ProgressExecuting.State != StateProgress.Active;
-                bmpQueue2.Visible = true;
-                bmpQueue2.Action = Construction.QueueExecuting.Count >= 2 ? Construction.QueueExecuting[1] : null;
-                bmpQueue3.Visible = true;
-                bmpQueue3.Action = Construction.QueueExecuting.Count >= 3 ? Construction.QueueExecuting[2] : null;
-            }
-            else
-            {
-                btnQueue1.MenuCell = null;
-                bmpQueue2.Visible = false;
-                bmpQueue2.Action = null;
-                bmpQueue3.Visible = false;
-                bmpQueue3.Action = null;
-            }
-
             if ((Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
             {
                 pbDurability.Visible = true;
 
-                if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
-                {
-                    int percent = Program.formMain.CalcPercentExecuting(Construction.FirstActionInQueue.ProgressExecuting.PassedMilliTicks, Construction.FirstActionInQueue.ProgressExecuting.TotalMilliTicks);
-
-                    pbProgressAction.Text = percent.ToString() + "%";
-                    pbProgressAction.Position = percent;
-                }
-                else
-                {
-                    pbProgressAction.Text = "";
-                    pbProgressAction.Position = 0;
-                }
+                pbProgressAction.Text = "";
+                pbProgressAction.Position = 0;
 
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
                 if (income > 0)

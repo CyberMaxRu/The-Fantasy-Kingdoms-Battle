@@ -67,14 +67,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
         internal int Level { get; private set; }
 
-        // Очередь действий
-        internal List<ActionInConstruction> QueueExecuting { get; } = new List<ActionInConstruction>();// Очередь действий
-        internal ActionInConstruction FirstActionInQueue { get; private set; }// Первое действие в очереди
-
-        // Постройка/ремонт
-        internal int[] TurnLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
-        internal bool InLevelUp { get; set; }// Сооружение строится/улучшается
-
         //
         internal int Gold { get => gold; set { Debug.Assert(Descriptor.HasTreasury); gold = value; } }// Казна гильдии
         internal List<Creature> Heroes { get; } = new List<Creature>();
@@ -205,8 +197,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Build(bool needNotice, bool instant)
         {
-            InLevelUp = true;
-
             if (!Lobby.InPrepareTurn && (Lobby.CurrentPlayer?.GetTypePlayer() == TypePlayer.Human))
                 Program.formMain.PlayConstructionComplete();
 
@@ -236,10 +226,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Level++;
-            TurnLevelConstructed[Level] = Player.Lobby.Turn;
-
-            InLevelUp = false;
-            //InConstructing = false;
 
             if (Level == 1)
             {
@@ -1061,10 +1047,6 @@ namespace Fantasy_Kingdoms_Battle
 
             IncomeBaseResources = 0;
 
-            TurnLevelConstructed = new int[Descriptor.Levels.Length + 1];
-            for (int i = 1; i < TurnLevelConstructed.Length; i++)
-                TurnLevelConstructed[i] = -1;
-
             Player.AddConstruction(this);
         }
 
@@ -1076,24 +1058,6 @@ namespace Fantasy_Kingdoms_Battle
             UpdateCurrentIncomeResources();
             TuneActionLevelUp();
             UpdateSelectedColor();
-        }
-
-        private void UpdateFirstAction()
-        {
-            FirstActionInQueue = QueueExecuting.Count > 0 ? QueueExecuting[0] : null;
-        }
-
-        internal void AddCellMenuToQueue(ActionInConstruction cmc)
-        {
-            AssertNotDestroyed();
-            Assert(cmc.Construction == this);
-            Assert(QueueExecuting.IndexOf(cmc) == -1);
-            Assert(!cmc.ProgressExecuting.InQueue);
-
-            cmc.ProgressExecuting.InQueue = true;// Указываем, что действие поставлено в очередь
-            QueueExecuting.Add(cmc);
-
-            UpdateFirstAction();
         }
 
         internal void CalcPurchasesInActions()

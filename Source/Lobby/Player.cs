@@ -1497,7 +1497,6 @@ namespace Fantasy_Kingdoms_Battle
             Assert(a.ProgressExecuting.PassedMilliTicks == 0);
 
             queueExecuting.Add(a);
-            a.Construction.AddCellMenuToQueue(a);
         }
      
         internal void DeleteFromQueueBuilding(ActionInConstruction cmc)
