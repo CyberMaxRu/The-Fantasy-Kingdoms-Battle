@@ -26,9 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCCellSimple imgCell;
         private readonly VCText lblType;
         private readonly VCText lblAction;
-        private readonly VCText lblState;
         private readonly VCText lblDescription;
-        private readonly VCLabelValue lblDurability;
         private readonly VCLabelValue lblIncome;
         private readonly VCLabelValue lblSalary;
         private readonly VCLabelValue lblBuildersPerDay;
@@ -102,19 +100,11 @@ namespace Fantasy_Kingdoms_Battle
             lblAction.StringFormat.Alignment = StringAlignment.Near;
             lblAction.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblState = new VCText(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.FontMedCaptionC, FormMain.Config.HintAction, widthControl);
-            lblState.StringFormat.Alignment = StringAlignment.Near;
-            lblState.StringFormat.LineAlignment = StringAlignment.Near;
-
-            lblDescription = new VCText(this, FormMain.Config.GridSize, lblState.NextTop(), Program.formMain.FontSmallC, FormMain.Config.HintDescription, widthControl);
+            lblDescription = new VCText(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.FontSmallC, FormMain.Config.HintDescription, widthControl);
             lblDescription.StringFormat.Alignment = StringAlignment.Near;
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblDurability = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome, false);
-            lblDurability.Image.ImageIndex = FormMain.GUI_16_DURABILITY;
-            lblDurability.Width = widthControl;
-
-            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDurability.NextTop(), FormMain.Config.HintIncome, false);
+            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome, false);
             lblIncome.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.Width = widthControl;
 
@@ -272,9 +262,7 @@ namespace Fantasy_Kingdoms_Battle
             imgCell.Visible = false;
             lblType.Visible = false;
             lblAction.Visible = false;
-            lblState.Visible = false;
             lblDescription.Visible = false;
-            lblDurability.Visible = false;
             lblIncome.Visible = false;
             lblSalary.Visible = false;
             lblBuildersPerDay.Visible = false;
@@ -441,20 +429,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep45State((string, Color) data)
-        {
-            if (data.Item1.Length > 0)
-            {
-                lblState.ShiftY = nextTop;
-                lblState.Text = data.Item1;
-                lblState.Color = data.Item2;
-                lblState.Height = lblState.MinHeigth();
-                lblState.Visible = true;
-
-                nextTop = lblState.NextTop();
-            }
-        }
-
         internal void AddStep5Description(string description)
         {
             if (description.Length > 0)
@@ -465,17 +439,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblDescription.Visible = true;
 
                 nextTop = lblDescription.NextTop();
-            }
-        }
-
-        internal void AddStep55Durability(int durability)
-        {
-            if (durability > 0)
-            {
-                lblDurability.ShiftY = nextTop;
-                lblDurability.Visible = true;
-                lblDurability.Text = durability.ToString();
-                nextTop = lblDurability.NextTop();
             }
         }
 

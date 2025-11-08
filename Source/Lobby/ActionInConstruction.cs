@@ -169,7 +169,6 @@ namespace Fantasy_Kingdoms_Battle
                     if (ProgressExecuting.PassedMilliTicks == 0)
                     {
                         Program.formMain.PlayPressButton();
-                        Construction.Player.RemoveFromQueueExecuting(this, false);
                     }
                 }
             }
@@ -266,7 +265,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             RemoveSelf(true);
-            Construction.Player.RemoveFromQueueExecuting(this, true);
         }
 
         internal override int GetImageIndex()
@@ -467,9 +465,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void Execute()
         {
-            Assert(Construction.CurrentDurability == Construction.MaxDurability);
             Construction.Build(true, false);
-            Construction.Player.RemoveFromQueueExecuting(this, true);
         }
 
         internal override void PrepareHint(PanelHint panelHint)
@@ -482,7 +478,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.ShowEntity(nameCurrent, Construction.GetTypeEntity(), Construction.GetImageIndex(), Construction.ProperName());
             //panelHint.AddStep4Level(Descriptor.Number == 1 ? "Уровень 1" : $"Улучшить строение ({Descriptor.Number} ур.)");
             panelHint.AddStep5Description(Descriptor.Number == 1 ? Descriptor.ActiveEntity.Description : "");
-            panelHint.AddStep55Durability(Construction.DurabilityForLevel(Descriptor.Number));
             panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
             panelHint.AddStep9PlusBuilders(Descriptor.AddConstructionPoints);
             if (Descriptor.DescriptorVisit != null)
@@ -537,14 +532,12 @@ namespace Fantasy_Kingdoms_Battle
                 if (ProgressExecuting.PassedMilliTicks == 0)
                 {
                     Construction.InLevelUp = true;
-                    Construction.UpdateMaxDurability();
                 }
 
                 elapsedMilliTicks += Construction.Player.GetMilliTicksForAction();
                 if (elapsedMilliTicks >= milliTicksForOneDurability)
                 {
                     int incDurability = elapsedMilliTicks / milliTicksForOneDurability;
-                    Construction.CurrentDurability += incDurability;
                     elapsedMilliTicks -= milliTicksForOneDurability * incDurability;
                 }
             }
@@ -556,156 +549,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.BeforeAddToQueue();
 
-            if (Descriptor.Number == 1)
-            {
-                Assert(Construction.QueueExecuting.Count == 0);// Постройка - всегда первая
-                Assert(Construction.CurrentDurability == 0);
-            }
-            else
-            {
-                Assert(Construction.MaxDurability > 0);
-            }
-
-            Assert((Construction.State == StateConstruction.Work) || (Construction.State == StateConstruction.NotBuild) || (Construction.State == StateConstruction.InQueueBuild)
-              || (Construction.State == StateConstruction.NeedRepair));
-
-            if (Construction.State == StateConstruction.NeedRepair)
-            {
-                Assert(Construction.TurnLevelConstructed[Construction.Level] != -1);
-            }
-            else
-            {
-                Assert(Construction.TurnLevelConstructed[Construction.Level + 1] == -1);
-            }
-
-            if (Construction.State == StateConstruction.NeedRepair)
-                Construction.InRepair = true;
         }    
-    }
-
-    internal sealed class CellMenuConstructionRepair : ActionInConstruction
-    {
-        private int cost = 0;
-        int elapsedMilliTicks;// Сколько миллитиков прошло с последнего увеличения прочности
-
-        public CellMenuConstructionRepair(Construction c, DescriptorActionForEntity d) : base(c, d)
-        {
-            ProgressExecuting = new ComponentProgressExecuting(c.MaxDurability - c.CurrentDurability, 1, Construction.Player.GetMilliTicksForAction());
-        }
-
-        internal override void DoTick()
-        {
-            Assert(Construction.CurrentDurability < Construction.MaxDurability);
-
-            // Пересчитывать параметры ремонта надо каждый тик, т.к. между прибавлениями единиц прочности могут нанести повреждение, а также может поменяться скорость ремонта
-            // Сколько миллитиков необходимо для увеличения прочности на 1 единицу. Для простоты берем прочность и время стройки первого уровня
-            // !!! Бонусы и штрафы не учитываются !!!
-            int milliTicksForOneDurability = Construction.Descriptor.Levels[1].ComponentCreating.Time * FormMain.Config.TicksInSecond * 1000 / Construction.Descriptor.Levels[1].Durability;
-            int milliTicksForRepair = (Construction.MaxDurability - Construction.CurrentDurability) * milliTicksForOneDurability;
-            int seconds = (int)Math.Truncate(milliTicksForRepair * 1.000 / FormMain.Config.TicksInSecond / 1000 + 0.99);
-            ProgressExecuting.RefreshProgress(seconds, Construction.Player.GetMilliTicksForAction());
-
-            if (ProgressExecuting.State == StateProgress.Active)
-            {
-                Assert(ProgressExecuting.InQueue);
-
-                elapsedMilliTicks += Construction.Player.GetMilliTicksForAction();
-                if (elapsedMilliTicks >= milliTicksForOneDurability)
-                {
-                    int incDurability = elapsedMilliTicks / milliTicksForOneDurability;
-                    Construction.CurrentDurability += incDurability;
-                    elapsedMilliTicks -= milliTicksForOneDurability * incDurability;
-
-                    if (Construction.CurrentDurability == Construction.MaxDurability)
-                    {
-                        elapsedMilliTicks = 0;
-                        ProgressExecuting.RefreshProgress(0, Construction.Player.GetMilliTicksForAction());
-                    }
-                }
-            }
-            else
-                elapsedMilliTicks = 0;// Если перестали ремонтировать, обнуляем остатки миллитиков
-
-            base.DoTick();
-        }
-
-        protected override void Execute()
-        {
-            Assert(Construction.CurrentDurability == Construction.MaxDurability);
-
-            Construction.Player.RemoveFromQueueExecuting(this, true);
-            Construction.InRepair = false;
-            Construction.Player.AddNoticeForPlayer(Construction, TypeNoticeForPlayer.ConstructionRepaired);
-            Construction.UpdateState();
-        }
-
-        protected override bool ConstructionMustMeConstructed() => true;
-
-        internal override bool CheckRequirements() => true;
-
-        internal override bool GetImageIsEnabled()
-        {
-            return base.GetImageIsEnabled();
-        }
-
-        internal override void UpdatePurchase()
-        {
-            //Construction.Player.CompPurchase(Descriptor.CreatedEntity.ComponentCreating.CostResources, cost, TypeCreating.Research);
-            //PurchaseValue = cost;
-
-            //int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability.Value - Construction.CurrentDurability.Value));
-            //PurchaseValue = Construction.CompCostRepair(expenseCP);
-            // Если цены ремонта нет, значит, оно не в очереди. Пытаемся подсчитать, сколько это будет стоить
-            /*if (PurchaseValue is null)
-            {
-                int expenseCP = Math.Min(Construction.Player.Gold, Math.Min(Construction.Player.RestConstructionPoints, Construction.MaxDurability - Construction.CurrentDurability));
-                PurchaseValue = Construction.CompCostRepair(expenseCP);
-
-                return PurchaseValue;
-            }
-            else
-            {
-                return PurchaseValue;
-            }*/
-        }
-
-        internal override int GetImageIndex() => Config.Gui48_Build;
-        
-        protected override string GetTextForLevel() => "";
-
-        internal override Color GetColorText()
-        {
-            if (GetImageIsEnabled())
-            {
-                if (Construction.InRepair)
-                    return FormMain.Config.CommonCost;
-                else
-                    return Color.LimeGreen;
-            }
-            else
-                return Color.Gray;
-        }
-
-        protected override void BeforeAddToQueue()
-        {
-            Assert(Construction.CurrentDurability < Construction.MaxDurability);
-
-            base.BeforeAddToQueue();
-
-            Construction.InRepair = true;
-
-            /*if (Construction.State == StateConstruction.NeedRepair)
-                Construction.StartRepair();
-            else if (Construction.State == StateConstruction.Repair)
-                Construction.CancelRepair();
-            else
-                DoException($"Неправильное состояние: {Construction.State}");*/
-        }
-
-        internal override void PrepareHint(PanelHint panelHint)
-        {
-            //Construction.PrepareHintForBuildOrUpgrade(panelHint, Descriptor.Number);
-        }
     }
 
     internal sealed class CellMenuConstructionRecruitCreature : ActionInConstruction
@@ -788,7 +632,6 @@ namespace Fantasy_Kingdoms_Battle
             Assert(Construction.CreaturesInQueue.IndexOf(this) != -1);
             Construction.CreaturesInQueue.Remove(this);
             Creature h = Construction.HireHero(Creature, 0);// Обучение уже оплачено
-            Construction.Player.RemoveFromQueueExecuting(this, true);
             Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
         }
 
@@ -917,7 +760,6 @@ namespace Fantasy_Kingdoms_Battle
             ConstructionExtension ce = new ConstructionExtension(Construction, Entity);
             Construction.AddExtension(ce);
 
-            Construction.Player.RemoveFromQueueExecuting(this, true);
             Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Extension);
         }
 

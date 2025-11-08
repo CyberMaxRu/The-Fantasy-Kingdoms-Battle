@@ -104,9 +104,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void RemoveFromQueue(int index)
         {
-            if (Construction.QueueExecuting[index] != null)
-                if (Construction.QueueExecuting[index].ProgressExecuting.PassedMilliTicks == 0)
-                    Construction.Player.RemoveFromQueueExecuting(Construction.QueueExecuting[index], false);
         }
 
         private void BtnQueue1_ShowHint(object sender, EventArgs e)
@@ -171,7 +168,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 pbDurability.Visible = true;
 
-                if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && !(Construction.FirstActionInQueue is CellMenuConstructionRepair) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
+                if ((Construction.FirstActionInQueue != null) && !(Construction.FirstActionInQueue is CellMenuConstructionLevelUp) && (Construction.FirstActionInQueue.ProgressExecuting.State == StateProgress.Active))
                 {
                     int percent = Program.formMain.CalcPercentExecuting(Construction.FirstActionInQueue.ProgressExecuting.PassedMilliTicks, Construction.FirstActionInQueue.ProgressExecuting.TotalMilliTicks);
 
@@ -183,56 +180,6 @@ namespace Fantasy_Kingdoms_Battle
                     pbProgressAction.Text = "";
                     pbProgressAction.Position = 0;
                 }
-
-                switch (Construction.State)
-                {
-                    case StateConstruction.Work:
-                        pbDurability.Text = Construction.CurrentDurability.ToString();
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = Construction.CurrentDurability;
-                        break;
-                    case StateConstruction.NotBuild:
-                    case StateConstruction.InQueueBuild:
-                        pbDurability.Text = Construction.Descriptor.Levels[1].Durability.ToString();
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = 0;
-                        break;
-                    case StateConstruction.Build:
-                    case StateConstruction.NeedRepair:
-                    case StateConstruction.Repair:
-                        pbDurability.Text = $"{Construction.CurrentDurability}/{Construction.MaxDurability}";
-                        pbDurability.Max = Construction.MaxDurability;
-                        pbDurability.Position = Construction.CurrentDurability;
-                        break;
-                    default:
-                        throw new Exception($"Неизвестное состояние {Construction.State}");
-                }
-
-                switch (Construction.State)
-                {
-                    case StateConstruction.Work:
-                        pbDurability.ColorProgress = Color.Lime;
-                        break;
-                    case StateConstruction.NotBuild:
-                    case StateConstruction.InQueueBuild:
-                        break;
-                    case StateConstruction.Build:
-                        pbDurability.ColorProgress = Color.PaleTurquoise;
-                        break;
-                    case StateConstruction.NeedRepair:
-                    case StateConstruction.Repair:
-                        int percent = Construction.CurrentDurability * 100 / Construction.MaxDurability;
-                        if (percent >= 60)
-                            pbDurability.ColorProgress = Color.Lime;
-                        else if (percent >= 50)
-                            pbDurability.ColorProgress = Color.Yellow;
-                        else
-                            pbDurability.ColorProgress = Color.Red;
-                        break;
-                    default:
-                        throw new Exception($"Неизвестное состояние {Construction.State}");
-                }
-            
 
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
                 if (income > 0)

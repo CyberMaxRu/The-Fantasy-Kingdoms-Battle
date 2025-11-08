@@ -37,7 +37,6 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
         private readonly List<ActionInConstruction> queueExecuting = new List<ActionInConstruction>();// Очередь выполнения действий
-        private readonly List<CellMenuConstructionRepair> queueRepair = new List<CellMenuConstructionRepair>();// Очередь ремонта
         private readonly List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
 
         private bool cheatingIgnoreRequirements;
@@ -176,7 +175,6 @@ namespace Fantasy_Kingdoms_Battle
             //
             Castle = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
-            Castle.DoDamage(500);
 
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
@@ -1501,12 +1499,7 @@ namespace Fantasy_Kingdoms_Battle
             queueExecuting.Add(a);
             a.Construction.AddCellMenuToQueue(a);
         }
-
-        internal void RemoveFromQueueExecuting(ActionInConstruction cmc, bool constructed)
-        {
-            cmc.Construction.RemoveCellMenuFromQueue(cmc, !constructed);
-        }
-        
+     
         internal void DeleteFromQueueBuilding(ActionInConstruction cmc)
         {
             if (!queueExecuting.Remove(cmc))

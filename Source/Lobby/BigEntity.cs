@@ -41,7 +41,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorEntity Descriptor { get; }
         internal Player Player { get; }
         internal Lobby Lobby { get; }
-        internal bool Destroyed { get; set; } = false;// Сущность уничтожена, работа с ней запрещена
         internal List<ActionInConstruction> Actions { get; } = new List<ActionInConstruction>();
 
         internal Perk MainPerk { get; set; }// Основной перк существа 

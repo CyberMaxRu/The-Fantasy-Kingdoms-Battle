@@ -10,14 +10,11 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum StateConstruction { None, Work, NotBuild, Build, InQueueBuild, NeedRepair, Repair, Destroyed };
-
     // Класс сооружения у игрока
     internal sealed class Construction : BigEntity
     {
         private List<ActionInConstruction> tempListActions = new List<ActionInConstruction>();
         private int gold;
-        private int currentDurability;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
         public Construction(Player p, DescriptorConstruction dc) : base(dc, p.Lobby, p)
@@ -69,7 +66,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool PlayerIsOwner { get; private set; }// Игрок - владелец сооружения
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
         internal int Level { get; private set; }
-        internal StateConstruction State { get; private set; }// Состояние сооружения
 
         // Очередь действий
         internal List<ActionInConstruction> QueueExecuting { get; } = new List<ActionInConstruction>();// Очередь действий
@@ -78,24 +74,6 @@ namespace Fantasy_Kingdoms_Battle
         // Постройка/ремонт
         internal int[] TurnLevelConstructed { get; private set; }// На каком ходу был построено каждый уровень. -1: не построено, 0: до начала игры
         internal bool InLevelUp { get; set; }// Сооружение строится/улучшается
-        internal bool InRepair { get; set; }// Сооружение ремонтируется
-
-        // Прочность
-        internal int CurrentDurability// Текущая прочность сооружения
-        {
-            get => currentDurability;
-            set
-            {
-                Assert(value != 0);
-
-                currentDurability = value;
-
-                Assert(CurrentDurability >= 0);
-                Assert(CurrentDurability <= MaxDurability);
-            }
-        }
-
-        internal int MaxDurability { get; private set; }// Максимальная прочность сооружения
 
         //
         internal int Gold { get => gold; set { Debug.Assert(Descriptor.HasTreasury); gold = value; } }// Казна гильдии
@@ -126,7 +104,6 @@ namespace Fantasy_Kingdoms_Battle
         // Действия
         internal ActionInConstruction ActionMain { get; private set; }// Основное действие, которое отображается в панели сооружения
         private CellMenuConstructionLevelUp ActionBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
-        private CellMenuConstructionRepair ActionRepair { get; set; }// Действие для ремонта сооружения
         internal CellMenuConstructionBuild CellMenuBuildNewConstruction { get; set; }// Ячейка меню, которая строит новое сооружение на этом месте
 
         //
@@ -175,9 +152,7 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (ActionInConstruction cmd in listForDelete)
                     cmd.Destroyed = true;
 
-                if (ActionRepair != null)
-                    ActionMain = ActionRepair;
-                else if (ActionBuildOrLevelUp != null)
+                if (ActionBuildOrLevelUp != null)
                     ActionMain = ActionBuildOrLevelUp;
                 else
                     ActionMain = null;
@@ -228,15 +203,6 @@ namespace Fantasy_Kingdoms_Battle
             */
         }
 
-        internal void UpdateMaxDurability()
-        {
-            int newMaxDurability = Descriptor.Levels[Level + 1].Durability;
-            Assert(newMaxDurability > 0);
-            Assert(newMaxDurability > MaxDurability);
-
-            MaxDurability = newMaxDurability;
-        }
-
         internal void Build(bool needNotice, bool instant)
         {
             InLevelUp = true;
@@ -267,13 +233,6 @@ namespace Fantasy_Kingdoms_Battle
                         RemoveProduct(Descriptor.Levels[Level].DescriptorVisit);
                     }
                 }
-            }
-
-            // Если у сооружения есть прочность, обновляем её
-            if ((Descriptor.Levels[Level + 1].Durability > 0) && instant)
-            {
-                UpdateMaxDurability();
-                currentDurability = MaxDurability;
             }
 
             Level++;
@@ -342,7 +301,6 @@ namespace Fantasy_Kingdoms_Battle
 
             TuneActionLevelUp();
             UpdateCurrentIncomeResources();
-            UpdateState();
         }
 
         private void AddVisit()
@@ -548,8 +506,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            Debug.Assert(!Destroyed);
-
             if (Player == Player.Lobby.CurrentPlayer)
             {
 
@@ -558,10 +514,8 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep2Entity(this);
                     if (!((Level == 1) && (Descriptor.MaxLevel == 1)))
                         panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
-                    panelHint.AddStep45State(GetDataState());
                     panelHint.AddStep5Description(Descriptor.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
                         + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
-                    panelHint.AddStep55Durability(MaxDurability);
                     panelHint.AddStep6Income(Income());
                     panelHint.AddStep9PlusBuilders(BuildersPerDay());
                     panelHint.AddStep9Interest(GetInterest(), false);
@@ -588,8 +542,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ShowInfo(int selectPage = -1)
         {
-            Debug.Assert(!Destroyed);
-
             if (Descriptor.IsOurConstruction)
             {
                 Lobby.Layer.panelConstructionInfo.Visible = true;
@@ -737,11 +689,11 @@ namespace Fantasy_Kingdoms_Battle
             return CellMenuBuildNewConstruction is null ? GetImageIndex() : CellMenuBuildNewConstruction.GetImageIndex();
         }
 
-        internal override int GetImageIndex24() => State == StateConstruction.NeedRepair ? FormMain.GUI_24_BROKEN_HOUSE : State == StateConstruction.Repair ? FormMain.GUI_24_HAMMER : -1;
+        internal override int GetImageIndex24() => -1;
 
         internal override string GetText() => CellMenuBuildNewConstruction is null ? "" : CellMenuBuildNewConstruction.GetText();
 
-        internal override bool GetNormalImage() => (CurrentDurability == MaxDurability) && ((Level > 0) || (Descriptor.MaxLevel == 0));
+        internal override bool GetNormalImage() => (Level > 0) || (Descriptor.MaxLevel == 0);
 
         internal override string GetLevel()
         {
@@ -1119,111 +1071,11 @@ namespace Fantasy_Kingdoms_Battle
         // Подготовка строительства сооружения
         // Вызывается у городских сооружений сразу
         
-        internal void StartRepair()
-        {
-            Player.AddActionToQueue(ActionRepair);
-            UpdateState();
-        }
-
-        internal void CancelRepair()
-        {
-            Player.RemoveFromQueueExecuting(ActionRepair, false);
-            UpdateState();
-        }
-
         internal void TuneConstructAfterCreate()
         {
             UpdateCurrentIncomeResources();
             TuneActionLevelUp();
             UpdateSelectedColor();
-            UpdateState();
-        }
-
-        internal void UpdateState()
-        {
-            if (Destroyed)
-                State = StateConstruction.Destroyed;
-            else if ((Level == 1) && (MaxDurability == 0))
-                State = StateConstruction.None;// Если сооружение построено, и у него нет прочности, это элемент ландшафта. У него нет состояния.
-            else if (InLevelUp)
-            {
-                Assert(!InRepair);
-                Assert(ActionBuildOrLevelUp.ProgressExecuting.InQueue);
-                Assert(ActionBuildOrLevelUp.ProgressExecuting.State == StateProgress.Active);
-
-                State = StateConstruction.Build;// Стройка идет
-            }
-            else if (Level == 0)
-            {
-                if (ActionBuildOrLevelUp.ProgressExecuting.State == StateProgress.WaitBuilders)
-                    State = StateConstruction.InQueueBuild;// В очереди на строительство
-                else
-                    State = StateConstruction.NotBuild;// Сооружение не построено
-            }
-            else if (InRepair)
-                State = StateConstruction.Repair;// Идет ремонт
-            else if (CurrentDurability == MaxDurability)
-                State = StateConstruction.Work;// Прочность равна дефолтной, сооружение работает
-            else if (CurrentDurability < MaxDurability)
-            {
-                State = StateConstruction.NeedRepair;// Сооружение повреждено, требуется ремонт
-                //CellMenuRepair.PurchaseValue = CompCostRepair(Math.Min(Player.RestConstructionPoints, restCP, c.MaxDurability - c.CurrentDurability))            
-            }
-            else
-                DoException("Неопределенное состояние сооружения");
-
-            if ((CurrentDurability == MaxDurability) && (ActionRepair != null))
-                ActionRepair = null;
-        }
-
-        internal void DoDamage(int damage)
-        {
-            Assert(damage >= 0);
-            Assert(damage < CurrentDurability);
-            Assert((State == StateConstruction.Build) || (State == StateConstruction.Repair)
-                || (State == StateConstruction.NeedRepair) || (State == StateConstruction.Work));
-
-            if (damage > 0)
-            {
-                CurrentDurability -= damage;
-
-                if (ActionRepair is null)
-                {
-                    ActionRepair = new CellMenuConstructionRepair(this, new DescriptorActionForEntity(new Point(0, 0)));
-                    //CellMenuRepair.PurchaseValue = new ListBaseResources(MaxDurability - CurrentDurability);
-
-                    Actions.Add(ActionRepair);
-                }
-
-                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.ConstructionDamaged, damage);
-                UpdateState();
-                TuneActionLevelUp();
-            }
-        }
-
-        internal (string, Color) GetDataState()
-        {
-            switch (State)
-            {
-                case StateConstruction.None:
-                    return ("", Color.White);
-                case StateConstruction.Work:
-                    return ("Работает", Color.LightGreen);
-                case StateConstruction.NotBuild:
-                    return ("Не построено", Color.Gray);
-                case StateConstruction.Build:
-                    return ("Строится", Color.SkyBlue);
-                case StateConstruction.InQueueBuild:
-                    return ("В очереди на строительство", Color.White);
-                case StateConstruction.NeedRepair:
-                    return ("Требуется ремонт", Color.Red);
-                case StateConstruction.Repair:
-                    return ("Ремонтируется", Color.Yellow);
-                case StateConstruction.Destroyed:
-                    throw new Exception("Сооружение уничтожено");
-                default:
-                    throw new Exception("Неизвестное состояние");
-            }
         }
 
         private void UpdateFirstAction()
@@ -1242,70 +1094,6 @@ namespace Fantasy_Kingdoms_Battle
             QueueExecuting.Add(cmc);
 
             UpdateFirstAction();
-        }
-
-        internal void RemoveCellMenuFromQueue(ActionInConstruction cmc, bool forCancel)
-        {
-            Assert(cmc.Construction == this);
-            Assert(cmc.ProgressExecuting.InQueue);
-            Assert(QueueExecuting.IndexOf(cmc) != -1);
-            if (forCancel)
-            {
-                //Assert(cmc.ExecutingAction.AppliedPoints == 0);
-            }
-
-            if (cmc is CellMenuConstructionLevelUp)
-            {
-                //Assert( || InRepair);
-                if (cmc.ProgressExecuting.PassedMilliTicks > 0)
-                {
-                    //Assert(MaxDurability > 0);
-                }
-
-                if (forCancel)
-                {
-                    // Если сооружение еще не начинали строить, только возвращаем ресурсы
-                    if (State == StateConstruction.InQueueBuild)
-                    {
-                        //InConstructing = false;
-                    }
-                    else if (State == StateConstruction.Repair)
-                    {
-                        InRepair = false;
-                    }
-                }
-            }
-
-            // Освобождаем потраченные ресурсы, если выполнение действия не началось
-            if (forCancel)
-            {
-                if (cmc.ProgressExecuting.PassedMilliTicks == 0)
-                {
-                    Player.ReturnResource(cmc.PurchaseValue);
-                }
-            }
-
-            if (!QueueExecuting.Remove(cmc))
-                DoException($"{IDEntity}: не удалось удалить {IDEntity} из очереди строительства");
-
-            Player.DeleteFromQueueBuilding(cmc);
-
-            cmc.ProgressExecuting.InQueue = false;
-            cmc.ProgressExecuting.State = StateProgress.Inactive;
-            if (!forCancel)
-                cmc.Destroyed = true;
-
-            UpdateFirstAction();
-
-            // Если не было отмены, значит, идет процесс отработки прогресса и строительство завершено.
-            // Перестраивать очередь не нужно
-            //if (forCancel)
-            //    Player.RebuildQueueBuilding();
-
-            if (forCancel)
-            {
-                Program.formMain.layerGame.UpdateMenu();
-            }
         }
 
         internal void CalcPurchasesInActions()
@@ -1358,7 +1146,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             ValidateActions();
             CalcPurchasesInActions();
-            UpdateState();
 
             foreach (ActionInConstruction cm in Actions)
             {
