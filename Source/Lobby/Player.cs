@@ -79,8 +79,6 @@ namespace Fantasy_Kingdoms_Battle
             PercentCorruption = 10;
             ChangeCorruption = 1;
 
-            CurrentLevelTax = FormMain.Descriptors.DefaultLevelTax;
-
             // Настраиваем постоянные бонусы
             if (lobby.TypeLobby.VariantPersistentBonus > 0)
             {
@@ -849,7 +847,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Creature> FreeHeroes { get; } = new List<Creature>();
         internal Dictionary<string, BigEntity> Entities { get; } = new Dictionary<string, BigEntity>();// Все сущности игрока
 
-        internal DescriptorLevelTax CurrentLevelTax { get; set; }// Текущий уровень налогов
         internal int Gold { get; set; }// Текущее количество золота
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
 

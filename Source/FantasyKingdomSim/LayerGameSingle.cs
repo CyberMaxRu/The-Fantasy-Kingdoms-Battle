@@ -58,8 +58,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int framesPerSecond;
         internal int ticksPerSecond;
 
-        private readonly List<VCIconButton48> listBtnLevelTax;
-
         internal readonly VisualControl MainControl;
         internal readonly VisualControl panelNotices;// Панель извещений
 
@@ -299,8 +297,6 @@ namespace Fantasy_Kingdoms_Battle
             //pageLocation = pageControl.AddPage(0, "", "", null);
             //pageLocation.Hint = "Тут должна быть подсказка";
 
-            listBtnLevelTax = new List<VCIconButton48>();
-
             labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Center;
             labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
@@ -534,36 +530,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void ShowWarehouse()
         {
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<Entity>());
-        }
-
-        private void DrawPageFinance()
-        {
-            VCLabel l = new VCLabel(pageFinance.Page, 0, 0, Program.formMain.FontParagraph, Color.White, 16, "Уровень налогов:");
-            l.Width = l.Font.WidthText(l.Text);
-
-            int nextLeft = 0;
-            foreach (DescriptorLevelTax lt in Descriptors.LevelTaxes)
-            {
-                VCIconButton48 btn = new VCIconButton48(pageFinance.Page, nextLeft, l.NextTop(), Config.Gui48_Money);
-                btn.HighText = lt.Percent.ToString() + "%";
-                btn.Hint = lt.Name;
-                btn.Click += BtnLevelTax_Click;
-                btn.Tag = lt.Index;
-                listBtnLevelTax.Add(btn);
-
-                nextLeft = btn.NextLeft();
-            }
-        }
-
-        private void BtnLevelTax_Click(object sender, EventArgs e)
-        {
-            VCIconButton48 ib = (VCIconButton48)sender;
-            if (!ib.ManualSelected)
-            {
-                listBtnLevelTax[curAppliedPlayer.CurrentLevelTax.Index].ManualSelected = false;
-                curAppliedPlayer.CurrentLevelTax = Descriptors.LevelTaxes[ib.Tag];
-                ib.ManualSelected = true;
-            }
         }
 
         internal void UpdateNeighborhoods()
@@ -915,11 +881,6 @@ namespace Fantasy_Kingdoms_Battle
 
             // Показываем логова
             UpdateNeighborhoods();
-
-            foreach (VCIconButton48 b in listBtnLevelTax)
-            {
-                b.ManualSelected = b.Tag == curAppliedPlayer.CurrentLevelTax.Index;
-            }
 
             // Показываем героев
             ShowEvents();
