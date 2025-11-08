@@ -68,8 +68,6 @@ namespace Fantasy_Kingdoms_Battle
             AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition3.ImageIndex, "Третий тип традиций", TypeTradition3.Name, Color.Orange);
 
             // Настраиваем игрока согласно настройкам лобби
-            SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
-
             CurrentLoses = 0;
             MaxLoses = lobby.TypeLobby.MaxLoses;
             for (int i = 0; i < MaxLoses; i++)
@@ -738,9 +736,6 @@ namespace Fantasy_Kingdoms_Battle
         // Перки от сооружений
         internal List<(Construction, DescriptorPerk)> listPerksFromConstruction = new List<(Construction, DescriptorPerk)>();
 
-        // Логова
-        internal List<Construction> ListFlags { get; } = new List<Construction>();
-
         // Традиции
         internal Dictionary<DescriptorTradition, int> ListTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Принятые традиции
         internal double PointsTraditions { get; private set; }// Очки традиции
@@ -759,9 +754,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
         // Визуальные контролы
-        private Player opponent;// Убрать это
-        internal Player Opponent { get { return opponent; } set { if (value != this) { if (opponent != value) { opponent = value; UpdateOpponent(); } } else new Exception("Нельзя указать оппонентов самого себя."); } }
-        internal Construction FlagAttackToOpponent { get; private set; }
+        internal Player Opponent { get; set; }
 
         // Читинг
         internal bool CheatingIgnoreRequirements
@@ -815,26 +808,6 @@ namespace Fantasy_Kingdoms_Battle
                     AddNoticeForPlayer(-1, cheatingReduceCostBy10 ? FormMain.Config.Gui48_Cheating : FormMain.Config.Gui48_NoCheating,
                         cheatingPointTraditionMore10Times ? "Применен читинг:" : "Отменен читинг:", "Прирост очков традиций больше в 10 раз", Color.Orange);
                 }
-            }
-        }
-
-        private void UpdateOpponent()
-        {
-            if (opponent is null)
-            {
-                Debug.Assert(FlagAttackToOpponent != null);
-                Debug.Assert(ListFlags.IndexOf(FlagAttackToOpponent) != -1);
-
-                ListFlags.Remove(FlagAttackToOpponent);
-                FlagAttackToOpponent = null;
-            }
-            else
-            {
-                Debug.Assert(FlagAttackToOpponent is null);
-                FlagAttackToOpponent = opponent.GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
-
-                Debug.Assert(ListFlags.IndexOf(FlagAttackToOpponent) == -1);
-                ListFlags.Insert(0, FlagAttackToOpponent);
             }
         }
 
@@ -1084,80 +1057,6 @@ namespace Fantasy_Kingdoms_Battle
             return;
         }
 
-        private int CountActiveFlags()
-        {
-            int count = 0;
-            foreach (Construction pl in ListFlags)
-                if (pl != null)
-                    count++;
-
-            return count;
-        }
-
-        private void SetQuantityFlags(int quantity)
-        {
-            Debug.Assert(quantity >= ListFlags.Count);
-            Debug.Assert(quantity <= Lobby.TypeLobby.MaxQuantityFlags);
-
-            while (ListFlags.Count < quantity)
-            {
-                ListFlags.Add(null);
-            }
-        }
-
-        internal void AddFlag(Construction lair)
-        {
-            // Ищем свободный слот
-            for (int i = 0; i < ListFlags.Count; i++)
-            {
-                if (ListFlags[i] == null)
-                {
-                    ListFlags[i] = lair;
-
-                    return;
-                }
-            }
-
-            Debug.Fail("Не найден слот для флага.");
-        }
-
-        internal void UpPriorityFlag(Construction lair)
-        {
-            int idx = ListFlags.IndexOf(lair);
-            Debug.Assert(idx != -1);
-        }
-
-
-        internal void RemoveLair(Construction l)
-        {
-            /*Debug.Assert(l != null);
-            Debug.Assert(l.Location.Lairs[l.Y, l.X] != null);
-            Debug.Assert(l.Location.Lairs[l.Y, l.X] == l);
-
-            l.Location.Lairs[l.Y, l.X] = null;
-
-            if (Lobby.Layer.PlayerObjectIsSelected(l))
-                Lobby.Layer.SelectPlayerObject(null);
-            */
-        }
-
-        internal void ApplyReward(Construction l)
-        {
-            /*
-            if (l.Descriptor.Reward != null)
-            {
-                ReceivedResource(l.Descriptor.Reward.Cost);
-                AddGreatness(l.Descriptor.Reward.Greatness);
-            }
-
-            if (l.Descriptor.HiddenReward != null)
-            {
-                ReceivedResource(l.Descriptor.HiddenReward.Cost);
-                AddGreatness(l.Descriptor.HiddenReward.Greatness);
-            }
-            */
-        }
-
         protected void ApplyStartBonus(StartBonus sb)
         {
             Gold += sb.Gold;
@@ -1185,11 +1084,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(CurrentLoses < MaxLoses);
             Debug.Assert(LoseInfo[CurrentLoses] is null);
-            Debug.Assert(!(opponent is null));
+            Debug.Assert(!(Opponent is null));
             Debug.Assert(IsLive);
             Debug.Assert(DayOfEndGame == 0);
 
-            LoseInfo[CurrentLoses] = new LoseInfo(Lobby.Turn, opponent);
+            LoseInfo[CurrentLoses] = new LoseInfo(Lobby.Turn, Opponent);
             CurrentLoses++;
 
             if (CurrentLoses == MaxLoses)
