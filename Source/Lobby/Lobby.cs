@@ -32,9 +32,6 @@ namespace Fantasy_Kingdoms_Battle
 
             StateLobby = StateLobby.Start;
             Turn = 0;
-            Day = 0;
-            Week = 1;
-            Month = 1;
 
             Players = new Player[tl.QuantityPlayers];
             Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
@@ -47,8 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             SetPlayerAsCurrent(0);
             StateLobby = StateLobby.TurnHuman;
             Turn = 1;
-            Day = 1;
-
+            
             void GenerateComputerPlayers()
             {
 
@@ -77,11 +73,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Turn { get; private set; }// Текущий ход лобби
         internal int CounterTicks { get; private set; }// Сколько тиков прошло
         internal int CounterTicksOfTurn { get; private set; }// Сколько тиков прошло
-        private int IndexTimeOfWeek { get; set; }// Индекс текущего времени недели
-
-        internal int Day { get; private set; }// День
-        internal int Week { get; private set; }// Неделя
-        internal int Month { get; private set; }// Месяц
 
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
@@ -194,18 +185,6 @@ namespace Fantasy_Kingdoms_Battle
                 Turn++;
                 CounterTicksOfTurn = 0;
                 startNewDay = true;
-
-                Day++;
-                if (Day > FormMain.Config.DaysInWeek)
-                {
-                    Day = 1;
-                    Week++;
-                    if (Week > FormMain.Config.WeeksInMonth)
-                    {
-                        Week = 1;
-                        Month++;
-                    }
-                }
             }
 
             // Ходим игроками

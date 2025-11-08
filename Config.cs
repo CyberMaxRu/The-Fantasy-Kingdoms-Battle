@@ -168,13 +168,6 @@ namespace Fantasy_Kingdoms_Battle
 
             TicksInTurn = TicksInSecond * SecondsInTurn;
 
-            DaysInWeek = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/DaysInWeek").InnerText);
-            Assert(DaysInWeek > 1);
-            Assert(DaysInWeek < 10);
-            WeeksInMonth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/GlobalSettings/WeeksInMonth").InnerText);
-            Assert(WeeksInMonth > 1);
-            Assert(WeeksInMonth < 10);
-
             MaxTraditions = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/MaxTraditions").InnerText);
             Assert(MaxTraditions >= 3);
             Assert(MaxTraditions <= 64);
@@ -429,8 +422,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
         internal int DurationTickInMilliSeconds { get; set; }// Длительность одного тика игры в миллисекундах
         internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
-        internal int DaysInWeek { get; private set; }// Дней в неделе
-        internal int WeeksInMonth { get; private set; }// Недель в месяце
 
         // Традиции
         internal int MaxTraditions { get; private set; }// Максимальное количество традиций у игрока
