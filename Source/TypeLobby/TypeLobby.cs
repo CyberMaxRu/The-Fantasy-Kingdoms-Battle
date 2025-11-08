@@ -90,54 +90,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (Name == t.Name)
                     throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");
             }
-
-
-            // Загружаем настройки логов
-            XmlNode nodeLairSettings = n.SelectSingleNode("Locations");
-            Debug.Assert(nodeLairSettings != null);
-
-            Locations = new TypeLobbyLocationSettings[MapHeight, MapWidth];
-            TypeLobbyLocationSettings ls;
-
-            foreach (XmlNode l in nodeLairSettings.SelectNodes("Location"))
-            {
-                ls = new TypeLobbyLocationSettings(this, l, LairsWidth * LairsHeight);
-
-                foreach (TypeLobbyLocationSettings ls2 in Locations)
-                {
-                    if (ls2 != null)
-                    {
-                        Debug.Assert(ls2.ID != ls.ID);
-                        Debug.Assert(ls2.Name != ls.Name);
-                    }
-                }
-
-                Assert(Locations[ls.Coord.Y, ls.Coord.X] is null);
-                Locations[ls.Coord.Y, ls.Coord.X] = ls;
-
-                /*Debug.Assert(Locations[ls.Coord.Y, ls.Coord.X] == null);
-                Locations[ls.Coord.Y, ls.Coord.X] = ls;*/
-            }
-
-            // Проверяем, что указаны все локации
-            /*string nameLocationCapital = XmlUtils.GetStringNotNull(n, "Capital/Location");
-
-            for (int y = 0; y < MapHeight; y++)
-                for (int x = 0; x < MapWidth; x++)
-                {
-                    Debug.Assert(Locations[y, x] != null);
-
-                    if (Locations[y, x].ID == nameLocationCapital)
-                    {
-                        Debug.Assert(LocationCapital is null);
-                        LocationCapital = Locations[y, x];
-                    }
-                }
-
-            Debug.Assert(LocationCapital != null);*/
-
-            // Проверяем, что количество у слоев указано корректно
-
         }
 
         internal string ID { get; }
@@ -163,15 +115,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int MapHeight { get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
-        internal TypeLobbyLocationSettings[,] Locations { get; }
-        //internal TypeLobbyLocationSettings[,] Locations { get; }
-
         internal void TuneDeferredLinks()
         {
-            foreach (TypeLobbyLocationSettings ls in Locations)
-            {
-                ls.TuneLinks();
-            }
         }
     }
 }
