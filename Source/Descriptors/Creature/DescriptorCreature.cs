@@ -40,11 +40,6 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(TypeAttackRange.KindAttack == KindAttack.Range);
                 }
             }
-            if (n.SelectSingleNode("PersistentState") != null)
-                PersistentStateHeroAtMap = FormMain.Descriptors.FindStateCreature(XmlUtils.GetStringNotNull(n, "PersistentState"));
-            else
-                PersistentStateHeroAtMap = FormMain.Descriptors.FindStateCreature(NameStateCreature.Nothing.ToString());
-
             if (CategoryCreature == CategoryCreature.Hero)
             {
                 CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
@@ -316,7 +311,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorTypeCreature TypeCreature { get; }// Вид существа
         internal TypeHero TypeHero { get; } = TypeHero.None;
         internal int MaxLevel { get; }// Максимальный уровень существа
-        internal DescriptorStateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal int CostOfHiring { get; }// Стоимость найма

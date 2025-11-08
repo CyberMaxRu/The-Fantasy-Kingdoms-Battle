@@ -31,7 +31,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCBitmap bmpStateBackground;
         private readonly VCBitmap bmpState;
-        private readonly VCLabel labelNameState;
         private readonly VisualControl panelAbilitiesAndSecSkills;
         protected readonly VisualControl panelStatistics;
         private readonly PanelWithPanelEntity panelInventory;
@@ -67,13 +66,8 @@ namespace Fantasy_Kingdoms_Battle
             panelPerks = new PanelWithPanelEntity(4);
 
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.bmpBandStateCreature);
-            bmpStateBackground.ShowHint += BmpState_ShowHint;
             bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.BmpListStateHero.GetImage(0, true, false));
             bmpState.IsActiveControl = false;
-            labelNameState = new VCLabel(bmpStateBackground, 36, 8, Program.formMain.FontSmallC, Color.White, 16, "");
-            labelNameState.StringFormat.Alignment = StringAlignment.Near;
-            labelNameState.StringFormat.LineAlignment = StringAlignment.Center;
-            labelNameState.IsActiveControl = false;
 
             panelSpecialization = new VCCell(this, imgIcon.NextLeft(), imgIcon.ShiftY);
             panelMeleeWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
@@ -176,18 +170,11 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        private void BmpState_ShowHint(object sender, EventArgs e)
-        {
-            PanelHint.AddStep2Header(Creature.StateCreature.Name);
-            PanelHint.AddStep5Description(Creature.StateCreature.Description);
-        }
-
         internal Creature Creature { get => Entity as Creature; }
 
         internal override void ArrangeControls()
         {
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
-            labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
             separSecSkills.Width = panelAbilities.Width;
             panelStatistics.Height = pageControl.Height - panelStatistics.ShiftY - FormMain.Config.GridSize;
             lblProperties.Width = panelStatistics.Width;
@@ -200,8 +187,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             imgIcon.Level = Creature.GetLevel();
-            bmpState.Bitmap = Program.formMain.BmpListStateHero.GetImage(Creature.StateCreature.ImageIndex, true, false);
-            labelNameState.Text = Creature.StateCreature.Name;
 
             panelSpecialization.Entity = Creature.Specialization;// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
 

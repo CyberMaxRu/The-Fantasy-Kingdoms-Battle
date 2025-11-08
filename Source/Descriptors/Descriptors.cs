@@ -197,14 +197,6 @@ namespace Fantasy_Kingdoms_Battle
                 SecondarySkills.Add(new DescriptorSecondarySkill(n));
             }
 
-            // Загрузка конфигурации состояний существ
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\StatesCreature.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/StateCreature"))
-            {
-                StatesCreature.Add(new DescriptorStateCreature(n));
-            }
-
             // Загрузка конфигурации типов существ
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeCreatures.xml");
 
@@ -276,9 +268,6 @@ namespace Fantasy_Kingdoms_Battle
             //
             IndexPropertyScout = FindPropertyCreature("CreatureScout").Index;
 
-            //
-            StateCreatureDoFlagScout = FindStateCreature(FormMain.Config.StateCreatureDoScoutFlag);
-
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -317,7 +306,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
-        internal List<DescriptorStateCreature> StatesCreature { get; } = new List<DescriptorStateCreature>();
         internal List<DescriptorProperty> PropertiesCreature { get; } = new List<DescriptorProperty>();
         internal List<DescriptorNeed> NeedsCreature { get; } = new List<DescriptorNeed>();
         internal List<DescriptorInterest> InterestCreature { get; } = new List<DescriptorInterest>();
@@ -335,9 +323,6 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal int IndexPropertyScout { get; }
-
-        //
-        internal DescriptorStateCreature StateCreatureDoFlagScout { get; }
 
         //
         internal CapitalPage FindCapitalPage(string ID)
@@ -481,17 +466,6 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Группа предметов " + ID + " не найдена.");
 
             return null;
-        }
-
-        internal DescriptorStateCreature FindStateCreature(string ID)
-        {
-            foreach (DescriptorStateCreature sc in StatesCreature)
-            {
-                if (sc.ID == ID)
-                    return sc;
-            }
-
-            throw new Exception("Состояние существа " + ID + " не найдено.");
         }
 
         internal DescriptorProperty FindPropertyCreature(string ID)

@@ -26,14 +26,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(ph != null);
             Debug.Assert(ListHeroesForFlag.IndexOf(ph) == -1);
-            Debug.Assert(ph.StateCreature.ID == NameStateCreature.Nothing.ToString());
             Debug.Assert(ph.TargetByFlag == null);
             Owner.AssertNotDestroyed();
             Debug.Assert(ListHeroesForFlag.Count < MaxHeroesForFlag());
 
             ListHeroesForFlag.Add(ph);
             ph.TargetByFlag = Owner;
-            ph.SetState(ph.StateForFlag(TypeFlag));
         }
 
         internal void RemoveAttackingHero(Creature ph)
@@ -44,10 +42,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ph.TargetByFlag = null;
             ListHeroesForFlag.Remove(ph);
-            ph.SetState(NameStateCreature.Nothing);
         }
-
-
         internal int MaxHeroesForFlag()
         {
             switch (TypeFlag)

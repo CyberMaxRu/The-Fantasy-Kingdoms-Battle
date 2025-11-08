@@ -34,7 +34,6 @@
     <Content Include="Resources\Config\Descriptors\TypeConstructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeTraditions.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
-    <Content Include="Resources\Config\Descriptors\StatesCreature.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAttacks.xml" />
     <Content Include="Resources\Config\Descriptors\Constructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeCreatures.xml" />

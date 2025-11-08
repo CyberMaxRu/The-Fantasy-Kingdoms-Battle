@@ -614,7 +614,6 @@ namespace Fantasy_Kingdoms_Battle
                     foreach (Creature c in l.ComponentObjectOfMap.ListHeroesForFlag)
                     {
                         l.DoScout(c.CalcPercentScoutArea(l));
-                        c.ScoutExecuted();
                         FreeHeroes.Add(c);
                     }
 
@@ -1266,21 +1265,6 @@ namespace Fantasy_Kingdoms_Battle
 
             List<Creature> freeHeroes = new List<Creature>();// Список свободных героев
 
-            // Сначала сбрасываем всем состояние
-            foreach (Creature ph in CombatHeroes)
-            {
-                if ((ph.StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
-                    || (ph.StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
-                    || (ph.StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString())
-                    || (ph.StateCreature.ID == NameStateCreature.BattleWithPlayer.ToString()))
-                {
-                    ph.ClearState();
-                }
-
-                if (ph.StateCreature.ID == NameStateCreature.Nothing.ToString())
-                    freeHeroes.Add(ph);
-            }
-
             // Базовый алгоритм такой - идем по уменьшению приоритета, берем рандомных героев, ограничивая максимальным числом
             // Но сейчас всех героев делим поровну между флагами, без привязки к приоритету
             // Но учитываем максимальное число героев на логово
@@ -1297,7 +1281,6 @@ namespace Fantasy_Kingdoms_Battle
                     Creature ph = CombatHeroes[i] as Creature;
                     freeHeroes.Remove(ph);
                     FlagAttackToOpponent.ComponentObjectOfMap.AddHeroForFlag(ph);
-                    ph.SetState(NameStateCreature.BattleWithPlayer);
                 }
             }
 

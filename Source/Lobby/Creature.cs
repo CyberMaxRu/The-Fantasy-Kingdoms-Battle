@@ -23,8 +23,6 @@ namespace Fantasy_Kingdoms_Battle
             TypeCreature = tc;
             BattleParticipant = bp;
 
-            StateCreature = TypeCreature.PersistentStateHeroAtMap;
-
             if (TypeCreature.CategoryCreature == CategoryCreature.Hero)
             {
                 FullName = (TypeCreature.PrefixName.Length > 0 ? TypeCreature.PrefixName + " " : "")
@@ -137,8 +135,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
         internal Item Armour { get; private set; }// Доспех        
         internal Item Quiver { get; private set; }// Колчан
-        internal DescriptorStateCreature StateCreature { get; private set; }// Состояние (на карте)
-
 
         // From Hero
         internal Construction Construction { get; }// Здание, которому принадлежит существо
@@ -305,19 +301,6 @@ namespace Fantasy_Kingdoms_Battle
             return TypeCreature.DefaultPositionPriority * 1000 + posInPlayer;
         }
 
-        private void DoCustomDraw(Graphics g, int x, int y, bool drawState)
-        {
-            if (drawState && (Construction.Descriptor.ID != "Castle"))
-                Program.formMain.BmpListStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
-        }
-
-        internal void SetState(NameStateCreature state)
-        {
-            Debug.Assert(IsLive);
-
-            StateCreature = FormMain.Descriptors.FindStateCreature(state.ToString());
-        }
-
         internal int GetQuantityArrows()
         {
             return Quiver is null ? 0 : Quiver.Descriptor.QuantityShots;
@@ -380,7 +363,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void CustomDraw(Graphics g, int x, int y, bool drawState)
         {
-            DoCustomDraw(g, x, y, drawState);
         }
 
         protected void AddAbility(DescriptorAbility descriptor)
@@ -560,7 +542,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(PercentLocationForScout == 0);
 
                 LocationForScout = l;
-                StateCreature = FormMain.Descriptors.StateCreatureDoFlagScout;
                 if (this is Creature h)
                 {
                     h.TargetByFlag = l;
@@ -575,7 +556,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(PercentLocationForScout > 0);
 
-                StateCreature = TypeCreature.PersistentStateHeroAtMap;
                 if (this is Creature h)
                 {
                     LocationForScout.PayForHire -= h.PayForHire;
@@ -586,19 +566,6 @@ namespace Fantasy_Kingdoms_Battle
                 LocationForScout.ListCreaturesForScout.Remove(this);
                 LocationForScout = null;
             }
-        }
-
-        internal void ScoutExecuted()
-        {
-            StateCreature = TypeCreature.PersistentStateHeroAtMap;
-            if (this is Creature h)
-            {
-                h.PayForHire = 0;
-                h.TaxForGuild = 0;
-                h.PayForHireWithoutTax = 0;
-            }
-    
-            LocationForScout = null;
         }
 
         internal int CalcPercentScoutArea(Location l)
@@ -791,7 +758,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 panelHint.AddStep2Entity(this);
                 panelHint.AddStep4Level($"Уровень {Level}");
-                panelHint.AddStep45State((StateCreature.Name, Color.SkyBlue));
                 panelHint.AddStep5Description(TypeCreature.Description);
                 panelHint.AddStep7Reward(TypeCreature.TypeReward.Cost);
                 panelHint.AddStep8Greatness(TypeCreature.TypeReward.Greatness, 0);
@@ -827,42 +793,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Lobby.Layer.panelHeroInfo.Visible = true;
                 Lobby.Layer.panelHeroInfo.Entity = this;
-            }
-        }
-
-        internal void ClearState()
-        {
-            Debug.Assert(IsLive);
-            Debug.Assert((StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
-                || (StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString())
-                || (StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
-                || (StateCreature.ID == NameStateCreature.BattleWithPlayer.ToString()));
-            //Debug.Assert(TargetByFlag != null);// Убрано из-за локации
-
-            // Убираем себя из флага на логове
-            if (TargetByFlag != null)
-                TargetByFlag.ComponentObjectOfMap.RemoveAttackingHero(this);
-            SetState(NameStateCreature.Nothing);
-        }
-
-        internal NameStateCreature StateForFlag(TypeFlag typeFlag)
-        {
-            Debug.Assert(IsLive);
-
-            switch (typeFlag)
-            {
-                case TypeFlag.None:
-                    return NameStateCreature.Nothing;
-                case TypeFlag.Scout:
-                    return NameStateCreature.DoScoutFlag;
-                case TypeFlag.Attack:
-                    return NameStateCreature.DoAttackFlag;
-                case TypeFlag.Defense:
-                    return NameStateCreature.DoDefenseFlag;
-                case TypeFlag.Battle:
-                    return NameStateCreature.BattleWithPlayer;
-                default:
-                    throw new Exception($"Неизвестный тип флага: {typeFlag}");
             }
         }
 
