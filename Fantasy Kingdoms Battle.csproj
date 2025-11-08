@@ -38,7 +38,6 @@
     <Content Include="Resources\Config\Descriptors\Traditions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAbilities.xml" />
     <Content Include="Resources\Config\Descriptors\TypeConstructions.xml" />
-    <Content Include="Resources\Config\Descriptors\TypeLandscapes.xml" />
     <Content Include="Resources\Config\Descriptors\TypeTraditions.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
     <Content Include="Resources\Config\Descriptors\StatesCreature.xml" />
@@ -136,7 +135,6 @@
     <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Source\Descriptors\Location\DescriptorLocation.cs" />
     <Compile Remove="Updater\Form1.cs" />
     <Compile Remove="Updater\Form1.Designer.cs" />
     <Compile Remove="Updater\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />

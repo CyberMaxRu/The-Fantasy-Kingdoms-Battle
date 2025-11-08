@@ -39,9 +39,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             string idTypeLobby = GetStringNotNull(n, "TypeLobby");
             TypeLobby = FormMain.Descriptors.FindTypeLobby(idTypeLobby);
-            string idTypeLandscape = GetString(n, "TypeLandscape");
-            if (idTypeLandscape.Length > 0)
-                TypeLandscape = FormMain.Descriptors.FindTypeLandscape(idTypeLandscape);
 
             Players = new LobbySettingsPlayer[TypeLobby.QuantityPlayers];
             XmlNode np = n.SelectSingleNode("Players");
@@ -67,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         public LobbySettings(LobbySettings ls)
         {
             TypeLobby = ls.TypeLobby;
-            TypeLandscape = ls.TypeLandscape;
 
             Players = new LobbySettingsPlayer[ls.Players.Length];
             for (int i = 0; i < Players.Length; i++)
@@ -77,7 +73,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeLobby TypeLobby { get; }
-        internal DescriptorTypeLandscape TypeLandscape { get; set; }
         internal LobbySettingsPlayer[] Players { get; }
 
         internal void TuneLinks()
@@ -89,7 +84,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void WriteToXml(XmlTextWriter writer)
         {
             writer.WriteElementString("TypeLobby", TypeLobby.ID);
-            writer.WriteElementString("TypeLandscape", TypeLandscape is null ? "" : TypeLandscape.ID);
 
             writer.WriteStartElement("Players");
             foreach (LobbySettingsPlayer lsp in Players)
@@ -103,8 +97,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SetDefault()
         {
-            TypeLandscape = null;
-
             for (int i = 0; i < Players.Length; i++)
                 Players[i].SetDefault();
         }

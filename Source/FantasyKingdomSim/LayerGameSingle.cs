@@ -1020,7 +1020,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Location l = (sender as VCImage128).Entity as Location;
             PanelHint.AddStep2Header(l.Settings.Name);
-            PanelHint.AddStep5Description(l.Settings.TypeLandscape.Description);
         }
 
         internal void RestartLobby()

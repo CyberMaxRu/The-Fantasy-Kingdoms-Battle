@@ -53,7 +53,6 @@ namespace Fantasy_Kingdoms_Battle
 
             btnLocation = new VCIconButton48(panelSettings, FormMain.Config.GridSize, FormMain.Config.GridSize, -1);
             btnLocation.Click += BtnLocation_Click;
-            btnLocation.Tag = lobbySettings.TypeLandscape != null ? lobbySettings.TypeLandscape.Index : -1;
             lblNameLocation = new VCLabel(panelSettings, btnLocation.NextLeft(), btnLocation.ShiftY, Program.formMain.FontSmall, Color.White, btnLocation.Height, "");
             lblNameLocation.StringFormat.Alignment = StringAlignment.Near;
             lblNameLocation.StringFormat.LineAlignment = StringAlignment.Center;
@@ -110,28 +109,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnLocation_Click(object sender, EventArgs e)
         {
-            if (btnLocation.Tag == FormMain.Descriptors.TypeLandscapes.Count - 1)
-                btnLocation.Tag = -1;
-            else
-                btnLocation.Tag++;
-
-            lobbySettings.TypeLandscape = btnLocation.Tag == -1 ? null : FormMain.Descriptors.TypeLandscapes[btnLocation.Tag];
-
             UpdateNameLocation();
         }
 
         private void UpdateNameLocation()
         {
-            if (lobbySettings.TypeLandscape is null)
-            {
-                btnLocation.ImageIndex = FormMain.Config.Gui48_RandomSelect;
-                lblNameLocation.Text = "Случайная";
-            }
-            else
-            {
-                btnLocation.ImageIndex = lobbySettings.TypeLandscape.ImageIndex;
-                lblNameLocation.Text = lobbySettings.TypeLandscape.Name;
-            }
         }
     }
 }

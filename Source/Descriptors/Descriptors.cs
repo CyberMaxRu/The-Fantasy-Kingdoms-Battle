@@ -64,13 +64,6 @@ namespace Fantasy_Kingdoms_Battle
                 Traditions.Add(new DescriptorTradition(n));
             }
 
-            // Загрузка типов ландшафта
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeLandscapes.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeLandscape"))
-            {
-                TypeLandscapes.Add(new DescriptorTypeLandscape(n));
-            }
-
             // Загрузка конфигурации параметров населенных пунктов
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\CityParameters.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/CityParameter"))
@@ -280,9 +273,6 @@ namespace Fantasy_Kingdoms_Battle
             DefaultLevelTax = FindLevelTax(FormMain.Config.NameDefaultLevelTax);
 
             // Настраиваем связи
-            foreach (DescriptorTypeLandscape tl in TypeLandscapes)
-                tl.TuneLinks();
-
             foreach (DescriptorPoison p in Poisons)
                 p.TuneLinks();
 
@@ -364,7 +354,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorTimeOfWeek> TimesOfWeek { get; } = new List<DescriptorTimeOfWeek>();
         internal List<DescriptorTypeTradition> TypeTraditions { get; } = new List<DescriptorTypeTradition>();
         internal List<DescriptorTradition> Traditions { get; } = new List<DescriptorTradition>();
-        internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
@@ -696,17 +685,6 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Существо " + ID + " не найден.");
 
             return null;
-        }
-
-        internal DescriptorTypeLandscape FindTypeLandscape(string ID)
-        {
-            foreach (DescriptorTypeLandscape tt in TypeLandscapes)
-            {
-                if (tt.ID == ID)
-                    return tt;
-            }
-
-            throw new Exception("Тип ландшафта " + ID + " не найден.");
         }
 
         internal DescriptorLevelTax FindLevelTax(string ID)

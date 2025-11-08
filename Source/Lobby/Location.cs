@@ -116,11 +116,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity() => "Локация";
 
-        internal override int GetImageIndex()
-        {
-            return Settings.TypeLandscape.ImageIndex;
-        }
-
         internal override string GetName()
         {
             return Settings.Name;
@@ -253,8 +248,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PlayDefaultSoundSelect()
         {
-            if (Settings.TypeLandscape.UriSoundSelect != null)
-                Program.formMain.PlaySoundSelect(Settings.TypeLandscape.UriSoundSelect);
         }
 
         private CellMenuLocationSpell SearchCellMenuSpell(ConstructionSpell spell)
@@ -291,6 +284,11 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap GetBitmapBackground()
         {
             return Program.formMain.layerGame.MainControlbackground(Settings.Background);
+        }
+
+        internal override int GetImageIndex()
+        {
+            return -1;
         }
     }
 }

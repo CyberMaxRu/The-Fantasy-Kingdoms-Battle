@@ -12,15 +12,12 @@ namespace Fantasy_Kingdoms_Battle
     // Класс настройки локации типа лобби
     internal sealed class TypeLobbyLocationSettings : DescriptorEntity
     {
-        private string nameTypeLandscape;
-
         public TypeLobbyLocationSettings(TypeLobby typeLobby, XmlNode n, int quantitySlotLairs) : base(n)
         {
             TypeLobby = typeLobby;
 
             Name2 = XmlUtils.GetStringNotNull(n, "Name2");
             Coord = XmlUtils.GetPoint(n, "Coord");
-            nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
             Background = XmlUtils.GetStringNotNull(n, "Background");
             Visible = XmlUtils.GetBooleanNotNull(n, "Visible");
             PercentScoutedArea = XmlUtils.GetPercentNotNull(n, "PercentScoutedArea");
@@ -68,7 +65,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name2 { get; }// Наименование в падеже
         internal Point Coord { get; }// Координата локации на карте
         internal TypeLobby TypeLobby { get; }// Тип лобби
-        internal DescriptorTypeLandscape TypeLandscape { get; private set; }
         internal string Background { get; }// Название фоновой картинки
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
         internal bool Visible { get; }
@@ -82,9 +78,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void TuneLinks()
         {
             base.TuneLinks();
-
-            TypeLandscape = FormMain.Descriptors.FindTypeLandscape(nameTypeLandscape);
-            nameTypeLandscape = "";
 
             foreach (TypeLobbyLairSettings ls in LairsSettings)
             {
