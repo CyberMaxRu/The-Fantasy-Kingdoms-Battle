@@ -662,14 +662,13 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             // Расчет флагов на логова
-            List<Construction> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
+            /*List<Construction> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
             int maxSteps = FormMain.Config.MaxDurationBattleWithMonster * FormMain.Config.StepsInSecond;
 
             foreach (Construction pl in tempListLair)
             {
                 Battle b = null;
                 WindowBattle formBattle;
-                TypeFlag typeFlag;
 
                 if ((pl != null) && (pl.ComponentObjectOfMap.ListHeroesForFlag.Count > 0) && (pl.ComponentObjectOfMap.TypeFlag != TypeFlag.Battle))
                 {
@@ -731,7 +730,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (this is PlayerHuman h)
                         h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.Descriptor, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
                 }
-            }
+            
+            }*/
         }
 
         private void LairCaptured(DescriptorConstruction dc)
@@ -938,13 +938,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(FlagAttackToOpponent is null);
                 FlagAttackToOpponent = opponent.GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
-                FlagAttackToOpponent.AttackToCastle();
 
                 Debug.Assert(ListFlags.IndexOf(FlagAttackToOpponent) == -1);
                 ListFlags.Insert(0, FlagAttackToOpponent);
             }
-
-            Lobby.Layer.LairsWithFlagChanged();
         }
 
         internal Construction GetPlayerConstruction(DescriptorConstruction b, bool mustBeExists = true)
@@ -1191,67 +1188,6 @@ namespace Fantasy_Kingdoms_Battle
                 return;
 
             return;
-
-            List<Creature> freeHeroes = new List<Creature>();// Список свободных героев
-
-            // Базовый алгоритм такой - идем по уменьшению приоритета, берем рандомных героев, ограничивая максимальным числом
-            // Но сейчас всех героев делим поровну между флагами, без привязки к приоритету
-            // Но учитываем максимальное число героев на логово
-            // Это если речь идет о флаге атаки. На разведку идет ровно один герой
-            // Но первым делом отбираем героев на битву с другим игроком
-
-            if (Lobby.IsDayForBattleBetweenPlayers() && !SkipBattle)
-            {
-                Debug.Assert(FlagAttackToOpponent != null);
-
-                int takeHeroes = Math.Min(Lobby.TypeLobby.MaxHeroesForBattle, freeHeroes.Count);
-                for (int i = 0; i < takeHeroes; i++)
-                {
-                    Creature ph = CombatHeroes[i] as Creature;
-                    freeHeroes.Remove(ph);
-                    FlagAttackToOpponent.ComponentObjectOfMap.AddHeroForFlag(ph);
-                }
-            }
-
-            if (freeHeroes.Count == 0)
-                return;
-
-            if (CountActiveFlags() > 0)
-            {
-                foreach (Construction pl in ListFlags.Where(pl => (pl != null) && (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Scout)))
-                {
-                    pl.ComponentObjectOfMap.AddHeroForFlag(freeHeroes[0]);
-                    freeHeroes.RemoveAt(0);
-
-                    if (freeHeroes.Count == 0)
-                        break;
-                }
-
-                if (freeHeroes.Count > 0)
-                {
-                    int quantityFlagAttack = ListFlags.Where(pl => (pl != null) && ((pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Attack) || (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Defense))).Count();
-                    if (quantityFlagAttack > 0)
-                    {
-                        int heroesToFlag;
-                        int heroesPerFlag = Math.Max(freeHeroes.Count / quantityFlagAttack, 1);
-
-                        foreach (Construction pl in ListFlags.Where(pl => (pl != null) && ((pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Attack) || (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Defense))))
-                            if (pl != null)
-                            {
-                                heroesToFlag = Math.Min(freeHeroes.Count, heroesPerFlag);
-
-                                for (int i = 0; i < heroesToFlag; i++)
-                                {
-                                    pl.ComponentObjectOfMap.AddHeroForFlag(freeHeroes[0]);
-                                    freeHeroes.RemoveAt(0);
-                                }
-
-                                if (freeHeroes.Count == 0)
-                                    break;
-                            }
-                    }
-                }
-            }
         }
 
         private int CountActiveFlags()
@@ -1366,21 +1302,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 IsLive = false;
                 DayOfEndGame = Lobby.Turn;
-            }
-        }
-
-        internal static int TypeFlagToImageIndex(TypeFlag typeFlag)
-        {
-            switch (typeFlag)
-            {
-                case TypeFlag.Scout:
-                    return FormMain.Config.Gui48_FlagScout;
-                case TypeFlag.Defense:
-                    return FormMain.Config.Gui48_FlagDefense;
-                case TypeFlag.Attack:
-                    return FormMain.Config.Gui48_FlagAttack;
-                default:
-                    throw new Exception("Неизвестный тип флага: " + typeFlag.ToString() + ".");
             }
         }
 

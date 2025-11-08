@@ -29,15 +29,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Label lblDefenseRange;
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
-        private readonly VCButtonTargetLair btnTarget;
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            btnTarget = new VCButtonTargetLair(this);
-            btnTarget.ShiftX = panelSpecialization.ShiftX;
-            btnTarget.ShiftY = panelSpecialization.NextTop();
-            btnTarget.ShowFlag = false;
-
             btnDismiss = new Button()
             {
                 //Parent = this,
@@ -108,7 +102,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = $"{Hero.Gold}";
 
 

@@ -77,7 +77,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel labelNamePlayer;
 
         private readonly VisualControl panelLairWithFlags;
-        private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
         //private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
 
         private readonly PanelConstruction[,,] panels;
@@ -530,50 +529,10 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void LairsWithFlagChanged()
-        {
-            if (lobby.StateLobby == StateLobby.TurnHuman)
-                AdjustPanelLairsWithFlags();
-        }
-
         internal void LosesChanged()
         {
             if (lobby.StateLobby == StateLobby.TurnHuman)
                 AdjustPanelLoses();
-        }
-
-        private void AdjustPanelLairsWithFlags()
-        {
-            Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
-            Debug.Assert(lobby.CurrentPlayer.ListFlags.Count > 0);
-
-            // Приводим в соответствие количество кнопок и логов
-            // Для этого скрываем все кнопки, а потом делаем их видимыми.
-            // Это чтобы не создавать каждый раз заново кнопки при изменении их численности
-            while (listBtnTargetLair.Count < lobby.CurrentPlayer.ListFlags.Count)
-            {
-                listBtnTargetLair.Add(new VCButtonTargetLair(panelLairWithFlags));
-            }
-
-            foreach (VCButtonTargetLair b in listBtnTargetLair)
-                b.Visible = false;
-
-            // Сортируем логова и переназначаем ссылки на них у кнопок
-            int n = 0;
-            int left = 0;
-            foreach (Construction pl in lobby.CurrentPlayer.ListFlags)
-            {
-                listBtnTargetLair[n].ShiftX = left;
-                listBtnTargetLair[n].Entity = pl;
-                listBtnTargetLair[n].Visible = true;
-
-                left = listBtnTargetLair[n].NextLeft();
-                n++;
-            }
-
-            panelLairWithFlags.ShiftX = MainControl.Width - left;
-            panelLairWithFlags.Width = left;
-            MainControl.ArrangeControl(panelLairWithFlags);
         }
 
         private void AdjustPanelLoses()
@@ -763,7 +722,6 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем героев
             ShowEvents();
             AdjustPanelLoses();
-            AdjustPanelLairsWithFlags();
             ListHeroesChanged();
         }
 
@@ -929,7 +887,6 @@ namespace Fantasy_Kingdoms_Battle
 
             ShowLobby();
 
-            LairsWithFlagChanged();
             LosesChanged();
             UpdateListHeroes();
             ShowWarehouse();

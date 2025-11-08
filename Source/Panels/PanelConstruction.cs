@@ -24,9 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCEntityInQueue bmpQueue2;
         private readonly VCEntityInQueue bmpQueue3;
 
-        private readonly VCIconButton48 btnAction;
         private readonly VCIconButton48 btnInhabitants;
-        private readonly VCIconButton48 btnAttackHeroes;
         private readonly VCLabelValue lblRewardGold;
         private readonly VCLabelValue lblRewardGreatness;
 
@@ -78,20 +76,12 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
 
-            btnAction = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Battle);
-            btnAction.Click += BtnAction_Click;
-            btnAction.ShowHint += BtnAction_ShowHint;
-
             btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnInhabitants.Click += BtnInhabitants_Click;
             btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
 
-            btnAttackHeroes = new VCIconButton48(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, FormMain.Config.Gui48_Target);
-            btnAttackHeroes.Click += BtnAttackHeroes_Click;
-            btnAttackHeroes.ShowHint += BtnAttackHeroes_ShowHint;
-
             lblRewardGold = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), FormMain.Config.HintIncome, true);
-            lblRewardGold.Width = btnAction.ShiftX - FormMain.Config.GridSize - lblRewardGold.ShiftX;
+            lblRewardGold.Width = imgMapObject.NextLeft() - FormMain.Config.GridSize - lblRewardGold.ShiftX;
             lblRewardGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
             lblRewardGold.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGold.Hint = "Награда золотом за уничтожение";
@@ -162,7 +152,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             lblName.Text = Program.formMain.Settings.ShowNameConstruction ? Construction.GetName() : "";
-            lblName.Color = Construction.GetColorCaption();
+            //lblName.Color = Construction.GetColorCaption();
             imgMapObject.ImageIndex = Construction.GetImageIndex();
             imgMapObject.ImageIsEnabled = Construction.GetNormalImage();
             imgMapObject.Level = Construction.GetLevel();
@@ -332,49 +322,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblIncome.Visible = false;
                 btnHeroes.Visible = false;
 
-                btnAction.Visible = !Construction.ComponentObjectOfMap.Visible || (Construction.Descriptor.Category == CategoryConstruction.Lair);
-                if (btnAction.Visible)
-                {
-                    btnAction.ImageIsEnabled = true;// Construction.Player.ExistsFreeFlag();
-                    int level = 1;
-                    btnAction.Level = level == 0 ? "" : level.ToString();
-                    btnAction.LowText = Construction.RequiredGold().ToString();
-                }
-
-                if (btnAction.Visible)
-                {
-                    switch (Construction.TypeAction())
-                    {
-                        case TypeFlag.Scout:
-                            btnAction.ImageIndex = FormMain.Config.Gui48_FlagScout;
-                            btnInhabitants.Visible = false;
-                            break;
-                        case TypeFlag.Attack:
-                            btnAction.ImageIndex = FormMain.Config.Gui48_FlagAttack;
-                            btnInhabitants.Visible = Construction.Monsters.Count > 0;
-                            if (btnInhabitants.Visible)
-                                btnInhabitants.LowText = Construction.Monsters.Count.ToString();
-                            break;
-                        case TypeFlag.Defense:
-                            btnAction.ImageIndex = FormMain.Config.Gui48_FlagDefense;
-                            btnInhabitants.Visible = Construction.Monsters.Count > 0;
-                            if (btnInhabitants.Visible)
-                                btnInhabitants.LowText = Construction.Monsters.Count.ToString();
-                            break;
-                        default:
-                            throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
-                    }
-                }
-                else
-                {
-                    Debug.Assert(Construction.Monsters.Count == 0);
-                    btnInhabitants.Visible = false;
-                }
-
-                btnAttackHeroes.Visible = Construction.ComponentObjectOfMap.ListHeroesForFlag.Count > 0;
-                if (btnAttackHeroes.Visible)
-                    btnAttackHeroes.LowText = $"{Construction.ComponentObjectOfMap.ListHeroesForFlag.Count}/{Construction.ComponentObjectOfMap.MaxHeroesForFlag()}";
-
                 lblRewardGold.Visible = Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.Reward != null) && (Construction.Descriptor.Reward.Cost > 0);
                 if (lblRewardGold.Visible)
                 {
@@ -431,34 +378,6 @@ namespace Fantasy_Kingdoms_Battle
             base.SetEntity(po);
 
             Construction = po as Construction;
-            SwitchStyle();
-        }
-
-        private void SwitchStyle()
-        {
-            Visible = Construction != null;
-            if (Visible)
-            {
-                VisibleOur(Construction.Descriptor.IsOurConstruction);
-                VisibleEnemy(!Construction.Descriptor.IsOurConstruction);
-            }
-
-            void VisibleOur(bool visible)
-            {
-                btnHeroes.Visible = visible;
-                btnMainAction.Visible = visible;
-                lblIncome.Visible = visible;
-
-            }
-
-            void VisibleEnemy(bool visible)
-            {
-                btnAction.Visible = visible;
-                btnInhabitants.Visible = visible;
-                btnAttackHeroes.Visible = visible;
-                lblRewardGold.Visible = visible;
-                lblRewardGreatness.Visible = visible;
-            }
         }
 
         private void BtnInhabitants_ShowHint(object sender, EventArgs e)
@@ -466,67 +385,10 @@ namespace Fantasy_Kingdoms_Battle
             PanelHint.AddStep2Header("Существа");
         }
 
-        private void BtnAttackHeroes_ShowHint(object sender, EventArgs e)
-        {
-            PanelHint.AddStep2Header("Герои, выполняющие флаг");
-            PanelHint.AddStep5Description(Construction.ComponentObjectOfMap.ListHeroesForHint());
-        }
-
-        private void BtnAttackHeroes_Click(object sender, EventArgs e)
-        {
-            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity);
-            Construction.Lobby.Layer.panelLairInfo.SelectPageHeroes();
-        }
-
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            SelectThisConstruction(false);
-            Construction.CancelFlag();
-            Construction.Player.SetTaskForHeroes();
-        }
-
-        private void BtnAction_ShowHint(object sender, EventArgs e)
-        {
-            string nameAction;
-
-            switch (Construction.TypeAction())
-            {
-                case TypeFlag.Scout:
-                    PanelHint.AddStep2Header("Разведка");
-                    PanelHint.AddStep5Description("Установить флаг разведки для отправки героев к месту");
-                    nameAction = "Установить флаг разведки";
-                    break;
-                case TypeFlag.Attack:
-                    PanelHint.AddStep2Header("Атака");
-                    PanelHint.AddStep5Description("Установить флаг атаки для отправки героев к месту");
-                    nameAction = "Установить флаг атаки";
-                    break;
-                case TypeFlag.Defense:
-                    PanelHint.AddStep2Header("Защита");
-                    PanelHint.AddStep5Description("Установить флаг защиты для отправки героев к месту");
-                    nameAction = "Установить флаг защиты";
-                    break;
-                default:
-                    throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
-            }
-
-            PanelHint.AddStep12CostExecuting(nameAction, Construction.RequiredGold(), 0, 0, Construction.GetRequirements());
-        }
-
         private void BtnInhabitants_Click(object sender, EventArgs e)
         {
             Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity);
             Construction.Lobby.Layer.panelLairInfo.SelectPageInhabitants();
-        }
-
-        private void BtnAction_Click(object sender, EventArgs e)
-        {
-            if (btnAction.ImageIsEnabled)
-            {
-                SelectThisConstruction(false);
-
-                Construction.Player.SetTaskForHeroes();
-            }
         }
     }
 }

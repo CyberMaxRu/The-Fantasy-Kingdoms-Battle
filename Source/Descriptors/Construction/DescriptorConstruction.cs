@@ -11,8 +11,6 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum CategoryConstruction { Guild, Economic, Military, Temple, External, Lair, Place, BasePlace, ElementLandscape, Path, Magic };// Категория сооружения
-    internal enum PriorityExecution { None = -1, Normal = 0, Warning = 1, High = 2, Exclusive = 3 };// Приоритет выполнения флага
-    internal enum TypeFlag { None, Scout, Attack, Defense, Battle };// Тип флага
 
     // Тип сооружения - базовый класс для всех зданий, построек и мест
     internal sealed class DescriptorConstruction : DescriptorActiveEntity

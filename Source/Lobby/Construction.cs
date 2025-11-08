@@ -797,40 +797,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetTypeEntity() => Descriptor.TypeConstruction.Name;
 
-        internal Color GetColorCaption()
-        {
-            return ComponentObjectOfMap.Visible ? Color.MediumAquamarine : FormMain.Config.ColorMapObjectCaption(false);
-
-            switch (TypeAction())
-            {
-                case TypeFlag.Scout:
-                    return Color.LimeGreen;
-                case TypeFlag.Attack:
-                    return Color.OrangeRed;
-                case TypeFlag.Defense:
-                    return Color.DodgerBlue;
-                default:
-                    throw new Exception($"Неизвестный тип действия: {TypeAction()}");
-            }
-        }
-
-        internal int RequiredGold()
-        {
-            AssertNotDestroyed();
-
-            switch (TypeAction())
-            {
-                case TypeFlag.Scout:
-                    return CostScout();
-                case TypeFlag.Attack:
-                    return CostAttack();
-                case TypeFlag.Defense:
-                    return CostDefense();
-                default:
-                    throw new Exception($"Неизвестный тип действия: {TypeAction()}");
-            }
-        }
-
         internal ListTextRequirement GetRequirements()
         {
             AssertNotDestroyed();
@@ -838,36 +804,6 @@ namespace Fantasy_Kingdoms_Battle
             ListTextRequirement list = new ListTextRequirement();
 
             return list;
-        }
-
-        internal TypeFlag TypeAction()
-        {
-            AssertNotDestroyed();
-
-            if (!ComponentObjectOfMap.Visible)
-                return TypeFlag.Scout;
-            if (Descriptor.Category == CategoryConstruction.Lair)
-                return TypeFlag.Attack;
-            if (Descriptor.Category == CategoryConstruction.External)
-                return TypeFlag.Defense;
-            if (Descriptor.ID == FormMain.Config.IDConstructionCastle)
-                return TypeFlag.Battle;
-            return TypeFlag.None;
-        }
-
-        internal void AttackToCastle()
-        {
-            Debug.Assert(Descriptor.ID == FormMain.Config.IDConstructionCastle);
-            ComponentObjectOfMap.TypeFlag = TypeFlag.Battle;
-        }
-
-        internal void CancelFlag()
-        {
-            Debug.Assert(ComponentObjectOfMap.TypeFlag != TypeFlag.None);
-            AssertNotDestroyed();
-
-            //Player.ReturnResource(Cashback());
-            ComponentObjectOfMap.DropFlag();
         }
 
         internal void PrepareHintForInhabitantCreatures(PanelHint panelHint)

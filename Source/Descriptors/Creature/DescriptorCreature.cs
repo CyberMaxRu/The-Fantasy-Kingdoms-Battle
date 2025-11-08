@@ -191,18 +191,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            // Загружаем поправочные коэффициенты для флагов
-            XmlNode ncf = n.SelectSingleNode("CoefficientFlags");
-            if (ncf != null)
-            {
-                CoefficientFlags = new double[(int)TypeFlag.Battle + 1];
-
-                CoefficientFlags[(int)TypeFlag.Scout] = GetDouble(ncf, "Scout");
-                CoefficientFlags[(int)TypeFlag.Attack] = GetDouble(ncf, "Attack");
-                CoefficientFlags[(int)TypeFlag.Defense] = GetDouble(ncf, "Defense");
-                CoefficientFlags[(int)TypeFlag.Battle] = GetDouble(ncf, "Battle");
-            }
-
             XmlNode additBonus = n.SelectSingleNode("AdditionalBonus");
             if (additBonus != null)
                 AdditionalBonus = new CreatureModifyParameters(additBonus);
@@ -258,13 +246,11 @@ namespace Fantasy_Kingdoms_Battle
             // Проверки корректности данных
             if (CategoryCreature == CategoryCreature.Hero)
             {
-                Debug.Assert(CoefficientFlags != null);
                 Debug.Assert(TypeHero != TypeHero.None);
             }
             else
             {
                 Debug.Assert(PriorityConstructionForShoppings.Count == 0);
-                Debug.Assert(CoefficientFlags is null);
                 Debug.Assert(TypeHero == TypeHero.None);
             }
 
@@ -303,7 +289,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorItem DefaultWeaponRanged { get; private set; }// Стрелковое оружие
         internal DescriptorItem DefaultArmour { get; private set; }// Доспех по умолчанию
         internal DescriptorReward TypeReward { get; }// Награда за убийство существа
-        internal double[] CoefficientFlags { get; }// Поправочные коэффициенты для флагов
         internal List<PriorityConstructionForShopping> PriorityConstructionForShoppings { get; } = new List<PriorityConstructionForShopping>();
         //internal (string, int)[] PriorityConstructionsForBuy;
         internal bool CanBuild { get; }
