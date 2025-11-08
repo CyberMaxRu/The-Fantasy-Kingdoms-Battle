@@ -100,8 +100,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnShowAll_Click(object sender, EventArgs e)
         {
-            player.UnhideAll();
-            Program.formMain.layerGame.UpdateNeighborhoods();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

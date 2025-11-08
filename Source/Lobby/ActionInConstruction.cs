@@ -368,15 +368,10 @@ namespace Fantasy_Kingdoms_Battle
             else
             {*/
 
-            Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, Construction.Location, true, true, true, false, TypeNoticeForPlayer.Build);
-            Construction.Location.Lairs[Construction.Location.Lairs.IndexOf(Construction)] = pc;
-            Construction.Destroy();
+            Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, true, true, true, false, TypeNoticeForPlayer.Build);
             if (!Construction.Player.Lobby.InPrepareTurn)
                 Program.formMain.layerGame.SelectPlayerObject(pc);
             //}
-
-            if (Construction.Player.GetTypePlayer() == TypePlayer.Human)
-                Program.formMain.layerGame.UpdateNeighborhoods();
         }
 
         internal override void UpdatePurchase()
@@ -1237,37 +1232,6 @@ namespace Fantasy_Kingdoms_Battle
             base.PrepareNewDay();
 
             Spell.Selling.Reset();
-        }
-    }
-
-    sealed internal class CellMenuConstructionRecruitToGuild : CellMenuLocation
-    {
-        public CellMenuConstructionRecruitToGuild(Location l, DescriptorActionForEntity d) : base(l, d)
-        {
-        }
-
-        internal override string GetLevel() => "\u2026";// Троеточие
-        internal override string GetText() => Location.ComponentObjectOfMap.ListHeroesForFlag.Count > 0 ? Location.ComponentObjectOfMap.ListHeroesForFlag.Count.ToString() : "";
-
-        internal override void Click()
-        {
-            Location.StateMenu = 1;
-            Program.formMain.layerGame.UpdateMenu();
-        }
-
-        internal override void UpdatePurchase()
-        {
-            Location.Player.CompPurchase(Descriptor.CreatedEntity.ComponentCreating.Cost, PurchaseValue, TypeCreating.Hire);
-        }
-
-        internal override int GetImageIndex()
-        {
-            return Config.ImageIndexFirstItems + 184;
-        }
-
-        internal override void PrepareHint(PanelHint panelHint)
-        {
-            panelHint.AddSimpleHint("Информация о задании разведки");
         }
     }
 }

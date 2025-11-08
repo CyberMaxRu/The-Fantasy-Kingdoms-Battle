@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, Improvement, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
-        ReceivedBaseResource, Explore, HeroIsDead, FoundLocation, ConstructionDamaged, ConstructionRepaired, AddQuest };
+        ReceivedBaseResource, HeroIsDead, ConstructionDamaged, ConstructionRepaired, AddQuest };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
@@ -107,26 +107,6 @@ namespace Fantasy_Kingdoms_Battle
                     nameText = $"+{0}";
                     colorNameEntity = Color.LimeGreen;
                     break;
-                case TypeNoticeForPlayer.Explore:
-                    if (Entity is Construction c)
-                    {
-                        nameNotice = $"В {c.Location.Settings.Name2} обнаружен объект:";
-                        nameText = $"{c.GetName()}";
-                        colorNameEntity = Color.DarkGoldenrod;
-                    }
-                    else
-                        throw new Exception("Неизвестный тип сущности");
-                    break;
-                case TypeNoticeForPlayer.FoundLocation:
-                    if (Entity is Location l)
-                    {
-                        nameNotice = $"Обнаружена локация:";
-                        nameText = $"{l.Settings.Name}";
-                        colorNameEntity = Color.DarkGoldenrod;
-                    }
-                    else
-                        throw new Exception("Неизвестный тип сущности");
-                    break;
                 case TypeNoticeForPlayer.HeroIsDead:
                     Creature h = Entity as Creature;
                     nameNotice = $"Герой погиб ({h.TypeCreature.Name}):";
@@ -192,10 +172,6 @@ namespace Fantasy_Kingdoms_Battle
             else if (Entity is ConstructionImprovement ci)
             {
                 Program.formMain.layerGame.SelectConstruction(ci.Construction, 0);
-            }
-            else if (Entity is Location l)
-            {
-                Program.formMain.layerGame.SelectPlayerObject(l, 0);
             }
             else
                 throw new Exception("Неизвестная сущность.");

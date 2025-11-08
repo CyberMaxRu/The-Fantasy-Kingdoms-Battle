@@ -464,7 +464,6 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnInhabitants_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddStep2Header("Существа");
-            PanelHint.AddStep5Description(Construction.ListMonstersForHint());
         }
 
         private void BtnAttackHeroes_ShowHint(object sender, EventArgs e)

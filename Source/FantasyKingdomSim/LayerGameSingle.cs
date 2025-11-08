@@ -90,8 +90,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BigEntity selectedPlayerObject;
 
-        internal VCLocation[,] listLocations;
-
         private WindowAdvice winAdvice;
 
         private VCCell[] pageTournamentPlayers;
@@ -251,10 +249,6 @@ namespace Fantasy_Kingdoms_Battle
             panelMonsterInfo.Width = panelHeroInfo.Width;
             panelMonsterInfo.ApplyMaxSize();
 
-            panelLocationInfo = new PanelLocationInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-            panelLocationInfo.Width = panelHeroInfo.Width;
-            panelLocationInfo.ApplyMaxSize();
-
             panelEmptyInfo = new VisualControl(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY)
             {
                 Width = panelHeroInfo.Width,
@@ -326,7 +320,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(panelLairInfo.Height > 0);
             Debug.Assert(panelHeroInfo.Height > 0);
             Debug.Assert(panelMonsterInfo.Height > 0);
-            Debug.Assert(panelLocationInfo.Height > 0);
 
             int maxHeightPanelInfo = Math.Max(panelConstructionInfo.Height, panelLairInfo.Height);
             maxHeightPanelInfo = Math.Max(panelHeroInfo.Height, maxHeightPanelInfo);
@@ -430,7 +423,6 @@ namespace Fantasy_Kingdoms_Battle
         internal PanelLairInfo panelLairInfo { get; private set; }
         internal PanelHeroInfo panelHeroInfo { get; private set; }
         internal PanelMonsterInfo panelMonsterInfo { get; private set; }
-        internal PanelLocationInfo panelLocationInfo { get; private set; }
 
         internal VCMenuCell[,] CellsMenu { get; }
 
@@ -501,45 +493,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void ShowWarehouse()
         {
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<Entity>());
-        }
-
-        internal void UpdateNeighborhoods()
-        {
-            if (listLocations is null)
-            {
-                listLocations = new VCLocation[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
-
-                for (int y = 0; y < lobby.TypeLobby.MapHeight; y++)
-                    for (int x = 0; x < lobby.TypeLobby.MapWidth; x++)
-                    {
-                        VCLocation vcl = new VCLocation(pageMap.Page, 0, 0);
-                        vcl.ShiftX = x * (vcl.Width + Config.GridSize);
-                        vcl.ShiftY = y * (vcl.Height + Config.GridSize);
-                        listLocations[y, x] = vcl;
-                    }
-
-                pageMap.Page.ArrangeControls();
-            }
-
-            for (int y = 0; y < lobby.TypeLobby.MapHeight; y++)
-                for (int x = 0; x < lobby.TypeLobby.MapWidth; x++)
-                    listLocations[y, x].Location = curAppliedPlayer.Locations[y, x];
-
-            return;
-            /*Location l = curAppliedPlayer.CurrentLocation;
-            Debug.Assert(l != null);
-
-            pageLocation.ImageIndex = l.Settings.TypeLandscape.ImageIndex;
-            pageLocation.Caption = l.Settings.Name;
-            pageLocation.Hint = l.Settings.Name;
-
-            for (int y = 0; y < lobby.TypeLobby.LairsHeight; y++)
-                for (int x = 0; x < lobby.TypeLobby.LairsWidth; x++)
-                {
-                    constructionsOfLocation[y, x].Entity = l.Lairs[y, x];
-                    constructionsOfLocation[y, x].Visible = constructionsOfLocation[y, x].Entity != null;
-                }
-            */
         }
 
         private void ShowEvents()
@@ -713,29 +666,15 @@ namespace Fantasy_Kingdoms_Battle
                     selectedPlayerObject.HideInfo();
                 }
 
-                if (po is Location l)
-                {
-                    pageMap.PageImage = l.GetBitmapBackground();
-                    pageControl.ActivatePage(pageMap);
-                }
-                else
-                {
                     if (po is Construction c)
                     {
-                        if (c.Location != null)
-                        {
-                            pageMap.PageImage = c.Location.GetBitmapBackground();
-                        }
                     }
                     else
                         pageMap.PageImage = MainControlbackground("Map");
-                }
 
                 UpdateBackgroundImage();
 
                 selectedPlayerObject = po;
-                if ((po == null) && (pageControl.CurrentPage.Location != null))
-                    selectedPlayerObject = pageControl.CurrentPage.Location;
 
                 if (selectedPlayerObject != null)
                 {
@@ -783,24 +722,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SelectConstruction(Construction construction, int selectPage = -1)
         {
-            if (construction.Descriptor.Page != null)
-            {
-                pageControl.ActivatePage(pagesCapital[construction.Descriptor.Page.Index]);
-            }
-            else
-            {
-                SetPageLocation(construction.Location, false);
-                pageControl.ActivatePage(pageMap);
-            }
-
+            pageControl.ActivatePage(pagesCapital[construction.Descriptor.Page.Index]);
             SelectPlayerObject(construction, selectPage);
-        }
-
-        internal void SetPageLocation(Location l, bool showInfo)
-        {
-            curAppliedPlayer.CurrentLocation = l;
-            //pageLocation.PageImage = l.Settings.TypeLandscape.GetBackgroundImage();
-            UpdateNeighborhoods();
         }
 
         internal void UpdateMenu()
@@ -849,9 +772,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (pb.Descriptor.IsInternalConstruction && (pb.Descriptor.Category != CategoryConstruction.Temple))
                     pb.Descriptor.Panel.Entity = pb;
             }
-
-            // Показываем логова
-            UpdateNeighborhoods();
 
             // Показываем героев
             ShowEvents();
@@ -920,23 +840,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (lobby is null)
                     Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
             }
-        }
-
-        private void Map_Click(object sender, EventArgs e)
-        {
-            /*Location l = (sender as VCImage128).Entity as Location;
-
-            //Utils.Assert(imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected);
-            imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = false;
-            SelectPlayerObject(l);
-            SetPageLocation(l, true);
-            imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = true;*/
-        }
-
-        private void Location_ShowHint(object sender, EventArgs e)
-        {
-            Location l = (sender as VCImage128).Entity as Location;
-            PanelHint.AddStep2Header(l.Settings.Name);
         }
 
         internal void RestartLobby()
@@ -1044,7 +947,6 @@ namespace Fantasy_Kingdoms_Battle
             UpdateListHeroes();
             ShowWarehouse();
             AdjustPageTournament();
-            UpdateNeighborhoods();
             //AdjustNeighborhood();
             //ShowPlayerNotices();
         }
@@ -1363,7 +1265,6 @@ namespace Fantasy_Kingdoms_Battle
             panelLairInfo.Height = panelConstructionInfo.Height;
             panelHeroInfo.Height = panelConstructionInfo.Height;
             panelMonsterInfo.Height = panelConstructionInfo.Height;
-            panelLocationInfo.Height = panelConstructionInfo.Height;
             panelEmptyInfo.Height = panelConstructionInfo.Height;
 
             AdjustNamePlayer();

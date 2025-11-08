@@ -33,7 +33,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap PageImage { get; set; }
         internal BigEntity SelectedPlayerObject { get; set; }
         internal TypeLobbyLocationSettings Layer { get; }
-        internal Location Location { get; private set; }
 
         internal override void Draw(Graphics g)
         {

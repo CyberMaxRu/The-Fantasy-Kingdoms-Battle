@@ -160,19 +160,6 @@ namespace Fantasy_Kingdoms_Battle
                     new Construction(this, tck);
             }
 
-            Locations = new Location[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
-            foreach (TypeLobbyLocationSettings tll in lobby.TypeLobby.Locations)
-            {
-                Location l = new Location(this, tll);
-                Locations[l.Settings.Coord.Y, l.Settings.Coord.X] = l;
-            }
-
-            foreach (Location l in Locations)
-                foreach (Construction c in l.Lairs)
-                    c.TuneLinks();
-
-            //
-
             /*foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)
             {
                 l = new Location(this, ls);
@@ -186,8 +173,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }*/
 
-            CurrentLocation = LocationCapital;
-
             // Инициализация логов
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs, true);
 
@@ -195,8 +180,6 @@ namespace Fantasy_Kingdoms_Battle
             Castle = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
             Castle.DoDamage(500);
-            Graveyard = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDCityGraveyard));
-            GuildofBuilders = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDGuildOfBuilders));
 
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
@@ -205,7 +188,6 @@ namespace Fantasy_Kingdoms_Battle
             Creature advisor = Castle.HireHero(FormMain.Descriptors.FindCreature("Advisor"), 0);
             Creature captain = Castle.HireHero(FormMain.Descriptors.FindCreature("Captain"), 0);
             Creature treasurer = Castle.HireHero(FormMain.Descriptors.FindCreature("Treasurer"), 0);
-            GuildofBuilders.HireHero(FormMain.Descriptors.FindCreature("Builder"), 0);
 
             UpdateBuilderInfo();
             FreeBuilders = CurrentBuilders;
@@ -279,16 +261,6 @@ namespace Fantasy_Kingdoms_Battle
             Initialization = false;
         }
 
-        internal void PrepareNewDay()
-        {
-            ExtraLevelUp = 0;
-            ExtraResearch = 0;
-
-            // Начало хода у локации
-            foreach (Location l in Locations)
-                l.PrepareNewDay();
-        }
-
         internal void ReceiveResources()
         {
             /*
@@ -311,11 +283,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PrepareTurn(bool beginOfDay)
         {
-            foreach (Location l in Locations)
-            {
-                l.CalcPercentScoutToday();
-            }
-                
             //
             List<Creature> listForDelete = new List<Creature>();
 
@@ -605,23 +572,6 @@ namespace Fantasy_Kingdoms_Battle
                 //if (u.Hero.CounterConstructionForBuy > 0)
                 //    u.Hero.DoShopping(u.Construction);
             }
-
-            // Выполняем разведку
-            foreach (Location l in Locations)
-            {
-                if (l.ComponentObjectOfMap.ListHeroesForFlag.Count > 0)
-                {
-                    foreach (Creature c in l.ComponentObjectOfMap.ListHeroesForFlag)
-                    {
-                        l.DoScout(c.CalcPercentScoutArea(l));
-                        FreeHeroes.Add(c);
-                    }
-
-                    l.PayForHire = 0;
-                    l.FindScoutedConstructions();
-                    l.ComponentObjectOfMap.ListHeroesForFlag.Clear();
-                }
-            }
         }
 
         //
@@ -660,7 +610,7 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, Location location, int quantity, TypeNoticeForPlayer typeNotice)
+        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, int quantity, TypeNoticeForPlayer typeNotice)
         {
             Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
             Debug.Assert(level <= typeConstruction.MaxLevel);
@@ -764,8 +714,6 @@ namespace Fantasy_Kingdoms_Battle
                         if (b.Winner == this)
                         {
                             // Победил игрок
-                            pl.DoCapture();
-
                             if (!pl.Descriptor.IsOurConstruction)
                                 LairCaptured(pl.Descriptor);
                         }
@@ -776,7 +724,6 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else if (pl.ComponentObjectOfMap.TypeFlag == TypeFlag.Defense)
                     {
-                        pl.DoDefense();
                     }
                     else
                         throw new Exception("Неизвестный флаг: " + pl.ComponentObjectOfMap.TypeFlag.ToString());
@@ -858,11 +805,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока
         internal List<VCCustomNotice> ListNoticesForPlayer { get; } = new List<VCCustomNotice>();// Список событий во владении
 
-        // Локации
-        internal Location[,] Locations { get; }// Карта локаций
-        internal Location LocationCapital { get; }
-        internal Location CurrentLocation { get; set; }// Текущая выбранная локация
-
         //
         internal int PercentCorruption { get; set; }//
         internal int ChangeCorruption { get; set; }
@@ -897,10 +839,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Construction> ListFlags { get; } = new List<Construction>();
         internal int LairsScouted { get; private set; }
         internal int LairsShowed { get; private set; }
-
-        //
-        internal Construction GuildofBuilders{ get; }// Гильдия строителей
-        internal Construction Graveyard { get; }// Кладбище игрока
 
         // Строители
         internal int MaxBuilders { get; private set; }// Максимальное количество строителей
@@ -1017,15 +955,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (pb.Descriptor == b)
                     return pb;
-            }
-
-            foreach (Location l in Locations)
-            {
-                foreach (Construction c in l.Lairs)
-                {
-                    if (c.Descriptor == b)
-                        return c;
-                }
             }
 
             if (!mustBeExists)
@@ -1412,9 +1341,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }*/
 
-            CreateExternalConstructions(FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse, TypeNoticeForPlayer.Build);
+            CreateExternalConstructions(FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse), 1, sb.PeasantHouse, TypeNoticeForPlayer.Build);
             DescriptorConstruction holyPlace = FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace);
-            CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace, TypeNoticeForPlayer.Explore);
             ScoutRandomLair(sb.Scouting, true);
 
             startBonusApplied = true;
@@ -1724,22 +1652,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UnhideAll()
         {
-            foreach (Location l in Locations)
-            {
-                if (!l.Visible)
-                {
-                    l.Visible = true;
-                    l.DoScout(l.PercentNonScoutedArea);
-                }
-
-                foreach (Construction lc in l.Lairs)
-                {
-                    if (!lc.ComponentObjectOfMap.Visible)
-                    {
-                        lc.Unhide(false);
-                    }
-                }
-            }
         }
 
         internal void AddNoticeForPlayer(VCCustomNotice notice)
@@ -1771,24 +1683,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListNoticesForPlayer.IndexOf(e) != -1);
 
             ListNoticesForPlayer.Remove(e);
-        }
-
-        internal void SetScoutForHero(Creature c, Location l)
-        {
-            if (l != null)
-            {
-                Debug.Assert(FreeHeroes.IndexOf(c) != -1);
-                SpendGold((c as Creature).Hire());
-                c.SetLocationForScout(l);
-                FreeHeroes.Remove(c);
-            }
-            else
-            {
-                Debug.Assert(FreeHeroes.IndexOf(c) == -1);
-                c.SetLocationForScout(l);
-                ReturnGold((c as Creature).Unhire());
-                FreeHeroes.Add(c);
-            }
         }
 
         internal void AddActionToQueue(ActionInConstruction a)
@@ -1935,8 +1829,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateBuilderInfo()
         {
-            MaxBuilders = GuildofBuilders.Descriptor.Levels[GuildofBuilders.Level].MaxInhabitant;
-            CurrentBuilders = GuildofBuilders.Heroes.Count;
         }
 
         internal void SelectTradition(DescriptorTradition td, int level)

@@ -89,9 +89,6 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentPage.ManualSelected = true;
                 CurrentPage.Page.Visible = true;
 
-                if ((CurrentPage.Location != null) && (CurrentPage.SelectedPlayerObject is null))
-                    CurrentPage.SelectedPlayerObject = CurrentPage.Location;
-
                 Program.formMain.layerGame?.SelectPlayerObject(CurrentPage.SelectedPlayerObject);
 
                 PageChanged?.Invoke(this, new EventArgs());

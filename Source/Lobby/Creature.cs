@@ -169,7 +169,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int DayOfDeath { get; private set; }// День смерти
 
         // Действия
-        internal Location LocationForScout { get; set; }// Локация, назначенная существу для разведки
         internal int PercentLocationForScout { get; set; }// Сколько процентов локации будет разведано
 
 
@@ -301,9 +300,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(Abode != null);
             Debug.Assert(Abode.Heroes.IndexOf(this) != -1);
-
-            // Перемещаем героя из его сооружения на кладбище
-            NeedMoveToAbode = Player.Graveyard;
 
             Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.HeroIsDead);
         }
@@ -515,48 +511,6 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
-        }
-
-        internal void SetLocationForScout(Location l)
-        {
-            if (l != null)
-            {
-                Debug.Assert(l.Player == BattleParticipant);
-                //Debug.Assert(StateCreature != FormMain.Descriptors.StateCreatureDoFlatScout);
-                Debug.Assert(LocationForScout is null);
-                Debug.Assert(PercentLocationForScout == 0);
-
-                LocationForScout = l;
-                if (this is Creature h)
-                {
-                    h.TargetByFlag = l;
-                    LocationForScout.PayForHire += h.PayForHire;
-                }
-
-                PercentLocationForScout = CalcPercentScoutArea(LocationForScout);
-                LocationForScout.ListCreaturesForScout.Add(this);
-                LocationForScout.CalcPercentScoutToday();
-            }
-            else
-            {
-                Debug.Assert(PercentLocationForScout > 0);
-
-                if (this is Creature h)
-                {
-                    LocationForScout.PayForHire -= h.PayForHire;
-                    h.TargetByFlag = null;
-                }
-                LocationForScout.CalcPercentScoutToday();
-                PercentLocationForScout = 0;
-                LocationForScout.ListCreaturesForScout.Remove(this);
-                LocationForScout = null;
-            }
-        }
-
-        internal int CalcPercentScoutArea(Location l)
-        {
-            // Вычисляем процент локации, который разведывает существо согласно уровню разведки
-            return Convert.ToInt32(Properties.PropertyScout * l.Settings.PercentScoutAreaByUnit / 100.0000);
         }
 
         internal override string GetTypeEntity() => TypeCreature.Name;

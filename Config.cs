@@ -238,12 +238,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IDPeasantHouse.Length > 0);
             IDHolyPlace = xmlDoc.SelectSingleNode("Game/Links/HolyPlace").InnerText;
             Debug.Assert(IDHolyPlace.Length > 0);
-            IDTradePost = xmlDoc.SelectSingleNode("Game/Links/TradePost").InnerText;
-            Debug.Assert(IDTradePost.Length > 0);
-            IDCityGraveyard = xmlDoc.SelectSingleNode("Game/Links/CityGraveyard").InnerText;
-            Debug.Assert(IDCityGraveyard.Length > 0);
-            IDGuildOfBuilders = xmlDoc.SelectSingleNode("Game/Links/GuildOfBuilders").InnerText;
-            Debug.Assert(IDGuildOfBuilders.Length > 0);
             NameDefaultLevelTax = xmlDoc.SelectSingleNode("Game/Interface/DefaultLevelTax").InnerText;
             Debug.Assert(NameDefaultLevelTax.Length > 0);
 
@@ -455,9 +449,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string IDConstructionCastle { get; private set; }// ID Замка
         internal string IDPeasantHouse { get; private set; }// ID крестьянского дома
         internal string IDHolyPlace { get; private set; }// ID Святой земли
-        internal string IDTradePost { get; private set; }// ID торгового поста
-        internal string IDCityGraveyard { get; private set; }// ID торгового поста
-        internal string IDGuildOfBuilders { get; private set; }// ID гильдии строителей
         internal string NameDefaultLevelTax { get; private set; }// Уровень налогов по умолчанию
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада

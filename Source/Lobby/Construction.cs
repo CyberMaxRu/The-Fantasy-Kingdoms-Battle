@@ -28,7 +28,6 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIsOwner = true;
             PlayerCanOwn = true;
             IsEnemy = false;
-            Location = null;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
 
             TuneByCreate();
@@ -43,29 +42,8 @@ namespace Fantasy_Kingdoms_Battle
             TuneConstructAfterCreate();
         }
 
-        // Конструктор для сооружений, которые создаются для локации в начале миссии
-        public Construction(Location l, TypeLobbyLairSettings ls) : base(ls.DescriptorConstruction, l.Lobby, l.Player)
-        {
-            Assert(!ls.DescriptorConstruction.IsInternalConstruction);
-
-            Descriptor = ls.DescriptorConstruction;
-            PlayerIsOwner = ls.Own;
-            PlayerCanOwn = ls.CanOwn;
-            IsEnemy = ls.IsEnemy;
-            Location = l;
-            ComponentObjectOfMap = new ComponentObjectOfMap(this, ls.Visible);
-            IDPathToLocation = ls.PathToLocation;
-
-            TuneByCreate();
-
-            if (Descriptor.DefaultLevel == 1)
-                Build(false, true);
-
-            TuneConstructAfterCreate();
-        }
-
         // Конструктор для сооружений, которые создаются в процессе игры
-        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, Location location, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
+        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
         {
             Assert(!dc.IsInternalConstruction);
             Assert((dc.Category == CategoryConstruction.Lair) || (dc.Category == CategoryConstruction.External) || (dc.Category == CategoryConstruction.Temple)
@@ -75,7 +53,6 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = dc;
             X = x;
             Y = y;
-            Location = location;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
             IsEnemy = isEnemy;
@@ -130,13 +107,11 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Creature> Heroes { get; } = new List<Creature>();
 
         // Свойства для внешних сооружений
-        internal Location Location { get; set; }// Локация, на которой находится сооружение
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
         internal int PercentScoutForFound { get; set; }// Процент разведки локации, чтобы найти сооружение
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
         internal string IDPathToLocation { get; } = "";//
-        internal Location NextLocation { get; private set; }// Дескриптор пути в другую локацию
         internal List<Creature> Monsters { get; } = new List<Creature>();// Монстры текущего уровня
 
         // Small-сущности в сооружении
@@ -713,14 +688,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     cm.PrepareNewDay();
                 }
-
-                if (Descriptor.ID != FormMain.Config.IDCityGraveyard)
-                {
-                    foreach (Creature h in Heroes)
-                    {
-                        h.PrepareNewDay();
-                    }
-                }
             }
 
             foreach (ActionInConstruction cmc in Actions)
@@ -822,20 +789,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            if (ComponentObjectOfMap.Visible)
-            {
-                if (NextLocation is null)
-                {
-                    if ((Level > 0) && Descriptor.Levels[Level].NewName)
-                        return Descriptor.Levels[Level].Name;
+            if ((Level > 0) && Descriptor.Levels[Level].NewName)
+                return Descriptor.Levels[Level].Name;
 
-                    return Descriptor.Name;
-                }
-                else
-                    return "Путь в " + NextLocation.Settings.Name;
-            }
-            else
-                return "Неизвестное место";
+            return Descriptor.Name;
         }
 
         internal override string GetTypeEntity() => Descriptor.TypeConstruction.Name;
@@ -913,139 +870,6 @@ namespace Fantasy_Kingdoms_Battle
             ComponentObjectOfMap.DropFlag();
         }
 
-        internal void Unhide(bool needNotice)
-        {
-            Debug.Assert(Descriptor.Category != CategoryConstruction.Guild);
-            Debug.Assert(Descriptor.Category != CategoryConstruction.Economic);
-            Debug.Assert(Descriptor.Category != CategoryConstruction.Temple);
-            Debug.Assert(Descriptor.Category != CategoryConstruction.Military);
-            //Debug.Assert(TypeConstruction.Category != CategoryConstruction.External);
-            Debug.Assert(!ComponentObjectOfMap.Visible);
-            Debug.Assert(ComponentObjectOfMap.TypeFlag == TypeFlag.None);
-            Debug.Assert(!Destroyed);
-
-            ComponentObjectOfMap.Visible = true;
-            if (needNotice)
-                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Explore);
-
-            if (NextLocation != null)
-            {
-                NextLocation.Visible = true;
-
-                if (needNotice)
-                    Player.AddNoticeForPlayer(NextLocation, TypeNoticeForPlayer.FoundLocation);
-            }
-        }
-
-        // Сооружение уничтожено 
-        internal void Destroy()
-        {
-            AssertNotDestroyed();
-
-            // Убираем себя из списка логов игрока
-            Player.RemoveLair(this);
-
-            // Если сооружение было выбрано, очищаем ссылку
-            Lobby.Layer.ObjectDestroyed(this);
-            Destroyed = true;
-        }
-
-        // Логово захвачено
-        internal void DoCapture()
-        {
-            AssertNotHidden();
-            Debug.Assert(ComponentObjectOfMap.TypeFlag == TypeFlag.Attack);
-            Debug.Assert(ComponentObjectOfMap.ListHeroesForFlag.Count > 0);
-
-            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
-            HandOutGoldHeroes();
-
-            ComponentObjectOfMap.DropFlag();
-
-            Player.ApplyReward(this);
-            Destroy();
-
-            // Ставим тип места, который должен быть после зачистки
-            Debug.Assert(!(Descriptor.TypePlaceForConstruct is null));
-
-            Construction pl = new Construction(Player, Descriptor.TypePlaceForConstruct, Descriptor.DefaultLevel, X, Y, Location, true, true, true, false, TypeNoticeForPlayer.None);
-            pl.ComponentObjectOfMap.Visible = true;
-            Location.Lairs.Add(pl);
-        }
-
-        internal void DoDefense()
-        {
-            AssertNotHidden();
-            AssertNotDestroyed();
-            Debug.Assert(ComponentObjectOfMap.TypeFlag == TypeFlag.Defense);
-            Debug.Assert(ComponentObjectOfMap.ListHeroesForFlag.Count > 0);
-
-            // Раздаем награду
-            HandOutGoldHeroes();
-
-            // Убираем себя из списка логов игрока
-            Player.RemoveLair(this);
-
-            Destroyed = true;
-        }
-
-        internal void MonsterIsDead(Creature m)
-        {
-            Debug.Assert(m != null);
-            Debug.Assert(m.BattleParticipant == this);
-            Debug.Assert(Monsters.IndexOf(m) != -1);
-
-            m.SetIsDead();
-            CombatHeroes.Remove(m);
-            Monsters.Remove(m);
-
-            if (Lobby.Layer.PlayerObjectIsSelected(m))
-                Lobby.Layer.SelectPlayerObject(null);
-        }
-
-        // Раздаем деньги за флаг героям
-        private void HandOutGoldHeroes()
-        {
-/*            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
-            if (listAttackedHero.Count > 0)
-            {
-                Debug.Assert(SpendedGoldForSetFlag != null);
-
-                // Определяем, по сколько денег достается каждому герою
-                int goldPerHero = SpendedGoldForSetFlag.ValueGold() / listAttackedHero.Count;
-                int delta = SpendedGoldForSetFlag.ValueGold() - goldPerHero * listAttackedHero.Count;
-                Debug.Assert(goldPerHero * listAttackedHero.Count + delta == SpendedGoldForSetFlag.ValueGold());
-
-                foreach (Hero h in listAttackedHero)
-                    h.AddGold(goldPerHero);
-
-                // Остаток отдаем первому герою
-                if (delta > 0)
-                    listAttackedHero[0].AddGold(delta);
-            }*/
-        }
-
-        internal string ListMonstersForHint()
-        {
-            if (ComponentObjectOfMap.Visible)
-            {
-                if (Monsters.Count == 0)
-                    return "Нет существ";
-
-                string list = "";
-                int pos = 1;
-                foreach (Creature m in Monsters)
-                {
-                    list += (list != "" ? Environment.NewLine : "") + $"{pos}. {m.TypeCreature.Name} ({m.Level})";
-                    pos++;
-                }
-
-                return list;
-            }
-            else
-                return "Пока место не разведано, существа в нем неизвестны";
-        }
-
         internal void PrepareHintForInhabitantCreatures(PanelHint panelHint)
         {
             if (Heroes.Count > 0)
@@ -1070,9 +894,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            if (NextLocation != null)
-                return NextLocation.GetImageIndex();
-            else if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
+            if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
                 return ComponentObjectOfMap.Visible ? Descriptor.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
             else
                 return FormMain.Config.Gui48_Battle;
@@ -1455,23 +1277,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Level > 0);
 
             return gold * Descriptor.Levels[Level].Tax / 100;
-        }
-
-        internal void TuneLinks()
-        {
-            if (IDPathToLocation.Length > 0)
-            {
-                foreach (Location l in Player.Locations)
-                {
-                    if (IDPathToLocation == l.Settings.ID)
-                    {
-                        NextLocation = l;
-                        break;
-                    }
-                }
-
-                Debug.Assert(NextLocation != null);
-            }
         }
 
         internal override Color GetSelectedColor() => SelectedColor;

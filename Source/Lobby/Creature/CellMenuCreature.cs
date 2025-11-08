@@ -24,10 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             switch (ModeText)
             {
                 case ModeTextForCreature.Hire:
-                    if (BigEntity is Location l)
-                        return Creature != null ? Utils.FormatPercent((Creature as Creature).CalcPercentScoutArea(l)).ToString() : "";
-                    else
-                        return "";
+                    return "";
                 case ModeTextForCreature.Scout:
                     return Creature != null ? Utils.FormatPercent(Creature.PercentLocationForScout) : "";
                 default:
@@ -68,8 +65,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint(PanelHint panelHint)
         {
-            if (BigEntity is Location l)
-                panelHint.AddSimpleHint($"Разведка: {Utils.FormatPercent(Creature.CalcPercentScoutArea(l))}");
         }
     }
 

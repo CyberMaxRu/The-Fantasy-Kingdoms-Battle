@@ -254,16 +254,6 @@ namespace Fantasy_Kingdoms_Battle
             Player1.BattleCalced = true;
             Player2.BattleCalced = true;
 
-            // Если вторая сторона - логово, удаляем убитых монстров
-            if (Player2 is Construction pl)
-            {
-                foreach (HeroInBattle hb in DeadHeroes)
-                {
-                    if (hb.Player == Player2)
-                        pl.MonsterIsDead(hb.PlayerHero as Creature);
-                }
-            }
-
             void ApplyWinAndLose(BattleParticipant winner, BattleParticipant loser)
             {
                 if ((winner is Player w) && (loser is Player l))
