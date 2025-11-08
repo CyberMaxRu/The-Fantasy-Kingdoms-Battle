@@ -664,23 +664,6 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        private void LairCaptured(DescriptorConstruction dc)
-        {
-            Debug.Assert(!dc.IsOurConstruction);
-
-            if (destroyedLair.ContainsKey(dc))
-                destroyedLair[dc]++;
-            else
-                destroyedLair.Add(dc, 1);
-        }
-
-        internal int LairsDestroyed(DescriptorConstruction dc)
-        {
-            Debug.Assert(!dc.IsOurConstruction);
-
-            return destroyedLair.ContainsKey(dc) ? destroyedLair[dc] : 0;
-        }
-
         internal int TypeConstructionBuilded(DescriptorTypeConstruction typeConstruction)
         {
             int builded = 0;
@@ -774,8 +757,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorTypeTradition TypeTradition2 { get; private set; }// Второстепенная традиция
         internal DescriptorTypeTradition TypeTradition3 { get; private set; }// Третьестепенная традиция
 
-        // Статистика
-        internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();
 
         // Визуальные контролы
         private Player opponent;// Убрать это
