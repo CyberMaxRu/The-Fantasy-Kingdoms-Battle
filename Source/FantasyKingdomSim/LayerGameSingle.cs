@@ -27,8 +27,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageSpell;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
         private readonly List<VCPageButton> pagesCapital;
-        private readonly VCPageButton pageRealMap;
-        private readonly VCPageButton pageMap;
         //private readonly VCPageButton pageLocation;
         //private readonly VCPageButton pageTemples;
         private readonly VCLabel labelCaptionPage;
@@ -282,10 +280,6 @@ namespace Fantasy_Kingdoms_Battle
 
             //pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
             //pageControl.Separate();
-            pageMap = pageControl.AddPage(Config.Gui48_Map, "Карта", "Карта", null);
-            pageMap.Hint = "Карта";
-            //pageLocation = pageControl.AddPage(0, "", "", null);
-            //pageLocation.Hint = "Тут должна быть подсказка";
 
             labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Center;
@@ -410,7 +404,6 @@ namespace Fantasy_Kingdoms_Battle
             pageQuest.PageImage = MainControlbackground("Quest");
             pageTraditions.PageImage = MainControlbackground("Traditions");
             pageSpell.PageImage = MainControlbackground("Spell");
-            pageMap.PageImage = MainControlbackground("Map");
 
             for (int i = 0; i < Descriptors.CapitalPages.Count; i++)
             {
@@ -665,12 +658,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     selectedPlayerObject.HideInfo();
                 }
-
-                    if (po is Construction c)
-                    {
-                    }
-                    else
-                        pageMap.PageImage = MainControlbackground("Map");
 
                 UpdateBackgroundImage();
 
