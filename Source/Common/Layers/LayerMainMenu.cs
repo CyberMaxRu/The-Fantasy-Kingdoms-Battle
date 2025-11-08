@@ -18,7 +18,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel labelVersion;
         private readonly VCLabel labelVersionName;
         private readonly VCButtonForMenu btnRandomMission;
-        private readonly VCButtonForMenu btnEditorConquest;
         private readonly VCButtonForMenu btnPlayerPreferences;
         private readonly VCButtonForMenu btnGamePreferences;
         private readonly VCButtonForMenu btnAboutGame;
@@ -51,10 +50,6 @@ namespace Fantasy_Kingdoms_Battle
             bmpMainMenu = new VCBitmap(this, 0, 0, LoadBitmap("MenuMain.png"));
 
             btnRandomMission = new VCButtonForMenu(bmpMainMenu, 88, "Случайный сценарий", BtnRandomMission_Click);
-
-            /*btnEditorConquest = new VCButtonForMenu(bmpMainMenu, 80, btnTournament.NextTop(), "Редактор Завоевания");
-            btnEditorConquest.Width = bmpMainMenu.Width - 80 - 80;
-            btnEditorConquest.Click += BtnEditorConquest_Click;*/
 
             btnExitToWindows = new VCButtonForMenu(bmpMainMenu, bmpMainMenu.Height - 96, "Выход", BtnExitToWindows_Click);
             btnAboutGame = new VCButtonForMenu(bmpMainMenu, btnExitToWindows.ShiftY - 40, "Об игре", BtnAboutGame_Click);
