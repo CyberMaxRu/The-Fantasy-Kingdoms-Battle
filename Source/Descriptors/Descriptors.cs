@@ -43,13 +43,6 @@ namespace Fantasy_Kingdoms_Battle
                 CapitalPages.Add(new CapitalPage(n));
             }
 
-            // Загрузка времен суток
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TimesOfWeek.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TimeOfWeek"))
-            {
-                TimesOfWeek.Add(new DescriptorTimeOfWeek(n));
-            }
-
             // Загрузка типов традиций
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeTraditions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeTradition"))
@@ -295,7 +288,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<DescriptorTimeOfWeek> TimesOfWeek { get; } = new List<DescriptorTimeOfWeek>();
         internal List<DescriptorTypeTradition> TypeTraditions { get; } = new List<DescriptorTypeTradition>();
         internal List<DescriptorTradition> Traditions { get; } = new List<DescriptorTradition>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();

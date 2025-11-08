@@ -29,7 +29,6 @@
     <Content Include="Resources\Config\Descriptors\PropertiesCreature.xml" />
     <Content Include="Resources\Config\Descriptors\SecondarySkills.xml" />
     <Content Include="Resources\Config\Descriptors\Specializations.xml" />
-    <Content Include="Resources\Config\Descriptors\TimesOfWeek.xml" />
     <Content Include="Resources\Config\Descriptors\Traditions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAbilities.xml" />
     <Content Include="Resources\Config\Descriptors\TypeConstructions.xml" />

@@ -1242,7 +1242,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             PanelHint.AddStep2Header($"Ход игры: {lobby.Turn}");
             PanelHint.AddStep5Description(
-                $"Месяц: {lobby.Month}{Environment.NewLine}Неделя: {lobby.Week} ({lobby.TimeOfWeek.Name}){Environment.NewLine}День: {lobby.Day}{Environment.NewLine}");
+                $"Месяц: {lobby.Month}{Environment.NewLine}Неделя: {lobby.Week} ({lobby.Week}){Environment.NewLine}День: {lobby.Day}{Environment.NewLine}");
             PanelHint.AddStep21Tooltip($"В неделе 7 суток.{Environment.NewLine}В месяце 4 недели.{Environment.NewLine}");
         }
 
@@ -1253,7 +1253,6 @@ namespace Fantasy_Kingdoms_Battle
             if ((lobby != null) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
                 labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
-                labelDay.Image.ImageIndex = lobby.TimeOfWeek.ImageIndex;
                 pbDay.Position = lobby.CounterTicksOfTurn;
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
                 labelBuilders.Text = $"{curAppliedPlayer.CurrentBuilders}/{curAppliedPlayer.MaxBuilders}"
