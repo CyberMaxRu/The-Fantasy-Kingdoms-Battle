@@ -540,7 +540,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, int quantity, TypeNoticeForPlayer typeNotice)
         {
-            Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
+            Debug.Assert(typeConstruction.Category == CategoryConstruction.Place);
             Debug.Assert(level <= typeConstruction.MaxLevel);
             //Debug.Assert(typeConstruction.TypePlaceForConstruct.ID == FormMain.Config.IDEmptyPlace);
 

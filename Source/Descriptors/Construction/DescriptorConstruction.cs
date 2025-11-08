@@ -10,13 +10,11 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryConstruction { Guild, Economic, Military, Temple, External, Lair, Place, BasePlace, ElementLandscape, Path, Magic };// Категория сооружения
+    internal enum CategoryConstruction { Guild, Economic, Military, Temple, Place };// Категория сооружения
 
     // Тип сооружения - базовый класс для всех зданий, построек и мест
     internal sealed class DescriptorConstruction : DescriptorActiveEntity
     {
-        private string nameTypePlaceForConstruct;
-
         public DescriptorConstruction(XmlNode n) : base(n)
         {
             Debug.Assert(UriSoundSelect != null);
@@ -24,10 +22,9 @@ namespace Fantasy_Kingdoms_Battle
             if (GetString(n, "TypeConstruction").Length > 0)
                 TypeConstruction = Descriptors.FindTypeConstruction(GetString(n, "TypeConstruction"));
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
-            IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Military) || (Category == CategoryConstruction.Magic);
-            IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.External);
+            IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Military);
+            IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.Temple);
             HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (ID == Config.IDConstructionCastle);
-            nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
 
             if (IsInternalConstruction)
             {
@@ -52,11 +49,6 @@ namespace Fantasy_Kingdoms_Battle
                 DefaultLevel = 1;
                 MaxLevel = 1;
 
-                if (Category != CategoryConstruction.ElementLandscape)
-                {
-                    XmlFieldNotExist(n, "DefaultLevel");
-                    XmlFieldNotExist(n, "MaxLevel");
-                }
                 XmlFieldNotExist(n, "PlayerCanBuild");
                 XmlFieldNotExist(n, "LayersCellMenu");
             }
@@ -187,15 +179,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxLevel > 0);
                 Debug.Assert(MaxLevel <= 10);
                 Debug.Assert(DefaultLevel <= MaxLevel);
-
-                if (Category != CategoryConstruction.Temple)
-                {
-                    Debug.Assert(nameTypePlaceForConstruct.Length == 0);
-                }
-                else
-                {
-                    Debug.Assert(nameTypePlaceForConstruct.Length > 0);
-                }
             }
             else
             {
@@ -203,23 +186,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(DefaultLevel <= 1);
                 //Debug.Assert(MaxLevel == 1);
                 Debug.Assert(DefaultLevel <= MaxLevel);
-
-                if (Category == CategoryConstruction.External)
-                {
-                    //Debug.Assert(nameTypePlaceForConstruct != "");
-                }
-                else if (Category == CategoryConstruction.Place)
-                {
-                    Debug.Assert(nameTypePlaceForConstruct.Length > 0);
-                }
-                else if (Category == CategoryConstruction.BasePlace)
-                {
-                    Debug.Assert(nameTypePlaceForConstruct.Length == 0);
-                }
-                else
-                {
-                    Debug.Assert(nameTypePlaceForConstruct.Length > 0);
-                }
             }
 
             //else
@@ -254,10 +220,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorActionForEntity cm in CellsMenu)
                 cm.TuneLinks();
 
-            if (nameTypePlaceForConstruct.Length > 0)
-                TypePlaceForConstruct = Descriptors.FindConstruction(nameTypePlaceForConstruct);
-
-            nameTypePlaceForConstruct = null;
 
             //if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
             //    CellsMenu.Remove(Levels[1]);

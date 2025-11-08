@@ -41,8 +41,7 @@ namespace Fantasy_Kingdoms_Battle
         public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, bool own, bool canOwn, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
         {
             Assert(!dc.IsInternalConstruction);
-            Assert((dc.Category == CategoryConstruction.Lair) || (dc.Category == CategoryConstruction.External) || (dc.Category == CategoryConstruction.Temple)
-                || (dc.Category == CategoryConstruction.Place) || (dc.Category == CategoryConstruction.BasePlace) || (dc.Category == CategoryConstruction.ElementLandscape));
+            Assert((dc.Category == CategoryConstruction.Temple) || (dc.Category == CategoryConstruction.Place));
             Assert(level <= 1);
 
             Descriptor = dc;
@@ -196,28 +195,25 @@ namespace Fantasy_Kingdoms_Battle
             if (!Lobby.InPrepareTurn && (Lobby.CurrentPlayer?.GetTypePlayer() == TypePlayer.Human))
                 Program.formMain.PlayConstructionComplete();
 
-            if ((Descriptor.Category != CategoryConstruction.Lair) && (Descriptor.Category != CategoryConstruction.ElementLandscape))
-            {
                 Debug.Assert(Level < Descriptor.MaxLevel);
                 //Debug.Assert(CheckRequirements());
                 //Debug.Assert(Player.BaseResources.ResourcesEnough(CostBuyOrUpgrade()));
 
                 Player.AddGreatness(Descriptor.Levels[Level + 1].GreatnessByConstruction);
 
-                if (Level > 0)
+            if (Level > 0)
+            {
+                // Убираем перки от сооружения
+                foreach (DescriptorPerk dp in Descriptor.Levels[Level].ListPerks)
                 {
-                    // Убираем перки от сооружения
-                    foreach (DescriptorPerk dp in Descriptor.Levels[Level].ListPerks)
-                    {
-                        Debug.Assert(dp != null, $"У сооружения {GetName()} уровня {Level} перк ссылается на null");
-                        Player.RemovePerkFromConstruction(this, dp);
-                    }
+                    Debug.Assert(dp != null, $"У сооружения {GetName()} уровня {Level} перк ссылается на null");
+                    Player.RemovePerkFromConstruction(this, dp);
+                }
 
-                    // Убираем товар посещения
-                    if (Descriptor.Levels[Level].DescriptorVisit != null)
-                    {
-                        RemoveProduct(Descriptor.Levels[Level].DescriptorVisit);
-                    }
+                // Убираем товар посещения
+                if (Descriptor.Levels[Level].DescriptorVisit != null)
+                {
+                    RemoveProduct(Descriptor.Levels[Level].DescriptorVisit);
                 }
             }
 
@@ -231,8 +227,6 @@ namespace Fantasy_Kingdoms_Battle
 
             CreateProducts();
 
-            if ((Descriptor.Category != CategoryConstruction.Lair) && (Descriptor.Category != CategoryConstruction.ElementLandscape))
-            {
                 // Убираем операцию постройки из меню
                 ActionInConstruction cmBuild = null;
                 foreach (ActionInConstruction cm in Actions)
@@ -245,11 +239,10 @@ namespace Fantasy_Kingdoms_Battle
                         }
                 }
 
-                if (cmBuild != null)
-                {
-                    Actions.Remove(cmBuild);
-                    Lobby.Layer.UpdateMenu();
-                }
+            if (cmBuild != null)
+            {
+                Actions.Remove(cmBuild);
+                Lobby.Layer.UpdateMenu();
             }
 
             // Обновляем список перков от сооружения

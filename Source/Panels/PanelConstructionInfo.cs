@@ -200,16 +200,10 @@ namespace Fantasy_Kingdoms_Battle
             DrawList(lblSectionAbilities, panelAbilities, Construction.Abilities);
             tabProducts.ArrangeControls();
 
-            if (Construction.Descriptor.Category != CategoryConstruction.Lair)
-            {
-                panelInhabitants.ApplyList(Construction.Heroes);
+            panelInhabitants.ApplyList(Construction.Heroes);
 
-                btnProducts.Quantity = Construction.ListEntities.Count;
-                btnInhabitants.Quantity = Construction.Heroes.Count;
-            }
-            else
-            {
-            }
+            btnProducts.Quantity = Construction.ListEntities.Count;
+            btnInhabitants.Quantity = Construction.Heroes.Count;
 
             lblInterest.Image.ImageIsEnabled = Construction.Level > 0;
             lblInterest.Text = Construction.GetInterest() > 0 ? Utils.DecIntegerBy10(Construction.GetInterest(), false) : "";

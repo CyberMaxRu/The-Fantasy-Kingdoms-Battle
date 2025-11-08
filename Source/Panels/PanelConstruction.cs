@@ -106,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             pbDurability.Visible = false;
             btnHeroes.Visible = false;
 
-            if ((Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
+            if (Construction.Descriptor.IsOurConstruction)
             {
                 pbDurability.Visible = true;
 

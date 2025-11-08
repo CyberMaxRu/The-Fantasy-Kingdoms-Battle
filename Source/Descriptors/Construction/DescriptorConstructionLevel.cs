@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //
-            if ((forConstruction.Category == CategoryConstruction.Lair) || (forConstruction.Category == CategoryConstruction.Place))
+            if (forConstruction.Category == CategoryConstruction.Place)
             {
                 //Debug.Assert(DaysBuilding == 0);
                 //Debug.Assert(Builders == 0);
