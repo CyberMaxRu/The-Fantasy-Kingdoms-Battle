@@ -225,10 +225,6 @@ namespace Fantasy_Kingdoms_Battle
             panelConstructionInfo.Width = panelHeroInfo.Width;
             panelConstructionInfo.ApplyMaxSize();
 
-            panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-            panelLairInfo.Width = panelHeroInfo.Width;
-            panelLairInfo.ApplyMaxSize();
-
             panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
             panelMonsterInfo.Width = panelHeroInfo.Width;
             panelMonsterInfo.ApplyMaxSize();
@@ -296,12 +292,10 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             Debug.Assert(panelConstructionInfo.Height > 0);
-            Debug.Assert(panelLairInfo.Height > 0);
             Debug.Assert(panelHeroInfo.Height > 0);
             Debug.Assert(panelMonsterInfo.Height > 0);
 
-            int maxHeightPanelInfo = Math.Max(panelConstructionInfo.Height, panelLairInfo.Height);
-            maxHeightPanelInfo = Math.Max(panelHeroInfo.Height, maxHeightPanelInfo);
+            int maxHeightPanelInfo = Math.Max(panelConstructionInfo.Height, panelHeroInfo.Height);
             maxHeightPanelInfo = Math.Max(panelMonsterInfo.Height, maxHeightPanelInfo);
             int maxHeightControls = Math.Max(pageControl.Height, maxHeightPanelInfo);
 
@@ -397,7 +391,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VisualControl panelEmptyInfo;
         internal PanelConstructionInfo panelConstructionInfo { get; private set; }
-        internal PanelLairInfo panelLairInfo { get; private set; }
         internal PanelHeroInfo panelHeroInfo { get; private set; }
         internal PanelMonsterInfo panelMonsterInfo { get; private set; }
 
@@ -1162,7 +1155,6 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
-            panelLairInfo.Height = panelConstructionInfo.Height;
             panelHeroInfo.Height = panelConstructionInfo.Height;
             panelMonsterInfo.Height = panelConstructionInfo.Height;
             panelEmptyInfo.Height = panelConstructionInfo.Height;

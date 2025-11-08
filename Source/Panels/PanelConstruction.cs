@@ -359,7 +359,6 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnInhabitants_Click(object sender, EventArgs e)
         {
             Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity);
-            Construction.Lobby.Layer.panelLairInfo.SelectPageInhabitants();
         }
     }
 }

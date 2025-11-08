@@ -26,8 +26,6 @@ namespace Fantasy_Kingdoms_Battle
                     type = GetStringNotNull(r, "TypeRequirement");
                     if (type == "BuildedConstruction")
                         Add(new RequirementConstruction(forEntity, r, this));
-                    else if (type == "DestroyedLairs")
-                        Add(new RequirementDestroyedLairs(forEntity, r, this));
                     else if (type == "BuildedTypeConstruction")
                         Add(new RequirementTypeConstruction(forEntity, r, this));
                     else if (type == "GoodsInConstruction")

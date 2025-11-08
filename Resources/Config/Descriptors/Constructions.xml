@@ -5309,13 +5309,6 @@
           <Cost>
             <Gold>500</Gold>
           </Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>DestroyedLairs</TypeRequirement>
-              <Construction>WolfsDen</Construction>
-              <Destroyed>2</Destroyed>
-            </Requirement>
-          </Requirements>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -5338,11 +5331,6 @@
               <TypeRequirement>BuildedConstruction</TypeRequirement>
               <Construction>Menagerie</Construction>
               <Level>2</Level>
-            </Requirement>
-            <Requirement>
-              <TypeRequirement>DestroyedLairs</TypeRequirement>
-              <Construction>BearsDen</Construction>
-              <Destroyed>2</Destroyed>
             </Requirement>
           </Requirements>
         </Creating>
@@ -5368,11 +5356,6 @@
               <Construction>Menagerie</Construction>
               <Level>2</Level>
             </Requirement>
-            <Requirement>
-              <TypeRequirement>DestroyedLairs</TypeRequirement>
-              <Construction>SerpentsNest</Construction>
-              <Destroyed>2</Destroyed>
-            </Requirement>
           </Requirements>
         </Creating>
         <Selling>
@@ -5396,11 +5379,6 @@
               <TypeRequirement>BuildedConstruction</TypeRequirement>
               <Construction>Menagerie</Construction>
               <Level>3</Level>
-            </Requirement>
-            <Requirement>
-              <TypeRequirement>DestroyedLairs</TypeRequirement>
-              <Construction>DragonCave</Construction>
-              <Destroyed>1</Destroyed>
             </Requirement>
           </Requirements>
         </Creating>

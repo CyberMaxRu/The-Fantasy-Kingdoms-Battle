@@ -584,7 +584,6 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(!Destroyed);// Assert не нужен - если сооружение уничтожено, его надо скрыть
 
             Lobby.Layer.panelConstructionInfo.Visible = false;
-            Lobby.Layer.panelLairInfo.Visible = false;
         }
 
         internal override void ShowInfo(int selectPage = -1)
@@ -671,23 +670,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (h.IsLive)
                     h.PrepareQueueShopping(queue);
-            }
-        }
-
-        private void CreateMonsters()
-        {
-            AssertNotDestroyed();
-            //Debug.Assert(TypeLair.Monsters.Count > 0);
-
-            Creature lm;
-            foreach (DescriptorConstructionLevelLair mll in Descriptor.Monsters)
-            {
-                for (int i = 0; i < mll.StartQuantity; i++)
-                {
-                    lm = new Creature(this, mll.Monster, this, Player, mll.Level);
-                    Monsters.Add(lm);
-                    AddCombatHero(lm);
-                }
             }
         }
 
@@ -1139,9 +1121,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (DescriptorActionForEntity d in Descriptor.CellsMenu)
                 Actions.Add(ActionInConstruction.Create(this, d));
-
-            if (Descriptor.Monsters.Count > 0)// Убрать эту проверку после настройки всех логов
-                CreateMonsters();
 
             IncomeBaseResources = 0;
 
