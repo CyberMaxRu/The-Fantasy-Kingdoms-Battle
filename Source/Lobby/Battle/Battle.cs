@@ -40,21 +40,10 @@ namespace Fantasy_Kingdoms_Battle
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Составляем списки существ
-            if (player2 is Construction pl)
+            foreach (Creature ph in player1.CombatHeroes)
             {
-                foreach (Creature ph in pl.ComponentObjectOfMap.ListHeroesForFlag)
-                {
-                    Debug.Assert(ph.IsLive);
-                    heroesPlayer1.Add(new HeroInBattle(this, ph, showForPlayer));
-                }
-            }
-            else
-            {
-                foreach (Creature ph in player1.CombatHeroes)
-                {
-                    Debug.Assert(ph.IsLive);
-                    heroesPlayer1.Add(new HeroInBattle(this, ph, showForPlayer));
-                }
+                Debug.Assert(ph.IsLive);
+                heroesPlayer1.Add(new HeroInBattle(this, ph, showForPlayer));
             }
 
             foreach (Creature ph in player2.CombatHeroes)

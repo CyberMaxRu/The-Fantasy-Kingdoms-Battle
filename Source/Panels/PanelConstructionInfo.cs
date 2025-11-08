@@ -209,19 +209,8 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                if (Construction.ComponentObjectOfMap.Visible)
-                {
-                    panelInhabitants.ApplyList(Construction.Monsters);
-                    btnInhabitants.Quantity = Construction.Monsters.Count;
-                }
-                else
-                {
-                    panelInhabitants.SetUnknownList();
-                    btnInhabitants.Quantity = 0;
-                }
-
-                panelVisits.ApplyList(Construction.ComponentObjectOfMap.ListHeroesForFlag);
-                btnVisitors.Quantity = Construction.ComponentObjectOfMap.ListHeroesForFlag.Count;
+                panelInhabitants.ApplyList(Construction.Monsters);
+                btnInhabitants.Quantity = Construction.Monsters.Count;
             }
 
             lblInterest.Image.ImageIsEnabled = Construction.Level > 0;

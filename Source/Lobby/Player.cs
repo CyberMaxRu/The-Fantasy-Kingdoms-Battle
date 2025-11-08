@@ -692,7 +692,7 @@ namespace Fantasy_Kingdoms_Battle
             int builded = 0;
             foreach (Construction c in Constructions)
             {
-                if ((c.Descriptor.TypeConstruction == typeConstruction) && c.ComponentObjectOfMap.Visible && (c.Level > 0))
+                if ((c.Descriptor.TypeConstruction == typeConstruction) && (c.Level > 0))
                     builded++;
             }
 

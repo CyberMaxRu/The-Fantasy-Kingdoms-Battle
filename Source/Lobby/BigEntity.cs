@@ -47,7 +47,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Perk MainPerk { get; set; }// Основной перк существа 
         internal List<Perk> Perks { get; } = new List<Perk>();// Перки
         internal EntityProperties Properties { get; set; }// Характеристики
-        internal ComponentObjectOfMap ComponentObjectOfMap { get; set; }
 
         internal virtual string GetIDEntity(DescriptorEntity descriptor) => Descriptor.ID + Number.ToString();
 

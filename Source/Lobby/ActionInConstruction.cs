@@ -368,7 +368,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {*/
 
-            Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, true, true, true, TypeNoticeForPlayer.Build);
+            Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, true, true, TypeNoticeForPlayer.Build);
             if (!Construction.Player.Lobby.InPrepareTurn)
                 Program.formMain.layerGame.SelectPlayerObject(pc);
             //}

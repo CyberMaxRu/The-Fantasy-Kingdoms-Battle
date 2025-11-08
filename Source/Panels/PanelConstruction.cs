@@ -167,7 +167,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpQueue3.Action = null;
             }
 
-            if (Construction.ComponentObjectOfMap.Visible && (Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
+            if ((Construction.Descriptor.IsOurConstruction || Construction.Descriptor.Category == CategoryConstruction.External))
             {
                 pbDurability.Visible = true;
 

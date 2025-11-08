@@ -55,19 +55,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Lair.Destroyed);
 
-            if (Lair.ComponentObjectOfMap.Visible)
-            {
-                panelInhabitants.ApplyList(Lair.Monsters);
-                btnInhabitants.Quantity = Lair.Monsters.Count;
-            }
-            else
-            {
-                panelInhabitants.SetUnknownList();
-                btnInhabitants.Quantity = 0;
-            }
-
-            panelHeroes.ApplyList(Lair.ComponentObjectOfMap.ListHeroesForFlag);
-            btnHeroes.Quantity = Lair.ComponentObjectOfMap.ListHeroesForFlag.Count;
+            panelInhabitants.ApplyList(Lair.Monsters);
+            btnInhabitants.Quantity = Lair.Monsters.Count;
 
             base.Draw(g);
         }

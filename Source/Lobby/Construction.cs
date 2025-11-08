@@ -27,7 +27,6 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = dc;
             PlayerIsOwner = true;
             PlayerCanOwn = true;
-            ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
 
             TuneByCreate();
 
@@ -42,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются в процессе игры
-        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, bool visible, bool own, bool canOwn, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
+        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, bool own, bool canOwn, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
         {
             Assert(!dc.IsInternalConstruction);
             Assert((dc.Category == CategoryConstruction.Lair) || (dc.Category == CategoryConstruction.External) || (dc.Category == CategoryConstruction.Temple)
@@ -54,7 +53,6 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
-            ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
             TuneByCreate();
 
@@ -399,34 +397,10 @@ namespace Fantasy_Kingdoms_Battle
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
             // Рисуем содержимое ячеек
-            if (ComponentObjectOfMap.Visible)
-            {
-                Debug.Assert(Descriptor != null);
+            Debug.Assert(Descriptor != null);
 
-                ValidateResearches();
-                FillResearches(menu);
-            }
-            else
-            {
-                foreach (ConstructionSpell cs in Player.ConstructionSpells)
-                {
-                    if ((cs.DescriptorSpell.TypeEntity == TypeEntity.Construction) && !cs.DescriptorSpell.Scouted)
-                    {
-                        CellMenuConstructionSpell cmcs = SearchCellMenuSpell(cs);
-
-                        if (cmcs is null)
-                        {
-                            cmcs = new CellMenuConstructionSpell(this, cs);
-                            MenuSpells.Add(cmcs);
-                        }
-                        //Assert(!menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Used);                        
-
-                        menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Research = cmcs;
-                        menu[cs.DescriptorSpell.Coord.Y, cs.DescriptorSpell.Coord.X].Used = true;
-                    }
-                }
-            }
-
+            ValidateResearches();
+            FillResearches(menu);
         }
 
         private CellMenuConstructionSpell SearchCellMenuSpell(ConstructionSpell spell)
@@ -595,17 +569,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    if (!ComponentObjectOfMap.Visible)
-                    {
-                        panelHint.AddStep2Header("Неизвестное место");
-                        panelHint.AddStep4Level("Место не разведано");
-                        panelHint.AddStep5Description("Установите флаг разведки для отправки героев к месту");
-                    }
-                    else
-                    {
-                        panelHint.AddStep2Entity(this);
-                        panelHint.AddStep5Description(Descriptor.Description);
-                    }
+                    panelHint.AddStep2Entity(this);
+                    panelHint.AddStep5Description(Descriptor.Description);
                 }
 
                 panelHint.AddStep21BaseResources(IncomeBaseResources, MiningBaseResources || ProvideBaseResources);
@@ -709,11 +674,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override int GetQuantity()
-        {
-            return ComponentObjectOfMap is null ? 0 :ComponentObjectOfMap.ListHeroesForFlag.Count;
-        }
-
         private void CreateMonsters()
         {
             AssertNotDestroyed();
@@ -730,42 +690,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
-
-        internal int CostScout()
-        {
-            Debug.Assert(!ComponentObjectOfMap.Visible);
-            AssertNotDestroyed();
-
-            return 0;
-           //return PriorityFlag < PriorityExecution.Exclusive ?
-           //     new ListBaseResources(Location.Settings.CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
-        }
-
-        private void AssertNotHidden()
-        {
-            Debug.Assert(ComponentObjectOfMap.Visible, $"Логово {Descriptor.ID} игрока {Player.GetName()} скрыто.");
-        }
-
-        internal int CostAttack()
-        {
-            AssertNotHidden();
-            AssertNotDestroyed();
-
-            return 0;
-            //return PriorityFlag < PriorityExecution.Exclusive ?
-            //    new ListBaseResources(Location.Settings.CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
-        }
-
-        internal int CostDefense()
-        {
-            AssertNotHidden();
-            AssertNotDestroyed();
-
-            return 0;
-            //return PriorityFlag < PriorityExecution.Exclusive ?
-            //    new ListBaseResources(Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
-        }
-
 
         internal string GetNameForLevel(int level)
         {
@@ -821,7 +745,7 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
 
             if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
-                return ComponentObjectOfMap.Visible ? Descriptor.ImageIndex : FormMain.IMAGE_INDEX_UNKNOWN;
+                return Descriptor.ImageIndex;
             else
                 return FormMain.Config.Gui48_Battle;
         }
@@ -841,7 +765,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            return !ComponentObjectOfMap.Visible ? "" : Level == 0 ? "" : (Level == 1) && (Descriptor.MaxLevel == 1) ? "" : Level < Descriptor.MaxLevel ? $"{Level}/{Descriptor.MaxLevel}" : Level.ToString();
+            return Level == 0 ? "" : (Level == 1) && (Descriptor.MaxLevel == 1) ? "" : Level < Descriptor.MaxLevel ? $"{Level}/{Descriptor.MaxLevel}" : Level.ToString();
         }
 
         internal override void Click(VCCell pe)
@@ -1207,10 +1131,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PlaySoundSelect()
         {
-            if (ComponentObjectOfMap.Visible)
-                base.PlaySoundSelect();
-            else
-                Program.formMain.PlayPressButton();
+            base.PlaySoundSelect();
         }
 
         // Настройка сооружения при создании
