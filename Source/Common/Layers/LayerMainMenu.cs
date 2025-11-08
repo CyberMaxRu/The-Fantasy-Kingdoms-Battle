@@ -28,8 +28,6 @@ namespace Fantasy_Kingdoms_Battle
         private LobbySettings mission;
         private WindowSetupMission wsm;
 
-        private LayerEditorConquest layerEditor;
-
         private int idxAnimation;
 
         public LayerMainMenu() : base()
@@ -94,14 +92,6 @@ namespace Fantasy_Kingdoms_Battle
             wsm = new WindowSetupMission(mission);
             wsm.Show();
         }
-
-        private void BtnEditorConquest_Click(object sender, EventArgs e)
-        {
-            if (layerEditor is null)
-                layerEditor = new LayerEditorConquest();
-
-            Program.formMain.ExchangeLayer(this, layerEditor);
-       }
 
         internal override void ArrangeControls()
         {
