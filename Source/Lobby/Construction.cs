@@ -466,11 +466,8 @@ namespace Fantasy_Kingdoms_Battle
 
             Creature h = new Creature(this, th, Player, Player, 1);
 
-            if (th.CategoryCreature != CategoryCreature.Citizen)
-            {
-                if (cost != 0)
-                    Player.SpendResource(cost);
-            }
+            if (cost != 0)
+                Player.SpendResource(cost);
 
             AddHero(h);
 

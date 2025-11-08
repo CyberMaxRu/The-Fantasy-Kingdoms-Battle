@@ -7,7 +7,7 @@ using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryCreature { Citizen, Hero, Monster };
+    internal enum CategoryCreature { Hero, Monster };
     internal enum TypeHero { None, Base, Advanced, Temple };// Тип героя
     internal enum PriorityBuy { None = 0, Min = 100, Low = 200, Average = 300, High = 400, Max = 500 };// Приоритет обработки сооружений героями
 
@@ -29,17 +29,15 @@ namespace Fantasy_Kingdoms_Battle
                 TypeHero = (TypeHero)Enum.Parse(typeof(TypeHero), n.SelectSingleNode("TypeHero").InnerText);
             MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
             DefaultPositionPriority = XmlUtils.GetInteger(n, "DefaultPositionPriority");
-            if (CategoryCreature != CategoryCreature.Citizen)
+            TypeAttackMelee = FormMain.Descriptors.FindTypeAttack(XmlUtils.GetString(n, "TypeAttackMelee"));
+            Debug.Assert(TypeAttackMelee.KindAttack == KindAttack.Melee);
+            string typeAttackRange = XmlUtils.GetString(n, "TypeAttackRange");
+            if (typeAttackRange.Length > 0)
             {
-                TypeAttackMelee = FormMain.Descriptors.FindTypeAttack(XmlUtils.GetString(n, "TypeAttackMelee"));
-                Debug.Assert(TypeAttackMelee.KindAttack == KindAttack.Melee);
-                string typeAttackRange = XmlUtils.GetString(n, "TypeAttackRange");
-                if (typeAttackRange.Length > 0)
-                {
-                    TypeAttackRange = FormMain.Descriptors.FindTypeAttack(typeAttackRange);
-                    Debug.Assert(TypeAttackRange.KindAttack == KindAttack.Range);
-                }
+                TypeAttackRange = FormMain.Descriptors.FindTypeAttack(typeAttackRange);
+                Debug.Assert(TypeAttackRange.KindAttack == KindAttack.Range);
             }
+
             if (CategoryCreature == CategoryCreature.Hero)
             {
                 CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
@@ -306,8 +304,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             switch (CategoryCreature)
             {
-                case CategoryCreature.Citizen:
-                    return "Горожанин";
                 case CategoryCreature.Hero:
                     return "Герой";
                 case CategoryCreature.Monster:

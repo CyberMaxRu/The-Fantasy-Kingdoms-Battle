@@ -28,33 +28,6 @@
     </Heroes>
   </SecondarySkill>
   <SecondarySkill>
-    <ID>IncomeSecSkill</ID>
-    <Name>Доход</Name>
-    <ImageIndex>99</ImageIndex>
-    <Description>Увеличивает доход от Замка</Description>
-    <Levels>
-      <Level>
-        <Number>0</Number>
-        <Income>5</Income>
-      </Level>
-      <Level>
-        <Number>1</Number>
-        <Income>10</Income>
-      </Level>
-      <Level>
-        <Number>2</Number>
-        <Income>15</Income>
-      </Level>
-      <Level>
-        <Number>3</Number>
-        <Income>20</Income>
-      </Level>
-    </Levels>
-    <Heroes>
-      <Hero>King</Hero>
-    </Heroes>
-  </SecondarySkill>
-  <SecondarySkill>
     <ID>DrillSecSkill</ID>
     <Name>Муштра</Name>
     <ImageIndex>99</ImageIndex>

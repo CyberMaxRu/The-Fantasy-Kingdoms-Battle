@@ -94,21 +94,16 @@ namespace Fantasy_Kingdoms_Battle
                 Armour = new Item(this, TypeCreature.DefaultArmour, 1);
             FindQuiver();
             
-            if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)
-            {
-                Level = 0;
+            Level = 0;
 
-                ParametersBase = new HeroParameters(TypeCreature.ParametersByHire);
+            ParametersBase = new HeroParameters(TypeCreature.ParametersByHire);
 
-                // Переходим на 1 уровень
-                LevelUp();
-                ParametersWithAmmunition = new HeroParameters(ParametersBase);
+            // Переходим на 1 уровень
+            LevelUp();
+            ParametersWithAmmunition = new HeroParameters(ParametersBase);
 
-                //
-                UpdateBaseParameters();
-            }
-            else
-                Level = 1;
+            //
+            UpdateBaseParameters();
 
             //
             Initialize();
