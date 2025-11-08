@@ -76,9 +76,6 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < MaxLoses; i++)
                 LoseInfo.Add(null);
 
-            PercentCorruption = 10;
-            ChangeCorruption = 1;
-
             // Настраиваем постоянные бонусы
             if (lobby.TypeLobby.VariantPersistentBonus > 0)
             {
@@ -743,12 +740,6 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока
         internal List<VCCustomNotice> ListNoticesForPlayer { get; } = new List<VCCustomNotice>();// Список событий во владении
-
-        //
-        internal int PercentCorruption { get; set; }//
-        internal int ChangeCorruption { get; set; }
-        internal int MinPercentCorruption { get; }
-        internal int MaxPercentCorruption { get; }
 
         // Информация о поражениях и вылете из лобби
         internal List<LoseInfo> LoseInfo { get; } = new List<LoseInfo>();

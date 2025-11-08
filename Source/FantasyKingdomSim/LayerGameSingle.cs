@@ -71,7 +71,6 @@ namespace Fantasy_Kingdoms_Battle
         // Контролы тулбара
         private readonly VCToolLabel labelKnowledge;
         //private readonly VCToolLabel labelPeople;
-        private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
 
@@ -161,10 +160,7 @@ namespace Fantasy_Kingdoms_Battle
             labelMana = new VCLabelValue(bmpTopPanel, pbDay.NextLeft(), labelDay.ShiftY, Color.White, true);
             labelMana.Image.ImageIndex = FormMain.GUI_16_MANA;
             labelMana.Width = 112;
-            labelCorruption = new VCToolLabel(bmpPreparedToolbar, pbTraditions.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_CORRUPTION);
-            labelCorruption.ShowHint += LabelCorruption_ShowHint;
-            labelCorruption.Width = 112;
-            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_GREATNESS);
+            labelGreatness = new VCToolLabel(bmpPreparedToolbar, pbTraditions.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_GREATNESS);
             labelGreatness.ShowHint += LabelGreatness_ShowHint;
             labelGreatness.Width = 112;
 
@@ -833,7 +829,6 @@ namespace Fantasy_Kingdoms_Battle
                     labelTraditions.Visible = true;
                     //labelPeople.Visible = true;
                     labelGreatness.Visible = false;
-                    labelCorruption.Visible = false;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
@@ -844,7 +839,6 @@ namespace Fantasy_Kingdoms_Battle
                     labelTraditions.Visible = false;
                     //labelPeople.Visible = false;
                     labelGreatness.Visible = false;
-                    labelCorruption.Visible = false;
                     MainControl.Visible = false;
                     //foreach (VCImageLose il in listBtnLoses)
                     //    il.Visible = false;
@@ -967,13 +961,6 @@ namespace Fantasy_Kingdoms_Battle
             w.Show();
         }
 
-        private void LabelCorruption_ShowHint(object sender, EventArgs e)
-        {
-            PanelHint.AddStep2Header("Воровство");
-            PanelHint.AddStep5Description($"Всего процент: {curAppliedPlayer.PercentCorruption}" + Environment.NewLine
-                + $"Изменение за день: {curAppliedPlayer.ChangeCorruption}");
-        }
-
         private void UpdateNameCurrentPage()
         {
             labelCaptionPage.Text = pageControl.CurrentPage.Caption;
@@ -1067,7 +1054,6 @@ namespace Fantasy_Kingdoms_Battle
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
                     //+ curAppliedPlayer.PointGreatnessForNextLevel.ToString();
-                labelCorruption.Text = $"{curAppliedPlayer.PercentCorruption}% ({(curAppliedPlayer.ChangeCorruption > 0 ? "+" : "")}{curAppliedPlayer.ChangeCorruption}%)";
 
                 pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
