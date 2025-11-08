@@ -38,9 +38,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl vcRightPanel;
         private PanelWithPanelEntity panelCombatHeroes;
 
-        private VCMap mapArdania;
-        private DescriptorMap descriptorMap;
-
         // Поддержка реального времени игры
         private Stopwatch internalTimer;
 
@@ -310,7 +307,6 @@ namespace Fantasy_Kingdoms_Battle
             DrawWarehouse();
             DrawPageTournament();
             DrawPageLocation();
-            DrawPageRealMap();
 
             panelNotices = new VisualControl(vcRightPanel, 0, 0);
             panelNotices.Width = vcRightPanel.Width - Config.GridSize;
@@ -356,13 +352,6 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpPreparedToolbar.ShiftX = 0;
             MainControl.ShiftX = 0;
-
-            if (pageRealMap != null)
-            {
-                mapArdania.Width = pageRealMap.Page.Width;
-                mapArdania.Height = pageRealMap.Page.Height;
-            }
-
 
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
@@ -465,23 +454,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             //private readonly VCCell[] pageTournamentPlayers;
             // Ячейки игроков
-        }
-
-        private void DrawPageRealMap()
-        {
-            if (pageRealMap != null)
-            {
-                mapArdania = new VCMap(pageRealMap.Page, 0, 0);
-                mapArdania.Click += MapArdania_Click;
-            }
-
-            //descriptorMap = new DescriptorMap(mapArdania.Bitmap.Width, mapArdania.Bitmap.Height, mapArdania.Bitmap);
-        }
-
-        private void MapArdania_Click(object sender, EventArgs e)
-        {
-            Point p = mapArdania.MousePosToCoord(Program.formMain.MousePosToControl(mapArdania));
-            descriptorMap.SearchBorder(p);
         }
 
         private void AdjustPageTournament()
