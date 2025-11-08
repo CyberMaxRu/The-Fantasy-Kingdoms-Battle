@@ -64,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabelValue labelTraditions;
         private readonly VCProgressBar pbTraditions;
         private readonly VCLabelValue labelMana;
-        private readonly VCLabelValue labelBuilders;
 
         private readonly VCIconButton48 btnInGameMenu;
         private readonly VCIconButton48 btnCheating;
@@ -162,14 +161,10 @@ namespace Fantasy_Kingdoms_Battle
             labelMana = new VCLabelValue(bmpTopPanel, pbDay.NextLeft(), labelDay.ShiftY, Color.White, true);
             labelMana.Image.ImageIndex = FormMain.GUI_16_MANA;
             labelMana.Width = 112;
-            labelBuilders = new VCLabelValue(bmpTopPanel, pbTraditions.NextLeft(), labelTraditions.ShiftY, Color.White, true);
-            labelBuilders.Image.ImageIndex = FormMain.GUI_16_BUILDER;
-            labelBuilders.ShowHint += LabelBuilders_ShowHint;
-            labelBuilders.Width = 112;
-            labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_CORRUPTION);
+            labelCorruption = new VCToolLabel(bmpPreparedToolbar, pbTraditions.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_CORRUPTION);
             labelCorruption.ShowHint += LabelCorruption_ShowHint;
             labelCorruption.Width = 112;
-            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, labelBuilders.ShiftY, "", FormMain.GUI_16_GREATNESS);
+            labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_GREATNESS);
             labelGreatness.ShowHint += LabelGreatness_ShowHint;
             labelGreatness.Width = 112;
 
@@ -834,7 +829,6 @@ namespace Fantasy_Kingdoms_Battle
                         panelNotices.RemoveControl(panelNotices.Controls[0]);
 
                     labelDay.Visible = true;
-                    labelBuilders.Visible = true;
                     //labelKnowledge.Visible = true;
                     labelTraditions.Visible = true;
                     //labelPeople.Visible = true;
@@ -846,7 +840,6 @@ namespace Fantasy_Kingdoms_Battle
                 else
                 {
                     labelDay.Visible = false;
-                    labelBuilders.Visible = false;
                     //labelKnowledge.Visible = false;
                     labelTraditions.Visible = false;
                     //labelPeople.Visible = false;
@@ -1004,13 +997,6 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.BackgroundImage = pageControl.CurrentPage.PageImage;
         }
 
-        private void LabelBuilders_ShowHint(object sender, EventArgs e)
-        {
-            //PanelHint.AddStep2Header("Очки строительства");
-            //PanelHint.AddStep5Description("Всего очков: " + curAppliedPlayer.ConstructionPoints.ToString()
-            //    + Environment.NewLine + "Свободно очков: " + curAppliedPlayer.RestConstructionPoints.ToString());
-        }
-
         private void PanelCombatHeroes_Click(object sender, EventArgs e)
         {
             SelectPlayerObject(null);
@@ -1073,8 +1059,6 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
                 pbDay.Position = lobby.CounterTicksOfTurn;
                 pageQuest.LowText = curAppliedPlayer.Quests.Count > 0 ? curAppliedPlayer.Quests.Count.ToString() : "";
-                labelBuilders.Text = $"{curAppliedPlayer.CurrentBuilders}/{curAppliedPlayer.MaxBuilders}"
-                    + (curAppliedPlayer.FreeBuilders > 0 ? $" ({curAppliedPlayer.FreeBuilders})" : "");
                 labelTraditions.Text = $"{curAppliedPlayer.PointsForNextTradition}";
                 pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
                 pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);

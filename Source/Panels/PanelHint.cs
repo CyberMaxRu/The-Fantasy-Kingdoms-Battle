@@ -49,7 +49,6 @@ namespace Fantasy_Kingdoms_Battle
         // Подраздел "Стоимость"
         private readonly VCLabel lblChapterCost;
         private readonly VCLabelValue lblCostGold;
-        private readonly VCLabelValue lblBuilders;
         private readonly VCLabelValue lblTimeExecuting;
         private readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
 
@@ -161,9 +160,6 @@ namespace Fantasy_Kingdoms_Battle
 
             lblCostGold = CreateLabelValue(4);
             lblCostGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
-
-            lblBuilders = CreateLabelValue(4);
-            lblBuilders.Image.ImageIndex = FormMain.GUI_16_BUILDER;
 
             lblTimeExecuting = CreateLabelValue(4);
             lblTimeExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
@@ -312,7 +308,6 @@ namespace Fantasy_Kingdoms_Battle
             //
             lblChapterCost.Visible = false;
             lblCostGold.Visible = false;
-            lblBuilders.Visible = false;
             lblTimeExecuting.Visible = false;
             foreach (VCLabel l in listCostResources)
                 l.Visible = false;
@@ -728,21 +723,12 @@ namespace Fantasy_Kingdoms_Battle
                 lblCostGold.Color = ColorRequirements(Player.Gold >= costResources);
                 lblCostGold.Visible = true;
 
-                lblBuilders.ShiftY = nextTop;
-                if (builders > 0)
-                {
-                    lblBuilders.Color = ColorRequirements(builders <= Player.MaxBuilders);
-                    lblBuilders.Text = builders.ToString();
-                    lblBuilders.Visible = true;
-                    AdjustCell(lblBuilders, lblCostGold, FormMain.Config.GridSize, nextTop);
-                }
-
                 if (time > 0)
                 {
                     lblTimeExecuting.ShiftY = nextTop;
                     lblTimeExecuting.Text = time.ToString();
                     lblTimeExecuting.Visible = true;
-                    AdjustCell(lblTimeExecuting, lblBuilders, FormMain.Config.GridSize, nextTop);
+                    AdjustCell(lblTimeExecuting, lblCostGold, FormMain.Config.GridSize, nextTop);
                 }
 
                 nextTop = lblCostGold.NextTop();

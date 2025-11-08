@@ -189,9 +189,6 @@ namespace Fantasy_Kingdoms_Battle
             Creature captain = Castle.HireHero(FormMain.Descriptors.FindCreature("Captain"), 0);
             Creature treasurer = Castle.HireHero(FormMain.Descriptors.FindCreature("Treasurer"), 0);
 
-            UpdateBuilderInfo();
-            FreeBuilders = CurrentBuilders;
-
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
@@ -335,9 +332,6 @@ namespace Fantasy_Kingdoms_Battle
                 cm.DoTick();
             }*/
 
-            // Вызываем диспетчер очереди, чтобы он распределил строителей по заданиям
-            DispatcherQueue();
-
             // Обработка традиции
             if ((NextTradition is null) && AcceptTraditionsAllowed)
             {
@@ -435,8 +429,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 c.UpdateAfterTick();
             }
-
-            UpdateBuilderInfo();
         }
 
         // Определяет варианты выбора следующей традиции
@@ -499,59 +491,6 @@ namespace Fantasy_Kingdoms_Battle
                 int j = Lobby.Rnd.Next(traditions.Count);
                 ListVariantsTraditions.Add(traditions[j].Item1, traditions[j].Item2);
                 listAllVariants.Remove((traditions[j].Item1, traditions[j].Item2));
-            }
-        }
-
-        private void DispatcherQueue()
-        {
-            bool firstAction;
-
-            // Проходим по очереди задач, и настраиваем состояние
-            foreach (ActionInConstruction a in queueExecuting)
-            {
-                firstAction = a == a.Construction.FirstActionInQueue;
-
-                if (firstAction)
-                {
-                    switch (a.ProgressExecuting.State)
-                    {
-                        case StateProgress.Inactive:
-                        case StateProgress.WaitInQueue:
-                            if (a.ProgressExecuting.NeedBuilders == 0)
-                                a.ProgressExecuting.State = StateProgress.Active;
-                            else if (FreeBuilders >= a.ProgressExecuting.NeedBuilders)
-                            {
-                                UseFreeBuilder(a.ProgressExecuting.NeedBuilders);
-                                a.ProgressExecuting.UsedBuilders = a.ProgressExecuting.NeedBuilders;
-                                a.ProgressExecuting.State = StateProgress.Active;
-                            }
-                            else
-                                a.ProgressExecuting.State = StateProgress.WaitBuilders;
-                            break;
-                        case StateProgress.Active:
-                            if (a.ProgressExecuting.NeedBuilders > 0)
-                            {
-                                if (a.ProgressExecuting.UsedBuilders < a.ProgressExecuting.NeedBuilders)
-                                    a.ProgressExecuting.State = StateProgress.WaitBuilders;
-                            }
-                            break;
-                        case StateProgress.WaitBuilders:
-                            Assert(a.ProgressExecuting.NeedBuilders > 0);
-
-                            if (FreeBuilders >= a.ProgressExecuting.NeedBuilders)
-                            {
-                                UseFreeBuilder(a.ProgressExecuting.NeedBuilders);
-                                a.ProgressExecuting.UsedBuilders = a.ProgressExecuting.NeedBuilders;
-                                a.ProgressExecuting.State = StateProgress.Active;
-                            }
-                            break;
-                        default:
-                            DoException($"Неизвестное состояние прогресса: {a.ProgressExecuting.State}");
-                            break;
-                    }
-                }
-                else
-                    a.ProgressExecuting.State = StateProgress.WaitInQueue;
             }
         }
 
@@ -839,11 +778,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Construction> ListFlags { get; } = new List<Construction>();
         internal int LairsScouted { get; private set; }
         internal int LairsShowed { get; private set; }
-
-        // Строители
-        internal int MaxBuilders { get; private set; }// Максимальное количество строителей
-        internal int CurrentBuilders { get; private set; }// Текущее количество строителей
-        internal int FreeBuilders { get; private set; }// Свободных строителей
 
         // Традиции
         internal Dictionary<DescriptorTradition, int> ListTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Принятые традиции
@@ -1523,26 +1457,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddFreeBuilder()
-        {
-            
-        }
-
-        internal void UseFreeBuilder(int builders)
-        {
-            Assert(builders > 0);
-            Assert(FreeBuilders >= builders);
-
-            FreeBuilders -= builders;
-        }
-
-        internal void UnuseFreeBuilders(int builders)
-        {
-            Assert(builders > 0);
-
-            FreeBuilders += builders;
-        }
-
         internal void AddExtraLevelUp()
         {
             Debug.Assert(ExtraLevelUp >= 0);
@@ -1550,29 +1464,12 @@ namespace Fantasy_Kingdoms_Battle
             ExtraLevelUp++;
         }
 
-        internal void UseExtraLevelUp()
-        {
-            Debug.Assert(ExtraLevelUp > 0);
-
-            ExtraLevelUp--;
-        }
 
         internal void AddExtraResearch()
         {
             Debug.Assert(ExtraResearch >= 0);
 
             ExtraResearch++;
-        }
-
-        internal void UseExtraResearch()
-        {
-            Debug.Assert(ExtraResearch > 0);
-
-            ExtraResearch--;
-        }
-
-        internal void UnhideAll()
-        {
         }
 
         internal void AddNoticeForPlayer(VCCustomNotice notice)
@@ -1618,8 +1515,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void RemoveFromQueueExecuting(ActionInConstruction cmc, bool constructed)
         {
             cmc.Construction.RemoveCellMenuFromQueue(cmc, !constructed);
-            if (cmc.ProgressExecuting.UsedBuilders > 0)
-                UnuseFreeBuilders(cmc.ProgressExecuting.UsedBuilders);
         }
         
         internal void DeleteFromQueueBuilding(ActionInConstruction cmc)
@@ -1746,10 +1641,6 @@ namespace Fantasy_Kingdoms_Battle
             else
                 curCost.SetFromList(originCost);
             */
-        }
-
-        internal void UpdateBuilderInfo()
-        {
         }
 
         internal void SelectTradition(DescriptorTradition td, int level)

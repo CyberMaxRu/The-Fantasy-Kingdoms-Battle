@@ -423,10 +423,6 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.Player.Gold < PurchaseValue)
                 return false;
 
-            // Проверяем наличие очков строительства
-            if (Construction.Player.MaxBuilders < Descriptor.ComponentCreating.Builders)
-                return false;
-
             // Проверяем, что нет события или турнира
             if (Construction.CurrentMassEvent != null)
                 return false;
@@ -1058,7 +1054,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal enum TypeExtra { Builder, LevelUp, Research };
+    internal enum TypeExtra { LevelUp, Research };
 
     internal sealed class CellMenuConstructionExtra : ActionInConstruction
     {
@@ -1089,9 +1085,6 @@ namespace Fantasy_Kingdoms_Battle
 
             switch (TypeExtra)
             {
-                case TypeExtra.Builder:
-                    Construction.Player.AddFreeBuilder();
-                    break;
                 case TypeExtra.LevelUp:
                     Construction.Player.AddExtraLevelUp();
                     break;
@@ -1121,8 +1114,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             switch (TypeExtra)
             {
-                case TypeExtra.Builder:
-                    return Config.Gui48_Build;
                 case TypeExtra.LevelUp:
                     return Config.Gui48_LevelUp;
                 case TypeExtra.Research:
@@ -1136,10 +1127,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             switch (TypeExtra)
             {
-                case TypeExtra.Builder:
-                    panelHint.AddStep2Header("+1 Строитель");
-                    panelHint.AddStep5Description("Добавляет 1 строителя на текущий ход" + Environment.NewLine + "Пауза: " + Descriptor.DaysCooldown.ToString() + " дн.");
-                    break;
                 case TypeExtra.LevelUp:
                     panelHint.AddStep2Header("+1 улучшение сооружение");
                     panelHint.AddStep5Description("Добавляет 1 внеплановое улучшение на текущий ход" + Environment.NewLine + "Пауза: " + Descriptor.DaysCooldown.ToString() + " дн.");
