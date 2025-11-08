@@ -116,8 +116,6 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionImprovement(c, d);
                 if (d.CreatedEntity is DescriptorConstructionService)
                     return new CellMenuConstructionService(c, d);
-                if (d.CreatedEntity is DescriptorConstructionTournament)
-                    return new CellMenuConstructionTournament(c, d);
                 if (d.CreatedEntity is DescriptorConstruction)
                     return new CellMenuConstructionBuild(c, d);
                 if (d.CreatedEntity is DescriptorCreature)
@@ -410,10 +408,8 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.Player.Gold < PurchaseValue)
                 return false;
 
-            // Проверяем, что нет события или турнира
+            // Проверяем, что нет события
             if (Construction.CurrentMassEvent != null)
-                return false;
-            if (Construction.CurrentTournament != null)
                 return false;
 
             // Проверяем требования к зданиям
@@ -507,9 +503,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Construction.CurrentMassEvent != null)
                 list.Add((false, "В сооружении идет мероприятие"));
-
-            if (Construction.CurrentTournament != null)
-                list.Add((false, "В сооружении идет турнир"));
         }
 
 
@@ -813,73 +806,6 @@ namespace Fantasy_Kingdoms_Battle
             //CreatedEntity.Creating.panelHint.AddStep6Income(Descriptor.Income);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
             panelHint.AddStep12CostExecuting("Улучшение", PurchaseValue, ProgressExecuting.RestTimeExecuting, 0, GetTextRequirements());
-        }
-    }
-
-    internal sealed class CellMenuConstructionTournament : ActionInConstruction
-    {
-        private ConstructionTournament ct;
-
-        public CellMenuConstructionTournament(Construction c, DescriptorActionForEntity d) : base(c, d)
-        {
-            ConstructionTournament = d.CreatedEntity as DescriptorConstructionTournament;
-            Debug.Assert(ConstructionTournament != null);
-        }
-
-        internal DescriptorConstructionTournament ConstructionTournament { get; }
-
-        protected override void Execute()
-        {
-            Debug.Assert(Construction.Actions.IndexOf(this) != -1);
-            Debug.Assert(ct is null);
-
-            ct = new ConstructionTournament(Construction, ConstructionTournament);
-            Construction.AddTournament(ct);
-
-            Construction.Player.AddNoticeForPlayer(ct, TypeNoticeForPlayer.TournamentBegin);
-            //Cooldown = ConstructionEvent.Cooldown;
-        }
-
-        internal override bool CheckRequirements()
-        {
-            return (ct is null) && base.CheckRequirements() && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
-        }
-
-        protected override void UpdateTextRequirements(ListTextRequirement list)
-        {
-            base.UpdateTextRequirements(list);
-
-            if (Construction.Level > 1)
-                list.Add(((ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (ct is null) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
-                    ? "Турнир можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : $"Осталось подождать дней: {1}"));
-        }
-
-        internal override string GetText()
-        {
-            return ct is null ? PurchaseValue.ToString() : "идёт";
-        }
-
-        internal override void UpdatePurchase()
-        {
-            Construction.Player.CompPurchase(Descriptor.CreatedEntity.ComponentCreating.Cost, PurchaseValue, TypeCreating.Tournament);
-        }
-
-        protected override string GetTextForLevel() => "т";
-
-        internal override int GetImageIndex()
-        {
-            return ConstructionTournament.ImageIndex;
-        }
-
-        internal override void PrepareHint(PanelHint panelHint)
-        {
-            panelHint.AddStep2Descriptor(ConstructionTournament);
-            panelHint.AddStep4Level(Environment.NewLine + $"Перерыв: {ConstructionTournament.Cooldown} дн.");
-            panelHint.AddStep5Description(ConstructionTournament.Description);
-            panelHint.AddStep9Interest(ConstructionTournament.Interest, false);
-            panelHint.AddStep9ListNeeds(ConstructionTournament.ListNeeds, false);
-            //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);
-            panelHint.AddStep12CostExecuting("Подготовить турнир", PurchaseValue, ProgressExecuting.RestTimeExecuting, 0, GetTextRequirements());
         }
     }
 

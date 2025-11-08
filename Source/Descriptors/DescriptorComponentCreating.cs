@@ -40,8 +40,6 @@ namespace Fantasy_Kingdoms_Battle
                 TypeCreating = TypeCreating.Research;
             else if (Entity is DescriptorConstructionImprovement)
                 TypeCreating = TypeCreating.Research;
-            else if (Entity is DescriptorConstructionTournament)
-                TypeCreating = TypeCreating.Research;
             else if (Entity is DescriptorCreature)
                 TypeCreating = TypeCreating.Hire;
             else

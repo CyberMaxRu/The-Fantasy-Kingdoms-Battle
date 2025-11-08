@@ -4630,106 +4630,18 @@
         </Visit>
       </Level>
     </Levels>
-    <Tournaments>
-      <Tournament>
-        <ID>TournamentHandFight</ID>
-        <Name>Турнир по рукопашному бою</Name>
-        <Description>Провести турнир по рукопашному бою.</Description>
-        <ImageIndex>216</ImageIndex>
-        <Cooldown>5</Cooldown>
-        <Interest>10</Interest>
-        <AvailableForAll>true</AvailableForAll>
-        <Creating>
-          <Time>30</Time>
-          <Cost>500</Cost>
-        </Creating>
-        <Selling>
-          <Gold>50</Gold>
-          <Quantity>5</Quantity>
-          <Duration>0</Duration>
-          <DaysProcessing>5</DaysProcessing>
-          <IntervalRefresh>Day</IntervalRefresh>
-        </Selling>
-      </Tournament>
-      <Tournament>
-        <ID>TournamentArcher</ID>
-        <Name>Турнир по стрельбе из лука</Name>
-        <Description>Провести турнир по стрельбе из лука.</Description>
-        <ImageIndex>217</ImageIndex>
-        <Cooldown>5</Cooldown>
-        <Interest>10</Interest>
-        <AvailableForAll>true</AvailableForAll>
-        <Creating>
-          <Time>30</Time>
-          <Cost>1000</Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Arena</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
-        </Creating>
-        <Selling>
-          <Gold>50</Gold>
-          <Quantity>5</Quantity>
-          <Duration>0</Duration>
-          <DaysProcessing>5</DaysProcessing>
-          <IntervalRefresh>Day</IntervalRefresh>
-        </Selling>
-      </Tournament>
-      <Tournament>
-        <ID>TournamentMage</ID>
-        <Name>Магический турнир</Name>
-        <Description>Провести турнир по магическим дисциплинам.</Description>
-        <ImageIndex>218</ImageIndex>
-        <Cooldown>5</Cooldown>
-        <Interest>10</Interest>
-        <AvailableForAll>true</AvailableForAll>
-        <Creating>
-          <Time>30</Time>
-          <Cost>2000</Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Arena</Construction>
-              <Level>3</Level>
-            </Requirement>
-          </Requirements>
-        </Creating>
-        <Selling>
-          <Gold>50</Gold>
-          <Quantity>5</Quantity>
-          <Duration>0</Duration>
-          <DaysProcessing>5</DaysProcessing>
-          <IntervalRefresh>Day</IntervalRefresh>
-        </Selling>
-      </Tournament>
-    </Tournaments>
     <CellsMenu>
       <CellMenu>
         <Pos>1,1</Pos>
         <Entity>LevelArena1</Entity>
       </CellMenu>
       <CellMenu>
-        <Pos>2,1</Pos>
-        <Entity>TournamentHandFight</Entity>
-      </CellMenu>
-      <CellMenu>
         <Pos>1,2</Pos>
         <Entity>LevelArena2</Entity>
       </CellMenu>
       <CellMenu>
-        <Pos>2,2</Pos>
-        <Entity>TournamentArcher</Entity>
-      </CellMenu>
-      <CellMenu>
         <Pos>1,3</Pos>
         <Entity>LevelArena3</Entity>
-      </CellMenu>
-      <CellMenu>
-        <Pos>2,3</Pos>
-        <Entity>TournamentMage</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>

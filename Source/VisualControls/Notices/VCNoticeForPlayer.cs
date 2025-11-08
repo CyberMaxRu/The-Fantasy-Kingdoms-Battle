@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, Improvement, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
+    internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, Improvement, HireHero, MassEventBegin, MassEventEnd, 
         ReceivedBaseResource, HeroIsDead, ConstructionDamaged, ConstructionRepaired, AddQuest };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
@@ -87,18 +87,6 @@ namespace Fantasy_Kingdoms_Battle
                     imageIndexOwner = (Entity as ConstructionEvent).Construction.GetImageIndex();
                     nameNotice = "Завершено:";
                     nameText = (Entity as ConstructionEvent).Descriptor.Name;
-                    colorNameEntity = Color.DarkGoldenrod;
-                    break;
-                case TypeNoticeForPlayer.TournamentBegin:
-                    imageIndexOwner = (Entity as ConstructionTournament).Construction.GetImageIndex();
-                    nameNotice = "Турнир:";
-                    nameText = (Entity as ConstructionTournament).Descriptor.Name;
-                    colorNameEntity = Color.DarkGoldenrod;
-                    break;
-                case TypeNoticeForPlayer.TournamentEnd:
-                    imageIndexOwner = (Entity as ConstructionTournament).Construction.GetImageIndex();
-                    nameNotice = "Завершено:";
-                    nameText = (Entity as ConstructionTournament).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.ReceivedBaseResource:

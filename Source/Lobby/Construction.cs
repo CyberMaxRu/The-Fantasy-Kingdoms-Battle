@@ -80,7 +80,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<EntityForConstruction> ListEntities { get; } = new List<EntityForConstruction>();// Все сущности в сооружении
         internal ConstructionVisitSimple CurrentVisit { get; private set; }// Текущее активное посещение сооружения
         internal ConstructionEvent CurrentMassEvent { get; set; }// Текущее мероприятие
-        internal ConstructionTournament CurrentTournament { get; set; }// Текущий турнир
         internal List<ConstructionVisit> Visits { get; } = new List<ConstructionVisit>();//
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
         internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
@@ -561,13 +560,6 @@ namespace Fantasy_Kingdoms_Battle
                         RemoveProduct(CurrentMassEvent.Descriptor);
                 }
 
-                if (CurrentTournament != null)
-                {
-                    CurrentTournament.Counter--;
-                    if (CurrentTournament.Counter == 0)
-                        RemoveProduct(CurrentTournament.Descriptor);
-                }
-
                 foreach (ActionInConstruction cm in Actions)
                 {
                     cm.PrepareNewDay();
@@ -772,20 +764,8 @@ namespace Fantasy_Kingdoms_Battle
             AddEntity(ce);
 
             Debug.Assert(CurrentMassEvent is null);
-            Debug.Assert(CurrentTournament is null);
 
             Visits.Add(ce);
-        }
-
-        internal void AddTournament(ConstructionTournament ct)
-        {
-            AddEntity(ct);
-
-            Debug.Assert(CurrentMassEvent is null);
-            Debug.Assert(CurrentTournament is null);
-
-            Visits.Add(ct);
-            CurrentTournament = ct;
         }
 
         internal void AddService(ConstructionService cs)
@@ -823,8 +803,6 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentVisit = null;
             if (CurrentMassEvent == productFromRemove)
                 CurrentMassEvent = null;
-            if (CurrentTournament == productFromRemove)
-                CurrentTournament = null;
 
             RemoveEntity(productFromRemove);
         }
@@ -846,12 +824,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(CurrentMassEvent != null);
                 Debug.Assert(CurrentMassEvent == cev);
                 CurrentMassEvent = null;
-            }
-            else if (entity is ConstructionTournament ct)
-            {
-                Debug.Assert(CurrentTournament != null);
-                Debug.Assert(CurrentTournament == ct);
-                CurrentTournament = null;
             }
             else if (entity is ConstructionAbility ca)
             {

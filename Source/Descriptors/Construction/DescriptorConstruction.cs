@@ -148,14 +148,6 @@ namespace Fantasy_Kingdoms_Battle
                     new DescriptorConstructionMassEvent(this, l);
             }
 
-            // Загружаем информацию о турнирах
-            XmlNode nodeTournaments = n.SelectSingleNode("Tournaments");
-            if (nodeTournaments != null)
-            {
-                foreach (XmlNode l in nodeTournaments.SelectNodes("Tournament"))
-                    new DescriptorConstructionTournament(this, l);
-            }
-
             // Загружаем информацию об улучшениях
             XmlNode nodeImprovements = n.SelectSingleNode("Improvements");
             if (nodeImprovements != null)
