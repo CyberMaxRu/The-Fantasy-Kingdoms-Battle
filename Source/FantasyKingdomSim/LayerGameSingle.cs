@@ -56,7 +56,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Контролы над тулбаром
         private readonly VCLabelValue labelDay;
-        private readonly VCProgressBar pbDay;
         private readonly VCLabelValue labelTraditions;
         private readonly VCProgressBar pbTraditions;
         private readonly VCLabelValue labelMana;
@@ -140,9 +139,6 @@ namespace Fantasy_Kingdoms_Battle
             labelDay.ShowHint += LabelDay_ShowHint;
             labelDay.Width = 72;
             labelDay.RightMargin = 6;
-            pbDay = new VCProgressBar(bmpTopPanel, labelDay.NextLeft() - Config.GridSizeHalf, labelDay.ShiftY);
-            pbDay.Max = Config.TicksInTurn;
-            pbDay.Width = 160;
 
             labelTraditions = new VCLabelValue(bmpTopPanel, labelDay.ShiftX, labelDay.NextTop() - Config.GridSize, Color.White, true);
             labelTraditions.Image.ImageIndex = FormMain.GUI_16_TRADITIONS;
@@ -150,10 +146,10 @@ namespace Fantasy_Kingdoms_Battle
             labelTraditions.RightMargin = 6;
             //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
             labelTraditions.Width = labelDay.Width;
-            pbTraditions = new VCProgressBar(bmpTopPanel, pbDay.ShiftX, labelTraditions.ShiftY);
-            pbTraditions.Width = pbDay.Width;
+            pbTraditions = new VCProgressBar(bmpTopPanel, labelDay.ShiftX, labelTraditions.ShiftY);
+            pbTraditions.Width = 160;
 
-            labelMana = new VCLabelValue(bmpTopPanel, pbDay.NextLeft(), labelDay.ShiftY, Color.White, true);
+            labelMana = new VCLabelValue(bmpTopPanel, labelDay.NextLeft(), labelDay.ShiftY, Color.White, true);
             labelMana.Image.ImageIndex = FormMain.GUI_16_MANA;
             labelMana.Width = 112;
             labelGreatness = new VCToolLabel(bmpPreparedToolbar, pbTraditions.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_GREATNESS);
@@ -353,7 +349,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.BeforeDrawFrame();
 
-            lobby?.DoTicks();
         }
 
         private VCIconButton48 CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
@@ -749,14 +744,6 @@ namespace Fantasy_Kingdoms_Battle
                     countTicks = 0;
                 }
 
-                // Догоняем по внутреннему таймеру тики
-                long elapsedTicks = internalTimer.ElapsedMilliseconds / FormMain.Config.DurationTickInMilliSeconds;
-                while ((lobby != null) && (elapsedTicks >= lobby.CounterTicks))
-                {
-                    lobby.DoTicks();
-                    countTicks++;
-                }
-
                 countFrames++;
                 if (lobby is null)
                     Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
@@ -1021,7 +1008,6 @@ namespace Fantasy_Kingdoms_Battle
             if ((lobby != null) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
                 labelDay.Text = $"{lobby.Turn}";
-                pbDay.Position = lobby.CounterTicksOfTurn;
                 labelTraditions.Text = $"{curAppliedPlayer.PointsForNextTradition}";
                 pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
                 pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);

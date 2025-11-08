@@ -71,8 +71,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Поддержка ходов
         internal int Turn { get; private set; }// Текущий ход лобби
-        internal int CounterTicks { get; private set; }// Сколько тиков прошло
-        internal int CounterTicksOfTurn { get; private set; }// Сколько тиков прошло
 
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
@@ -174,26 +172,6 @@ namespace Fantasy_Kingdoms_Battle
             VisualControl.PanelHint.Player = CurrentPlayer;
         }
 
-        internal void DoTicks()
-        {
-            // Прибавляем тик ко времени
-            CounterTicks++;
-            CounterTicksOfTurn++;
-            bool startNewDay = false;
-            if (CounterTicksOfTurn > FormMain.Config.TicksInTurn)
-            {
-                Turn++;
-                CounterTicksOfTurn = 0;
-                startNewDay = true;
-            }
-
-            // Ходим игроками
-            for (int i = 0; i < Players.Length; i++)
-            {
-                Players[i].DoTick(startNewDay);
-            }
-        }
-
         internal void Start()
         {
             // Реальный игрок должен быть жив
@@ -201,7 +179,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].IsLive);
             Debug.Assert(CheckUniqueNamePlayers());
 
-            return;
             while (!stopLobby)
             {
                 Debug.Assert(ExistsHumanPlayer());
