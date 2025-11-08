@@ -27,7 +27,6 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = dc;
             PlayerIsOwner = true;
             PlayerCanOwn = true;
-            IsEnemy = false;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, true);
 
             TuneByCreate();
@@ -43,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Конструктор для сооружений, которые создаются в процессе игры
-        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, bool visible, bool own, bool canOwn, bool isEnemy, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
+        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, bool visible, bool own, bool canOwn, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
         {
             Assert(!dc.IsInternalConstruction);
             Assert((dc.Category == CategoryConstruction.Lair) || (dc.Category == CategoryConstruction.External) || (dc.Category == CategoryConstruction.Temple)
@@ -55,7 +54,6 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             PlayerIsOwner = own;
             PlayerCanOwn = canOwn;
-            IsEnemy = isEnemy;
             ComponentObjectOfMap = new ComponentObjectOfMap(this, visible);
 
             TuneByCreate();
@@ -72,7 +70,6 @@ namespace Fantasy_Kingdoms_Battle
         internal new DescriptorConstruction Descriptor { get; }// Описатель сооружения
         internal bool PlayerIsOwner { get; private set; }// Игрок - владелец сооружения
         internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
-        internal bool IsEnemy { get; private set; }// Это сооружение враждебно
         internal int Level { get; private set; }
         internal StateConstruction State { get; private set; }// Состояние сооружения
 
@@ -1187,8 +1184,6 @@ namespace Fantasy_Kingdoms_Battle
                 SelectedColor = Color.White;
             else if (PlayerCanOwn)
                 SelectedColor = Color.LimeGreen;
-            else if (!IsEnemy)
-                SelectedColor = Color.Yellow;
             else
                 SelectedColor = Color.Red;
         }
