@@ -746,9 +746,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
         internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов
 
-        internal int ExtraLevelUp { get; private set; }
-        internal int ExtraResearch { get; private set; }
-
         internal int QuantityHeroes { get; private set; }
 
         internal Item[] Warehouse = new Item[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
@@ -760,8 +757,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Логова
         internal List<Construction> ListFlags { get; } = new List<Construction>();
-        internal int LairsScouted { get; private set; }
-        internal int LairsShowed { get; private set; }
 
         // Традиции
         internal Dictionary<DescriptorTradition, int> ListTraditions { get; } = new Dictionary<DescriptorTradition, int>();// Принятые традиции
@@ -1439,21 +1434,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 h.PerksChanged();
             }
-        }
-
-        internal void AddExtraLevelUp()
-        {
-            Debug.Assert(ExtraLevelUp >= 0);
-
-            ExtraLevelUp++;
-        }
-
-
-        internal void AddExtraResearch()
-        {
-            Debug.Assert(ExtraResearch >= 0);
-
-            ExtraResearch++;
         }
 
         internal void AddNoticeForPlayer(VCCustomNotice notice)
