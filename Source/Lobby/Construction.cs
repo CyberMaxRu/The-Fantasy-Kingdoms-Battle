@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum StateConstruction { None, Work, NotBuild, Build, InQueueBuild, NeedRepair, Repair, Destroyed };
 
     // Класс сооружения у игрока
-    internal sealed class Construction : BattleParticipant
+    internal sealed class Construction : BigEntity
     {
         private List<ActionInConstruction> tempListActions = new List<ActionInConstruction>();
         private int gold;
@@ -754,21 +754,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.Click(pe);
             Lobby.Layer.SelectPlayerObject(this, -1, true);
-        }
-
-        internal override TypePlayer GetTypePlayer()
-        {
-            return TypePlayer.Lair;
-        }
-
-        internal override Player GetPlayer()
-        {
-            return Player;
-        }
-
-        internal override int GetImageIndexAvatar()
-        {
-            return Descriptor.ImageIndex;
         }
 
         internal List<ConstructionProduct> GetProducts(DescriptorCreature dc)
