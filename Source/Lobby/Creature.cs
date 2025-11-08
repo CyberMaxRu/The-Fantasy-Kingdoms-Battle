@@ -68,14 +68,6 @@ namespace Fantasy_Kingdoms_Battle
                 Needs[dcn.Descriptor.Index] = new CreatureNeed(this, dcn);
             }
 
-            // Создаем интересы
-            Interests = new CreatureInterest[FormMain.Descriptors.InterestCreature.Count];
-
-            foreach (DescriptorCreatureInterest dci in TypeCreature.Interests)
-            {
-                Interests[dci.Descriptor.Index] = new CreatureInterest(this, dci);
-            }
-
             // Создаем перк существа по его характеристикам
             if (TypeCreature.Properties != null)
             {
@@ -172,7 +164,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Индивидуальные свойства существа
         internal CreatureNeed[] Needs { get; }// Потребности
-        internal CreatureInterest[] Interests { get; }// Интересы
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти
@@ -228,12 +219,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Needs[dcn.Descriptor.Index].IncreasePerDay = ValidateValueProperty(Needs[dcn.Descriptor.Index].IncreasePerDay, dcn.ChangePerLevel);
                     Utils.Assert(Needs[dcn.Descriptor.Index].IncreasePerDay > 0);
-                }
-
-                // Делаем изменение интересов
-                foreach (DescriptorCreatureInterest dci in TypeCreature.Interests.Where(d => d.ChangePerLevel != 0))
-                {
-                    Interests[dci.Descriptor.Index].Value = ValidateValueProperty(Interests[dci.Descriptor.Index].Value, dci.ChangePerLevel);
                 }
             }
         }

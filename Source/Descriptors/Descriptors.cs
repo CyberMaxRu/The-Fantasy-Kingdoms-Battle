@@ -149,14 +149,6 @@ namespace Fantasy_Kingdoms_Battle
                 NeedsCreature.Add(new DescriptorNeed(n));
             }
 
-            // Загрузка конфигурации интересов существ
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\InterestCreature.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/InterestCreature"))
-            {
-                InterestCreature.Add(new DescriptorInterest(n));
-            }
-
             // Загрузка конфигурации перков
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Perks.xml");
 
@@ -308,7 +300,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<DescriptorProperty> PropertiesCreature { get; } = new List<DescriptorProperty>();
         internal List<DescriptorNeed> NeedsCreature { get; } = new List<DescriptorNeed>();
-        internal List<DescriptorInterest> InterestCreature { get; } = new List<DescriptorInterest>();
         internal List<DescriptorTypeCreature> TypeCreatures { get; } = new List<DescriptorTypeCreature>();
         internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
@@ -488,17 +479,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception($"Потребность существа {ID} не найдена.");
-        }
-
-        internal DescriptorInterest FindInterestCreature(string ID)
-        {
-            foreach (DescriptorInterest di in InterestCreature)
-            {
-                if (di.ID == ID)
-                    return di;
-            }
-
-            throw new Exception($"Интерес существа {ID} не найден.");
         }
 
         internal DescriptorTypeCreature FindTypeCreature(string ID)

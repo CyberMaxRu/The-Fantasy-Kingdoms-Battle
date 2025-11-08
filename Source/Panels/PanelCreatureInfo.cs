@@ -52,8 +52,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCCreatureProperty> listProperties;
         private readonly VCLabel lblNeeds;
         private readonly List<VCCreatureNeed> listNeeds;
-        private readonly VCLabel lblInterests;
-        private readonly List<VCCreatureInterest> listInterests;
 
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
@@ -111,14 +109,6 @@ namespace Fantasy_Kingdoms_Battle
             listNeeds = new List<VCCreatureNeed>();
             for (int i = 0; i < FormMain.Descriptors.NeedsCreature.Count; i++)
                 listNeeds.Add(new VCCreatureNeed(panelStatistics, 0, 0, 51));
-
-            // Интересы
-            lblInterests = new VCLabel(panelStatistics, 0, 0, Program.formMain.FontSmall, Color.White, 16, "Интересы:");
-            lblInterests.StringFormat.Alignment = StringAlignment.Near;
-
-            listInterests = new List<VCCreatureInterest>();
-            for (int i = 0; i < FormMain.Descriptors.InterestCreature.Count; i++)
-                listInterests.Add(new VCCreatureInterest(panelStatistics, 0, 0, 51));
 
             pageControl.ApplyMinSize();
 
@@ -179,7 +169,6 @@ namespace Fantasy_Kingdoms_Battle
             panelStatistics.Height = pageControl.Height - panelStatistics.ShiftY - FormMain.Config.GridSize;
             lblProperties.Width = panelStatistics.Width;
             lblNeeds.Width = panelStatistics.Width;
-            lblInterests.Width = panelStatistics.Width;
 
             base.ArrangeControls();
         }
@@ -210,8 +199,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // 
             ShowChapter(lblProperties, lblNeeds, Creature.Properties.ToList(), listProperties);
-            ShowChapter(lblNeeds, lblInterests, Creature.Needs.ToList(), listNeeds);
-            ShowChapter(lblInterests, null, Creature.Interests.ToList(), listInterests);
+            ShowChapter(lblNeeds, null, Creature.Needs.ToList(), listNeeds);
 
             base.Draw(g);
             

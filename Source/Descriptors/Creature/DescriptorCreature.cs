@@ -141,25 +141,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            // Загружаем интересы
-            XmlNode nodeInterests = n.SelectSingleNode("Interests");
-            if (nodeInterests != null)
-            {
-                foreach (XmlNode nnl in nodeInterests.SelectNodes("Interest"))
-                {
-
-                    string idInterest = GetStringNotNull(nnl, "ID");
-                    DescriptorCreatureInterest ci = new DescriptorCreatureInterest(Descriptors.FindInterestCreature(idInterest), nnl);
-
-                    foreach (DescriptorCreatureInterest ci2 in Interests)
-                    {
-                        Debug.Assert(ci2.Descriptor.ID != ci.Descriptor.ID);
-                    }
-
-                    Interests.Add(ci);
-                }
-            }
-
             // Проверяем, что таких же ID и наименования нет
             foreach (DescriptorCreature h in FormMain.Descriptors.Creatures)
             {
@@ -336,7 +317,6 @@ namespace Fantasy_Kingdoms_Battle
         internal ListDescriptorPerks Perks { get; }// Дефолтные перки        
         internal ListDefaultProperties Properties { get; }// Свойства у существа
         internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
-        internal List<DescriptorCreatureInterest> Interests { get; } = new List<DescriptorCreatureInterest>();// Интересы
         internal int MovePoints { get; }// Очков движения по умолчанию
         internal CreatureModifyParameters AdditionalBonus { get; }
         //
