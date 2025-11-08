@@ -64,16 +64,6 @@ namespace Fantasy_Kingdoms_Battle
                 Traditions.Add(new DescriptorTradition(n));
             }
 
-            // Загрузка конфигурации параметров населенных пунктов
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\CityParameters.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/CityParameter"))
-            {
-                CityParameters.Add(new DescriptorCityParameter(n));
-            }
-
-            Debug.Assert(CityParameters.Count > 0);
-            CityParameters.Capacity = CityParameters.Count;
-
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
@@ -337,9 +327,6 @@ namespace Fantasy_Kingdoms_Battle
             IndexPropertyScout = FindPropertyCreature("CreatureScout").Index;
 
             //
-            IndexCityParameterCitizens = FindCityParameter(FormMain.Config.CityParameterCitizens).Index;
-
-            //
             StateCreatureDoFlagScout = FindStateCreature(FormMain.Config.StateCreatureDoScoutFlag);
 
             // Вспомогательные методы
@@ -364,7 +351,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Списки описателей
         internal SortedList<string, DescriptorEntity> Entities { get; } = new SortedList<string, DescriptorEntity>();// Список всех сущностей
-        internal List<DescriptorCityParameter> CityParameters { get; } = new List<DescriptorCityParameter>();
 
         // Товары в сооружениях
         internal List<DescriptorProduct> ConstructionProducts { get; } = new List<DescriptorProduct>();
@@ -409,9 +395,6 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal int IndexPropertyScout { get; }
-
-        //
-        internal int IndexCityParameterCitizens { get; }
 
         //
         internal DescriptorStateCreature StateCreatureDoFlagScout { get; }
@@ -502,17 +485,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип атаки " + ID + " не найден.");
-        }
-
-        internal DescriptorCityParameter FindCityParameter(string ID)
-        {
-            foreach (DescriptorCityParameter sp in CityParameters)
-            {
-                if (sp.ID == ID)
-                    return sp;
-            }
-
-            throw new Exception($"Параметр города {ID} не найден.");
         }
 
         internal DescriptorTypeConstruction FindTypeConstruction(string ID)

@@ -78,8 +78,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Контролы тулбара
         private readonly VCToolLabelResource[] labelsResources;
-        private readonly VisualControl panelCityParameters;
-        private readonly VCToolLabelCityParameter[] labelCityParameters;
         private readonly VCToolLabel labelKnowledge;
         //private readonly VCToolLabel labelPeople;
         private readonly VCToolLabel labelCorruption;
@@ -140,19 +138,6 @@ namespace Fantasy_Kingdoms_Battle
             // Главное игровое поле
             MainControl = new VisualControl(this, 0, 0);
             MainControl.Click += MainControl_Click;
-
-            // Метки с информацией о Королевстве
-            panelCityParameters = new VisualControl(bmpPreparedToolbar, 0, 6);
-            labelCityParameters = new VCToolLabelCityParameter[Descriptors.CityParameters.Count];
-
-            int nextLeft = 0;
-            foreach (DescriptorCityParameter sp in Descriptors.CityParameters)
-            {
-                VCToolLabelCityParameter lblParam = new VCToolLabelCityParameter(panelCityParameters, nextLeft, 0, sp);
-                nextLeft = lblParam.NextLeft();
-                labelCityParameters[sp.Index] = lblParam;
-            }
-            panelCityParameters.ApplyMaxSize();
 
             /*labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
             foreach (DescriptorBaseResource br in Descriptors.BaseResources)
@@ -393,7 +378,7 @@ namespace Fantasy_Kingdoms_Battle
             UpdateNameCurrentPage();
 
             // Сразу создаем контролы под традиции. Они все равно обязательно пригодятся
-            nextLeft = 0;
+            int nextLeft = 0;
             int nextTop = 0;
             for (int i = 1; i <= FormMain.Config.MaxTraditions; i++)
             {
@@ -1327,11 +1312,6 @@ namespace Fantasy_Kingdoms_Battle
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
                 //pageTraditions.RestTimeExecuting = curAppliedPlayer.RestTimeForNextTradition >= 0 ? curAppliedPlayer.RestTimeForNextTradition.ToString() : "";
                 pageTraditions.Quantity = curAppliedPlayer.ListTraditions.Count;
-
-                foreach (VCToolLabelCityParameter sp in labelCityParameters)
-                {
-                    sp.UpdateData(curAppliedPlayer);
-                }
 
                 /*foreach (VCToolLabelResource l in labelsResources)
                 {

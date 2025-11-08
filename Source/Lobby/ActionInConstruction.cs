@@ -495,7 +495,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep55Durability(Construction.DurabilityForLevel(Descriptor.Number));
             panelHint.AddStep6Income(Construction.IncomeForLevel(Descriptor.Number));
             panelHint.AddStep8Greatness(Construction.GreatnesAddForLevel(Descriptor.Number), Construction.GreatnesPerDayForLevel(Descriptor.Number));
-            panelHint.AddStep9CityParameters(Descriptor.ChangeCityParametersPerTurn);
             panelHint.AddStep9PlusBuilders(Descriptor.AddConstructionPoints);
             if (Descriptor.DescriptorVisit != null)
             {
@@ -950,7 +949,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHint.AddStep2Descriptor(Entity);
             panelHint.AddStep5Description(Entity.Description);
             //panelHint.AddStep6Income(Descriptor.Income);
-            panelHint.AddStep9CityParameters(Entity.ChangeCityParametersPerTurn);
             panelHint.AddStep9Interest(Entity.ModifyInterest, true);
             panelHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             //panelHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.CreatedEntity.GetCreating().DaysProcessing);

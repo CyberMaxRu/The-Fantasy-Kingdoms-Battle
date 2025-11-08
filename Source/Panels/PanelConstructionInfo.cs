@@ -40,7 +40,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCTabButton btnInhabitants;
         private readonly VCTabButton btnVisitors;
         private readonly VCIconAndDigitValue lblInterest;
-        private readonly List<VCCityParameter> listCityParameters;
         private readonly List<VCConstructionSatisfNeed> listControlsNeeds;
 
         public PanelConstructionInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -58,15 +57,8 @@ namespace Fantasy_Kingdoms_Battle
 
             // Изменения параметров города
             int nextTop = imgIcon.ShiftY;
-            listCityParameters = new List<VCCityParameter>();
-            foreach (DescriptorCityParameter dcp in FormMain.Descriptors.CityParameters)
-            {
-                VCCityParameter cp = new VCCityParameter(this, imgIcon.NextLeft(), nextTop, dcp);
-                nextTop = cp.NextTop() - 4;
-                listCityParameters.Add(cp);
-            }
 
-            lblInterest = new VCIconAndDigitValue(this, listCityParameters[0].NextLeft(), imgIcon.ShiftY, 16, FormMain.GUI_16_INTEREST_OTHER);
+            lblInterest = new VCIconAndDigitValue(this, 0, imgIcon.ShiftY, 16, FormMain.GUI_16_INTEREST_OTHER);
             lblInterest.ShowHint += LblInterest_ShowHint;
 
             nextTop = lblInterest.NextTop() - FormMain.Config.GridSizeHalf;
@@ -238,11 +230,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 panelVisits.ApplyList(Construction.ComponentObjectOfMap.ListHeroesForFlag);
                 btnVisitors.Quantity = Construction.ComponentObjectOfMap.ListHeroesForFlag.Count;
-            }
-
-            foreach (VCCityParameter cp in listCityParameters)
-            {
-                cp.UpdateData(Construction);
             }
 
             lblInterest.Image.ImageIsEnabled = Construction.Level > 0;

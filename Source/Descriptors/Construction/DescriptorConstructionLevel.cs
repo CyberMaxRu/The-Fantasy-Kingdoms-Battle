@@ -63,10 +63,6 @@ namespace Fantasy_Kingdoms_Battle
             if (Number > 1)
                 ComponentCreating.Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1, ComponentCreating.Requirements));
 
-            XmlNode nsp = n.SelectSingleNode("CityParametersPerTurn");
-            if (nsp != null)
-                ChangeCityParametersPerTurn = new ListCityParameters(nsp);
-            
             IncomeResources = GetInteger(n, "Income");
 
             // Указываем, на сколько увеличится прочность сооружения
@@ -114,7 +110,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionVisitSimple DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
         internal ListDefaultProperties Properties { get; }// Список характеристик
-        internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
         internal int IncomeResources { get; }// Сколько золота приносит сооружение в день
 
 

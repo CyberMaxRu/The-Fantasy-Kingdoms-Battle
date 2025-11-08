@@ -562,56 +562,17 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep9CityParameters(ListCityParameters list)
+
+        VCLabelValue GetLabel(int index)
         {
-            if (list != null)
+            if (index < listSettlementParameters.Count)
+                return listSettlementParameters[index];
+            else
             {
-                VCLabelValue lbl = null;
-                int nextLeft = FormMain.Config.GridSize;
-
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (list[i] != 0)
-                    {
-                        if (!lblSettlementParameters.Visible)
-                        {
-                            lblSettlementParameters.Visible = true;
-                            lblSettlementParameters.ShiftY = nextTop;
-                            nextTop = lblSettlementParameters.NextTop();
-                        }
-
-                        lbl = GetLabel(i);
-                        lbl.Visible = true;
-                        lbl.Color = FormMain.Descriptors.CityParameters[i].PositiveIsGood ? (list[i] > 0 ? Color.Green : Color.Red) : (list[i] < 0 ? Color.Green : Color.Red);
-                        lbl.Text = FormatDecimal100(list[i], true);
-                        lbl.Image.ImageIndex = FormMain.Descriptors.CityParameters[i].ImageIndex16;
-                        lbl.ShiftX = nextLeft;
-                        lbl.ShiftY = nextTop;
-
-                        nextLeft = lbl.NextLeft();
-                        if (nextLeft + lbl.Width > Width)
-                        {
-                            nextLeft = FormMain.Config.GridSize;
-                            nextTop = lbl.NextTop();
-                        }
-                    }
-                }
-
-                if ((lbl != null) && (nextLeft > FormMain.Config.GridSize))
-                    nextTop = lbl.NextTop();
-            }
-
-            VCLabelValue GetLabel(int index)
-            {
-                if (index < listSettlementParameters.Count)
-                    return listSettlementParameters[index];
-                else
-                {
-                    VCLabelValue l = new VCLabelValue(this, 0, 0, FormMain.Config.HintIncome, false);
-                    l.Width = 64;
-                    listSettlementParameters.Add(l);
-                    return l;
-                }
+                VCLabelValue l = new VCLabelValue(this, 0, 0, FormMain.Config.HintIncome, false);
+                l.Width = 64;
+                listSettlementParameters.Add(l);
+                return l;
             }
         }
 

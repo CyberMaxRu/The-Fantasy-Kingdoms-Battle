@@ -154,9 +154,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionAbility> Abilities { get; } = new List<ConstructionAbility>();// Умения, доступные в строении
         internal List<ConstructionSpell> Spells { get; } = new List<ConstructionSpell>();// Заклинания, доступные в строении
 
-        // Изменение параметров населенного пункта
-        internal ListCityParameters ChangeCityParameters { get; } = new ListCityParameters();
-
         // Действия
         internal ActionInConstruction ActionMain { get; private set; }// Основное действие, которое отображается в панели сооружения
         private CellMenuConstructionLevelUp ActionBuildOrLevelUp { get; set; }// Действие для постройки/улучшения сооружения
@@ -625,7 +622,6 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep6Income(Income());
                     panelHint.AddStep8Greatness(0, GreatnessPerDay());
                     panelHint.AddStep9PlusBuilders(BuildersPerDay());
-                    panelHint.AddStep9CityParameters(ChangeCityParameters);
                     panelHint.AddStep9Interest(GetInterest(), false);
                     panelHint.AddStep9ListNeeds(SatisfactionNeeds);
                 }
@@ -1541,7 +1537,6 @@ namespace Fantasy_Kingdoms_Battle
             TuneActionLevelUp();
             UpdateSelectedColor();
             UpdateState();
-            UpdateCityParameters();
         }
 
         internal void UpdateState()
@@ -1759,19 +1754,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void UpdateCityParameters()
-        {
-            if ((Level > 0) && (Descriptor.Levels[Level].ChangeCityParametersPerTurn != null))
-            {
-                ChangeCityParameters.FromList(Descriptor.Levels[Level].ChangeCityParametersPerTurn);
-
-                foreach (ConstructionExtension ce in Extensions)
-                    ChangeCityParameters.AddParameters(ce.Descriptor.ChangeCityParametersPerTurn);
-            }
-            else
-                ChangeCityParameters.Zeroing();
-        }
-
         internal void UpdateAfterTick()
         {
             ValidateActions();
@@ -1788,7 +1770,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             TuneActionLevelUp();// Если кнопка ремонта была удалена, надо обновить действия
-            UpdateCityParameters();// Обновляем изменения за ход
         }
 
         internal void ValidateActions()

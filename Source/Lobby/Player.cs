@@ -58,12 +58,6 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.TypePlayer == TypePlayer.Computer)   
                 Gold = 100_000;
 
-            CityParameters = new ListCityParameters(lobby.TypeLobby.BaseCityParameters);
-            ChangeCityParametersPerTurn = new ListCityParameters();
-            ChangeCityParametersPerTurnByConstructions = new ListCityParameters();
-            for (int i = 0; i < CityParameters.Count; i++)
-                ChangeCityParametersPerTurnInTicks.Add(0);
-
             PointsForNextTradition = FormMain.Config.CostFirstTradition;
 
             TypeTradition1 = Lobby.Settings.Players[playerIndex].TypeTradition1;
@@ -297,18 +291,6 @@ namespace Fantasy_Kingdoms_Battle
                 l.PrepareNewDay();
         }
 
-        private void CalcCityParameters()
-        {
-            ChangeCityParametersPerTurn.Zeroing();
-            ChangeCityParametersPerTurn.AddParameters(Lobby.TypeLobby.ChangeCityParametersPerTurn);
-
-            ChangeCityParametersPerTurnByConstructions.Zeroing();
-            foreach (Construction c in Constructions)
-                ChangeCityParametersPerTurnByConstructions.AddParameters(c.ChangeCityParameters);
-
-            ChangeCityParametersPerTurn.AddParameters(ChangeCityParametersPerTurnByConstructions);
-        }
-
         internal void ReceiveResources()
         {
             /*
@@ -391,9 +373,6 @@ namespace Fantasy_Kingdoms_Battle
             // Вызываем диспетчер очереди, чтобы он распределил строителей по заданиям
             DispatcherQueue();
 
-            // Прибавляем миллитики к изменениям параметров города
-            ApplyChangeCityParameters();
-
             // Обработка традиции
             if ((NextTradition is null) && AcceptTraditionsAllowed)
             {
@@ -411,7 +390,7 @@ namespace Fantasy_Kingdoms_Battle
             // Делаем расчет, сколько очков традиций должно прибавиться за ход
             if (AcceptTraditionsAllowed)
             {
-                PointsTraditionPerTurn = (int)Math.Truncate(CityParameters[FormMain.Descriptors.IndexCityParameterCitizens] / 100.0) * 10;
+                PointsTraditionPerTurn = 1;// (int)Math.Truncate(CityParameters[FormMain.Descriptors.IndexCityParameterCitizens] / 100.0) * 10;
                 if (cheatingPointTraditionMore10Times)
                     PointsTraditionPerTurn *= 10;
                 Assert(PointsTraditionPerTurn > 0);
@@ -439,25 +418,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 PointsTraditionPerTurn = 0;
                 RestTimeForNextTradition = -1;
-            }
-
-            // Если начался новый ход, применяем получившуюся дельту
-            if (startNewDay)
-            {
-                for (int i = 0; i < ChangeCityParametersPerTurn.Count; i++)
-                {
-                    if (ChangeCityParametersPerTurn[i] != 0)
-                    {
-                        if (Math.Abs(ChangeCityParametersPerTurnInTicks[i]) >= 1)
-                        {
-                            ChangeCityParametersPerTurnInTicks[i] += ChangeCityParametersPerTurnInTicks[i] >= 0 ? 0.5 : -0.5;
-                            int inc = (int)Math.Truncate(ChangeCityParametersPerTurnInTicks[i]);
-                            CityParameters[i] += inc;
-                            // Дробные части, возникающие из-за погрешности, обнуляем
-                            ChangeCityParametersPerTurnInTicks[i] = 0;
-                        }
-                    }
-                }
             }
 
             // Делаем тик у сооружений            
@@ -512,7 +472,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             UpdateBuilderInfo();
-            CalcCityParameters();
         }
 
         // Определяет варианты выбора следующей традиции
@@ -628,19 +587,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     a.ProgressExecuting.State = StateProgress.WaitInQueue;
-            }
-        }
-
-        private void ApplyChangeCityParameters()
-        {
-            for (int i = 0; i < ChangeCityParametersPerTurn.Count; i++)
-            { 
-                if (ChangeCityParametersPerTurn[i] != 0)
-                {
-                    // Переводим изменение в дельту за миллитик
-                    double delta = (double)ChangeCityParametersPerTurn[i] / FormMain.Config.TicksInTurn;
-                    ChangeCityParametersPerTurnInTicks[i] += delta;
-                }
             }
         }
 
@@ -911,12 +857,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorCreature> VariantsBonusedTypeTempleHero { get; }// Варианты храмовников для выбора постоянного бонуса
         internal DescriptorCreature SelectedBonusSimpleHero { get; set; }
         internal DescriptorCreature SelectedBonusTempleHero { get; set; }
-
-        //
-        internal ListCityParameters CityParameters { get; }// Параметры города
-        internal ListCityParameters ChangeCityParametersPerTurn { get; }// Изменение параметров города за ход
-        internal ListCityParameters ChangeCityParametersPerTurnByConstructions { get; }// Изменение параметров города за ход за счет сооружений
-        internal List<double>ChangeCityParametersPerTurnInTicks { get; } = new List<double>();// Изменение параметров города за ход
 
         //
         internal List<PlayerQuest> Quests { get; } = new List<PlayerQuest>();// Список квестов игрока
