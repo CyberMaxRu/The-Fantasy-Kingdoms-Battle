@@ -209,8 +209,6 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                panelInhabitants.ApplyList(Construction.Monsters);
-                btnInhabitants.Quantity = Construction.Monsters.Count;
             }
 
             lblInterest.Image.ImageIsEnabled = Construction.Level > 0;

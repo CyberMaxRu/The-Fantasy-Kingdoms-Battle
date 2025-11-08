@@ -74,10 +74,7 @@ namespace Fantasy_Kingdoms_Battle
         // Свойства для внешних сооружений
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
-        internal int PercentScoutForFound { get; set; }// Процент разведки локации, чтобы найти сооружение
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
-        internal string IDPathToLocation { get; } = "";//
-        internal List<Creature> Monsters { get; } = new List<Creature>();// Монстры текущего уровня
 
         // Small-сущности в сооружении
         internal List<EntityForConstruction> ListEntities { get; } = new List<EntityForConstruction>();// Все сущности в сооружении
