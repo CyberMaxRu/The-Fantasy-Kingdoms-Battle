@@ -180,7 +180,6 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти
-        internal DescriptorReasonOfDeath ReasonOfDeath { get; private set; }// Причина смерти
 
         // Действия
         internal Location LocationForScout { get; set; }// Локация, назначенная существу для разведки
@@ -324,15 +323,13 @@ namespace Fantasy_Kingdoms_Battle
             return Quiver is null ? 0 : Quiver.Descriptor.QuantityShots;
         }
 
-        internal void SetIsDead(DescriptorReasonOfDeath reason)
+        internal void SetIsDead()
         {
             Debug.Assert(IsLive);
             Debug.Assert(DayOfDeath == 0);
-            Debug.Assert(ReasonOfDeath is null);
 
             IsLive = false;
             DayOfDeath = BattleParticipant.Lobby.Turn;
-            ReasonOfDeath = reason;
 
             Debug.Assert(Abode != null);
             Debug.Assert(Abode.Heroes.IndexOf(this) != -1);
@@ -803,7 +800,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 panelHint.AddStep2Entity(this);
                 panelHint.AddStep4Level($"Уровень {Level}");
-                panelHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}{ReasonOfDeath.Name}");
+                panelHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}");
             }
         }
 

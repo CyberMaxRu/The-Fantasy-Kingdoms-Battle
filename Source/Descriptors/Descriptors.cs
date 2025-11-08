@@ -148,14 +148,6 @@ namespace Fantasy_Kingdoms_Battle
                 Items.Add(new DescriptorItem(n));
             }
 
-            // Загрузка конфигурации причин смерти существ
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ReasonsOfDeath.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ReasonOfDeath"))
-            {
-                ReasonsOfDeath.Add(new DescriptorReasonOfDeath(n));
-            }
-
             // Загрузка конфигурации типов атаки
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeAttacks.xml");
 
@@ -300,9 +292,6 @@ namespace Fantasy_Kingdoms_Battle
                 hp.TuneLinks();
 
             //
-            ReasonOfDeathInBattle = FindReasonOfDeath(FormMain.Config.IDReasonOfDeathInBattle);
-
-            //
             IndexPropertyScout = FindPropertyCreature("CreatureScout").Index;
 
             //
@@ -341,7 +330,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
 
         // Существа
-        internal List<DescriptorReasonOfDeath> ReasonsOfDeath { get; } = new List<DescriptorReasonOfDeath>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();
         internal List<DescriptorTypeAbility> TypeAbilities { get; } = new List<DescriptorTypeAbility>();
@@ -364,8 +352,6 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         private List<(string, Bitmap)> Textures = new List<(string, Bitmap)>();
-
-        internal DescriptorReasonOfDeath ReasonOfDeathInBattle { get; }
 
         //
         internal int IndexPropertyScout { get; }
@@ -407,17 +393,6 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Сооружение " + ID + " не найдено.");
 
             return null;
-        }
-
-        internal DescriptorReasonOfDeath FindReasonOfDeath(string ID)
-        {
-            foreach (DescriptorReasonOfDeath r in ReasonsOfDeath)
-            {
-                if (r.ID == ID)
-                    return r;
-            }
-
-            throw new Exception("Причина смерти " + ID + " не найдена.");
         }
 
         internal DescriptorResource FindResource(string ID, bool mustBeExists = true)
