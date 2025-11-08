@@ -167,9 +167,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }*/
 
-            // Инициализация логов
-            ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs, true);
-
             //
             Castle = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
@@ -500,42 +497,6 @@ namespace Fantasy_Kingdoms_Battle
                 //if (u.Hero.CounterConstructionForBuy > 0)
                 //    u.Hero.DoShopping(u.Construction);
             }
-        }
-
-        //
-        protected void ScoutRandomLair(int scoutLaires, bool needNotice)
-        {
-            return;
-            /*if (scoutLaires > 0)
-            {
-                foreach (Location l in Locations)
-                {
-                    scoutLaires = ScoutLayer(l, scoutLaires);
-                    if (scoutLaires == 0)
-                        break;
-                }
-            }
-
-            int ScoutLayer(Location ll, int maxScout)
-            {
-                List<Construction> lairs = new List<Construction>();
-                for (int y = 0; y < ll.Lairs.GetLength(0); y++)
-                    for (int x = 0; x < ll.Lairs.GetLength(1); x++)
-                        if (ll.Lairs[y, x].Hidden)
-                            lairs.Add(ll.Lairs[y, x]);
-
-                int scouting = Math.Min(maxScout, lairs.Count);
-                int restScouting = maxScout - scouting;
-                int index;
-                for (int i = 0; i < scouting; i++)
-                {
-                    index = Lobby.Rnd.Next(lairs.Count);
-                    lairs[index].Unhide(needNotice);
-                    lairs.RemoveAt(index);
-                }
-
-                return restScouting;
-            }*/
         }
 
         private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, int quantity, TypeNoticeForPlayer typeNotice)
@@ -1070,9 +1031,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }*/
 
-            CreateExternalConstructions(FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse), 1, sb.PeasantHouse, TypeNoticeForPlayer.Build);
-            DescriptorConstruction holyPlace = FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace);
-            ScoutRandomLair(sb.Scouting, true);
+            //DescriptorConstruction holyPlace = FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace);
 
             startBonusApplied = true;
 

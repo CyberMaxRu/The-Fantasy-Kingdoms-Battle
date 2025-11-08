@@ -47,14 +47,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (sb.BaseResources[i] > 0)
                         AddBonus(text, FormMain.Descriptors.BaseResources[i].ImageIndex, FormMain.Descriptors.BaseResources[i].Name, $"+{sb.BaseResources[i]}");
                 }*/
-                if (sb.Builders > 0)
-                    AddBonus(text, FormMain.Config.Gui48_Build, "Строители", $"+{sb.Builders}");
-                if (sb.PeasantHouse > 0)
-                    AddBonus(text, FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse).ImageIndex, "Дом крестьян", $"+{sb.PeasantHouse}");
                 if (sb.HolyPlace > 0)
                     AddBonus(text, FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace).ImageIndex, FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace).Name, $"+{sb.HolyPlace}");
-                if (sb.Scouting > 0)
-                    AddBonus(text, FormMain.Config.Gui48_FlagScout, "Разведанных мест", $"+{sb.Scouting}");
 
                 text.Height = lblCaption.NextTop() + (text.Controls[text.Controls.Count - 1].Height + FormMain.Config.GridSize) * 4;
                 lblCaption.Width = text.Width;

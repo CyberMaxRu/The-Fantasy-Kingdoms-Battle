@@ -14,7 +14,7 @@
     <ImageIndexFirstAvatar>209</ImageIndexFirstAvatar>    
     <QuantityInternalAvatars>16</QuantityInternalAvatars>
     <MaxQuantityExternalAvatars>8</MaxQuantityExternalAvatars>
-    <MaxElementInStartBonus>4</MaxElementInStartBonus>
+    <MaxElementInStartBonus>5</MaxElementInStartBonus>
     <MaxHeroForSelectBonus>4</MaxHeroForSelectBonus>
     <MaxValueProperty>1000</MaxValueProperty>
     <DefaultLevelTax>Normal</DefaultLevelTax>
