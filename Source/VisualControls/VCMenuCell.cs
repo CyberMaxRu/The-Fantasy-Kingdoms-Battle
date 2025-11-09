@@ -64,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ImageIndex = research.GetImageIndex();
                     Color = research.GetColorText();
-                    RestTimeExecuting = research.GetExtInfo();
                     Level = research.GetLevel();
                     Quantity = research.GetQuantity();
                     LowText = research.GetText();

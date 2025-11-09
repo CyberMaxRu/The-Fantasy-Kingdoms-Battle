@@ -29,7 +29,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCText lblDescription;
         private readonly VCLabelValue lblIncome;
         private readonly VCLabelValue lblSalary;
-        private readonly VCLabelValue lblBuildersPerDay;
 
         // Изменение параметров населенного пункта
         private readonly List<VCLabelValue> listSettlementParameters = new List<VCLabelValue>();
@@ -46,8 +45,6 @@ namespace Fantasy_Kingdoms_Battle
         // Подраздел "Стоимость"
         private readonly VCLabel lblChapterCost;
         private readonly VCLabelValue lblCostGold;
-        private readonly VCLabelValue lblTimeExecuting;
-        private readonly List<VCLabelValue> listCostResources = new List<VCLabelValue>();
 
         // Подраздел "Требуется"
         private readonly VCLabel lblTextForRequirement;
@@ -112,12 +109,8 @@ namespace Fantasy_Kingdoms_Battle
             lblSalary.Image.ImageIndex = FormMain.GUI_16_PURSE;
             lblSalary.Width = widthControl;
 
-            lblBuildersPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblSalary.NextTop(), FormMain.Config.HintIncome, false);
-            lblBuildersPerDay.Image.ImageIndex = FormMain.GUI_16_BUILDER;
-            lblBuildersPerDay.Width = widthControl;
-
             //
-            lblSettlementParameters = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.FontSmallC, Color.White, 16, "Параметры города/деревни:");
+            lblSettlementParameters = new VCLabel(this, FormMain.Config.GridSize, lblSalary.NextTop(), Program.formMain.FontSmallC, Color.White, 16, "Параметры города/деревни:");
             lblSettlementParameters.Width = widthControl;
             lblSettlementParameters.StringFormat.Alignment = StringAlignment.Near;
 
@@ -128,7 +121,7 @@ namespace Fantasy_Kingdoms_Battle
                 listProperties.Add(CreateLabelValue(3));
             }
 
-            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Color.White, false);
+            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblSalary.NextTop(), Color.White, false);
             lblInterest.Image.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
             lblInterest.Width = widthControl;
 
@@ -146,10 +139,7 @@ namespace Fantasy_Kingdoms_Battle
             lblCostGold = CreateLabelValue(4);
             lblCostGold.Image.ImageIndex = FormMain.GUI_16_GOLD;
 
-            lblTimeExecuting = CreateLabelValue(4);
-            lblTimeExecuting.Image.ImageIndex = FormMain.GUI_16_DAY;
-
-            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop(), Program.formMain.FontSmallC, Color.White, 16, "Требуется:");
+            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.FontSmallC, Color.White, 16, "Требуется:");
             lblTextForRequirement.Width = widthControl;
             lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
 
@@ -265,7 +255,6 @@ namespace Fantasy_Kingdoms_Battle
             lblDescription.Visible = false;
             lblIncome.Visible = false;
             lblSalary.Visible = false;
-            lblBuildersPerDay.Visible = false;
 
             //
             lblSettlementParameters.Visible = false;
@@ -290,9 +279,6 @@ namespace Fantasy_Kingdoms_Battle
             //
             lblChapterCost.Visible = false;
             lblCostGold.Visible = false;
-            lblTimeExecuting.Visible = false;
-            foreach (VCLabel l in listCostResources)
-                l.Visible = false;
 
             //
             foreach (VCLabelValue ln in listLabelNeeds)
@@ -607,10 +593,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep12CostExecuting(string nameExecuting, int costResources)
         {
-            AddStep12CostExecuting(nameExecuting, costResources, 0, 0, null);
+            AddStep12CostExecuting(nameExecuting, costResources, null);
         }
 
-        internal void AddStep12CostExecuting(string nameExecuting, int costResources, int time, int builders, ListTextRequirement requirement)
+        internal void AddStep12CostExecuting(string nameExecuting, int costResources, ListTextRequirement requirement)
         {
             Assert(nameExecuting.Length > 0);
 
@@ -634,14 +620,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblCostGold.Text = costResources.ToString();
                 lblCostGold.Color = ColorRequirements(Player.Gold >= costResources);
                 lblCostGold.Visible = true;
-
-                if (time > 0)
-                {
-                    lblTimeExecuting.ShiftY = nextTop;
-                    lblTimeExecuting.Text = time.ToString();
-                    lblTimeExecuting.Visible = true;
-                    AdjustCell(lblTimeExecuting, lblCostGold, FormMain.Config.GridSize, nextTop);
-                }
 
                 nextTop = lblCostGold.NextTop();
                 AddCostResources(Player.Gold, costResources);
@@ -687,8 +665,6 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Assert(time == 0);
-                Assert(builders == 0);
                 Assert(costResources == 0);
             }
         }

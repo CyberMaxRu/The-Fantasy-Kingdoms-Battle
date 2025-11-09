@@ -87,10 +87,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Utils.Assert(!pr.Destroyed);
                     
-                // Если действие в очереди, не отображаем его
-                if ((pr.ProgressExecuting != null) && pr.ProgressExecuting.InQueue)
-                    continue;
-
                 if (!menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used)
                 {
                     menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;

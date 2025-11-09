@@ -19,8 +19,6 @@
         <Number>1</Number>
         <MaxInhabitant>4</MaxInhabitant>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>550</Gold>
           </Cost>
@@ -31,8 +29,6 @@
         <Number>2</Number>
         <MaxInhabitant>5</MaxInhabitant>
         <Creating>
-          <Time>25</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -50,8 +46,6 @@
         <Number>3</Number>
         <MaxInhabitant>6</MaxInhabitant>
         <Creating>
-          <Time>25</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -63,7 +57,6 @@
         <ID>ProductCloseCombatCourse</ID>
         <Entity>CloseCombatCourse</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -80,7 +73,6 @@
         <ID>ProductWarriorImpAttack</ID>
         <Entity>WarriorImpAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -104,7 +96,6 @@
         <ID>ProductWarriorMaimAttack</ID>
         <Entity>WarriorMaimAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -128,7 +119,6 @@
         <ID>ProductWarriorResistanceBuff</ID>
         <Entity>WarriorResistanceBuff</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -202,8 +192,6 @@
         <ID>LevelGuildHunter1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -214,8 +202,6 @@
         <ID>LevelGuildHunter2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -233,8 +219,6 @@
         <ID>LevelGuildHunter3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -266,7 +250,6 @@
         <ID>ProductFittingClothes</ID>
         <Entity>FittingClothes</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -283,7 +266,6 @@
         <ID>ProductHunterImpAttack</ID>
         <Entity>HunterImpAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -307,7 +289,6 @@
         <ID>ProductHunterStingShotAttack</ID>
         <Entity>HunterStingShotAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -331,7 +312,6 @@
         <ID>ProductHunterManaburnAttack</ID>
         <Entity>HunterManaburnAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -355,7 +335,6 @@
         <ID>ProductEyeOfEagle</ID>
         <Entity>EyeOfEagle</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -426,8 +405,6 @@
         <ID>LevelGuildCleric1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>40</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -438,8 +415,6 @@
         <ID>LevelGuildCleric2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -457,8 +432,6 @@
         <ID>LevelGuildCleric3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>700</Gold>
           </Cost>
@@ -471,10 +444,7 @@
         <ID>ProductHolyWater</ID>
         <Entity>HolyWater</Entity>
         <Creating>
-          <Time>30</Time>
-          <Cost>
-            <Gold>250</Gold>
-          </Cost>
+          <Cost>250</Cost>
         </Creating>
         <Selling>
           <Gold>50</Gold>
@@ -488,7 +458,6 @@
         <ID>ProductHolyAttack</ID>
         <Entity>HolyAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -512,7 +481,6 @@
         <ID>ProductClericManaRegenBuff</ID>
         <Entity>ClericManaRegenBuff</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -536,7 +504,6 @@
         <ID>ProductClericKnockbackAttack</ID>
         <Entity>ClericKnockbackAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -610,8 +577,6 @@
         <ID>LevelGuildMage1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>45</Time>
-          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -629,8 +594,6 @@
         <ID>LevelGuildMage2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -653,8 +616,6 @@
         <ID>LevelGuildMage3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -677,8 +638,6 @@
         <ImageIndex>254</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>15</Time>
-          <Builders>0</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -697,7 +656,6 @@
         <ID>ProductEnchantWeaponAttack</ID>
         <Entity>EnchantWeaponAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -714,7 +672,6 @@
         <ID>ProductMageFireballAttack</ID>
         <Entity>MageFireballAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -731,7 +688,6 @@
         <ID>ProductMageFreezeAttack</ID>
         <Entity>MageFreezeAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -755,7 +711,6 @@
         <ID>ProductMageGuardianWind</ID>
         <Entity>MageGuardianWind</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
@@ -779,7 +734,6 @@
         <ID>ProductMageFirestormAttack</ID>
         <Entity>MageFirestormAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -861,7 +815,6 @@
         <ID>LevelGuildElf1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>60</Time>
           <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
@@ -880,8 +833,6 @@
         <ID>LevelGuildElf2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -904,8 +855,6 @@
         <ID>LevelGuildElf3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -933,7 +882,6 @@
         <ImageIndex>227</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -945,7 +893,6 @@
         <ID>ProductElixirSpeed</ID>
         <Entity>ElixirSpeed</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -962,7 +909,6 @@
         <ID>ProductElfImpAttack</ID>
         <Entity>ElfImpAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -986,7 +932,6 @@
         <ID>ProductElfWine</ID>
         <Entity>ElfWine</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -1010,7 +955,6 @@
         <ID>ProductElfBuff</ID>
         <Entity>ElfBuff</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -1034,7 +978,6 @@
         <ID>ProductElfMagicArrow</ID>
         <Entity>ElfMagicArrow</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -1116,8 +1059,6 @@
         <ID>LevelGuildDwarf1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>90</Time>
-          <Builders>2</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1138,8 +1079,6 @@
         <ID>LevelGuildDwarf2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>2</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1165,8 +1104,6 @@
         <ID>LevelGuildDwarf3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>2</Builders>
           <Cost>
             <Gold>2500</Gold>
           </Cost>
@@ -1197,8 +1134,6 @@
         <ImageIndex>226</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -1217,7 +1152,6 @@
         <ID>ProductSimpleRunes</ID>
         <Entity>SimpleRunes</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>250</Gold>
           </Cost>
@@ -1234,7 +1168,6 @@
         <ID>ProductDwarfImpAttack</ID>
         <Entity>DwarfImpAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -1258,7 +1191,6 @@
         <ID>ProductDwarfBerserkBuff</ID>
         <Entity>DwarfBerserkBuff</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
@@ -1282,7 +1214,6 @@
         <ID>ProductDwarfBeer</ID>
         <Entity>DwarfBeer</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -1311,7 +1242,6 @@
         <ID>ProductDwarfAntiBuildingAttack</ID>
         <Entity>DwarfAntiBuildingAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -1393,8 +1323,6 @@
         <ID>LevelGuardBarrack1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1405,8 +1333,6 @@
         <ID>LevelGuardBarrack2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1417,8 +1343,6 @@
         <ID>LevelGuardBarrack3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1459,8 +1383,6 @@
         <ID>LevelGuildRogue1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1478,8 +1400,6 @@
         <ID>LevelGuildRogue2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1497,8 +1417,6 @@
         <ID>LevelGuildRogue3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>450</Gold>
           </Cost>
@@ -1511,7 +1429,6 @@
         <ID>ProductEnchantWeaponPoison</ID>
         <Entity>EnchantWeaponPoison</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>300</Gold>
           </Cost>
@@ -1528,7 +1445,6 @@
         <ID>ProductRoguePoisonAttack</ID>
         <Entity>RoguePoisonAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>200</Gold>
           </Cost>
@@ -1545,7 +1461,6 @@
         <ID>ProductRogueImpAttack</ID>
         <Entity>RogueImpAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -1569,7 +1484,6 @@
         <ID>ProductRogueKickAttack</ID>
         <Entity>RogueKickAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -1593,7 +1507,6 @@
         <ID>ProductStunAttack</ID>
         <Entity>StunAttack</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -1671,8 +1584,6 @@
         <ID>LevelCastle1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>0</Builders>
           <Cost>0</Cost>
         </Creating>
         <IncomeResources>
@@ -1693,8 +1604,6 @@
         <ID>LevelCastle2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>120</Time>
-          <Builders>2</Builders>
           <Cost>2000</Cost>
           <Requirements>
             <Requirement>
@@ -1736,8 +1645,6 @@
         <ID>LevelCastle3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>4000</Cost>
           <Requirements>
             <Requirement>
@@ -1784,8 +1691,6 @@
         <ImageIndex>260</ImageIndex>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>5</Time>
-          <Builders>1</Builders>
           <Cost>5000</Cost>
           <Requirements>
             <Requirement>
@@ -1842,8 +1747,6 @@
         <ID>LevelMarket1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>5</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <IncomeResources>
@@ -1854,8 +1757,6 @@
         <ID>LevelMarket2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
           <Requirements>
             <Requirement>
@@ -1873,8 +1774,6 @@
         <ID>LevelMarket3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -1901,7 +1800,6 @@
         <Interest>30</Interest>
         <NameGoods>Посетить ярмарку</NameGoods>
         <Creating>
-          <Time>60</Time>
           <Cost>1500</Cost>
           <Requirements>
             <Requirement>
@@ -1935,7 +1833,6 @@
         <ID>ProductApple</ID>
         <Entity>Apple</Entity>
         <Creating>
-          <Time>10</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -1950,7 +1847,6 @@
         <ID>ProductWheat</ID>
         <Entity>Wheat</Entity>
         <Creating>
-          <Time>15</Time>
           <Cost>500</Cost>
         </Creating>
         <Selling>
@@ -1965,7 +1861,6 @@
         <ID>ProductMeat</ID>
         <Entity>Meat</Entity>
         <Creating>
-          <Time>20</Time>
           <Cost>750</Cost>
         </Creating>
         <Selling>
@@ -1980,7 +1875,6 @@
         <ID>ProductGingerRoot</ID>
         <Entity>GingerRoot</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>500</Cost>
           <Requirements>
             <Requirement>
@@ -2002,7 +1896,6 @@
         <ID>ProductAmanita</ID>
         <Entity>Amanita</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2024,7 +1917,6 @@
         <ID>ProductCornedBeef</ID>
         <Entity>CornedBeef</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2103,8 +1995,6 @@
         <ID>LevelSmithy1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <IncomeResources>
@@ -2115,8 +2005,6 @@
         <ID>LevelSmithy2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2134,8 +2022,6 @@
         <ID>LevelSmithy3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>45</Time>
-          <Builders>1</Builders>
           <Cost>2000</Cost>
           <Requirements>
             <Requirement>
@@ -2153,8 +2039,6 @@
         <ID>LevelSmithy4</ID>
         <Number>4</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>1</Builders>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -2176,7 +2060,6 @@
         <Description>Оружие и доспехи получают дополнительную прочность.</Description>
         <ImageIndex>234</ImageIndex>
         <Creating>
-          <Time>30</Time>
           <Cost>1500</Cost>
           <Requirements>
             <Requirement>
@@ -2193,7 +2076,6 @@
         <Description>Кузница может выпускать больше оружия и доспехов.</Description>
         <ImageIndex>235</ImageIndex>
         <Creating>
-          <Time>45</Time>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -2210,7 +2092,6 @@
         <Description>- Кузница может выпускать больше оружия и доспехов.</Description>
         <ImageIndex>236</ImageIndex>
         <Creating>
-          <Time>20</Time>
           <Cost>500</Cost>
         </Creating>
       </Improvement>
@@ -2220,7 +2101,6 @@
         <Description>- Увеличивает доход от крестьянских хозяйств.</Description>
         <ImageIndex>237</ImageIndex>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2237,7 +2117,6 @@
         <ID>ProductGroupArmourMetal1</ID>
         <Entity>GroupArmourMetal1</Entity>
         <Creating>
-          <Time>15</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -2252,7 +2131,6 @@
         <ID>ProductGroupArmourMetal2</ID>
         <Entity>GroupArmourMetal2</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2274,7 +2152,6 @@
         <ID>ProductGroupArmourMetal3</ID>
         <Entity>GroupArmourMetal3</Entity>
         <Creating>
-          <Time>45</Time>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -2296,7 +2173,6 @@
         <ID>ProductGroupArmourMetal4</ID>
         <Entity>GroupArmourMetal4</Entity>
         <Creating>
-          <Time>60</Time>
           <Cost>3500</Cost>
           <Requirements>
             <Requirement>
@@ -2323,7 +2199,6 @@
         <ID>ProductGroupWeaponMelee1</ID>
         <Entity>GroupWeaponMelee1</Entity>
         <Creating>
-          <Time>15</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -2338,7 +2213,6 @@
         <ID>ProductGroupWeaponMelee2</ID>
         <Entity>GroupWeaponMelee2</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>100</Cost>
           <Requirements>
             <Requirement>
@@ -2360,7 +2234,6 @@
         <ID>ProductGroupWeaponMelee3</ID>
         <Entity>GroupWeaponMelee3</Entity>
         <Creating>
-          <Time>45</Time>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -2382,7 +2255,6 @@
         <ID>ProductGroupWeaponMelee4</ID>
         <Entity>GroupWeaponMelee4</Entity>
         <Creating>
-          <Time>60</Time>
           <Cost>3500</Cost>
           <Requirements>
             <Requirement>
@@ -2404,7 +2276,6 @@
         <ID>ProductGroupArmourLeather1</ID>
         <Entity>GroupArmourLeather1</Entity>
         <Creating>
-          <Time>15</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -2419,7 +2290,6 @@
         <ID>ProductGroupArmourLeather2</ID>
         <Entity>GroupArmourLeather2</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2441,7 +2311,6 @@
         <ID>ProductGroupArmourLeather3</ID>
         <Entity>GroupArmourLeather3</Entity>
         <Creating>
-          <Time>45</Time>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -2463,7 +2332,6 @@
         <ID>ProductGroupArmourLeather4</ID>
         <Entity>GroupArmourLeather4</Entity>
         <Creating>
-          <Time>60</Time>
           <Cost>3500</Cost>
           <Requirements>
             <Requirement>
@@ -2582,8 +2450,6 @@
         <ID>LevelTavern1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>25</Time>
-          <Builders>1</Builders>
           <Cost>250</Cost>
         </Creating>
         <IncomeResources>
@@ -2605,8 +2471,6 @@
         <Number>2</Number>
         <ID>LevelTavern2</ID>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2635,8 +2499,6 @@
         <ID>LevelTavern3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
           <Requirements>
             <Requirement>
@@ -2674,7 +2536,6 @@
         <Interest>40</Interest>
         <NameGoods>Участвовать в пире</NameGoods>
         <Creating>
-          <Time>120</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2712,7 +2573,6 @@
         <ID>ProductTavernSoup</ID>
         <Entity>TavernSoup</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -2727,7 +2587,6 @@
         <ID>ProductTavernMeat</ID>
         <Entity>TavernMeat</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>500</Cost>
           <Requirements>
             <Requirement>
@@ -2754,7 +2613,6 @@
         <ID>ProductTavernBeer</ID>
         <Entity>TavernBeer</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>500</Cost>
           <Requirements>
             <Requirement>
@@ -2826,8 +2684,6 @@
         <ID>LevelWorkshop1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
           <Requirements>
             <Requirement>
@@ -2845,8 +2701,6 @@
         <ID>LevelWorkshop2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>2500</Cost>
         </Creating>
         <IncomeResources>
@@ -2857,8 +2711,6 @@
         <ID>LevelWorkshop3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>2500</Cost>
         </Creating>
         <IncomeResources>
@@ -2871,7 +2723,6 @@
         <ID>ProductAmuletOfRegeneration</ID>
         <Entity>AmuletOfRegeneration</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -2886,7 +2737,6 @@
         <ID>ProductRingOfProtection</ID>
         <Entity>RingOfProtection</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>500</Cost>
           <Requirements>
             <Requirement>
@@ -2908,7 +2758,6 @@
         <ID>ProductImpAmuletOfProtection</ID>
         <Entity>ImpAmuletOfProtection</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -2930,7 +2779,6 @@
         <ID>ProductQuiver</ID>
         <Entity>Quiver</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -2945,7 +2793,6 @@
         <ID>ProductSmallBag</ID>
         <Entity>SmallBag</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>500</Cost>
           <Requirements>
             <Requirement>
@@ -2967,7 +2814,6 @@
         <ID>ProductGroupWeaponRange1</ID>
         <Entity>GroupWeaponRange1</Entity>
         <Creating>
-          <Time>15</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -2982,7 +2828,6 @@
         <ID>ProductGroupWeaponRange2</ID>
         <Entity>GroupWeaponRange2</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -3004,7 +2849,6 @@
         <ID>ProductGroupWeaponRange3</ID>
         <Entity>GroupWeaponRange3</Entity>
         <Creating>
-          <Time>45</Time>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -3026,7 +2870,6 @@
         <ID>ProductGroupWeaponRange4</ID>
         <Entity>GroupWeaponRange4</Entity>
         <Creating>
-          <Time>60</Time>
           <Cost>3500</Cost>
           <Requirements>
             <Requirement>
@@ -3048,7 +2891,6 @@
         <ID>ProductGroupArmourMage1</ID>
         <Entity>GroupArmourMage1</Entity>
         <Creating>
-          <Time>15</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -3063,7 +2905,6 @@
         <ID>ProductGroupArmourMage2</ID>
         <Entity>GroupArmourMage2</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -3085,7 +2926,6 @@
         <ID>ProductGroupArmourMage3</ID>
         <Entity>GroupArmourMage3</Entity>
         <Creating>
-          <Time>45</Time>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -3107,7 +2947,6 @@
         <ID>ProductGroupArmourMage4</ID>
         <Entity>GroupArmourMage4</Entity>
         <Creating>
-          <Time>60</Time>
           <Cost>3500</Cost>
           <Requirements>
             <Requirement>
@@ -3129,7 +2968,6 @@
         <ID>ProductGroupWeaponMage1</ID>
         <Entity>GroupWeaponMage1</Entity>
         <Creating>
-          <Time>15</Time>
           <Cost>250</Cost>
         </Creating>
         <Selling>
@@ -3144,7 +2982,6 @@
         <ID>ProductGroupWeaponMage2</ID>
         <Entity>GroupWeaponMage2</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -3166,7 +3003,6 @@
         <ID>ProductGroupWeaponMage3</ID>
         <Entity>GroupWeaponMage3</Entity>
         <Creating>
-          <Time>45</Time>
           <Cost>3000</Cost>
           <Requirements>
             <Requirement>
@@ -3188,7 +3024,6 @@
         <ID>ProductGroupWeaponMage4</ID>
         <Entity>GroupWeaponMage4</Entity>
         <Creating>
-          <Time>60</Time>
           <Cost>3500</Cost>
           <Requirements>
             <Requirement>
@@ -3307,8 +3142,6 @@
         <ID>LevelAlchemistHut1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>50</Time>
-          <Builders>0</Builders>
           <Cost>1500</Cost>
         </Creating>
         <IncomeResources>
@@ -3319,8 +3152,6 @@
         <ID>LevelAlchemistHut2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>0</Builders>
           <Cost>2000</Cost>
         </Creating>
         <IncomeResources>
@@ -3331,8 +3162,6 @@
         <ID>LevelAlchemistHut3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>0</Builders>
           <Cost>2000</Cost>
         </Creating>
         <IncomeResources>
@@ -3345,7 +3174,6 @@
         <ID>ProductPotionOfHealth</ID>
         <Entity>PotionOfHealth</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>150</Cost>
         </Creating>
         <Selling>
@@ -3360,7 +3188,6 @@
         <ID>ProductPotionOfMana</ID>
         <Entity>PotionOfMana</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>300</Cost>
         </Creating>
         <Selling>
@@ -3375,7 +3202,6 @@
         <ID>ProductPotionOfCheerfulness</ID>
         <Entity>PotionOfCheerfulness</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>200</Cost>
         </Creating>
         <Selling>
@@ -3390,7 +3216,6 @@
         <ID>ProductElixirMeleeProt</ID>
         <Entity>ElixirMeleeProt</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -3412,7 +3237,6 @@
         <ID>ProductElixirRangeProt</ID>
         <Entity>ElixirRangeProt</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -3434,7 +3258,6 @@
         <ID>ProductElixirMagicProt</ID>
         <Entity>ElixirMagicProt</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -3456,7 +3279,6 @@
         <ID>ProductElixirStrength</ID>
         <Entity>ElixirStrength</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>2000</Cost>
           <Requirements>
             <Requirement>
@@ -3478,7 +3300,6 @@
         <ID>ProductElixirAccuracy</ID>
         <Entity>ElixirAccuracy</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>2000</Cost>
           <Requirements>
             <Requirement>
@@ -3500,7 +3321,6 @@
         <ID>ProductElixirWisdom</ID>
         <Entity>ElixirWisdom</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>2000</Cost>
           <Requirements>
             <Requirement>
@@ -3587,8 +3407,6 @@
         <ID>LevelPark1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>120</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <IncomeResources>
@@ -3610,8 +3428,6 @@
         <ID>LevelPark2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
         </Creating>
         <IncomeResources>
@@ -3633,8 +3449,6 @@
         <ID>LevelPark3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
         </Creating>
         <IncomeResources>
@@ -3660,8 +3474,6 @@
         <Description>Беседки увеличат популярность {Парка}</Description>
         <ImageIndex>215</ImageIndex>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
@@ -3679,9 +3491,6 @@
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
-          <Cost>2000</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -3704,8 +3513,6 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
@@ -3729,8 +3536,6 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>40</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
@@ -3754,8 +3559,6 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>45</Time>
-          <Builders>1</Builders>
           <Cost>2500</Cost>
           <DaysProcessing>3</DaysProcessing>
           <Requirements>
@@ -3829,8 +3632,6 @@
         <ID>LevelTownSquare1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -3851,8 +3652,6 @@
         <ID>LevelTownSquare2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -3880,8 +3679,6 @@
         <ID>LevelTownSquare3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>2000</Cost>
           <Requirements>
             <Requirement>
@@ -3914,8 +3711,6 @@
         <ImageIndex>247</ImageIndex>
         <Interest>5</Interest>
         <Creating>
-          <Time>5</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
@@ -3931,8 +3726,6 @@
         <ImageIndex>213</ImageIndex>
         <Interest>10</Interest>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
           <DaysProcessing>1</DaysProcessing>
           <Requirements>
@@ -3955,8 +3748,6 @@
         <ImageIndex>231</ImageIndex>
         <Interest>15</Interest>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
@@ -3978,7 +3769,6 @@
         <ID>ProductLuckyCoins</ID>
         <Entity>LuckyCoins</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>500</Cost>
           <Requirements>
             <Requirement>
@@ -4000,7 +3790,6 @@
         <ID>ProductHerald</ID>
         <Entity>Herald</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -4071,8 +3860,6 @@
         <ID>LevelTreasureDepartment1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -4082,8 +3869,6 @@
         <ID>LevelTreasureDepartment2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
@@ -4119,8 +3904,6 @@
         <Name>Городской совет</Name>
         <Number>1</Number>
         <Creating>
-          <Time>5</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -4131,8 +3914,6 @@
         <Name>Ратуша</Name>
         <Number>2</Number>
         <Creating>
-          <Time>5</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
@@ -4143,8 +3924,6 @@
         <Name>Магистрат</Name>
         <Number>3</Number>
         <Creating>
-          <Time>5</Time>
-          <Builders>1</Builders>
           <Cost>5000</Cost>
         </Creating>
         <GreatnessByConstruction>200</GreatnessByConstruction>
@@ -4183,8 +3962,6 @@
         <ID>LevelArena1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>45</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
         </Creating>
         <IncomeResources>
@@ -4205,8 +3982,6 @@
         <ID>LevelArena2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
         </Creating>
         <IncomeResources>
@@ -4227,8 +4002,6 @@
         <ID>LevelArena3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>2000</Cost>
         </Creating>
         <IncomeResources>
@@ -4278,8 +4051,6 @@
         <ID>LevelHospital1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
         </Creating>
       </Level>
@@ -4287,8 +4058,6 @@
         <ID>LevelHospital2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>10</Time>
-          <Builders>1</Builders>
           <Cost>3000</Cost>
         </Creating>
       </Level>
@@ -4296,8 +4065,6 @@
         <ID>LevelHospital3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>5000</Cost>
         </Creating>
       </Level>
@@ -4307,7 +4074,6 @@
         <ID>ProductHospitalHerbs</ID>
         <Entity>HospitalHerbs</Entity>
         <Creating>
-          <Time>5</Time>
           <Cost>500</Cost>
         </Creating>
         <Selling>
@@ -4322,7 +4088,6 @@
         <ID>ProductHospitalHealthPotion</ID>
         <Entity>HospitalHealthPotion</Entity>
         <Creating>
-          <Time>5</Time>
           <Cost>1000</Cost>
         </Creating>
         <Selling>
@@ -4337,7 +4102,6 @@
         <ID>ProductElixirAntipoison</ID>
         <Entity>ElixirAntipoison</Entity>
         <Creating>
-          <Time>5</Time>
           <Cost>500</Cost>
           <Requirements>
             <Requirement>
@@ -4359,7 +4123,6 @@
         <ID>ProductElixirRegeneration</ID>
         <Entity>ElixirRegeneration</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -4381,7 +4144,6 @@
         <ID>ProductHospitalPowerTherapy</ID>
         <Entity>HospitalPowerTherapy</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>2500</Cost>
           <Requirements>
             <Requirement>
@@ -4452,8 +4214,6 @@
         <ID>LevelGarden1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>45</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <IncomeResources>
@@ -4475,8 +4235,6 @@
         <ID>LevelGarden2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <IncomeResources>
@@ -4498,8 +4256,6 @@
         <ID>LevelGarden3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>15</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
         </Creating>
         <IncomeResources>
@@ -4527,8 +4283,6 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
           <DaysProcessing>1</DaysProcessing>
           <Requirements>
@@ -4552,8 +4306,6 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>20</Time>
-          <Builders>1</Builders>
           <Cost>500</Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
@@ -4570,8 +4322,6 @@
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Creating>
-          <Time>25</Time>
-          <Builders>1</Builders>
           <Cost>1500</Cost>
           <DaysProcessing>3</DaysProcessing>
           <Requirements>
@@ -4605,7 +4355,6 @@
           <Hero>Cleric</Hero>
         </Heroes>        
         <Creating>
-          <Time>20</Time>
           <Cost>2500</Cost>
           <Requirements>
             <Requirement>
@@ -4631,7 +4380,6 @@
         <Interest>50</Interest>
         <NameGoods>Посетить концерт эльфийской музыки</NameGoods>
         <Creating>
-          <Time>30</Time>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -4711,7 +4459,6 @@
         <ID>LevelMenagerie1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>90</Time>
           <Builders>1</Builders>
           <Cost>250</Cost>
         </Creating>
@@ -4723,8 +4470,6 @@
         <ID>LevelMenagerie2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>1000</Cost>
           <Requirements>
             <Requirement>
@@ -4742,8 +4487,6 @@
         <ID>LevelMenagerie3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -4770,7 +4513,6 @@
         <ID>ProductWolfInMenagerie</ID>
         <Entity>WolfInMenagerie</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -4787,7 +4529,6 @@
         <ID>ProductBearInMenagerie</ID>
         <Entity>BearInMenagerie</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4811,7 +4552,6 @@
         <ID>ProductSerpentInMenagerie</ID>
         <Entity>SerpentInMenagerie</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>750</Gold>
           </Cost>
@@ -4835,7 +4575,6 @@
         <ID>ProductDragonInMenagerie</ID>
         <Entity>DragonInMenagerie</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>5000</Gold>
           </Cost>
@@ -4904,8 +4643,6 @@
         <ID>LevelGamblingHall1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>60</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -4929,8 +4666,6 @@
         <ID>LevelGamblingHall2</ID>
         <Number>2</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>2000</Gold>
           </Cost>
@@ -4961,8 +4696,6 @@
         <ID>LevelGamblingHall3</ID>
         <Number>3</Number>
         <Creating>
-          <Time>30</Time>
-          <Builders>1</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -4998,7 +4731,6 @@
           <Gold>50</Gold>
         </IncomeResources>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5018,7 +4750,6 @@
           <Gold>50</Gold>
         </IncomeResources>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -5045,7 +4776,6 @@
           <Gold>100</Gold>
         </IncomeResources>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>500</Gold>
           </Cost>
@@ -5074,7 +4804,6 @@
         <ID>ProductPlayingCards</ID>
         <Entity>PlayingCards</Entity>
         <Creating>
-          <Time>30</Time>
           <Cost>
             <Gold>1500</Gold>
           </Cost>
@@ -5145,8 +4874,6 @@
         <ID>LevelTempleDarkPriest1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5191,8 +4918,6 @@
         <ID>LevelTemplePriest1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5237,8 +4962,6 @@
         <ID>LevelTemplePaladin1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5283,8 +5006,6 @@
         <ID>LevelTempleBlademaster1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5329,8 +5050,6 @@
         <ID>LevelTempleBeastmaster1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5375,8 +5094,6 @@
         <ID>LevelTempleMarksman1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5421,8 +5138,6 @@
         <ID>LevelTempleIceMage1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5467,8 +5182,6 @@
         <ID>LevelTempleDeathKnight1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>
@@ -5513,8 +5226,6 @@
         <ID>LevelTempleFireMage1</ID>
         <Number>1</Number>
         <Creating>
-          <Time>180</Time>
-          <Builders>3</Builders>
           <Cost>
             <Gold>3000</Gold>
           </Cost>

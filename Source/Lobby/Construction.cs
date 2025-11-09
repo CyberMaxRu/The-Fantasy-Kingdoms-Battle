@@ -1013,16 +1013,7 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
 
             foreach (ActionInConstruction cmc in Actions)
-                if (cmc.ProgressExecuting != null)
-                {
-                    if (!cmc.ProgressExecuting.InQueue)
-                    {
-                        Assert(cmc.ProgressExecuting.PassedMilliTicks == 0);
-                        cmc.UpdatePurchase();
-                    }
-                }
-                else
-                    cmc.UpdatePurchase();
+                cmc.UpdatePurchase();
         }
 
         internal void CalcDaysExecutingInActions()
@@ -1050,7 +1041,6 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (ActionInConstruction cmc in tempListActions)
             {
-                cmc.DoTick();
             }
         }
 
@@ -1061,7 +1051,6 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (ActionInConstruction cm in Actions)
             {
-                cm.UpdateTime();
                 if (cm is CellMenuConstructionLevelUp cml)
                 {
                     Debug.Assert(cml.Descriptor.Number > Level);// Не должно быть действия на постройку уже построенного уровня

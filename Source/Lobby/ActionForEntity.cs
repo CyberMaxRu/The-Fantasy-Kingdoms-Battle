@@ -38,9 +38,6 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual string GetText() => "";
         internal virtual string GetLevel() => "";
         internal virtual int GetQuantity() => 0;
-        internal virtual string GetExtInfo() { int t = GetTimeExecuting(); return t == -1 ? "" : t > 0 ? t.ToString() : "*"; }
-        internal virtual StateRestTime GetStateRestTime() => StateRestTime.Active;
-        protected virtual int GetTimeExecuting() => -1;
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
         internal ListTextRequirement GetTextRequirements()

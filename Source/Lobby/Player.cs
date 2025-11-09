@@ -31,14 +31,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private bool startBonusApplied = false;
 
-        // TODO Вынести константы в конфигурацию игры
-        internal const int MAX_FLAG_EXCLUSIVE = 1;// Максимальное число флагов с максимальным
-        internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
-        internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
-
-        private readonly List<ActionInConstruction> queueExecuting = new List<ActionInConstruction>();// Очередь выполнения действий
-        private readonly List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
-
         private bool cheatingIgnoreRequirements;
         private bool cheatingSpeedUpProgressBy10;
         private bool cheatingReduceCostBy10;
@@ -482,21 +474,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void CalcDay()
         {
-            queueShopping.Clear();
-
             // Собираем очередь из героев на посещение сооружений
             foreach (Construction pc in Constructions)
             {
-                if (pc.Level > 0)
-                    pc.PrepareQueueShopping(queueShopping);
             }
 
             // Выполняем покупки
-            foreach (UnitOfQueueForBuy u in queueShopping)
-            {
-                //if (u.Hero.CounterConstructionForBuy > 0)
-                //    u.Hero.DoShopping(u.Construction);
-            }
         }
 
         private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, int quantity, TypeNoticeForPlayer typeNotice)
@@ -1304,58 +1287,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListNoticesForPlayer.IndexOf(e) != -1);
 
             ListNoticesForPlayer.Remove(e);
-        }
-
-        internal void AddActionToQueue(ActionInConstruction a)
-        {
-            Assert(queueExecuting.IndexOf(a) == -1);
-            Assert(a.ProgressExecuting.PassedMilliTicks == 0);
-
-            queueExecuting.Add(a);
-        }
-     
-        internal void DeleteFromQueueBuilding(ActionInConstruction cmc)
-        {
-            if (!queueExecuting.Remove(cmc))
-                EntityDoException("Не удалось удалить действие из очереди");
-        }
-
-        // Перестройка очереди строительства
-        internal void RebuildQueueBuilding()
-        {
-            /*queueRepair.Clear();
-            foreach (Construction c in Constructions)
-            {
-                if (c.ActionMain is CellMenuConstructionRepair cr)
-                    queueRepair.Add(cr);
-            }
-
-            if ((queueExecuting.Count > 0) || (queueRepair.Count > 0))
-            {
-                // Очищаем очереди выполнения во всех сооружениях
-                foreach (Construction c in Constructions)
-                    c.ClearQueueExecuting();
-
-                // Сначала ремонтируем сооружения, потом уже достраиваем что есть
-                /*if (queueRepair.Count > 0)
-                {
-                    foreach (CellMenuConstructionRepair cr in queueRepair.OrderBy(c => c.ExecutingAction.NeedPoints))
-                    {
-                        cr.AddToQueue();
-                    }
-                }*/
-            /*
-                // Составляем очереди у сооружений
-                List<ActionInConstruction> list = new List<ActionInConstruction>();
-                list.AddRange(queueExecuting);
-                foreach (ActionInConstruction cmc in list)
-                    cmc.AddToQueue();
-            }*/
-        }
-
-        internal int GetMilliTicksForAction(/*TypeCreating typeCreating*/)
-        {
-            return CheatingSpeedUpProgressBy10 ? 10_000 : 1_000;
         }
 
         internal void AddConstruction(Construction c)
