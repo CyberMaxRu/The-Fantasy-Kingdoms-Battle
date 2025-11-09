@@ -29,7 +29,6 @@ namespace Fantasy_Kingdoms_Battle
         internal VisualControl Page { get; }
         internal string Caption { get; set; }
         internal string Advice { get; }
-        internal Bitmap PageImage { get; set; }
         internal BigEntity SelectedPlayerObject { get; set; }
 
         internal override void Draw(Graphics g)

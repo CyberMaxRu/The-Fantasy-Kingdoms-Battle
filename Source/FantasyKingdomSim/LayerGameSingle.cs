@@ -14,6 +14,16 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class LayerGameSingle : LayerScene
     {
+        // Основные части интерфейса
+        internal readonly VCBitmap bmpBackground;// Фоновая текстура на весь экран
+        private readonly VCBitmap bmpTopPanel;// Панель над тулбаром
+        private readonly VCBitmap bmpPreparedToolbar;// Тулбар
+
+        private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
+        internal readonly VisualControl MainControl;//
+        internal readonly VisualControl panelNotices;// Панель извещений
+
+
         // Главные страницы игры
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageTournament;
@@ -43,11 +53,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int framesPerSecond;
         internal int ticksPerSecond;
 
-        internal readonly VisualControl MainControl;
-        internal readonly VisualControl panelNotices;// Панель извещений
-
-        private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
-
         // Контролы над тулбаром
         private readonly VCLabelValue labelDay;
         private readonly VCLabelValue labelTraditions;
@@ -69,8 +74,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelConstruction[,,] panels;
         private readonly VCBitmap bmpObjectMenu;
         private readonly VCMenuCell cellObjectMenu;
-        private readonly VCBitmap bmpTopPanel;
-        private readonly VCBitmap bmpPreparedToolbar;
 
         internal BigEntity selectedPlayerObject;
 
@@ -306,8 +309,6 @@ namespace Fantasy_Kingdoms_Battle
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
 
-            MakePagesBackground();
-
             pageControl.ActivatePage(pagesCapital[0]);
             UpdateNameCurrentPage();
 
@@ -356,18 +357,6 @@ namespace Fantasy_Kingdoms_Battle
         private void CellObjectMenu_ShowHint(object sender, EventArgs e)
         {
             selectedPlayerObject?.PrepareHint(PanelHint);
-        }
-
-        private void MakePagesBackground()
-        {
-            pageHeroes.PageImage = MainControlbackground("Heroes");
-            pageTournament.PageImage = MainControlbackground("Tournament");
-            pageTraditions.PageImage = MainControlbackground("Traditions");
-
-            for (int i = 0; i < Descriptors.CapitalPages.Count; i++)
-            {
-                pagesCapital[i].PageImage = MainControlbackground(Descriptors.CapitalPages[i].NameTexture);
-            }
         }
 
         private readonly VisualControl panelEmptyInfo;
@@ -564,8 +553,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     selectedPlayerObject.HideInfo();
                 }
-
-                UpdateBackgroundImage();
 
                 selectedPlayerObject = po;
 
@@ -849,11 +836,6 @@ namespace Fantasy_Kingdoms_Battle
             ShowInGameMenu();
         }
 
-        internal Bitmap MainControlbackground(string nameTexture)
-        {
-            return Program.formMain.CollectionBackgroundImage.GetBitmap(nameTexture, new Size(MainControl.Width, MainControl.Height));
-        }
-
         private void BtnCheating_Click(object sender, EventArgs e)
         {
             WindowCheating w = new WindowCheating(curAppliedPlayer);
@@ -871,13 +853,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 UpdateNameCurrentPage();
             }
-
-            UpdateBackgroundImage();
-        }
-
-        private void UpdateBackgroundImage()
-        {
-            MainControl.BackgroundImage = pageControl.CurrentPage.PageImage;
         }
 
         private void PanelCombatHeroes_Click(object sender, EventArgs e)
@@ -996,8 +971,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ApplyCurrentWindowSize(size);
 
-            if ((MainControl.Width != size.Width) || (MainControl.Height != size.Height - MainControl.ShiftY))
+            if ((BackgroundImage is null) || (!BackgroundImage.Size.Equals(size)))
             {
+                // Настраиваем фоновое изображение
+                BackgroundImage?.Dispose();
+                BackgroundImage = GuiUtils.MakeBackground(size);
+
                 MainControl.Width = size.Width;
                 MainControl.Height = size.Height - MainControl.ShiftY;
 
@@ -1008,6 +987,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void Adjust2()
         {
+            //
             bmpPreparedToolbar.Bitmap = PrepareToolbar();
             bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
             MainControl.ShiftY = bmpPreparedToolbar.NextTop() - Config.GridSize;
@@ -1039,7 +1019,6 @@ namespace Fantasy_Kingdoms_Battle
             panelEmptyInfo.Height = panelConstructionInfo.Height;
 
             AdjustNamePlayer();
-            MakePagesBackground();
 
             btnInGameMenu.ShiftX = btnInGameMenu.Parent.Width - btnInGameMenu.Width - Config.GridSize;
             btnCheating.ShiftX = btnInGameMenu.ShiftX - btnCheating.Width - Config.GridSize;
