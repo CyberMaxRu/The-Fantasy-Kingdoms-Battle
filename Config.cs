@@ -241,15 +241,6 @@ namespace Fantasy_Kingdoms_Battle
             CityParameterCitizens = xmlDoc.SelectSingleNode("Game/Links/CityParameters/Citizens").InnerText;
             Debug.Assert(CityParameterCitizens.Length > 0);
 
-
-            WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
-            Debug.Assert(WarehouseWidth >= 5);
-            Debug.Assert(WarehouseWidth <= 30);
-            WarehouseHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Height").InnerText);
-            Debug.Assert(WarehouseHeight >= 1);
-            Debug.Assert(WarehouseHeight <= 10);
-            WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
-
             //
             StateCreatureDoScoutFlag = "DoScoutFlag";
 
@@ -448,9 +439,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string IDPeasantHouse { get; private set; }// ID крестьянского дома
         internal string IDHolyPlace { get; private set; }// ID Святой земли
         internal string NameDefaultLevelTax { get; private set; }// Уровень налогов по умолчанию
-        internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
-        internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
-        internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
         internal int ConstructionMaxLines { get; private set; }// Максимальное количество линий сооружений
         internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
         internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса

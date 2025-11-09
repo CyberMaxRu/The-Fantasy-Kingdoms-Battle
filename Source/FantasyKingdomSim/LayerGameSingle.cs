@@ -24,7 +24,6 @@ namespace Fantasy_Kingdoms_Battle
         //private readonly VCPageButton pageTemples;
         private readonly VCLabel labelCaptionPage;
 
-        private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
         private readonly VisualControl vcRightPanel;
         private PanelWithPanelEntity panelCombatHeroes;
@@ -258,9 +257,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawPageConstructions();
             //DrawPageFinance();
             DrawHeroes();
-            DrawWarehouse();
             DrawPageTournament();
-            DrawPageLocation();
 
             panelNotices = new VisualControl(vcRightPanel, 0, 0);
             panelNotices.Width = vcRightPanel.Width - Config.GridSize;
@@ -434,18 +431,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 listResultRound[i].ShowPlayers(lobby.Players, lobby.BattlesPlayers[i]);
             }
-        }
-
-        private void DrawWarehouse()
-        {
-            panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
-            pageHeroes.Page.AddControl(panelWarehouse);
-            panelWarehouse.ShiftY = panelHeroes.NextTop();
-        }
-
-        internal void ShowWarehouse()
-        {
-            panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<Entity>());
         }
 
         private void ShowEvents()
@@ -818,7 +803,6 @@ namespace Fantasy_Kingdoms_Battle
 
             LosesChanged();
             UpdateListHeroes();
-            ShowWarehouse();
             AdjustPageTournament();
             //AdjustNeighborhood();
             //ShowPlayerNotices();
@@ -862,34 +846,6 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnInGameMenu_Click(object sender, EventArgs e)
         {
             ShowInGameMenu();
-        }
-
-        private void DrawPageLocation()
-        {
-
-            /*
-            constructionsOfLocation = new PanelConstruction[FormMain.MAX_LAIRS_HEIGHT, FormMain.MAX_LAIRS_WIDTH];
-
-            int top = 0;
-            int left;
-            int height = 0;
-
-            for (int y = 0; y < FormMain.MAX_LAIRS_HEIGHT; y++)
-            {
-                left = 0;
-                for (int x = 0; x < FormMain.MAX_LAIRS_WIDTH; x++)
-                {
-                    Debug.Assert(constructionsOfLocation[y, x] == null);
-                    constructionsOfLocation[y, x] = new PanelConstruction(pageLocation.Page, left, top);
-
-                    left += constructionsOfLocation[y, x].Width + Config.GridSize;
-                    height = constructionsOfLocation[y, x].Height;
-                }
-
-                top += height + Config.GridSize;
-            }
-
-            pageLocation.Page.ArrangeControls();*/
         }
 
         internal Bitmap MainControlbackground(string nameTexture)
