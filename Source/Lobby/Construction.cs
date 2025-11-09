@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; private set; }
 
         //
-        internal int Gold { get => gold; set { Debug.Assert(Descriptor.HasTreasury); gold = value; } }// Казна гильдии
+        internal int Gold { get; set; }
         internal List<Creature> Heroes { get; } = new List<Creature>();
 
         // Свойства для внешних сооружений

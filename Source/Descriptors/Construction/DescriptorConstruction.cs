@@ -53,15 +53,6 @@ namespace Fantasy_Kingdoms_Battle
                 XmlFieldNotExist(n, "LayersCellMenu");
             }
 
-            if (HasTreasury)
-            {
-                GoldByConstruction = GetIntegerNotNull(n, "GoldByConstruction");
-            }
-            else
-            {
-                XmlFieldNotExist(n, "GoldByConstruction");
-            }
-
             // Проверяем, что таких же ID и наименования нет
             foreach (DescriptorConstruction tec in Descriptors.Constructions)
             {
@@ -204,14 +195,10 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxLevel { get; }// Максимальный уровень сооружения
         internal bool PlayerCanBuild { get; }// Игрок может строить сооружение
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
-        internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal DescriptorConstructionLevel[] Levels { get; }
 
         //
         internal PanelConstruction Panel { get; set; }
-
-        // Свойства, относящиеся к логовам монстров
-        internal DescriptorConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
 
         internal override void TuneLinks()
         {
