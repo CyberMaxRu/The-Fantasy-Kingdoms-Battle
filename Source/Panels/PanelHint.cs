@@ -909,47 +909,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep21BaseResources(int list, bool canMining)
-        {
-            /*
-            if (list.Count > 0)
-            {
-                VCCellSimple cell = null;
-                VCCellSimple priorCell = null;
-
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (list[i].Quantity != 0)
-                    {
-                        cell = GetCell(i);
-                        AdjustCell(cell, priorCell, FormMain.Config.GridSize, nextTop);
-                        cell.Visible = true;
-                        cell.ImageIsEnabled = canMining;
-                        cell.LowText = list[i].Quantity.ToString();
-                        cell.ImageIndex = list[i].Descriptor.ImageIndex;
-
-                        priorCell = cell;
-                    }
-                }
-
-                if (cell != null)
-                    nextTop = cell.NextTop();
-
-                VCCellSimple GetCell(int index)
-                {
-                    if (index < listCell.Count)
-                        return listCellBaseResources[index];
-                    else
-                    {
-                        VCCellSimple c = new VCCellSimple(this, FormMain.Config.GridSize, 0);
-                        listCellBaseResources.Add(c);
-                        return c;
-                    }
-                }
-            }
-            */
-        }
-
         internal void AddStep21ListCustomCells(HintListCustomCells list)
         {
             if (list.Count > 0)

@@ -100,8 +100,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
         internal List<CellMenuConstructionSpell> MenuSpells { get; } = new List<CellMenuConstructionSpell>();
         // 
-        internal bool MiningBaseResources { get; private set; }// Сооружение добывает ресурсы
-        internal bool ProvideBaseResources { get; private set; }// Сооружение поставляет ресурсы
         internal int IncomeResources { get; set; } = 0;// Собрано ресурсов (для зачета для игрока в текущем тике)
 
         internal override string GetIDEntity(DescriptorEntity descriptor)
@@ -487,8 +485,6 @@ namespace Fantasy_Kingdoms_Battle
                     panelHint.AddStep2Entity(this);
                     panelHint.AddStep5Description(Descriptor.Description);
                 }
-
-                panelHint.AddStep21BaseResources(IncomeBaseResources, MiningBaseResources || ProvideBaseResources);
             }
         }
 
