@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             ShowBorder = true;
-            Visible = false;
+            Visible = true;
 
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 2, Program.formMain.FontSmallC, FormMain.Config.CommonCost, 16, "");
 
