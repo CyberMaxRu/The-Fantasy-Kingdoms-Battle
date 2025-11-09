@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (da == DialogAction.OK)
                 {
-                    Program.formMain.CurrentHumanPlayer.TournamentSettings[0] = mission;
+                    Program.formMain.CurrentHumanPlayer.TournamentSettings = mission;
                     FormMain.Descriptors.SaveHumanPlayers();
                     Program.formMain.layerGame.StartNewLobby();
                 }
@@ -77,7 +77,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Assert(mission is null);
 
-            mission = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings[0]);
+            mission = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings);
             wsm = new WindowSetupMission(mission);
             wsm.Show();
         }

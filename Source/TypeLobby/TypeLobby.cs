@@ -12,10 +12,8 @@ namespace Fantasy_Kingdoms_Battle
     // Класс типа (конфигурации) лобби
     internal sealed class TypeLobby
     {
-        public TypeLobby(XmlNode n, int index)
+        public TypeLobby(XmlNode n)
         {
-            ID = XmlUtils.GetString(n, "ID");
-            Index = index;
             Name = XmlUtils.GetString(n, "Name");
             QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
             Gold = XmlUtils.GetInteger(n, "Gold");
@@ -34,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
             Debug.Assert(QuantityPlayers >= 8);
-            Debug.Assert(QuantityPlayers <= FormMain.Descriptors.ComputerPlayers.Count);
+            //Debug.Assert(QuantityPlayers <= FormMain.Descriptors.ComputerPlayers.Count); NLE
             Debug.Assert(QuantityPlayers % 2 == 0);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
@@ -62,16 +60,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxGold >= 1_000);
             Debug.Assert(MaxGold <= 1_000_000);
             Debug.Assert(Gold <= MaxGold);
-
-            foreach (TypeLobby t in FormMain.Descriptors.TypeLobbies)
-            {
-                if (Name == t.Name)
-                    throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");
-            }
         }
 
-        internal string ID { get; }
-        internal int Index { get; }
         internal string Name { get; }
         internal int QuantityPlayers { get; }
         internal int Gold { get; }

@@ -79,10 +79,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneLinks()
         {
-            if (idPlayer.Length > 0)
+            /*if (idPlayer.Length > 0)
                 Player = FormMain.Descriptors.FindPlayer(idPlayer);
             else
-                TypePlayer = TypePlayer.Computer;
+                TypePlayer = TypePlayer.Computer;*/
         }
 
         internal void SetTypeTraditions(DescriptorTypeTradition type1, DescriptorTypeTradition type2, DescriptorTypeTradition type3)

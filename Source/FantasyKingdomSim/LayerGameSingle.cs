@@ -106,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
 
             CellPlayer pp;
             int nextLeftPanelPlayer = 0;
-            for (int i = 0; i < Descriptors.TypeLobbies[0].QuantityPlayers; i++)
+            for (int i = 0; i < Config.TypeLobby.QuantityPlayers; i++)
             {
                 pp = new CellPlayer(panelPlayers, nextLeftPanelPlayer);
                 nextLeftPanelPlayer = pp.NextLeft();
@@ -702,7 +702,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby == null);
 
-            lobby = new Lobby(Descriptors.TypeLobbies[0], Program.formMain.CurrentHumanPlayer.TournamentSettings[0], this, FormMain.Descriptors);
+            lobby = new Lobby(Config.TypeLobby, Program.formMain.CurrentHumanPlayer.TournamentSettings, this, FormMain.Descriptors);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {

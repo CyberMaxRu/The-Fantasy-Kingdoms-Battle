@@ -168,6 +168,10 @@ namespace Fantasy_Kingdoms_Battle
 
             TicksInTurn = TicksInSecond * SecondsInTurn;
 
+            // Лобби
+            TypeLobby = new TypeLobby(xmlDoc.SelectSingleNode("Game/Lobby"));
+
+            // Традиции
             MaxTraditions = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/MaxTraditions").InnerText);
             Assert(MaxTraditions >= 3);
             Assert(MaxTraditions <= 64);
@@ -422,6 +426,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
         internal int DurationTickInMilliSeconds { get; set; }// Длительность одного тика игры в миллисекундах
         internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
+
+        // Лобби
+        internal TypeLobby TypeLobby { get; }// 
 
         // Традиции
         internal int MaxTraditions { get; private set; }// Максимальное количество традиций у игрока

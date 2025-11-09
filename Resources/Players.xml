@@ -14,13 +14,12 @@
     </Cheating>
     <TournamentSettings>
       <Tournament>
-        <TypeLobby>WarOf8Lords</TypeLobby>
         <Players>
           <Player>
             <Index>0</Index>
             <Player>HumanPlayer1</Player>
-            <TypeSelectPersistentBonus>Random</TypeSelectPersistentBonus>
-            <TypeSelectStartBonus>Random</TypeSelectStartBonus>
+            <TypeSelectPersistentBonus>Manual</TypeSelectPersistentBonus>
+            <TypeSelectStartBonus>Manual</TypeSelectStartBonus>
           </Player>
           <Player>
             <Index>1</Index>

@@ -42,26 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             CheatingPointsTraditionMore10Times = GetBoolean(n, "Cheating/CheatingPointsTraditionMore10Times", false);
 
             // Создаем настройки всех типов лобби
-            Assert(Descriptors.TypeLobbies.Count > 0);
-            TournamentSettings = new LobbySettings[Descriptors.TypeLobbies.Count];
-
-            XmlNode ns = n.SelectSingleNode("TournamentSettings");
-            if (ns != null)
-            { 
-                foreach (XmlNode nt in ns.SelectNodes("Tournament"))
-                {
-                    LobbySettings ls = new LobbySettings(nt, this);
-
-                    Assert(TournamentSettings[ls.TypeLobby.Index] is null);
-                    TournamentSettings[ls.TypeLobby.Index] = ls;
-                }
-            }
-
-            for (int i = 0; i < TournamentSettings.Length; i++)
-            {
-                if (TournamentSettings[i] is null)
-                    TournamentSettings[i] = new LobbySettings(Descriptors.TypeLobbies[i], this);
-            }
+            TournamentSettings = new LobbySettings(Config.TypeLobby, this);
         }
 
         public HumanPlayer(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex, TypePlayer.Human)
@@ -78,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheatingPointsTraditionMore10Times { get; set; }
 
         internal string DirectoryAvatar { get; set; }
-        internal LobbySettings[] TournamentSettings { get; }
+        internal LobbySettings TournamentSettings { get; set; }
 
         protected override void CheckData()
         {
@@ -106,8 +87,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            foreach (LobbySettings ls in TournamentSettings)
-                ls.TuneLinks();
+            TournamentSettings.TuneLinks();
         }
 
         internal void SaveToXml(XmlTextWriter writer)
@@ -126,13 +106,10 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("CheatingPointsTraditionMore10Times", CheatingPointsTraditionMore10Times.ToString());
             writer.WriteEndElement();
 
-            writer.WriteStartElement("TournamentSettings");
-            foreach (LobbySettings lb in TournamentSettings)
-            {
-                writer.WriteStartElement("Tournament");
-                lb.WriteToXml(writer);
-                writer.WriteEndElement();
-            }
+            writer.WriteStartElement("TournamentSettings");           
+            writer.WriteStartElement("Tournament");
+            TournamentSettings.WriteToXml(writer);
+            writer.WriteEndElement();
             writer.WriteEndElement();
 
             // Конец данных игрока

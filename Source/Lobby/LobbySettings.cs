@@ -37,9 +37,6 @@ namespace Fantasy_Kingdoms_Battle
 
         public LobbySettings(XmlNode n, DescriptorPlayer player) : base()
         {
-            string idTypeLobby = GetStringNotNull(n, "TypeLobby");
-            TypeLobby = FormMain.Descriptors.FindTypeLobby(idTypeLobby);
-
             Players = new LobbySettingsPlayer[TypeLobby.QuantityPlayers];
             XmlNode np = n.SelectSingleNode("Players");
             if (np != null)
@@ -83,8 +80,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void WriteToXml(XmlTextWriter writer)
         {
-            writer.WriteElementString("TypeLobby", TypeLobby.ID);
-
             writer.WriteStartElement("Players");
             foreach (LobbySettingsPlayer lsp in Players)
             {

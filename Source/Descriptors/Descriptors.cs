@@ -57,13 +57,6 @@ namespace Fantasy_Kingdoms_Battle
                 Traditions.Add(new DescriptorTradition(n));
             }
 
-            // Загрузка конфигураций лобби
-            xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
-            {
-                TypeLobbies.Add(new TypeLobby(n, TypeLobbies.Count));
-            }
-
             // Загрузка игроков-людей
             if (File.Exists(Program.FolderResources + "Players.xml"))
             {
@@ -242,9 +235,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstruction c in Constructions)
                 c.TuneLinks();
 
-            foreach (TypeLobby tl in TypeLobbies)
-                tl.TuneDeferredLinks();
-
             foreach (DescriptorItem i in Items)
                 i.AfterTuneLinks();
 
@@ -271,7 +261,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<DescriptorTypeTradition> TypeTraditions { get; } = new List<DescriptorTypeTradition>();
         internal List<DescriptorTradition> Traditions { get; } = new List<DescriptorTradition>();
-        internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<DescriptorPersistentBonus> PersistentBonuses { get; } = new List<DescriptorPersistentBonus>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
@@ -638,17 +627,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return null;
-        }
-
-        internal TypeLobby FindTypeLobby(string id)
-        {
-            foreach (TypeLobby tl in TypeLobbies)
-            {
-                if (tl.ID == id)
-                    return tl;
-            }
-
-            throw new Exception("Тип лобби " + id + " не найден.");
         }
     }
 }
