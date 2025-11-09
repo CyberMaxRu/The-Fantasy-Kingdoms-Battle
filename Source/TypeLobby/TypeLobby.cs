@@ -21,8 +21,6 @@ namespace Fantasy_Kingdoms_Battle
             Gold = XmlUtils.GetInteger(n, "Gold");
             MaxGold = XmlUtils.GetInteger(n, "MaxGold");
             MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
-            StartQuantityFlags = XmlUtils.GetInteger(n, "StartQuantityFlags");
-            MaxQuantityFlags = XmlUtils.GetInteger(n, "MaxQuantityFlags");
             MaxHeroesForBattle = XmlUtils.GetInteger(n, "MaxHeroesForBattle");
             DayStartBattleBetweenPlayers = XmlUtils.GetInteger(n, "DayStartBattleBetweenPlayers");
             DaysBeforeNextBattleBetweenPlayers = XmlUtils.GetInteger(n, "DaysBeforeNextBattleBetweenPlayers");
@@ -31,12 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             VariantStartBonus = XmlUtils.GetInteger(n, "VariantStartBonus");
             VariantsUpSimpleHero = XmlUtils.GetInteger(n, "VariantsUpSimpleHero");
             VariantsUpTempleHero = XmlUtils.GetInteger(n, "VariantsUpTempleHero");
-            StartScoutedLairs = XmlUtils.GetInteger(n, "StartScoutedLairs");
             MaxLoses = XmlUtils.GetInteger(n, "MaxLoses");
-            MapWidth = XmlUtils.GetInteger(n, "MapWidth");
-            MapHeight = XmlUtils.GetInteger(n, "MapHeight");
-            LairsWidth = XmlUtils.GetInteger(n, "LairsWidth");
-            LairsHeight = XmlUtils.GetInteger(n, "LairsHeight");
 
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
@@ -45,11 +38,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(QuantityPlayers % 2 == 0);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
-            Debug.Assert(StartQuantityFlags >= 1);
-            Debug.Assert(StartQuantityFlags <= 10);
-            Debug.Assert(MaxQuantityFlags >= 1);
-            Debug.Assert(MaxQuantityFlags <= 10);
-            Debug.Assert(StartQuantityFlags <= MaxQuantityFlags);
             Debug.Assert(MaxHeroesForBattle >= 1);
             Debug.Assert(MaxHeroesForBattle <= 25);
             Debug.Assert(DayStartBattleBetweenPlayers >= 1);
@@ -67,18 +55,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(VariantsUpSimpleHero <= FormMain.Config.MaxHeroForSelectBonus);
             Debug.Assert(VariantsUpTempleHero >= 1);
             Debug.Assert(VariantsUpTempleHero <= FormMain.Config.MaxHeroForSelectBonus);
-            Debug.Assert(StartScoutedLairs >= 0);
-            Debug.Assert(StartScoutedLairs <= 12);
             Debug.Assert(MaxLoses >= 1);
             Debug.Assert(MaxLoses <= 5);
-            Debug.Assert(MapWidth >= 3);
-            Debug.Assert(MapWidth <= 5);
-            Debug.Assert(MapHeight >= 3);
-            Debug.Assert(MapHeight <= 5);
-            Debug.Assert(LairsWidth >= 2);
-            Debug.Assert(LairsWidth <= 5);
-            Debug.Assert(LairsHeight >= 1);
-            Debug.Assert(LairsHeight <= 4);
 
             Debug.Assert(Gold >= 0);
             Debug.Assert(MaxGold >= 1_000);
@@ -99,8 +77,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get; }
         internal int MaxGold { get; }
         internal int MaxHeroes { get; }
-        internal int StartQuantityFlags { get; }
-        internal int MaxQuantityFlags { get; }
         internal int MaxHeroesForBattle { get; }
         internal int DayStartBattleBetweenPlayers { get; }
         internal int DaysBeforeNextBattleBetweenPlayers { get; }
@@ -109,12 +85,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int VariantStartBonus { get; }
         internal int VariantsUpSimpleHero { get; }
         internal int VariantsUpTempleHero { get; }
-        internal int StartScoutedLairs { get; }
         internal int MaxLoses { get; }
-        internal int MapWidth{ get; }
-        internal int MapHeight { get; }
-        internal int LairsWidth { get; }
-        internal int LairsHeight { get; }
         internal void TuneDeferredLinks()
         {
         }

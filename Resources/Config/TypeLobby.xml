@@ -6,18 +6,7 @@
     <QuantityPlayers>8</QuantityPlayers>
     <Gold>8000</Gold>
     <MaxGold>8000</MaxGold>
-    <BaseCityParameters>
-      <Rats>150</Rats>
-      <Food>10000</Food>
-      <Citizens>1000</Citizens>
-    </BaseCityParameters>
-    <ChangeCityParametersPerTurn>
-      <Rats>20</Rats>
-      <Citizens>25</Citizens>
-    </ChangeCityParametersPerTurn>
     <MaxHeroes>25</MaxHeroes>
-    <StartQuantityFlags>3</StartQuantityFlags>
-    <MaxQuantityFlags>7</MaxQuantityFlags>
     <MaxHeroesForBattle>15</MaxHeroesForBattle>
     <DayStartBattleBetweenPlayers>25</DayStartBattleBetweenPlayers>
     <DaysBeforeNextBattleBetweenPlayers>5</DaysBeforeNextBattleBetweenPlayers>
@@ -28,9 +17,5 @@
     <VariantsUpSimpleHero>3</VariantsUpSimpleHero>
     <VariantsUpTempleHero>3</VariantsUpTempleHero>
     <MaxLoses>3</MaxLoses>
-    <MapWidth>3</MapWidth>
-    <MapHeight>3</MapHeight>
-    <LairsWidth>4</LairsWidth>
-    <LairsHeight>3</LairsHeight>
   </TypeLobby>
 </TypeLobbies>
