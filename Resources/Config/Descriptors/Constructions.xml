@@ -18,7 +18,6 @@
         <ID>LevelGuildWarrior1</ID>
         <Number>1</Number>
         <MaxInhabitant>4</MaxInhabitant>
-        <Tax>50</Tax>
         <Creating>
           <Time>20</Time>
           <Builders>1</Builders>
@@ -33,7 +32,6 @@
         <ID>LevelGuildWarrior2</ID>
         <Number>2</Number>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
         <Creating>
           <Time>25</Time>
           <Builders>1</Builders>
@@ -55,7 +53,6 @@
         <ID>LevelGuildWarrior3</ID>
         <Number>3</Number>
         <MaxInhabitant>6</MaxInhabitant>
-        <Tax>50</Tax>
         <Creating>
           <Time>25</Time>
           <Builders>1</Builders>
@@ -218,8 +215,7 @@
           </Cost>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
-        <Tax>50</Tax>
-      </Level>
+       </Level>
       <Level>
         <ID>LevelGuildHunter2</ID>
         <Number>2</Number>
@@ -238,7 +234,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildHunter3</ID>
@@ -251,7 +246,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <Spells>
@@ -445,7 +439,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
-        <Tax>50</Tax>
         <CityParametersPerTurn>
         </CityParametersPerTurn>
       </Level>
@@ -467,7 +460,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
-        <Tax>50</Tax>
         <CityParametersPerTurn>
         </CityParametersPerTurn>
       </Level>
@@ -482,7 +474,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
-        <Tax>50</Tax>
         <CityParametersPerTurn>
         </CityParametersPerTurn>
       </Level>
@@ -645,7 +636,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildMage2</ID>
@@ -670,7 +660,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildMage3</ID>
@@ -690,7 +679,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <Extensions>
@@ -899,7 +887,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildElf2</ID>
@@ -924,7 +911,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildElf3</ID>
@@ -949,7 +935,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <Services>
@@ -1162,7 +1147,6 @@
           <Iron>50</Iron>
         </IncomeResources>
         <MaxInhabitant>10</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildDwarf2</ID>
@@ -1190,7 +1174,6 @@
           <Iron>100</Iron>
         </IncomeResources>
         <MaxInhabitant>20</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildDwarf3</ID>
@@ -1218,7 +1201,6 @@
           <Iron>150</Iron>
         </IncomeResources>
         <MaxInhabitant>30</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <Extensions>
@@ -1432,7 +1414,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuardBarrack2</ID>
@@ -1445,7 +1426,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuardBarrack3</ID>
@@ -1458,7 +1438,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -1508,7 +1487,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildRogue2</ID>
@@ -1528,7 +1506,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
       <Level>
         <ID>LevelGuildRogue3</ID>
@@ -1541,7 +1518,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <Products>
@@ -5231,7 +5207,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5278,7 +5253,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5325,7 +5299,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5372,7 +5345,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5419,7 +5391,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5466,7 +5437,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5513,7 +5483,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5560,7 +5529,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
@@ -5607,7 +5575,6 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
         <MaxInhabitant>5</MaxInhabitant>
-        <Tax>50</Tax>
       </Level>
     </Levels>
     <CellsMenu>
