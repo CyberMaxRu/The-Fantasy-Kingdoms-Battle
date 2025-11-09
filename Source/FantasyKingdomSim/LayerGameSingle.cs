@@ -32,9 +32,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl vcRightPanel;
         private PanelWithPanelEntity panelCombatHeroes;
 
-        // Поддержка реального времени игры
-        private Stopwatch internalTimer;
-
         // Поддержка режима отладки
         internal bool debugMode = false;
         internal Pen penDebugBorder = new Pen(Color.Red);
@@ -722,32 +719,14 @@ namespace Fantasy_Kingdoms_Battle
 
             lobby.Start();
             firstFrameOfSecond = DateTime.Now;
-            internalTimer = new Stopwatch();
-            internalTimer.Start();
         }
 
         internal override void PrepareFrame()
         {
             base.PrepareFrame();
 
-            if (internalTimer.IsRunning)
-            {
-
-                DateTime curTime = DateTime.Now;
-                TimeSpan delta1 = curTime - firstFrameOfSecond;
-                if (delta1.TotalMilliseconds >= 1000)
-                {
-                    firstFrameOfSecond = DateTime.Now;
-                    framesPerSecond = countFrames;
-                    ticksPerSecond = countTicks;
-                    countFrames = 0;
-                    countTicks = 0;
-                }
-
-                countFrames++;
-                if (lobby is null)
-                    Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
-            }
+            if (lobby is null)
+                Program.formMain.ExchangeLayer(this, Program.formMain.layerMainMenu);
         }
 
         internal void RestartLobby()
@@ -1047,20 +1026,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void Pause()
-        {
-            Assert(internalTimer.IsRunning);
-
-            internalTimer.Stop();
-        }
-
-        private void Continue()
-        {
-            Assert(!internalTimer.IsRunning);
-
-            internalTimer.Start();
-        }
-
         private void ShowInGameMenu()
         {
             WindowMenuInGame w = new WindowMenuInGame(this, CurrentLobby);
@@ -1080,20 +1045,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ArrangeControls()
         {
             base.ArrangeControls();
-        }
-
-        internal override void Deactivated()
-        {
-            base.Deactivated();
-
-            Pause();
-        }
-
-        internal override void Activated()
-        {
-            base.Activated();
-
-            Continue();
         }
 
         internal override void ApplyCurrentWindowSize(Size size)
