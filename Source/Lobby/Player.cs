@@ -673,8 +673,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int QuantityHeroes { get; private set; }
 
-        internal List<ConstructionSpell> ConstructionSpells { get; } = new List<ConstructionSpell>();// Все заклинания игрока
-
         // Перки от сооружений
         internal List<(Construction, DescriptorPerk)> listPerksFromConstruction = new List<(Construction, DescriptorPerk)>();
 

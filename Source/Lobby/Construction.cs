@@ -731,7 +731,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AddEntity(cs);
             Spells.Add(cs);
-            Player.ConstructionSpells.Add(cs);
+            //Player.ConstructionSpells.Add(cs);
         }
 
         internal void AddMassEvent(ConstructionEvent ce)
@@ -810,8 +810,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (!Spells.Remove(csp))
                     Debug.Fail($"Не смог удалить заклинание {entity.Descriptor.ID} из сооружения {Descriptor.ID}");
 
-                if (!Player.ConstructionSpells.Remove(csp))
-                    Debug.Fail($"Не смог удалить заклинание {entity.Descriptor.ID} у игрока");
+                //if (!Player.ConstructionSpells.Remove(csp))
+                //    Debug.Fail($"Не смог удалить заклинание {entity.Descriptor.ID} у игрока");
             }
             else if (entity is ConstructionService cs)
             {
