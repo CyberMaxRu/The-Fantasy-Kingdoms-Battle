@@ -16,13 +16,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         // Главные страницы игры
         private readonly VCPageControl pageControl;        
-        private readonly VCPageButton pageFinance;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTournament;
         private readonly VCPageButton pageTraditions;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
         private readonly List<VCPageButton> pagesCapital;
-        //private readonly VCPageButton pageLocation;
         //private readonly VCPageButton pageTemples;
         private readonly VCLabel labelCaptionPage;
 
@@ -231,13 +229,9 @@ namespace Fantasy_Kingdoms_Battle
             // Страницы игры
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
-            //pageFinance = pageControl.AddPage(Config.Gui48_Finance, "Финансы", "Информация о финансах", null);
-            //pageFinance.Hint = "Финансовая информация";
-            pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
+            pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
-            //pageRealMap = pageControl.AddPage(Config.Gui48_Map, "Карта Ардании", "Просмотр провинций Ардании", null);
-            //pageRealMap.Hint = "Карта Ардании";
             pageControl.Separate();
 
             pagesCapital = new List<VCPageButton>();
