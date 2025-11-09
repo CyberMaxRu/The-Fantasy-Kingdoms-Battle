@@ -15,13 +15,14 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class LayerGameSingle : LayerScene
     {
         // Главные страницы игры
-        private readonly VCPageControl pageControl;        
-        private readonly VCPageButton pageHeroes;
+        private readonly VCPageControl pageControl;
         private readonly VCPageButton pageTournament;
+        private readonly VCPageButton pageCityConstructions;
+        private readonly VCPageButton pageTemples;
+        private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTraditions;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
         private readonly List<VCPageButton> pagesCapital;
-        //private readonly VCPageButton pageTemples;
         private readonly VCLabel labelCaptionPage;
 
         private PanelWithPanelEntity panelHeroes;
@@ -229,6 +230,8 @@ namespace Fantasy_Kingdoms_Battle
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
+            pageCityConstructions = pageControl.AddPage(Config.Gui48_Economy, "Сооружения города", "Сооружения города", PageHeroes_ShowHint);
+            pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageHeroes_ShowHint);
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
             pageControl.Separate();
@@ -243,7 +246,6 @@ namespace Fantasy_Kingdoms_Battle
                 pagesCapital.Add(pageCapital);
             }
 
-            //pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
             //pageControl.Separate();
 
             labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
@@ -358,7 +360,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void MakePagesBackground()
         {
-            //pageFinance.PageImage = MainControlbackground("Finance");
             pageHeroes.PageImage = MainControlbackground("Heroes");
             pageTournament.PageImage = MainControlbackground("Tournament");
             pageTraditions.PageImage = MainControlbackground("Traditions");
@@ -869,9 +870,6 @@ namespace Fantasy_Kingdoms_Battle
             if (Program.formMain.currentLayer == this)
             {
                 UpdateNameCurrentPage();
-                //if (winAdvice is null)
-                //    winAdvice = new WindowAdvice();
-                //winAdvice.ShowAdvice(pageControl.CurrentPage.Advice);
             }
 
             UpdateBackgroundImage();
