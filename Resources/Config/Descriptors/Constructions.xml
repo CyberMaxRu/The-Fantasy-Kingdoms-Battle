@@ -25,8 +25,6 @@
             <Gold>550</Gold>
           </Cost>
         </Creating>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildWarrior2</ID>
@@ -46,8 +44,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildWarrior3</ID>
@@ -60,8 +56,6 @@
             <Gold>1000</Gold>
           </Cost>
         </Creating>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
       </Level>
     </Levels>
     <Products>
@@ -439,8 +433,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>10</MaxInhabitant>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildCleric2</ID>
@@ -460,8 +452,6 @@
           </Requirements>
         </Creating>
         <MaxInhabitant>20</MaxInhabitant>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelGuildCleric3</ID>
@@ -474,8 +464,6 @@
           </Cost>
         </Creating>
         <MaxInhabitant>30</MaxInhabitant>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
       </Level>
     </Levels>
     <Products>
@@ -1141,8 +1129,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
         <IncomeResources>
           <Iron>50</Iron>
         </IncomeResources>
@@ -1689,8 +1675,6 @@
           <Builders>0</Builders>
           <Cost>0</Cost>
         </Creating>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
         <IncomeResources>
           <Gold>1000</Gold>
           <Wood>50</Wood>
@@ -1735,8 +1719,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
         <IncomeResources>
           <Gold>1500</Gold>
           <Wood>50</Wood>
@@ -1780,8 +1762,6 @@
             </Requirement>
           </Requirements>
         </Creating>
-        <CityParametersPerTurn>
-        </CityParametersPerTurn>
         <IncomeResources>
           <Gold>2000</Gold>
           <Wood>50</Wood>
@@ -1869,9 +1849,6 @@
         <IncomeResources>
           <Gold>175</Gold>
         </IncomeResources>
-        <CityParametersPerTurn>
-          <Rats>100</Rats>
-        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelMarket2</ID>
@@ -1891,9 +1868,6 @@
         <IncomeResources>
           <Gold>300</Gold>
         </IncomeResources>
-        <CityParametersPerTurn>
-          <Rats>200</Rats>
-        </CityParametersPerTurn>
       </Level>
       <Level>
         <ID>LevelMarket3</ID>
@@ -1913,9 +1887,6 @@
         <IncomeResources>
           <Gold>525</Gold>
         </IncomeResources>
-        <CityParametersPerTurn>
-          <Rats>300</Rats>
-        </CityParametersPerTurn>
       </Level>
     </Levels>
     <Events>
@@ -3864,9 +3835,6 @@
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <CityParametersPerTurn>
-          <Rats>-10</Rats>
-        </CityParametersPerTurn>
         <Visit>
           <ID>TownSquareVisit1</ID>
           <Name>Прогулка по городской площади (1)</Name>
@@ -3896,9 +3864,6 @@
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <CityParametersPerTurn>
-          <Rats>-10</Rats>
-        </CityParametersPerTurn>
         <Visit>
           <ID>TownSquareVisit2</ID>
           <Name>Прогулка по городской площади (2)</Name>
@@ -3928,9 +3893,6 @@
         </Creating>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <CityParametersPerTurn>
-          <Rats>-10</Rats>
-        </CityParametersPerTurn>
         <Visit>
           <ID>TownSquareVisit3</ID>
           <Name>Прогулка по городской площади (3)</Name>
@@ -3957,9 +3919,6 @@
           <Cost>500</Cost>
           <DaysProcessing>1</DaysProcessing>
         </Creating>
-        <CityParametersPerTurn>
-          <Rats>-10</Rats>
-        </CityParametersPerTurn>
         <Needs>
           <Rest>10</Rest>
         </Needs>
