@@ -13,7 +13,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class WindowSetupMission : WindowOkCancel
     {
-        private LobbySettings mission;
         private readonly VCLabel lblNameTypeLobby;
         private VCLineSetupPlayerMission[] lines;
         private readonly VisualControl panelPlayers;
@@ -21,11 +20,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnLocation;
         private readonly VCLabel lblNameLocation;
 
-        public WindowSetupMission(LobbySettings ls) : base("Настройка миссии", false)
+        public WindowSetupMission() : base("Настройка миссии", false)
         {
-            mission = ls;
-
-            btnOk.Caption = "ОК";
+            /*btnOk.Caption = "ОК";
             btnCancel.Caption = "Отмена";
 
             lblNameTypeLobby = new VCLabel(ClientControl, 0, 0, Program.formMain.FontMedCaption, Color.Turquoise, 24, ls.TypeLobby.Name);
@@ -38,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
             lines = new VCLineSetupPlayerMission[ls.TypeLobby.QuantityPlayers];
             for (int i = 0; i < lines.Length; i++)
             {
-                lines[i] = new VCLineSetupPlayerMission(panelPlayers, FormMain.Config.GridSize, nextTop, ls.Players[i]);
+                //lines[i] = new VCLineSetupPlayerMission(panelPlayers, FormMain.Config.GridSize, nextTop, ls.Players[i]);
 
                 nextTop = lines[i].NextTop();
             }
@@ -76,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             ClientControl.Width = panelSettings.EndLeft();
-            ClientControl.Height = btnOk.ShiftY + btnOk.Height;
+            ClientControl.Height = btnOk.ShiftY + btnOk.Height;*/
         }
 
         internal override void AdjustSize()
@@ -98,7 +95,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    mission.Players[i].SetTypeTraditions(lines[i].btnTypeTradition1.SelectedTradition, lines[i].btnTypeTradition2.SelectedTradition, lines[i].btnTypeTradition3.SelectedTradition);
+                    //mission.Players[i].SetTypeTraditions(lines[i].btnTypeTradition1.SelectedTradition, lines[i].btnTypeTradition2.SelectedTradition, lines[i].btnTypeTradition3.SelectedTradition);
                 }
             }
         }
@@ -115,12 +112,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCButtonSelectTradition btnTypeTradition2;
         internal readonly VCButtonSelectTradition btnTypeTradition3;
 
-        private LobbySettingsPlayer setting;
-
-        public VCLineSetupPlayerMission(VisualControl parent, int shiftX, int shiftY, LobbySettingsPlayer lsp) : base(parent, shiftX, shiftY)
+        public VCLineSetupPlayerMission(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            setting = lsp;
-
             btnTypePlayer = new VCIconButton48(this, 0, 0, 1);
             btnTypePlayer.Click += BtnTypePlayer_Click;
             btnAvatar = new VCIconButton48(this, btnTypePlayer.NextLeft(), 0, 2);
@@ -147,7 +140,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnStartBonus_Click(object sender, EventArgs e)
         {
-            switch (setting.TypeSelectStartBonus)
+            /*switch (setting.TypeSelectStartBonus)
             {
                 case TypeSelectBonus.Manual:
                     setting.TypeSelectStartBonus = TypeSelectBonus.Random;
@@ -156,12 +149,13 @@ namespace Fantasy_Kingdoms_Battle
                     setting.TypeSelectStartBonus = TypeSelectBonus.Manual;
                     break;
             }
-
+            */
             UpdateData();
         }
 
         private void BtnPersistentBonus_Click(object sender, EventArgs e)
         {
+            /*
             switch (setting.TypeSelectPersistentBonus)
             {
                 case TypeSelectBonus.Manual:
@@ -173,7 +167,7 @@ namespace Fantasy_Kingdoms_Battle
                     btnPersistentBonus.Hint = "Постоянный бонус выбирается случайно";
                     break;
             }
-
+            */
             UpdateData();
         }
 
@@ -188,6 +182,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             //
             int imIndexTypePlayer = -1;
+
+            /*
             switch (setting.TypePlayer)
             {
                 case TypePlayer.Human:
@@ -214,6 +210,7 @@ namespace Fantasy_Kingdoms_Battle
             btnTypeTradition1.SelectedTradition = setting.TypeTradition1;
             btnTypeTradition2.SelectedTradition = setting.TypeTradition2;
             btnTypeTradition3.SelectedTradition = setting.TypeTradition3;
+
 
             switch (setting.TypeSelectStartBonus)
             {
@@ -252,7 +249,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 return imageIndex;
-            }
+            }*/
         }
     }
 

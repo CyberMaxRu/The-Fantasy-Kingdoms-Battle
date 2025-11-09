@@ -51,13 +51,13 @@ namespace Fantasy_Kingdoms_Battle
 
             PointsForNextTradition = FormMain.Config.CostFirstTradition;
 
-            TypeTradition1 = Lobby.Settings.Players[playerIndex].TypeTradition1;
-            TypeTradition2 = Lobby.Settings.Players[playerIndex].TypeTradition2;
-            TypeTradition3 = Lobby.Settings.Players[playerIndex].TypeTradition3;
+            //TypeTradition1 = Lobby.Settings.Players[playerIndex].TypeTradition1;
+            //TypeTradition2 = Lobby.Settings.Players[playerIndex].TypeTradition2;
+            //TypeTradition3 = Lobby.Settings.Players[playerIndex].TypeTradition3;
 
-            AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition1.ImageIndex, "Первый тип традиций", TypeTradition1.Name, Color.Orange);
-            AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition2.ImageIndex, "Второй тип традиций", TypeTradition2.Name, Color.Orange);
-            AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition3.ImageIndex, "Третий тип традиций", TypeTradition3.Name, Color.Orange);
+            //AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition1.ImageIndex, "Первый тип традиций", TypeTradition1.Name, Color.Orange);
+            //AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition2.ImageIndex, "Второй тип традиций", TypeTradition2.Name, Color.Orange);
+            //AddNoticeForPlayer(FormMain.Config.Gui48_Tradition, TypeTradition3.ImageIndex, "Третий тип традиций", TypeTradition3.Name, Color.Orange);
 
             // Настраиваем игрока согласно настройкам лобби
             CurrentLoses = 0;

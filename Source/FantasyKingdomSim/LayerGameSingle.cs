@@ -702,7 +702,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby == null);
 
-            lobby = new Lobby(Config.TypeLobby, Program.formMain.CurrentHumanPlayer.TournamentSettings, this, FormMain.Descriptors);
+            lobby = new Lobby(Config.TypeLobby, this, FormMain.Descriptors);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {

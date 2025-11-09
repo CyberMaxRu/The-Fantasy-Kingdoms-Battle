@@ -40,9 +40,6 @@ namespace Fantasy_Kingdoms_Battle
             CheatingSpeedUpProgressBy10 = GetBoolean(n, "Cheating/CheatingSpeedUpProgressBy10", false);
             CheatingReduceCostBy10 = GetBoolean(n, "Cheating/CheatingReduceCostBy10", false);
             CheatingPointsTraditionMore10Times = GetBoolean(n, "Cheating/CheatingPointsTraditionMore10Times", false);
-
-            // Создаем настройки всех типов лобби
-            TournamentSettings = new LobbySettings(Config.TypeLobby, this);
         }
 
         public HumanPlayer(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex, TypePlayer.Human)
@@ -59,7 +56,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheatingPointsTraditionMore10Times { get; set; }
 
         internal string DirectoryAvatar { get; set; }
-        internal LobbySettings TournamentSettings { get; set; }
 
         protected override void CheckData()
         {
@@ -87,7 +83,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            TournamentSettings.TuneLinks();
         }
 
         internal void SaveToXml(XmlTextWriter writer)
@@ -104,12 +99,6 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("CheatingSpeedUpProgressBy10", CheatingSpeedUpProgressBy10.ToString());
             writer.WriteElementString("CheatingReduceCostBy10", CheatingReduceCostBy10.ToString());
             writer.WriteElementString("CheatingPointsTraditionMore10Times", CheatingPointsTraditionMore10Times.ToString());
-            writer.WriteEndElement();
-
-            writer.WriteStartElement("TournamentSettings");           
-            writer.WriteStartElement("Tournament");
-            TournamentSettings.WriteToXml(writer);
-            writer.WriteEndElement();
             writer.WriteEndElement();
 
             // Конец данных игрока

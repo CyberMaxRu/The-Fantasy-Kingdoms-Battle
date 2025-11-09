@@ -18,13 +18,12 @@ namespace Fantasy_Kingdoms_Battle
         private bool stopLobby = false;
         private Descriptors descriptors;
 
-        public Lobby(TypeLobby tl, LobbySettings settings, LayerGameSingle layer, Descriptors d)
+        public Lobby(TypeLobby tl, LayerGameSingle layer, Descriptors d)
         {
             BigEntity.ResetNumerate();
 
             ID = generation++;
             TypeLobby = tl;
-            Settings = settings;
             descriptors = d;
             Layer = layer;
 
@@ -65,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         internal LayerGameSingle Layer { get; }
         internal int ID { get; }// Уникальный код лобби
         internal TypeLobby TypeLobby { get; }// Тип лобби
-        internal LobbySettings Settings { get; }
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
 

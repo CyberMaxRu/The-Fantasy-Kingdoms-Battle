@@ -41,35 +41,13 @@ namespace Fantasy_Kingdoms_Battle
             base.SelectStartBonus();
 
             // Выбор постоянного бонуса
-            switch (Lobby.Settings.Players[PlayerIndex].TypeSelectPersistentBonus)
-            {
-                case TypeSelectBonus.Manual:
-                    WindowSelectPersistentBonuses wpb = new WindowSelectPersistentBonuses(this);
-                    wpb.Show();
-                    break;
-                case TypeSelectBonus.Random:
-                    SelectRandomPersistentBonus();
-                    break;
-                default:
-                    DoException("Неизвестный тип бонуса.");
-                    break;
-            }
+            WindowSelectPersistentBonuses wpb = new WindowSelectPersistentBonuses(this);
+            wpb.Show();
 
             // Выбор стартового бонуса
-            switch (Lobby.Settings.Players[PlayerIndex].TypeSelectStartBonus)
-            {
-                case TypeSelectBonus.Manual:
-                    WindowSelectStartBonus w = new WindowSelectStartBonus(this, VariantsStartBonuses);
-                    w.Show();
-                    ApplyStartBonus(w.SelectedBonus);
-                    break;
-                case TypeSelectBonus.Random:
-                    ApplyStartBonus(GetRandomStartBonus());
-                    break;
-                default:
-                    DoException("Неизвестный тип бонуса.");
-                    break;
-            }
+            WindowSelectStartBonus w = new WindowSelectStartBonus(this, VariantsStartBonuses);
+            w.Show();
+            ApplyStartBonus(w.SelectedBonus);
         }
 
         internal override void PrepareTurn(bool beginOfDay)

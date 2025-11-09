@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
-using static Fantasy_Kingdoms_Battle.Utils;
 using System.Windows.Forms;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -23,7 +24,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonForMenu btnAboutGame;
         private readonly VCButtonForMenu btnExitToWindows;
 
-        private LobbySettings mission;
         private WindowSetupMission wsm;
 
         private int idxAnimation;
@@ -60,26 +60,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.Focused(da);
 
-            if (mission != null)
-            {
-                if (da == DialogAction.OK)
-                {
-                    Program.formMain.CurrentHumanPlayer.TournamentSettings = mission;
-                    FormMain.Descriptors.SaveHumanPlayers();
-                    Program.formMain.layerGame.StartNewLobby();
-                }
-
-                mission = null;
-            }
         }
 
         private void BtnRandomMission_Click(object sender, EventArgs e)
         {
-            Assert(mission is null);
-
-            mission = new LobbySettings(Program.formMain.CurrentHumanPlayer.TournamentSettings);
-            wsm = new WindowSetupMission(mission);
-            wsm.Show();
+            Program.formMain.layerGame.StartNewLobby();
+            //wsm = new WindowSetupMission();
+            //wsm.Show();
         }
 
         internal override void ArrangeControls()
