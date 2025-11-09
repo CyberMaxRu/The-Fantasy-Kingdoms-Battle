@@ -197,6 +197,10 @@ namespace Fantasy_Kingdoms_Battle
                         InPrepareTurn = false;
                         Layer.ShowCurrentPlayerLobby();
 
+                        if (Players[i].GetTypePlayer() == TypePlayer.Human)
+                            return;
+
+
                         if (HumanIsWin)
                         {
                             Debug.Assert(Players[i].GetTypePlayer() == TypePlayer.Human);
