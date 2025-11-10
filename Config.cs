@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlDocument xmlDoc;
 
             // Загружаем конфигурацию игры
-            xmlDoc = CreateXmlDocument("Config\\Game.xml");
+            xmlDoc = XmlUtils.CreateXmlDocument("Config\\Game.xml");
             if (defaultGridSize)
                 GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);
             else
@@ -73,6 +73,7 @@ namespace Fantasy_Kingdoms_Battle
             PlateHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateHeight").InnerText);
             Debug.Assert(PlateHeight >= 2);
             Debug.Assert(PlateHeight <= 8);
+
             MinRowsEntities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MinRowsEntityInPlate").InnerText);
             Debug.Assert(MinRowsEntities >= 2);
             Debug.Assert(MinRowsEntities <= 6);
@@ -167,9 +168,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(DurationTickInMilliSeconds * TicksInSecond == 1000);
 
             TicksInTurn = TicksInSecond * SecondsInTurn;
-
-            // Лобби
-            TypeLobby = new TypeLobby(xmlDoc.SelectSingleNode("Game/Lobby"));
 
             // Традиции
             MaxTraditions = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Traditions/MaxTraditions").InnerText);
@@ -350,20 +348,12 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем внешние аватары
             if (File.Exists(Program.FolderResources + @"\ExternalAvatars.xml"))
-                xmlDoc = CreateXmlDocument(@"\ExternalAvatars.xml");
+                xmlDoc = XmlUtils.CreateXmlDocument(@"\ExternalAvatars.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/ExternalAvatars/ExternalAvatar"))
             {
                 ExternalAvatars.Add(n.InnerText);
                 if (ExternalAvatars.Count == MaxQuantityExternalAvatars)
                     break;
-            }
-
-            // Вспомогательные методы
-            XmlDocument CreateXmlDocument(string pathToXml)
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.Load(Program.FolderResources + pathToXml);
-                return doc;
             }
         }
 
@@ -417,9 +407,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int TicksInSecond { get; set; }// Количество тиков игры в реальной секунде
         internal int DurationTickInMilliSeconds { get; set; }// Длительность одного тика игры в миллисекундах
         internal int TicksInTurn{ get; set; }// Сколько тиков в игровых сутках
-
-        // Лобби
-        internal TypeLobby TypeLobby { get; }// 
 
         // Традиции
         internal int MaxTraditions { get; private set; }// Максимальное количество традиций у игрока

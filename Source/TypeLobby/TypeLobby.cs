@@ -6,14 +6,36 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
 using static Fantasy_Kingdoms_Battle.Utils;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal sealed class ConfigConstruction
+    {
+        public ConfigConstruction(XmlNode n)
+        {
+            Descriptor = FormMain.Descriptors.FindConstruction(GetStringNotNull(n, "ID"));
+            Level = GetIntegerNotNull(n, "Level");
+            Coord = GetPoint(n, "Pos");
+        }
+
+        internal DescriptorConstruction Descriptor { get; }
+        internal int Level { get; }
+        internal Point Coord { get; }
+    }
+
     // Класс типа (конфигурации) лобби
     internal sealed class TypeLobby
     {
-        public TypeLobby(XmlNode n)
+        public TypeLobby()
         {
+            XmlDocument xmlDoc;
+
+            // Загружаем конфигурацию игры
+            xmlDoc = CreateXmlDocument("Config\\Lobby.xml");
+            XmlNode n = xmlDoc.SelectSingleNode("Lobby");
+
             Name = XmlUtils.GetString(n, "Name");
             QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
             Gold = XmlUtils.GetInteger(n, "Gold");
@@ -60,6 +82,20 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxGold >= 1_000);
             Debug.Assert(MaxGold <= 1_000_000);
             Debug.Assert(Gold <= MaxGold);
+
+            XmlNode cc = n.SelectSingleNode("CityConstructions");
+            if (cc != null)
+            {
+                DescriptorConstruction dc;
+
+                foreach (XmlNode dcc in cc.SelectNodes("Construction"))
+                {
+                    ConfigCityConstructions.Add(new ConfigConstruction(dcc));
+                }
+            }
+
+            if (ConfigCityConstructions.Count == 0)
+                throw new Exception("В конфигурации лобби нет информации о городских сооружениях.");
         }
 
         internal string Name { get; }
@@ -76,6 +112,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int VariantsUpSimpleHero { get; }
         internal int VariantsUpTempleHero { get; }
         internal int MaxLoses { get; }
+
+        internal List<ConfigConstruction> ConfigCityConstructions = new List<ConfigConstruction>();
+
         internal void TuneDeferredLinks()
         {
         }

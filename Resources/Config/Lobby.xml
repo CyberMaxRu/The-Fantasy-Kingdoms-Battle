@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Lobby>
+  <Name>Война 8 лордов</Name>
+  <QuantityPlayers>8</QuantityPlayers>
+  <Gold>8000</Gold>
+  <MaxGold>8000</MaxGold>
+  <MaxHeroes>25</MaxHeroes>
+  <MaxHeroesForBattle>15</MaxHeroesForBattle>
+  <DayStartBattleBetweenPlayers>25</DayStartBattleBetweenPlayers>
+  <DaysBeforeNextBattleBetweenPlayers>5</DaysBeforeNextBattleBetweenPlayers>
+  <PointStartBonus>10</PointStartBonus>
+  <StartScoutedLairs>2</StartScoutedLairs>
+  <VariantPersistentBonus>3</VariantPersistentBonus>
+  <VariantStartBonus>3</VariantStartBonus>
+  <VariantsUpSimpleHero>3</VariantsUpSimpleHero>
+  <VariantsUpTempleHero>3</VariantsUpTempleHero>
+  <MaxLoses>3</MaxLoses>
+  <CityConstructions>
+    <Construction>
+      <ID>TownHall</ID>
+      <Level>1</Level>
+      <Pos>1,1</Pos>
+    </Construction>
+    <Construction>
+      <ID>Castle</ID>
+      <Level>0</Level>
+      <Pos>2,1</Pos>
+    </Construction>
+    <Construction>
+      <ID>Park</ID>
+      <Level>0</Level>
+      <Pos>3,1</Pos>
+    </Construction>
+    <Construction>
+      <ID>Tavern</ID>
+      <Level>0</Level>
+      <Pos>2,1</Pos>
+    </Construction>
+    <Construction>
+      <ID>HolyPlace</ID>
+      <Level>0</Level>
+      <Pos>1,4</Pos>
+    </Construction>
+  </CityConstructions>
+</Lobby>

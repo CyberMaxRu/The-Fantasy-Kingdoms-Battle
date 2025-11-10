@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using static Fantasy_Kingdoms_Battle.Utils;
 using System.Windows.Media.Animation;
+using System.Xml.Linq;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -140,10 +141,20 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Инициализация сооружений города
+            foreach (ConfigConstruction cc in lobby.TypeLobby.ConfigCityConstructions)
+            {
+                Construction c = new Construction(this, cc.Descriptor);
+                c.X = cc.Coord.X;
+                c.Y = cc.Coord.Y;
+
+                if (cc.Level > 0)
+                    c.LevelUp(cc.Level);
+            }
+
             foreach (DescriptorConstruction tck in FormMain.Descriptors.Constructions)
             {
-                if (tck.IsInternalConstruction)
-                    new Construction(this, tck);
+            //    if (tck.IsInternalConstruction)
+            //        new Construction(this, tck);
             }
 
             /*foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)

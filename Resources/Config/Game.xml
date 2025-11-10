@@ -7,8 +7,8 @@
     <PlateWidth>4</PlateWidth>
     <PlateHeight>3</PlateHeight>
     <MinRowsEntityInPlate>2</MinRowsEntityInPlate>
-    <ConstructionMaxPos>3</ConstructionMaxPos>
-    <ConstructionMaxLines>3</ConstructionMaxLines>
+    <ConstructionMaxPos>4</ConstructionMaxPos>
+    <ConstructionMaxLines>4</ConstructionMaxLines>
     <ShiftForBorderX>3</ShiftForBorderX>
     <ShiftForBorderY>2</ShiftForBorderY>
     <ImageIndexFirstAvatar>209</ImageIndexFirstAvatar>    
@@ -39,23 +39,6 @@
       <MaxLengthQueue>3</MaxLengthQueue>
     </Construction>    
   </GlobalSettings>
-  <Lobby>
-    <Name>Война 8 лордов</Name>
-    <QuantityPlayers>8</QuantityPlayers>
-    <Gold>8000</Gold>
-    <MaxGold>8000</MaxGold>
-    <MaxHeroes>25</MaxHeroes>
-    <MaxHeroesForBattle>15</MaxHeroesForBattle>
-    <DayStartBattleBetweenPlayers>25</DayStartBattleBetweenPlayers>
-    <DaysBeforeNextBattleBetweenPlayers>5</DaysBeforeNextBattleBetweenPlayers>
-    <PointStartBonus>10</PointStartBonus>
-    <StartScoutedLairs>2</StartScoutedLairs>
-    <VariantPersistentBonus>3</VariantPersistentBonus>
-    <VariantStartBonus>3</VariantStartBonus>
-    <VariantsUpSimpleHero>3</VariantsUpSimpleHero>
-    <VariantsUpTempleHero>3</VariantsUpTempleHero>
-    <MaxLoses>3</MaxLoses>
-  </Lobby>
   <Traditions>    
     <MaxLevelTradition>5</MaxLevelTradition>
     <MaxTraditions>16</MaxTraditions>

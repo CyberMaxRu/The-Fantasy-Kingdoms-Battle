@@ -184,6 +184,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
+        internal TypeLobby ConfigLobby { get; private set; }
 
         public FormMain()
         {
@@ -288,6 +289,8 @@ namespace Fantasy_Kingdoms_Battle
             _ = new Config(this, defaultGridSize);
             SetStage("Изучаем справочник");
             _ = new Descriptors(this);
+            SetStage("Составляем расписание");
+            ConfigLobby = new TypeLobby();
 
             FontSmall = new M2Font("small");
             FontSmallC = new M2Font("small_c");

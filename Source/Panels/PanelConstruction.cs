@@ -15,13 +15,11 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
         private readonly VCLabel lblName;
         private readonly VCImage128 imgMapObject;
-        private readonly VCProgressBar pbDurability;
-        private readonly VCProgressBar pbProgressAction;
-        private readonly VCIconButton48 btnHeroes;
         private readonly VCIconButton48 btnMainAction;
         private readonly VCLabelValue lblIncome;
-
-        private readonly VCIconButton48 btnInhabitants;
+        private readonly VCEntityInQueue ext1;
+        private readonly VCEntityInQueue ext2;
+        private readonly VCEntityInQueue ext3;
 
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -37,22 +35,10 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.BorderWithoutProgressBar = false;
             imgMapObject.ShowHint += ImgLair_ShowHint;
 
-            pbDurability = new VCProgressBar(this, imgMapObject.ShiftX - 2, imgMapObject.NextTop() - 4);
-            pbDurability.Width = imgMapObject.Width + 4;
-            pbDurability.Max = 100;
-
-            pbProgressAction = new VCProgressBar(this, pbDurability.ShiftX, pbDurability.ShiftY + pbDurability.Height - 1);
-            pbProgressAction.Width = pbDurability.Width;
-            pbProgressAction.ColorProgress = Color.Fuchsia;
-            pbProgressAction.Max = 100;
-
-            btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
-            btnHeroes.Click += BtnHeroes_Click;
-            btnHeroes.ShowHint += BtnHeroes_ShowHint;
-            btnHeroes.Visible = false;
-
-            btnMainAction = new VCIconButton48(this, imgMapObject.ShiftX, pbProgressAction.NextTop(), FormMain.Config.Gui48_Build);
+            //btnMainAction = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.NextTop(), FormMain.Config.Gui48_LevelUp);
+            btnMainAction = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_LevelUp);
             btnMainAction.Click += BtnBuildOrUpgrade_Click;
+            btnMainAction.Visible = false;
 
             lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Color.Green, true);
             lblIncome.Width = 104;
@@ -60,14 +46,36 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
 
-            btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
-            btnInhabitants.Click += BtnInhabitants_Click;
-            btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
+            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 6, Color.Green, true);
+            lblIncome.Width = 104;
+            lblIncome.Image.ImageIndex = FormMain.GUI_16_ENTHUSIASM;
+            lblIncome.StringFormat.Alignment = StringAlignment.Near;
+            lblIncome.Hint = "Доход в день";
 
-            Width = Math.Max(btnMainAction.NextLeft(), lblIncome.NextLeft());
-            Height = btnMainAction.NextTop();
+            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 6, Color.Green, true);
+            lblIncome.Width = 104;
+            lblIncome.Image.ImageIndex = FormMain.GUI_16_MORALE;
+            lblIncome.StringFormat.Alignment = StringAlignment.Near;
+            lblIncome.Hint = "Доход в день";
 
-            btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
+            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 6, Color.Green, true);
+            lblIncome.Width = 104;
+            lblIncome.Image.ImageIndex = FormMain.GUI_16_LUCK;
+            lblIncome.StringFormat.Alignment = StringAlignment.Near;
+            lblIncome.Hint = "Доход в день";
+
+            ext1 = new VCEntityInQueue(this, imgMapObject.ShiftX, imgMapObject.NextTop() + 4);
+            ext1.ImageIndex = FormMain.Config.Gui48_Book;
+
+            ext2 = new VCEntityInQueue(this, ext1.NextLeft(), ext1.ShiftY);
+            ext2.ImageIndex = 5;
+
+            ext3 = new VCEntityInQueue(this, ext2.NextLeft(), ext1.ShiftY);
+            ext3.ImageIndex = -1;
+
+            Width = Math.Max(lblIncome.NextLeft(), lblIncome.NextLeft());
+            Height = ext1.NextTop();
+
             lblName.Width = Width - (FormMain.Config.GridSize * 2);
 
             Click += ImgLair_Click;
@@ -96,83 +104,78 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            lblName.Text = Program.formMain.Settings.ShowNameConstruction ? Construction.GetName() : "";
-            //lblName.Color = Construction.GetColorCaption();
-            imgMapObject.ImageIndex = Construction.GetImageIndex();
-            imgMapObject.ImageIsEnabled = Construction.GetNormalImage();
-            imgMapObject.Level = Construction.GetLevel();
-
-            btnMainAction.MenuCell = null;
-            pbDurability.Visible = false;
-            btnHeroes.Visible = false;
-
-            if (Construction.Descriptor.IsOurConstruction)
+            if (Construction is not null)
             {
-                pbDurability.Visible = true;
+                lblName.Text = Program.formMain.Settings.ShowNameConstruction ? Construction.GetName() : "";
+                //lblName.Color = Construction.GetColorCaption();
+                imgMapObject.ImageIndex = Construction.GetImageIndex();
+                imgMapObject.ImageIsEnabled = Construction.GetNormalImage();
+                imgMapObject.Level = Construction.GetLevel();
 
-                pbProgressAction.Text = "";
-                pbProgressAction.Position = 0;
+                btnMainAction.MenuCell = null;
 
-                int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
-                if (income > 0)
+                if (Construction.Descriptor.IsOurConstruction)
                 {
-                    lblIncome.Text = $"+{income}";
-                    lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
-                    lblIncome.Image.ImageIsEnabled = Construction.Level > 0;
-                    lblIncome.Visible = true;
-                }
-                else
-                    lblIncome.Visible = false;
-
-                bool needShowGreatness = Construction.Level > 0
-                        ? Construction.GreatnessPerDay() > 0
-                        : (Construction.GreatnessPerDayNextLevel() > 0) || (Construction.GreatnessAddNextLevel() > 0);
-
-                if (Construction.Descriptor.PlayerCanBuild)
-                {
-                    if (Construction.Level > 0)
+                    int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
+                    if (income > 0)
                     {
-                        if (Construction.Level < Construction.Descriptor.MaxLevel)
-                        {
-                            Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
+                        lblIncome.Text = $"+{income}";
+                        lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
+                        lblIncome.Image.ImageIsEnabled = Construction.Level > 0;
+                        lblIncome.Visible = true;
+                    }
+                    else
+                        lblIncome.Visible = false;
 
-                            btnMainAction.Visible = true;
-                            btnMainAction.MenuCell = Construction.ActionMain;
+                    bool needShowGreatness = Construction.Level > 0
+                            ? Construction.GreatnessPerDay() > 0
+                            : (Construction.GreatnessPerDayNextLevel() > 0) || (Construction.GreatnessAddNextLevel() > 0);
+
+                    if (Construction.Descriptor.PlayerCanBuild)
+                    {
+                        if (Construction.Level > 0)
+                        {
+                            if (Construction.Level < Construction.Descriptor.MaxLevel)
+                            {
+                                Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
+
+                                //btnMainAction.Visible = true;
+                                btnMainAction.MenuCell = Construction.ActionMain;
+                            }
+                            else
+                            {
+                                if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
+                                {
+                                    //btnMainAction.Visible = true;
+                                    btnMainAction.LowText = "";
+                                    btnMainAction.Level = "";
+                                    btnMainAction.ImageIndex = FormMain.Config.Gui48_Temple;
+                                    btnMainAction.ImageIsEnabled = true;
+                                }
+                                else
+                                    btnMainAction.Visible = false;
+                            }
                         }
                         else
                         {
-                            if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
+                            if (Construction.ActionMain != null)
                             {
-                                btnMainAction.Visible = true;
-                                btnMainAction.LowText = "";
-                                btnMainAction.Level = "";
-                                btnMainAction.ImageIndex = FormMain.Config.Gui48_Temple;
-                                btnMainAction.ImageIsEnabled = true;
+                                Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
+
+                                //btnMainAction.Visible = true;
+                                btnMainAction.MenuCell = Construction.ActionMain;
                             }
                             else
                                 btnMainAction.Visible = false;
                         }
                     }
                     else
-                    {
-                        if (Construction.ActionMain != null)
-                        {
-                            Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
-
-                            btnMainAction.Visible = true;
-                            btnMainAction.MenuCell = Construction.ActionMain;
-                        }
-                        else
-                            btnMainAction.Visible = false;
-                    }
+                        btnMainAction.Visible = false;
                 }
                 else
-                    btnMainAction.Visible = false;
-            }
-            else
-            {
-                lblIncome.Visible = false;
-                btnHeroes.Visible = false;
+                {
+                    lblIncome.Visible = false;
+                }
             }
 
             base.Draw(g);
@@ -190,8 +193,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SelectThisConstruction(bool playSoundSelect)
         {
-            Debug.Assert(Entity != null);
-            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity, -1, playSoundSelect);
+            //Debug.Assert(Entity != null);
+            //Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity, -1, playSoundSelect);
         }
 
         protected override bool Selected()
@@ -218,6 +221,7 @@ namespace Fantasy_Kingdoms_Battle
             base.SetEntity(po);
 
             Construction = po as Construction;
+            Visible = Construction is not null;
         }
 
         private void BtnInhabitants_ShowHint(object sender, EventArgs e)

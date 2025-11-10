@@ -28,7 +28,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageTournament;
         private readonly VCPageButton pageCityConstructions;
-        private readonly VCPageButton pageTemples;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTraditions;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
@@ -71,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelLairWithFlags;
         //private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
 
-        private readonly PanelConstruction[,,] panels;
+        private PanelConstruction[,] arrayPanelConstructions;
         private readonly VCBitmap bmpObjectMenu;
         private readonly VCMenuCell cellObjectMenu;
 
@@ -103,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
 
             CellPlayer pp;
             int nextLeftPanelPlayer = 0;
-            for (int i = 0; i < Config.TypeLobby.QuantityPlayers; i++)
+            for (int i = 0; i < Program.formMain.ConfigLobby.QuantityPlayers; i++)
             {
                 pp = new CellPlayer(panelPlayers, nextLeftPanelPlayer);
                 nextLeftPanelPlayer = pp.NextLeft();
@@ -234,7 +233,6 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.PageChanged += PageControl_PageChanged;
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageCityConstructions = pageControl.AddPage(Config.Gui48_Economy, "Сооружения города", "Сооружения города", PageHeroes_ShowHint);
-            pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageHeroes_ShowHint);
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
             pageControl.Separate();
@@ -257,7 +255,7 @@ namespace Fantasy_Kingdoms_Battle
             labelCaptionPage.Width = 280;
 
             // Создаем массив из страниц, линий и позиций
-            panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
+            //panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
 
             DrawPageConstructions();
             //DrawPageFinance();
@@ -444,8 +442,20 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageConstructions()
         {
+            arrayPanelConstructions = new PanelConstruction[FormMain.Config.ConstructionMaxLines, FormMain.Config.ConstructionMaxPos];
+
+            for (int y = 0; y < FormMain.Config.ConstructionMaxLines; y++)
+                for (int x = 0; x < FormMain.Config.ConstructionMaxPos; x++)
+                {
+                    PanelConstruction pc = new PanelConstruction(pageCityConstructions.Page, 0, 0);
+                    pc.ShiftX = (pc.Width + Config.GridSize) * x;
+                    pc.ShiftY = (pc.Height + Config.GridSize) * y;
+                    arrayPanelConstructions[y, x] = pc;
+                }
+
+            return;
             // Проходим по каждому зданию, создавая ему панель
-            VisualControl parent;
+            /*VisualControl parent;
             foreach (DescriptorConstruction tck in Descriptors.Constructions)
             {
                 if (tck.IsInternalConstruction)
@@ -462,7 +472,7 @@ namespace Fantasy_Kingdoms_Battle
                         panels[tck.Page.Index, tck.CoordInPage.Y, tck.CoordInPage.X] = tck.Panel;
                     }
                 }
-            }
+            }*/
         }
 
         internal void LosesChanged()
@@ -649,8 +659,9 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем сооружения
             foreach (Construction pb in lobby.CurrentPlayer.Constructions)
             {
-                if (pb.Descriptor.IsInternalConstruction && (pb.Descriptor.Category != CategoryConstruction.Temple))
-                    pb.Descriptor.Panel.Entity = pb;
+
+                //if (pb.Descriptor.IsInternalConstruction && (pb.Descriptor.Category != CategoryConstruction.Temple))
+                //    pb.Descriptor.Panel.Entity = pb;
             }
 
             // Показываем героев
@@ -663,7 +674,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby == null);
 
-            lobby = new Lobby(Config.TypeLobby, this, FormMain.Descriptors);
+            lobby = new Lobby(Program.formMain.ConfigLobby, this, FormMain.Descriptors);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
@@ -728,6 +739,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowCurrentPlayerLobby()
         {
+            foreach (Construction c in lobby.CurrentPlayer.Constructions)
+            {
+                arrayPanelConstructions[c.Y, c.X].Entity = c;
+            }
+
             if (lobby.CurrentPlayer == null)
             {
                 MainControl.Visible = false;
@@ -1027,19 +1043,18 @@ namespace Fantasy_Kingdoms_Battle
             // Мы достоверно знаем, что на страницах столицы 3 промежутка между сооружениями и надо еще 2 по краям по горизонтали
             // По вертикали 2 расстояния
             // Вообще надо переделать на константы из конфиги
-            horInterval = (MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (panels[0, 0, 0].Width * FormMain.Config.ConstructionMaxPos)) / (FormMain.Config.ConstructionMaxPos + 1);
-            verInterval = (MainControl.Height - pageHeroes.Page.ShiftY - (panels[0, 0, 0].Height * FormMain.Config.ConstructionMaxLines) - (Config.GridSize * 2)) / (FormMain.Config.ConstructionMaxLines - 1);
+            horInterval = (MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (arrayPanelConstructions[0, 0].Width * FormMain.Config.ConstructionMaxPos)) / (FormMain.Config.ConstructionMaxPos + 1);
+            verInterval = (MainControl.Height - pageHeroes.Page.ShiftY - (arrayPanelConstructions[0, 0].Height * FormMain.Config.ConstructionMaxLines) - (Config.GridSize * 2)) / (FormMain.Config.ConstructionMaxLines - 1);
 
-            for (int z = 0; z < panels.GetLength(0); z++)
-                for (int y = 0; y < panels.GetLength(1); y++)
-                    for (int x = 0; x < panels.GetLength(2); x++)
+            for (int y = 0; y < arrayPanelConstructions.GetLength(0); y++)
+                for (int x = 0; x < arrayPanelConstructions.GetLength(1); x++)
+                {
+                    if (arrayPanelConstructions[ y, x] != null)
                     {
-                        if (panels[z, y, x] != null)
-                        {
-                            panels[z, y, x].ShiftX = (panels[z, y, x].Width + horInterval) * x;
-                            panels[z, y, x].ShiftY = (panels[z, y, x].Height + verInterval) * y;
-                        }
+                        arrayPanelConstructions[y, x].ShiftX = (arrayPanelConstructions[y, x].Width + horInterval) * x;
+                        arrayPanelConstructions[y, x].ShiftY = (arrayPanelConstructions[y, x].Height + verInterval) * y;
                     }
+                }
 
             pageControl.ShiftX = panelEmptyInfo.ShiftX + panelEmptyInfo.Width + horInterval;
 

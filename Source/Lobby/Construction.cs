@@ -14,12 +14,11 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class Construction : BigEntity
     {
         private List<ActionInConstruction> tempListActions = new List<ActionInConstruction>();
-        private int gold;
 
         // Конструктор для городских сооружений, которые создаются в начале миссии
         public Construction(Player p, DescriptorConstruction dc) : base(dc, p.Lobby, p)
         {
-            Assert(dc.IsInternalConstruction);
+            //Assert(dc.IsInternalConstruction);
 
             Descriptor = dc;
             PlayerIsOwner = true;
@@ -108,6 +107,18 @@ namespace Fantasy_Kingdoms_Battle
                 return descriptor.ID;
             else
                 return base.GetIDEntity(descriptor);
+        }
+
+        // Методы, связанные с повышением уровня
+        internal void LevelUp(int ToLevel)
+        {
+            Assert(Level < ToLevel);
+            Assert(ToLevel <= Descriptor.MaxLevel);
+
+            while (Level < ToLevel)
+            {
+                Build(false, true);
+            }
         }
 
         private void TuneActionLevelUp()

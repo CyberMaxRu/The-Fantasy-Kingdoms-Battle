@@ -198,7 +198,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionLevel[] Levels { get; }
 
         //
-        internal PanelConstruction Panel { get; set; }
+        //internal PanelConstruction Panel { get; set; }
 
         internal override void TuneLinks()
         {

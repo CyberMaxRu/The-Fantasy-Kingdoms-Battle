@@ -9,6 +9,13 @@ namespace Fantasy_Kingdoms_Battle
 {
     public sealed class XmlUtils
     {
+        internal static XmlDocument CreateXmlDocument(string pathToXml)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(Program.FolderResources + pathToXml);
+            return doc;
+        }
+
         internal static int GetInteger(XmlNode n, string name)
         {
             XmlNode nn = n.SelectSingleNode(name);
