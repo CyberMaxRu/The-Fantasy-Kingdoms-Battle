@@ -28,12 +28,10 @@ namespace Fantasy_Kingdoms_Battle
 
             if (IsInternalConstruction)
             {
-                Page = Descriptors.FindCapitalPage(GetStringNotNull(n, "Page"));
                 CoordInPage = GetPoint(n, "Pos");
             }
             else
             {
-                XmlFieldNotExist(n, "Page");
                 XmlFieldNotExist(n, "Line");
                 XmlFieldNotExist(n, "Pos");
             }
@@ -189,7 +187,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
 
         // Свойства, относящиеся только к зданиям Королевства
-        internal CapitalPage Page { get; }// Страница игрового интерфейса
         internal Point CoordInPage { get; }// Позиция на странице игрового интерфейса
         internal int DefaultLevel { get; }// Уровень сооружения по умолчанию
         internal int MaxLevel { get; }// Максимальный уровень сооружения

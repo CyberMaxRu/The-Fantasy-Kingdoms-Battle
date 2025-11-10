@@ -27,11 +27,10 @@ namespace Fantasy_Kingdoms_Battle
         // Главные страницы игры
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageTournament;
-        private readonly VCPageButton pageCityConstructions;
+        private readonly VCPageButton pageConstructions;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTraditions;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
-        private readonly List<VCPageButton> pagesCapital;
         private readonly VCLabel labelCaptionPage;
 
         private PanelWithPanelEntity panelHeroes;
@@ -232,22 +231,9 @@ namespace Fantasy_Kingdoms_Battle
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
             pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
-            pageCityConstructions = pageControl.AddPage(Config.Gui48_Economy, "Сооружения города", "Сооружения города", PageHeroes_ShowHint);
+            pageConstructions = pageControl.AddPage(Config.Gui48_Economy, "Сооружения города", "Сооружения города", PageHeroes_ShowHint);
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
-            pageControl.Separate();
-
-            pagesCapital = new List<VCPageButton>();
-
-            foreach (CapitalPage cp in Descriptors.CapitalPages)
-            {
-                VCPageButton pageCapital = pageControl.AddPage(cp.ImageIndex, cp.Name, "", null);
-                pageCapital.Hint = cp.Name;
-                pageCapital.HintDescription = cp.Description;
-                pagesCapital.Add(pageCapital);
-            }
-
-            //pageControl.Separate();
 
             labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Center;
@@ -307,7 +293,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
 
-            pageControl.ActivatePage(pagesCapital[0]);
+            pageControl.ActivatePage(pageTournament);
             UpdateNameCurrentPage();
 
             // Сразу создаем контролы под традиции. Они все равно обязательно пригодятся
@@ -447,7 +433,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < FormMain.Config.ConstructionMaxLines; y++)
                 for (int x = 0; x < FormMain.Config.ConstructionMaxPos; x++)
                 {
-                    PanelConstruction pc = new PanelConstruction(pageCityConstructions.Page, 0, 0);
+                    PanelConstruction pc = new PanelConstruction(pageConstructions.Page, 0, 0);
                     pc.ShiftX = (pc.Width + Config.GridSize) * x;
                     pc.ShiftY = (pc.Height + Config.GridSize) * y;
                     arrayPanelConstructions[y, x] = pc;
@@ -612,7 +598,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SelectConstruction(Construction construction, int selectPage = -1)
         {
-            pageControl.ActivatePage(pagesCapital[construction.Descriptor.Page.Index]);
+            pageControl.ActivatePage(pageConstructions);
             SelectPlayerObject(construction, selectPage);
         }
 
@@ -688,7 +674,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.ExchangeLayer(Program.formMain.layerMainMenu, this);
             }
 
-            pageControl.ActivatePage(pagesCapital[0]);
+            pageControl.ActivatePage(pageTournament);
             PageControl_PageChanged(null, new EventArgs());
             ShowCurrentPlayerLobby();
 

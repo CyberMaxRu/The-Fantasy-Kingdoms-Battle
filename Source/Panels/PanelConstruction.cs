@@ -193,8 +193,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SelectThisConstruction(bool playSoundSelect)
         {
-            //Debug.Assert(Entity != null);
-            //Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity, -1, playSoundSelect);
+            Debug.Assert(Entity != null);
+            Construction.Lobby.Layer.SelectPlayerObject(Entity as BigEntity, -1, playSoundSelect);
         }
 
         protected override bool Selected()

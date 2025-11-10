@@ -36,13 +36,6 @@ namespace Fantasy_Kingdoms_Battle
                 ComputerPlayers.Add(new ComputerPlayer(n));
             }
 
-            // Загрузка страниц столицы
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\CapitalPages.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/CapitalPage"))
-            {
-                CapitalPages.Add(new CapitalPage(n));
-            }
-
             // Загрузка типов традиций
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeTraditions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeTradition"))
@@ -265,7 +258,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
         internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
-        internal List<CapitalPage> CapitalPages { get; } = new List<CapitalPage>();
         internal bool AutoCreatedPlayer { get; }
 
         // Списки описателей
@@ -305,17 +297,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int IndexPropertyScout { get; }
 
         //
-        internal CapitalPage FindCapitalPage(string ID)
-        {
-            foreach (CapitalPage cp in CapitalPages)
-            {
-                if (cp.ID == ID)
-                    return cp;
-            }
-
-            throw new Exception($"Страница столицы {ID} не найдена.");
-        }
-
         internal DescriptorConstructionVisitSimple FindConstructionVisit(string ID)
         {
             foreach (DescriptorConstructionVisitSimple dcv in ConstructionsVisits)
