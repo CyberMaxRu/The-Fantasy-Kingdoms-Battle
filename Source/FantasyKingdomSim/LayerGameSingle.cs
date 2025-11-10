@@ -26,7 +26,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Главные страницы игры
         private readonly VCPageControl pageControl;
-        private readonly VCPageButton pageTournament;
         private readonly VCPageButton pageConstructions;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageTraditions;
@@ -230,7 +229,6 @@ namespace Fantasy_Kingdoms_Battle
             // Страницы игры
             pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
             pageControl.PageChanged += PageControl_PageChanged;
-            pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
             pageConstructions = pageControl.AddPage(Config.Gui48_Economy, "Сооружения города", "Сооружения города", PageHeroes_ShowHint);
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
             pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
@@ -293,7 +291,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
 
-            pageControl.ActivatePage(pageTournament);
+            pageControl.ActivatePage(pageConstructions);
             UpdateNameCurrentPage();
 
             // Сразу создаем контролы под традиции. Они все равно обязательно пригодятся
@@ -374,7 +372,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void AdjustPageTournament()
         {
-            if (pageTournamentPlayers is null)
+            /*if (pageTournamentPlayers is null)
             {
                 int nextTop = 56;
                 pageTournamentPlayers = new VCCell[lobby.Players.Length];
@@ -404,7 +402,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < lobby.BattlesPlayers.Count; i++)
             {
                 listResultRound[i].ShowPlayers(lobby.Players, lobby.BattlesPlayers[i]);
-            }
+            }*/
         }
 
         private void ShowEvents()
@@ -674,7 +672,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.ExchangeLayer(Program.formMain.layerMainMenu, this);
             }
 
-            pageControl.ActivatePage(pageTournament);
+            pageControl.ActivatePage(pageConstructions);
             PageControl_PageChanged(null, new EventArgs());
             ShowCurrentPlayerLobby();
 
@@ -890,13 +888,6 @@ namespace Fantasy_Kingdoms_Battle
             PanelHint.AddStep5Description("Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
-        private void PageTournament_ShowHint(object sender, EventArgs e)
-        {
-            PanelHint.AddStep2Header("Турнир");
-            PanelHint.AddStep5Description(lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." :
-                    curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Сегодня битва с другим игроком");
-        }
-
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
             PanelHint.AddStep2Header($"Ход игры: {lobby.Turn}");
@@ -918,8 +909,6 @@ namespace Fantasy_Kingdoms_Battle
                     //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
                     //+ curAppliedPlayer.PointGreatnessForNextLevel.ToString();
 
-                pageTournament.LowText = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
-                        curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
                 //pageTraditions.RestTimeExecuting = curAppliedPlayer.RestTimeForNextTradition >= 0 ? curAppliedPlayer.RestTimeForNextTradition.ToString() : "";
                 pageTraditions.Quantity = curAppliedPlayer.ListTraditions.Count;
 
