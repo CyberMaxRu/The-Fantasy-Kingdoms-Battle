@@ -786,9 +786,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PayForHireWithoutTax == 0);
 
             PayForHire = CostOfHiring();
-            TaxForGuild = Construction.CalcTax(PayForHire);
-            if (TaxForGuild > 0)
-                Construction.ChangeGold(TaxForGuild);
             PayForHireWithoutTax = PayForHire - TaxForGuild;
             if (PayForHireWithoutTax > 0)
                 AddGold(PayForHireWithoutTax);

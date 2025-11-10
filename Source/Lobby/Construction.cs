@@ -936,14 +936,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Gold >= 0);
         }
 
-        internal int CalcTax(int gold)
-        {
-            Debug.Assert(gold > 0);
-            Debug.Assert(Level > 0);
-
-            return gold * Descriptor.Levels[Level].Tax / 100;
-        }
-
         internal override Color GetSelectedColor() => SelectedColor;
 
         internal override void PlaySoundSelect()

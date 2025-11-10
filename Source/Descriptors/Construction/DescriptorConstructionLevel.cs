@@ -20,7 +20,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Number = GetIntegerNotNull(n, "Number", ID, 1, 5);
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
-            Tax = GetInteger(n, "Tax");
             Capacity = GetInteger(n, "Capacity");
             GreatnessByConstruction = GetInteger(n, "GreatnessByConstruction");
             GreatnessPerDay = GetInteger(n, "GreatnessPerDay");
@@ -62,8 +61,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(MaxInhabitant >= 0);
             Debug.Assert(MaxInhabitant <= 100);
-            Debug.Assert(Tax >= 0);
-            Debug.Assert(Tax <= 90);
             Debug.Assert(Capacity >= 0);
             Debug.Assert(Capacity <= 100);
             Debug.Assert(GreatnessByConstruction >= 0);
@@ -73,7 +70,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool NewName { get; private set; } = false;// У сооружения для уровня новое имя
         internal int Number { get; }
         internal int MaxInhabitant { get; }
-        internal int Tax { get; }// Процент налога с дохода членов гильдии
         internal int Capacity { get; }
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
