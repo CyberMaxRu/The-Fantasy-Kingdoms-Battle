@@ -10,8 +10,6 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryConstruction { Guild, Economic, Military, Temple, Place };// Категория сооружения
-
     // Тип сооружения - базовый класс для всех зданий, построек и мест
     internal sealed class DescriptorConstruction : DescriptorActiveEntity
     {
@@ -21,35 +19,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (GetString(n, "TypeConstruction").Length > 0)
                 TypeConstruction = Descriptors.FindTypeConstruction(GetString(n, "TypeConstruction"));
-            Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
-            IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Military);
-            IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.Temple);
-            HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (ID == Config.IDConstructionCastle);
 
-            if (IsInternalConstruction)
-            {
-                CoordInPage = GetPoint(n, "Pos");
-            }
-            else
-            {
-                XmlFieldNotExist(n, "Line");
-                XmlFieldNotExist(n, "Pos");
-            }
-
-            if (IsOurConstruction)
-            {
-                DefaultLevel = GetIntegerNotNull(n, "DefaultLevel");
-                MaxLevel = GetIntegerNotNull(n, "MaxLevel");
-                PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
-            }
-            else
-            {
-                DefaultLevel = 1;
-                MaxLevel = 1;
-
-                XmlFieldNotExist(n, "PlayerCanBuild");
-                XmlFieldNotExist(n, "LayersCellMenu");
-            }
+            MaxLevel = GetIntegerNotNull(n, "MaxLevel");
 
             // Проверяем, что таких же ID и наименования нет
             foreach (DescriptorConstruction tec in Descriptors.Constructions)
@@ -60,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем информацию об уровнях
-            if ((IsOurConstruction || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
+            if ((n.SelectSingleNode("Levels") != null) && (MaxLevel > 0))
             {
                 // Для удобства уровень равен номеру позиции в массиве
                 Levels = new DescriptorConstructionLevel[MaxLevel + 1];
@@ -161,37 +132,15 @@ namespace Fantasy_Kingdoms_Battle
                     new DescriptorProduct(this, l);
             }
 
-            if (IsInternalConstruction)
-            {
-                Debug.Assert(DefaultLevel >= 0);
-                Debug.Assert(DefaultLevel <= 5);
-                Debug.Assert(MaxLevel > 0);
-                Debug.Assert(MaxLevel <= 10);
-                Debug.Assert(DefaultLevel <= MaxLevel);
-            }
-            else
-            {
-                Debug.Assert(DefaultLevel >= 0);
-                Debug.Assert(DefaultLevel <= 1);
-                //Debug.Assert(MaxLevel == 1);
-                Debug.Assert(DefaultLevel <= MaxLevel);
-            }
-
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
 
         internal DescriptorTypeConstruction TypeConstruction { get; }// Тип сооружения
-        internal CategoryConstruction Category { get; }// Категория сооружения
-        internal bool IsInternalConstruction { get; }// Это внутреннее сооружение
-        internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
 
         // Свойства, относящиеся только к зданиям Королевства
-        internal Point CoordInPage { get; }// Позиция на странице игрового интерфейса
-        internal int DefaultLevel { get; }// Уровень сооружения по умолчанию
         internal int MaxLevel { get; }// Максимальный уровень сооружения
         internal bool PlayerCanBuild { get; }// Игрок может строить сооружение
-        internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal DescriptorConstructionLevel[] Levels { get; }
 
         //
@@ -209,25 +158,11 @@ namespace Fantasy_Kingdoms_Battle
             //    CellsMenu.Remove(Levels[1]);
         }
 
-        internal string GetTextConstructionNotBuilded()
-        {
-            switch (Category)
-            {
-                case CategoryConstruction.Guild:
-                    return "Гильдия не построена";
-                case CategoryConstruction.Economic:
-                case CategoryConstruction.Military:
-                    return "Здание не построено";
-                case CategoryConstruction.Temple:
-                    return "Храм не построен";
-                default:
-                    throw new Exception("Нельзя строить категорию сооружения: " + Category.ToString());
-            }
-        }
 
         internal string GetTextConstructionIsFull()
         {
-            switch (Category)
+            return "Гильдия заполнена";
+            /*switch (Category)
             {
                 case CategoryConstruction.Guild:
                     return "Гильдия заполнена";
@@ -239,7 +174,7 @@ namespace Fantasy_Kingdoms_Battle
                     return "Храм заполнен";
                 default:
                     throw new Exception("Нельзя строить категорию сооружения: " + Category.ToString());
-            }
+            }*/
         }
 
         internal override string GetTypeEntity() => TypeConstruction.Name;

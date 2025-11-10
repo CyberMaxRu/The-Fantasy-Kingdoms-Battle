@@ -114,68 +114,62 @@ namespace Fantasy_Kingdoms_Battle
 
                 btnMainAction.MenuCell = null;
 
-                if (Construction.Descriptor.IsOurConstruction)
+                int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
+                if (income > 0)
                 {
-                    int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
-                    if (income > 0)
-                    {
-                        lblIncome.Text = $"+{income}";
-                        lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
-                        lblIncome.Image.ImageIsEnabled = Construction.Level > 0;
-                        lblIncome.Visible = true;
-                    }
-                    else
-                        lblIncome.Visible = false;
+                    lblIncome.Text = $"+{income}";
+                    lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
+                    lblIncome.Image.ImageIsEnabled = Construction.Level > 0;
+                    lblIncome.Visible = true;
+                }
+                else
+                    lblIncome.Visible = false;
 
-                    bool needShowGreatness = Construction.Level > 0
-                            ? Construction.GreatnessPerDay() > 0
-                            : (Construction.GreatnessPerDayNextLevel() > 0) || (Construction.GreatnessAddNextLevel() > 0);
+                bool needShowGreatness = Construction.Level > 0
+                        ? Construction.GreatnessPerDay() > 0
+                        : (Construction.GreatnessPerDayNextLevel() > 0) || (Construction.GreatnessAddNextLevel() > 0);
 
-                    if (Construction.Descriptor.PlayerCanBuild)
+                if (Construction.Descriptor.PlayerCanBuild)
+                {
+                    if (Construction.Level > 0)
                     {
-                        if (Construction.Level > 0)
+                        if (Construction.Level < Construction.Descriptor.MaxLevel)
                         {
-                            if (Construction.Level < Construction.Descriptor.MaxLevel)
-                            {
-                                Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
+                            Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для улучшения.");
 
-                                //btnMainAction.Visible = true;
-                                btnMainAction.MenuCell = Construction.ActionMain;
-                            }
-                            else
-                            {
-                                if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
-                                {
-                                    //btnMainAction.Visible = true;
-                                    btnMainAction.LowText = "";
-                                    btnMainAction.Level = "";
-                                    btnMainAction.ImageIndex = FormMain.Config.Gui48_Temple;
-                                    btnMainAction.ImageIsEnabled = true;
-                                }
-                                else
-                                    btnMainAction.Visible = false;
-                            }
+                            //btnMainAction.Visible = true;
+                            btnMainAction.MenuCell = Construction.ActionMain;
                         }
                         else
                         {
-                            if (Construction.ActionMain != null)
+                            if (Construction.Descriptor.ID == FormMain.Config.IDHolyPlace)
                             {
-                                Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
-
                                 //btnMainAction.Visible = true;
-                                btnMainAction.MenuCell = Construction.ActionMain;
+                                btnMainAction.LowText = "";
+                                btnMainAction.Level = "";
+                                btnMainAction.ImageIndex = FormMain.Config.Gui48_Temple;
+                                btnMainAction.ImageIsEnabled = true;
                             }
                             else
                                 btnMainAction.Visible = false;
                         }
                     }
                     else
-                        btnMainAction.Visible = false;
+                    {
+                        if (Construction.ActionMain != null)
+                        {
+                            Debug.Assert(Construction.ActionMain != null, $"У {Construction.Descriptor.ID} не найдено действие в меню для постройки.");
+
+                            //btnMainAction.Visible = true;
+                            btnMainAction.MenuCell = Construction.ActionMain;
+                        }
+                        else
+                            btnMainAction.Visible = false;
+                    }
                 }
                 else
-                {
-                    lblIncome.Visible = false;
-                }
+                    btnMainAction.Visible = false;
+
             }
 
             base.Draw(g);

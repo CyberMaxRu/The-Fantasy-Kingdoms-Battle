@@ -31,10 +31,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool CheckRequirements()
         {
             // Сначала проверяем, построено ли здание
-            if (Construction.Descriptor.IsInternalConstruction)
-                if (ConstructionMustMeConstructed())
-                    if (Construction.Level == 0)
-                        return false;
+            if (ConstructionMustMeConstructed())
+                if (Construction.Level == 0)
+                    return false;
 
             // Потом проверяем наличие требуемых ресурсов
             if (Construction.Player.Gold < PurchaseValue)
@@ -71,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.UpdateTextRequirements(list);
 
-            if (Construction.Descriptor.IsInternalConstruction && ConstructionMustMeConstructed())
+            if (ConstructionMustMeConstructed())
             {
                 // Если нет требований, то по умолчанию остается только одно - сооружение должно быть построено
                 // Если есть, то не надо писать, что сооружение не построено - оно будет прописано в условии
@@ -297,7 +296,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {*/
 
-            Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, true, true, TypeNoticeForPlayer.Build);
+            Construction pc = new Construction(Construction.Player, TypeConstruction, 1, Construction.X, Construction.Y, TypeNoticeForPlayer.Build);
             if (!Construction.Player.Lobby.InPrepareTurn)
                 Program.formMain.layerGame.SelectPlayerObject(pc);
             //}

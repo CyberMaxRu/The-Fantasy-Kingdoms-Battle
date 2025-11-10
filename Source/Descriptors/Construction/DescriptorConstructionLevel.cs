@@ -47,18 +47,6 @@ namespace Fantasy_Kingdoms_Battle
                 Properties = new ListDefaultProperties(np);
             }
 
-            //
-            if (forConstruction.Category == CategoryConstruction.Place)
-            {
-                //Debug.Assert(DaysBuilding == 0);
-                //Debug.Assert(Builders == 0);
-            }
-            else
-            {
-                //Debug.Assert(DaysBuilding >= 1, $"У {forConstruction.ID}.{number} DaysBuilding = 0.");
-                //Debug.Assert(Builders >= 0);
-            }
-
             if (Number > 1)
                 ComponentCreating.Requirements.Insert(0, new RequirementConstruction(this, forConstruction.ID, Number - 1, ComponentCreating.Requirements));
 
@@ -80,11 +68,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Capacity <= 100);
             Debug.Assert(GreatnessByConstruction >= 0);
             Debug.Assert(GreatnessPerDay >= 0);
-
-            if ((forConstruction.Category != CategoryConstruction.Guild) && (forConstruction.Category != CategoryConstruction.Temple))
-            {
-                Debug.Assert(Tax == 0);
-            }
         }
 
         internal bool NewName { get; private set; } = false;// У сооружения для уровня новое имя

@@ -145,8 +145,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LblGold_ShowHint(object sender, EventArgs e)
         {
-            if (Construction.Descriptor.IsOurConstruction)
-                PanelHint.AddSimpleHint(Construction.Gold > 0 ? $"Золота в казне: {Construction.Gold}" : "Казна пуста");
+            PanelHint.AddSimpleHint(Construction.Gold > 0 ? $"Золота в казне: {Construction.Gold}" : "Казна пуста");
             //Program.formMain.formHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
         }
 
@@ -172,15 +171,8 @@ namespace Fantasy_Kingdoms_Battle
             imgIcon.Level = Construction.GetLevel();
             imgIcon.ImageIsEnabled = Construction.GetNormalImage();
 
-            if (Construction.Descriptor.HasTreasury)
-            {
-                lblGold.Visible = true;
-                lblGold.Text = Construction.Gold.ToString();
-            }
-            else
-            {
-                lblGold.Visible = false;
-            }
+            lblGold.Visible = true;
+            lblGold.Text = Construction.Gold.ToString();
 
             //pageControl.SetPageVisible(1, Construction.TypeConstruction.TrainedHero != null);
             //pageControl.SetPageVisible(2, Construction.TypeConstruction.TrainedHero != null);

@@ -45,7 +45,6 @@ namespace Fantasy_Kingdoms_Battle
             construction = Descriptors.FindConstruction(idConstruction);
             idConstruction = "";
 
-            Debug.Assert(construction.IsOurConstruction);
             Debug.Assert(Level <= construction.MaxLevel, $"Требуется сооружение {construction.ID} {Level} уровня, но у него максимум {construction.MaxLevel} уровень.");
 
             // Если сущность требует уровень в этого же сооружения, это требование должно идти первым (как самое приоритетное)

@@ -151,12 +151,6 @@ namespace Fantasy_Kingdoms_Battle
                     c.LevelUp(cc.Level);
             }
 
-            foreach (DescriptorConstruction tck in FormMain.Descriptors.Constructions)
-            {
-            //    if (tck.IsInternalConstruction)
-            //        new Construction(this, tck);
-            }
-
             /*foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)
             {
                 l = new Location(this, ls);
@@ -491,39 +485,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Выполняем покупки
-        }
-
-        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, int quantity, TypeNoticeForPlayer typeNotice)
-        {
-            Debug.Assert(typeConstruction.Category == CategoryConstruction.Place);
-            Debug.Assert(level <= typeConstruction.MaxLevel);
-            //Debug.Assert(typeConstruction.TypePlaceForConstruct.ID == FormMain.Config.IDEmptyPlace);
-
-            /*if (quantity > 0)
-            {
-                // Собираем список пустых мест
-                List<Construction> listEmptyPlaces = new List<Construction>();
-                for (int y = 0; y < location.Lairs.GetLength(0); y++)
-                    for (int x = 0; x < location.Lairs.GetLength(1); x++)
-                        if (location.Lairs[y, x].TypeConstruction.ID == location.Settings.DefaultConstruction.ID)
-                            listEmptyPlaces.Add(location.Lairs[y, x]);
-
-                Debug.Assert(quantity <= listEmptyPlaces.Count);
-
-                // 
-                int index;
-                while (quantity > 0)
-                {
-                    index = Lobby.Rnd.Next(listEmptyPlaces.Count);
-                    Construction empty = listEmptyPlaces[index];
-                    Construction pc = new Construction(this, typeConstruction, level, empty.X, empty.Y, empty.Location, typeNotice);
-                    location.Lairs[pc.Y, pc.X] = pc;
-                    listEmptyPlaces.RemoveAt(index);
-                    quantity--;
-                }
-
-                Lobby.Layer.UpdateNeighborhoods();
-            }*/
         }
 
         // Расчет после завершения хода игроком

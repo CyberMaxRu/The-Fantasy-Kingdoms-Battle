@@ -21,33 +21,19 @@ namespace Fantasy_Kingdoms_Battle
             //Assert(dc.IsInternalConstruction);
 
             Descriptor = dc;
-            PlayerIsOwner = true;
-            PlayerCanOwn = true;
 
             TuneByCreate();
-
-            if (dc.DefaultLevel == 1)
-                Build(false, true);
-
-            // Восстановить
-            //if (Construction.HasTreasury)
-            //    Gold = Construction.GoldByConstruction;
-
             TuneConstructAfterCreate();
         }
 
         // Конструктор для сооружений, которые создаются в процессе игры
-        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, bool own, bool canOwn, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
+        public Construction(Player p, DescriptorConstruction dc, int level, int x, int y, TypeNoticeForPlayer typeNotice, int initQ = 0) : base(dc, p.Lobby, p)
         {
-            Assert(!dc.IsInternalConstruction);
-            Assert((dc.Category == CategoryConstruction.Temple) || (dc.Category == CategoryConstruction.Place));
             Assert(level <= 1);
 
             Descriptor = dc;
             X = x;
             Y = y;
-            PlayerIsOwner = own;
-            PlayerCanOwn = canOwn;
 
             TuneByCreate();
 
@@ -61,17 +47,15 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal new DescriptorConstruction Descriptor { get; }// Описатель сооружения
-        internal bool PlayerIsOwner { get; private set; }// Игрок - владелец сооружения
-        internal bool PlayerCanOwn { get; private set; }// Игрок может владеть сооружением
         internal int Level { get; private set; }
 
         //
         internal int Gold { get; set; }
         internal List<Creature> Heroes { get; } = new List<Creature>();
 
-        // Свойства для внешних сооружений
-        internal int X { get; set; }// Позиция по X в слое
-        internal int Y { get; set; }// Позиция по Y в слое
+        // Свойства для панели сооружений
+        internal int X { get; set; }// Позиция по X в панели сооружений
+        internal int Y { get; set; }// Позиция по Y в панели сооружений
         internal Color SelectedColor { get; private set; }// Цвет рамки при выделении
 
         // Small-сущности в сооружении
@@ -103,10 +87,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetIDEntity(DescriptorEntity descriptor)
         {
-            if (((DescriptorConstruction)descriptor).IsInternalConstruction)
-                return descriptor.ID;
-            else
-                return base.GetIDEntity(descriptor);
+            return descriptor.ID;
         }
 
         // Методы, связанные с повышением уровня
@@ -125,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ActionBuildOrLevelUp = null;
 
-            if ((Descriptor.DefaultLevel == 0) || (Descriptor.Levels.Length > 2))
+            if (Descriptor.Levels.Length > 2)
             {
                 // Сооружение не построено, ищем действие для постройки
                 List<ActionInConstruction> listForDelete = new List<ActionInConstruction>();
@@ -480,22 +461,14 @@ namespace Fantasy_Kingdoms_Battle
             if (Player == Player.Lobby.CurrentPlayer)
             {
 
-                if (Descriptor.IsOurConstruction)
-                {
-                    panelHint.AddStep2Entity(this);
-                    if (!((Level == 1) && (Descriptor.MaxLevel == 1)))
-                        panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
-                    panelHint.AddStep5Description(Descriptor.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
-                        + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
-                    panelHint.AddStep6Income(Income());
-                    panelHint.AddStep9Interest(GetInterest(), false);
-                    panelHint.AddStep9ListNeeds(SatisfactionNeeds);
-                }
-                else
-                {
-                    panelHint.AddStep2Entity(this);
-                    panelHint.AddStep5Description(Descriptor.Description);
-                }
+                panelHint.AddStep2Entity(this);
+                if (!((Level == 1) && (Descriptor.MaxLevel == 1)))
+                    panelHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString(): "");
+                panelHint.AddStep5Description(Descriptor.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
+                    + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
+                panelHint.AddStep6Income(Income());
+                panelHint.AddStep9Interest(GetInterest(), false);
+                panelHint.AddStep9ListNeeds(SatisfactionNeeds);
             }
         }
 
@@ -510,21 +483,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ShowInfo(int selectPage = -1)
         {
-            if (Descriptor.IsOurConstruction)
-            {
-                Lobby.Layer.panelConstructionInfo.Visible = true;
-                Lobby.Layer.panelConstructionInfo.Entity = this;
-                if (selectPage >= 0)
-                    Lobby.Layer.panelConstructionInfo.SelectPage(selectPage);
-            }
-            else
-            {
-                Lobby.Layer.panelConstructionInfo.Visible = true;
-                Lobby.Layer.panelConstructionInfo.Entity = this;
-//                Program.formMain.panelLairInfo.Visible = true;
-//                Program.formMain.panelLairInfo.Entity = this;
-            }
-
+            Lobby.Layer.panelConstructionInfo.Visible = true;
+            Lobby.Layer.panelConstructionInfo.Entity = this;
+            if (selectPage >= 0)
+                Lobby.Layer.panelConstructionInfo.SelectPage(selectPage);
         }
 
         internal void PrepareNewDay()
@@ -628,7 +590,7 @@ namespace Fantasy_Kingdoms_Battle
                     pos++;
                 }
 
-                panelHint.AddStep2Header(Descriptor.IsOurConstruction ? "Жители" : "Существа");
+                panelHint.AddStep2Header("Жители");
                 panelHint.AddStep5Description(list);
             }
             else
@@ -964,12 +926,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void UpdateSelectedColor()
         {
-            if (PlayerIsOwner)
-                SelectedColor = Color.White;
-            else if (PlayerCanOwn)
-                SelectedColor = Color.LimeGreen;
-            else
-                SelectedColor = Color.Red;
+            SelectedColor = Color.White;
         }
 
         internal void ChangeGold(int gold)
