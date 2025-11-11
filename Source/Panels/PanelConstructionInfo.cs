@@ -20,7 +20,6 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblSectionSpells;
         private VCLabel lblSectionExtensions;
         private VCLabel lblSectionImprovements;
-        private VCLabel lblSectionBaseResources;
         private VCLabel lblSectionServices;
         private VCLabel lblSectionGoods;
         private VCLabel lblSectionAbilities;
@@ -92,8 +91,6 @@ namespace Fantasy_Kingdoms_Battle
             lblSectionExtensions.StringFormat.Alignment = StringAlignment.Near;
             lblSectionImprovements = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Улучшения:");
             lblSectionImprovements.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionBaseResources = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Базовые ресурсы:");
-            lblSectionBaseResources.StringFormat.Alignment = StringAlignment.Near;
             lblSectionServices = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Услуги:");
             lblSectionServices.StringFormat.Alignment = StringAlignment.Near;
             lblSectionGoods = new VCLabel(tabProducts, 0, 0, Program.formMain.FontSmallC, Color.White, 16, "Товары:");
@@ -129,7 +126,6 @@ namespace Fantasy_Kingdoms_Battle
             lblSectionSpells.Width = pageControl.Width;
             lblSectionExtensions.Width = pageControl.Width;
             lblSectionImprovements.Width = pageControl.Width;
-            lblSectionBaseResources.Width = pageControl.Width;
             lblSectionServices.Width = pageControl.Width;
             lblSectionGoods.Width = pageControl.Width;
             lblSectionAbilities.Width = pageControl.Width;
