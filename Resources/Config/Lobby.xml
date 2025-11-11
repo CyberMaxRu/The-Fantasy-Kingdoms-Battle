@@ -37,6 +37,21 @@
       <Pos>2,1</Pos>
     </Construction>
     <Construction>
+      <ID>Workshop</ID>
+      <Level>0</Level>
+      <Pos>4,1</Pos>
+    </Construction>
+    <Construction>
+      <ID>Smithy</ID>
+      <Level>0</Level>
+      <Pos>1,2</Pos>
+    </Construction>
+    <Construction>
+      <ID>Market</ID>
+      <Level>0</Level>
+      <Pos>2,2</Pos>
+    </Construction>
+    <Construction>
       <ID>HolyPlace</ID>
       <Level>1</Level>
       <Pos>1,4</Pos>
