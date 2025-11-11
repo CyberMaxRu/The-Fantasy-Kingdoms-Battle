@@ -28,7 +28,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageConstructions;
         private readonly VCPageButton pageHeroes;
-        private readonly VCPageButton pageTraditions;
         private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
         private readonly VCLabel labelCaptionPage;
 
@@ -231,7 +230,6 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.PageChanged += PageControl_PageChanged;
             pageConstructions = pageControl.AddPage(Config.Gui48_Economy, "Сооружения города", "Сооружения города", PageHeroes_ShowHint);
             pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
-            pageTraditions = pageControl.AddPage(Config.Gui48_Tradition, "Традиции", "Здесь традиции", null);
 
             labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Center;
@@ -295,7 +293,7 @@ namespace Fantasy_Kingdoms_Battle
             UpdateNameCurrentPage();
 
             // Сразу создаем контролы под традиции. Они все равно обязательно пригодятся
-            int nextLeft = 0;
+            /*int nextLeft = 0;
             int nextTop = 0;
             for (int i = 1; i <= FormMain.Config.MaxTraditions; i++)
             {
@@ -312,7 +310,7 @@ namespace Fantasy_Kingdoms_Battle
                     nextLeft = at.NextLeft();
                     nextTop = 0;
                 }
-            }
+            }*/
         }
 
         // Сейчас будет рисоваться кадр. Делаем расчеты тактов игры
@@ -910,7 +908,6 @@ namespace Fantasy_Kingdoms_Battle
                     //+ curAppliedPlayer.PointGreatnessForNextLevel.ToString();
 
                 //pageTraditions.RestTimeExecuting = curAppliedPlayer.RestTimeForNextTradition >= 0 ? curAppliedPlayer.RestTimeForNextTradition.ToString() : "";
-                pageTraditions.Quantity = curAppliedPlayer.ListTraditions.Count;
 
                 /*foreach (VCToolLabelResource l in labelsResources)
                 {
@@ -918,22 +915,6 @@ namespace Fantasy_Kingdoms_Battle
                 }*/
 
                 ShowPlayerNotices();
-
-                // Показываем страницу традиций
-                if (pageControl.CurrentPage == pageTraditions)
-                {
-                    int i = 0;
-
-                    foreach (KeyValuePair<DescriptorTradition, int> t in curAppliedPlayer.ListTraditions)
-                    {
-                        listAcceptedTraditions[i].CellTypeTradition.ImageIndex = t.Key.TypeTradition.ImageIndex;
-                        listAcceptedTraditions[i].TextName.Text = t.Key.Name;
-                        listAcceptedTraditions[i].LblLevel.Text = t.Value.ToString();
-                        listAcceptedTraditions[i].Visible = true;
-
-                        i++;
-                    }
-                }
             }
         }
 
