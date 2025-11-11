@@ -11,8 +11,8 @@ namespace Fantasy_Kingdoms_Battle
     // Класс подробной информации о сооружении
     internal sealed class PanelConstructionInfo : PanelBaseInfo
     {
-        private VCLabel lblTypeConstruction;
-        private VCIconAndDigitValue lblGold;
+        //private VCLabel lblTypeConstruction;
+        //private VCIconAndDigitValue lblGold;
         private readonly VisualControl tabProducts;
         private VCLabel lblSectionProperty;
         private readonly List<VCCreatureProperty> listProperties;
@@ -46,13 +46,13 @@ namespace Fantasy_Kingdoms_Battle
             panelInhabitants = new PanelWithPanelEntity(4);
             panelVisitors = new PanelWithPanelEntity(4);
 
-            lblTypeConstruction = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.FontParagraph, Color.White, 16, "");
+            /*lblTypeConstruction = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.FontParagraph, Color.White, 16, "");
             lblTypeConstruction.StringFormat.Alignment = StringAlignment.Near;
             lblTypeConstruction.Hint = "Тип сооружения";
 
             lblGold = new VCIconAndDigitValue(this, FormMain.Config.GridSize, lblTypeConstruction.NextTop(), imgIcon.Width, FormMain.GUI_16_COFFERS);
             lblGold.ShowHint += LblGold_ShowHint;
-
+            */
             // Изменения параметров города
             int nextTop = imgIcon.ShiftY;
 
@@ -71,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            separator.ShiftY = lblGold.NextTop();
+            separator.ShiftY = TopForControls();// lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
             btnProducts = pageControl.AddTab("Информация", FormMain.Config.Gui48_Goods, tabProducts);
             btnInhabitants = pageControl.AddTab("Жители", FormMain.Config.Gui48_Home, panelInhabitants);
@@ -122,7 +122,7 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
-            lblTypeConstruction.Width = Width - lblTypeConstruction.ShiftX * 2;
+            //lblTypeConstruction.Width = Width - lblTypeConstruction.ShiftX * 2;
             tabProducts.Width = pageControl.Width;
             lblSectionProperty.Width = pageControl.Width;
             lblSectionVisits.Width = pageControl.Width;
@@ -167,12 +167,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            lblTypeConstruction.Text = Construction.Descriptor.TypeConstruction.Name;
+            //lblTypeConstruction.Text = Construction.Descriptor.TypeConstruction.Name;
             imgIcon.Level = Construction.GetLevel();
             imgIcon.ImageIsEnabled = Construction.GetNormalImage();
 
-            lblGold.Visible = true;
-            lblGold.Text = Construction.Gold.ToString();
+            //lblGold.Visible = true;
+            //lblGold.Text = Construction.Gold.ToString();
 
             //pageControl.SetPageVisible(1, Construction.TypeConstruction.TrainedHero != null);
             //pageControl.SetPageVisible(2, Construction.TypeConstruction.TrainedHero != null);
