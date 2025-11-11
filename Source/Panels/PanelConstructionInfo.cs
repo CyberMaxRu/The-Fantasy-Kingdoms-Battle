@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             // Изменения параметров города
             int nextTop = imgIcon.ShiftY;
 
-            lblInterest = new VCIconAndDigitValue(this, 0, imgIcon.ShiftY, 16, FormMain.GUI_16_INTEREST_OTHER);
+            lblInterest = new VCIconAndDigitValue(this, imgIcon.NextLeft(), imgIcon.ShiftY, 16, FormMain.GUI_16_INTEREST_OTHER);
             lblInterest.ShowHint += LblInterest_ShowHint;
 
             nextTop = lblInterest.NextTop() - FormMain.Config.GridSizeHalf;
