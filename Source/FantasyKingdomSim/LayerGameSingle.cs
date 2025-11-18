@@ -57,10 +57,15 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnCheating;
 
         // Контролы тулбара
-        private readonly VCToolLabel labelKnowledge;
-        //private readonly VCToolLabel labelPeople;
-        private readonly VCToolLabel labelGreatness;
-        private readonly VCLabel labelNamePlayer;
+        private readonly VCToolLabel tlMoney;
+        private readonly VCToolLabel tlPeople;
+        private readonly VCToolLabel tlLevelCity;
+        private readonly VCToolLabel tlDurabilityCity;
+
+        private readonly VCToolLabel tlProgressSearchHolyPlace;
+        private readonly VCToolLabel tlHealing;
+        private readonly VCToolLabel tlFreeExperience;
+        private readonly VCToolLabel tlBalanceCash;
 
         private readonly VisualControl panelLairWithFlags;
         //private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
@@ -119,10 +124,6 @@ namespace Fantasy_Kingdoms_Battle
                 labelsResources[br.Number] = lblRes;
             }*/
 
-            labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, Program.formMain.FontMedCaptionC.MaxHeightSymbol, "");
-            labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
-            labelNamePlayer.Width = 16;
-
             // Контролы над тулбаром
             labelDay = new VCLabelValue(bmpTopPanel, Config.GridSize, Config.GridSize, Color.White, true);
             labelDay.StringFormat.Alignment = StringAlignment.Far;
@@ -143,9 +144,9 @@ namespace Fantasy_Kingdoms_Battle
             labelMana = new VCLabelValue(bmpTopPanel, labelDay.NextLeft(), labelDay.ShiftY, Color.White, true);
             labelMana.Image.ImageIndex = FormMain.GUI_16_MANA;
             labelMana.Width = 112;
-            labelGreatness = new VCToolLabel(bmpPreparedToolbar, pbTraditions.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_GREATNESS);
-            labelGreatness.ShowHint += LabelGreatness_ShowHint;
-            labelGreatness.Width = 112;
+            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, pbTraditions.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_GREATNESS);
+            tlLevelCity.ShowHint += LabelGreatness_ShowHint;
+            tlLevelCity.Width = 112;
 
 
 
@@ -225,7 +226,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
             // 
-            panelConstructions = new VisualControl(MainControl, panelHeroInfo.NextLeft(), FormMain.Config.GridSize); 
+            panelConstructions = new VisualControl(MainControl, panelHeroInfo.NextLeft(), FormMain.Config.GridSize);
 
             labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Center;
@@ -719,7 +720,7 @@ namespace Fantasy_Kingdoms_Battle
                     //labelKnowledge.Visible = true;
                     labelTraditions.Visible = true;
                     //labelPeople.Visible = true;
-                    labelGreatness.Visible = false;
+                    tlLevelCity.Visible = false;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
@@ -729,25 +730,11 @@ namespace Fantasy_Kingdoms_Battle
                     //labelKnowledge.Visible = false;
                     labelTraditions.Visible = false;
                     //labelPeople.Visible = false;
-                    labelGreatness.Visible = false;
+                    tlLevelCity.Visible = false;
                     MainControl.Visible = false;
                     //foreach (VCImageLose il in listBtnLoses)
                     //    il.Visible = false;
-
-                    ShowNamePlayer(lobby.CurrentPlayer.Descriptor.Name);
                 }
-            }
-        }
-
-        internal void ShowNamePlayer(string name)
-        {
-            Debug.Assert(name.Length > 0);
-
-            if (labelNamePlayer.Text != name)
-            {
-                labelNamePlayer.Text = name;
-                labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
-                AdjustNamePlayer();
             }
         }
 
@@ -775,26 +762,26 @@ namespace Fantasy_Kingdoms_Battle
         internal void ShowPlayerNotices()
         {
             if (curAppliedPlayer != null)
-            if (curAppliedPlayer.ListNoticesForPlayer.Count > 0)
-            {
-                panelNotices.Visible = true;
-                int nextY = 0;
-
-                foreach (VCCustomNotice ep in curAppliedPlayer.ListNoticesForPlayer)
+                if (curAppliedPlayer.ListNoticesForPlayer.Count > 0)
                 {
-                    ep.ShiftY = nextY;
-                    ep.Visible = true;
-                    if ((ep.Parent is null) || (ep.Parent != panelNotices))
-                        panelNotices.AddControl(ep);
+                    panelNotices.Visible = true;
+                    int nextY = 0;
 
-                    panelNotices.ArrangeControl(ep);
-                    nextY = ep.NextTop();
+                    foreach (VCCustomNotice ep in curAppliedPlayer.ListNoticesForPlayer)
+                    {
+                        ep.ShiftY = nextY;
+                        ep.Visible = true;
+                        if ((ep.Parent is null) || (ep.Parent != panelNotices))
+                            panelNotices.AddControl(ep);
+
+                        panelNotices.ArrangeControl(ep);
+                        nextY = ep.NextTop();
+                    }
+
+                    panelNotices.ApplyMaxSize();
                 }
-
-                panelNotices.ApplyMaxSize();
-            }
-            else
-                panelNotices.Visible = false;
+                else
+                    panelNotices.Visible = false;
         }
 
         internal void UpdateListHeroes()
@@ -867,10 +854,10 @@ namespace Fantasy_Kingdoms_Battle
                 pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
                 pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);
                 pbTraditions.Text = curAppliedPlayer.NextTradition is null ? "Не выбрана" : "";
-                labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
+                tlLevelCity.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
-                    //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
-                    //+ curAppliedPlayer.PointGreatnessForNextLevel.ToString();
+                //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
+                //+ curAppliedPlayer.PointGreatnessForNextLevel.ToString();
 
                 //pageTraditions.RestTimeExecuting = curAppliedPlayer.RestTimeForNextTradition >= 0 ? curAppliedPlayer.RestTimeForNextTradition.ToString() : "";
 
@@ -933,7 +920,6 @@ namespace Fantasy_Kingdoms_Battle
             bmpTopPanel.Width = bmpTopPanel.Bitmap.Width;
             bmpTopPanel.Height = bmpTopPanel.Bitmap.Height;
 
-            labelNamePlayer.Height = bmpPreparedToolbar.Height;
             panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
             vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
             vcRightPanel.ShiftX = MainControl.Width - vcRightPanel.Width;
@@ -955,8 +941,6 @@ namespace Fantasy_Kingdoms_Battle
             panelMonsterInfo.Height = panelConstructionInfo.Height;
             panelEmptyInfo.Height = panelConstructionInfo.Height;
 
-            AdjustNamePlayer();
-
             btnInGameMenu.ShiftX = btnInGameMenu.Parent.Width - btnInGameMenu.Width - Config.GridSize;
             btnCheating.ShiftX = btnInGameMenu.ShiftX - btnCheating.Width - Config.GridSize;
 
@@ -970,7 +954,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < arrayPanelConstructions.GetLength(0); y++)
                 for (int x = 0; x < arrayPanelConstructions.GetLength(1); x++)
                 {
-                    if (arrayPanelConstructions[ y, x] != null)
+                    if (arrayPanelConstructions[y, x] != null)
                     {
                         arrayPanelConstructions[y, x].ShiftX = (arrayPanelConstructions[y, x].Width + horInterval) * x;
                         arrayPanelConstructions[y, x].ShiftY = (arrayPanelConstructions[y, x].Height + verInterval) * y;
@@ -983,13 +967,6 @@ namespace Fantasy_Kingdoms_Battle
             return MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (horInterval * 2);
         }
 
-        private void AdjustNamePlayer()
-        {
-            labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
-            bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
-
-        }
-
         internal override void PreferencesChanged()
         {
             base.PreferencesChanged();
@@ -999,7 +976,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SetCaption(string caption)
         {
-            labelCaptionPage.Text = caption;
+            if (labelCaptionPage.Text != caption)
+            {
+                labelCaptionPage.Text = caption;
+                labelCaptionPage.Width = labelCaptionPage.Font.WidthText(labelCaptionPage.Text);
+                labelCaptionPage.ShiftX = (bmpPreparedToolbar.Width - labelCaptionPage.Width) / 2;
+                bmpPreparedToolbar.ArrangeControl(labelCaptionPage);
+            }
         }
     }
 }

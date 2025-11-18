@@ -298,7 +298,7 @@ namespace Fantasy_Kingdoms_Battle
             SetPlayerAsCurrent(-1);
             StateLobby = StateLobby.CalcTurn;
             Layer.ShowCurrentPlayerLobby();
-            Layer.ShowNamePlayer("Расчет дня");
+            //sLayer.ShowNamePlayer("Расчет дня");
             CalcFinalityTurn();
 
             if (IsDayForBattleBetweenPlayers())
