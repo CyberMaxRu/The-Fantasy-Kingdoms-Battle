@@ -8,7 +8,7 @@
     <PlateHeight>3</PlateHeight>
     <MinRowsEntityInPlate>2</MinRowsEntityInPlate>
     <ConstructionMaxPos>4</ConstructionMaxPos>
-    <ConstructionMaxLines>4</ConstructionMaxLines>
+    <ConstructionMaxLines>3</ConstructionMaxLines>
     <ShiftForBorderX>3</ShiftForBorderX>
     <ShiftForBorderY>2</ShiftForBorderY>
     <ImageIndexFirstAvatar>209</ImageIndexFirstAvatar>    

@@ -17,9 +17,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCImage128 imgMapObject;
         private readonly VCIconButton48 btnMainAction;
         private readonly VCLabelValue lblIncome;
-        private readonly VCEntityInQueue ext1;
-        private readonly VCEntityInQueue ext2;
-        private readonly VCEntityInQueue ext3;
+        private readonly VCCellSimple ext1;
+        private readonly VCCellSimple ext2;
+        private readonly VCCellSimple ext3;
+        private readonly VCCellSimple ext4;
 
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -46,34 +47,37 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
 
-            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 6, Color.Green, true);
+            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 7, Color.Green, true);
             lblIncome.Width = 104;
             lblIncome.Image.ImageIndex = FormMain.GUI_16_ENTHUSIASM;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
 
-            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 6, Color.Green, true);
+            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 7, Color.Green, true);
             lblIncome.Width = 104;
             lblIncome.Image.ImageIndex = FormMain.GUI_16_MORALE;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
 
-            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 6, Color.Green, true);
+            lblIncome = new VCLabelValue(this, imgMapObject.NextLeft(), lblIncome.NextTop() - 7, Color.Green, true);
             lblIncome.Width = 104;
             lblIncome.Image.ImageIndex = FormMain.GUI_16_LUCK;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
             lblIncome.Hint = "Доход в день";
 
-            ext1 = new VCEntityInQueue(this, imgMapObject.ShiftX, imgMapObject.NextTop() + 4);
-            ext1.ImageIndex = FormMain.Config.Gui48_Book;
+            ext1 = new VCCellSimple(this, imgMapObject.ShiftX, imgMapObject.NextTop() + 4);
+            ext1.ImageIndex = 107;
 
-            ext2 = new VCEntityInQueue(this, ext1.NextLeft(), ext1.ShiftY);
-            ext2.ImageIndex = 5;
+            ext2 = new VCCellSimple(this, ext1.NextLeft(), ext1.ShiftY);
+            ext2.ImageIndex = 110;
 
-            ext3 = new VCEntityInQueue(this, ext2.NextLeft(), ext1.ShiftY);
-            ext3.ImageIndex = -1;
+            ext3 = new VCCellSimple(this, ext2.NextLeft(), ext1.ShiftY);
+            ext3.ImageIndex = 120;
 
-            Width = Math.Max(lblIncome.NextLeft(), lblIncome.NextLeft());
+            ext4 = new VCCellSimple(this, ext3.NextLeft(), ext1.ShiftY);
+            ext4.ImageIndex = 134;
+
+            Width = Math.Max(lblIncome.NextLeft(), ext4.NextLeft());
             Height = ext1.NextTop();
 
             lblName.Width = Width - (FormMain.Config.GridSize * 2);
@@ -177,7 +181,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgLair_ShowHint(object sender, EventArgs e)
         {
-            Entity.PrepareHint(PanelHint);
+            Entity?.PrepareHint(PanelHint);
         }
 
         private void ImgLair_Click(object sender, EventArgs e)

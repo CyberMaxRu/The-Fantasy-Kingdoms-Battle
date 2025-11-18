@@ -22,14 +22,12 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
         internal readonly VisualControl MainControl;//
         internal readonly VisualControl panelNotices;// Панель извещений
-
-
-        // Главные страницы игры
-        private readonly VCPageControl pageControl;
-        private readonly VCPageButton pageConstructions;
-        private readonly VCPageButton pageHeroes;
-        private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
         private readonly VCLabel labelCaptionPage;
+
+
+        // Контролы на главной панели
+        private readonly VisualControl panelConstructions;
+        private readonly List<VCAcceptedTradition> listAcceptedTraditions = new List<VCAcceptedTradition>();
 
         private PanelWithPanelEntity panelHeroes;
         private readonly VisualControl vcRightPanel;
@@ -225,16 +223,16 @@ namespace Fantasy_Kingdoms_Battle
                 ShowBorder = true
             };
 
-            // Страницы игры
-            pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
-            pageControl.PageChanged += PageControl_PageChanged;
-            pageConstructions = pageControl.AddPage(Config.Gui48_Economy, "Сооружения города", "Сооружения города", PageHeroes_ShowHint);
-            pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
+
+            // 
+            panelConstructions = new VisualControl(MainControl, panelHeroInfo.NextLeft(), FormMain.Config.GridSize); 
 
             labelCaptionPage = new VCLabel(bmpPreparedToolbar, 0, 0, Program.formMain.FontMedCaptionC, Color.White, 48, "");
             labelCaptionPage.StringFormat.Alignment = StringAlignment.Center;
             labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaptionPage.Width = 280;
+
+            SetCaption("Город");
 
             // Создаем массив из страниц, линий и позиций
             //panels = new PanelConstruction[Descriptors.CapitalPages.Count, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
@@ -251,10 +249,10 @@ namespace Fantasy_Kingdoms_Battle
             panelNotices.ShowBorder = false;
 
             // Вычисляем максимальный размер страниц
-            pageControl.ApplyMaxSize();
-            pageControl.ShiftX = panelEmptyInfo.NextLeft();
+            panelConstructions.ApplyMaxSize();
+            panelConstructions.ShiftX = panelEmptyInfo.NextLeft();
 
-            vcRightPanel.ShiftX = pageControl.NextLeft();
+            vcRightPanel.ShiftX = panelConstructions.NextLeft();
             vcRightPanel.ShiftY = panelLairWithFlags.NextTop();
 
             //
@@ -264,11 +262,11 @@ namespace Fantasy_Kingdoms_Battle
 
             int maxHeightPanelInfo = Math.Max(panelConstructionInfo.Height, panelHeroInfo.Height);
             maxHeightPanelInfo = Math.Max(panelMonsterInfo.Height, maxHeightPanelInfo);
-            int maxHeightControls = Math.Max(pageControl.Height, maxHeightPanelInfo);
+            int maxHeightControls = Math.Max(panelConstructions.Height, maxHeightPanelInfo);
 
             // Все контролы созданы, устанавливаем размеры bitmapMenu
             MainControl.Width = vcRightPanel.ShiftX + vcRightPanel.Width;
-            MainControl.Height = pageHeroes.ShiftY + maxHeightControls + (Config.GridSize * 2);
+            MainControl.Height = panelConstructions.ShiftY + maxHeightControls + (Config.GridSize * 2);
 
             Adjust2();
 
@@ -288,9 +286,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = Program.formMain.sizeGamespace.Width;
             Height = Program.formMain.sizeGamespace.Height;
-
-            pageControl.ActivatePage(pageConstructions);
-            UpdateNameCurrentPage();
 
             // Сразу создаем контролы под традиции. Они все равно обязательно пригодятся
             /*int nextLeft = 0;
@@ -350,7 +345,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         private void DrawHeroes()
         {
-            panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
+            /*panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
             pageHeroes.Page.AddControl(panelHeroes);
             panelHeroes.ShiftY = 0;
 
@@ -360,6 +355,7 @@ namespace Fantasy_Kingdoms_Battle
 
             panelHeroes.ApplyList(list);
             panelHeroes.Height = panelHeroes.MaxSize().Height;
+            */
         }
 
         private void DrawPageTournament()
@@ -429,7 +425,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < FormMain.Config.ConstructionMaxLines; y++)
                 for (int x = 0; x < FormMain.Config.ConstructionMaxPos; x++)
                 {
-                    PanelConstruction pc = new PanelConstruction(pageConstructions.Page, 0, 0);
+                    PanelConstruction pc = new PanelConstruction(panelConstructions, 0, 0);
                     pc.ShiftX = (pc.Width + Config.GridSize) * x;
                     pc.ShiftY = (pc.Height + Config.GridSize) * y;
                     arrayPanelConstructions[y, x] = pc;
@@ -579,22 +575,8 @@ namespace Fantasy_Kingdoms_Battle
             return po == selectedPlayerObject;
         }
 
-        internal void ObjectDestroyed(BigEntity entity)
-        {
-            Debug.Assert(entity != null);
-
-            foreach (VCPageButton button in pageControl.Pages)
-            {
-                if (button.SelectedPlayerObject == entity)
-                {
-                    button.SelectedPlayerObject = null;
-                }
-            }
-        }
-
         internal void SelectConstruction(Construction construction, int selectPage = -1)
         {
-            pageControl.ActivatePage(pageConstructions);
             SelectPlayerObject(construction, selectPage);
         }
 
@@ -670,8 +652,6 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.ExchangeLayer(Program.formMain.layerMainMenu, this);
             }
 
-            pageControl.ActivatePage(pageConstructions);
-            PageControl_PageChanged(null, new EventArgs());
             ShowCurrentPlayerLobby();
 
             lobby.Start();
@@ -689,7 +669,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void RestartLobby()
         {
             Debug.Assert(lobby != null);
-            pageControl.ClearSelectedObjects();
             SelectPlayerObject(null);
             lobby.ExitFromLobby();
             lobby = null;
@@ -700,7 +679,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void EndLobby()
         {
             Debug.Assert(lobby != null);
-            pageControl.ClearSelectedObjects();
             SelectPlayerObject(null);
             lobby.ExitFromLobby();
 
@@ -838,19 +816,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             WindowCheating w = new WindowCheating(curAppliedPlayer);
             w.Show();
-        }
-
-        private void UpdateNameCurrentPage()
-        {
-            labelCaptionPage.Text = pageControl.CurrentPage.Caption;
-        }
-
-        private void PageControl_PageChanged(object sender, EventArgs e)
-        {
-            if (Program.formMain.currentLayer == this)
-            {
-                UpdateNameCurrentPage();
-            }
         }
 
         private void PanelCombatHeroes_Click(object sender, EventArgs e)
@@ -1000,7 +965,7 @@ namespace Fantasy_Kingdoms_Battle
             // По вертикали 2 расстояния
             // Вообще надо переделать на константы из конфиги
             horInterval = (MainControl.Width - panelEmptyInfo.ShiftX - panelEmptyInfo.Width - vcRightPanel.Width - (arrayPanelConstructions[0, 0].Width * FormMain.Config.ConstructionMaxPos)) / (FormMain.Config.ConstructionMaxPos + 1);
-            verInterval = (MainControl.Height - pageHeroes.Page.ShiftY - (arrayPanelConstructions[0, 0].Height * FormMain.Config.ConstructionMaxLines) - (Config.GridSize * 2)) / (FormMain.Config.ConstructionMaxLines - 1);
+            verInterval = (MainControl.Height - panelConstructions.ShiftY - (arrayPanelConstructions[0, 0].Height * FormMain.Config.ConstructionMaxLines) - (Config.GridSize * 2)) / (FormMain.Config.ConstructionMaxLines - 1);
 
             for (int y = 0; y < arrayPanelConstructions.GetLength(0); y++)
                 for (int x = 0; x < arrayPanelConstructions.GetLength(1); x++)
@@ -1011,13 +976,6 @@ namespace Fantasy_Kingdoms_Battle
                         arrayPanelConstructions[y, x].ShiftY = (arrayPanelConstructions[y, x].Height + verInterval) * y;
                     }
                 }
-
-            pageControl.ShiftX = panelEmptyInfo.ShiftX + panelEmptyInfo.Width + horInterval;
-
-            foreach (VCPageButton p in pageControl.Pages)
-            {
-                p.Page.Width = CalcWidthPage();
-            }
         }
 
         private int CalcWidthPage()
@@ -1037,6 +995,11 @@ namespace Fantasy_Kingdoms_Battle
             base.PreferencesChanged();
 
             btnCheating.Visible = Program.formMain.Settings.AllowCheating;
+        }
+
+        private void SetCaption(string caption)
+        {
+            labelCaptionPage.Text = caption;
         }
     }
 }
