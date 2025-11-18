@@ -112,19 +112,16 @@ namespace Fantasy_Kingdoms_Battle
             MainControl = new VisualControl(this, 0, 0);
             MainControl.Click += MainControl_Click;
 
-            /*labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
-            foreach (DescriptorBaseResource br in Descriptors.BaseResources)
-            {
-                VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, 0, 6, br);
-                labelsResources[br.Number] = lblRes;
-            }*/
-
             // Контролы над тулбаром
-            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, FormMain.Config.GridSize, 8, "", FormMain.GUI_16_GREATNESS);
-            tlLevelCity.ShowHint += LabelGreatness_ShowHint;
-            tlLevelCity.Width = 112;
+            tlMoney = new VCToolLabel(bmpPreparedToolbar, FormMain.Config.GridSize, 6, FormMain.GUI_16_GOLD);
+            tlPeople = new VCToolLabel(bmpPreparedToolbar, tlMoney.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_PEOPLE);
+            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, tlPeople.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_GREATNESS);
+            tlDurabilityCity = new VCToolLabel(bmpPreparedToolbar, tlLevelCity.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_DURABILITY);
 
-
+            tlProgressSearchHolyPlace = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_FLAG_SCOUT);
+            tlHealing = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_REPAIR);
+            tlFreeExperience = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_COFFERS);
+            tlBalanceCash = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_HOLYLAND);
 
             btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, null);
             btnInGameMenu.HighlightUnderMouse = true;
@@ -283,6 +280,10 @@ namespace Fantasy_Kingdoms_Battle
                     nextTop = 0;
                 }
             }*/
+        }
+
+        private void TlLevelCity_ShowHint(object sender, EventArgs e)
+        {
         }
 
         // Сейчас будет рисоваться кадр. Делаем расчеты тактов игры
@@ -694,7 +695,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     //labelKnowledge.Visible = true;
                     //labelPeople.Visible = true;
-                    tlLevelCity.Visible = false;
+                    tlLevelCity.Visible = true;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
@@ -887,6 +888,13 @@ namespace Fantasy_Kingdoms_Battle
             bmpTopPanel.Width = bmpTopPanel.Bitmap.Width;
             bmpTopPanel.Height = bmpTopPanel.Bitmap.Height;
 
+            //
+            tlBalanceCash.ShiftX = bmpPreparedToolbar.Width - tlBalanceCash.Width - FormMain.Config.GridSize;
+            tlFreeExperience.ShiftX = tlBalanceCash.ShiftX - tlFreeExperience.Width - FormMain.Config.GridSize;
+            tlHealing.ShiftX = tlFreeExperience.ShiftX - tlHealing.Width - FormMain.Config.GridSize;
+            tlProgressSearchHolyPlace.ShiftX = tlHealing.ShiftX - tlProgressSearchHolyPlace.Width - FormMain.Config.GridSize;
+
+            //
             panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
             vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
             vcRightPanel.ShiftX = MainControl.Width - vcRightPanel.Width;

@@ -5,15 +5,15 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - иконка 16 * 16 с текстом для тулбара
     internal class VCToolLabel : VCLabel
     {
-        public VCToolLabel(VisualControl parent, int shiftX, int shiftY, string text, int imageIndex)
-            : base(parent, shiftX, shiftY, Program.formMain.FontMedCaption, Color.White, 26, text, Program.formMain.BmpListGui16)
+        public VCToolLabel(VisualControl parent, int shiftX, int shiftY, int imageIndex)
+            : base(parent, shiftX, shiftY, Program.formMain.FontMedCaption, Color.White, 26, "", Program.formMain.BmpListGui16)
         {
             StringFormat.Alignment = StringAlignment.Far;
             StringFormat.LineAlignment = StringAlignment.Near;
             IsActiveControl = true;
 
             Image.ImageIndex = imageIndex;
-            Width = 80;
+            Width = 112;
             TopMargin = 1;
             RightMargin = 6;
 
