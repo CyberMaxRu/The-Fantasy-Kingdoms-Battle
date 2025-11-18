@@ -48,11 +48,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ticksPerSecond;
 
         // Контролы над тулбаром
-        private readonly VCLabelValue labelDay;
-        private readonly VCLabelValue labelTraditions;
-        private readonly VCProgressBar pbTraditions;
-        private readonly VCLabelValue labelMana;
-
         private readonly VCIconButton48 btnInGameMenu;
         private readonly VCIconButton48 btnCheating;
 
@@ -125,26 +120,7 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             // Контролы над тулбаром
-            labelDay = new VCLabelValue(bmpTopPanel, Config.GridSize, Config.GridSize, Color.White, true);
-            labelDay.StringFormat.Alignment = StringAlignment.Far;
-            labelDay.Click += LabelDay_Click;
-            labelDay.ShowHint += LabelDay_ShowHint;
-            labelDay.Width = 72;
-            labelDay.RightMargin = 6;
-
-            labelTraditions = new VCLabelValue(bmpTopPanel, labelDay.ShiftX, labelDay.NextTop() - Config.GridSize, Color.White, true);
-            labelTraditions.Image.ImageIndex = FormMain.GUI_16_TRADITIONS;
-            labelTraditions.StringFormat.Alignment = StringAlignment.Far;
-            labelTraditions.RightMargin = 6;
-            //labelTraditions.ShowHint += LabelKnowledge_ShowHint;
-            labelTraditions.Width = labelDay.Width;
-            pbTraditions = new VCProgressBar(bmpTopPanel, labelDay.ShiftX, labelTraditions.ShiftY);
-            pbTraditions.Width = 160;
-
-            labelMana = new VCLabelValue(bmpTopPanel, labelDay.NextLeft(), labelDay.ShiftY, Color.White, true);
-            labelMana.Image.ImageIndex = FormMain.GUI_16_MANA;
-            labelMana.Width = 112;
-            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, pbTraditions.NextLeft() - Config.GridSizeHalf, pbTraditions.ShiftY, "", FormMain.GUI_16_GREATNESS);
+            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, FormMain.Config.GridSize, 8, "", FormMain.GUI_16_GREATNESS);
             tlLevelCity.ShowHint += LabelGreatness_ShowHint;
             tlLevelCity.Width = 112;
 
@@ -716,9 +692,7 @@ namespace Fantasy_Kingdoms_Battle
                     while (panelNotices.Controls.Count > 0)
                         panelNotices.RemoveControl(panelNotices.Controls[0]);
 
-                    labelDay.Visible = true;
                     //labelKnowledge.Visible = true;
-                    labelTraditions.Visible = true;
                     //labelPeople.Visible = true;
                     tlLevelCity.Visible = false;
                     MainControl.Visible = true;
@@ -726,9 +700,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    labelDay.Visible = false;
                     //labelKnowledge.Visible = false;
-                    labelTraditions.Visible = false;
                     //labelPeople.Visible = false;
                     tlLevelCity.Visible = false;
                     MainControl.Visible = false;
@@ -849,11 +821,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((lobby != null) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
-                labelDay.Text = $"{lobby.Turn}";
-                labelTraditions.Text = $"{curAppliedPlayer.PointsForNextTradition}";
-                pbTraditions.Max = curAppliedPlayer.PointsForNextTradition;
-                pbTraditions.Position = Math.Min((int)curAppliedPlayer.PointsTraditions, curAppliedPlayer.PointsForNextTradition);
-                pbTraditions.Text = curAppliedPlayer.NextTradition is null ? "Не выбрана" : "";
                 tlLevelCity.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")";
                 //+ ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
