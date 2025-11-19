@@ -114,14 +114,14 @@ namespace Fantasy_Kingdoms_Battle
 
             // Контролы над тулбаром
             tlMoney = new VCToolLabel(bmpPreparedToolbar, FormMain.Config.GridSize, 6, FormMain.GUI_16_GOLD);
-            tlPeople = new VCToolLabel(bmpPreparedToolbar, tlMoney.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_PEOPLE);
-            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, tlPeople.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_GREATNESS);
+            tlPeople = new VCToolLabel(bmpPreparedToolbar, tlMoney.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_INHABITANT);
+            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, tlPeople.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_CITY);
             tlDurabilityCity = new VCToolLabel(bmpPreparedToolbar, tlLevelCity.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_DURABILITY);
 
-            tlProgressSearchHolyPlace = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_FLAG_SCOUT);
-            tlHealing = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_REPAIR);
-            tlFreeExperience = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_COFFERS);
-            tlBalanceCash = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_HOLYLAND);
+            tlProgressSearchHolyPlace = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_INTEREST_EXPLORE);
+            tlHealing = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_HEALING);
+            tlFreeExperience = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_EXPERIENCE);
+            tlBalanceCash = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_PURSE);
 
             btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, null);
             btnInGameMenu.HighlightUnderMouse = true;
