@@ -51,6 +51,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton48 btnInGameMenu;
         private readonly VCIconButton48 btnCheating;
 
+        private readonly VCIconButton48 btnEndTurn;
+
         // Контролы тулбара
         private readonly VCToolLabel tlMoney;
         private readonly VCToolLabel tlPeople;
@@ -62,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel tlFreeExperience;
         private readonly VCToolLabel tlBalanceCash;
 
-        private readonly VisualControl panelLairWithFlags;
         //private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
 
         private PanelConstruction[,] arrayPanelConstructions;
@@ -133,9 +134,8 @@ namespace Fantasy_Kingdoms_Battle
             btnCheating.Hint = "Читинг";
             btnCheating.HintDescription = "Открыть настройки читинга";
 
-            panelLairWithFlags = new VisualControl(MainControl, 0, Config.GridSize);
-            panelLairWithFlags.Width = Program.formMain.BmpListObjects48.Size.Width;
-            panelLairWithFlags.Height = Program.formMain.BmpListObjects48.Size.Height;
+            btnEndTurn = CreateButton(bmpTopPanel, Config.Gui48_Hourglass, Config.GridSize, Config.GridSize, btnEndTurn_Click, null);
+            btnEndTurn.Hint = "Завершение хода";
 
             // Отладочная информация
             vcDebugInfo = new VisualControl();
@@ -175,7 +175,7 @@ namespace Fantasy_Kingdoms_Battle
             vcRightPanel.Width = Math.Max(FormMain.Config.ObjectMenuWidth, panelCombatHeroes.Width + Config.GridSize);
 
             // Панели информации об объектахs
-            panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.ShiftY);
+            panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, Config.GridSize);
             panelHeroInfo.Width = vcRightPanel.Width - Config.GridSize;
             panelHeroInfo.ApplyMaxSize();
             panelHeroInfo.Width = panelHeroInfo.Width + Config.GridSize;
@@ -227,7 +227,7 @@ namespace Fantasy_Kingdoms_Battle
             panelConstructions.ShiftX = panelEmptyInfo.NextLeft();
 
             vcRightPanel.ShiftX = panelConstructions.NextLeft();
-            vcRightPanel.ShiftY = panelLairWithFlags.NextTop();
+            vcRightPanel.ShiftY = Config.GridSize;
 
             //
             Debug.Assert(panelConstructionInfo.Height > 0);
@@ -336,6 +336,10 @@ namespace Fantasy_Kingdoms_Battle
             */
         }
 
+        private void btnEndTurn_Click(object sender, EventArgs e)
+        {
+
+        }
         private void DrawPageTournament()
         {
             //private readonly VCCell[] pageTournamentPlayers;
@@ -903,7 +907,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
-            vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
+            vcRightPanel.Height = MainControl.Height - panelPlayers.NextTop();
             vcRightPanel.ShiftX = MainControl.Width - vcRightPanel.Width;
 
             panelNotices.Height = vcRightPanel.Height;
@@ -923,8 +927,7 @@ namespace Fantasy_Kingdoms_Battle
             panelMonsterInfo.Height = panelConstructionInfo.Height;
             panelEmptyInfo.Height = panelConstructionInfo.Height;
 
-            btnInGameMenu.ShiftX = btnInGameMenu.Parent.Width - btnInGameMenu.Width - Config.GridSize;
-            btnCheating.ShiftX = btnInGameMenu.ShiftX - btnCheating.Width - Config.GridSize;
+            btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
             // Выравниваем страницы столицы
             // Мы достоверно знаем, что на страницах столицы 3 промежутка между сооружениями и надо еще 2 по краям по горизонтали
