@@ -724,12 +724,19 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             ShowLobby();
+            UpdateVisualData();
 
             LosesChanged();
             UpdateListHeroes();
             AdjustPageTournament();
             //AdjustNeighborhood();
             //ShowPlayerNotices();
+        }
+
+        private void UpdateVisualData()
+        {
+            tlMoney.Text = lobby.CurrentPlayer.Gold.ToString();
+            tlPeople.Text = $"{lobby.CurrentPlayer.Citizens} ({FormatDecimal100(lobby.CurrentPlayer.GrowthCitizens, true)})";
         }
 
         internal void ShowPlayerNotices()

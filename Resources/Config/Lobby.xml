@@ -3,7 +3,8 @@
   <Name>Война 8 лордов</Name>
   <QuantityPlayers>8</QuantityPlayers>
   <Gold>8000</Gold>
-  <MaxGold>8000</MaxGold>
+  <Citizens>10</Citizens>
+  <GrowthCitizens>50</GrowthCitizens>
   <MaxHeroes>25</MaxHeroes>
   <MaxHeroesForBattle>15</MaxHeroesForBattle>
   <DayStartBattleBetweenPlayers>25</DayStartBattleBetweenPlayers>
@@ -57,4 +58,5 @@
       <Pos>1,3</Pos>
     </Construction>
   </CityConstructions>
+
 </Lobby>

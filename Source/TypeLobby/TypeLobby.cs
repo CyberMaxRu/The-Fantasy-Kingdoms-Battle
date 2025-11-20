@@ -38,8 +38,9 @@ namespace Fantasy_Kingdoms_Battle
 
             Name = XmlUtils.GetString(n, "Name");
             QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
-            Gold = XmlUtils.GetInteger(n, "Gold");
-            MaxGold = XmlUtils.GetInteger(n, "MaxGold");
+            Gold = GetInteger(n, "Gold");
+            Citizens = GetInteger(n, "Citizens");
+            GrowthCitizens = GetInteger(n, "GrowthCitizens");
             MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
             MaxHeroesForBattle = XmlUtils.GetInteger(n, "MaxHeroesForBattle");
             DayStartBattleBetweenPlayers = XmlUtils.GetInteger(n, "DayStartBattleBetweenPlayers");
@@ -79,9 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxLoses <= 5);
 
             Debug.Assert(Gold >= 0);
-            Debug.Assert(MaxGold >= 1_000);
-            Debug.Assert(MaxGold <= 1_000_000);
-            Debug.Assert(Gold <= MaxGold);
+            Debug.Assert(Citizens > 0);
 
             XmlNode cc = n.SelectSingleNode("CityConstructions");
             if (cc != null)
@@ -101,7 +100,8 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get; }
         internal int QuantityPlayers { get; }
         internal int Gold { get; }
-        internal int MaxGold { get; }
+        internal int Citizens { get; set; }// Жителей в городе
+        internal int GrowthCitizens { get; set; }// Прирост жителей города в ход, * 100
         internal int MaxHeroes { get; }
         internal int MaxHeroesForBattle { get; }
         internal int DayStartBattleBetweenPlayers { get; }

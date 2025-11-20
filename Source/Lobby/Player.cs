@@ -42,6 +42,8 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = player;
             PlayerIndex = playerIndex;
             PositionInLobby = playerIndex + 1;
+            Citizens = lobby.TypeLobby.Citizens;
+            GrowthCitizens = lobby.TypeLobby.GrowthCitizens;
 
             Initialization = true;
 
@@ -606,10 +608,18 @@ namespace Fantasy_Kingdoms_Battle
                 pb.ValidateHeroes();
         }
 
+        // Свойства актуальные
+        internal int Citizens { get; set; }// Количество горожан
+        internal int GrowthCitizens { get; set; }// Прирост горожан в ход
+
+        // Свойства для проверки актуальности
         internal new DescriptorPlayer Descriptor { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal bool Initialization { get; }
+
+        //
+
         internal int LevelGreatness { get; }// Уровень величия
         internal int PointGreatness { get; private set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
@@ -883,7 +893,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void ReturnResource(int res)
         {
             Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
 
             Gold += res;
 
@@ -893,7 +902,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void ReceivedResource(int res)
         {
             Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
             Gold += res;
 
             UpdateResourceInCastle();
