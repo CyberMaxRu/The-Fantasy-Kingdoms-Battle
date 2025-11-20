@@ -590,6 +590,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowLobby()
         {
+            btnEndTurn.Level = lobby.Turn.ToString();
+
             /*int top = 0;
             foreach (Player p in lobby.Players.OrderBy(p => p.PositionInLobby))
             {
