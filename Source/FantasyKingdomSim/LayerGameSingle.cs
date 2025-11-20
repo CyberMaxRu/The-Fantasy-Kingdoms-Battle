@@ -55,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Контролы тулбара
         private readonly VCToolLabel tlMoney;
-        private readonly VCToolLabel tlPeople;
+        private readonly VCToolLabel tlCitizens;
         private readonly VCToolLabel tlLevelCity;
         private readonly VCToolLabel tlDurabilityCity;
 
@@ -115,8 +115,8 @@ namespace Fantasy_Kingdoms_Battle
 
             // Контролы над тулбаром
             tlMoney = new VCToolLabel(bmpPreparedToolbar, FormMain.Config.GridSize, 6, FormMain.GUI_16_GOLD);
-            tlPeople = new VCToolLabel(bmpPreparedToolbar, tlMoney.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_INHABITANT);
-            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, tlPeople.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_CITY);
+            tlCitizens = new VCToolLabel(bmpPreparedToolbar, tlMoney.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_INHABITANT);
+            tlLevelCity = new VCToolLabel(bmpPreparedToolbar, tlCitizens.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_CITY);
             tlDurabilityCity = new VCToolLabel(bmpPreparedToolbar, tlLevelCity.NextLeft(), tlMoney.ShiftY, FormMain.GUI_16_DURABILITY);
 
             tlProgressSearchHolyPlace = new VCToolLabel(bmpPreparedToolbar, 0, tlMoney.ShiftY, FormMain.GUI_16_INTEREST_EXPLORE);
@@ -740,7 +740,7 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateVisualData()
         {
             tlMoney.Text = lobby.CurrentPlayer.Gold.ToString();
-            tlPeople.Text = $"{lobby.CurrentPlayer.Citizens} ({FormatDecimal100(lobby.CurrentPlayer.GrowthCitizens, true)})";
+            tlCitizens.Text = $"{lobby.CurrentPlayer.Citizens} ({FormatDecimal100(lobby.CurrentPlayer.GrowthCitizens, true)})";
         }
 
         internal void ShowPlayerNotices()
