@@ -338,8 +338,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
-
+            lobby.DoEndTurn(); 
         }
+
         private void DrawPageTournament()
         {
             //private readonly VCCell[] pageTournamentPlayers;

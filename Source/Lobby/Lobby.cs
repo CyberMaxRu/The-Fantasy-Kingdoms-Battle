@@ -273,35 +273,36 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].GetTypePlayer() == TypePlayer.Human);
             Debug.Assert(Players[0].IsLive);
 
-/*            // Делаем ходы, перебирая всех игроков, пока все не совершат ход
+            // Делаем ходы, перебирая всех игроков, пока все не совершат ход
             int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
             for (int i = cpi + 1; i < Players.Count(); i++)
             {
-                if ((Players[i].IsLive == true) || (Players[i].GetTypePlayer() == TypePlayer.Human))
+
+                CurrentPlayer = Players[i];
+                if (Players[i].IsLive || (Players[i].GetTypePlayer() == TypePlayer.Human))
                 {
-                    if (CurrentPlayer.GetTypePlayer() == TypePlayer.Computer)
+                    if (Players[i].GetTypePlayer() == TypePlayer.Computer)
                     {
                         StateLobby = StateLobby.TurnComputer;
-                        Program.formMain.ShowCurrentPlayerLobby();
-                        CurrentPlayer.DoTurn();
-                        System.Threading.Thread.Sleep(200);
+                        Layer.ShowCurrentPlayerLobby();
+                        Players[i].ExecuteTurn();
                     }
                     else
                     {
                         StateLobby = StateLobby.TurnHuman;
-                        Program.formMain.ShowCurrentPlayerLobby();
+                        Layer.ShowCurrentPlayerLobby();
                         return;
                     }
                 }
             }
-*/
+
             SetPlayerAsCurrent(-1);
             StateLobby = StateLobby.CalcTurn;
-            Layer.ShowCurrentPlayerLobby();
-            //sLayer.ShowNamePlayer("Расчет дня");
+            //Layer.ShowCurrentPlayerLobby();
+            //Layer.ShowNamePlayer("Расчет дня");
             CalcFinalityTurn();
 
-            if (IsDayForBattleBetweenPlayers())
+            /* if (IsDayForBattleBetweenPlayers())
             {
                 CalcBattles();
 
@@ -310,7 +311,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (pl.Opponent != null)
                         pl.Opponent = null;
                 }
-            }
+            }*/
 
             CalcResultTurn();
 
@@ -351,6 +352,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
+                CurrentPlayer = Players[0];
                 return;
             }
         }

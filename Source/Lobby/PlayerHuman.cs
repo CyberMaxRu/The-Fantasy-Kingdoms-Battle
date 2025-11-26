@@ -90,5 +90,9 @@ namespace Fantasy_Kingdoms_Battle
             base.DoTick(startNewDay);
 
         }
+
+        internal override void ExecuteTurn()
+        {
+        }
     }
 }

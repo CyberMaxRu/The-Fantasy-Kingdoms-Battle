@@ -32,5 +32,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoTick(startNewDay);
         }
+
+        internal override void ExecuteTurn()
+        {
+            System.Threading.Thread.Sleep(80);
+        }
     }
 }
