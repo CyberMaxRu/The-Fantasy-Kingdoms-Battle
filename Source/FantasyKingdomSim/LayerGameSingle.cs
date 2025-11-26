@@ -337,7 +337,7 @@ namespace Fantasy_Kingdoms_Battle
             lobby.CurrentPlayer.EndTurn();
 
             // Включаем визуальный режим хода игроками
-
+            ChangeInterface(false);
 
             // Ход оставшимися игроками
             for (int i = 1; i < lobby.Players.Count(); i++)
@@ -355,12 +355,35 @@ namespace Fantasy_Kingdoms_Battle
 
             // Вызываем завершение хода игроками в лобби
             lobby.DoEndTurn();
-            
+
             // Переходим в режим битв
+
+            // Составляем новые пары игроков, если живых больше одного
+
+            // Обновляем позиции игроков в панели игроков
 
             // Показываем итоги битв
 
-            // Если игрок вылетел из лобби, завершаем его
+            // Если игрок еще жив, то
+            {
+                // Делаем расчёт на начало хода
+
+                // Отображаем состояние на начало
+
+                // Включаем интерфейс игрока 
+
+                // Входим в режим хода живым игроком
+
+            }
+            //else// Игрок вылетел из лобби, завершаем его
+            {
+                // Показываем сообщение с итоговым местом и достижениями
+
+                // Закрываем лобби и создаём новое
+
+                // Переходим в начало цикла
+            }
+
 
             // Старт нового хода
 
@@ -995,6 +1018,20 @@ namespace Fantasy_Kingdoms_Battle
                 labelCaptionPage.ShiftX = (bmpPreparedToolbar.Width - labelCaptionPage.Width) / 2;
                 bmpPreparedToolbar.ArrangeControl(labelCaptionPage);
             }
+        }
+
+        private void ChangeInterface(bool turnRealPlayer)
+        {
+            tlMoney.Visible = turnRealPlayer;
+            tlCitizens.Visible = turnRealPlayer;
+            tlLevelCity.Visible = turnRealPlayer;
+            tlDurabilityCity.Visible = turnRealPlayer;
+            tlProgressSearchHolyPlace.Visible = turnRealPlayer;
+            tlHealing.Visible = turnRealPlayer;
+            tlFreeExperience.Visible = turnRealPlayer;
+            tlBalanceCash.Visible = turnRealPlayer;
+            MainControl.Visible = turnRealPlayer;
+            btnEndTurn.Visible = turnRealPlayer;
         }
     }
 }
