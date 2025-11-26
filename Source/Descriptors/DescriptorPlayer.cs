@@ -30,7 +30,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Index { get; }// Индекс
-        internal string Title { get; }// Титул
         internal TypePlayer TypePlayer { get; }
 
         protected override int ShiftImageIndex() => Config.ImageIndexFirstAvatar;
