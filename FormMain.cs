@@ -48,8 +48,6 @@ namespace Fantasy_Kingdoms_Battle
         private Graphics gfxRenderFrame;// Graphics кадра
         private Graphics gfxRenderClientArea;// Graphics клиентской области
 
-        internal VCLabel labelFPS;// Отладочная информация о FPS и прочем
-
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
         internal const int GUI_PARAMETER_MAGIC = 8;
@@ -424,12 +422,6 @@ namespace Fantasy_Kingdoms_Battle
 
             layerMainMenu.ArrangeControls();
             layerGame.ArrangeControls();
-
-
-            labelFPS = new VCLabel(null, Config.GridSize, Config.GridSize, FontSmallC, Color.White, 16, "");
-            labelFPS.Width = 200;
-            labelFPS.ApplyMaxSize();
-            labelFPS.ShowBorder = false;
 
             //
             SetStage("Прибираем после строителей");
@@ -907,13 +899,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (controlWithHint != null)
                     gfxRenderFrame.DrawRectangle(layerGame.penDebugBorder, controlWithHint.Rectangle);
 
-                layerGame.durationDrawFrame = DateTime.Now - layerGame.startDebugAction;
-                layerGame.labelTimeDrawFrame.Text = $"FPS: {layerGame.framesPerSecond}, TPS: {layerGame.ticksPerSecond}, Draw frame: {layerGame.durationDrawFrame.TotalMilliseconds}";
                 layerGame.vcDebugInfo.Paint(gfxRenderFrame);
             }
-
-            labelFPS.Text = "Delta: ";
-            labelFPS.Paint(gfxRenderFrame);
 
             gfxRenderClientArea.CompositingMode = CompositingMode.SourceCopy;
             gfxRenderClientArea.DrawImage(bmpRenderFrame, topLeftFrame.X, topLeftFrame.Y, sizeGamespace.Width, sizeGamespace.Height);

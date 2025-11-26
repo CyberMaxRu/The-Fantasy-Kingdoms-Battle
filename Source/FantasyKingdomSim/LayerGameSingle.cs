@@ -40,12 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         internal VCLabel labelTimeDrawFrame;
         internal VCLabel labelLayers;
         internal DateTime startDebugAction;
-        internal TimeSpan durationDrawFrame;
-        internal DateTime firstFrameOfSecond;
         internal int countFrames;
-        internal int countTicks;
-        internal int framesPerSecond;
-        internal int ticksPerSecond;
 
         // Контролы над тулбаром
         private readonly VCIconButton48 btnInGameMenu;
@@ -640,10 +635,6 @@ namespace Fantasy_Kingdoms_Battle
             ShowCurrentPlayerLobby();
 
             lobby.Start();
-
-
-
-            firstFrameOfSecond = DateTime.Now;
         }
 
         internal override void PrepareFrame()
