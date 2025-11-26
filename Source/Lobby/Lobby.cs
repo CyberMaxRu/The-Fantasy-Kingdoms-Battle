@@ -177,64 +177,64 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].IsLive);
             Debug.Assert(CheckUniqueNamePlayers());
 
-            while (!stopLobby)
+            //while (!stopLobby)
             {
                 Debug.Assert(ExistsHumanPlayer());
 
                 // Общая подготовка дня
                 PrepareDay();
 
-                // Действие игроков (ход людей и ИИ)
-                for (int i = 0; i < Players.Length; i++)
-                {
-                    if (Players[i].IsLive || (Players[i].DayOfEndGame == Turn - 1))
-                    {
-                        SetPlayerAsCurrent(i);
-                        InPrepareTurn = true;
-                        Players[i].PrepareTurn(true);
-                        InPrepareTurn = false;
-                        Layer.ShowCurrentPlayerLobby();
+                /*                // Действие игроков (ход людей и ИИ)
+                                for (int i = 0; i < Players.Length; i++)
+                                {
+                                    if (Players[i].IsLive || (Players[i].DayOfEndGame == Turn - 1))
+                                    {
+                                        SetPlayerAsCurrent(i);
+                                        InPrepareTurn = true;
+                                        Players[i].PrepareTurn(true);
+                                        InPrepareTurn = false;
+                                        Layer.ShowCurrentPlayerLobby();
 
-                        if (Players[i].GetTypePlayer() == TypePlayer.Human)
-                            return;
+                                        if (Players[i].GetTypePlayer() == TypePlayer.Human)
+                                            return;
 
 
-                        if (HumanIsWin)
-                        {
-                            Debug.Assert(Players[i].GetTypePlayer() == TypePlayer.Human);
+                                        if (HumanIsWin)
+                                        {
+                                            Debug.Assert(Players[i].GetTypePlayer() == TypePlayer.Human);
 
-                            Players[i].PlayerIsWin();
-                            return;
-                        }
+                                            Players[i].PlayerIsWin();
+                                            return;
+                                        }
 
-                        if (Turn == 1)
-                        {
-                            if (Players[i].VariantsStartBonuses.Count > 0)
-                                Players[i].SelectStartBonus();
-                        }
+                                        if (Turn == 1)
+                                        {
+                                            if (Players[i].VariantsStartBonuses.Count > 0)
+                                                Players[i].SelectStartBonus();
+                                        }
 
-                        // Если игрок-человек вылетел и больше нет игроков-людей, выходим из лобби
-                        if (Players[i].GetTypePlayer() == TypePlayer.Human)
-                            if (!ExistsOtherHumanPlayer(i + 1))
-                                return;
+                                        // Если игрок-человек вылетел и больше нет игроков-людей, выходим из лобби
+                                        if (Players[i].GetTypePlayer() == TypePlayer.Human)
+                                            if (!ExistsOtherHumanPlayer(i + 1))
+                                                return;
 
-                        if (stopLobby)
-                            return;
-                    }
-                }
+                                        if (stopLobby)
+                                            return;
+                                    }
+                                }
 
-                SetPlayerAsCurrent(-1);
+                                SetPlayerAsCurrent(-1);
 
-                // Расчет результатов хода игроков
-                //if (TimeOfDay == descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1])
-                {
-                    foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
-                        p.CalcDay();
-                }
+                                // Расчет результатов хода игроков
+                                //if (TimeOfDay == descriptors.TimesOfDay[descriptors.TimesOfDay.Count - 1])
+                                {
+                                    foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
+                                        p.CalcDay();
+                                }
 
-                DoEndTurn();
+                                DoEndTurn();
 
-                //stopLobby = true;
+                                //stopLobby = true;*/
             }
 
             bool ExistsHumanPlayer()

@@ -640,6 +640,9 @@ namespace Fantasy_Kingdoms_Battle
             ShowCurrentPlayerLobby();
 
             lobby.Start();
+
+
+
             firstFrameOfSecond = DateTime.Now;
         }
 
