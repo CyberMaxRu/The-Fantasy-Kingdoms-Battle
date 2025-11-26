@@ -340,7 +340,7 @@ namespace Fantasy_Kingdoms_Battle
             ChangeInterface(false);
 
             // Ход оставшимися игроками
-            for (int i = 1; i < lobby.Players.Count(); i++)
+            for (int i = 1; i < lobby.Players.Length; i++)
             {
                 if (lobby.Players[i].IsLive)
                 {
@@ -1032,6 +1032,8 @@ namespace Fantasy_Kingdoms_Battle
             tlBalanceCash.Visible = turnRealPlayer;
             MainControl.Visible = turnRealPlayer;
             btnEndTurn.Visible = turnRealPlayer;
+
+            panelPlayers.Controls[0].ManualSelected = turnRealPlayer;
         }
     }
 }
