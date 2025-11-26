@@ -333,7 +333,37 @@ namespace Fantasy_Kingdoms_Battle
 
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
-            lobby.DoEndTurn(); 
+            // Завершаем ход игроком
+            lobby.CurrentPlayer.EndTurn();
+
+            // Включаем визуальный режим хода игроками
+
+
+            // Ход оставшимися игроками
+            for (int i = 1; i < lobby.Players.Count(); i++)
+            {
+                if (lobby.Players[i].IsLive)
+                {
+                    SetCaption($"Ходит {lobby.Players[i].GetName()}...");
+
+                    panelPlayers.Controls[i].ManualSelected = true;
+                    Program.formMain.RepaintFrame();
+                    lobby.Players[i].ExecuteTurn();
+                    panelPlayers.Controls[i].ManualSelected = false;
+                }
+            }
+
+            // Вызываем завершение хода игроками в лобби
+            lobby.DoEndTurn();
+            
+            // Переходим в режим битв
+
+            // Показываем итоги битв
+
+            // Если игрок вылетел из лобби, завершаем его
+
+            // Старт нового хода
+
         }
 
         private void DrawPageTournament()

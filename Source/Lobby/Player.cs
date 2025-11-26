@@ -615,6 +615,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Citizens { get; set; }// Количество горожан
         internal int GrowthCitizens { get; set; }// Прирост горожан в ход
 
+        internal bool TurnExecuted { get; set; }// Ход выполнен
+
+
         // Свойства для проверки актуальности
         internal new DescriptorPlayer Descriptor { get; }
         internal int PlayerIndex { get; }
@@ -1212,6 +1215,16 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override string GetIDEntity(DescriptorEntity descriptor) => (descriptor as DescriptorPlayer).ID;
+
+        // Завершение хода игроком
+        internal void EndTurn()
+        {
+            Assert(!TurnExecuted);
+
+            Application.DoEvents();
+
+            TurnExecuted = true;
+        }
     }
 
     internal sealed class UnitOfQueueForBuy

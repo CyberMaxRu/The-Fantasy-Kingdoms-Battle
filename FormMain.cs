@@ -848,6 +848,12 @@ namespace Fantasy_Kingdoms_Battle
             e.Graphics.DrawImage(bmpRenderClientArea, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
+        internal void RepaintFrame()
+        {
+            DrawFrame();
+            Refresh();
+        }
+
         // Рисование кадра главной формы
         private void DrawFrame()
         {

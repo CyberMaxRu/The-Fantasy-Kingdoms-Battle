@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -35,7 +37,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ExecuteTurn()
         {
-            System.Threading.Thread.Sleep(80);
+            Lobby.StateLobby = StateLobby.TurnComputer;
+
+            // Выполняем ход
+            System.Threading.Thread.Sleep(230);
+            //System.Windows.Forms.Application.DoEvents();
+
+            // Завершаем ход
+            EndTurn();
         }
     }
 }

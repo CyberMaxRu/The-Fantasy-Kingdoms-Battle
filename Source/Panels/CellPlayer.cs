@@ -21,6 +21,6 @@ namespace Fantasy_Kingdoms_Battle
             _player = (Player)po;
         }
 
-        protected override bool Selected() => _player != null ? _player == _player.Lobby.CurrentPlayer : false;
+        //protected override bool Selected() => ManualSelected || ( _player != null ? _player == _player.Lobby.CurrentPlayer : false);
     }
 }

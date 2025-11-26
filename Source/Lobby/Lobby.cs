@@ -269,34 +269,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoEndTurn()
         {
+            // Все игроки должны закончить ход
+            for (int i = 0; i < Players.Count(); i++)
+            {
+                Utils.Assert(Players[i].TurnExecuted);
+            }
+
             // Реальный игрок должен быть жив
             Debug.Assert(Players[0].GetTypePlayer() == TypePlayer.Human);
             Debug.Assert(Players[0].IsLive);
 
-            // Делаем ходы, перебирая всех игроков, пока все не совершат ход
-            int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
-            for (int i = cpi + 1; i < Players.Count(); i++)
-            {
-
-                CurrentPlayer = Players[i];
-                if (Players[i].IsLive || (Players[i].GetTypePlayer() == TypePlayer.Human))
-                {
-                    if (Players[i].GetTypePlayer() == TypePlayer.Computer)
-                    {
-                        StateLobby = StateLobby.TurnComputer;
-                        Layer.ShowCurrentPlayerLobby();
-                        Players[i].ExecuteTurn();
-                    }
-                    else
-                    {
-                        StateLobby = StateLobby.TurnHuman;
-                        Layer.ShowCurrentPlayerLobby();
-                        return;
-                    }
-                }
-            }
-
-            SetPlayerAsCurrent(-1);
+            //SetPlayerAsCurrent(-1);
             StateLobby = StateLobby.CalcTurn;
             //Layer.ShowCurrentPlayerLobby();
             //Layer.ShowNamePlayer("Расчет дня");
@@ -326,7 +309,7 @@ namespace Fantasy_Kingdoms_Battle
             // Делаем начало хода
             Turn++;
 
-            CurrentPlayer = null;
+            //CurrentPlayer = null;
 
             int livePlayers = 0;
             foreach (Player p in Players)

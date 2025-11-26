@@ -93,6 +93,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ExecuteTurn()
         {
+            Lobby.StateLobby = StateLobby.TurnHuman;
         }
     }
 }
