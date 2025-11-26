@@ -340,7 +340,7 @@ namespace Fantasy_Kingdoms_Battle
             ChangeInterface(false);
 
             // Ход оставшимися игроками
-            for (int i = 1; i < lobby.Players.Count(); i++)
+            for (int i = 1; i < lobby.Players.Length; i++)
             {
                 if (lobby.Players[i].IsLive)
                 {
